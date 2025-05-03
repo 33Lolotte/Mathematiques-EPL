@@ -1,0 +1,425 @@
+\documentclass[french]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\theoremstyle{definition}
+\newtheorem{ex}{Exercice}
+
+\theoremstyle{theorem}
+\newtheorem*{ind}{Indication}
+
+\title{Exercices de première année}
+\begin{document}
+\maketitle
+\chapter{Groupe symétrique}
+\begin{ex}[Générateurs de $\mathcal{S}_n$]
+	Soit $n\geqslant 2$.
+	\begin{enumerate}
+		\item Montrer que toute permutation de $\llbracket1,n\rrbracket$ peut s'écrire comme produit de transpositions de la forme $\begin{pmatrix}
+			1&i
+		\end{pmatrix}$ pour $2\leqslant i\leqslant n$.
+		\item Montrer que toute permutation de $\llbracket1,n\rrbracket$ peut s'écrire comme produit de transpositions de la forme $\begin{pmatrix}
+			i&i+1
+		\end{pmatrix}$.
+		\item Montrer que toute permutation de $\llbracket1,n\rrbracket$ peut s'écrire comme produit des cycles $\begin{pmatrix}
+			1&2
+		\end{pmatrix}$ et $\begin{pmatrix}
+		1&2&\cdots&n
+		\end{pmatrix}$.
+	\end{enumerate}
+\end{ex}
+\begin{ex}[Signature d'une restriction]
+	Soit $\sigma\in\mathcal{S}_n$ et $p\in\llbracket1,n\rrbracket$. On suppose que le support de $\sigma$ est inclus dans $\llbracket 1,p\rrbracket$ et on pose $\hat\sigma=\displaystyle \sigma_{\mid\llbracket1,p\rrbracket}^{\mid\llbracket1,p\rrbracket}$.
+	\begin{enumerate}
+		\item Montrer que $\hat{\sigma}$ est bien définie et qu'elle est un élément de $\mathcal{S}_p$.
+		\item Montrer que $\hat{\sigma}$ et $\sigma$ ont la même signature.
+	\end{enumerate}
+\end{ex}
+\begin{ex}
+	$2022$ sont rangés de gauche à droite. Parmi celles qui sont proposées ci-dessous, quelles sont les transformations qui, itérées, permettent de ranger les objets dans l'ordre inverse ?
+	\begin{enumerate}[label=\roman*)]
+		\item On peut permuter entre eux deux objets arbitraires.
+		\item On peut permuter entre eux deux objets arbitraires voisins.
+		\item On peut permuter entre eux deux objets arbitraires, à condition qu'ils soient séparés par exactement un objet.
+		\item On peut permuter entre eux deux objets arbitraires, à condition qu'ils soient séparés par exactement deux objets.
+		\item On peut choisir arbitrairement trois objets et leur faire subir une permutation circulaire.
+		\item On peut choisir quatre objets arbitraires et les ranger sur les places qu'ils occupaient précédemment, mais dans l'ordre inverse.
+	\end{enumerate}
+\end{ex}
+\begin{ex}
+	Calculer la signature de la permutation suivante : $$\sigma=\begin{pmatrix}
+		1&2&\cdots&n&n+1&n+2&\cdots&2n\\
+		1&3&\cdots&2n-1&2&4é\cdots&2n
+	\end{pmatrix}$$
+\end{ex}
+\begin{ex}
+	\begin{enumerate}
+		\item Pour quelles valeurs de $n\in\N\st$ le groupe $(\mathcal{S}_n,\circ)$ est-il commutatif ?
+		\item $\star$ Déterminer le centre $Z(\mathcal{S}_n)$ de $\mathcal{S}_n$ en fonction de $n$.
+	\end{enumerate}
+\end{ex}
+\begin{ex}
+	Dans $\mathcal{S}_n$, trouver toutes les permutations qui commutent avec le cycle $\begin{pmatrix}
+		1&2&\cdots&n
+	\end{pmatrix}$.
+\end{ex}
+\begin{ex}[Conjugaison]
+	On dit que deux permutations $\sigma$ et $\sigma'$ de $\mathcal{S}_n$ sont conjuguées lorsque : $$\exists\tau\in\mathcal{S}_n,\ \sigma'=\tau\inv\sigma\tau$$
+	\begin{enumerate}
+		\item Montrer que la relation de conjugaison est une relation d'équivalence?
+		\item Soit $(a\ b)$ une transposition et $\tau\in\mathcal{S}_n$. Montrer que $\tau(a\ b)\tau\in=(\tau(a)\ \tau(b))$. En déduire que deux transpositions sont toujours conjuguées.
+		\item Généraliser à deux $p$-cycles.
+	\end{enumerate}
+\end{ex}
+\begin{ex}
+	Soit $n$ un entier supérieur ou égal à $2$. Montrer que la signature est l'unique morphisme surjectif de $\mathcal{S}_n$ dans $\{-1,1\}$.
+\end{ex}
+\begin{ex}
+	Soit $n\geqslant 1$. Trouver tous les morphismes de groupe de $(\mathcal{S}_n,\circ)$ dans $(\C\st,\times)$.
+\end{ex}
+\begin{ex}
+	Soit $\sigma\in\mathcal{S}_n$ que l'on décompose en produit de cycles à supports disjoints : $\sigma=c_1\cdots c_p$. On note $n_i$ la longueur du cycle $c_i$. Montrer que l'ordre de $\sigma$ dans $\mathcal{S}_n$ vaut $$o(\sigma)=n_1\vee\cdots\vee n_p$$
+\end{ex}
+\begin{ex}[$\star$ Le jeu du Taquin]
+	Voici une configuration initiale $$\begin{pmatrix}
+		1&2&3&4\\
+		5&6&7&8\\
+		9&10&11&12\\
+		13&14&15&\emptyset
+	\end{pmatrix}$$ On souhaite, en modifiant le tableau comme si on faisait glisser les numéros, passer à la configuration suivante : $$\begin{pmatrix}
+	1&2&3&4\\
+	5&6&7&8\\
+	9&10&11&12\\
+	13&15&14&\emptyset
+	\end{pmatrix}$$ Qu'en pensez-vous ?
+\end{ex}
+\begin{ex}[$\star\star$ Automorphismes intérieurs de $\mathcal{S}_n$ et conjugaison]
+	On rappelle que deux permutations $\sigma$ et $\sigma'$ de $\mathcal{S}_n$ sont conjuguées lorsque : $$\exists\tau\in\mathcal{S}_n,\ \sigma'=\tau\inv\sigma\tau$$
+	\begin{enumerate}
+		\item Soit $\tau\in\mathcal{S}_n$. Vérifier que l'application $\varphi:\sigma\mapsto\tau\inv\sigma\tau$ est un automorphisme de $\mathcal{S}_n$. On dit que c'est un automorphisme intérieur.
+		\item Soit $\varphi$ un automorphisme de $\mathcal{S}_n$. Montrer que $\varphi$ est un automorphisme intérieur si, et seulement s'il transforme toute transposition en une transposition.
+	\end{enumerate}
+\end{ex}
+\begin{ex}[$\star\star$ IMO]
+	Soit $p$ un nombre premier impair. Trouver le nombre de parties $A$ de $\llbracket 1,2p\rrbracket$ telles que : 
+	\begin{itemize}
+		\item $A$ est de cardinal $p$ ;
+		\item la somme des éléments de $A$ est divisible par $p$.
+	\end{itemize}
+\end{ex}
+\begin{ex}[$\star\star$ Sous-groupes alternés de $\mathcal{A}_n$ pour $n\geqslant 5$]
+	On dit qu'un sous-groupe $H$ d'un groupe $G$ est distingué dans $G$ lorsque $\forall x\in G,\ xH=Hx$. Montrer que si $n\geqslant 5$, alors le groupe alterné $\mathcal{A}_n$ n'admet pas d'autres sous-groupes distingués de $\{\text{id}\}$ et $\mathcal{A}_n$.
+\end{ex}
+
+
+\chapter{Déterminants}
+\begin{ex}
+	Soit $A=(a_{i,j})_{1\leqslant i,j\leqslant n}\in\mathcal{M}_n(\K)$. On définit $A'=((-1)^{i+j}a_{i,j})_{1\leqslant i,j\leqslant n}\in\mathcal{M}_n(\K)$. Montrer que $\det(A')=\det(A)$.
+\end{ex}
+\begin{ex}
+	Quel est le déterminant d'un projecteur ? Quel est le déterminant d'une symétrie ?
+\end{ex}
+\begin{ex}
+	Soit $(a,b,c,d)\in\R^4$. Calculer sous forme factorisée les déterminants suivants.
+	\begin{enumerate}
+		\item $\displaystyle\begin{vmatrix}
+			0&a&b\\
+			a&0&c\\
+			b&c&0
+		\end{vmatrix}$
+		\item $\displaystyle\begin{vmatrix}
+			a&b&c\\
+			c&a&b\\
+			b&c&a
+		\end{vmatrix}$
+		\item $\displaystyle\begin{vmatrix}
+			a+b&b+c&c+a\\
+			a^2+b^2&b^2+c^2&c^2+a^2\\
+			a^3+b^3&b^3+c^3&c^3+a^3
+		\end{vmatrix}$
+		\item $\displaystyle\begin{vmatrix}
+			a&a&a&a\\
+			a&b&b&b\\
+			a&b&c&c\\
+			a&b&c&d
+		\end{vmatrix}$
+		\item $\displaystyle\begin{vmatrix}
+			a&c&c&b\\
+			c&a&b&c\\
+			c&b&a&c\\
+			b&c&c&a
+		\end{vmatrix}$
+		\item $\displaystyle\begin{vmatrix}
+		1&1&1\\
+		\cos(a)&\cos(b)&\cos(c)\\
+		\sin(a)&\sin(b)&\sin(c)
+		\end{vmatrix}$
+		\item $\displaystyle\begin{vmatrix}
+			1&a&a^2&a^4\\
+			1&b&b^2&b^4\\
+			1&c&c^2&c^4\\
+			1&d&d^2&d^4
+		\end{vmatrix}$
+	\end{enumerate}
+\end{ex}
+\begin{ex}
+	Soit $M=(m_{i,j})_{1\leqslant i,j\leqslant n}\in\mathcal{M}_n(\R)$ telle que $$\begin{cases}
+		\forall (i,j)\in\llbracket1,n\rrbracket^2,\ 0\leqslant m_{i,j}<1 \\
+		\\
+		\forall i\in\llbracket1,n\rrbracket,\ \displaystyle\sum_{j=1}^{n}m_{i,j}\leqslant 1
+	\end{cases}$$ Montrer que $\lvert\det(M)\rvert<1$.
+\end{ex}
+\begin{ex}
+	Soit $A=\displaystyle\begin{pmatrix}
+		0&1&2\\
+		1&1&1\\
+		1&0&-1
+	\end{pmatrix}$.
+	\begin{enumerate}
+		\item Soit $\lambda\in\C$. on dit que $\lambda$ est une valeur propre de la matrice $A$ lorsqu'il existe $X\in\C^3\setminus\{0\}$ tel que $AX=\lambda X$. Montrer que $\lambda$ est une valeur propre de $A$ si, et seulement si, $\det(\lambda I_3-A)=0$.
+		\item Trouver une matrice $P\in\mathcal{GL}_3(\C)$ telle que $P\inv AP$ soit une matrice diagonale à déterminer.
+		\item En déduire la valeur de $A^n$ pour $n\in\N\st$.
+	\end{enumerate}
+\end{ex}
+\begin{ex}
+	Soit $A\in\mathcal{M}_n(\K)$. Calculer $\text{rg}(\text{Com}(A))$ en fonction de $\text{rg}(A)$.
+\end{ex}
+\begin{ex}
+	Trouver toutes les matrices $A\in\mathcal{M}_n(\K)$ telles que $$\forall B\in\mathcal{M}_n(\K),\ \det(A+B)=\det(A)+\det(B)$$
+\end{ex}
+\begin{ex}
+	Soit $A\in\mathcal{M}_n(\K)$ une matrice de rang $1$. Montrer que $\det(I_n+A)=1+\Tr(A)$.
+\end{ex}
+\begin{ex}
+	Soit $n\in\N\st$. Soit $J\in\mathcal{M}_n(\K)$ dont tous les coefficients valent $1$. Soit $A\in\mathcal{GL}_n(\K)$. On pose $B=A-J$ et on note $A\inv=(a_{i,j}')_{1\leqslant i,j\leqslant n}$. Montrer que $$\det(B)=\det(A)\left(1-\sum_{1\leqslant i,j\leqslant n}a_{i,j}'\right)$$
+\end{ex}
+\begin{ex}
+	Soit $A\in\mathcal{M}_n(\R)$. Soit $H\in\mathcal{M}_n(\R)$ de rang $1$. Montrer l'inégalité $\det(A+H)\det(A-H)\leqslant\det(A)^2$.
+\end{ex}
+\begin{ex}
+	Calculer $\displaystyle\begin{vmatrix}
+		2&-1&&&&\\
+		3&2&-1&&(0)&\\
+		&\ddots&\ddots&\ddots&&\\
+		&&\ddots&\ddots&\ddots&\\
+		&(0)&&3&2&-1\\
+		&&&&3&2
+	\end{vmatrix}$.
+\end{ex}
+\begin{ex}
+	Soit $(\lambda_1,\ldots,\lambda_n)\in\C^n$ une famille de scalaires deux à deux distincts. A l'aide d'un déterminant de Vandermonde, montrer que les fonctions $f:x\mapsto e^{\lambda_ix}$ forment une famille libre de $\C^\R$.
+\end{ex}
+\begin{ex}
+	A l'aide d'un déterminant de Vandermonde, retrouver le résultat (de cours) selon lequel si deux polynômes $P$ et $Q$ deux $\K_n[X]$ coïncident en $n+1$ points distincts, alors ils sont égaux.
+\end{ex}
+\begin{ex}
+	Soit $(a_0,\ldots,a_n)\in\R^{n+1}$ une famille de réels tous non nuls et deux à deux distincts. Montrer que la famille des applications : $$\varphi_i:P\mapsto\int_{0}^{a_i}P(t)\ dt$$ est une base de $\mathcal{L}(\R_n[X],\R)$.
+\end{ex}
+\begin{ex}
+	Soit $(a_1,\ldots,a_n)\in\K^{n}$. On cherche à calculer le déterminant de Vandermonde $$V(a_0,\ldots,a_n)=\begin{vmatrix}
+		1&a_1&\cdots&a_1^{n-1}\\
+		\vdots&\vdots&&\vdots\\
+		\vdots&\vdots&&\vdots\\
+		1&a_n&\cdots&a_n^{n-1}
+	\end{vmatrix}$$ On propose ici une démonstration par récurrence sur $n\in\N\st$.
+	\begin{enumerate}
+		\item Dans un premier temps, on suppose $n\geqslant 2$ et que les $a_i$ sont deux à deux distincts. On suppose aussi que l'hypothèse de récurrence est vraie au rang $n-1$. Introduisons la fonction $D:\K\to\K$ définie par $$\forall x\in\K,\ D(x)=\begin{vmatrix}
+			1&a_1&\cdots&a_1^{n-1}\\
+			\vdots&\vdots&&\vdots\\
+			1&a_n&\cdots&a_{n-1}^{n-1}\\
+			1&x&\cdots&x^{n-1}
+		\end{vmatrix}$$ Montrer qu'il existe $P\in\K_{n-1}[X]$ tel que $D$ soit la fonction polynomiale associée à $P$, puis factoriser $P$.
+		\item Conclure.
+	\end{enumerate}
+\end{ex}
+\begin{ex}
+	On se donne $n$ complexes $a_0,\ldots,a_n$ et l'on cherche à calculer le déterminant de la matrice $$A=\begin{pmatrix}
+		a_0&a_1&\cdots&\cdots&a_{n-1}\\
+		a_{n-1}&a_0&a_1&\cdots&a_{n-2}\\
+		&\ddots&\ddots&\ddots&\\
+		&&\ddots&\ddots&\ddots\\
+		a_1&\cdots&\cdots&a_{n-1}&a_0
+	\end{pmatrix} $$ On note $\omega=\exp\displaystyle\left(i\frac{2\pi}{n}\right)$, et on introduit la matrice $\Omega$ de terme général $\Omega_{i,j}\omega^{(i-1)(j-1)}$. On pose aussi $P=\displaystyle\sum_{k=0}^{n-1}a_kX^k\in\C[X]$.
+	\begin{enumerate}
+		\item Calculer $A\Omega$ en fonction de $P$ et $\omega$.
+		\item Conclure.
+	\end{enumerate} 
+\end{ex}
+\begin{ex}
+	Soit $(a_1,\ldots,a_n)\in\K^n$. Calculer le déterminant de la matrice de terme générale $a_{\max(i,j)}$.
+\end{ex}
+\begin{ex}
+	Calculer $$D_{n+1}=\begin{vmatrix}
+		\binom{0}{0}&\binom{1}{1}&\cdots&\binom{n}{n}\\
+		\binom{1}{0}&\binom{2}{1}&\cdots&\binom{n+1}{n}\\
+		\vdots&\vdots&&\vdots\\
+		\binom{n}{0}&\binom{n+1}{2}&\cdots&\binom{2n}{n}
+	\end{vmatrix}$$
+\end{ex}
+\begin{ex}
+	Soit $x\in\R$. Calculer le déterminant suivant, de taille $n\times n$ : $$D_n=\begin{vmatrix}
+		2x&10&\cdots&0&0\\
+		1&2x&1\cdots&0&0\\
+		0&1&2x&\ddots&0&0\\
+		\vdots&\vdots&\ddots&\ddots&\ddots&\vdots\\
+		0&0&\cdots&1&2x&1\\
+		0&0&\cdots&0&1&2x
+	\end{vmatrix}$$ On pourra commencer par le cas où $x\in]-1,1[$ en posant $\theta=\arccos(x)$.
+\end{ex}
+\begin{ex}
+	Soit $A$, $B$, $C$ et $D$ quatre matrices de $\mathcal{M}_n(\C)$ telles que $CD=CD$. On suppose de plus $D$ inversible. 
+	\begin{enumerate}
+	\item Montrer que $$\det\begin{pmatrix}
+		A&B\\
+		C&D
+	\end{pmatrix}=\det(AD-BC)$$
+	\item $\star$ Montrer que le résultat reste valable lorsque $D$ n'est plus nécessairement supposée inversible.
+	\end{enumerate}
+\end{ex}
+\begin{ex}
+	Soit $A$ et $B$ deux matrices de $\mathcal{M}_n(\R)$. Montrer que $$\det\begin{pmatrix}
+		A&-B\\
+		B&A
+	\end{pmatrix}\geqslant0$$
+\end{ex}
+\begin{ex}
+	On se donne deux matrices $A$ et $B$ de $\mathcal{M}_n(\R)$. On suppose que $A$ et $B$ sont semblables dans $\mathcal{M}_n(\C)$. Le but est de démontrer que $A$ et $B$ sont alors semblables dans $\mathcal{M}_n(\R)$.
+	\begin{enumerate}
+		\item Fixons $P\in\mathcal{GL}_n(\C)$ telle que $B=P\inv AP$. On pose $P_1=(\text{Re}(p_{i,j}))_{1\leqslant i,j\leqslant n}$ et $P_2=(\text{Im}(p_{i,j}))_{1\leqslant i,j\leqslant n}$. Montrer que $$\forall x\in\R,\ A(P_1+xP_2)=(P_1+xP_2)A$$
+		\item Conclure.
+	\end{enumerate}
+\end{ex}
+\begin{ex}
+	Soit $(u_1,\ldots,u_p)$ une famille libre due $\Q$-espace vectoriel $\Q^n$. Montrer que, vue comme une famille du $\R$-espace vectoriel $\R^,$, cette famille est encore libre.
+\end{ex}
+\begin{ex}
+	Soit $n\in\N\st$. Soit $P=X^n-\displaystyle\sum_{k=0}^{n-1}a_kX^k\in\mathcal{C}_n[X]$. On appelle matrice compagnon de $P$ la matrice $$M=\begin{pmatrix}
+		0&&(0)&a_0\\
+		1&\ddots&&a_1\\
+		&\ddots&0&\vdots\\
+		(0)&&1&a_{n-1}
+	\end{pmatrix}\in\mathcal{M}_n(\C)$$
+	\begin{enumerate}
+		\item Montrer : $\forall \lambda\in\C,\ \det(\lambda I_n-M)=P(\lambda)$.
+		\item Soit $u$ l'endomorphisme de $\C^n$ canoniquement associé à $M$ et $(e_i)_{1\leqslant i\leqslant n}$ la base canonique de $\C^n$. Exprimer $e_2,\ldots,e_n$ en fonction de $e_1$ et de $u$.
+		\item Montrer que $P(M)=0$.
+	\end{enumerate}
+\end{ex}
+\begin{ex}
+	On note $\mathcal{GL}_n(\Z)=\left\{M\in\mathcal{GL}_n(\R)\cap\mathcal{M}_n(\Z)\ : \ M\inv\in\mathcal{M}_n(\Z)\right\}$. Soit $A\in\mathcal{M}_n(Z)$. Montrer l'équivalence : $$A\in\mathcal{GL}_n(\Z)\iff\det(A)=\pm 1$$
+\end{ex}
+\begin{ex}
+	On définit $SL_n(\K)=\left\{M\in\mathcal{M}_n(\K)\ : \ \det(M)=1\right\}$. Montrer que $SL_n(\K)$ est un groupe engendré par les transvections sur les lignes.
+\end{ex}
+\begin{ex}
+	\begin{enumerate}
+		\item Soit $E$ un ensemble fini et $\varphi:E\to E$ une involution sans point fixe. Montrer qu'il existe une partie $F\subset E$ telle que $F\sqcup\varphi(F)=E$.
+		\item Soit $A\in\mathcal{M}_{2n+1}(\Z)$ une matrice symétrique à coefficients entiers dont les termes diagonaux sont pairs. Montrer que $\det(A)$ est un entier pair.
+	\end{enumerate}
+\end{ex}
+\begin{ex}[Résultant et discriminant]
+	Dans tout l'exercice, on fixe $p$ et $q$ des entiers naturels tous deux non nuls. Soit $P=\displaystyle\sum_{k=0}^{p}a_kX^k$ et  $P=\displaystyle\sum_{l=0}^{q}b_lX^l$ dans $\C[X]$ avec $a_p\ne0$ et $b_q\ne0$. On définit le résultant de $P$ et $Q$ par $$\text{Res}(P,Q)=\begin{vmatrix}
+	a_0&0&\cdots&0&b_0&0&\cdots&\cdots&\cdots&0 \\
+	a_1&\ddots&\ddots&\vdots&b_1&\ddots&\ddots&&&\vdots\\
+	\vdots&\ddots&\ddots&0&\vdots&\ddots&\ddots&\ddots&&\vdots\\
+	\vdots&&\ddots&a_0&\vdots&&\ddots&\ddots&\ddots&\vdots\\
+	\vdots&&&a_1&b_q&&&\ddots&\ddots&0\\
+	\vdots&&&\vdots&0&\ddots&&&\ddots&b_0\\
+	a_p&&&\vdots&\vdots&\ddots&\ddots&&&b_1\\
+	0&\ddots&&\vdots&\vdots&&\ddots&\ddots&&\vdots\\
+	\vdots&\ddots&\ddots&\vdots&\vdots&&&\ddots&\ddots&\vdots\\
+	0&\cdots&0&a_p&0&\cdots&\cdots&\cdots&0&b_q
+	\end{vmatrix}$$
+	\begin{enumerate}
+		\item En considérant l'application $$\begin{array}{lrcl}
+			\varphi:&\C_{q-1}[X]\times\C_{p-1}[X]&\longrightarrow&\C_{p+q-1}[X]\\
+			&(U,V)&\longmapsto &UP+VQ
+		\end{array}$$ démontrer que $\text{Res}(P,Q)\ne 0$ si, et seulement si, $P\wedge Q=1$.
+		\item On définit le discriminant de $P$ par $\Delta(P)=\displaystyle\frac{(-1)^{\frac{p(p-1)}{2}}}{a_p}\text{Res}(P,P')$. Qu'obtient-on pour un polynôme du second degré ?
+		\item Montrer que $P$ admet une racine multiple si, et seulement si, sont discriminant est non nul.
+		\item Application : déterminer une condition simple sur $(a,b)\in\C^2$ pour que le polynôme $X^"+aX+b$ possède une racine multiple.
+		\item $\star$ On note $x_1,\ldots,z_p$ les racines complexes de $P$ comptées avec multiplicité. Exprimer $\Delta(P)$ sous forme factorisée en fonction des $z_i$. Retrouver le résultat de la question $3$.
+	\end{enumerate}
+\end{ex}
+\begin{ex}[$\star$ Déterminant de Cauchy]
+	Soit $(a_1,\ldots,a_n,b_1,\ldots,b_n)\in\K^{2n}$ tel que $\forall (i,j)\in\llbracket1,n\rrbracket^2,\ a_i+b_j\ne 0$.
+	\begin{enumerate}
+		\item Dans cette question, on suppose que les $b_j $ sont deux à deux distincts. Décomposer en éléments simples la fraction rationnelle $$F=\frac{(X-a_1)\cdots(X-a_{n-1})}{(X+b_1)\cdots(X+b_n)}$$
+		\item Calculer le déterminant de la matrice $\displaystyle\left(\frac{1}{a_i+b_j}\right)_{1\leqslant i,j\leqslant n}$.
+	\end{enumerate}
+\end{ex}
+\begin{ex}[$\star$ Produit tensoriel et formes $p$-linéaires]
+	Soit $E$ un $\K$-espace vectoriel de dimension $n$, $(e_i)_{1\leqslant i\leqslant n}$ une base de $E$ et $p\in\N\st$.
+	\begin{enumerate}
+		\item Montrer que pour toute famille de scalaires $(\lambda_{i_1,\ldots,i_p})_{1\leqslant i_1,\ldots,i_p\leqslant n}$, il existe une unique forme $p$-linéaire $f$ telle que $$\forall (i_1,\ldots,i_p)\in\llbracket1,n\rrbracket^p,\ f(e_{i_1},\ldots,e_{i_p})=\lambda_{i_1,\ldots,i_p}$$
+		\item En déduire que la famille $(e_{i_1}\st\otimes\cdots\otimes e_{i_p}\st)_{1\leqslant i_1,\ldots,i_p\leqslant n}$ est une base de l'espace des formes $p$-linéaires.
+	\end{enumerate}
+\end{ex}
+\begin{ex}[$\star$ Comatrice du produit]
+	Soit $A$ et $B$ deux matrices de $\mathcal{M}_n(\C)$. Montrer que la comatrice de $AB$ est égal au produit de la comatrice de $A$ par la comatrice de $B$.
+\end{ex}
+\begin{ex}[$\star$ Polynôme minimal et sur-corps]
+	\begin{enumerate}
+		\item Soit $A\in\mathcal{M}_n(\K)$ une matrice non nulle. Montrer qu'il existe un unique polynôme $\Pi_\K$ unitaire de degré minimal tel que $\Pi_\K(A)=0$.
+		\item Soit $\L$ un sur-corps de $\K$, et $\Pi_\L$ le polynôme minimal de $A$, considérée comme une matrice de $\mathcal{M}_n(\L)$. Montrer que $\Pi_\K=\Pi_\L$.
+	\end{enumerate}
+\end{ex}
+\begin{ex}[$\star\star$]
+	Soit $n\in\N\st$ et $(f_1,\ldots,f_n)$ une famille libre de fonctions de $\R$ dans $\R$. Montrer qu'il existe $(x_1,\ldots,x_n)\in\R^n$ tel que $$\begin{vmatrix}
+		f_1(x_1)&f_1(x_2)&\cdots&f_1(x_n)\\
+		f_2(x_1)&f_2(x_2)&\cdots&f_2(x_n)\\
+		\vdots&\vdots&&\vdots\\
+		f_n(x_1)&f_n(x_2)&\cdots&f_n(x_n)
+	\end{vmatrix}\ne 0$$
+\end{ex}
+\begin{ex}[$\star\star$ Les $2n+1$ cailloux]
+	Soit $n\in\N\st$. On se donne $2n+1$ cailloux et on suppose que dès que l'on choisit un caillou au hasard, on peut toujours former deux tas de $n$ cailloux ayant le même poids. Montrer que tous les cailloux ont le même poids.
+\end{ex}
+
+
+
+
+\end{document}
