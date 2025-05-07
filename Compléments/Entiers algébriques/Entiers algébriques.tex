@@ -1,0 +1,130 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\id}{\text{id}}
+
+\theoremstyle{definition}
+\newtheorem{ex}{Exercice}
+\newtheorem{dfn}{Définition}
+
+\theoremstyle{theorem}
+\newtheorem*{ind}{Indication}
+\newtheorem{thm}{Théorème}
+\newtheorem{cor}{Corollaire}
+
+\theoremstyle{remark}
+\newtheorem*{rmq}{Remarque}
+
+\title{Entiers algébriques}
+\begin{document}
+\maketitle
+\section{Cas des corps $\Q\subset\K\subset\C$}
+\begin{dfn}[Entier algébrique]
+	On dit qu'un nombre complexe est un entier algébrique lorsqu'il existe $P\in\Z[X]$ unitaire tel que $P(x)=0$. On notera $\mathcal{O}_\C$ l'ensemble des nombres complexes qui sont des entiers algébriques.
+\end{dfn}
+\begin{dfn}
+	Si $\K$ est un corps tel que $\Q\subset\K\subset\C$, on définit $\mathcal{O}_\K=\K\cap\mathcal{O}_\C$.
+\end{dfn}
+
+\begin{thm}
+	L'ensemble $\mathcal{O}_\C$ est un sous-anneau de $\C$.
+\end{thm}
+On en déduit immédiatement le corollaire suivant.
+\begin{cor}
+	Si $\K$ est un corps tel que $\Q\subset\K\subset\C$, alors $\mathcal{O}_\K$ est un sous-anneau de $\K$.
+\end{cor}
+Nous allons voir deux preuves différentes de ce théorème.
+\subsection{Preuve par les modules de type fini}
+\begin{proof}
+	Soit $(x,y)\in\mathcal{O}_\C^2$. On écrit : $$\begin{cases}
+		x^m=a_{m-1}x^{m-1}+\cdots+a_0 \\
+		y^n=b_{n-1}x^{n-1}+\cdots+b_0 \\
+	\end{cases}$$ avec les $a_i$ et les $b_j$ dans $\Z$. Par une récurrence immédiate, on en déduit que pour tout entier $k$ supérieur ou égal à $m$, $x^k$ est une combinaison linéaire à coefficients entiers de $x$. Il en va de même pour $y^l$ pour $l\geqslant n$. Alors, l'anneau $\Z[x,y]$ des $\Z$-combinaisons linéaires des $x^i y^j$ est engendré, en tant que groupe additif, par la famille des $(x^iy^j)$ pour $i\in\llbracket0,m-1\rrbracket$ et $j\in\llbracket0,n-1\rrbracket$. On pose $t=mn$ et on note $(u_k)_{1\leqslant k\leqslant t}$ une telle famille. On se donne $z\in\Z[x,y]$. Soit $k\in\llbracket1,t\rrbracket$. Comme $\Z[x,y]$ est un anneau, on sait que $zu_k\in\Z[x,y]$, et on écrit alors : $$zu_k=\sum_{l=1}^{t}\alpha_{l,k}u_l$$ avec les $\alpha_{l,k}$ dans $\Z$. On définit : $$M=\begin{pmatrix}
+	z-\alpha_{1,1}&-\alpha_{1,2}&\cdots&-\alpha_{1,t}\\
+	-\alpha_{2,1}&\ddots&&\vdots\\
+	\vdots&&\ddots&\vdots\\
+	-\alpha_{t,1}&\cdots&\cdots&z-\alpha_{t,t}
+	\end{pmatrix}\ \ \text{et}\ \ U=\begin{pmatrix}
+	u_1\\
+	\vdots\\ 
+	\vdots\\
+	u_t
+	\end{pmatrix}$$ On a alors, au vu des définitions précédentes, $MU=0$. En multipliant par la transposée de la comatrice de $M$ à gauche, on obtient : $$\det(M)U=0$$ Pour $k=1$, comme on a par exemple pris $u_k=1$, on obtient alors $\det(M)=0$. Or, $\det(M)$ est un polynôme en $z$, unitaire et à coefficients entiers. On en déduit que $z\in\mathcal{O}_\C$. En particulier, comme $x+y\in\Z[x,y]$ et $xy\in\Z[x,y]$, on en déduit que $\mathcal{O}_\C$ est un sous-anneau de $\C$.
+\end{proof}
+
+\subsection{Preuve par le résultant}
+On se donne un anneau factoriel $A$. Pour $P$ et $Q$ deux polynômes de $A[X]$, on rappelle la notation $\text{Res}(P,Q)$ pour le résultant de $P$ et $Q$. On rappelle que $\text{Res}(P,Q)\in A$ et il vérifie : $$\text{Res}(P,Q)\ne 0\iff P\wedge Q=1$$
+\begin{proof}
+	On suppose que $(x,y)\in\mathcal{O}_\C^2$ avec $P$ et $Q$ unitaires à coefficients dans $\Z$ tels que $P(x)=Q(y)=0$. On pose $A=\Z[T]$ et $z=x+y$. Alors, $Q(T-X)\in A[X]$ donc $$R=\text{Res}(P(X),Q(T-X))\in A=\Z[T]$$ Comme $P$ et $Q$ sont unitaires, on peut obtenir avec la définition de $R$ que $R$ est unitaire. Alors : $$R(z)=\text{Res}(P(X),Q(z-X))$$ puisque l'évaluation est un morphisme. Or, $P(x)=0$ et $Q(z-x)=Q(y)=0$ donc $P$ et $Q(z-X)$ ne sont pas premiers entre eux. Donc par propriété du résultant, $R(z)=0$ si bien que $x+y\in\mathcal{O}_\C$. On peut faire de même pour $xy$ en considérant $$\text{Res}(P(X),X^{\deg(Q)}Q(TX\inv))$$ 
+\end{proof}
+
+\section{Cas des corps $\Q\subset\K$ de dimension finie sur $\Q$}
+On se donne $\K$ un sur-corps de $\Q$ font la dimension en tant que $\Q$-espace vectoriel est finie. On note $\mathcal{O}_\K$ l'ensemble des éléments de $\K$ annulés par un polynôme unitaire à coefficients dans $\Z$.
+\begin{dfn}
+	Si $z\in\mathcal{O}_\K$, on appelle polynôme minimal de $z$ sur $\Q$ et on note $\mu_z$ le générateur unitaire du noyau de l'application linéaire : $$\begin{array}{lrcl}
+		m_z:&\Q[X]&\longrightarrow&\K \\
+		&Q&\longmapsto&Q(z)
+	\end{array}$$
+\end{dfn}
+\begin{thm}
+	Soit $z\in\mathcal{O}_\K$ et $\mu_z$ le polynôme minimal de $z$ sur $\Q$. Alors $\mu_z$ appartient à $\Z[X]$.
+\end{thm}
+\begin{proof}
+	Fixons $P\in\Z[X]$ unitaire qui annule $z$. On peut alors écrire $P=\mu_z Q$ avec $Q\in\Q[X]$. On écrit $$\mu_z=\frac{a}{b}R\ \ \text{et}\ \ Q=\frac{c}{d}S$$ avec $(a,b,c,d)\in\Z^4$ et $c(R)=c(S)=1$ où $c(A)$ désigne le contenu du polynôme $A$. Ainsi : $$acRS=bdP$$ En passant aux contenus et par propriété du contenu, on a : $ac=bd$ puisque $c(P)=1$ car $P$ est unitaire. Donc $P=RS$. Quitte à multiplier par $-1$, $R$ et $S$ sont unitaires. Ainsi, $a=b$ en regardant le coefficient dominant de $\mu_z$, si bien que $\mu_z=R\in\Z[X]$.
+\end{proof}
+\begin{cor}
+	On a $\mathcal{O}_\Q=\Z$.
+\end{cor}
+\begin{rmq}
+	Lorsque l'anneau des entiers sur le corps des fractions d'une anneau de départ est égal à cet anneau de départ, on dit que l'anneau est intégralement clos. Ce théorème stipule donc que $\Z$ est intégralement clos. Dé façon plus générale, on a en fait montré que tout anneau factoriel est intégralement clos. La réciproque est fausse en général.
+\end{rmq}
+\begin{proof}
+	L'inclusion réciproque est triviale car si $z\in\Z$, $X-z$ annule $z$ et est unitaire à coefficients entiers. Dans le sens direct, soit $z\in\mathcal{O}_\Q$. On a $X-z=\mu_z$. Mais $\mu_z\in\Z[X]$ d'après le théorème précédent.  Donc $z\in\Z$.
+\end{proof}
+\begin{rmq}[Un anneau ni factoriel, ni intégralement clos]
+	Considérons $A=\C[X^2,X^3]$ le sous-anneau de $\C[X]$ engendré par $X^2$ et $X^3$. On a donc $A=\text{Vect}(1,X^2,X^3,\ldots)$. Alors $X=X^3/X^2\in\text{Frac}(A)$ mais $X\notin A$. Et $X$ est entier sur $A$ car $P=T^2-X^2\in A[T]$ annule $X$ et est unitaire.
+\end{rmq}
+\end{document}
