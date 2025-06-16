@@ -1,0 +1,212 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\id}{\text{id}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théorème}
+\def\thmautorefname{théorème}
+\newtheorem{lem}{Lemme}
+\def\lemautorefname{lemme}
+\newtheorem{prop}{Proposition}
+\def\propautorefname{propriété}
+\newtheorem{cor}{Corollaire}
+\def\propautorefname{corollaire}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Définition}
+\def\dfnautorefname{définition}
+\newtheorem{exa}{Exemple}
+\newtheorem{rmq}{Remarque}
+
+\title{Décompositions et applications}
+
+\begin{document}
+
+\maketitle
+\section{Décomposition(s) de Dunford}
+\begin{thm}[Décomposition de Dunford]
+	Si le polynôme caractéristique de $u$ est scindé sur $\K$, alors il existe un unique couple d'endomorphismes $(d,n)$ tel que
+	\begin{enumerate}
+		\item $u=d+n$ ;
+		\item $d$ soit diagonalisable ;
+		\item $n$ soit nilpotente ;
+		\item $u$ et $d$ commutent.
+	\end{enumerate}
+	De plus, de tels endomorphismes sont des polynômes en $u$.
+\end{thm}
+
+\begin{cor}
+	Si le polynôme caractéristique de $M$ est scindé sur $\K$, alors $M$ est diagonalisable si, et seulement si, $\exp(M)$ l'est.
+\end{cor}
+
+\begin{rmq}
+	En pratique, pour obtenir la décomposition de Dunford de $u$, on réalise la décomposition en éléments simples de $\displaystyle\frac{1}{\pi_u}$ puis on calcule les projecteurs spectraux $\pi_k$. On pose alors $d=\displaystyle\sum_{k=1}^{p}\lambda_k\pi_k$ où les $\lambda_k$ sont dans $\text{Sp}_\K(u)$ puis on pose $n=u-d$.
+\end{rmq}
+
+\begin{cor}
+	Si $\chi_A$ est scindé sur $\K$ et $D+N$ est la décomposition de Dunford de $A$, alors la décomposition de Dunford de $\exp(A)$ est $\exp(D)+\exp(D)(\exp(N)-I_n)$.
+\end{cor}
+
+\begin{thm}
+	Les assertions suivantes sont équivalentes :
+	\begin{enumerate}[label=\roman*)]
+		\item $\exp(A)=I_n$ ;
+		\item $A$ est diagonalisable et $\text{Sp}_\C(A)\subset 2i\pi\Z$.
+	\end{enumerate}
+\end{thm}
+
+\begin{rmq}
+	La décomposition de Dunford est principalement utilisée pour calculer des puissances ou des exponentielles de matrices.
+\end{rmq}
+
+\begin{thm}[Décomposition de Dunford multiplicative]
+	Si $A\in\mathcal{GL}_n(\K)$ et $\chi_A$ est scindé sur $\K$, alors il existe un unique couple de matrices $(T,D)\in\mathcal{GL}_n(\K)^2$ tel que :
+	\begin{enumerate}
+		\item $A=TD=DT$ ;
+		\item $T$ soit diagonalisable ;
+		\item $D$ soit unipotente.
+	\end{enumerate}
+\end{thm}
+
+\section{Réduction de Jordan}
+
+\begin{dfn}[Réduite de Jordan]
+	On appelle réduite de Jordan toute matrice de la forme : $$J_r(\lambda)=\begin{pmatrix}
+		\lambda&1&&&(0)\\
+		&\lambda&1&& \\
+		&&\ddots&\ddots& \\
+		&&&\lambda&1 \\
+		(0)&&&&\lambda
+	\end{pmatrix}\in\mathcal{M}_r(\K)$$
+\end{dfn}
+
+\begin{thm}[Réduction de Jordan]
+	Si $\chi_A$ est scindé, alors $\pi_A$ est scindé et $A$ est semblable à une matrice diagonale par blocs dont les blocs sont des réduites de Jordan. De plus, cette décomposition est unique à l'ordre près des blocs.
+\end{thm}
+
+\begin{cor}
+	Deux matrices de $\mathcal{M}_n(\K)$ dont les polynômes caractéristiques sont scindés sont semblables si, et seulement si, elles admettent la même forme de Jordan.
+\end{cor}
+
+\begin{cor}
+	Si $\chi_A$ est scindé, alors $A$ et $A^T$ sont semblables.
+\end{cor}
+
+\section{Décomposition de Frobenius}
+
+\section{Générateurs de $\mathcal{GL}_n(\K)$ et de $\mathcal{SL}_n(\K)$}
+
+\begin{dfn}[Matrices de transvection]
+	On appelle matrice de transvection toute matrice qui s'écrit sous la forme $T_{i,j}(\lambda)=I_n+\lambda E_{i,j}$ avec $i\ne j$ et $\lambda\in\K$.
+\end{dfn}
+
+\begin{dfn}[Matrices de dilatation]
+	On appelle matrice de dilatation toute matrice qui s'écrit sous la forme $D_{i}(\lambda)=I_n+(\lambda-1)E_{i,i}$ avec $\lambda\in\K\st$.
+\end{dfn}
+
+\begin{thm}
+	Les matrices de transvection et de dilatation engendrent $\mathcal{GL}_n(\K)$. On peut n'utiliser qu'une seule matrice de dilatation.
+\end{thm}
+
+\begin{cor}
+	Les matrices de transvection engendrent $\mathcal{SL}_n(\K)$.
+\end{cor}
+
+\begin{cor}
+	Les groupes $\mathcal{SL}_n(\R)$, $\mathcal{SL}_n(\C)$ et $\mathcal{GL}_n(\C)$ sont connexes par arcs.
+\end{cor}
+
+\begin{thm}
+	Le groupe $\mathcal{GL}_n(\R)$ n'est pas connexe par arcs et ses deux composantes sont $\mathcal{GL}_n^+(\R)$ (matrices de déterminant strictement positif) et $\mathcal{GL}_n^-(\R)$ (matrices de déterminant strictement négatif).
+\end{thm}
+
+\section{Applications du théorème spectral}
+
+\begin{thm}[Décomposition polaire]
+	Toute matrice $A\in\mathcal{GL}_n(\R)$ s'écrit de manière unique sous la forme $A=OS$ avec $O\in\mathcal{O}_n(\R)$ et $S\in\mathcal{S}_n^{++}(\R)$.
+\end{thm}
+
+\begin{prop}
+	$\mathcal{O}_n(\R)\times\mathcal{S}_n^{++}(\R)$ et $\mathcal{GL}_n(\R)$ sont homéomorphes via la multiplication matricielle.
+\end{prop}
+
+\begin{cor}
+	Si $G$ est un sous-groupe compact de $\mathcal{GL}_n(\R)$ qui contient $\mathcal{O}_n(\R)$, alors $G=\mathcal{O}_n(\R)$.
+\end{cor}
+
+\begin{thm}
+	L'exponentielle matricielle induit un homéomorphisme de $\mathcal{S}_n(\R)$ sur $\mathcal{S}_n^{++}(\R)$.
+\end{thm}
+
+\section{Décompositions pour les systèmes linéaires}
+
+\begin{dfn}[Déterminants principaux]
+	
+\end{dfn}
+
+\begin{thm}[Décomposition LU]
+	
+\end{thm}
+
+\begin{thm}[Critère de Sylvester]
+	
+\end{thm}
+
+\begin{thm}[Décomposition de Cholesky]
+	
+\end{thm}
+
+\begin{thm}[Décomposition OT (ou QR)]
+	
+\end{thm}
+
+\begin{thm}[Décomposition d'Iwasawa]
+	
+\end{thm}
+
+
+\end{document}

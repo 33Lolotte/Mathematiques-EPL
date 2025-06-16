@@ -58,6 +58,7 @@
 \title{Exercices de première année}
 \begin{document}
 \maketitle
+\tableofcontents
 \chapter{Logique et raisonnements}
 
 \begin{ex}
@@ -281,7 +282,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[$\star$ Construction d'un pentagone régulier]
+\begin{ex}[$\Delta$ Construction d'un pentagone régulier]
 	On pose $\omega=\exp\displaystyle\left(i\frac{2\pi}{5}\right)$ ainsi que $\alpha=\omega+\omega^4$ et $\beta=\omega^2+\omega^3$.
 	\begin{enumerate}
 		\item \begin{enumerate}[label=\alph*.]
@@ -686,6 +687,65 @@
 
 \chapter{Fonctions usuelles}
 
+\begin{ex}[$\circ$]
+	Résoudre les équations suivantes dans $\R$.
+	\begin{enumerate}
+		\item $(x-1)^3=(x+1)^3$
+		\item $(x-1)^4=(x+1)^4$
+		\item $\ln(x)=\ln(\ln(x))$
+		\item $x^4-2x^2+1=x^2-1$
+		\item $x^3-6x^2+12x=8$
+		\item $\sqrt[3]{3x-1}=\sqrt[3]{x^2+1}$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\circ$]
+	Résoudre les inéquations suivantes dans $\R$.
+	\begin{enumerate}
+		\item $\displaystyle\frac{1+2x}{1-x}\leqslant 1$
+		\item $\displaystyle\frac{1+2x}{\sqrt{1-x}}\leqslant 1$
+		\item $\displaystyle\frac{e^x-1}{e^2x-1}>1$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\circ$]
+	Pour chacune des propositions suivantes, dire si elle est vraie ou fausse et si elle est fausse, dire ce qu'il faudrait changer pour qu'elle devienne vraie.
+	\begin{enumerate}
+		\item $\forall\theta\in\R,\ \arccos(\cos(\theta))=\theta$
+		\item $\forall x\in[-1,1],\ \cos(\arccos(x))=x$
+		\item $\forall\theta\in\R,\ \arcsin(\sin(\theta))=\theta$
+		\item $\forall x\in[-1,1],\ \sin(\arcsin(x))=x$
+		\item $\forall\theta\in\R\setminus\displaystyle\left\{\frac{\pi}{2}+\pi\Z\right\},\ \arctan(\tan(\theta))=\theta$
+		\item $\forall x\in\R,\ \tan(\arctan(x))=x$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\circ$]
+	Calculer les nombres suivants.
+	\begin{enumerate}
+		\item $\displaystyle\arccos\left(\cos\left(\frac{2\pi}{3}\right)\right)$
+		\item $\displaystyle\arccos\left(\cos\left(\frac{-2\pi}{3}\right)\right)$
+		\item $\displaystyle\arctan\left(\tan\left(\frac{7\pi}{4}\right)\right)$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\circ$]
+	Montrer : $\forall x\in\R,\ \ln\left(\sqrt{1+x^2}+x\right)+\ln\left(\sqrt{1+x^2}-x\right)=0$.
+\end{ex}
+
+\begin{ind}
+	Utiliser la propriété fonctionnelle de la fonction logarithme népérien.
+\end{ind}
+
+\begin{ex}[$\circ$]
+	Simplifier les expressions suivantes.
+	\begin{enumerate}
+		\item $A=x^{\ln(\ln(x))/\ln(x)}$
+		\item $B=\displaystyle\frac{\cosh(\ln(x))+\sinh(\ln(x))}{x}$
+		\item $C=\sinh^2(x)\cos^2(y)+\cosh^2(x)\sin^2(y)$
+	\end{enumerate}
+\end{ex}
+
 \begin{ex}[Argument sinus hyperbolique]
 	Donner une formule pour la fonction argument sinus hyperbolique, fonction réciproque de la fonction $\sinh$ sur $\R$.
 \end{ex}
@@ -702,6 +762,214 @@
 	Montrer que les formules de trigonométrie circulaire restent valables en trigonométrie hyperbolique, à condition de remplacer les produits $\sin\times\sin$ par les produits $-\sinh\times\sinh$.
 \end{ex}
 
+\begin{ex}
+	Déterminer l'ensemble de définition de la fonction : $$f:x\mapsto\ln\left(\cos\left(\pi\frac{x^2-1}{x^2+1}\right)\right)$$
+\end{ex}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Déterminer le domaine de définition de la fonction $$f:x\mapsto\arcsin\left(\sqrt{\frac{1}{2}+\sqrt{x}}\right)+\arcsin\left(\sqrt{\frac{1}{2}-\sqrt{x}}\right)$$
+		\item En effectuant un changement de variables, simplifier l'expression de $f$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	On pourra écrire $x=\displaystyle\frac{1}{4}\cos^2(2\theta)$.
+\end{ind}
+
+\begin{ex}
+	On considère la fonction $\displaystyle f:x\mapsto\arctan\left(\sqrt{\frac{1-x}{1+x}}\right)$.
+	\begin{enumerate}
+		\item Étudier son domaine de définition et sa continuité. Montrer que $f$ est dérivable sur un intervalle ouvert que l'on précisera.
+		\item En déduire une expression simplifiée de $f(x)$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Soit $f:x\mapsto\arctan(\tan(x))$. Étudier $f$ sans calculer de dérivée, puis tracer le graphe de $f$.
+\end{ex}
+
+\begin{ex}
+	Montrer que la fonction $\displaystyle f:x\mapsto\arctan(e^x)-\arctan\left(\tanh\left(\frac{x}{2}\right)\right)$ est constante, et déterminer cette constante.
+\end{ex}
+
+\begin{ind}
+	Dériver l'expression.
+\end{ind}
+
+\begin{ex}
+	Étudier la fonction $f:x\mapsto\arctan(\ln(x))$ puis tracer sa courbe représentative.
+\end{ex}
+
+\begin{ex}
+	Discuter en fonctions des paramètres du nombre de solutions des équations suivantes.
+	\begin{enumerate}
+		\item $e^t=\alpha t$ de paramètre $\alpha\in\R\st$ ;
+		\item $e^{ax}=bx$ de paramètres $a\in\R\st$ et $b\in\R\st$ ;
+		\item $(a^b)^x=a^{(b^x)}$ de paramètres $a$ et $b$ strictement positifs.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\Delta$]
+	Résoudre l'équation $a^b=b^a$ dans $(\N\st)^2$.
+\end{ex}
+
+\begin{ind}
+	Passer au logarithme népérien.
+\end{ind}
+
+\begin{ex}
+	Soit $a\in\R$. Résoudre l'équation suivante d'inconnue $x\in\R$ : $$\sinh(a)+\sinh(a+x)+\sinh(a+2x)+\sinh(a+3x)=0$$
+\end{ex}
+
+\begin{ex}
+	Dériver l'expression avec des exponentielles, mais ne pas chercher à utiliser l'expression d'une somme géométrique.
+\end{ex}
+
+\begin{ex}
+	Soient $(a,b),(a',b')\in\R^2$ des couples de réels différents du couple $(0,0)$. Soient $c$ et $c'$ des réels quelconques et deux droites du plan d'équations respectives : $$\begin{cases}
+		\mathcal{D}\ : \ ax+by+c=0 \\
+		\mathcal{D}'\ : \ a'x+b'y+c'=0
+	\end{cases}$$ Donner une condition nécessaire et suffisante sur les couples $(a,b)$ et $(a',b')$ pour que $\mathcal{D}$ et $\mathcal{D}'$ admettent un unique point d'intersection.
+\end{ex}
+
+\begin{ind}
+	Calculer des vecteurs directeurs et s'apercevoir que les droites ont un unique point d'intersection si, et seulement si, elles sont non parallèles.
+\end{ind}
+
+\begin{ex}
+	Résoudre le système linéaire suivant : $$\begin{cases}
+		x-3y+2z+t=-2\\
+		2x+4y+z+2t=4 \\
+		7x+9y+5z+7t=10 \\
+		-4x-18y+z-4t=-16
+	\end{cases}$$
+\end{ex}
+
+\begin{ex}
+	Résoudre les systèmes linéaires suivants, où $a$, $b$ et $c$ sont des paramètres réels. On pourra être amené à discuter.
+	\begin{enumerate}
+		\item $\displaystyle\begin{cases}
+			3x-y+z=a \\
+			x+y-z=b \\
+			-x+2y+z=c
+		\end{cases}$
+		\item $\displaystyle\begin{cases}
+			3x-5y+2z+4t=a \\
+			7x-4y+z+3t=b \\
+			5x+7y-4z-6t=c
+		\end{cases}$
+		\item $\displaystyle\begin{cases}
+			2x-y+z=a \\
+			-x+3y-5z=b \\
+			8x-9y+13z=c
+		\end{cases}$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Montrer : $$\forall x\in\R,\ \arctan(x+1)-\arctan(x)=\arctan\left(\frac{1}{1+x+x^2}\right)$$ et en déduire la limite de la suite définie par $$\forall n\in\N,\ u_n=\sum_{k=0}^{n}\arctan\left(\frac{1}{1+k+k^2}\right)$$
+\end{ex}
+
+\begin{ex}
+	Soit $n\in\N\st$ et $(a,b)\in\R\times\R\st$.
+	\begin{enumerate}
+		\item Calculer $\displaystyle\sum_{k=0}^{n}\cosh(a+kb)$ et $\displaystyle\sum_{k=0}^{n}\sinh(a+kb)$.
+		\item Calculer $\displaystyle\sum_{k=0}^{n}\binom{n}{k}\cosh(a+kb)$ et $\displaystyle\sum_{k=0}^{n}\binom{n}{k}\sinh(a+kb)$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Passer sous forme exponentielle.
+\end{ind}
+
+\begin{ex}
+	\begin{enumerate}
+		\item $\Delta$ Montrer : $\forall x\in\R,\ \arg(1+ix)=\arctan(x)$.
+		\item En déduire la valeur de $\arctan(1)+\arctan(2)+\arctan(3)$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Montrer que l'équation $\arctan(x-3)+\arctan(x)+\arctan(x+3)=\displaystyle\frac{5\pi}{4}$ admet pour unique solution $x=5$.
+\end{ex}
+
+\begin{ex}
+	Résoudre les équations suivantes d'inconnue $x\in\R$.
+	\begin{enumerate}
+		\item $\displaystyle\arccos\left(\frac{1}{3}\right)+\arccos\left(\frac{1}{4}\right)=\arccos(x)$
+		\item $\displaystyle\arccos\left(\frac{1}{3}\right)+\arccos\left(\frac{1}{4}\right)=\arcsin(x)$
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Pour la première, on peut passer au cosinus mais il faut faire attention aux équivalences. Pour la deuxième, il y a un piège : essayer de calculer une valeur approchée du membre de gauche (ou demander à sa calculatrice).
+\end{ind}
+
+\begin{ex}
+	Résoudre l'équation $\arcsin(2x-1)+2\arctan\displaystyle\left(\sqrt{\frac{1-x}{x}}\right)=\frac{\pi}{2}$.
+\end{ex}
+
+\begin{ind}
+	Faire passer l'arcsinus à droite puis passer au cosinus des deux côtés.
+\end{ind}
+
+\begin{ex}
+	Résoudre l'équation $\displaystyle\arccos\left(\frac{1-x}{1+x}\right)+\arcsin\left(\frac{2\sqrt{x}}{1+x}\right)=\pi$.
+\end{ex}
+
+\begin{ind}
+	Faire passer l'arcsinus à droite puis passer au cosinus des deux côtés. Sinon, on peut aussi dériver le membre de gauche.
+\end{ind}
+
+\begin{ex}
+	On se donne $x$ et $y$ deux réels.
+	\begin{enumerate}
+		\item Déterminer suivant les paramètres $x$ et $y$ l'existence d'éventuelles solutions du système : $$\begin{cases}
+			\cosh(u)+\cosh(v)=x \\
+			\sinh(u)+\sinh(v)=y
+		\end{cases}$$
+		\item Déterminer suivant les paramètres $x$ et $y$ l'existence d'éventuelles solutions du système : $$\begin{cases}
+			\cosh(u)+\sinh(v)=x \\
+			\sinh(u)+\cosh(v)=y
+		\end{cases}$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Montrer que $x\mapsto (x^x)^x-x^{(2^x)}$ admet une limite en $+\infty$, et calculer cette limite.
+\end{ex}
+
+\begin{ex}
+	Trouver tous les réels $x$ tels que $\forall n\in\Z,\ \arctan(nx)\in\Z$.
+\end{ex}
+
+\begin{ind}
+	Attention, $\displaystyle\frac{\pi}{2}$ n'est pas un entier !
+\end{ind}
+
+\begin{ex}[$\star$ Encadrement entier de $e$]
+	On cherche à démontrer de deux manières différentes que $2\leqslant e\leqslant 3$.
+	\begin{enumerate}
+		\item Première méthode :
+		\begin{enumerate}[label=\alph*.]
+			\item Montrer : $\forall n\in\N,\ e=\displaystyle\sum_{k=0}^{n}\frac{1}{k!}+\int_{0}^{1}\frac{(1-t)^n}{n!}e^t\ dt$
+			\item Conclure.
+		\end{enumerate}
+		\item Deuxième méthode :
+		\begin{enumerate}[label=\alph*.]
+			\item Soit $f$ et $g$ deux fonctions continues sur $[1,3]$. En étudiant le signe de la fonction : $$\begin{array}{rcl}
+				\R&\longrightarrow&\R\\
+				\lambda&\longmapsto&\displaystyle\int_{0}^{1}\left(\lambda f(t)+g(t)\right)^2\ dt
+			\end{array}$$ montrer que $$\int_{1}^{3}f(t)g(t)\ dt\leqslant\sqrt{\int_{1}^{3}f(t)^2\ dt}\sqrt{\int_{1}^{3}g(t)^2\ dt}$$
+			\item En déduire que $1\leqslant\ln(3)$ puis conclure.
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\star$ D'après un exercice d'IMO]
+	Montrer que l'ensemble des réels qui vérifient l'inéquation $$\sum_{k=1}^{155}\frac{k}{x-k}\geqslant 6$$ est la réunion d'intervalles deux à deux disjoints dont la somme des longueurs a pour valeur $2015$.
+\end{ex}
 
 
 \chapter{Introduction à l'algèbre}
@@ -905,6 +1173,10 @@
 
 \section{Groupes}
 
+\begin{ex}[$\circ$]
+	Soit $G$ un groupe noté multiplicativement, d'élément neutre $e$. Montrer : $$\forall (x,y)\in G^2,\ xy=e\implies yx=e$$
+\end{ex}
+
 \begin{ex}[Centre d'un groupe]
 	Soit $G$ un groupe. On note $Z(G)$ le centre de $G$ défini par $$Z(G)=\{x\in G\ \mid \ \forall y\in G,\ xy=yx\}$$ et, pour $x\in G$, on note : $$C(x)=\{gxg\inv\ \mid\ g\in G\}$$
 	\begin{enumerate}
@@ -915,6 +1187,47 @@
 
 \begin{ex}[$\circ$]
 	Dans un groupe, montrer que si $(ab)^n=e$, alors $(ba)^n=e$.
+\end{ex}
+
+\begin{ex}
+	Montrer que tout groupe de cardinal $4$ est commutatif.
+\end{ex}
+
+\begin{ex}
+	Montrer que les groupes $(\R\st,\times)$ et $(\C\st,\times)$ ne sont pas isomorphes.
+\end{ex}
+
+\begin{ex}
+	Soit $G$ un groupe (noté multiplicativement) ainsi que $H_1$ et $H_2$ deux sous-groupes de $G$.
+	\begin{enumerate}
+		\item Montrer que $H_1\cup H_2$ est un sous-groupe de $G$ si, et seulement si, $H_1\subset H_2$ ou $H_2\subset H_1$.
+		\item Montrer que $H_1H_2$ est un sous-groupe de $G$ si, et seulement si, $H_1H_2=H_2H_1$.
+		\item Retrouver le résultat selon lequel dans un groupe $(G,+)$ commutatif, la somme de deux sous-groupes est un sous-groupe.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Soit $G$ un groupe multiplicatif commutatif d'élément neutre $e$ ainsi que $H_1$ et $H_2$ deux sous-groupes de $G$ vérifiant : $$\begin{cases}
+		G=H_1H_2 \\
+		H_1\cap H_2=\{e\}
+	\end{cases}$$ Montrer que $G$ est isomorphe au produit $H_1\times H_2$.
+\end{ex}
+
+\begin{ex}
+	Déterminer tous les morphismes suivants.
+	\begin{enumerate}
+		\item Endomorphismes du groupe $(\Z,+)$.
+		\item Endomorphismes du groupe $(\Q,+)$.
+		\item Morphismes de $(\Q,+)$ dans $(\Z,+)$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Raisonner par analyse-synthèse.
+\end{ind}
+
+\begin{ex}
+	Montrer que $\U_\infty=\displaystyle\bigcup_{n\in\N\st} \U_n$ est un groupe pour la multiplication.
 \end{ex}
 
 \begin{ex}[Groupes de $\mathcal{M}_n(\K)$]
@@ -1053,6 +1366,55 @@
 	\end{array}$$ Remarquer que son image est exactement $HK$ et observer que tout élément de $HK$ admet exactement $\card(H\cap K)$ antécédents. Conclure en utilisant le lemme des bergers.
 \end{proof}
 
+\begin{ex}[$\Delta\star$ Groupes quasi-cycliques de Prüfer]
+	Soit $p$ un nombre premier. On note $Z_p=\left\{z\in\C\ : \ \exists k\in\N,\ z^{p^k}=1\right\}$.
+	\begin{enumerate}
+		\item Montrer que $(Z_p,\times)$ est un groupe.
+		\item Déterminer les sous-groupes de $Z_p$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Groupe quotient]
+	Soit $G$ un groupe quelconque (non nécessairement commutatif) et $H$ un sous-groupe de $G$. Pour $x\in G$, on rappelle qu'on note : $$\begin{cases}
+		xH=\{xh\ \mid\ h\in H\}\\
+		Hx=\{hx\ \mid\ h\in H\}
+	\end{cases}$$
+	\begin{enumerate}
+		\item Montrer que la relation $x\sim y\iff x\inv y\in H$ est une relation d'équivalence.
+		\item Montrer que les classes d'équivalence sont exactement les $xH$.
+		\item On suppose que $H$ est \textit{distingué} dans $G$, c'est-à-dire que $$\forall x\in G,\ xH=HX$$ Montrer que la loi de $G$ passe au quotient et définit une loi de groupe sur l'ensemble quotient, que l'on note désormais $G/H$ et que l'on appelle \textit{groupe quotient} de $G$ par $H$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\star$]
+	Soit $G$ un groupe fini de cardinal $2n$ (non nécessairement commutatif) et $H$ un sous-groupe de $G$ de cardinal $n$ avec $n$ impair (A VERIFIER). On se donne $x$ et $y$ deux éléments de $G/H$. Montrer que $xy\in H$.
+\end{ex}
+
+\begin{ind}
+	S'inspirer de la démonstration du théorème de Lagrange pour montrer que $xH=G/H$.
+\end{ind}
+
+\begin{ex}[$\star$ Des exemples de groupes non commutatifs]
+	Donner un exemple de groupe : 
+	\begin{enumerate}
+		\item fini non commutatif ;
+		\item indénombrable non commutatif ;
+		\item infini dénombrable non commutatif.
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	On pourra penser aux permutations de $\N$ puis se restreindre aux permutations à support fini.
+\end{ind}
+
+\begin{ex}[$\star\star$]
+	Soit $G$ un groupe dont le groupe des automorphismes (on admet que c'est un groupe) est cyclique. Montrer que $G$ est commutatif.
+\end{ex}
+
+\begin{ex}[$\star\star$]
+	Déterminer tous les groupes dont le groupe des automorphismes est réduit à l'identité.
+\end{ex}
+
 \section{Ordre des éléments d'un groupe}
 
 \begin{ex}[$\circ$]
@@ -1075,6 +1437,14 @@
 		\item Si $G$ est fini, que peut-on en déduire sur son cardinal et sa structure ?
 		\item Donner un exemple d'un tel groupe infini.
 	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\circ$]
+	Soit $G$ un groupe noté multiplicativement d'élément neutre $e$. On suppose $\forall x\in G,\ x^3=e$. Montrer : $$\forall (x,y)\in G^2,\ \begin{cases}
+		(xy)^2=y^2x^2 \\
+		xy^2x=yx^2y \\
+		x^2yx^2=y^2xy^2
+	\end{cases}$$
 \end{ex}
 
 \begin{ex}[Petit théorème de Fermat sur les groupes : cas commutatif]
@@ -1163,59 +1533,17 @@
 	Avec le lemme de Cauchy, on dispose de $x\in G$ d'ordre $p$ et $y\in G$ d'ordre $q$. Comme $p$ et $q$ sont premiers entre eux car ce sont des nombres premiers distincts, on en déduit de façon assez classique que $xy$ est d'ordre $pq$. Comme $G$ possède un élément d'ordre son cardinal, $G$ est cyclique.
 \end{proof}
 
-\subsection{Groupe symétrique}
+\section{Anneaux}
 
-\begin{ex}[Conjugaison dans le groupe symétrique]
-	Soit $E$ un ensemble. On note $\mathcal{S}(E)$ le groupe des permutations de $E$. On dit que deux éléments $\tau$ et $\tau'$ de $\mathcal{S}(E)$ sont conjugués s'il existe $\sigma\in\mathcal{S}(E)$ tel que $\tau'=\sigma\circ\tau\circ\sigma\inv$.
+\begin{ex}[$\circ$ Éléments nilpotents]
+	Soit $A$ un anneau ainsi que $a$ et $b$ deux éléments de $A$.
 	\begin{enumerate}
-		\item Montrer que deux cycles sont de même longueur si, et seulement s'ils sont conjugués.
-		\item Application : en considérant les transpositions, déterminer tous les morphismes de groupe de $\mathcal{S}(\llbracket1,n\rrbracket)$ dans $\mathcal{C}\st$.
+		\item Montrer que si $ab$ est nilpotent, alors $ba$ est nilpotent.
+		\item Montrer que si $a$ et $b$ sont nilpotents et commutent, alors $ab$ et $a+b$ sont nilpotents.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Racine carré d'un $n$-cycle]
-	Le cycle $(1\ 2\ \ldots\ n)$ admet-il une racine carrée dans $\mathcal{S}_n$ ?
-\end{ex}
-
-\begin{ex}[Un isomorphisme]
-	Établir un isomorphisme entre le groupe des automorphismes de $\Z/2\Z\times\Z/2\Z$ et $\mathcal{S}_3$.
-\end{ex}
-
-\begin{ex}[Sous-groupes transitifs de $\mathcal{S}_n$]
-	Un sous groupe $H$ de $\mathcal{S}_n$ est dit transitif lorsque $$\forall (x,y)\in\llbracket1,n\rrbracket^2,\ \exists\sigma\in H,\ \sigma(x)=y$$
-	\begin{enumerate}
-		\item Soit $\sigma\in\mathcal{S}_n$. A quelle condition le groupe $\langle\sigma\rangle$ engendré par $\sigma$ est-il transitif ?
-		\item On considère une variable aléatoire $X_n$ de loi uniforme sur $\mathcal{S}_n$. Calculer la probabilité $p_n$ que le sous-groupe $\langle X_n\rangle$ engendré par $X_n$ soit transitif.
-		\item On considère deux variables aléatoires indépendantes $X_n$ et $Y_n$ de même loi uniforme sur $\mathcal{S}_n$. On note $q_n$ la probabilité que le sous-groupe $\langle X_n,Y_n\rangle$ engendré par $X_n$ et $Y_n$ soit transitif; Montrer que $$q_n\xrightarrow[n\to+\infty]{}1$$
-	\end{enumerate}
-\end{ex}
-
-\begin{ex}[$\star\star$ Nombre minimal de transpositions pour engendrer $\mathcal{S}_n$]
-	Déterminer le nombre minimal de transpositions nécessaires pour engendre le groupe symétrique $\mathcal{S}_n$.
-\end{ex}
-
-\begin{proof}
-	La réponse est $n+1$. On dispose de pleins de telles familles qui engendrent. Pour montrer qu'il en faut au moins $n+1$, utiliser des graphes.
-\end{proof}
-
-\begin{ex}[Matrices de permutations]
-	Soit $n\in\N\st$. Pour $\sigma\in\mathcal{S}_n$, on note $P_\sigma=(\delta_{i,\sigma(j)})_{1\leqslant i,j\leqslant n}\in\mathcal{M}_n(\C)$.
-	\begin{enumerate}
-		\item Montrer que $\sigma\mapsto P_\sigma$ est un morphisme injectif de $\mathcal{S}_n$ dans $\mathcal{GL}_n(\C)$.
-		\item $\star\star$ Soit $\sigma$ et $\tau$ dans $\mathcal{S}_n$. Montrer que $\sigma$ et $\tau$ sont conjuguées dans $\mathcal{S}_n$ si, et seulement si, les matrices $P_\sigma$ et $P_\tau$ sont semblables. Indication : on pourra étudier le polynôme caractéristique de $P_\sigma$.
-	\end{enumerate}
-\end{ex}
-
-\begin{ex}[Nombre de permutations avec $k$ cycles distincts] On note $u_{n,k}$ le nombre de permutations de $\mathcal{S}_n$ avec $k$ cycles distincts (un point fixe compte pour un cycle). On a la formule de récurrence : $$u_{n+1,k+1}=u_{n,k}+n\times u_{n,k+1}$$
-\end{ex}
-
-\begin{proof}
-	Le premier terme correspond au cas où $n+1$ est seul dans son cycle, et le deuxième aux cas où $n+1$ n'est pas seul dans son cycle.
-\end{proof}
-
-\subsection{Anneaux}
-
-\begin{ex}[Caractéristique d'un anneau]
+\begin{ex}[$\Delta$ Caractéristique d'un anneau]
 	Soit $A$ un anneau.
 	\begin{enumerate}
 		\item Montrer que $k\in\Z\mapsto k.1_A$ est l'unique morphisme d'anneaux de $\Z$ dans $A$.
@@ -1235,6 +1563,38 @@
 	Un groupe multiplicatif inclus dans un anneau $A$ est-il nécessairement un sous-groupe du groupe des inversibles de $A$ ? Et si $A$ est un corps ? intègre ?
 \end{ex}
 
+\begin{ex}
+	Soit $A$ un anneau et $x\in A$ nilpotent.
+	\begin{enumerate}
+		\item Montrer que $1-x$ est inversible.
+		\item Soit $p\in\N$. Simplifier l'expression $U_p=\displaystyle\prod_{k=0}^{p}(1+x^{2^k})$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Soit $A$ un anneau ainsi que $(a,b)\in A^2$ tel que $a$ et $1-ab$ soient inversibles. Montrer que $1-ba$ est inversible.
+\end{ex}
+
+\begin{ex}
+	Soit $A$ un anneau ainsi que $(a,b)\in A^2$ tel que $ab+ba=1$ ainsi que $a^2b+ba^2=a$.
+	\begin{enumerate}
+		\item Montrer que $a^2b=ba^2$ et $2aba=a$.
+		\item Montrer que $a$ est inversible d'inverse $2b$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Soit $(G,+)$ un groupe commutatif ainsi que $\text{End}(G)$ l'ensemble des endomorphismes de groupe de $G$. Montrer que $(\text{End}(G),+,\circ)$ est un anneau.
+\end{ex}
+
+\begin{ex}[Problème universel]
+	Soit $A$ un anneau quelconque. On dit que $A$ possède la propriété $(P)$ lorsque pour tout anneau $B$, il existe un unique morphisme d'anneaux de $A$ dans $B$.
+	\begin{enumerate}
+		\item Montrer que $\Z$ possède la propriété $(P)$.
+		\item Montrer que si $A$ possède la propriété $(P)$, alors il est isomorphe à $B$.
+	\end{enumerate}
+\end{ex}
+
 \begin{ex}[$\star$ Anneau noethérien]
 	Soit $A$ un anneau. Montrer l'équivalence entre les assertions suivantes.
 	\begin{enumerate}
@@ -1242,7 +1602,7 @@
 		\item Toute suite croissante d'idéaux de $A$ est stationnaire.
 		\item Toute famille non vide d'idéaux de $A$ possède un élément maximal.
 	\end{enumerate}
-	Lorsqu'un anneau vérifie l'une de ces trois conditions équivalentes, on dit que l'anneau est \textbf{noethérien}.
+	Lorsqu'un anneau vérifie l'une de ces trois conditions équivalentes, on dit que l'anneau est \textit{noethérien}.
 \end{ex}
 
 \begin{rmq}
@@ -1250,11 +1610,11 @@
 \end{rmq}
 
 \begin{ex}[Idéaux premiers]
-	Soit $I$ un idéal d'un anneau $A$. On dit que $I$ est premier lorsque : $$\forall (x,y)\in A^2,\ xy\in I\implies (x\in I\ \text{ou}\ y\in I)$$ Montrer que l'anneau quotient $A/I$ est intègre si, et seulement si, l'idéal $I$ est premier.
+	Soit $I$ un idéal d'un anneau $A$. On dit que $I$ est \textit{premier} lorsque : $$\forall (x,y)\in A^2,\ xy\in I\implies (x\in I\ \text{ou}\ y\in I)$$ Montrer que l'anneau quotient $A/I$ est intègre si, et seulement si, l'idéal $I$ est premier.
 \end{ex}
 
 \begin{ex}[Idéaux maximaux]
-	Soit $I$ un idéal d'un anneau $A$. On dit que $I$ est maximal lorsque $I$ est un idéal propre de $A$ (inclus strictement dans $A$) et maximal au sens de l'inclusion. Montrer que l'anneau quotient $A/I$ est un corps si, et seulement si, l'idéal $I$ est maximal.
+	Soit $I$ un idéal d'un anneau $A$. On dit que $I$ est \textit{maximal} lorsque $I$ est un idéal propre de $A$ (inclus strictement dans $A$) et maximal au sens de l'inclusion. Montrer que l'anneau quotient $A/I$ est un corps si, et seulement si, l'idéal $I$ est maximal.
 \end{ex}
 
 \begin{ex}[Un anneau intègre non principal et non factoriel]
@@ -1338,6 +1698,14 @@
 	Quels sont les corps $\K$ tels que $\forall x\in\K\st,\ x\inv=x$ ?
 \end{ex}
 
+\begin{ex}
+	Dans $\C$, déterminer le sous-corps engendré par :
+	\begin{enumerate}
+		\item $\circ$ $\R$ et $i$ ;
+		\item $j=\exp\displaystyle\left(i\frac{2\pi}{3}\right)$.
+	\end{enumerate}
+\end{ex}
+
 \begin{ex}[$\Delta$ Injectivité des morphismes de corps]
 	Montrer que tout morphisme de corps est injectif.
 \end{ex}
@@ -1380,6 +1748,14 @@
 		\item \textbf{Synthèse} : Réciproquement, $\left\{0_\K \right\}$ et $\K$ sont bien des idéaux de $\K$, la vérification est immédiate.
 	\end{itemize}
 \end{proof}
+
+\begin{ex}[$\Delta$ Sous-corps premier]
+	On considère un corps $\K$.
+	\begin{enumerate}
+		\item Montrer qu'il existe un unique sous-corps de $\K$ inclus dans tout sous-corps de $\K$. On l'appelle \textit{sous-corps premier} de $\K$.
+		\item Déterminer le sous-corps premier de $\R$, puis le sous-corps premier de $\C$.
+	\end{enumerate}
+\end{ex}
 
 \begin{ex}[Cardinal d'un corps fini]
 	Démontrer que tout corps fini $\K$ est de cardinal $p^n$ avec $p$ un nombre premier et $n\in\N\st$.
@@ -1527,6 +1903,328 @@
 
 \chapter{Réels et suites}
 
+\section{Propriétés des réels}
+
+\begin{ex}[$\circ$ Vrai ou faux]
+	Indiquer, en justifiant, si les propositions suivantes sont vraies ou fausses.
+	\begin{enumerate}
+		\item $\forall x\in\R_+\st,\ \exists n\in\N,\ n>\displaystyle\frac{1}{x}$
+		\item $\forall (x,y)\in\R^2,\ \lfloor x+y\rfloor=\lfloor x\rfloor+\lfloor y\rfloor$
+		\item $\forall (x,y)\in\R^2,\ \lfloor xy\rfloor=\lfloor x\rfloor\lfloor y\rfloor$
+		\item $\forall (x,y)\in\R^2,\ \lfloor x+\lfloor y\rfloor\rfloor=\lfloor x\rfloor+\lfloor y\rfloor$
+		\item $\forall (x,y)\in\R^2,\ \lfloor x+y\rfloor\geqslant \lfloor x\rfloor+\lfloor y\rfloor$
+		\item $\forall x\in\R,\ \forall k\in\N,\ \lfloor kx\rfloor\geqslant k\lfloor x\rfloor$
+		\item $\exists n\in\N\st,\ \ln(n)<n^{1/12}$
+		\item $\exists n\in\N\st,\ \ln(n)\geqslant n^{1/12}$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\circ$]
+	Résoudre l'équation suivante dans $\R$ : $$\lvert 1-\lvert 2-\lvert 3-\lvert 4-x\rvert\rvert\rvert\rvert=12$$
+\end{ex}
+
+\begin{ex}
+	Soit $n\in\N\st$ et $(x_1,\ldots,x_n)$ un $n$-uplet de nombres réels vérifiant : $$\sum_{i=1}^{n}x_i=\sum_{i=1}^{n}x_i^2=n$$ Démontrer : $\forall i\in\llbracket 1,n\rrbracket,\ x_i=1$.
+\end{ex}
+
+\begin{ind}
+	S'intéresser à $\displaystyle\sum_{i=1}^{n}(x_i-1)^2$.
+\end{ind}
+
+\begin{ex}[$\Delta$ Inégalité de Cauchy-Schwarz]
+	On se donne $(x_1,\ldots,x_n)$ et $(y_1,\ldots,y_n)$ deux $n$-uplets de réels. On souhaite démontrer l'inégalité de Cauchy-Schwarz : $$\left\lvert\sum_{i=1}^{n}x_iy_i\right\rvert\leqslant\sqrt{\sum_{i=1}^{n}x_i^2}\sqrt{\sum_{i=1}^{n}y_i^2}$$
+	\begin{enumerate}
+		\item Pour tout $\lambda\in\R^2$, on pose : $$P(\lambda)=\sum_{i=1}^{n}(x_i+\lambda y_i)^2$$ Développer $P(\lambda)$. Quel est son signe ?
+		\item Conclure.
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Bien faire attention au cas où $P(\lambda)$ n'est pas un authentique polynôme de degré $2$ en $\lambda$.
+\end{ind}
+
+\begin{ex}
+	Montrer : $\forall (x,y)\in\R^2,\ \lfloor x\rfloor +\lfloor y\rfloor+\lfloor x+y\rfloor \leqslant \lfloor 2x\rfloor+\lfloor 2y\rfloor$
+\end{ex}
+
+\begin{ex}[D'après de vieux énoncés d'IMO]
+	\begin{enumerate}
+		\item Résoudre dans $\R$ l'inéquation suivante : $\displaystyle\frac{4x^2}{\left(1-\sqrt{1+2x}\right)^2}<2x+9$.
+		\item Résoudre dans $\R$ l'inéquation suivante : $\sqrt{3-x}-\sqrt{x+1}>\displaystyle\frac{1}{2}$.
+		\item $\star$ Résoudre dans $\R$ l'inéquation suivante, où $n\in\N$ est un paramètre : $\cos^n(x)-\sin^n(x)=1$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Astucieux]
+	Montrer que pour tout entier $n$ impair, l'entier $\left\lfloor (1+\sqrt{2})^n\right\rfloor$ est pair.
+\end{ex}
+
+\begin{ex}[$\Delta$]
+	Déterminer tous les endomorphismes d'anneau de $\R$.
+\end{ex}
+
+\begin{ex}
+	Montrer que la propriété de la borne inférieure est une conséquence de la propriété de la borne supérieure.
+\end{ex}
+
+\begin{ex}
+	Soit $n$ un entier supérieur ou égal à $2$. On se donne $A_1,\ldots,A_n$ des parties toutes non vides de $\R$.
+	\begin{enumerate}
+		\item On suppose que les $A_i$ sont toutes majorées. Montrer que $\sup(A_1\cup\cdots\cup A_n)$ existe et vaut $\displaystyle\underset{1\leqslant i\leqslant n}{\max}(\sup(A_i))$.
+		\item On suppose que les $A_i$ sont toutes minorées. Montrer que $\inf(A_1\cup\cdots\cup A_n)$ existe et vaut $\displaystyle\underset{1\leqslant i\leqslant n}{\min}(\inf(A_i))$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Soit $A$ une partie de $\R$ non vide et bornée. Soit $\lambda\in\R$. On rappelle qu'on définit $\lambda A=\{\lambda a\ \mid \ a\in A\}$.
+	\begin{enumerate}
+		\item On suppose $\lambda\geqslant 0$. Déterminer $\inf(\lambda A)$ et $\sup(\lambda A)$ en fonction de $\lambda$, $\inf(A)$ et $\sup(A)$.
+		\item On suppose $\lambda\leqslant 0$. Déterminer $\inf(\lambda A)$ et $\sup(\lambda A)$ en fonction de $\lambda$, $\inf(A)$ et $\sup(A)$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Soient $A$ et $B$ deux parties non vides de $\R$. On rappelle que l'on note : $$A+B=\{a+b\ \mid\ (a,b)\in A\times B\}\ \ \text{et}\ \ AB=\{ab\ \mid\ (a,b)\in A\times B\}$$
+	\begin{enumerate}
+		\item On suppose $\forall (a,b)\in A\times B,\ a\leqslant b$. Montrer alors que : $$\sup(A)\leqslant\inf(B)$$
+		\item On suppose que $A$ et $B$ sont majorées. Montrer que $A+B$ est majorée et que $$\sup(A+B)=\sup(A)+\sup(B)$$
+		\item On suppose que $A$ et $B$ sont minorées. Montrer que $A+B$ est minorée et que $$\inf(A+B)=\inf(A)+\inf(B)$$
+		\item On suppose que $A$ et $B$ sont majorées et incluses dans $\R_+$ Montrer que $AB$ est majorée et que $$\sup(AB)=\sup(A)\sup(B)$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Montrer qu'il existe : 
+	\begin{enumerate}
+		\item un entier $n\in\N$ tel que $\lvert\cos(\sqrt{n})\rvert<\displaystyle\frac{1}{2025}$
+		\item un entier $n\in\N\st$ tel que $\lvert\cos(\ln(n))\rvert<\displaystyle\frac{1}{2025}$
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Observer que dans les deux cas que la suite dans le cosinus tend vers l'infini mais en avançant de plus en plus lentement.
+\end{ind}
+
+\begin{ex}[$\Delta\star$]
+	Montrer qu'il existe un entier $n\in\N$ tel que $\lvert\cos(n)\rvert<\displaystyle\frac{1}{2025}$
+\end{ex}
+
+\begin{ind}
+	S'intéresser à $\Z+2\pi\Z$ et penser au résultat sur les sous-groupes de $\R$.
+\end{ind}
+
+\begin{ex}
+	Montrer : $\forall n\in\N,\ \left\lfloor\sqrt{n}+\sqrt{n-1}\right\rfloor=\left\lfloor\sqrt{4n+2}\right\rfloor$.
+\end{ex}
+
+\begin{ind}
+	Retraduire l'inégalité à l'aide d'un encadrement, puis montrer séparément chacune des deux inégalités. On se souviendra du résultat d'arithmétique selon lequel aucun carré n'est congru à $2$ ou $3$ modulo $4$.
+\end{ind}
+
+\begin{ex}[$\Delta$ Inégalité arithmético-géométrique]
+	On cherche à prouver l'inégalité arithmético-géométrique par un principe de récurrence assez particulier.
+	\begin{enumerate}
+		\item Soient $a$ et $b$ deux réels strictement positifs. Montrer : $\displaystyle\frac{a+b}{2}\geqslant\sqrt{ab}$.
+		\item Plus généralement, soit $m\in\N\st$ et $a_1,\ldots,a_{2^m}$ des réels strictement positifs. Montrer : $$\frac{a_1+\cdots+a_{2^m}}{2^m}\geqslant\sqrt[2^m]{a_1\cdots a_{2^m}}$$
+		\item En déduire l'inégalité arithmético-géométrique : pour tout $n\in\N\st$ et pour toute famille $(a_1,\ldots,a_n)$ de réels strictement positifs, a $$\frac{a_1+\cdots+a_{n}}{n}\geqslant\sqrt[n]{a_1\cdots a_{n}}$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	\begin{enumerate}
+		\item Développer $(\sqrt{a}-\sqrt{b})^2$.
+		\item Raisonner par récurrence sur $m$.
+		\item Choisir $m$ tel que $2^m\geqslant n$ et compléter la famille $(a_1,\ldots,a_n)$ en une famille à $2^m$ éléments dont les derniers éléments sont $\mu=\displaystyle\frac{a_1+\cdots+a_n}{n}$.
+	\end{enumerate}
+\end{ind}
+
+\begin{ex}[$\star$ Olympiades biélorusses]
+	Trouver tous les réels $\mu>0$ tels que $\forall n\in\N\st,\ \lfloor\mu\lfloor(\mu+1)n\rfloor\rfloor=n-1$
+\end{ex}
+
+\begin{ind}
+	Par passage à la limite dans des inégalités, se ramener à $\mu(\mu+1)=1$.
+\end{ind}
+
+\begin{ex}[$\star$ FFJM 2004 : le nombre d'Armand]
+	On notera $\{x\}$ la partie fractionnaire d'un réel $x$. Le nombre fétiche d'Armand est le plus grand nombre réel $M$ tel que $$\forall n\in\N\st,\ n\times\{n\sqrt{2}\}\geqslant M$$
+	Quel est le nombre d'Armand ?
+\end{ex}
+
+\begin{ind}
+	On pourra considérer la suite suivante définie par récurrence : $$\begin{cases}
+		(n_0,p_0)=(1,1)\\
+		\forall k\in\N,\ (n_{k+1},p_{k+1})=(3n_k+2p_k,4n_k+3p_k)
+	\end{cases}$$
+\end{ind}
+
+\begin{ex}[$\star$ D'après un oral de l'X]
+	Pour $x\in\R$, on note $\delta(x)$ la distance de $x$ à l'entier le plus proche. 
+	\begin{enumerate}
+		\item Soit $n$ un entier supérieur ou égal à $2$. Si $t_1,\ldots,t_n$ sont des réels, montrer qu'il existe deux indices distincts $i$ et $j$ tels que $$\delta(t_i-t_j)\leqslant\frac{1}{n}$$
+		\item Soit $x\in\R$. Montrer : $\sup\left\{\alpha\in\R_+\ : \ \underset{k\in\N\st}{\inf}k^\alpha\delta(kx)=0\right\}\geqslant 1$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\star$ Olympiades biélorusses]
+	On pose $\lambda=\displaystyle\frac{3+\sqrt{5}}{5}$. Montrer que pour tout $n\in\N$, $\lfloor \lambda\lfloor\lambda n\rfloor\rfloor+n$ est un multiple de $3$.
+\end{ex}
+
+\begin{ex}[$\star$ Critère de Dirichlet]
+	Soit $x\in\R$ et $\mu>1$. On suppose qu'il existe une infinité de couples $(p,q)\in\Z\times\N\st$ tels que $$0<\left\lvert x-\frac{p}{q}\right\rvert<\frac{1}{q^\mu}$$ Montrer que $x$ est irrationnel.
+\end{ex}
+
+\begin{ind}
+	A $q$ fixé, $p$ ne peut prendre qu'un nombre fini de valeurs. C'est donc que $q$ peut prendre une infinité de valeurs, et en particulier des valeurs de plus en plus grandes. Ensuite, raisonner par l'absurde après avoir multiplié les inégalités par $q$.
+\end{ind}
+
+\begin{ex}[Approximation rationnelle]
+	Soit $\alpha$ un réel.
+	\begin{enumerate}
+		\item Montrer que si $\alpha\in\Q$, alors il existe un nombre fini de couples $(p,q)\in\Z\times\N\st$ tels que $$0<\left\lvert\alpha-\frac{p}{q}\right\rvert\leqslant\frac{1}{q^2}$$
+		\item On suppose $\alpha\notin\Q$. En utilisant le principe des tiroirs sur les parties fractionnaires de $0,\alpha,\ldots,n\alpha$, montrer qu'il existe $(p,q)\in\Z\times\N\st$ tel que $$\left\lvert\alpha-\frac{p}{q}\right\rvert\leqslant\frac{1}{qn}$$ En déduire la réciproque de la question précédente.
+		\item $\star$ On suppose que $\alpha\notin\Q$ est racine d'un polynôme $P$ de degré $n$ à coefficients entiers. Montrer qu'il existe un réel $\delta>0$ tel que $$\forall(p,q)\in\Z\times\N\st,\ \left\lvert\alpha-\frac{p}{q}\right\rvert\geqslant\frac{\delta}{q^n}$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\star\star$ Théorème de Beatty]
+	Soient $\alpha$ et $\beta$ deux réels strictement positifs. Montrer que les deux assertions suivantes sont équivalentes : 
+	\begin{enumerate}[label=\roman*)]
+		\item Les ensembles $\{\lfloor n\alpha\rfloor\ \mid\ n\in\N\st\}$ et $\{\lfloor n\beta\rfloor\ \mid\ n\in\N\st\}$ partitionnent $\N\st$.
+		\item $\alpha$ et $\beta$ sont irrationnels et $\displaystyle\frac{1}{\alpha}+\frac{1}{\beta}=1$.
+	\end{enumerate}
+\end{ex}
+
+\section{Suites}
+
+\begin{ex}[$\circ$ Vrai ou faux]
+	Indiquer, en justifiant, si chacune des affirmations suivantes est vraie ou fausse.
+	\begin{enumerate}
+		\item La somme de deux suites minorées est minorée.
+		\item La somme de deux suites majorées est majorée.
+		\item Le produit de deux suites minorées est minoré.
+		\item Le produit de deux suites majorées est majoré.
+		\item Toute suite réelle croissante à partir d'un certain rang est minorée.
+		\item Toute suite réelle décroissante à partir d'un certain range est majorée.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\circ$]
+	Pour $n\geqslant 2$, on définit $u_n$ de la manière suivante : si $n=2p$, on pose $u_n=\displaystyle1+\frac{1}{p}$ ; si $n=2p+1$, on pose $u_n=1-\displaystyle\frac{1}{p^2}$. Etudier la convergence de la suite $(u_n)_{n\geqslant 2}$.
+\end{ex}
+
+\begin{ex}[$\Delta$]
+	On considère une fonction $\varphi:\N\to\N$.
+	\begin{enumerate}
+		\item On suppose que $\varphi$ est injective. Montrer que $\varphi(n)\xrightarrow[n\to+\infty]{}+\infty$.
+		\item Le résultat reste-t-il vrai si on suppose uniquement $\varphi$ surjective ?
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Dans le cas injectif, pour montrer que $\varphi$ dépasse définitivement un certain $N\in\N$, on peut chercher la "dernière fois" où $\varphi$ prend une valeur dans $\llbracket0,N\rrbracket$.
+\end{ind}
+
+\begin{ex}[$\circ$]
+	Calculer le terme général des suites réelles définies de la façon suivante.
+	\begin{enumerate}
+		\item $u_0=0$ et $\forall n\in\N,\ u_{n+1}=2u_n+1$
+		\item $u_0=-1$ et $\forall n\in\N,\ u_{n+1}=1-u_n$
+		\item $u_0=0$, $u_1=1$ et $\forall n\in\N,\ u_{n+2}=2u_{n+1}+u_n$
+		\item $u_0=0$, $u_1=1$ et $\forall n\in\N,\ u_{n+2}=2u_{n+2}-u_n$
+		\item $u_0=0$, $u_1=1$ et $\forall n\in\N,\ u_{n+2}=2u_{n+1}-2u_n$
+		\item $\star$ $u_0=0$, $u_1=1$, $u_2=2$ et $\forall n\in\N,\ u_{n+3}=3u_{n+2}+u_{n+1}-3u_n$
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Pour la dernière, s'intéresser à $u_{n+1}-u_n$.
+\end{ind}
+
+\begin{ex}[$\circ$]
+	Soit $(u_n)_{n\in\N}$ une suite réelle ainsi que $(\ell,\ell')\in\R^2$. On suppose : $$\begin{cases}
+		u_{2n}\xrightarrow[n\to+\infty]{}\ell \\
+		u_{3n}\xrightarrow[n\to+\infty]{}\ell'
+	\end{cases}$$
+	Montrer que $\ell=\ell'$.
+\end{ex}
+
+\begin{ind}
+	Considérer $(u_{6n})_{n\in\N}$.
+\end{ind}
+
+\begin{ex}
+	On considère $(u_n)_{n\in\N}$ et $(v_n)_{n\in\N}$ deux suites réelles respectivement majorées par $a$ et $b$. On suppose : $$u_n+v_n\xrightarrow[n\to+\infty]{}a+b$$ Que dire de $(u_n)_{n\in\N}$ et $(v_n)_{n\in\N}$ ?
+\end{ex}
+
+\begin{ind}
+	En utilisant des encadrements, montrer que $u_n\xrightarrow[n\to+\infty]{}a$ et $v_n\xrightarrow[n\to+\infty]{}b$ 
+\end{ind}
+
+\begin{ex}
+	Étudier la convergence des suites dont le terme général est défini de la manière suivante.
+	\begin{enumerate}
+		\item $\circ$ $t_n=\displaystyle\frac{\sin(n)}{n}$
+		\item $u_n=\displaystyle\sum_{k=0}^{n}\frac{1}{n+k}$ (n pas calculer une éventuelle limite)
+		\item $v_n=\displaystyle\frac{a^n-b^n}{a^n+b^n}$ avec $a$ et $b$ des réels strictement positifs
+		\item $\circ$ $w_n=\displaystyle\frac{n^4+3n+2}{\sin(3n)+7n^4+2}$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Étudier les suites récurrentes définies de la façon suivante.
+	\begin{enumerate}
+		\item $\displaystyle\begin{cases}
+			u_0\in[0,1] \\
+			\forall n\in\N,\ u_{n+1}=\lvert (u_n-1)\sin(u_n)\rvert
+		\end{cases}$
+		\item $\displaystyle\begin{cases}
+			u_0\in]0,1[ \\
+			\forall n\in\N,\ u_{n+1}=2u_n-u_n^2
+		\end{cases}$
+		\item $\displaystyle\begin{cases}
+			u_0\geqslant -1 \\
+			\forall n\in\N,\ u_{n+1}=\sqrt{1+u_n}
+		\end{cases}$
+		\item $\displaystyle\begin{cases}
+			u_0\in]0,1[ \\
+			\forall n\in\N,\ u_{n+1}=\displaystyle\frac{2u_n^2}{1+u_n}
+		\end{cases}$
+		\item $\displaystyle\begin{cases}
+			u_0\in\R \\
+			\forall n\in\N,\ u_{n+1}=\sin(u_n)
+		\end{cases}$
+		\item $\displaystyle\begin{cases}
+			u_0=1 \\
+			\forall n\in\N,\ u_{n+1}=\displaystyle u_n+\frac{1}{u_n}
+		\end{cases}$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Soit $(u_n)_{n\in\N\st}$ une suite réelle telle que $$\forall n\in\N\st,\ u_n-\frac{u_{2n}}{2}=1$$ Montrer que si $(u_n)_{n\in\N\st}$ est bornée, alors elle converge et préciser sa limite.
+\end{ex}
+
+\begin{ind}
+	Commencer par se ramener à $v_n-\displaystyle\frac{v_{2n}}{2}=0$ avec une suite auxiliaire puis considérer les termes $v_{2^kn}$. 
+\end{ind}
+
+\begin{ex}
+	Soit $(u_n)_{n\in\N}$ une suite réelle telle que $$u_n\left(\sum_{k=0}^{n}u_k^2\right)\xrightarrow[n\to+\infty]{}1$$ Montrer que $(u_n)_{n\in\N}$ est convergente et calculer sa limite.
+\end{ex}
+
+\begin{ind}
+	Appliquer le théorème de la limite monotone à $\displaystyle\sum_{k=0}^{n}u_k^2$.
+\end{ind}
+
+\begin{ex}[Utilisation des moyennes de Cesàro]
+	Déterminer les limites des suites suivantes, après avoir prouvé qu'elles existent.
+	\begin{enumerate}
+		\item $u_n=\displaystyle\left(\prod_{k=1}^{n}\frac{2k+1}{k+2}\right)^{1/n}$
+		\item $v_n=\displaystyle\sqrt[n]{\binom{2n}{n}}$
+	\end{enumerate}
+\end{ex}
+
 \begin{ex}[Valeurs d'adhérences et suite qui tend vers l'infini en ralentissant]
 	Soit $(u_n)$ une suite de réels tendant vers $+\infty$ telle que $$\lim_{n\to+\infty}(u_{n+1}-u_n)=0$$ Montrer que l'ensemble des valeurs d'adhérence de la suite $(u_n-\lfloor u_n\rfloor)_{n\in\N}$ est le segment $[0,1]$. En déduire l'ensemble des valeurs d'adhérence de la suite $\left(\exp(2i\pi u_n)\right)_{n\in\N}$.
 \end{ex}
@@ -1551,23 +2249,134 @@
 	Soit $(a_n)_{n \in\N}$ une suite complexe convergente complexe de limite $l$. Montrer que $$\frac{1}{2^n}\sum_{k=0}^{n}\binom{n}{k}a_k \xrightarrow[n\to+\infty]{}l $$ On pourra commencer par le cas où $l=0$.
 \end{ex}
 
-\begin{ex}[Approximation rationnelle]
-	Soit $\alpha$ un réel.
+\begin{ex}[$\Delta$]
+	Montrer que si une suite bornée admet une unique valeur d'adhérence, alors elle est convergente.
+\end{ex}
+
+\begin{ind}
+	Raisonner par l'absurde et construire une sous-suite bornée qui admet une autre valeur d'adhérence.
+\end{ind}
+
+\begin{ex}
+	Soit $(u_n)_{n\in\N}$ une suite réelle. Montrer que $(u_n)_{n\in\N}$ admet toujours une valeur d'adhérence dans $\overline{\R}$.
+\end{ex}
+
+\begin{ex}
+	Discuter selon la valeur de $z\in\C$ le comportement de la suite $(z^n)_{n\in\N}$.
+\end{ex}
+
+\begin{ex}
+	Soit $(u_n)_{n\in\N}$ une suite réelle à valeurs dans $\R_+\st$. On se donne $\lambda >0$ et on suppose : $$\frac{u_{n+1}}{u_n}\xrightarrow[n\to+\infty]{}\lambda$$ Étudier la convergence et la limite éventuelle de $(u_n)_{n\in\N}$.
+\end{ex}
+
+\begin{ind}
+	Passer au logarithme et utiliser des moyennes de Cesàro.
+\end{ind}
+
+\begin{ex}[Démonstration alternative du théorème de Bolzano-Weierstrass]
+	On se donne $(u_n)_{n\in\N}$ une suite réelle.
 	\begin{enumerate}
-		\item Montrer que si $\alpha\in\Q$, alors il existe un nombre fini de couples $(p,q)\in\Z\times\N\st$ tels que $$0<\left\lvert\alpha-\frac{p}{q}\right\rvert\leqslant\frac{1}{q^2}$$
-		\item On suppose $\alpha\notin\Q$. En utilisant le principe des tiroirs sur les parties fractionnaires de $0,\alpha,\ldots,n\alpha$, montrer qu'il existe $(p,q)\in\Z\times\N\st$ tel que $$\left\lvert\alpha-\frac{p}{q}\right\rvert\leqslant\frac{1}{qn}$$ En déduire la réciproque de la question précédente.
-		\item $\star$ On suppose que $\alpha\notin\Q$ est racine d'un polynôme $P$ de degré $n$ à coefficients entiers. Montrer qu'il existe un réel $\delta>0$ tel que $$\forall(p,q)\in\Z\times\N\st,\ \left\lvert\alpha-\frac{p}{q}\right\rvert\geqslant\frac{\delta}{q^n}$$
+		\item Montrer que la suite $(u_n)_{n\in\N}$ admet une suite extraite monotone.
+		\item En déduire une autre démonstration du théorème de Bolzano-Weierstrass pour les suites réelles.
 	\end{enumerate}
 \end{ex}
 
+\begin{ex}
+	Proposer une démonstration autonome du théorème de Bolzano-Weierstrass pour les suites complexes, c'est-à-dire n'utilisant pas le théorème de Bolzano-Weierstrass pour les suites réelles.
+\end{ex}
+
+\begin{ex}[Propriété de Borel-Lebesgue dans le cas dénombrable]
+	Soit $a<b$ deux réels.
+	\begin{enumerate}
+		\item On se donne $(I_n)_{n\in\N}$ une suite d'intervalles ouverts qui recouvre le segment $[a,b]$, c'est-à-dire vérifiant : $$[a,b]\subset\bigcup_{n\in\N}I_n$$ Montrer que l'on peut trouve un entier $n\in\N$ telle que la suite finie $(I_k)_{0\leqslant k\leqslant n}$ recouvre encore le segment $[a,b]$.
+		\item Le résultat reste-t-il vrai pour un intervalle ouvert $]a,b[$ ?
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[D'après un problème d'IMO]
+	Soit $(u_n)_{n\in\N\st}$ une suite à valeurs dans $\N$ telle que $$\begin{cases}
+		u_2=0 \\
+		u_3>0 \\
+		u_{9999}=3333 \\
+		\forall (m,n)\in\N\st\times\N\st,\ u_{m+n}-u_m-u_n\in\{0,1\}
+	\end{cases}$$ Déterminer $u_{2022}$.
+\end{ex}
+
+\begin{ind}
+	Essayer de déterminer les premières valeurs de la suite.
+\end{ind}
+
 \begin{ex}[$\star$ Lemme de Fekete] Soit $(u_n)_{n\in\N\st}$ sous-additive, \textit{ie} telle que $$\forall(p,q)\in\N^2,\ u_{p+q}\leqslant u_p+u_q$$ Montrer que l'on a : $$\frac{u_n}{n}\xrightarrow[n\to+\infty]{}l \ \ \text{où} \ \ l=\inf_{n\in\N\st}\frac{u_n}{n}\in\R\cup\{-\infty\}$$
 \end{ex}
+
+\begin{ex}[$\star$]
+	Soit $(u_n)_{n\in\N}$ une suite réelle à termes positifs vérifiant $$\forall n\in\N,\ u_{n+2}\leqslant\displaystyle\frac{u_n+u_{n+1}}{2}$$
+	\begin{enumerate}
+		\item Étudier la suite de terme général $v_n=\max(u_n,u_{n+1})$.
+		\item En déduire la nature de $(u_n)_{n\in\N}$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Utiliser le théorème de la limite monotone pour $(v_n)_{n\in\N}$. En notant $l$ sa limite, montrer en revenant à la définition que $(u_n)_{n\in\N}$ converge vers $l$.
+\end{ind}
+
+\begin{ex}[$\star$]
+	Construire une bijection : 
+	\begin{enumerate}
+		\item de $[0,1]$ sur $[0,1[$ ;
+		\item de $[0,1]$ sur $[0,1]\setminus\Q$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\star$ Limites supérieure et inférieure]
+	Soit $(u_n)_{n\in\N}$ une suite réelle bornée. On définit la limite supérieure de $(u_n)_{n\in\N}$ par : $$\limsup(u_n)=\lim_{{n\to+\infty}}\left(\underset{k\geqslant n}{\sup}u_k\right)$$ ainsi que la limite inférieure de $(u_n)_{n\in\N}$ par : $$\liminf(u_n)=\lim_{{n\to+\infty}}\left(\underset{k\geqslant n}{\inf}u_k\right)$$
+	\begin{enumerate}
+		\item Montrer que ces deux réels sont bien définis.
+		\item Montrer que la limite supérieure (resp. la limite inférieure) est le maximum (resp. le minimum) des valeurs d'adhérence de la suite $(u_n)_{n\in\N}$.
+	\end{enumerate}
+\end{ex}
+	
+\begin{ex}[$\star$ L'ensemble des valeurs d'adhérence est un fermé]
+	Une partie $F$ de $\R$ est dite fermée lorsque : $$\forall (x_n)\in F^\N,\forall l\in\R,\ x_n\xrightarrow[n\to+\infty]{}l\implies l\in F$$ Soit $(u_n)_{n\in\N}$ une suite réelle bornée dont on note $A$ l'ensemble des valeurs d'adhérence. Montrer que $A$ est fermée.
+\end{ex}
+
+\begin{ex}[$\star$]
+	Soit $(u_n)_{n\in\N}$ une suite réelle bornée vérifiant $u_n-\displaystyle\frac{u_{2n}}{2}\xrightarrow[n\to+\infty]{}1$. Montrer que $(u_n)_{n\in\N}$ converge et préciser sa limite.
+\end{ex}
+
+\begin{ex}[$\star$]
+	Soit $\varphi:\N\st\to\N\st$ une bijection telle que la suite $\displaystyle\left(\frac{\varphi(n)}{n}\right)_{n\in\N\st}$ soit convergente. Montrer que la limite de cette suite vaut $1$.
+\end{ex}
+
+\begin{ind}
+	On pourra montrer que cette limite est supérieure à $1$ et inférieure à $1$.
+\end{ind}
 
 \begin{ex}[$\star$ Formule d'inversion de Pascal]
 	Soit $(u_n)_{n\in\N}$ et $(v_n)_{n\in\N}$ deux suites. Montrer la formule d'inversion de Pascal : $$\forall p\in\N,\ u_p=\sum_{k=0}^{p}\binom{p}{k}v_k \iff \forall p\in\N,\ v_p=(-1)^p\sum_{k=0}^{p}(-1)^k\binom{p}{k}u_k$$
 	\begin{ind}
 		On pourra réécrire matriciellement le problème et remarquer que $X=X-1+1$.
 	\end{ind}
+\end{ex}
+
+\begin{ex}[$\star\star$]
+	Construire une suite réelle bornée $(x_i)_{i\in\N}$ telle que $$\forall (i,j)\in\N^2,\ i\ne j\implies \lvert x_i-x_j\rvert\lvert i-j\rvert>2022$$
+\end{ex}
+
+\begin{ex}[$\star\star$]
+	Montrer que tout fermé de $\R$ peut être vu comme l'ensemble des valeurs d'adhérence d'une suite bien choisie.
+\end{ex}
+
+\begin{ex}[$\star\star$]
+	On se donne $(u_n)_{n\in\N}$ une suite réelle telle que $$\begin{cases}
+		u_{n}\xrightarrow[n\to+\infty]{}+\infty\\
+		u_{n+1}-u_{n}\xrightarrow[n\to+\infty]{}0
+	\end{cases}$$ Montrer que l'on peut trouver une extraction $\varphi:\N\to\N$ strictement croissante telle que $$u_{\varphi(n)}-n\xrightarrow[n\to+\infty]{}0$$
+\end{ex}
+
+\begin{ex}[$\star\star$]
+	Soit $(r_n)_{n\in\N\st}\in\{0,1\}^{\N\st}$. Montrer qu'il existe $\alpha>0$ tel que $$\forall n\in\N\st,\ \lfloor\alpha^n\rfloor\ \equiv\ r_n\ [2]$$
 \end{ex}
 
 \chapter{Espaces vectoriels}
@@ -2686,6 +3495,55 @@
 	On dit qu'un sous-groupe $H$ d'un groupe $G$ est \textbf{distingué} dans $G$ lorsque $\forall x\in G,\ xH=Hx$. Montrer que si $n\geqslant 5$, alors le groupe alterné $\mathcal{A}_n$ n'admet pas d'autres sous-groupes distingués de $\{\text{id}\}$ et $\mathcal{A}_n$.
 \end{ex}
 
+\begin{ex}[Conjugaison dans le groupe symétrique]
+	Soit $E$ un ensemble. On note $\mathcal{S}(E)$ le groupe des permutations de $E$. On dit que deux éléments $\tau$ et $\tau'$ de $\mathcal{S}(E)$ sont conjugués s'il existe $\sigma\in\mathcal{S}(E)$ tel que $\tau'=\sigma\circ\tau\circ\sigma\inv$.
+	\begin{enumerate}
+		\item Montrer que deux cycles sont de même longueur si, et seulement s'ils sont conjugués.
+		\item Application : en considérant les transpositions, déterminer tous les morphismes de groupe de $\mathcal{S}(\llbracket1,n\rrbracket)$ dans $\mathcal{C}\st$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Racine carré d'un $n$-cycle]
+	Le cycle $(1\ 2\ \ldots\ n)$ admet-il une racine carrée dans $\mathcal{S}_n$ ?
+\end{ex}
+
+\begin{ex}[Un isomorphisme]
+	Établir un isomorphisme entre le groupe des automorphismes de $\Z/2\Z\times\Z/2\Z$ et $\mathcal{S}_3$.
+\end{ex}
+
+\begin{ex}[Sous-groupes transitifs de $\mathcal{S}_n$]
+	Un sous groupe $H$ de $\mathcal{S}_n$ est dit transitif lorsque $$\forall (x,y)\in\llbracket1,n\rrbracket^2,\ \exists\sigma\in H,\ \sigma(x)=y$$
+	\begin{enumerate}
+		\item Soit $\sigma\in\mathcal{S}_n$. A quelle condition le groupe $\langle\sigma\rangle$ engendré par $\sigma$ est-il transitif ?
+		\item On considère une variable aléatoire $X_n$ de loi uniforme sur $\mathcal{S}_n$. Calculer la probabilité $p_n$ que le sous-groupe $\langle X_n\rangle$ engendré par $X_n$ soit transitif.
+		\item On considère deux variables aléatoires indépendantes $X_n$ et $Y_n$ de même loi uniforme sur $\mathcal{S}_n$. On note $q_n$ la probabilité que le sous-groupe $\langle X_n,Y_n\rangle$ engendré par $X_n$ et $Y_n$ soit transitif; Montrer que $$q_n\xrightarrow[n\to+\infty]{}1$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\star\star$ Nombre minimal de transpositions pour engendrer $\mathcal{S}_n$]
+	Déterminer le nombre minimal de transpositions nécessaires pour engendre le groupe symétrique $\mathcal{S}_n$.
+\end{ex}
+
+\begin{proof}
+	La réponse est $n+1$. On dispose de pleins de telles familles qui engendrent. Pour montrer qu'il en faut au moins $n+1$, utiliser des graphes.
+\end{proof}
+
+\begin{ex}[Matrices de permutations]
+	Soit $n\in\N\st$. Pour $\sigma\in\mathcal{S}_n$, on note $P_\sigma=(\delta_{i,\sigma(j)})_{1\leqslant i,j\leqslant n}\in\mathcal{M}_n(\C)$.
+	\begin{enumerate}
+		\item Montrer que $\sigma\mapsto P_\sigma$ est un morphisme injectif de $\mathcal{S}_n$ dans $\mathcal{GL}_n(\C)$.
+		\item $\star\star$ Soit $\sigma$ et $\tau$ dans $\mathcal{S}_n$. Montrer que $\sigma$ et $\tau$ sont conjuguées dans $\mathcal{S}_n$ si, et seulement si, les matrices $P_\sigma$ et $P_\tau$ sont semblables. Indication : on pourra étudier le polynôme caractéristique de $P_\sigma$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Nombre de permutations avec $k$ cycles distincts] On note $u_{n,k}$ le nombre de permutations de $\mathcal{S}_n$ avec $k$ cycles distincts (un point fixe compte pour un cycle). On a la formule de récurrence : $$u_{n+1,k+1}=u_{n,k}+n\times u_{n,k+1}$$
+\end{ex}
+
+\begin{proof}
+	Le premier terme correspond au cas où $n+1$ est seul dans son cycle, et le deuxième aux cas où $n+1$ n'est pas seul dans son cycle.
+\end{proof}
+
+
 
 \chapter{Déterminants}
 
@@ -2838,7 +3696,7 @@
 \end{ex}
 
 \begin{ex}
-	Soit $(a_1,\ldots,a_n)\in\K^n$. Calculer le déterminant de la matrice de terme générale $a_{\max(i,j)}$.
+	Soit $(a_1,\ldots,a_n)\in\K^n$. Calculer le déterminant de la matrice de terme général $a_{\max(i,j)}$.
 \end{ex}
 
 \begin{ex}
@@ -3337,7 +4195,7 @@
 	Penser à la polarisation. On pourra montrer : $$\langle x+y,z\rangle+\langle x-y,+z\rangle=2\langle x,z\rangle$$ et penser aux nombres dyadiques.
 \end{ind}
 
-\chapter{Géométrie affine}
+\chapter{Géométrie affine (HP)}
 
 \begin{ex}
 	Soit $\mathcal{E}$ un espace affine ainsi que $f:\mathcal{E}\to\mathcal{E}$. Montrer que $f$ est affine si, et seulement si, elle conserve les barycentres.
@@ -3430,11 +4288,78 @@
 
 \chapter{Séries et sommabilité}
 
+\begin{ex}[$\circ$ Vrai ou faux]
+	Indiquer, en justifiant, si les propositions suivantes sont vraies ou fausses.
+	\begin{enumerate}[label=\roman*)]
+		\item Toute série à termes positifs est convergente.
+		\item Si $\displaystyle\sum (u_n+v_n)$ et $\displaystyle\sum(u_n-v_n)$ convergent, alors $\displaystyle\sum u_n$ et $\displaystyle\sum v_n$ convergent.
+		\item Si $\displaystyle\sum u_n$ converge, alors $\displaystyle u_n^2\xrightarrow[n\to+\infty]{}0$.
+		\item Si $\displaystyle\sum u_n$ converge, alors $\displaystyle \sqrt{\lvert u_n\rvert}\xrightarrow[n\to+\infty]{}0$.
+		\item Soient $\displaystyle\sum u_n$ et $\displaystyle\sum v_n$ des séries à termes positifs. Si $\displaystyle\sum u_n v_n$ converge, alors $\displaystyle\sum u_n$ et $\displaystyle\sum v_n$ convergent. 
+		\item Soient $\displaystyle\sum u_n$ et $\displaystyle\sum v_n$ des séries à termes positifs. Si $\displaystyle\sum u_n$ et $\displaystyle\sum v_n$ convergent, alors $\displaystyle\sum u_nv_n$ converge.
+		\item Soient $\displaystyle\sum u_n$ et $\displaystyle\sum v_n$ des séries à termes complexes. Si $\displaystyle\sum u_n$ et $\displaystyle\sum v_n$ convergent, alors $\displaystyle\sum u_nv_n$ converge.
+		\item Soient $\displaystyle\sum u_n$ et $\displaystyle\sum v_n$ des séries à termes complexes. Si $\displaystyle\sum u_n$ et $\displaystyle\sum v_n$ convergent absolument, alors $\displaystyle\sum u_nv_n$ converge.
+		\item Soit $(a_n)_{n\in\N}$ une famille de complexes de module $1$ et $z\in\C$. Si la série $\displaystyle\sum a_nz^n$ converge, alors nécessairement $\lvert z\rvert<1$.
+		\item Soit $(a_n)_{n\in\N}$ une famille de complexes de module $1$ et $z\in\C$. La série $\displaystyle\sum a_nz^n$ converge si, et seulement si, $\lvert z\rvert<1$.
+	\end{enumerate}
+\end{ex}
+
+\section{Comparaison et convergence}
+
+\begin{ex}[$\circ$]
+	Étudier la nature des séries suivantes.
+	\begin{enumerate}
+		\item $\displaystyle\sum_{n\geqslant 1}\sqrt{\frac{n+1}{n}}$
+		\item $\displaystyle\sum_{n\geqslant 1}\frac{\ln(n)}{2^n}$
+		\item $\displaystyle\sum_{n\geqslant 1}\left(\left(n+1\right)^{1/n}-n^{1/n}\right)$
+		\item $\displaystyle\sum_{n\geqslant 0}\frac{n\sqrt{n}}{2^n+\sqrt{n}}$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\circ$]
+	Montrer que les séries suivantes sont convergentes et calculer leur somme.
+	\begin{enumerate}
+		\item $\displaystyle\sum_{n\geqslant 2}\frac{1}{n^3-n}$
+		\item $\displaystyle\sum_{n\geqslant 1}\ln\left(\frac{n^2+3n+2}{n^2+2n}\right)$
+		\item $\displaystyle\sum_{n\geqslant 0}\left(3+(-1)^n\right)^{-n}$
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Pour les deux premières, utiliser des décompositions en éléments simples.
+\end{ind}
+
+\begin{ex}
+	Étudier la nature des séries suivantes.
+	\begin{enumerate}
+		\item $\displaystyle\sum\left(\cosh^\alpha(n)-\sinh^\alpha(n)\right)$ pour $\alpha\in\R$ ;
+		\item $\displaystyle\sum\left(2\ln(n^3+1)-3\ln(n^2+1)\right)$ ;
+		\item $\displaystyle\sum\frac{a^n}{1+a^{2n}}$ pour $a\in\R$ ;
+		\item $\displaystyle\sum\frac{2\times 4\times\cdots\times(2n)}{n^n}$ ;
+		\item $\displaystyle\sum\frac{\left(\ln(n)\right)^n}{n^{\ln(n)}}$ ;
+		\item $\displaystyle\sum\frac{1}{(\ln(n))^{\ln(n)}}$ ;
+		\item $\displaystyle\sum\left(\arctan(n+a)-\arctan(n)\right)$ pour $a\in\R$ ;
+		\item $\star$ $\displaystyle\sum\left(\cos(1/n^\alpha)\right)^n$ avec $\alpha>0$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Pour la dernière question : si $\alpha<1/2$, faire un DL. Les autres cas sont faciles.
+\end{ind}
+
+\begin{ex}
+	Trouver les $P\in\R[X]$ unitaires de degré $3$ tels que la série de terme général $$u_n=(n^4+n^2)^{1/4}-P(n)^{1/3}$$ converge.
+\end{ex}
+
 \begin{ex}
 	Soient $\sum u_n^2$ et $\sum v_n^2$ deux séries convergentes. Montrer que $\sum(u_n+v_n)^2$ est convergente. 
 \end{ex}
 
-\begin{ex}[$\Delta$]
+\begin{ind}
+	Utiliser l'inégalité $\lvert ab\rvert\leqslant \displaystyle\frac{1}{2}(a^2+b^2)$.
+\end{ind}
+
+\begin{ex}[$\Delta$ Règle de Cauchy]
 	Soit $(u_n)_{n\in\N\st}$ une suite à termes strictement positifs. On suppose que $$\sqrt[n]{u_n}\xrightarrow[n\to+\infty]{}l\in\overline{\R_+}$$
 	\begin{enumerate}
 		\item Montrer que si $l<1$, alors $\sum u_n$ converge.
@@ -3444,10 +4369,34 @@
 \end{ex}
 
 \begin{ex}
-	Soient $(u_n)_{n\in\N}$, $(v_n)_{n\in\N}$ et $(w_n)_{n\in\N}$ trois suites réelles telles que $$\exists N\in\N,\ \forall n\geqslant N,\ u_n\leqslant v_n\leqslant w_n$$ Montrer que si $\sum u_n$ et $\sum w_n$ convergent, alors $\sum v_n$ converge.
+	\begin{enumerate}
+		\item Discuter en fonction de $p\in\N$ de la nature de la série $\displaystyle\sum\frac{1!+\cdots+n!}{(n+p)!}$
+		\item \begin{enumerate}[label=\alph*.]
+			\item Discuter en fonction de $p\in\N$ de la nature de la série $\displaystyle\sum\frac{1}{\binom{n+p}{p}}$
+			\item $\star$ Lorsque cette série est convergente, calculer sa somme.
+		\end{enumerate}
+	\end{enumerate}
 \end{ex}
 
-\section{Comparaison et convergence}
+\begin{ind}
+	Pour le calcul de la dernière somme, on considèrera la suite de terme général $$a_n=\left(\prod_{i=1}^{p-1}(n+i)\right)\inv$$ et on calculera $a_{n+1}-a_n$.
+\end{ind}
+
+\begin{ex}
+	Discuter en fonction des paramètres réels strictement positifs $a$ et $b$ de la convergence de la série $\displaystyle\sum\frac{a^n2^{\sqrt{n}}}{b^n+2^{\sqrt{n}}}$
+\end{ex}
+
+\begin{ind}
+	Commencer par chercher un équivalent du dénominateur.
+\end{ind}
+
+\begin{ex}
+	Soit $(u_n)_{n\in\N}$ une suite à termes positifs. On pose : $$\forall n\in\N,\ v_n=\frac{u_n}{1+u_n}$$ Montrer que les séries $\sum u_n$ et $\sum v_n$ ont même nature.
+\end{ex}
+
+\begin{ind}
+	Utiliser des comparaisons.
+\end{ind}
 
 \begin{ex}[Nature d'une série en fonction d'un paramètre réel]
 	Nature de la série de terme général $\displaystyle\exp\left(\cosh\left(\frac{1}{\sqrt{n}}\right)\right)-a\sqrt{\frac{n-1}{n+1}}$
@@ -3456,7 +4405,109 @@
 	Si $a\ne e$, on a divergence grossière. Dans le cas où $a=e$, un DL donne un équivalent en $$\frac{3e}{2n}$$ donc la série diverge par comparaison avec la série harmonique.
 \end{proof}
 
+\begin{ex}
+	Discuter selon la valeur de $(a,b)\in\R^2$ de la convergence de la série $$\sum \left(\sqrt{n}+a\sqrt{n+1}+b\sqrt{n+2}\right)$$ Lorsque la série converge, calculer sa somme.
+\end{ex}
+
+\begin{ind}
+	Chercher une équivalent et observer qu'il y a divergence grossière la plupart du temps.
+\end{ind}
+
+\begin{ex}
+	Soient $(u_n)_{n\in\N}$, $(v_n)_{n\in\N}$ et $(w_n)_{n\in\N}$ trois suites réelles telles que $$\exists N\in\N,\ \forall n\geqslant N,\ u_n\leqslant v_n\leqslant w_n$$ Montrer que si $\displaystyle\sum u_n$ et $\displaystyle\sum w_n$ convergent, alors $\displaystyle\sum v_n$ converge.
+\end{ex}
+
+\begin{ex}
+	Discuter en fonction de $a>0$ de la nature de la série $\displaystyle\sum\frac{(-1)^{n-1}}{n^a+(-1)^n}$
+\end{ex}
+
 \section{Séries à termes généraux positifs}
+
+\begin{ex}
+	Retrouver le résultat sur les séries de Riemann à l'aide d'un procédé télescopique.
+\end{ex}
+
+\begin{ex}[$\Delta$ Règle de Raabe-Duhamel faible]
+	Soit $\sum u_n$ une série à termes dans $\R_+\st$ et $\alpha\in\R$ tels que $$\frac{u_{n+1}}{u_n}=1-\frac{\alpha}{n}+O\left(\frac{1}{n^2}\right)$$
+	\begin{enumerate}
+		\item Montrer qu'il existe $\lambda>0$ tel que $u_n\sim\displaystyle\frac{\lambda}{n^{\alpha}}$.
+		\item En déduire une condition nécessaire et suffisante de convergence pour la série de terme général $u_n$.
+		\item En quoi est-ce une amélioration du critère de d'Alembert ?
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Pour la première question, poser $v_n=u_n\times n^\alpha$ et étudier la nature de la série $\displaystyle\sum\left(\ln(v_{n+1})-\ln(v_n)\right)$.
+\end{ind}
+
+\begin{ex}
+	Dans tout l'exercice, on pourra réutiliser des résultats usuels sur la série harmonique.
+	\begin{enumerate}
+		\item Soit $n\in\N\st$. Montrer qu'il existe un unique $u_n\in\N\st$ tel que $\displaystyle\sum_{k=1}^{u_n-1}\frac{1}{k}\leqslant n<\sum_{k=1}^{u_n}\frac{1}{k}$
+		\item Calculer $u_1$ et $u_2$.
+		\item Étudier la convergence de $\displaystyle\sum\frac{1}{u_n}$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Soit $(u_n)_{n\in\N}$ une suite à termes positifs. On pose : $$\forall n\in\N,\ x_n=\frac{u_n}{(1+u_0)\times\cdots\times(1+u_n)}$$
+	\begin{enumerate}
+		\item Montrer que $\displaystyle x_n$ est convergente.
+		\item En supposant que $\sum u_n$ est divergente, calculer $\displaystyle\sum_{n=0}^{+\infty}x_n$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Montrer : $$\forall n\in\N,\ x_0+\cdots+x_n=\frac{1}{(1+u_0)\cdots(1+u_n)}$$
+\end{ind}
+
+\begin{ex}
+	Montrer qu'il n'existe pas de suite $(u_n)_{n\in\N}$ réelle à termes positifs telle que pour toute suite $(v_n)_{n\in\N}$ à termes réels positifs, la série $\displaystyle\sum u_nv_n$ converge si, et seulement si, $(v_n)_{n\in\N}$ est bornée.
+\end{ex}
+
+\begin{ind}
+	Raisonner par l'absurde et montrer que $(u_n)$ convergerait vers $0$. Construire $\varphi$ une extraction telle que $$\forall p\in\N,\ 0\leqslant u_{\varphi(p)}\leqslant\frac{1}{4^p}$$ Poser ensuite $v_{\varphi(p)}=2^p$ et $v_n=0$ sinon.
+\end{ind}
+
+\begin{ex}[$\Delta$ Irrationalité de $e$]
+	On admet que $$e=\displaystyle\sum_{n=0}^{+\infty}\frac{1}{n!}$$ Montrer que $e$ est irrationnel.
+\end{ex}
+
+\begin{ind}
+	Raisonner par l'absurde et s'intéresser aux sommes partielles de la série dont la somme vaut $e$.
+\end{ind}
+
+\begin{ex}[Un peu d'arithmétique]
+	Pour $n\in\N\st$, on note $d(n)$ le nombre de diviseurs strictement positifs de $n$. On cherche à déterminer l'ensemble des réels $\alpha$ tels que la série $\displaystyle\sum_{n\geqslant 1}\frac{d(n)}{n^\alpha}$.
+	\begin{enumerate}
+		\item Soit $t>0$ fixé. 
+		\begin{enumerate}[label=\alph*.]
+			\item Étudier les variations de la fonction $$\begin{array}{lrcl}
+				f_t:&[1,+\infty[&\longrightarrow&\R \\
+				&x&\longmapsto&(x+1)e^{-tx}
+			\end{array}$$
+			\item On suppose $t\geqslant \ln(2)$. Montrer que $f_t(\N\st)$ est majoré par $1$.
+			\item On suppose $t<\ln(2)$. Montrer qu'il existe une constante $K$ telle que $f_t(\N\st)$ soit majoré par $\displaystyle\frac{K}{t}$.
+		\end{enumerate}
+		\item Soit $\varepsilon>0$. Montrer que la suite $\displaystyle\left(\frac{d(n)}{n^\varepsilon}\right)$ est majorée.
+		\item Conclure.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\star$ D'après un problème d'IMO]
+	Soit $(x_n)_{n\in\N}$ une suite réelle décroissante à valeurs dans $\R_+\st$ telle que $x_0=1$.
+	\begin{enumerate}
+		\item Montrer que $\displaystyle\sum_{n=0}^{+\infty}\frac{x_n^2}{x_{n+1}}\in[4,+\infty]$
+		\item Montrer qu'il est possible de choisir la suite $(x_n)_{n\in\N}$ de sorte que $$\forall N\in\N,\ \sum_{n=0}^{N}\frac{x_n^2}{x_{n+1}}<4$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	\begin{enumerate}
+		\item Remarquer que la somme peut se réécrire $\displaystyle\frac{1}{x_1}+x_1S'$ où $S'$ est du même type.
+		\item Prendre les inverses des puissances de $2$.
+	\end{enumerate}
+\end{ind}
 
 \begin{ex}[Suites réelles décroissantes sommables] Soit $(a_n)_{n\in\N}$ une suite réelle décroissante dont la série de terme général converge. Alors : $$a_n=o\left(\frac{1}{n}\right)$$
 \end{ex}
@@ -3491,6 +4542,56 @@
 	Diviser $P_n$ par $(n!)^2$ puis passer au $\ln$ et le terme général de la série obtenu est équivalent à un $\displaystyle\frac{x}{k^2}$ donc la série converge. L'équivalent est donc $$e^{C}(n!)^2$$ où $C$ est la somme de la série convergente des $\ln\left(1+\frac{x}{k^2}\right)$.
 \end{proof}
 
+\begin{ex}
+	Soit $\displaystyle\sum_{n\geqslant 1}$ une série à termes dans $\R_+$ décroissante telle que $u_n\xrightarrow[n\to+\infty]{}0$. On note $S_n$ la somme partielle de rang $n$ de cette série. Montrer que si la suite $(S_n-nu_n)_{n\in\N\st}$ est bornée, alors $\displaystyle\sum u_n$ converge.
+\end{ex}
+
+\begin{ind}
+	Notons $v_n=S_n-nu_n$ ainsi que $M$ un majorant de cette suite. Fixons $n\in\N\st$. On a : $$\forall p\in\N,\ S_n=\sum_{k=1}^{n}(u_k-u_{n+p})+nu_{n+p}\leqslant \sum_{k=1}^{n+p}(u_k-u_{n+p})+nu_{n+p}\leqslant M+nu_{n+p}$$ Faire tendre $p$ vers $+\infty$.
+\end{ind}
+
+\begin{ex}[$\Delta\star$ Règle de Raabe-Duhamel]
+	Soit $\sum u_n$ une série à termes dans $\R_+\st$ et $\alpha\in\R$ tels que $$\frac{u_{n+1}}{u_n}=1-\frac{\alpha}{n}+o\left(\frac{1}{n}\right)$$
+	\begin{enumerate}
+		\item Montrer que si $\alpha>1$, alors $\displaystyle\sum u_n$ converge.
+		\item Montrer que si $\alpha<1$, alors $\displaystyle\sum u_n$ diverge.
+		\item Montrer que si $\alpha=1$, les deux cas de figure sont possibles.
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Choisir $\beta$ strictement entre $1$ et $\alpha$ et considérer $v_n=\displaystyle\frac{1}{n^\beta}$.
+\end{ind}
+
+\begin{ex}[$\star$]
+	Soit $\displaystyle\sum_{n\geqslant 1}$ une série à termes dans $\R_+$ telle que $u_n\xrightarrow[n\to+\infty]{}0$. On note $S_n$ la somme partielle de rang $n$ de cette série. Montrer que si la suite $(S_n-nu_n)_{n\in\N\st}$ est bornée, alors $\displaystyle\sum u_n$ converge. On pourra réutiliser librement des résultats de sommation des relations de comparaison.
+\end{ex}
+
+\begin{ind}
+	Raisonner par l'absurde et calculer un développement asymptotique de $\ln\displaystyle\left(\frac{S_n}{S_{n-1}}\right)$.
+\end{ind}
+
+\begin{ex}[$\star$]
+	Soient $a$ et $b$ des réels strictement positifs tels qe $b-a>1$. On définit la suite $(u_n)_{n\in\N}$ par : $$\begin{cases}
+		u_0=1\\
+		\displaystyle\forall n\in\N,\ u_{n+1}=\frac{n+a}{n+b}u_n
+	\end{cases}$$
+	Montrer que $\displaystyle\sum u_n$ converge et calculer sa somme.
+\end{ex}
+
+\begin{ind}
+	Utiliser la règle de Raabe-Duhamel puis sommer la relation $$(k+b)u_{k+1}=(k+a)u_k$$ pour $k\in\llbracket0,n\rrbracket$.
+\end{ind}
+
+\begin{ex}[$\star$ Série des inverses des nombres premiers]
+	On note $(p_n)_{n\in\N\st}$ la suite des nombres premiers rangé dans l'ordre strictement croissante : $p_1=2$, $p_2=3$, $p_3=5$, etc.
+	\begin{enumerate}
+		\item Donner un équivalent simple de $$\ln\left(\frac{1}{1-\frac{1}{p_n}}\right)$$
+		\item En déduire que la série $\displaystyle\sum_{n\geqslant 1}\frac{1}{p_n}$ diverge.
+		\item $\star\star$ Calculer $\displaystyle\underset{n\in\N\st}{\inf}\ \left(\frac{\varphi(n)}{n}\right)$ où $\varphi$ désigne l'indicatrice d'Euler.
+	\end{enumerate}
+\end{ex}
+
 \begin{ex}[$\star$ Puissances de inverses des nombres premiers]
 	On note $\mathcal{P}$ l'ensemble des nombres premiers. Donner une condition nécessaire et suffisante sur $\alpha\in\R_+\st$ pour que $$\sum_{p\in\mathcal{P}}\frac{1}{p^\alpha}$$ soit une série convergente.
 \end{ex}
@@ -3498,6 +4599,18 @@
 \begin{proof}
 	La CNS est $\alpha >1$. Pour montrer que cela est suffisant, majorer par une série de Riemann convergente. Ensuite, si $\alpha=1$, utiliser le fait que $$\frac{1}{p}\sim -\ln\left(1-\frac{1}{p}\right)$$ De la sorte, développer le produit $$\prod_{p\leqslant m}\frac{1}{1-\frac{1}{p}}$$ pour le minorer par la série harmonique et conclure à une divergence en prenant le $\ln$. Lorsque $\alpha<1$, utiliser le fait que $$\frac{1}{p^\alpha}\geqslant\frac{1}{p}$$
 \end{proof}
+
+\begin{ex}[$\star$]
+Soit $(a_n)_{n\in\N}$ une suite de réels strictement positifs. On définit : $$\forall n\in\N,\ b_n=\frac{a_n}{a_0+\cdots+a_n}$$ Montrer que les séries $\displaystyle\sum a_n$ et $\displaystyle\sum b_n$ ont même nature.
+\end{ex}
+
+\begin{ex}[$\star$]
+Soit $(a_n)$ une suite réelle décroissante à termes strictement positifs et de limite nulle. Montrer que $\displaystyle\sum\frac{a_n-a_{n+1}}{a_n}$ est une série divergente.
+\end{ex}
+
+\begin{ind}
+Poser $b_n=\displaystyle\frac{a_n-a_{n+1}}{a_n}$ et remarquer que $1-b_n=\displaystyle\frac{a_{n+1}}{a_n}$.
+\end{ind}
 
 \begin{ex}[$\star$ Injection de $\N\st$ dans $\N\st$]
 	Soit $f:\N\st\to\N\st$ une fonction injective. Déterminer la nature de la série $$\sum_{n\geqslant 1}\frac{f(n)}{n^2}$$
@@ -3507,7 +4620,64 @@
 	Cette série est divergente. On peut utiliser une inégalité de réordonnement pour minorer par le cas où $f$ est l'identité. Sinon, utiliser un principe des tiroirs pour minorer $f$ à partir d'un certain rang. 
 \end{proof}
 
+\begin{ex}[$\star\star$]
+	Si $I$ est un intervalle de $\R$ non vide et borné, on note $\ell(I)=\sup(I)-\inf(I)$ sa longueur. Soit $(I_n)_{n\in\N}$ une famille d'intervalle qui partitionnent $[0,1]$. Montrer que $\displaystyle\sum\ell(I_n)$ converge et $$\sum_{n=0}^{+\infty}\ell(I_n)=1$$
+\end{ex}
+
 \section{Séries à termes généraux quelconques}
+
+\begin{ex}[$\Delta$ Transformation d'Abel]
+	On considère $(u_n)_{n\in\N\st}$ et $(v_n)_{n\in\N}$ deux suites complexes et on note pour tout $n\in\N\st$ $U_n$ la somme partielle de rang $n$ de la série $\sum u_n$. On s'intéresse à la série $\sum u_nv_n$.
+	\begin{enumerate}
+		\item Montrer : $$\forall n\in\N\st,\ \sum_{k=1}^{n}u_kv_k=U_nv_n+\sum_{k=1}^{n-1}U_k(v_k-v_{k+1})$$
+		\item A quelle technique d'intégration cela vous fait-il penser ?
+		\item On suppose que la suite $(U_n)_{n\in\N\st}$ est bornée et que la suite $(v_n)_{n\in\N\st}$ est réelle, décroissante et tend vers $0$. Montrer que $\displaystyle\sum u_nv_n$ converge.
+		\item Application : trouver tous les $z\in\C$ tels que la série $\displaystyle\sum\frac{z^n}{n}$ converge.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\Delta$ Théorème du point fixe dans $\C$]
+	Dans tout l'exercice, on fixe $\lambda\in[0,1[$ et on se donne $f:\C\to\C$ une fonction $\lambda$-lipschitzienne (on dit alors que $f$ est \textit{contractante}). On souhaite démontrer que $f$ admet un unique point fixe.
+	\begin{enumerate}
+		\item Montrer l'unicité d'un éventuel point fixe.
+		\item On souhaite prouver l'existence. On définit pour cela la suite suivante : 
+		$$\begin{cases}
+			z_0=12 \\
+			\forall n\in\N,\ z_{n+1}=f(z_n)
+		\end{cases}$$ Montrer que la suite $(z_n)_{n\in\N}$ converge, puis conclure.
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Pour la deuxième question, considérer la série télescopique associée.
+\end{ind}
+
+\begin{ex}[Convergence de l'intégrale de Fresnel par les séries]
+	Pour $n\in\N$, on pose $$a_n=\displaystyle\int_{\sqrt{n\pi}}^{\sqrt{(n+1)\pi}}\sin(t^2)\ dt$$
+	\begin{enumerate}
+		\item Montrer que $\displaystyle\sum a_n$ converge.
+		\item En déduire que l'intégrale $\displaystyle\int_{0}^{x}\sin(t^2)\ dt$ admet une limite quand $n$ tend vers $+\infty$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Montrer que la série $\displaystyle\sum\frac{(-1)^n}{(2n+1)(2n+3)}$ est convergente.
+		\item En remarquant que pour tout $p\in\N$, $\displaystyle\frac{1}{p+1}\int_{0}^{1}x^p\ dx$, calculer sa somme.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Pour $n\in\N\st$, on pose $u_n=\displaystyle-\frac{4}{n}$ si $n\mid 5$ et $u_n=\frac{1}{n}$ sinon. Montrer que $\displaystyle\sum_{n\geqslant1}u_n$ converge et calculer sa somme. On pourra réutiliser librement des résultats connus sur la série harmonique.
+\end{ex}
+
+\begin{ex}[Une série formelle]
+	Soit $A$ un anneau et $(a,b)\in A^2$ tel que $1-ab$ soit inversible. Montrer que $1-ba$ est inversible.
+\end{ex}
+
+\begin{ind}
+	Faire comme si $$\frac{1}{1-ab}=1+ab+(ab)^2+\cdots$$
+\end{ind}
 
 \begin{ex}[$\star$ Une hypothèse logarithmique]
 	Soit $f\in\mathcal{C}^1(\R,\R)$. On suppose que $f'/f$ est définie au voisinage de $+\infty$ et tend vers une limite non nulle $\lambda$. Déterminer la nature de la série $\sum f(n)$.
@@ -3598,6 +4768,27 @@
 	\end{enumerate}
 \end{proof}
 
+\begin{ex}[$\star\star$]
+	On souhaite démontrer qu'il existe un $N\in\N\st$ tel que $\displaystyle\left\lvert\sum_{n=1}^{N}e^{i\sqrt{n}}\right\rvert>2025$.
+	\begin{enumerate}
+		\item Montrer que la série $\displaystyle\sum\frac{e^{i\sqrt{n}}}{n}$ converge.
+		\item En déduire que la série $\displaystyle\sum\frac{e^{i\sqrt{n}}}{\sqrt{n}}$ diverge.
+		\item Conclure.
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Pour la dernière question, effectuer une transformation d'Abel.
+\end{ind}
+
+\begin{ind}
+	Utiliser des dérivées discrètes pour les deux premières questions.
+\end{ind}
+
+\begin{ex}[$\star\star\star$]
+	Soit $A$ une partie de $\N\st$. Construire une suite $(u_n)_{n\geqslant 1}$ telle que pour tout $q\in\N\st$, la série $\displaystyle\sum_{n\geqslant 1}u_n^q$ diverge si, et seulement si, $q\in A$.
+\end{ex}
+
 \begin{ex}[$\star\star\star$ Théorème de Riemann]
 	Soit $\sum a_n$ une série réelle semi-convergente. Montrer que pour tout $x \in \R$, il existe $\sigma$ une permutation de $\N$ telle que $$\sum_{n=0}^{+\infty} a_{\sigma(n)}=x $$
 \end{ex}
@@ -3621,12 +4812,28 @@
 	Un comparaison série-intégrale (et le dessin qui s'impose avec) fournissent rapidement : $$\zeta(x)\underset{1^+}{\sim}\frac{1}{x-1}$$
 \end{proof}
 
+\begin{ex}
+	Soit $u_n=\displaystyle\sum_{k=2}^{n}\ln^2(k)$. Déterminer un équivalent de la suite $(u_n)$ et en déduire la nature de la série $\sum\displaystyle\frac{1}{u_n}$.
+\end{ex}
+
+\begin{ex}
+	Montrer que la série $\displaystyle\sum_{n\geqslant 1}\frac{\ln(n)}{n}$ diverge et donner un équivalent simple de ses sommes partielles.
+\end{ex}
+
+\begin{ex}[$\Delta$ Séries de Bertrand]
+	Pour $(a,b)\in\R^2$, on considère la série $\displaystyle\sum_{n\geqslant 2}\frac{1}{n^a\ln^b(n)}$. Montrer que cette série est convergente si, et seulement si, $a>1$ ou ($a=1$ et $b>1$).
+\end{ex}
+
+\begin{ex}[FFJM 1999 : au lycée de l'espace]
+	Au lycée de l'espace, bien sûr, tous les élèves sont internes. A leur arrivée, le proviseur les accueille en leur disant qu'ils ne pourront accéder à la fusée qui doit les ramener dans leurs foyers aux prochaines vacances scolaires qu'à l'aide d'un code ultra-scolaire. Ce code est la partie entière de la somme : $$\frac{1}{\sqrt{1}}+\frac{1}{\sqrt{2}}+\cdots+\frac{1}{\sqrt{1003002}}$$ Quel est le code d'accès à la fusée ?
+\end{ex}
+
 \begin{ex}[$\Delta$ Sommes partielles et comparaison série-intégrale]
 	Soit $\sum u_n$ une série divergente à terme général strictement positif. On pose $$S_n=\sum_{k=0}^{n}u_k$$ Déterminer en fonction de $\alpha\in\R$ la nature de la série $$\sum\frac{u_n}{S_n^\alpha}$$ En déduire qu'il existe une série divergente $\sum v_n$ à terme général positif telle que $v_n=o(u_n)$.
 \end{ex}
 
 \begin{proof}
-	Écrire $$\frac{u_n}{S_n^\alpha}=\frac{S_n-S_{n-1}}{S_n^\alpha}$$ et interpréter ceci comme une intégrale. Remarquer ensuite que $(S_n)$ est croissante et tend vers $+\infty$. Effectuer une comparaison série-intégrale avec une fonction puissance. Je crois (à vérifier, je ne suis pas sûr) que la limite de la convergence est autour de $\alpha=2$.
+	Écrire $$\frac{u_n}{S_n^\alpha}=\frac{S_n-S_{n-1}}{S_n^\alpha}$$ et interpréter ceci comme une intégrale. Remarquer ensuite que $(S_n)$ est croissante et tend vers $+\infty$. Effectuer une comparaison série-intégrale avec une fonction puissance. Je crois (à vérifier, je ne suis pas sûr) que la limite de la convergence est autour de $\alpha=1$.
 \end{proof}
 
 \begin{ex}[$\Delta$ Restes et comparaison série-intégrale (dual du précédent)]
@@ -3634,8 +4841,123 @@
 \end{ex}
 
 \begin{proof}
-	Écrire $$\frac{u_n}{S_n^\alpha}=\frac{R_n-R_{n+1}}{R_n\alpha}$$ et interpréter ceci comme une intégrale. Remarquer ensuite que $(R_n)$ est décroissante et tend vers $0$. Effectuer une comparaison série-intégrale avec une fonction puissance. Je crois (à vérifier, je ne suis pas sûr) que la limite de la convergence est autour de $\alpha=2$.
+	Écrire $$\frac{u_n}{S_n^\alpha}=\frac{R_n-R_{n+1}}{R_n^\alpha}$$ et interpréter ceci comme une intégrale. Remarquer ensuite que $(R_n)$ est décroissante et tend vers $0$. Effectuer une comparaison série-intégrale avec une fonction puissance. Je crois (à vérifier, je ne suis pas sûr) que la limite de la convergence est autour de $\alpha=1$.
 \end{proof}
+
+\section{Sommation des relations de comparaison}
+
+\begin{ex}[$\Delta$ Sommation des relations de comparaison]
+	Soit $\displaystyle\sum u_n$ et $\displaystyle \sum u_n'$ deux séries réelles à termes positifs. On suppose $u_n\sim u_n'$.
+	\begin{enumerate}
+		\item Montrer que si les séries divergent, alors $S_n\sim S_n'$ (où $S_n$ et $S_n'$ désignent les sommes partielles de rang $n$).
+		\item Montrer que si les séries convergent, alors $R_n\sim R_n'$ (où $R_n$ et $R_n'$ désignent les restes de rang $n$).
+		\item Retrouver les résultats sur la moyenne de Cesàro d'une suite.
+		\item Adapter les résultats précédents aux relations $o$ et $O$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ind}
+	Passer par les $\varepsilon$. On pourra noter que $$u_n\sim u_n'\iff\forall \varepsilon>0,\ \exists N\in\N,\ \forall n\geqslant N,\ \lvert u_n-u_n'\rvert\leqslant\varepsilon u_n$$
+\end{ind}
+
+\begin{ex}[$\star$]
+	Soit $(u_n)_{n\in\N}$ une suite réelle telle que $\displaystyle u_n\left(\sum_{k=0}^{n}u_k^2\right)\xrightarrow[n\to+\infty]{}1$. Trouver un équivalent de $(u_n)_{n\in\N}$ au voisinage de $+\infty$.
+\end{ex}
+
+\begin{ind}
+	Utiliser une dérivée discrète.
+\end{ind}
+
+\section{Développement décimal propre (HP)}
+
+\begin{ex}[Caractérisation des décimaux par le développement décimal propre]
+	Soit $x>0$. On rappelle que $x$ est dit décimal lorsqu'il existe $n\in\N$ tel que $10^n\in\Z$. Montrer que $x$ est décimal si, et seulement si, son développement décimal est presque nul.
+\end{ex}
+
+\begin{ex}[Nombres cycliques]
+	\begin{enumerate}
+		\item Calculer à la main $7\times 142857$.
+		\item En déduire les développements de $\displaystyle\frac{1}{7},\ldots,\frac{6}{7}$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	En utilisant un argument d'écriture en base $2$, retrouver le fait que $\R$ est indénombrable.
+\end{ex}
+
+\begin{ind}
+	On rappelle que $\mathcal{P}(\N)$ est indénombrable (théorème de Cantor).
+\end{ind}
+
+\begin{ex}[$\star$ Caractérisation des rationnels par le développement décimal propre]
+	Montrer qu'un réel $x>0$ est rationnel si, et seulement si, son développement décimal propre est périodique à partir d'un certain rang.
+\end{ex}
+
+\begin{ind}
+	Pour le sens direct, en écrivant $x=\displaystyle\frac{p}{q}$, remarquer que le principe des tiroirs garantit l'existence de deux entiers $a<b$ tels que $10^ap\equiv10^bp[q]$.
+\end{ind}
+
+\section{Sommabilité}
+
+\begin{ex}
+	Calculer $\displaystyle\sum_{n=0}^{+\infty}\frac{n+1}{3^n}$.
+\end{ex}
+
+\begin{ex}
+	Étudier la sommabilité de la famille $\displaystyle\left(\frac{(-1)^p}{q^p}\right)_{\substack{p\geqslant 2 \\ q\geqslant 2}}$ et calculer sa somme si cette famille est sommable.
+\end{ex}
+
+\begin{ex}
+	Soit $z\in\C$ tel que $\lvert z\rvert<1$. Calculer $\displaystyle\sum_{n\in\Z}z^{\lvert n\rvert}$ après avoir montré son existence.
+\end{ex}
+
+\begin{ex}
+	Soit $r\in[0,1[$ et $\theta\in\R$. Calculer $\displaystyle\sum_{n\in\Z}r^{\lvert n\rvert}e^{in\theta}$ après avoir montré son existence.
+\end{ex}
+
+\begin{ex}
+	Pour $(p,q)\in\N\st$, on pose : $$a_{p,q}=\frac{2p+1}{p+q+2}-\frac{p}{p+q+1}-\frac{p+1}{p+q+3}$$ Montrer que la famille $(a_{p,q})_{(p,q)\in\N^2}$ n'est pas sommable.
+\end{ex}
+
+\begin{ind}
+	Raisonner par l'absurde et utiliser le théorème de Fubini.
+\end{ind}
+
+\begin{ex}
+	On note $E$ l'ensemble des entiers naturels strictement positifs  dont l'écriture décimale ne comporte pas le chiffre $9$. Montrer que la famille $\displaystyle\left(\frac{1}{n}\right)_{n\in\N}$ est sommable.
+\end{ex}
+
+\begin{ind}
+	A taille fixée, on peut déterminer le nombre d'entiers ne contenant pas le chiffre $9$. Il suffit ensuite de majorer la somme (une majoration grossière convient).
+\end{ind}
+
+\begin{ex}
+	Montrer l'existence de $$\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n^2}$$ et calculer sa valeur. On admettra que $$\sum_{n=1}^{+\infty}\frac{1}{n^2}=\frac{\pi^2}{6}$$
+\end{ex}
+
+\begin{ex}
+	Pour $n\in\N\st$, on note $d(n)$ le nombre de diviseurs strictement positifs de $n$. Montrer : $$\forall x\in]-1,1[,\ \sum_{n=1}^{+\infty}\frac{x^n}{1-x^n}=\sum_{n=1}^{+\infty}d(n)x^n$$
+\end{ex}
+
+\begin{ex}
+	Soit $z\in\C$ tel que $\lvert z\rvert<1$. Calculer, après avoir prouvé son existence : $$\sum_{n=0}^{+\infty}\frac{z^{2^n}}{1-z^{2^{n+1}}}$$
+\end{ex}
+
+\begin{ex}
+	Discuter en fonction de $\alpha\in\R$ de la nature des sommes : 
+	\begin{enumerate}
+		\item $\displaystyle\sum_{m,n\geqslant 1}\frac{1}{(m+n)^\alpha}$
+		\item $\displaystyle\sum_{m,n\geqslant 1}\frac{1}{(m^2+n^2)^\alpha}$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	On se donne $(a_i)_{i\in I}$ une suite complexe ainsi que $(I_n)_{n\in\N}$ une suite croissante de parties de $I$ telle que $\displaystyle\bigcup_{n\in\N}I_n=I$.
+	\begin{enumerate}
+		\item On suppose la famille $(a_i)_{i\in I}$ réelle positive. Montrer : $$\sum_{i\in I_n}a_i\xrightarrow[n\to+\infty]{}\sum_{i\in I} a_i$$
+		\item On suppose désormais seulement la famille $(a_i)_{i\in I}$ complexe sommable. Montrer : $$\sum_{i\in I_n}a_i\xrightarrow[n\to+\infty]{}\sum_{i\in I} a_i$$
+	\end{enumerate}
+\end{ex}
 
 
 
