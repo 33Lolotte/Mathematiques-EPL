@@ -1,0 +1,264 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\id}{\text{id}}
+\newcommand{\vect}{\text{Vect}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théorème}
+\def\thmautorefname{théorème}
+\newtheorem{lem}{Lemme}
+\def\lemautorefname{lemme}
+\newtheorem{prop}{Proposition}
+\def\propautorefname{propriété}
+\newtheorem{cor}{Corollaire}
+\def\propautorefname{corollaire}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Définition}
+\def\dfnautorefname{définition}
+\newtheorem{exa}{Exemple}
+\newtheorem{rmq}{Remarque}
+
+\title{Espaces préhilbertiens complexes et hermitiens \\  REPRENDRE LES FORMULES DE POLARISATION ET LES IDENTITES REMARQUABLES}
+
+\begin{document}
+\maketitle
+
+La théorie des espaces préhilbertiens réels possède un analogue dans le cas où le corps de base vaut $\C$. Les résultats principaux sont les mêmes, mais cette structure est plus adaptée à différents problèmes comme la mécanique quantique ou la réduction. 
+
+\section{Produit scalaire}
+\begin{dfn}[Produit scalaire]
+	Soit $E$ un espace vectoriel complexe. Un \textbf{produit scalaire} sur $E$ est une application $(\cdot,\cdot):E^2\rightarrow\R$ qui vérifie les 4 axiomes suivants :
+	\begin{enumerate}
+		\item Sesquilinéarité : Pour tout $x\in E$, $y\mapsto(x,y)$ est semi-linéaire et pour tout $y\in E$, $x\mapsto(x,y)$ est linéaire
+		\item Symétrie hermitienne : $\forall(x,y)\in E^2,\ (x,y)=\overline{(y,x)}$
+		\item Caractère positif : $\forall x\in E,\ (x,x) \geqslant 0$
+		\item Caractère défini : $\forall x\in E,\ (x,x)=0 \Longrightarrow x=0_E$
+	\end{enumerate} On résume cela en disant qu'un produit scalaire complexe est une \textbf{forme sesquilinéaire à symétrie hermitienne définie positive}. Le produit scalaire peut aussi être noté $<x|y>$, $(x|y)$ voire $x\cdot y$.
+\end{dfn}
+\begin{rmq} Si on prouve la symétrie hermitienne d'abord, il suffit de prouver la linéarité par rapport à l'une des variables pour prouver la sesquilinéarité. \end{rmq}
+\begin{dfn}[Espace préhilbertien complexe, espace hermitien]
+	Un \textbf{espace préhilbertien complexe} est un $\R$-espace vectoriel muni d'un produit scalaire complexe. Si cet espace vectoriel est de dimension finie sur $\C$, on dit alors qu'il s'agit d'un \textbf{espace hermitien}.
+\end{dfn}
+\begin{rmq} Si $E$ est préhilbertien, tout sev de $E$ est naturellement muni d'une structure préhilbertienne en restreignant le produit scalaire. De même, tout sev d'un espace euclidien est naturellement muni d'une structure euclidienne. \end{rmq}
+\begin{dfn}[Produit scalaire canonique de $\R^n$]
+	On définit le \textbf{produit scalaire canonique de $\C^n$} par $$\left(\begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix}, \begin{pmatrix}y_1 \\ \vdots \\ y_n\end{pmatrix}\right)=\sum_{i=1}^{n}x_i\overline{y_i}$$ Matriciellement, on peut écrire $$(X,Y)=X^\top \overline{Y}$$
+\end{dfn}
+\begin{dfn}[Produit scalaire canonique de $\mathcal{M}_{n,p}(\R)$]
+	$\mathcal{M}_{n,p}(\R)$ est euclidien pour son produit scalaire canonique $$\left\langle A,B\right\rangle =\Tr(A^\top B)$$
+\end{dfn}
+\begin{prop}[Un produit scalaire sur les polynômes]
+	Dans $\C[X]$, l'application $$\left(\sum_{k\in\N}a_kX^k,\sum_{k\in\N}b_kX^k\right) = \sum_{k\in\N}a_k\overline{b_k}$$ est un produit scalaire qui munit $\C[X]$ d'une structure préhilbertienne.
+\end{prop}
+\begin{thm}[Produit scalaire sur les fonctions continues]
+	Soit $a<b$ des réels. Dans le $\C$-espace vectoriel $\mathcal{C}^0([a,b],\C)$, l'application définie par $$(f,g) = \int_{[a,b]} f\overline{g}$$ est un produit scalaire.
+\end{thm}
+\begin{dfn}[Norme hermitienne associée à un produit scalaire]
+	La \textbf{norme hermitienne} associée au produit scalaire $(\cdot,\cdot)$ est définie par $$\lVert x\rVert=\sqrt{\langle x,x\rangle}$$ Elle vérifie $\lVert \lambda.x\rVert=\lvert\lambda\rvert\times\lVert x\rVert$ et $\lVert x\rVert =0 \iff x=0_E$
+\end{dfn}
+\begin{dfn}(Distance hermitienne associée à un produit scalaire)
+	La \textbf{distance hermitienne} associée au produit scalaire $(\cdot,\cdot)$ est définie par $$d(x,y)=\lVert x-y\rVert$$ où $\lVert\cdot\rVert$ est la norme euclidienne associée au produit scalaire $(\cdot,\cdot)$. Elle vérifie la propriété de symétrie $$d(x,y)=d(y,x)$$
+\end{dfn}
+\begin{prop}[Identités remarquables]
+	Soit $(E,(\cdot,\cdot))$ un espace préhilbertien complexe. On a les \textbf{identités remarquables suivantes} :
+	\begin{enumerate}
+		\item $\forall (x,y)\in E^2,\ \lVert x+y\rVert^2=\lVert x\rVert^2+\lVert y\rVert^2+2(x,y)$
+		\item $\forall (x,y)\in E^2,\ \lVert x-y\rVert^2=\lVert x\rVert^2+\lVert y\rVert^2-2(x,y)$
+		\item $\forall (x,y)\in E^2,\ (x+y,x-y)=\lVert x\rVert^2-\lVert y\rVert^2$
+	\end{enumerate}
+\end{prop}
+\begin{prop}[Identité du parallélogramme]
+	Soit $(E,(\cdot,\cdot))$ un espace préhilbertien complexe. On a $$\forall (x,y)\in E^2,\ \lVert x+y\rVert^2+\lVert x-y\rVert^2=2\lVert x\rVert^2+2\lVert y\rVert^2$$
+\end{prop}
+\begin{cor}[Identités de polarisation]
+	Soit $(E,(\cdot,\cdot))$ un espace préhilbertien complexe et $\lVert\cdot\rVert$ la norme euclidienne associée. on a alors les identités de polarisation :
+	\begin{enumerate}
+		\item $\displaystyle \langle x,y\rangle =\frac12\left(\lVert x+y\rVert^2-\lVert x\rVert^2-\lVert y\rVert^2\right)$
+		\item $\displaystyle \langle x,y\rangle =\frac12\left(\lVert x\rVert^2+\lVert y\rVert^2-\lVert x-y\rVert^2\right)$
+		\item $\displaystyle \langle x,y\rangle =\frac14\left(\lVert x+y\rVert^2-\lVert x-y\rVert^2\right)$
+	\end{enumerate}
+\end{cor}
+\begin{cor}
+	Une  norme hermitienne est associée à un unique produit scalaire.
+\end{cor}
+\begin{dfn}[Vecteur unitaire]
+	Un vecteur $x\in E$ est dit \textbf{unitaire} lorsque $\lVert x\rVert=1$.
+\end{dfn}
+\begin{dfn}[Normalisation]
+	Lorsque $x\ne 0_E$, le vecteur $$\frac{x}{\lVert x\rVert}=\lVert x\rVert\inv.x$$ est unitaire. On l'appelle le \textbf{renormalisé} de $x$.
+\end{dfn}
+\begin{rmq} Plus généralement, pour $x\in E$ et $\lambda\in\R\st$, on s'autorisera à noter $\displaystyle \frac{x}{\lambda}$ à la place de $\lambda\inv.x$ \end{rmq}
+\begin{thm}[Inégalité de Cauchy-Schwarz]
+	Soit $(E,(\cdot,\cdot))$ un espace préhilbertien complexe. On a $$\forall(x,y)\in E^2,\ \lvert(x,y)\rvert \leqslant\lVert x\rVert \lVert y\rVert$$ avec égalité si, et seulement si, $x$ et $y$ sont colinéaires.
+\end{thm}
+\begin{rmq} L'inégalité reste vraie sans le caractère défini (mais pas le cas d'égalité). On pourra donc appliquer l'inégalité dans le cas de formes sesquilinéaires à symétrie hermitienne positives. \end{rmq}
+\begin{cor}[Inégalité triangulaire]
+	La norme hermitienne associée à $\langle\cdot,\cdot\rangle$ vérifie l'inégalité triangulaire : $$\forall (x,y)\in E^2,\ \lVert x+y\rVert\leqslant\lVert x\rVert+\lVert y\rVert$$ avec égalité si, et seulement si, $x$ et $y$ sont colinéaires directs. 
+\end{cor}
+\begin{cor}[Seconde inégalité triangulaire]
+	On en déduit la second inégalité triangulaire : $$\forall (x,y)\in E^2,\ \big|\lVert x\rVert - \lVert y\rVert\big| \leqslant \lVert x-y\rVert$$
+\end{cor}
+\begin{dfn}[Norme]
+	Une \textbf{norme} sur un espace vectoriel $E$ est une application $\lVert\cdot\rVert:E\rightarrow\R_+$ qui vérifie les axiomes suivants :
+	\begin{enumerate}
+		\item Séparation : $\forall x\in E,\ \lVert x\rVert=0 \Rightarrow x=0$
+		\item Homogénéité : $\forall x\in E,\  \forall \lambda\in\R,\ \lVert \lambda.x\rVert=\lvert\lambda\rvert\times\lVert x\rVert$
+		\item Inégalité triangulaire : $\forall (x,y)\in E^2,\ \lVert x+y\rVert\leqslant\lVert x\rVert+\lVert y\rVert$
+	\end{enumerate}
+\end{dfn}
+\begin{rmq} Toutes les normes ne dérivent pas d'un produit scalaire. Pour ces normes, dites non euclidiennes et étudiées en deuxième année, on ne peut plus rien dire sur le cas d'égalité de l'inégalité triangulaire. \end{rmq}
+
+\section{Orthogonalité}
+Dans toute cette partie, $(E,\langle\cdot,\cdot\rangle)$ est un espace préhilbertien complexe.
+\subsection{Définitions de base}
+\begin{dfn}[Orthogonalité]
+	Deux vecteurs $x$ et $y$ sont dits \textbf{orthogonaux} lorsque $\langle x,y\rangle=0$. Dans ce cas, on écrit $x\perp y$. Un vecteur $x$ est dit \textbf{orthogonal} à une partie $B$ lorsqu'il est orthogonal à tout vecteur de $B$ : $$\forall y \in B, \ \langle x,y\rangle=0$$ Dans ce cas, on écrit $x\perp B$. Deux parties $A$ et $B$ sont dites \textbf{orthogonales} lorsque tout vecteur de l'une est orthogonal à tout vecteur de l'autre : $$\forall (x,y)\in A\times B,\ \langle x,y\rangle=0$$ Dans ce cas, on écrit $A\perp B$.
+\end{dfn}
+\begin{dfn}[Orthogonal d'une partie]
+	Soit $A$ une partie de $E$. L'ensemble des vecteurs orthogonaux à tous les vecteurs de $A$ est un sous-espace vectoriel de $E$, appelé \textbf{orthogonal} de $A$. On le note $$A^\perp =\left\{x\in E \ | \ \forall a\in A, \ \langle x,a\rangle=0\right\}$$ C'est aussi la plus grande partie orthogonale à $A$ au sens de l'inclusion.
+\end{dfn}
+\begin{exa}
+	On a $E^\perp=\left\{0\right\}$ et $\left\{0\right\}^\perp=E$.
+\end{exa}
+\begin{prop}[Décroissance de l'othogonal]
+	Si $A\subset B$ alors $B^\perp\subset A^\perp$.
+\end{prop}
+\begin{cor}
+	Soit $A$ une partie de $E$. Alors $A^\perp=\vect(A)^\perp$.
+\end{cor}
+\subsection{Familles orthogonales}
+\begin{dfn}[Famille orthogonale, famille orthonormale]
+	Une famille $(x_i)_{i\in I}$ de vecteurs de $E$ est dite \textbf{orthogonale} si les $x_i$ sont deux à deux orthogonaux. Si de plus les $x_i$ sont tous unitaires, la famille est dite \textbf{orthonormale} (ou \textbf{orthonormée}).
+\end{dfn}
+\begin{exa}
+	Dans $\R^n$ muni de son produit scalaire canonique, la base canonique est orthonormale.
+\end{exa}
+\begin{exa}
+	Dans $\R[X]$ muni de son produit scalaire usuel, la base canonique est orthonormale.
+\end{exa}
+\begin{prop}
+	Toute sous-famille d'une famille orthogonale est orthogonale. Toute sous-famille d'une famille orthonormale est orthonormale. 
+\end{prop}
+\begin{prop}
+	Toute famille orthogonale de vecteurs \textbf{non nuls} est libre.
+\end{prop}
+\begin{cor}
+	Toute famille orthonormale est libre.
+\end{cor}
+\begin{thm}[Théorème de Pythagore]
+	Deux vecteurs $x$ et $y$ sont orthogonaux si, et seulement si, $$\lVert x+y\rVert^2=\lVert x\rVert^2+\lVert y\rVert^2$$
+\end{thm}
+\begin{thm}
+	Soit $(x_i)_{1\leqslant i\leqslant n}$ une famille orthogonale finie. Alors $$\left\lVert \sum_{i=1}^{n}x_i\right\rVert^2=\sum_{i=1}^{n}\lVert x_i\rVert^2$$
+\end{thm}
+\begin{rmq} Attention, la réciproque est fausse dès que $n\geqslant 3$. On pourra chercher un contre-exemple dans $\C^3$ muni de son produit scalaire canonique. \end{rmq}
+\begin{thm}[Existence d'une base orthonormale pour un espace hermitien]
+	Tout espace hermitien admet une base orthonormale.
+\end{thm}
+\begin{prop}[Expression dans une base orthonormale]
+	Soit $(e_i)_{1\leqslant i\leqslant n}$ une base orthonormale de $E$ hermitien. Alors tout vecteur s'exprime dans cette base par : $$x=\sum_{i=1}^{n}\langle x,e_i\rangle e_i$$ De plus, si on écrit $\displaystyle x=\sum_{i=1}^{n}x_ie_i$ et $\displaystyle y=\sum_{i=1}^{n}y_ie_i$, on a : $$\langle x,y\rangle =\sum_{i=1}^{n}x_iy_i$$ et $$\lVert x\rVert^2=\sum_{i=1}^{n}x_i^2$$
+\end{prop}
+\subsection{Supplémentaire orthogonal}
+\begin{prop}
+	L'orthogonalité est une condition suffisante (mais pas nécessaire !) pour que deux sous-espaces vectoriels $F$ et $G$ soient en somme directe.
+\end{prop}
+\begin{dfn}[Supplémentaires orthogonaux]
+	Soit $F$ et $G$ deux sous-espaces vectoriels à la fois supplémentaires et orthogonaux. On dit alors que $F$ et $G$ sont \textbf{supplémentaires orthogonaux} et on écrit $$E=F\overset{\perp}{\oplus} G$$ On dit que $G$ est un supplémentaire orthogonal $F$, et vice-versa.
+\end{dfn}
+\begin{thm}[Théorème de la base adaptée, version orthonormale]
+	Soit $(e_i)_{i\in I}$ une base orthonormale de $E$ et supposons que $I=I_1\sqcup I_2$. Alors $E_1=\vect(e_i)_{i\in I_1}$ et $E_2=\vect(e_i)_{i\in I_2}$ sont supplémentaires orthogonaux. Réciproquement, si $E_1$ et $E_2$ sont supplémentaires orthogonaux, alors en concaténant des bases orthonormales de $E_1$ et $E_2$, on obtient une base orthonormale de $E$.
+\end{thm}
+\begin{prop}
+	Si $G$ est un supplémentaire orthogonal de $F$, alors on a nécessairement $G=F^\perp$. S'il existe, le supplémentaire orthogonal est donc unique.
+\end{prop}
+\begin{cor}
+	Si $F$ admet un supplémentaire orthogonal, alors $F^\perp$ admet un supplémentaire orthogonal et on a $(F^\perp)^\perp=F$. 
+\end{cor}
+\begin{dfn}
+	Si $F$ admet un supplémentaire orthogonal $G$, le \textbf{projecteur orthogonal} est le projecteur $p$ sur $F$ parallèlement à G. $p(x)$ s'appelle le \textbf{projeté orthogonal} de $x$ sur $F$.
+\end{dfn}
+\begin{rmq} Le projecteur associé $q=\id-p$ est donc le projecteur orthogonal sur $F^\perp$. \end{rmq}
+\begin{dfn}[Symétrie orthogonale]
+	Si $F$ admet un supplémentaire orthogonal $G$, la \textbf{symétrie orthogonale d'axe $F$} est la symétrie par rapport à $F$ parallèlement à $G$. Si on l'appelle $s$, on rappelle qu'on a $$s=2p-\id$$
+\end{dfn}
+\begin{dfn}[Réflexion]
+	Une symétrie orthogonale par rapport à un hyperplan s'appelle une \textbf{réflexion}.
+\end{dfn}
+\begin{prop}[Caractérisation de l'orthogonalité pour les projecteurs et les symétries]
+	Un projecteur $p$ est orthogonal si, et seulement si, $\ker(p)$ et $\im(p)$ sont orthogonaux. Une symétrie $s$ est orthogonale si, et seulement si, $\ker(s-\id)$ et $\ker(s+\id)$ sont orthogonaux.
+\end{prop}
+\begin{dfn}
+	Soit $F$ un sous-espace vectoriel de $E$ et $x\in E$. La \textbf{distance} de $x$ à $F$ est définie par $$d(x,F)=\underset{y\in F}{\inf}\lVert x-y\rVert$$ Elle et bien définie car l'ensemble est non vide car contient $\lVert x-0\rVert$ et minoré par $0$ en tant qu'ensemble de normes hermitiennes.
+\end{dfn}
+\begin{thm}
+	Supposons que $F$ admette un supplémentaire orthogonal, et soit $p$ le projecteur orthogonal sur $F$. Alors, pour tout $x\in E$, $d(x,F)$ est un minimum et $p(x)$ est l'unique élément de $F$ qui le réalise.
+\end{thm}
+\begin{thm}[Synthèse partielle - cas fondamental]
+	Si $F$ est de dimension finie, alors on a $E=F\overset{\perp}{\oplus}F^\perp$. Dans ce cas, $F^\perp$ admet un supplémentaire orthogonal égal à $F$ et on pourra toujours définir le projecteur orthogonal sur $F$ et la symétrie orthogonale par rapport à $F$.
+\end{thm}
+\begin{rmq} Attention on a des contre-exemples en dimension infinie. On pourra considérer $\vect(X^n-1)_{n\in\N\st}$ dans $\C[X]$ muni de son produit scalaire usuel, dont l'orthogonal vaut $\left\{0\right\}$. Sinon, on pourra considérer l'ensemble $$H=\left\{f\in\mathcal{C}^0([0,1],\R) \ | \ f(0)=0\right\}$$ dans $\mathcal{C}^0([0,1],\R)$ muni de son produit scalaire usuel, qui est un hyperplan car le noyau d'un morphisme d'évaluation non-nul. Son orthogonal vaut alors $\left\{0\right\}$ (le prouver en prenant $f\in H^\perp$ puis en effectuant le produit scalaire avec $t\mapsto tf(t) \in H$ et conclure par signe et intégrale nulle pour les points autre que 0, et par continuité en 0). \end{rmq}
+\begin{cor}
+	Si $E$ est euclidien et $F$ est un sous-espace vectoriel de $E$, on a toujours $$\dim(F^\perp)=\dim(E)-\dim(F)$$
+\end{cor}
+\begin{cor}[Expression du projecteur orthogonal en dimension finie]
+	Si $F$ est de dimension finie et $(e_i)_{1\leqslant i\leqslant k}$ est une base orthonormale de $F$, le projecteur orthogonal sur $F$ est donné par $$\forall x\in E,\ p(x)=\sum_{i=1}^{k}\langle x,e_i\rangle e_i$$
+\end{cor}
+\begin{rmq} Si on ne dispose pas d'une base orthonormale, mais simplement d'une base $(e_i)_{1\leqslant i\leqslant k}$, on peut soit appliquer l'algorithme de Gram-Schmidt expliqué après, soit raisonner de la manière suivante. \end{rmq}
+\par On sait qu'il existe des scalaires $(\lambda_1,\ldots,\lambda_k)\in\R^k$ tels que $\displaystyle p(x)=\sum_{j=1}^{k}\lambda_je_j$. Ensuite, on sait que $x-p(x)\in F^\perp$, donc on obtient $$\forall i\in\llbracket1,k\rrbracket,\ \langle x,e_i\rangle = \sum_{j=1}^{k}\lambda_j\langle e_j,e_i\rangle$$ On obtient ainsi un système linéaire de $k$ équations à $k$ inconnues (dont on peut démontrer qu'il est de Cramer) qu'on peut alors toujours résoudre pour obtenir les coefficients.
+\begin{prop}[Théorème de la base incomplète, version orthonormale]
+	Si $E$ est hermitien, alors toute famille orthonormale de $E$ peut être complétée en une base orthonormale.
+\end{prop}
+\begin{thm}[Orthonormalisation de Gram-Schmidt]
+	Soit $(x_1,\ldots,x_n)$ une famille libre de $E$. Alors, il existe une famille orthonormale $(\varepsilon_1,\ldots,\varepsilon_n)$ telle que $$\forall k\in\llbracket1,n\rrbracket,\ \vect(x_1,\ldots,x_k)=\vect(\varepsilon_1,\ldots,\varepsilon_k)$$
+\end{thm}
+\begin{rmq}[Mise en œuvre pratique du procédé d'orthonormalisation] On construit la famille par récurrence finie sur $k$. \\ Initialisation : On pose $\displaystyle \varepsilon_1=\frac{x_1}{\lVert x_1\rVert}$ \\ Hérédité : Soit $k\in\llbracket2,n\rrbracket$ et supposons avoir construit $(\varepsilon_1,\ldots,\varepsilon_{k-1})$ On pose alors $$\tilde{\varepsilon}_k=x_k-\sum_{i=1}^{k-1}\langle x_k,\varepsilon_i\rangle\varepsilon_i$$ puis on pose alors $\displaystyle \varepsilon_k=\frac{\tilde{\varepsilon}_k}{\lVert \tilde{\varepsilon}_k\rVert}$ \end{rmq}
+\begin{rmq} Le théorème fonctionne encore avec une famille dénombrable, c'est-à-dire une famille de la forme $(x_k)_{k\in\N}$. On pensera notamment aux polynômes. \end{rmq}
+\begin{rmq} On peut montrer par analyse-synthèse que la famille $(\varepsilon_1,\ldots,\varepsilon_n)$ est la seule famille qui vérifie la condition supplémentaire : $$\forall k\in\llbracket1,n\rrbracket,\ \langle x_k,\varepsilon_k\rangle >0$$ \end{rmq}
+
+
+
+\end{document}

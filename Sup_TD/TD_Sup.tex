@@ -2391,7 +2391,7 @@
 \end{ex}
 
 \begin{ex}[$\Delta$ Union finie de SEV stricts]
-	Soit $E$ un $\K$-espace vectoriel où $\K$ est un corps de caractéristique nulle.
+	Soit $E$ un $\K$-espace vectoriel où $\K$ est un infini.
 	\begin{enumerate}
 		\item Montrer que si $F$ et $G$ sont deux SEV stricts de $E$, alors il existe un vecteur de $E$ n'appartenant ni à $F$ ni à $G$.
 		\item $\star$ Et pour $n\geqslant 2$ SEV ?
@@ -2466,6 +2466,23 @@
 	En admettant le lemme de Zorn, montrer que tout espace vectoriel admet une base.
 \end{ex}
 
+\begin{ex}[Espace quotient]
+	Soit $E$ un $\K$-espace vectoriel ainsi que $F$ un sous-espace vectoriel de $E$.
+	\begin{enumerate}
+		\item Montrer que la relation : $$x\sim y\iff y-x\in F$$ est une relation d'équivalence sur $E$. L'ensemble quotient est noté $E/F$.
+		\item Pour tout $x\in E$, on note $\overline{x}$ sa classe pour cette relation d'équivalence. Montrer que les opérations : $$\begin{cases}
+			\overline{x}+\overline{y}=\overline{x+y} \\
+			\lambda.\overline{x}=\overline{\lambda x}
+		\end{cases}$$ sont bien définies et confèrent à $E/F$ une structure de $\K$-espace vectoriel.
+		\item Soit $f$ une application linéaire de $E$ dans un $\K$-espace vectoriel $G$. On considère l'espace quotient $E/\ker(f)$ sur lequel on définit une application $\overline{f}$ par : $$\forall \overline{x}\in E/\ker(f),\ \overline{f}(\overline{x})=f(x)$$ Montrer que $\overline{f}$ est bien définie, puis qu'elle induit un isomorphisme de $E/\ker(f)$ sur $\im(f)$.
+		\item En déduire que deux supplémentaires de $F$ sont toujours isomorphes.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\star$]
+	On note $E=\R^\N$ le $\R$-espace vectoriel des suites réelles. On se donne $\varphi\in E\st$ telle que $$\forall u\in E,\ \exists n(u)\in \N,\ \varphi(u)=u_{n(u)}$$ Montrer : $\exists n\in\N,\ \forall u\in E,\ \varphi(u)=u_n$
+\end{ex}
+
 \chapter{Limites et continuité}
 
 
@@ -2523,7 +2540,7 @@
 	\end{enumerate}
 \end{ex}
 
-\chapter{Matrices}
+\chapter{Matrices et systèmes linéaires}
 
 \begin{ex}[$\Delta$ Idéaux bilatères de $\mathcal{M}_n(\K)$]
 	Un idéal bilatère de $\mathcal{M}_n(\K)$ est un SEv $\mathcal{I}$ de $\mathcal{M}_n(\K)$ tel que : $$\forall A\in\mathcal{I},\ \forall M\in\mathcal{M}_n(\K),\ AM\in\mathcal{I} \ \ \text{et} \ \ MA\in\mathcal{I}$$
@@ -2536,6 +2553,14 @@
 
 \begin{ex}[SEV engendré par les matrices de projecteurs]
 	Déterminer le sous-espace vectoriel de $\mathcal{M}_n(\K)$ engendré par les matrices de projecteurs.
+\end{ex}
+
+\begin{ex}
+	Montrer que toute matrice s'écrit comme la somme de deux matrices inversibles.
+\end{ex}
+
+\begin{ex}
+	Soit $M\in\mathcal{M}_n(\K)$ telle que $$\forall (A,B)\in\mathcal{M}_n(\K)^2,\ AMB=0$$ Montrer que $M=0$. 
 \end{ex}
 
 \begin{ex}
@@ -2567,11 +2592,49 @@
 \begin{ex}[$\star$ $H\cap\mathcal{GL}_n(\K)$ pour $n\geqslant 2$] Montrer que tout hyperplan de $\mathcal{M}_n(\K)$ contient une matrice inversible pour $n>1$.
 \end{ex}
 
+\begin{ex}[Quaternions]
+	On pose $H=\displaystyle\left\{\begin{pmatrix}
+		x&-\overline{y} \\
+		y&\overline{x}
+	\end{pmatrix}\in\mathcal{M}_2(\C)\ : \ (x,y)\in\C^2\right\}$.
+	\begin{enumerate}
+		\item Montrer que $H$ est un $\R$-espace vectoriel de dimension 4.
+		\item Donner une base de $H$ la plus simple possible.
+		\item Montrer que $H$ est un anneau.
+		\item Montrer que $H$ n'est pas commutatif.
+		\item Montrer que tout élément de $H$ est inversible dans $H$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Transposition duale]
+	On se donne $E$ et $F$ des $\K$-espaces vectoriels ainsi que $u\in\mathcal{L}(E,F)$. On considère : $$\begin{array}{lrcl}
+		u^T:&F\st&\longrightarrow&E\st \\
+		&\varphi&\longmapsto&\varphi\circ u
+	\end{array}$$
+	\begin{enumerate}
+		\item Montrer que $u^T\in\mathcal{L}(E\st,F\st)$.
+		\item On suppose pour la suite que $E$ et $F$ sont de dimension finie. On note $(e_j)_{1\leqslant j\leqslant p}$ une base de $E$, $(f_i)_{1\leqslant i\leqslant n}$ une base de $F$ et $A$ la matrice de $u$ relativement aux bases $(e_j)$ et $(f_i)$. A l'aide de $A$, exprimer la matrice de $u^T$ relativement aux bases duales de $(e_j)$ et $(f_i)$.
+		\item Retrouver le résultat $\text{rg}(A^T)=\text{rg}(A)$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Soit $T\in\mathcal{M}_n(\C)$ triangulaire supérieure. Montrer que $T$ est diagonale si, et seulement si, $T$ et $^t\overline{T}$ commutent.
+\end{ex}
+
 \begin{ex}[$\star$ Théorème de Shoda]
 	\begin{enumerate}
 		\item Montrer que toute matrice de trace nulle est semblable à une matrice dont la diagonale est nulle.
 		\item Montrer l'équivalence entre le fait que $M\in\mathcal{M}_n(\K)$ soit de trace nulle et $$\exists(A,B)\in\mathcal{M}_n(\K)^2,\ M=AB-BA$$
 	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\star$]
+	Soit $p$ un nombre premier. Déterminer le cardinal de $\mathcal{GL}_n(\Z/p\Z)$.
+\end{ex}
+
+\begin{ex}[$\star$]
+	Soit $n\in\N\st$. On se donne $A_1,\ldots,A_p\in\mathcal{M}_n(\R)$ deux à deux distinctes qui forment une partie stable par multiplication. Montrer : $$\sum_{k=1}^{n}\Tr(A_k)\in\N$$
 \end{ex}
 
 \begin{ex}[$\star$ Réduction des matrices nilpotentes]
@@ -2582,6 +2645,27 @@
 		&&&0&1\\
 		(0)&&&&0
 	\end{pmatrix}\in\mathcal{M}_k(\K)$$
+\end{ex}
+
+\begin{ex}[$\star$]
+	Soit $A\in\mathcal{M}_{3n}(\K)$ vérifiant $A^3=0$ et $\text{rg(A)}=2n$.
+	\begin{enumerate}
+		\item Montrer : $\text{rg}(A^2)=n$
+		\item Montrer que $A$ est semblable à $$\begin{pmatrix}
+			0&0&0\\
+			I_n&0&0\\
+			0&I_n&0
+		\end{pmatrix}$$
+		\item Montrer qu'il existe $B\in\mathcal{M}_{3n}(\K)$ telle que $A=AB-BA$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[$\star\star$]
+	On se donne $n+1$ parties $X_0,\ldots,X_n$ non vides de $\llbracket1,n\rrbracket$. Montrer qu'il existe $J_1$ et $J_2$ des parties disjointes de $\llbracket0,n\rrbracket$ telles que $$\bigcup_{i\in J_1}X_i=\bigcup_{j\in J_2} X_j$$
+\end{ex}
+
+\begin{ex}[$\star\star$]
+	Soit $n\geqslant 2$. Déterminer tous les hyperplans de $\mathcal{M}_n(\C)$ stables par conjugaison matricielle.
 \end{ex}
 
 \chapter{Dérivation}
@@ -3423,7 +3507,7 @@
 \begin{ex}
 	Calculer la signature de la permutation suivante : $$\sigma=\begin{pmatrix}
 		1&2&\cdots&n&n+1&n+2&\cdots&2n\\
-		1&3&\cdots&2n-1&2&4é\cdots&2n
+		1&3&\cdots&2n-1&2&4&\cdots&2n
 	\end{pmatrix}$$
 \end{ex}
 
@@ -3746,7 +3830,7 @@
 \end{ex}
 
 \begin{ex}
-	Soit $(u_1,\ldots,u_p)$ une famille libre du $\Q$-espace vectoriel $\Q^n$. Montrer que, vue comme une famille du $\R$-espace vectoriel $\R^,$, cette famille est encore libre.
+	Soit $(u_1,\ldots,u_p)$ une famille libre du $\Q$-espace vectoriel $\Q^n$. Montrer que, vue comme une famille du $\R$-espace vectoriel $\R$, cette famille est encore libre.
 \end{ex}
 
 \begin{ex}[Matrice compagnon]
@@ -4966,6 +5050,35 @@ Poser $b_n=\displaystyle\frac{a_n-a_{n+1}}{a_n}$ et remarquer que $1-b_n=\displa
 \chapter{Dénombrements}
 
 
+\chapter{Dénombrabilité (HP)}
+
+\begin{ex}
+	Montrer que l'ensemble des parties finies de $\N$ est dénombrable.
+\end{ex}
+
+\begin{ex}
+	Un nombre complexe est dit algébrique lorsqu'il est racine d'un polynôme non nul à coefficients rationnels. Montrer que l'ensemble des nombres algébriques est dénombrable.
+\end{ex}
+
+\begin{ex}
+	Soit $f$ une fonction monotone de $\R$ dans $\R$. Montrer que l'ensemble des points de discontinuité de $f$ est au plus dénombrable.
+\end{ex}
+
+\begin{ex}
+	Soit $f$ une fonction convexe. Montrer que l'ensemble des points de non dérivabilité de $f$ est au plus dénombrable.
+\end{ex}
+
+\begin{ex}[$\star$ Disque ouverts]
+	Un disque ouvert de $\C$ est un ensemble de la forme $\{z\in\C : \ \lvert z-a\rvert <r\}$ ($a$ est le centre du disque et $r$ son rayon). On se donne une famille $(D_i)_{i\in I}$ de disques ouverts de $\C$ deux à deux disjoints. Montrer que $I$ est au plus dénombrable.
+\end{ex}
+
+\begin{ex}[$\star\star$ Huit]
+	Un "huit" est la réunion de deux cercles dans le plan, de même rayon et tangents extérieurement. On se donne une famille de huit $(H_i)_{i\in I}$ deux à deux disjoints. Montrer que $I$ est au plus dénombrable.
+\end{ex}
+
+\begin{ex}[$\star\star$ Tripodes]
+	Un "tripode" est la réunion de trois segments [GA], [GB] et [GC] dans le plan où A, B et C sont les trois sommets d'un triangle équilatéral (non réduit à un point) et G est le centre de gravité de ce triangle. On se donne une famille de tripodes $(T_i)_{i\in I}$ deux à deux disjoints. Montrer que $I$ est au plus dénombrable.
+\end{ex}
 
 \chapter{Probabilités}
 

@@ -1,0 +1,11 @@
+Formes quadratiques
+Espaces hermitiens
+Dunford, Jordan, Frobenius
+Géométrie convexe
+
+Faire des problèmes avec résultats théoriques + applications :
+- coréduction + groupe dont tous les éléments sont d'ordre 2 (et application au fait que GL_n et GL_m sont isomorphes ssi n=) +
+- Gronwall +
+- Sturm-Liouville
+- Orthogonalité duale
+- 
