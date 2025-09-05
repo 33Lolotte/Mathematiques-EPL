@@ -1,0 +1,1040 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\theoremstyle{plain}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+
+\newtheorem*{ex}{Exemple}
+\newtheorem*{met}{Point méthode}
+\newtheorem{exo}{Exercice}
+
+\newtcolorbox[auto counter]{dfn}{
+	enhanced,
+	breakable,
+	colback=white,
+	fonttitle=\sc,
+	title={Définition \thetcbcounter}
+	}
+
+\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+
+\theoremstyle{remark}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{app}{Application}
+
+\begin{document}
+Dans ce chapitre, on considère un espace euclidien $E$ dont le produit scalaire sera noté $(\cdot\mid\cdot)$. La norme et la distance euclidiennes associées seront respectivement notées $\lVert\cdot\rVert$ et $d(\cdot,\cdot)$.
+
+\section{Rappels, compléments}
+
+\subsection{Formes bilinéaires symétriques, formes quadratiques (HP)}
+
+\begin{dfn}
+	On dit qu'une forme bilinéaire $\varphi$ sur $E$ est symétrique lorsque $$\forall (x,y)\in E^2,\ \varphi(x,y)=\varphi(y,x)$$ On note $\mathcal{BLS}(E)$ l'ensemble des formes bilinéaires symétriques sur $E$.
+\end{dfn}
+
+\begin{dfn}
+	A toute forme bilinéaire symétrique $\varphi$ sur $E$ on associe l'application $q$ de $E$ dans $\R$ définie par $$\forall x\in E,\ q(x)=\varphi(x,x)$$ C'est la forme quadratique associée à $\varphi$. Réciproquement, une forme quadratique sur $E$ est une application $q:E\to\R$ pour laquelle il existe une forme bilinéaire symétrique $\varphi$ vérifiant $$\forall x\in E,\ q(x)=\varphi(x,x)$$ On note $\mathcal{Q}(E)$ l'ensemble des formes quadratiques.
+\end{dfn}
+
+\begin{rmq}
+	Les formules de polarisation permettent de retrouver la forme bilinéaire symétrique $\varphi$ à partir de la forme quadratique $q$ : $$\forall (x,y)\in E^2,\ \varphi(x,y)=\frac{q(x+y)-q(x)-q(y)}{2}=\frac{q(x)+q(y)-q(x-y)}{2}=\frac{q(x+y)-q(x-y)}{4}$$
+\end{rmq}
+
+\subsubsection*{Matrice d'une forme bilinéaire}
+Soit $\mathcal{B}=(e_1,\ldots,e_n)$ une base de $E$. A toute forme bilinéaire $\varphi$ sur $E$, on associe sa matrice dans $\mathcal{B}$ définie par : $$M_\mathcal{B}(\varphi)=\left(\varphi(e_i,e_j)\right)_{1\leqslant i,j\leqslant n}$$ Cette matrice est symétrique si, et seulement si, $\varphi$ est une forme bilinéaire symétrique. De plus, si $(x,y)\in E^2$ et si on pose $X=M_\mathcal{B}(x)$ et $Y=M_\mathcal{B}(y)$, alors on dispose de la relation : $$\varphi(x,y)=X^TM_\mathcal{B}(\varphi)Y$$
+
+\begin{exo}
+	Effet d'un changement de base sur la matrice d'une forme bilinéaire.
+\end{exo}
+
+\begin{dfn}
+	Une forme bilinéaire symétrique $\varphi$ (ou sa forme quadratique associée) est dite positive lorsque $$\forall x\in E,\ \varphi(x,x)\geqslant 0$$ Elle est définie positive si de plus $$\forall x\in E,\ \varphi(x,x)=0\implies x=0$$
+\end{dfn}
+
+\begin{dfn}
+	Un produit scalaire est une forme bilinéaire symétrique définie positive.
+\end{dfn}
+
+\begin{ex}
+	\begin{enumerate}
+		\item L'application : $$\begin{array}{rcl}
+			\R^n\times\R^n&\longrightarrow&\R \\
+			(x,y)&\longmapsto&\sum_{i=1}^{n}x_iy_i
+		\end{array}$$ est un produit scalaire sur $\R^n$, appelé \textbf{produit scalaire canonique de $\R^n$}.
+		\item Plus généralement, si $E$ est muni d'une base $(e_i)_{i\in I}$, on peut définir un produit scalaire sur $E$ en posant : $$\forall (x_i)\in\K^{(I)},\ \forall (y_i)\in\K^{(I)},\ \left(\sum_{i\in I}x_ie_i\bigg| \sum_{i\in I} y_ie_i\right)=\sum_{i\in I}x_iy_i$$
+		\item L'ensemble des suites réelles de carré sommable, c'est-à-dire des suites $(u_n)_{n\in\N}$ réelles telles que $\sum u_n^2$ converge est un sous-espace vectoriel de $\R^\N$ sur lequel $(u,v)\mapsto\displaystyle\sum_{n\in\N}u_nv_n$ définit un produit scalaire.
+		\item Soit $[a,b]$ un segment de $\R$ d'intérieur non vide. L'application : $$\varphi:(f,g)\mapsto\int_{a}^{b}f(x)g(x)\ dx$$ définit une forme bilinéaire symétrique positive sur $\mathcal{CM}([a,b],\R)$. C'est un produit scalaire sur $E=\mathcal{C}^0([a,b],\R)$.
+	\end{enumerate}
+\end{ex}
+
+\begin{dfn}
+	On appelle espace préhilbertien réel tout $\R$-espace vectoriel muni d'un produit scalaire. Lorsque l'espace vectoriel est de dimension finie, on parle d'espace vectoriel euclidien.
+\end{dfn}
+
+\subsection{Norme associée à un produit scalaire}
+
+On considère $E$ un espace préhilbertien réel.
+
+\begin{dfn}
+	On appelle \textbf{norme euclidienne} associée au produit scalaire $(\cdot\mid\cdot)$ l'application : $$\begin{array}{rcl}
+		E&\longrightarrow&\R_+ \\
+		x&\longmapsto&\lVert x\rVert=\sqrt{(x\mid x)}
+	\end{array}$$ et \textbf{distance euclidienne} associée au produit scalaire $(\cdot\mid\cdot)$ l'application : $$\begin{array}{rcl}
+	E^2&\longrightarrow&\R_+ \\
+	(x,y)&\longmapsto&\lVert x-y\rVert
+	\end{array}$$
+\end{dfn}
+
+\begin{thm}{Inégalité de Cauchy-Schwarz}
+	La norme euclidienne associée au produit scalaire $(\cdot\mid\cdot)$ vérifie : 
+	\begin{enumerate}
+		\item $\forall (x,y)\in E^2,\ \lvert (x\mid y)\rvert\leqslant\lVert x\rVert\lVert y\rVert$
+		\item Cette inégalité est une égalité si, et seulement si, $x$ et $y$ sont colinéaires, c'est-à-dire si, et seulement si : $$\exists\lambda\in\R\ : \ y=\lambda x\ \ \text{ou}\ \ \exists\lambda\in\R\ : \ x=\lambda y$$
+	\end{enumerate}
+\end{thm}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Soit $(x_i)_{1\leqslant i\leqslant n}$ et $(y_i)_{1\leqslant i\leqslant n}$ deux vecteurs de $\R^n$. L'inégalité de Cauchy-Schwarz pour le produit scalaire canonique de $\R^n$ s'écrit : $$\left\lvert\sum_{i=1}^{n}x_iy_i\right\rvert\leqslant\left(\sum_{i=1}^{n}x_i^2\right)^{1/2}\left(\sum_{i=1}^{n}y_i^2\right)^{1/2}$$
+		\item L'inégalité de Cauchy-Schwarz pour le produit scalaire sur $\mathcal{C}^0([a,b],\R)$ défini par $$(f,g)\mapsto\int_{a}^{b}fg$$ s'écrit : $$\left\lvert \int_{a}^{b}fg\right\rvert\leqslant\left(\int_{a}^{b}f^2\right)^{1/2}\left(\int_{a}^{b}g^2\right)^{1/2}$$
+	\end{enumerate}
+\end{ex}
+
+\begin{thm}{}
+	La norme euclidienne $\lVert\cdot\rVert$ associée au produit scalaire $(\cdot\mid\cdot)$ est une norme. Elle vérifie donc en particulier l'inégalité triangulaire : $$\forall (x,y)\in E^2,\ \lVert x+y\rVert\leqslant\lVert x\rVert+\Vert y\rVert$$ En plus de l'inégalité triangulaire, on dispose dans le cas d'une norme euclidienne d'un cas d'égalité : il y a égalité dans l'inégalité triangulaire si, et seulement si, $x$ et $y$ sont colinéaires directs, c'est-à-dire si, et seulement si : $$\exists\lambda\in\R_+\ : \ y=\lambda x\ \ \text{ou}\ \ \exists\lambda\in\R_+\ : \ x=\lambda y$$
+\end{thm}
+
+\begin{rmq}[HP]
+	Si $\varphi$ est une forme bilinéaire symétrique positive sur $E$, on dispose toujours de l'inégalité de Cauchy-Schwarz : $$\forall (x,y)\in E^2,\ \varphi(x,y)^2\leqslant\varphi(x,x)\varphi(y,y)$$ On peut alors poser $N(x)=\sqrt{\varphi(x,x)}$ pour tout $x\in E$, définissant ainsi seulement une semi-norme sur $E$. La condition d'égalité dans l'inégalité de Cauchy-Schwarz devient : $$\exists\lambda\in\R\ : \ N(x+\lambda y)=0\ \ \text{ou}\ \ \exists\lambda\in\R\ : \ N(y+\lambda x)=0$$ et de même pour la condition d'égalité dans l'inégalité triangulaire.
+\end{rmq}
+
+\begin{ex}
+	Si $f$ et $g$ sont des fonctions réelles continues par morceaux sur $[a,b]$ avec $a<b$, alors : $$\left(\int_{a}^{b}fg\right)^2\leqslant\left(\int_{a}^{b}f\right)\left(\int_{a}^{b}g\right)$$ avec égalité si, et seulement si, les restrictions de $f$ et $g$ au complémentaire d'une partie finie de $[a,b]$ sont proportionnelles.
+\end{ex}
+
+\subsection{Formules de polarisation}
+
+La norme euclidienne d'un espace vectoriel préhilbertien est définie à partir du produit scalaire. Réciproquement, si l'on connaît la norme euclidienne, on peut retrouver le produit scalaire grâce aux égalités suivantes appelées \textbf{formules (ou identités) de polarisation}.
+
+\begin{thm}{Formules de polarisation}
+	Pour tout $(x,y)\in E^2$, on a :
+	\begin{itemize}
+		\item $2(x\mid y)=\lVert x+y\rVert^2-\lVert x\rVert^2-\lVert y\rVert^2=\lVert x\rVert^2+\lVert y\rVert^2-\lVert x-y\rVert^2$ ;
+		\item $4(x\mid y)=\lVert x+y\rVert^2-\lVert x-y\rVert^2$.
+	\end{itemize}
+\end{thm}
+
+En combinant les deux premières formules de polarisation, on obtient le résultat suivant : 
+
+\begin{thm}{Identité du parallélogramme}
+	Pour tout $(x,y)\in E^2$, on a $\lVert x+y\rVert^2+\lVert x-y\rVert^2=2(\lVert x\rVert^2+\lVert y\rVert^2)$.
+\end{thm}
+
+\begin{rmq}
+	Cette égalité traduit le fait que, dans un parallélogramme, la somme des carrés des longueurs des deux diagonales est égale à la somme des carrés des longueurs des quatre côtés.
+\end{rmq}
+
+\begin{exo}
+	Montrer que réciproquement, toute norme vérifiant l'identité du parallélogramme est issue d'un produit scalaire.
+\end{exo}
+
+\subsection{Orthogonalité}
+On considère $E$ un espace vectoriel réel muni d'une forme bilinéaire symétrique $\varphi$ (en pratique, d'un produit scalaire).
+\subsubsection*{Définitions}
+
+\begin{dfn}
+	\begin{itemize}
+		\item On dit que deux vecteurs $x$ et $y$ de $E$ sont \textbf{orthogonaux} et l'on note $x\bot y$ lorsque $\varphi(x,y)=0$.
+		\item Si $A$ et $B$ sont deux parties de $E$, on dit que $A$ est orthogonale à $B$, et l'on note $A\bot B$, lorsque : $$\forall (x,y)\in A\times B,\ \varphi(x,y)=0$$
+		\item Si $A$ est une partie de $E$, l'\textbf{orthogonal} de $A$ est l'ensemble des vecteurs orthogonaux à tous les éléments de $A$. on le note $A^\bot$.
+	\end{itemize}
+\end{dfn}
+
+\begin{exo}
+	Montrer : 
+	\begin{enumerate}
+		\item $A\bot A^\bot$ ;
+		\item $B\subset A^\bot \iff A\bot B\iff A\subset B^\bot$.
+	\end{enumerate}
+\end{exo}
+
+\subsubsection*{Résultats}
+
+\begin{enumerate}
+	\item $A^\bot$ est un sous-espace vectoriel de $E$/
+	\item $A\subset B\implies B^\bot\subset A^\bot$.
+	\item $\text{Vect}(A)^\bot=A^\bot$.
+	\item $A\subset (A^\bot)^\bot$.
+	\item Pour un produit scalaire : $x\in A\cap A^\bot\implies x=0$.
+\end{enumerate}
+
+\subsubsection*{Bases orthogonales}
+
+\begin{dfn}
+	Une \textbf{famille orthogonale} est une famille de vecteurs deux à deux orthogonaux pour $\varphi$.
+\end{dfn}
+
+\begin{rmq}
+	\begin{itemize}
+		\item On dit qu'un vecteur $x$ est isotrope pour $\varphi$ lorsque $\varphi(x,x)=0$.
+		\item Seul $0$ est isotrope dans un espace préhilbertien.
+		\item Toute famille orthogonale constituée de vecteurs non isotropes est libre.
+		\item En particulier, dans un espace préhilbertien, toute famille orthogonale constituée de vecteurs non nuls est libre.
+	\end{itemize}
+\end{rmq}
+
+\begin{exo}
+	\begin{enumerate}
+		\item L'ensemble des vecteurs isotropes est-il un sous-espace vectoriel ?
+		\item Montrer que c'est le cas pour une forme quadratique positive.
+	\end{enumerate}
+\end{exo}
+
+\begin{thm}{}
+	Si $E$ est de dimension finie, il admet une base orthogonale.
+\end{thm}
+
+\subsection{Bases orthonormées}
+Soit $E$ un espace préhilbertien réel.
+
+\begin{dfn}
+	\begin{itemize}
+		\item On appelle vecteur normé, ou unitaire, tout vecteur de norme $1$.
+		\item On appelle \textbf{famille orthogonale} de $E$ toute famille de vecteurs de $E$ deux à deux orthogonaux.
+		\item On appelle \textbf{famille orthonormée} (ou \textbf{orthonormale}) de $E$ tout famille de vecteurs de $E$ normés et deux à deux orthogonaux.
+	\end{itemize}
+\end{dfn}
+
+\begin{thm}{}
+	Tout espace vectoriel euclidien admet une base orthonormée.
+\end{thm}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Dans $\R^n$ muni du produit scalaire canonique, les vecteurs de la base canonique sont normés et orthogonaux deux à deux.
+		\item Dans l'espace vectoriel des fonctions continues et $2\pi$-périodiques sur $\R$, muni du produit scalaire : $$(f,g)\mapsto\frac{1}{\pi}\int_{0}^{2\pi}f(x)g(x)\ dx$$ les fonctions $(f_k:x\mapsto\cos(kx))_{k\in\N}$ et $(g_k:x\mapsto\sin(kx))_{k\in\N}$ forment une famille orthogonale.
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	Dans le deuxième exemple ci-dessus, s'agit-il d'une famille orthonormée ?
+\end{exo}
+
+\begin{thm}{}
+	Soit $E$ un espace vectoriel euclidien et $\mathcal{B}=(e_1,\ldots,e_n)$ une base orthonormée de $E$.
+	\begin{enumerate}
+		\item Si $x$ est un vecteur de $E$, alors on a $x=\displaystyle\sum_{i=1}^{n}(e_i\mid x)e_i$.
+		\item Si $x=\displaystyle\sum_{i=1}^{n}x_ie_i$ et $y=\displaystyle\sum_{i=1}^{n}y_ie_i$ sont deux vecteurs de $E$, alors on a : $$(x\mid y)=\sum_{i=1}^{n}x_iy_i=X^TY\ \ \text{et}\ \ \lVert x\rVert^2=\sum_{i=1}^{n}x_i^2=X^TX$$ où $X$ et $Y$ sont les matrices colonnes constituées des composantes dans la base $\mathcal{B}$ des vecteurs $x$ et $y$.
+	\end{enumerate}
+\end{thm}
+
+\begin{exo}
+	Soit $O(t)$ un point et $\overrightarrow{u}(t)$, $\overrightarrow{v}(t)$ deux vecteurs orthonormées de l'espace, et $M(t)$ un point du plan $(O(t),\overrightarrow{u}(t),\overrightarrow{v}(t))$. On suppose que les fonctions $O$, $\overrightarrow{u}$, $\overrightarrow{v}$ et $M$ sont continues. Montrer que les coordonnées de $M(t)$ dans $(O(t),\overrightarrow{u}(t),\overrightarrow{v}(t))$ sont des fonctions continues de $t$.
+\end{exo}
+
+\subsection{Projection orthogonale}
+
+Soit $E$ un espace vectoriel préhilbertien.
+
+\subsubsection*{Orthogonal d'un sous-espace de dimension finie}
+
+\begin{thm}{}
+	Pour tout sous-espace vectoriel $F$ de dimension finie de $E$, on a $E=F\oplus F^\bot$. La \textbf{projection orthogonale} sur $F$, notée $\pi_F$ est la projection sur $F$ parallèlement à son supplémentaire orthogonal $F^\bot$. Si $\mathcal{B}=(e_1,\ldots,e_p)$ est une base orthonormée de $F$, le projeté orthogonal sur $F$ d'un vecteur $x$ de $E$ est $$\pi_F(x)=\sum_{i=1}^{p}(e_i\mid x)e_i$$
+\end{thm}
+
+\begin{thm}{}
+	Si $F$ est un sous-espace vectoriel de $E$ et si $E$ est de dimension finie, alors :
+	\begin{enumerate}
+		\item $\dim(F)+\dim(F^\bot)=\dim(E)$ ;
+		\item $(F^\bot)^\bot=F$.
+	\end{enumerate}
+\end{thm}
+
+\begin{ex}
+	En dimension finie, le supplémentaire orthogonal d'un hyperplan est donc une droite, et le supplémentaire orthogonal d'une droite, un hyperplan.
+\end{ex}
+
+\subsubsection*{Distance à un sous-espace vectoriel}
+
+\begin{dfn}
+	Soit $\mathcal{X}$ une partie non vide de $E$ et $A$ un point de $E$. On appelle \textbf{distance} de $A$ à $\mathcal{X}$ la quantité : $$d(A,\mathcal{X})=\underset{M\in\mathcal{X}}{\inf}d(A,M)$$
+\end{dfn}
+
+\begin{thm}{}
+	Soit $F$ un sous-espace vectoriel de dimension fini d'un espace préhilbertien réel $E$ et $x$ un vecteur de $E$. La distance du vecteur $x$ à $F$ est atteinte en un unique point de $F$, à savoir $\pi_F(x)$. Autrement dit : 
+	\begin{enumerate}
+		\item $d(x,F)=\lVert x-\pi_F(x)\rVert$ ;
+		\item $\forall y\in F,\ d(x,F)=\lVert x-y\rVert\iff y=\pi_F(x)$.
+	\end{enumerate}
+\end{thm}
+
+\begin{ex}
+	Calcul de $\displaystyle\underset{(a,b)\in\R^2}{\inf}\int_{0}^{2\pi}(x-a\cos(x)-b\sin(x))^2\ dx$
+\end{ex}
+
+\begin{exo}
+	Soit $F$ un sous-espace vectoriel de $E$.
+	\begin{enumerate}
+		\item Soit $x\in E$. Montrer que la distance de $x$ à $F$ est atteinte si, et seulement si, $x\in F+F^\bot$.
+		\item Retrouver que si $F$ est de dimension finie, alors $E=F\oplus F^\bot$.
+	\end{enumerate}
+\end{exo}
+
+\subsection{Procédé d'orthonormalisation de Gram-Schmidt}
+
+\begin{thm}{Algorithme d'orthogonalisation de Gram-Schmidt}
+	Soit $\mathcal{F}=(e_1,\ldots,e_n)$ une famille libre de $E$. Alors il existe une famille orthogonale $(g_1,\ldots,g_n)$ de vecteurs (non nuls) de $E$ telle que $$\forall p\in\llbracket 1,n\rrbracket,\ \text{Vect}\{e_1,\ldots,e_p\}=\text{Vect}\{g_1,\ldots,g_p\}$$
+\end{thm}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Si $(e_1,\ldots,e_n)$ est libre, il existe une famille orthonormée $(f_1,\ldots,f_n)$ de $E$ telle que $$\forall p\in\llbracket 1,n\rrbracket,\ \text{Vect}\{e_1,\ldots,e_p\}=\text{Vect}\{f_1,\ldots,f_p\}$$
+		\item Dans le procédé d'orthonormalisation de Gram-Schmidt, on construit le vecteur : $$g_{p+1}=e_{p+1}-\sum_{i=1}^{p}\lambda_ig_i$$ et l'on choisit $\lambda_i$ pour que $g_{p+1}-e_{p+1}$ soit orthogonal à $g_i$. On obtient donc le vecteur $g_{p+1}$ en retranchant à $e_{p+1}$ son projeté orthogonal sur $F=\text{Vect}(e_1,\ldots,e_p)$. Pour normaliser le vecteur $g_{p+1}$, il suffit alors d'appliquer le théorème de Pythagore aux vecteurs orthogonaux $\pi_F(e_{p+1})$ et $g_{p+1}$. On obtient ainsi : $$\lVert g_{p+1}\rVert^2=\lVert e_{p+1}\rVert^2-\lVert\pi_F(e_{p+1})\rVert^2=\lVert e_{p+1}\rVert^2-\sum_{i=1}^{p}\lambda_i\lVert g_i\rVert^2$$
+	\end{itemize}
+\end{rmq}
+
+\begin{exo}
+	Montrer que si $(e_1,\ldots,e_n)$ est une famille libre de $E$, alors il existe une unique famille orthonormée $(f_1,\ldots,f_n)$ de $E$ telle que pour tout $p\in\llbracket1,n\rrbracket$, on ait : $$\text{Vect}\{e_1,\ldots,e_p\}=\text{Vect}\{f_1,\ldots,f_p\}\ \ \text{et}\ \ (e_p\mid f_p)>0$$
+\end{exo}
+
+\begin{thm}{}
+	Soit $(e_n)_{n\in\N}$ une famille libre d'un espace préhilbertien réel $E$. Alors, il existe une famille orthonormée $(f_n)_{n\in\N}$ telle que $$\forall n\in\N,\ \text{Vect}\{e_0,\ldots,e_n\}=\text{Vect}\{f_0,\ldots,f_n\}$$
+\end{thm}
+
+\begin{thm}{(HP)}
+	Tout espace préhilbertien réel de dimension dénombrable possède une base orthonormée.
+\end{thm}
+
+\subsection{Matrices de Gram (HP)}
+
+Soit $E$ un espace préhilbertien réel. Pour tout famille finie $(x_i)_{1\leqslant i\leqslant p}$, on pose : $$G(x_1,\ldots,x_p)=((x_i|x_j))_{1\leqslant i,j\leqslant p}\ \ \text{et} \ \ \text{Gram}(x_1,\ldots,x_p)=\det G(x_1,\ldots,x_p)$$
+\begin{enumerate}
+	\item Montrer que $(x_i)$ est liée si, et seulement si, $\text{Gram}(x_i)=0$.
+	\item Montrer qu'ajouter à l'un des $x_i$ une combinaison linéaire des autres ne change pas le rang de $G(x_i)$.
+	\item Montrer que $\text{rg}G(x_i)=\text{rg}(x_i)$.
+	\item On suppose $E$ muni d'une base $\mathcal{B}=(e_1,\ldots,e_p)$. Donner une relation entre $G(x_i)$, $G(e_i)$ et $M_\mathcal{B}(x_i)$.
+	\item Montrer que $G(x_i)$ est positive et en déduire que $\text{Gram}(x_i)\geqslant0$.
+	\item Si $F$ est un sous-espace vectoriel dont $y_1$, ..., $y_p$ est une base, on a la formule : $$d(x,F)^2=\frac{\text{Gram}(x,y_1,\ldots,y_p)}{\text{Gram}(y_1,\ldots,y_p)}$$
+	\item Lorsque $E$ est de dimension finie $n$, exprimer $\text{Gram}(x_i)$ en fonction du produit mixte des vecteurs $x_i$ pour une orientation quelconque de $E$.
+\end{enumerate}
+
+\section{Adjoint d'un endomorphisme}
+
+Dans toute cette section, $E$ est un espace euclidien.
+
+\subsection{Définition}
+
+Pour tout vecteur $a$, l'application $x\mapsto (a\mid x)$ est une forme linéaire sur $E$. Le théorème de Riesz permet de montrer réciproquement que toute forme linéaire sur $E$ est de cette forme.
+
+\begin{thm}{}
+	Soit $\varphi$ une forme linéaire sur $E$. Il existe un unique vecteur $a\in E$ tel que $$\forall x\in E,\ \varphi(x)=(a\mid x)$$
+\end{thm}
+
+Le théorème de Riesz permet de définir l'adjoint d'un endomorphisme de $E$.
+
+\begin{thm}{Théorème de représentation de Riesz}
+	Soit $u\in\mathcal{L}(E)$. Il existe un unique endomorphisme de $E$, noté $u\st$, tel que $$\forall (x,y)\in E^2,\ (x\mid u(y))=(u\st(x)\mid y)$$ On l'appelle l'\textbf{adjoint} de $u$.
+\end{thm}
+
+\begin{rmq}
+	La preuve que nous venons de donner de la linéarité de l'adjoint découle d'un résultat plus général : si $u$ et $v$ sont des applications de $E$ dans $E$ vérifiant $$\forall (x,y)\in E^2,\ (x\mid u(y))=(v(x)\mid y)$$ alors $u$ et $v$ sont linéaires.
+\end{rmq}
+
+L'adjoint peut aussi exister en dimension infinie.
+\begin{ex}
+	On munit $\R[X]$ du produit scalaire définie par $$(P\mid Q)=\int_{-\infty}^{+\infty}P(x)Q(x)e^{-x^2}\ dx$$ En notant $D$ l'opérateur de dérivation et $M$ celui de multiplication par $X$, on a $M\st=M$ et $D\st=2M-D$.
+\end{ex}
+
+\subsection{Propriétés}
+
+\begin{thm}{}
+	\begin{itemize}
+		\item L'application $u\mapsto u\st$ est linéaire sur $\mathcal{L}(E)$.
+		\item Pour tout $(u,v)\in \mathcal{L}(E)^2$, dispose des relations : $$(v\circ u)\st=u\st\circ v\st \ \ \text{et}\ \ (u\st)\st=u$$
+	\end{itemize}
+\end{thm}
+
+\begin{rmq}
+	De la propriété précédente découle le fait que $u\mapsto u\st$ est une symétrie de l'espace vectoriel $\mathcal{L}(E)$.
+\end{rmq}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Si $u$ est un automorphisme, alors $u\st$ est un automorphisme et $(u\st)\inv=(u\inv)\st$.
+		\item En reprenant l'exemple précédent, l'endomorphisme $D^2-2MD$ est égal à son adjoint.
+	\end{enumerate}
+\end{ex}
+
+\begin{thm}{}
+	Soit $u\in\mathcal{L}(E)$ et $\mathcal{B}$ une base orthonormée de $E$. Alors $M_\mathcal{B}(u\st)=M_\mathcal{B}(u)^T$.
+\end{thm}
+
+\begin{rmq}
+	On munit $\R^n$ de sa structure euclidienne canonique. Soit $A\in\mathcal{M}_n(\R)$ dont on note $\varphi_A$ l'endomorphisme canoniquement associé. Alors $(\varphi_A)\st$ est l'endomorphisme canoniquement associé à $A^T$ car la base canonique de $\R^n$ est une base orthonormée.
+\end{rmq}
+
+\begin{thm}{}
+	Soit $u\in\mathcal{L}(E)$. Alors on a : $$\det(u\st)=\det(u)\ ; \ \Tr(u\st)=\Tr(u)\ \text{et}\ \text{rg}(u\st)=\text{rg}(u)$$
+\end{thm}
+
+\begin{thm}{}
+	Soit $u\in\mathcal{L}(E)$. Alors on a : $$\ker(u\st)=\text{Im}(u)^\bot \ \ \text{et} \ \ \text{Im}(u\st)=\ker(u)^\bot$$
+\end{thm}
+
+\begin{rmq}
+	En remplaçant $u$ par $u\st$ et en utilisant le fait que $(u\st)\st=u$, on obtient aussi : $$\ker(u)=\text{Im}(u\st)^\bot \ \ \text{et} \ \ \text{Im}(u)=\ker(u\st)^\bot$$
+\end{rmq}
+
+\begin{thm}{}
+	Soit $u\in\mathcal{L}(E)$ et $F$ un sous-espace vectoriel de $E$ stable par $u$. Alors $F^\bot$ est stable par $u$.
+\end{thm}
+
+\section{Matrices orthogonales}
+
+\subsection{Définition}
+
+\begin{dfn}
+	Soit $A\in\mathcal{M}_n(\R)$. On dit que $A$ est une matrice orthogonale lorsque $A^TA=I_n$.
+\end{dfn}
+
+\paragraph{Notation} On note $\mathcal{O}_n(\R)$ ou encore $\mathcal{O}(n)$ l'ensemble des matrices orthogonales de $\mathcal{M}_n(\R)$.
+
+\begin{thm}
+	Soit $A\in\mathcal{M}_n(\R)$ dont note note $C_1,\ldots,C_n$ les colonnes et $L_1,\ldots,L_n$ les lignes (vues comme des vecteurs de $\R^n$). Alors la matrice $A$ est orthogonale si, et seulement si, l'une des propriétés équivalentes suivantes est vérifiée :
+	\begin{enumerate}[label=(\roman*)]
+		\item $A^TA=I_n$ ;
+		\item $AA^T=I_n$ ;
+		\item $A\in\mathcal{GL}_n(\R)$ et $A\inv=A^T$ ;
+		\item la famille $(C_1,\ldots,C_n)$ est une base orthonormée ;
+		\item la famille $(L_1,\ldots,L_n)$ est une base orthonormée.
+	\end{enumerate}
+\end{thm}
+
+\begin{ex}
+	\begin{enumerate}
+		\item La matrice $A=\displaystyle\begin{pmatrix}
+			1&1\\
+			0&1
+		\end{pmatrix}$ n'est pas une matrice orthogonale. En effet, sa deuxième colonne n'est pas unitaire.
+		\item Pour tout $\theta\in\R$, la matrice $R(\theta)=\displaystyle\begin{pmatrix}
+			\cos(\theta)&-\sin(\theta)\\
+			\sin(\theta)&\cos(\theta)
+		\end{pmatrix}$ est une matrice orthogonale. En effet, les deux colonnes sont évidemment orthogonales et aussi unitaires car $\cos^2(\theta)+\sin^2(\theta)=1$.
+		\item La base canonique de $\R^n$ étant une base orthonormée, tout matrice obtenue en permutant les colonnes et/ou les lignes de la matrice $I_n$ est orthogonale.
+		\item Si l'un des coefficients d'une matrice orthogonale vaut $-1$ ou $1$, alors tous les autres coefficients de la ligne et de la colonne sont nuls.
+	\end{enumerate}
+\end{ex}
+
+La propriété suivante exprime le fait que les matrices de $\mathcal{O}_n(\R)$ sont les matrices de changement de base orthonormée dans n'importe quel espace euclidien de dimension $n$.
+
+\begin{thm}{}
+	Soit $\mathcal{B}$ une base orthonormée de $E$ et $\mathcal{B}'$ une famille de $n$ vecteurs de $E$. Alors $\mathcal{B}'$ est une base orthonormée de $E$ si, et seulement si, $M_\mathcal{B}(\mathcal{B}')\in\mathcal{O}_n(\R)$.
+\end{thm}
+
+\begin{dfn}
+	Deux matrices $A$ et $B$ de $\mathcal{M}_n(\R)$ sont dites \textbf{orthogonalement semblables} lorsque : $$\exists P\in\mathcal{O}_n(\R)\ : \ A=PBP\inv$$
+\end{dfn}
+
+\begin{rmq}
+	Deux matrices qui représentent un même endomorphisme dans deux bases orthonormées sont donc orthogonalement semblables en vertu des formules de changement de base et de la propriété précédente.
+\end{rmq}
+
+\begin{met}
+	Pour montrer que deux matrices $A$ et $B$ de $\mathcal{M}_n(\R)$ sont orthogonalement semblables, on pourra montrer qu'il existe une base orthonormée de $\R^n$ dans laquelle l'endomorphisme canoniquement associé à $A$ a pour matrice $B$.
+\end{met}
+
+\subsection{Le groupe orthogonal}
+
+\begin{rmq}
+	Soit $A\in\mathcal{O}_n(\R)$. Alors $A^TA=I_n$ puis, par passage au déterminant et par conservation du déterminant par transposition, on obtient $\det(A)^2=1$ donc $\det(A)\in\{-1,1\}$, ce qui justifie la définition suivante.
+\end{rmq}
+
+\begin{dfn}
+	Une matrice $A\in\mathcal{O}_n(\R)$ est dite :
+	\begin{itemize}
+		\item \textbf{positive}, ou \textbf{directe}, lorsque $\det(A)=1$ ;
+		\item \textbf{négative}, ou \textbf{indirecte}, lorsque $\det(A)=-1$.
+	\end{itemize}
+\end{dfn}
+
+\paragraph{Notation} On note $\mathcal{SO}_n(\R)$ l'ensemble des matrices orthogonales positives de $\mathcal{M}_n(\R)$, aussi appelées \textbf{matrices de rotations}.
+
+\begin{thm}{}
+	Les ensembles $\mathcal{O}_n(\R)$ et $\mathcal{SO}_n(\R)$ sont des sous-groupes de $\mathcal{GL}_n(\R)$.
+\end{thm}
+
+\paragraph{Terminologie} Ces groupes sont respectivement appelés \textbf{groupe orthogonale d'ordre n} et \textbf{groupe spécial orthogonal d'ordre n}.
+
+\subsection{Espaces euclidiens orientés}
+
+Dans cette sous-section, on suppose que $E$ est un espace euclidien non nul.
+
+\paragraph{Rappel} On définit sur l'ensemble des bases de $E$ une relation d'équivalence en posant :
+$$\mathcal{B}\mathcal{R}\mathcal{B}'\iff \det_\mathcal{B}(\mathcal{B}')>0$$
+\begin{itemize}
+	\item Pour cette relation, il y a deux classes d'équivalence.
+	\item Orienter l'espace $E$ revient à choisir l'une de ces deux classes et décréter "directes" ses éléments.
+	\item On oriente $\R^n$, pour $n>0$, en décrétant directe sa base canonique.
+	\item Lorsque $\mathcal{B}\mathcal{R}\mathcal{B}'$, on dit que les bases $\mathcal{B}$ et $\mathcal{B}'$ définissent la même orientation.
+\end{itemize}
+
+\begin{thm}{}
+	Soit $\mathcal{B}$ une base orthonormée de $E$ et $\mathcal{B}'$ une famille de $n$ vecteurs de $E$. Alors $\mathcal{B}'$ est une base orthonormée de même orientation que $\mathcal{B}$ si, et seulement si, $M_\mathcal{B}(\mathcal{B}')\in\mathcal{SO}_n(\R)$.
+\end{thm}
+
+\begin{rmq}
+	Les matrices orthogonales positives sont donc les matrices de changement de bases orthonormées directes. En particulier, $A\in\mathcal{SO}_n(\R)$ si, et seulement si, la famille des colonnes de $A$ est une base orthonormée directe de $\R^n$.
+\end{rmq}
+
+\begin{thm}{}
+	Soit $\mathcal{B}$ et $\mathcal{B}'$ deux bases orthonormées directes de $E$. Alors on a : $$\det_\mathcal{B}=\det_{\mathcal{B}'}$$
+\end{thm}
+
+\paragraph{Terminologie} Pour $(u_1,\ldots,u_n)\in E^n$, le réel $\det_\mathcal{B}(u_1,\ldots,u_n)$, indépendant de la base orthonormée directe $\mathcal{B}$ choisie, est appelé \textbf{produit mixte} de $(u_1,\ldots,u_n)$ et parfois noté $[u_1,\ldots,u_n]$.
+
+\begin{dfn}
+	On suppose $n\geqslant 2$. Pour $(u_1,\ldots,u_{n-1})\in E^{n-1}$, on considère $$\begin{array}{lrcl}
+		\varphi:&E&\longrightarrow&\R \\
+		&x&\longmapsto&[u_1,\ldots,u_{n-1},x]
+	\end{array}$$ $\varphi$ est une forme linéaire sur $E$ donc il existe un unique $w\in E$ tel que $\forall x\in E,\ \varphi(x)=(w\mid x)$. $w$ est appelé le \textbf{produit vectoriel} de $u_1,\ldots,u_{n-1}$. On le note $u_1\wedge \cdots\wedge u_{n-1}$.
+\end{dfn}
+
+\begin{rmq}
+	L'application : $$\begin{array}{rcl}
+		E^{n-1}&\longrightarrow& E\\
+		(u_1,\ldots,u_{n-1})&\longmapsto&u_1\wedge\cdots\wedge u_{n-1}
+	\end{array}$$ est $(n-1)$-linéaire alternée.
+\end{rmq}
+
+\section{Endomorphismes autoadjoints}
+
+\subsection{Généralités}
+
+\begin{dfn}
+	On dit qu'un endomorphisme $u\in\mathcal{L}(E)$ est \textbf{autoadjoint} lorsque $u\st=u$, c'est-à-dire lorsque $$\forall (x,y)\in E^2,\ (x\mid u(y))=(u(x)\mid y)$$
+\end{dfn}
+
+\paragraph{Notation} L'ensemble des endomorphismes autoadjoints de $E$ est noté $\mathcal{S}(E)$.
+
+\paragraph{Terminologie} Un endomorphisme autoadjoint est parfois appelé \textbf{endomorphisme symétrique}, ce qui explique la notation $\mathcal{S}(E)$.
+
+\begin{thm}{}
+	L'ensemble $\mathcal{S}(E)$ est un sous-espace vectoriel de $\mathcal{L}(E)$.
+\end{thm}
+
+\begin{thm}{}
+	Soit $\mathcal{B}$ une base orthonormée de $E$ et $u\in\mathcal{L}(E)$. Alors : $$u\in \mathcal{S}(E)\iff M_\mathcal{B}(u)\in\mathcal{S}_n(\R)$$
+\end{thm}
+
+\begin{rmq}
+	On munit $\R^n$ de sa structure euclidienne canonique, si bien que la base canonique est une bas orthonormée. Soit $A\in\mathcal{M}_n(\R)$. L'endomorphisme canoniquement associé à la matrice $A$ est autoadjoint si, et seulement si, $A\in\mathcal{S}_n(\R)$.
+\end{rmq}
+
+\paragraph{Attention} L'ensemble $\mathcal{S}(E)$ n'est en général pas stable par composition.
+
+\begin{thm}{}
+	L'espace vectoriel $\mathcal{S}(E)$ est de dimension $\displaystyle\frac{n(n+1)}{2}$.
+\end{thm}
+
+\begin{thm}{}
+	Soit $u\in\mathcal{S}(E)$ et $F$ un sous-espace vectoriel stable par $u$. Alors l'endomorphisme induit $u_F$ est autoadjoint.
+\end{thm}
+
+\subsubsection*{Projecteurs orthogonaux}
+
+\begin{dfn}
+	Soit $p$ un projecteur de $E$. On dit que $p$ est un \textbf{projecteur orthogonal} si $\ker(p)$ et $\text{Im}(p)$ sont orthogonaux.
+\end{dfn}
+
+\begin{rmq}
+	Si $p$ est un projecteur orthogonal, on a la décomposition : $$E=\text{Im}(p)\overset{\bot}{\oplus}\ker(p)\ \ \text{donc} \ \ \text{Im}(p)=\ker(p)^\bot\ \ \text{et}\ \ \ker(p)=\text{Im}(p)^\bot$$
+\end{rmq}
+
+\begin{thm}{}
+	Un projecteur de $E$ est orthogonal si, et seulement s'il est autoadjoint.
+\end{thm}
+
+\begin{rmq}
+	On munit $\R^n$ de sa structure euclidienne canonique. Soit $A\in\mathcal{M}_n(\R)$. L'endomorphisme canoniquement associé à $A$ est un projecteur orthogonal si, et seulement si, $A^2=A$ et $A\in\mathcal{S}_n(\R)$.
+\end{rmq}
+
+\begin{exo}
+	Soit $p$ un projecteur de $E$. Montrer que $p$ est un projecteur orthogonal si, et seulement si, $\forall x\in E,\ \lVert p(x)\rVert\leqslant\lVert x\rVert$.
+\end{exo}
+
+\subsection{Réduction des endomorphismes}
+
+\begin{thm}{}
+	Soit $u$ un endomorphisme d'un $\R$-espace vectoriel $E$ de dimension finie non nulle. Alors il existe une droite ou un plan stable par $u$.
+\end{thm}
+
+\begin{thm}{}
+	Soit $u\in\mathcal{S}(E)$ et $F$ sous-espace vectoriel stable par $u$. Alors $F^\bot$ est stable par $u\st$.
+\end{thm}
+
+\begin{thm}{}
+	Les sous-espaces propres d'un endomorphisme autoadjoint sont deux à deux orthogonaux.
+\end{thm}
+
+Dans le théorème suivant et dans le reste du chapitre, $E_\lambda(u)$ désigne le sous-espace propre de l'endomorphisme $u$ associé à la valeur propre $\lambda$.
+
+\begin{thm}{Théorème spectral}
+	Soit $u\in\mathcal{L}(E)$. les propositions suivantes sont équivalentes :
+	\begin{enumerate}
+		\item $u$ est autoadjoint ;
+		\item $\displaystyle E=\bigoplus_{\lambda\in\text{Sp}(u)}^{\bot}E_\lambda(u)$ ;
+		\item il existe une base orthonormée de $E$ diagonalisant $u$.
+	\end{enumerate}
+\end{thm}
+
+\begin{ex}
+	Si $u$ est un endomorphisme autoadjoint d'un espace vectoriel euclidien non nul, on a : $$\underset{\lVert x\rVert=1}{\min}(x\mid u(x))=\min\text{Sp}(u)\ \ \text{et}\ \ \underset{\lVert x\rVert=1}{\max}(x\mid u(x))=\max\text{Sp}(u)$$
+\end{ex}
+
+\begin{exo}
+	\begin{enumerate}
+		\item Montrer que pour tout $u\in\mathcal{S}(E)$, on a $\lVert u\rVert_{op}=\displaystyle\underset{\lambda\in\text{Sp}(u)}{\max}\lvert\lambda\rvert$.
+		\item Montrer que pour tout $u\in\mathcal{L}(E)$, on a $\lVert u\rVert_{op}=\sqrt{\lVert u\st\circ u\rVert_{op}}=\displaystyle\underset{\lambda\in\text{Sp}(u\st\circ u)}{\max}\sqrt{\lambda}$.
+	\end{enumerate}
+\end{exo}
+
+\begin{thm}{}
+	Une matrice $A\in\mathcal{M}_n(\R)$ est symétrique si, et seulement si, elle est orthogonalement semblable à une matrice diagonale.
+\end{thm}
+
+\begin{rmq}
+	Le corollaire précédent fournit une condition suffisant extrêmement simple de diagonalisabilité d'une matrice réelle : il suffit qu'elle soit symétrique.
+\end{rmq}
+
+\paragraph{Attention} Ce résultat n'est plus vrai pour les matrices complexes. La matrice complexe symétrique $\displaystyle\begin{pmatrix}
+	i&1\\
+	1&-i
+\end{pmatrix}$ est nilpotente, non nulle, donc n'est pas diagonalisable.
+
+\begin{ex}
+	On considère $A=\displaystyle\begin{pmatrix}
+		1&1&1\\
+		1&1&1\\
+		1&1&1
+	\end{pmatrix}\in\mathcal{S}_3(\R)$.
+	\begin{itemize}
+		\item On a $\text{rg}(A)=1$ donc $0$ est valeur propre de multiplicité $2$ puisque $A$ est symétrique réelle donc diagonalisable. Le noyau de $A$ est le plan d'équation $x+y+z=0$ dont $(e_1,e_2)$ est une base orthonormée avec $$e_1=\frac{1}{\sqrt{2}}\begin{pmatrix}
+			1\\
+			-1\\
+			0
+		\end{pmatrix}\ \ \text{et}\ \ e_2=\frac{1}{\sqrt{6}}\begin{pmatrix}
+		1\\
+		1\\
+		-2
+		\end{pmatrix}$$
+		\item Par ailleurs, $\Tr(A)=3$ donc $3$ est la dernière valeur propre et $e_3=\displaystyle\frac{1}{\sqrt{3}}\begin{pmatrix}
+			1\\
+			1\\
+			1
+		\end{pmatrix}$ est un vecteur propre unitaire associé.
+		\item On pose $P\in\mathcal{O}_3(\R)$ la matrice dont les colonnes sont $(e_1,e_2,e_3)$ et, par les formules de changement de bases, on a : $$A=PDP\inv\ \ \text{avec}\ \ D=\text{Diag}(0,0,3)\ \ \text{et}\ \ P\inv=P^T$$
+	\end{itemize}
+\end{ex}
+
+\begin{exo}
+	Soit $A\in\mathcal{M}_n(\R)$. On suppose que pour tout matrice $P\in\mathcal{O}_n(\R)$, la matrice $P\inv AP$ est à diagonale nulle. Montrer que $A$ est antisymétrique.
+\end{exo}
+
+\begin{thm}{Représentation des formes bilinéaires (HP)}
+	Pour tout endomorphisme $u$ de $E$, on note : $$\begin{array}{lrcl}
+		\varphi_u:&E^2&\longrightarrow&\R \\
+		&(x,y)&\longmapsto&(x\mid u(y))
+	\end{array}$$
+	\begin{enumerate}
+		\item L'application $u\mapsto\varphi_u$ est un isomorphisme de $\mathcal{L}(E)$ sur $\mathcal{BL}(E)$.
+		\item Elle induit un isomorphisme de $\mathcal{S}(E)$ sur $\mathcal{BLS}(E)$.
+	\end{enumerate}
+\end{thm}
+
+\begin{exo}
+	Soit $q$ une forme quadratique sur $E$. Montrer qu'il existe une base orthonormée $(e_1,\ldots,e_n)$ de $E$ et des scalaires ($\lambda_1,\ldots,\lambda_n)\in\R^n$ tels que $$\forall (x_1,\ldots,x_n)\in\R^n,\ q\left(\sum_{i=1}^{n}x_ie_i\right)=\sum_{i=1}^{n}\lambda_ix_i^2$$
+\end{exo}
+
+\begin{rmq}
+	Soit $A\in\mathcal{S}_n(\R)$. $A$ représente une forme quadratique sur $\R^n$. Si on note $B$ la sous-matrice de $A$ obtenue en conservant les coefficients $(i,j)\in\llbracket1,n\rrbracket^2$, alors $B$ représente la restriction de la forme quadratique à $\R^{n-1}$.
+\end{rmq}
+
+\subsection{Endomorphismes autoadjoints (définis) positifs}
+
+\begin{dfn}
+	Soit $u\in\mathcal{S}(E)$.
+	\begin{itemize}
+		\item On dit que $u$ est autoadjoint \textbf{positif} lorsque $$\forall x\in E,\ (x\mid u(x))\geqslant 0$$
+		\item On dit que $u$ est autoadjoint \textbf{défini positif} lorsque $$\forall x\in E\setminus\{0\},\ (x\mid u(x))> 0$$
+	\end{itemize}
+\end{dfn}
+
+\paragraph{Notation} L'ensemble des endomorphismes autoadjoints positifs (respectivement définis positifs) de $E$ est noté $\mathcal{S}^+(E)$ (respectivement $\mathcal{S}^{++}(E)$).
+
+\begin{rmq}
+	Comme $u$ est autoadjoint, la forme bilinéaire $(x,y)\mapsto (x\mid u(y))$ est symétrique.
+	\begin{itemize}
+		\item Elle est positive si, et seulement si, $u$ est positif.
+		\item C'est un produit scalaire si, et seulement si, $u$ est défini positif.
+	\end{itemize}
+\end{rmq}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Soit $u\in\mathcal{L}(E)$. Alors $u\st\circ u\in\mathcal{S}^+(E)$.
+		\item L'exemple précédent montrer que $u$ est injectif (et donc bijectif en dimension finie) si, et seulement si, $u\st\circ u\in\mathcal{S}^{++}(E)$.
+	\end{enumerate}
+\end{ex}
+
+La propriété suivante fournit une caractérisation des endomorphismes autoadjoints (définis) positifs à l'aide de leur spectre.
+
+\begin{thm}{}
+	Soit $u\in\mathcal{S}(E)$. On a les équivalences suivantes : 
+	\begin{itemize}
+		\item $u\in\mathcal{S}^+(E)\iff \text{Sp}(u)\subset\R_+$ ;
+		\item $u\in\mathcal{S}^{++}(E)\iff \text{Sp}(u)\subset\R_+\st$.
+	\end{itemize}
+\end{thm}
+
+\begin{ex}
+	Si $u$ est un endomorphisme autoadjoint d'un espace vectoriel euclidien non nul, on a : $$\underset{\lVert x\rVert=1}{\min}(x\mid u(x))=\min\text{Sp}(u)\ \ \text{et}\ \ \underset{\lVert x\rVert=1}{\max}(x\mid u(x))=\max\text{Sp}(u)$$
+\end{ex}
+
+Munissons $\R^n$ de sa structure euclidienne canonique. En appliquant les définitions et caractérisations qui précèdent à l'endomorphisme canoniquement associé à une matrice, on obtient les définitions suivantes.
+
+\begin{dfn}
+	Soit $A\in\mathcal{S}_n(\R)$. On dit que $A$ est une matrice :
+	\begin{itemize}
+		\item \textbf{symétrique positive} lorsque : $$\forall x\in\R^n,\ (x\mid Ax)\geqslant 0\ \ \text{ou encore}\ \ \text{Sp}(A)\subset\R_+$$
+		\item \textbf{symétrique définie positive} lorsque : $$\forall x\in\R^n\setminus\{0\},\ (x\mid Ax)\geqslant 0\ \ \text{ou encore}\ \ \text{Sp}(A)\subset\R_+\st$$
+	\end{itemize}
+\end{dfn}
+
+\paragraph{Notation} On note respectivement $\mathcal{S_n}^+(\R)$ et $\mathcal{S}_n^{++}(\R)$ l'ensemble des matrices symétriques positives et l'ensemble des matrices symétriques définies positives.
+
+\begin{ex}
+	\begin{enumerate}
+		\item La matrice nulle est une matrice symétrique positive.
+		\item Par caractérisation par le spectre, si une matrice symétrique est définie positive, elle a une trace et un déterminant strictement positifs. La réciproque est fausse dès que $n\geqslant 3$, comme le montre l'exemple de la matrice $\text{Diag}(-1,-1,3,\ldots,3)$.
+		\item Soit $A\in\mathcal{M}_n(\R)$. En notant $(e_1,\ldots,e_n)$ la base canonique de $\R^n$, on a : $$\forall i\in\llbracket1,n\rrbracket,\ a_{i,i}=(e_i\mid Ae_i)$$ Une matrice symétrique (définie) positive a donc tous ses coefficients diagonaux (strictement) positifs.
+		\item Soit $A\in\mathcal{S}_2(\R)$. Alors : $$A\in\mathcal{S}_2^{++}(\R)\iff \Tr(A)>0\ \text{et}\ \det(A)>0$$
+	\end{enumerate}
+\end{ex}
+
+\subsection{Applications (HP)}
+
+\begin{thm}{Pseudo-réduction simultanée}
+	Soit $A\in\mathcal{S}_n^{++}(\R)$ et $B\in\mathcal{S}_n(\R)$. Alors il existe une matrice $P\in\mathcal{GL}_n(\R)$ et une matrice diagonale $D\in\mathcal{M}_n(\R)$ telles que $$A=P^TP\ \ \text{et}\ \ B=P^TDP$$
+\end{thm}
+
+\begin{proof}
+	On considère $E$ l'espace vectoriel euclidien $\R^n$ muni du produit scalaire $(X,Y)\mapsto X^TAY$. Ensuite, $q:X\mapsto X^TBX$ est une forme quadratique sur $E$. On prend alors $u\in\mathcal{S}(E)$ telle que $\forall x\in E,\ q(x)=(x\mid u(x))$ d'après le théorème de représentation des formes bilinéaires symétriques. On fixe $\mathcal{B}$ une base orthonormée de diagonalisation de $u$. Alors : $$M_\mathcal{B}(u)=D\ \ \text{donc} \ \ M_\mathcal{B}(q)=D$$ Or, on a aussi $M_{\mathcal{B}_c}(q)=B$ et on a : $$M_\mathcal{B}((\cdot\mid\cdot))=I_n \ \ \text{et} \ \ M_{\mathcal{B}_c}((\cdot\mid\cdot))=A$$ Par conséquent, il existe $P\in\mathcal{GL}_n(\R)$ telle que $$A=P^TI_nP\ \ \text{et}\ \ B=P^TDP$$
+\end{proof}
+
+\begin{thm}{Racine carrée}
+	Soit $u$ un endomorphisme autoadjoint positif. Alors, il existe un unique endomorphisme autoadjoint positif $v$ tel que $u=v^2$.
+\end{thm}
+
+\begin{thm}{Décomposition polaire}
+	Soit $M\in\mathcal{GL}_n(\R)$. Alors, il existe un unique couple $(O,S)\in\mathcal{O}_n(\R)\times\mathcal{S}_n^{+}(\R)$ tel que $M=OS$.
+\end{thm}
+
+\begin{exo}
+	Montrer que le résultat d'existence subsiste pour tout matrice de $\mathcal{M}_n(\R)$. Y a-t-il encore unicité ?
+\end{exo}
+
+\section{Isométries vectorielles}
+
+\subsection{Généralités}
+
+\begin{dfn}
+	Soit $u\in\mathcal{L}(E)$. On dit que $u$ est une \textbf{isométrie vectorielle} lorsque $$\forall x\in E,\ \lVert u(x)\rVert=\lVert x\rVert$$
+\end{dfn}
+
+\paragraph{Notation} On note $\mathcal{O}(E)$ l'ensemble des isométries vectorielles de $E$.
+
+\begin{rmq}
+	Attention ! La notion d'isométrie vectorielle dépend de la norme euclidienne et donc du produit scalaire. On pourra donc, dans certains cas où ce n'est pas clair, indexer $\mathcal{O}(E)$ par le produit scalaire correspondant.
+\end{rmq}
+
+\begin{thm}{}
+	Soit $u\in\mathcal{L}(E)$. Soit $\mathcal{B}$ une base orthonormée de $E$. Les propriétés suivantes sont équivalentes : \begin{enumerate}[label=(\roman*)]
+		\item $u\in\mathcal{O}(E)$ ;
+		\item $\forall (x,y)\in E^2,\ \left(u(x)\mid u(y)\right)=(x\mid y)$ ;
+		\item $u\in\mathcal{GL}(E)$ et $u\inv=u\st$ ;
+		\item $M_\mathcal{B}(u)\in\mathcal{O}_n(\R)$ ;
+		\item la famille $u(\mathcal{B})$ est une base orthonormée de $E$.
+	\end{enumerate}
+\end{thm}
+
+\paragraph{Terminologie} Une isométrie étant un élément de $\mathcal{GL}(E)$, on parle parfois d'\textbf{automorphisme orthogonal} pour désigner un tel élément, ce qui explique la notation $\mathcal{O}(E)$.
+
+\begin{thm}{}
+	Soit $u\in\mathcal{O}(E)$. Alors, $\det(u)\in\{-1,1\}$.
+\end{thm}
+
+\begin{dfn}
+	Une isométrie vectorielle $u\in\mathcal{O}(E)$ est dite :
+	\begin{itemize}
+		\item \textbf{positive} ou \textbf{directe} lorsque $u$ est de déterminant $1$ ;
+		\item \textbf{négative} ou \textbf{indirecte} lorsque $u$ est de déterminant $-1$.
+	\end{itemize}
+\end{dfn}
+
+\paragraph{Notation} On note $\mathcal{SO}(E)$ l'ensemble des isométries positives de $E$, aussi appelées \textbf{rotations} de $E$.
+
+\begin{thm}{}
+	Soit $u\in\mathcal{L}(E)$ et $\mathcal{B}$ une base orthonormée de $E$. Alors, on a : $$u\in\mathcal{SO}(E)\iff M_\mathcal{B}(u)\in\mathcal{SO}_n(\R)$$
+\end{thm}
+
+\paragraph{Conséquence} On munit $\R^n$ de sa structure euclidienne orientée canonique. Soit $A\in\mathcal{M}_n(\R)$. La matrice $A$ est orthogonale (respectivement orthogonale positive) si, et seulement si, l'endomorphisme canoniquement associé à $A$ est une isométrie (respectivement une isométrie directe).
+
+\begin{thm}{}
+	Les ensembles $\mathcal{O}(E)$ et $\mathcal{SO}(E)$ sont des sous-groupes de $\mathcal{GL}(E)$.
+\end{thm}
+
+\paragraph{Terminologie} Les groupes $\mathcal{O}(E)$ et $\mathcal{SO}(E)$ sont appelés respectivement \textbf{groupe orthogonal de E} et \textbf{groupe spécial orthogonal de E}.
+
+\begin{thm}
+	On suppose $E$ orienté et on se donne $u\in\mathcal{L}(E)$ et $\mathcal{B}$ une base orthonormée directe de $E$. Alors $u\in\mathcal{SO}(E)$ si, et seulement si, l'image de $\mathcal{B}$ par $u$ est une base orthonormée directe de $E$.
+\end{thm}
+
+\subsubsection*{Symétries orthogonales}
+
+\begin{dfn}
+	Soit $F$ un sous-espace vectoriel de $E$. On appelle \textbf{symétrie orthogonale} par rapport à $F$ la symétrie par rapport à $F$ parallèlement à $F^\bot$.
+\end{dfn}
+
+\begin{rmq}
+	Pour cette définition, il suffit que $F$ soit de dimension finie, même si $E$ est de dimension infinie.
+\end{rmq}
+
+\paragraph{Terminologie} Une symétrie orthogonale par rapport à un hyperplan est appelée \textbf{réflexion}.
+
+\begin{thm}{}
+	Soit $s\in\mathcal{L}(E)$ une symétrie orthogonale. Alors $s\in\mathcal{O}(E)$.
+\end{thm}
+
+\begin{exo}
+	\begin{enumerate}
+		\item Soit $s\in\mathcal{L}(E)$ une réflexion par rapport à un hyperplan $H$. En considérant une base orthonormée $\mathcal{B}$ adaptée à la décomposition $E=H\oplus H^\bot$, on a : $$M_\mathcal{B}(s)=\begin{pmatrix}
+			I_{n-1}&(0)\\
+			(0)&-1
+		\end{pmatrix}$$ donc $\det(s)=-1$. Par ailleurs, $s$ est une isométrie vectorielle puisque c'est une symétrie orthogonale. Une réflexion est donc une isométrie vectorielle indirecte.
+		\item Soit $s$ une symétrie de $E$ vérifiant $s\in\mathcal{O}(E)$. Alors on a : $$s^2=\text{Id}_E\ \ \text{et}\ \ \ s\st\circ s=\text{Id}_E$$ donc $s=s\st$. Comme $s$ est un endomorphisme autoadjoint, les sous-espaces propres $\ker(s-\text{Id}_E)$ et $\ker(s+\text{Id}_E)$ sont orthogonaux, donc $s$ est une symétrie orthogonale.
+	\end{enumerate}
+\end{exo}
+
+\subsection{Isométries en dimension $2$}
+
+\begin{thm}{}
+	Soit $A\in\mathcal{M}_2(\R)$. Alors, on dispose des caractérisations suivantes :
+	\begin{itemize}
+		\item $A\in\mathcal{SO}_2(\R)\iff \exists\theta\in\R\ : \ A=\displaystyle\begin{pmatrix}
+			\cos(\theta)&-\sin(\theta)\\
+			\sin(\theta)&\cos(\theta)
+		\end{pmatrix}$
+		\item $A\in\mathcal{O}_2(\R)\setminus\mathcal{SO}_2(\R)\iff \exists\theta\in\R\ : \ A=\displaystyle\begin{pmatrix}
+			\cos(\theta)&\sin(\theta)\\
+			\sin(\theta)&-\cos(\theta)
+		\end{pmatrix}$
+	\end{itemize}
+\end{thm}
+
+\begin{thm}{}
+	L'application : $$\begin{array}{lrcl}
+		R:&(\R,+)&\longrightarrow&(\mathcal{SO}_2(\R),\times)\\
+		&\theta&\longmapsto&\displaystyle\begin{pmatrix}
+			\cos(\theta)&-\sin(\theta)\\
+			\sin(\theta)&\cos(\theta)
+		\end{pmatrix} 
+	\end{array}$$ est un morphisme de groupes surjectif de noyau $2\pi\Z$.
+\end{thm}
+
+\begin{thm}{}
+	Le groupe $\mathcal{SO}_2(\R)$ est commutatif et isomorphe à $\U$.
+\end{thm}
+
+Dans le reste de cette section, $E$ désigne un plan euclidien orienté, c'est-à-dire un espace euclidien de dimension $2$ que l'on oriente par le choix d'une base orthonormée directe de référence.
+
+\begin{thm}{}
+	Soit $u\in\mathcal{SO}(E)$. Il existe $\theta\in\R$, unique modulo $2\pi$, tel que pour toute base orthonormée directe $\mathcal{B}$, on ait : $$M_\mathcal{B}(u)=\begin{pmatrix}
+		\cos(\theta)&-\sin(\theta)\\
+		\sin(\theta)&\cos(\theta)
+	\end{pmatrix}$$
+\end{thm}
+
+\paragraph{Terminologie} Un tel élément de $\mathcal{SO}(E)$ est appelé \textbf{rotation d'angle $\theta$}. Le réel $\theta$ est appelé la \textbf{mesure de l'angle de la rotation}.
+
+\begin{rmq}
+	Si $\mathcal{B}=(e_1,e_2)$ est une base orthonormée indirecte de $E$, et $u$ une rotation d'angle $\theta$, alors $\mathcal{B}'=(-e_1,e_2)$ est une base orthonormée directe de $E$, donc on a $M_{\mathcal{B}'}(u)=R(\theta)$ $M_{\mathcal{B}}(u)=R(-\theta)$ par une vérification immédiate.
+\end{rmq}
+
+\begin{thm}{}
+	Le groupe $\mathcal{SO}(E)$ est commutatif et isomorphe à $\U$.
+\end{thm}
+
+\begin{rmq}
+	Soit $(u,v)\in\mathcal{SO}(E)^2$ deux rotations d'angles respectifs $\theta$ et $\theta'$. Si $\mathcal{B}$ est une base orthonormée directe de $E$, on a : $$M_\mathcal{B}(u\circ v)=M_\mathcal{B}(u)M_\mathcal{B}(v)=R(\theta)R(\theta')=R(\theta+\theta')$$ donc $u\circ v$ est la rotation d'angle $\theta+\theta'$.
+\end{rmq}
+
+\begin{thm}{}
+	Soit $u\in\mathcal{O}(E)\setminus\mathcal{SO}(E)$. Alors $u$ est une réflexion de $E$.
+\end{thm}
+
+\subsubsection*{Angles orientés de vecteurs dans $E$}
+
+\begin{thm}{}
+	Soit $x$ et $y$ deux vecteurs unitaires de $E$. Il existe une unique rotation $u\in\mathcal{SO}(E)$ telle que $u(x)=y$.
+\end{thm}
+
+\begin{dfn}
+	Soit $x$ et $y$ deux vecteurs non nuls du plan $E$.
+	\begin{itemize}
+		\item Il existe une unique rotation $u$ qui envoie le renormalisé de $x$ sur le renormalisé de $y$.
+		\item L'angle de cette rotation est appelé \textbf{angle orienté des vecteurs x et y}.
+	\end{itemize}
+\end{dfn}
+
+\paragraph{Notation} L'angle orienté des vecteurs non nuls $x$ et $y$ est noté $(x,y)$.
+
+\begin{thm}{}
+	Soit $(x,y,z)\in E^3$ trois vecteurs non nuls. Alors, on a : $$(x,z)=(x,y)+(y,z)\ [2\pi]$$
+\end{thm}
+
+\subsection{Réduction des isométries vectorielles}
+
+\begin{thm}{}
+	L'endomorphisme induit sur un sous-espace vectoriel stable par une isométrie vectorielle est aussi une isométrie vectorielle.
+\end{thm}
+
+\begin{thm}{}
+	Soit $u$ une isométrie vectorielle et $F$ un sous-espace vectoriel de $E$. Si $F$ est stable par $u$, alors $F^\bot$ est aussi stable par $u$.
+\end{thm}
+
+\begin{thm}{}
+	Soit $u$ une isométrie vectorielle. Il existe une base orthonormée $\mathcal{B}$ de $E$ dans laquelle la matrice de $u$ est égale à une matrice diagonale par blocs avec des blocs diagonaux :
+	\begin{itemize}
+		\item  de taille $1$ et de la forme $(\gamma)$ avec $\gamma\in\{-1,1\}$ ;
+		\item de taille $2$ et de la forme : $$R(\theta)=\begin{pmatrix}
+			\cos(\theta)&-\sin(\theta)\\
+			\sin(\theta)&\cos(\theta)
+		\end{pmatrix}\ \ \text{avec}\ \ \theta\in\R\setminus\pi\Z$$
+	\end{itemize}
+\end{thm}
+
+Autrement dit, la matrice d'une isométrie dans une telle base orthonormée peut se mettre sous la forme : $$\begin{pmatrix}
+	I_p&&&&\\
+	&-I_q&&(0)&\\
+	&&R(\theta_1)&&\\
+	&(0)&&\ddots&\\
+	&&&&R(\theta_r)
+\end{pmatrix}\ \ \text{avec}\ \ (\theta_1,\ldots,\theta_r)\in\left(\R\setminus\pi\Z\right)^r$$
+
+\begin{exo}
+	Soit $A\in\mathcal{S}_n(\R)$. Montrer que les deux propriétés suivantes sont équivalentes : 
+	\begin{enumerate}[label=(\roman*)]
+		\item $\exists B\in\mathcal{O}_n(\R)\ : \ A=B+B^T$ ;
+		\item $\text{Sp}(A)\subset[-2,2]$ et les valeurs propres de $A$ dans $]-2,2[$ sont de multiplicité paire.
+	\end{enumerate}
+\end{exo}
+
+\paragraph{Conséquence} Toute matrice orthogonale est orthogonalement semblable à une matrice de la forme précédente.
+
+\begin{exo}
+	Soit $u\in\mathcal{SO}(E)$. Montrer qu'il existe une base orthonormée de $E$ dans laquelle la matrice de $u$ est de la forme : $$\begin{pmatrix}
+		I_s&&&(0)\\
+		&R(\varphi_1)&&\\
+		&&\ddots&\\
+		(0)&&&R(\varphi_t)
+	\end{pmatrix}\ \ \text{avec}\ \ s\in\{0,1\}\ \ \text{et}\ \ (\varphi_1,\ldots,\varphi_t)\in\R^t$$
+\end{exo}
+
+\begin{exo}
+	\begin{enumerate}
+		\item Montrer que $\mathcal{SO}_n(\R)$ est connexe par arcs. 
+		\item En utilisant la décomposition polaire, en déduire que $\mathcal{GL}_n^+(\R)$ est connexe par arcs.
+	\end{enumerate}
+\end{exo}
+
+\subsubsection*{Rotations en dimension 3}
+Dans le reste de cette section, $E$ désigne un espace euclidien de dimension $3$ que l'on oriente par le choix d'une base orthonormée directe de référence.
+
+\begin{thm}{}
+	Si $u\in\mathcal{SO}(E)$, alors il existe une base orthonormée $\mathcal{B}$ de $E$ et un réel $\theta\in\R$ tels que : $$M_\mathcal{B}(u)=\begin{pmatrix}
+		1&0&0\\
+		0&\cos(\theta)&-\sin(\theta)\\
+		0&\sin(\theta)&\cos(\theta)
+	\end{pmatrix}$$
+\end{thm}
+
+\paragraph{Conséquence} On munit $\R^3$ de sa structure euclidienne orientée canonique et on se donne $A\in\mathcal{SO}_3(\R)$. Alors il existe $\theta\in\R$ tel que $A$ soit orthogonalement semblable à une matrice de la forme $$\begin{pmatrix}
+	1&0&0\\
+	0&\cos(\theta)&-\sin(\theta)\\
+	0&\sin(\theta)&\cos(\theta)
+\end{pmatrix}$$
+
+\begin{thm}{}
+	Si $u$ est une isométrie vectorielle directe de $E$, il existe une droite $D$ et un plan $P$ orthogonal à $D$ tel que $u_{\mid D}=\text{Id}_{D}$ et tel que $u_{\mid P}$ soit une rotation.
+\end{thm}
+
+\begin{rmq}
+	\begin{enumerate}
+		\item On dit qu'une telle isométrie vectorielle directe est une rotation d'angle $\theta$. L'angle $\theta$ de la rotation peut être déterminé, au signe près, en utilisant le fait que $\Tr(u)=1+2\cos(\theta)$.
+		\item Si $u\in\mathcal{O}(E)\setminus\mathcal{SO}(E)$ est une isométrie indirecte., alors $-u\in\mathcal{SO}(E)$. En effet, $u$ conserve la norme donc $-u$ également, et par ailleurs, puisque l'on travaille en dimension $3$, on a $\det(-u)=(-1)^3\det(u)=1$. Il existe donc une base orthonormée $\mathcal{B}$ et un réel $\theta$ tels que $$M_\mathcal{B}(-u)=\begin{pmatrix}
+			1&0\\
+			0&R(\theta)
+		\end{pmatrix} \ \ \text{donc}\ \ M_\mathcal{B}(u)=\begin{pmatrix}
+		-1&0\\
+		0&R(\theta+\pi)
+		\end{pmatrix}$$
+	\end{enumerate}
+\end{rmq}
+
+\end{document}

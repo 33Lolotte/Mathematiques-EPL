@@ -1,0 +1,205 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\theoremstyle{plain}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+
+\newtheorem*{ex}{Exemple}
+\newtheorem*{met}{Point méthode}
+\newtheorem{exo}{Exercice}
+
+\newtcolorbox[auto counter]{dfn}{
+	enhanced,
+	breakable,
+	colback=white,
+	fonttitle=\sc,
+	title={Définition \thetcbcounter}
+}
+
+\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+
+\theoremstyle{remark}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{app}{Application}
+
+\begin{document}
+
+Dans ce chapitre, nous étudions des intégrales dépendant d'un paramètre qui peut être entier (suites de fonctions) ou réel. Dans les deux cas, nous nous intéresserons aux problèmes de convergence et dans le second cas à la continuité et à la dérivabilité. pour la continuité, le paramètre pourra même plus généralement être pris dans un espace vectoriel de dimension finie. Dans tout le chapitre, les intervalles de $\R$ considérés sont d'intérieur non vide et les fonctions sont à valeurs dans $\K=\R$ ou $\K=\C$.
+
+\section{Suites d'intégrales et séries d'intégrales}
+
+\subsection{Le théorème de convergence dominée}
+
+\begin{thm}{Théorème de convergence dominée}
+	Soit $(f_n)_{n\in\N}$ une suite de fonctions continues par morceaux sur un intervalle $I$. On fait les hypothèses suivantes : 
+	\begin{enumerate}
+		\item la suite de fonctions $(f_n)_{n\in\N}$ converge simplement sur $I$ vers une fonction $f$ continue par morceaux sur $I$ ;
+		\item \textbf{hypothèse de domination} : il existe $\varphi:I\to\R$ intégrable sur $I$ telle que $$\forall n\in\N,\ \forall t\in I,\ \lvert f_n(t)\rvert\leqslant \varphi(t)$$
+	\end{enumerate}
+	Alors toutes les fonctions $f_n$, ainsi que $f$, sont intégrables sur $I$ et l'on a : $$\int_I f_n\xrightarrow[n\to+\infty]{}\int_I f$$
+\end{thm}
+Nous n'en ferons pas la démonstration qui est hors programme et pour cause : une "bonne" démonstration est faisable avec l'intégrale de Lebesgue, mais la démonstration avec les intégrales de Riemann est beaucoup plus délicate et consiste essentiellement en des astuces pour contourner les problèmes de l'intégrale de Riemann par rapport à celle de Lebesgue.
+
+\begin{ex}
+	Pour tout $n\in\N$, on pose : $$\begin{array}{lrcl}
+		f_n:&]1,+\infty[&\longrightarrow&\R\\
+		&t&\longmapsto&\displaystyle\frac{1+t^n}{1+t^{n+2}}
+	\end{array}$$
+	\begin{itemize}
+		\item Pour tout $n\in\N$, la fonction $f_n$ est continue par morceaux.
+		\item Pour tout $t>1$ : $$f_n(t)=\displaystyle\frac{1+t^n}{1+t^{n+2}}\underset{n\to +\infty}{\sim}\frac{t^n}{t^{n+2}}=\frac{1}{t^2}$$ donc la suite de fonctions $(f_n)_{n\in\N}$ converge vers la fonction $t\mapsto\displaystyle\frac{1}{t^2}$, continue donc continue ar morceaux sur $]1,+\infty[$.
+		\item \textbf{Hypothèse de domination} : pour tout $n\in\N$, on a $$\forall t>1,\ \lvert f_n(t)\rvert=\displaystyle\frac{1+t^n}{1+t^{n+2}}\leqslant\frac{t^n+t^n}{t^{n+2}}=\frac{2}{t^2}$$ La fonction $t\mapsto\displaystyle\frac{2}{t^2}$ étant intégrable sur $]1,+\infty[$, cela fournit l'hypothèse de domination.
+	\end{itemize}
+	D'après le théorème de convergence dominée, on en déduit que les $f_n$ sont intégrables et que : $$\int_{1}^{+\infty}f_n\xrightarrow[n\to+\infty]{}\int_{1}^{+\infty}\frac{dt}{t^2}=1$$
+\end{ex}
+
+\begin{exo}
+	Pour tout $n\in\N$, on pose $\displaystyle I_n=\int_{0}^{1}\ln(1+t^n)\ dt$.
+	\begin{enumerate}
+		\item Déterminer $\underset{n\to+\infty}{\lim} I_n$.
+		\item A l'aide du changement de variable $u=t^n$, déterminer un équivalent de $I_n$. On exprimera l'équivalent obtenu à l'aide d'une intégrale que l'on ne cherchera pas à calculer.
+	\end{enumerate}
+\end{exo}
+
+\begin{ex}
+	Pour tout $n\in\N\st$, soit : $$\begin{array}{lrcl}
+		f_n:&[0,1[&\longrightarrow&\R\\
+		&t&\longmapsto&n^2t^{n-1}
+	\end{array}$$ Pour tout $n\in\N\st$, la fonction $f_n$ est continue et intégrable sur $[0,1[$, car elle admet une limite finie en $1$. Pour tout $t\in[0,1[$ fixé, on a $f_n(t)\xrightarrow[n\to+\infty]{}0$ donc la suite de fonctions $(f_n)_{n\in\N\st}$ converge simplement vers la fonction nulle sur $[0,1[$. Toutes les hypothèses du théorème de convergence dominée sont vérifiées, hormis l'hypothèse de domination. Or, on a de plus : $$\int_{0}^{1}f_n(t)\ dt=[nt^n]_{0}^{1}=n$$ On a donc : $$\underset{n\to+\infty}{\lim}\int_{0}^{1}f_n(t)\ dt\ne \int_{0}^{1}\underset{n\to+\infty}{\lim}f_n(t)\ dt$$
+\end{ex}
+
+\begin{met}
+	Il faut bien noter, dans l'énoncé du théorème de convergence dominée, que l'intervalle d'intégration est fixe. Prolonger la fonction par la fonction nulle ou effectuer un changement de variables permet parfois de contourner cette difficulté lorsque l'intervalle d'intégration dépend de $n$.
+\end{met}
+
+\begin{ex}
+	Limite de $\displaystyle I_n=\int_{0}^{\sqrt{n}}\left(1-\frac{t^2}{n}\right)^n\ dt$
+\end{ex}
+
+\begin{exo}
+	Déterminer un équivalent simple de la suite de terme général $I_n=\displaystyle\int_{0}^{1}\frac{du}{(1+u^2)^n}$ On exprimera le résultat obtenu à l'aide d'une intégrale que l'on ne cherchera pas à calculer. On pourra effectuer le changement de variables $t=\sqrt{n}u$.
+\end{exo}
+
+\subsection{Intégration terme à terme}
+
+Nous admettrons les deux théorèmes suivants.
+
+\begin{thm}{Théorème d'intégration terme à terme - cas positif}
+	Soit $(u_n)_{n\in\N}$ une suite de fonctions intégrables sur un intervalle $I$, à valeurs dans $\R_+$, telle que la série $\sum u_n$ converge simplement et telle que sa somme soit continue par morceaux sur $I$. Alors, dans $[0,+\infty]$, on a l'égalité : $$\int_I\sum_{n=0}^{+\infty}u_n=\sum_{n=0}^{+\infty}\int_I u_n$$ En particulier, l'intégrabilité de la somme équivaut à : $$\sum_{n=0}^{+\infty}\int_I u_n<+\infty$$
+\end{thm}
+
+\begin{ex}
+	Montrons que $\displaystyle\int_{0}^{1}\frac{\ln(t)}{t-1}dt=\sum_{n=0}^{+\infty}\frac{1}{(n+1)^2}$
+\end{ex}
+
+\begin{exo}
+	Montrer que $\displaystyle\int_{0}^{+\infty}\frac{x^2}{e^x-1}dx=2\sum_{n=1}^{+\infty}\frac{1}{n^3}$
+\end{exo}
+
+\begin{thm}{Théorème d'intégration terme à terme - cas général}
+	Soit $(u_n)_{n\in\N}$ une suite de fonctions intégrables sur un intervalle $I$, telle que la série $\sum u_n$ converge simplement et telle que sa somme soit continue par morceaux sur $I$.\\ Si $\displaystyle\sum_{n=0}^{+\infty}\int_I\lvert u_n\rvert<+\infty$, alors la fonctions $\displaystyle\sum_{n=0}^{+\infty}u_n$ est intégrable sur $I$ et on a l'égalité : $$\int_I\sum_{n=0}^{+\infty}u_n=\sum_{n=0}^{+\infty}\int_I u_n$$
+\end{thm}
+
+\begin{ex}
+	Montrons que $\displaystyle\int_{0}^{1}\frac{\ln(t)}{1+t}dt=\sum_{n=1}^{+\infty}\frac{(-1)^n}{n^2}$
+\end{ex}
+
+\begin{exo}
+	Montrer que $\displaystyle\int_{0}^{+\infty}\frac{t}{\cosh(t)}dt=2\sum_{n=0}^{+\infty}\frac{(-1)^n}{(2n+1)^2}$
+\end{exo}
+
+\section{Continuité et dérivabilité}
+
+\subsection{Continuité d'une intégrale à paramètre}
+
+\begin{thm}{Théorème de continuité d'une intégrale à paramètre}
+	Soit $A$ une partie non vide d'un espace vectoriel normé de dimension finie $E$, $I$ un intervalle de $\R$ et $f:A\times I\to\K$. On fait les hypothèses suivantes :
+	\begin{itemize}
+		\item pour tout $t\in I$, la fonction $x\mapsto f(x,t)$ est continue sur $A$ ;
+		\item pour tout $x\in A$, la fonction $t\mapsto f(x,t)$ est continue par morceaux sur $I$ ;
+		\item \textbf{hypothèse de domination} : pour tout $a\in A$, il existe un voisinage $V$ de $a$ et une fonction $\varphi:I\to\R$ intégrable sur $I$ telle que : $$\forall (x,t)\in (V\cap A)\times I,\ \lvert f(x,t)\rvert\leqslant\varphi(t)$$
+	\end{itemize} Alors, la fonction $g:x\mapsto\displaystyle\int_I f(x,t)\ dt$ est bien définie et continue sur $A$.
+\end{thm}
+
+\begin{met}
+	\begin{enumerate}
+		\item Bien entendu, une domination sur tout $A$ est suffisante et dans la pratique, on commencera par chercher à établir une telle domination.
+		\item Lorsque $A$ est un intervalle de $\R$, on pourra chercher une domination sur tout segment de $A$ ou sur toute famille d'intervalles adaptée à la situation, c'est-à-dire permettant d'obtenir une domination sur tout segment de $A$.
+	\end{enumerate}
+\end{met}
+
+\begin{exo}
+	Montrer que la fonction $g:x\mapsto\displaystyle\int_{0}^{+\infty}\frac{e^{-xt}}{1+t^2}dt$ est définie et continue sur $\R_+$.
+\end{exo}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Montrons que la fonction $g:x\mapsto\displaystyle\int_{0}^{+\infty}\cos(t^2)e^{-xt}$ est bien définie et continue sur $\R_+\st$.
+		\item \textbf{Continuité de la fonction $\Gamma$} : soit $H=\{z\in\C\ : \text{Re}(z)>0\}$. Pour tout $z\in H$, on pose $$\Gamma(z)=\int_{0}^{+\infty}e^{-t}t^{z-1}\ dt$$ Montrons que $\Gamma$ est bien définie et continue.
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	Soit $H=\{z\in\C\ : \text{Re}(z)>0\}$ et $f:[0,+\infty[\to\C$ une fonction continue par morceaux telle que pour tout $p\in H$, la fonction $t\mapsto e^{-pt}f(t)$ soit intégrable sur $[0,+\infty[$. On définit la \textbf{transformée de Laplace} $Lf:H\to\C$ de $f$ par : $$\forall p\in H,\ Lf(p)=\int_{0}^{+\infty}e^{-pt}f(t)\ dt$$ Montrer que $Lf$ est continue sur $H$.
+\end{exo}
+
+\begin{ex}
+	Définition et continuité de $(x,y)\mapsto\displaystyle\int_{0}^{+\infty}e^{-xt}\sqrt{y+t^2}\ dt$
+\end{ex}
+
+\subsection{Limites d'intégrales}
+
+La conclusion du théorème de continuité peut s'écrire : $$\underset{x\to a}{\lim}\int_I f(x,t)\ dt=\int_I f(a,t)\ dt$$ Le théorème suivant étend ce résultat au cas où $A$ est un intervalle de $\R$ et $a$ est l'une de ses extrémités.
+
+\subsection{Dérivation d'une intégrale à paramètre}
+
+
+
+
+
+\end{document}

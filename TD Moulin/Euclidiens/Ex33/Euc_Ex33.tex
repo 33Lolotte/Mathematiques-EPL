@@ -1,0 +1,63 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{TD Euclidiens\\ Exercice 33}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Énoncé}
+Soit $M\in\R_+$.
+\begin{enumerate}
+	\item Montrer que l'ensemble des matrices symétriques à spectre inclus dans $[0,M]$ est un compact de $\mathcal{S}_n(\R)$.
+	\item $\star$ Montrer que $A\mapsto A^2$ est un homéomorphisme de l'ensemble des matrices symétriques positives dans lui-même.
+\end{enumerate}
+\section{Solution}
+La deuxième question est difficile.
+\begin{enumerate}
+	\item Orthodiagonaliser, utiliser la compacité de $\mathcal{O}_n(\R)$ et de $[0,M]^n$ puis le fait que $\mathcal{S}_n(\R)$ est fermé.
+	\item Par théorème de cours HP, cette application est bijective. Elle est de plus continue car polynomiale. On veut montrer que sa réciproque est continue. On prend $A_p$ qui tend vers $A$. On montre que toutes les valeurs d'adhérence de $(A_p^{1/2})$ sont nécessairement $A^{1/2}$ par unicité de la limite et compacité des ensembles mis en jeu (on a alors affaire à des fermés bornés car le spectre des matrices est borné) en utilisant la première question.
+\end{enumerate}
+\end{document}

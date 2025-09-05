@@ -1,0 +1,66 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{TD Euclidiens\\ Exercice 34}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Énoncé}
+Soit $u$ un endomorphisme d'un espace euclidien $E$. Montrer l'équivalence des propriétés suivantes : 
+\begin{enumerate}
+	\item $u$ commute avec $u\st$ ;
+	\item $\forall x\in E,\ \lVert u(x)\rVert=\lVert u\st(x)\rVert$ ;
+	\item $\forall x\in E,\ \lVert u(x)\rVert\leqslant \lVert u\st(x)\rVert$.
+\end{enumerate}
+On appelle endomorphisme normal tout endomorphisme vérifiant ces trois conditions équivalentes.
+\section{Solution}
+On procède à des implications circulaires.
+\begin{itemize}
+	\item $1\implies 2$ : soit $x\in E$. On a : $$\lVert u(x)\rVert2=(u(x)\mid u(x))=(x\mid u\st\circ u(x))=(x\mid u\circ u\st(x))=(u\st(x)\mid u\st(x))=\lVert u\st(x)\rVert^2$$ donc par positivité, $\lVert u(x)\rVert=\lVert u\st(x)\rVert$
+	\item $2\implies 3$ : immédiat
+	\item $3\implies 1$ : alors pour tout $x\in E$, par bilinéarité et symétrie : $$\left(\underbrace{u\st \circ u-u\circ u\st}_{=v}(x)\mid x\right)\leqslant 0$$ Or, il est clair que $v\st=v$ donc on en déduit que $(v(x)\mid x)\geqslant0$ et donc $(v(x)\mid x)=0$. Puis comme $v$ est diagonalisable, toutes ses valeurs propres sont nulles et $v=0$ (se référer à un exercice de la partie précédente pour les détails). Donc $u$ et $u\st$ commutent.
+\end{itemize}
+\end{document}

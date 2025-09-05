@@ -1,0 +1,65 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{TD Euclidiens\\ Exercice 7}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Énoncé}
+Soit $p_1,\ldots,p_n$ des projecteurs orthogonaux d'un espace préhilbertien réel $E$.
+\begin{enumerate}
+	\item $\star$ Montrer que si $p_1\circ\cdots\circ p_n$ est un projecteur, alors c'est un projecteur orthogonal dont on déterminera l'image et le noyau.
+	\item On suppose $E$ de dimension finie. Montrer que $p_1\circ p_2$ est un projecteur (orthogonal d'après la question précédente) si, et seulement si, $p_1$ et $p_2$ commutent.
+\end{enumerate}
+
+\section{Solution}
+La première question est difficile.
+\begin{enumerate}
+	\item Pour montrer que ce projecteur est orthogonal, c'est une simple application de l'exercice précédent. L'image est l'intersection des images et le noyau est la somme des noyaux. Pour l'image, on écrira les inégalités avec les normes en chaîne et on raisonnera par l'absurde puis par récurrence. Pour les noyaux, l'inclusion directe se fait par récurrence. l'inclusion réciproque se fait avec le lemme qui dit que l'orthogonal de la somme est l'intersection des orthogonaux, et on applique lemme aux orthogonaux des $\im(p_i)$.
+	\item Passer à l'adjoint.
+\end{enumerate}
+
+\end{document}

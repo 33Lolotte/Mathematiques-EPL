@@ -1,0 +1,63 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{TD Euclidiens\\ Exercice 28}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Énoncé}
+Soit $E$ un espace euclidien.
+\begin{enumerate}
+	\item Soit $f\in\mathcal{L}(E)$ tel que $\forall x\in E,\ (f(x)\mid x)=0$. Montrer que $f=0$.
+	\item Soit $f\in\mathcal{L}(E)$ autoadjoint tel que $\forall x\in E,\ (f(x)\mid x)=\lVert f(x)\rVert^2$. Montrer que $f$ est un projecteur orthogonal.
+\end{enumerate}
+\section{Solution}
+Remarquer que pour la deuxième question, il suffira de prouver que $f$ est un projecteur car par théorème de cours, un projecteur est orthogonal si, et seulement si, il est autoadjoint.
+\begin{enumerate}
+	\item $f$ est autoadjoint donc diagonalisable à valeurs propres réelles. Soit $\lambda$ une valeur propre de $f$ et $x$ un vecteur propre. Comme $(f(x)\mid x)=0$, on en déduit que $\lambda\lVert x\rVert^2=0$ donc que $\lambda=0$ car $x$ est non nul en tant que vecteur propre. Donc $f$ est diagonalisable et toutes ses valeurs propres sont nulles donc $f=0$.
+	\item On cherche à prouver que $f^2=f$ en se ramenant à la question précédente. Remarquons que $g=f^2-f$ est autoadjoint. Et $$(g(x)\mid x)=(f^2(x)\mid x)-(f(x)\mid x)=(f(x)\mid f(x))-\lVert f(x)\rVert^2=0$$ Donc $g=0$ par la question précédente. Donc $f$ est un projecteur. Donc $f$ est un projecteur orthogonal car il est autoadjoint.
+\end{enumerate}
+\end{document}

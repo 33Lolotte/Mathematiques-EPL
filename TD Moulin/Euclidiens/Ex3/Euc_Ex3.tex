@@ -1,0 +1,73 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{TD Euclidiens\\ Exercice 3}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Énoncé}
+Soit $E$ un espace préhilbertien réel. Pour tout famille finie $(x_i)_{1\leqslant i\leqslant p}$, on pose : $$G(x_1,\ldots,x_p)=((x_i|x_j))_{1\leqslant i,j\leqslant p}\ \ \text{et} \ \ \text{Gram}(x_1,\ldots,x_p)=\det G(x_1,\ldots,x_p)$$
+\begin{enumerate}
+	\item Montrer que $(x_i)$ est liée si, et seulement si, $\text{Gram}(x_i)=0$.
+	\item Montrer qu'ajouter à l'un des $x_i$ une combinaison linéaire des autres ne change pas le rang de $G(x_i)$.
+	\item Montrer que $\text{rg}G(x_i)=\text{rg}(x_i)$.
+	\item On suppose $E$ muni d'une base $\mathcal{B}=(e_1,\ldots,e_p)$. Donner une relation entre $G(x_i)$, $G(e_i)$ et $M_\mathcal{B}(x_i)$.
+	\item Montrer que $G(x_i)$ est positive et en déduire que $\text{Gram}(x_i)\geqslant0$.
+	\item Si $F$ est un sous-espace vectoriel dont $y_1$, ..., $y_p$ est une base, on a la formule : $$d(x,F)^2=\frac{\text{Gram}(x,y_1,\ldots,y_p)}{\text{Gram}(y_1,\ldots,y_p)}$$
+	\item Lorsque $E$ est de dimension finie $n$, exprimer $\text{Gram}(x_i)$ en fonction du produit mixte des vecteurs $x_i$ pour une orientation quelconque de $E$.
+\end{enumerate}
+\section{Solution}
+Hyper classique ! Peut servir dans d'autres exercices.
+\begin{enumerate}
+	\item Raisonner en termes de produit scalaire.
+	\item Faire des opérations élémentaires.
+	\item Utiliser la question précédente.
+	\item $G(x_i)=M^TG(e_i)M$ en faisant le calcul des coefficients en exprimant dans la base $\mathcal{B}$.
+	\item Calculer comme dans la question précédente.
+	\item Commencer par le cas où $x\in F^\bot$ puis utiliser la projection orthogonale qui s'exprime comme $x$ plus une combinaison linéaire des $y_i$.
+	\item Le déterminant de Gram est le carré du produit mixte des vecteurs en utilisant la question 4.
+\end{enumerate}
+\end{document}

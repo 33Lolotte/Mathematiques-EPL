@@ -1,0 +1,66 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{TD Euclidiens\\ Exercice 35}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Énoncé}
+Soit $A\in\mathcal{S}_n(\R)$ avec $n\geqslant 2$. On note $B$ la matrice extraite de $A$ obtenue en supprimant la dernière ligne et la dernière colonne.
+\begin{enumerate}
+	\item Montrer que si $A$ est positive, alors $B$ l'est aussi.
+	\item En déduire que $\max\text{Sp}(B)\leqslant \max\text{Sp}(A)$ et $\min\text{Sp}(A)\leqslant\min\text{Sp}(B)$.
+\end{enumerate}
+\section{Solution}
+Exercice classique.
+\begin{enumerate}
+	\item Écrire $(X\mid BX)=(Y\mid AY)$ où $Y=\begin{pmatrix}
+		Y\\
+		0
+	\end{pmatrix}$
+	\item Ajouter ou enlever à $A$ les matrices $\min(\text{Sp}(A))I_n$ et $\max(\text{Sp}(A))I_n$ pour se ramener à la question précédente.
+\end{enumerate}
+\end{document}

@@ -1,0 +1,88 @@
+\documentclass[14pt,a4paper]{extarticle}
+\usepackage[margin=5em]{geometry}
+\usepackage{amsthm,amssymb,amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{shapes.misc}
+\usepackage[skins]{tcolorbox}
+\pagestyle{empty}
+\newtcolorbox{Ex}[2][]{
+                lower separated=false,
+                colback=white!80!gray,
+colframe=white, fonttitle=\bfseries,
+colbacktitle=white!50!gray,
+coltitle=black,
+enhanced,
+sharp corners,
+#1}
+
+
+\newtcolorbox{Thm}[2][]{
+                lower separated=false,
+                colback=white,
+colframe=black,fonttitle=\bfseries,
+colbacktitle=black,
+coltitle=black,
+enhanced,
+sharp corners,
+attach boxed title to top left={yshift=-0.1cm,xshift=-1em},
+                 boxed title style={sharp corners,boxrule=0pt,colframe=white,colback=white,colbacktitle=black},
+title=#2,#1}
+
+\newtcolorbox{Exo}[2][]{
+    shadow = {1.5mm}{-1.5mm}{0mm}{black!23!white},
+    lower separated=false,
+    colback=white,
+colframe=black,fonttitle=\bfseries,
+colbacktitle=black,
+coltitle=black,
+enhanced,
+attach boxed title to top left={yshift=-0.2cm,xshift=1em},
+boxed title style={boxrule=1pt,colframe=black,colback=white,colbacktitle=black
+     },
+,#1}
+
+
+\begin{document}
+\ 
+\newpage
+\begin{Thm}{Définition}
+    Le dîner des talents ( D. D. T. ) est une soirée conviviale, rompant la monotonie de la pougne des préparationnaires au cours de laquelle les participants sont invités à mettre en scène un talent insoupçonné.
+\end{Thm}
+
+
+\begin{Ex}
+    Exemple : faire du Rubik's cube avec ses pieds, rater un tour de magie\dots
+\end{Ex}
+\begin{Exo}
+    \ \textbf{Point méthode }\\
+    Pour assister au D. D. T. il suffit de se rendre au lycée Sainte Geneviève, 2 rue de l'école des postes, 78000 Versailles, au premier étage du bâtiment Saint-Joseph le mercredi 11 décembre 2024.
+\end{Exo}
+\smallskip
+
+\textbf{Remarque fondamentale (donc HP) : } Une tenue chic est exigée (blouse blanche tolérée)
+
+
+\begin{Thm}{Proposition}
+    Les professeurs de la MP*1 sont invités au D. D. T. 
+\end{Thm}
+
+\textbf{Principe de démonstration. } Trivial. [LEE]
+
+\begin{Thm}{Corollaire}
+    M. Moulin est invité au D. D. T.
+\end{Thm}
+\textbf{Principe de démonstration. } Évident\\
+
+\textbf{Remarque }En vue de la préparation de cet événement, il semble judicieux de priver (à grand regret) les MP*1 de leur devoir de Mathématiques hebdomadaire.\\
+
+\begin{Exo}
+\ \textbf{Exercice 1 } Présentez votre talent : 
+\begin{enumerate}
+    \item Identifiez un talent que en votre possession, si possible en rapport avec le thème.
+    \item Préparez une démonstration pratique de ce talent, cette dernière doit être claire, rigoureuse, et peut comporter des éléments humoristique.
+    \item Concluez.
+\end{enumerate}
+
+\end{Exo}
+
+\end{document}

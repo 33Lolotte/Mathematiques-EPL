@@ -1,0 +1,60 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{TD Euclidiens\\ Exercice 16}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Énoncé}
+Soit $u\in\mathcal{L}(E)$. Montrer l'équivalence : $$\left(u^2=0\ \ \text{et} \ \ u+u\st\in\mathcal{GL}(E)\right)\iff \ker(u)=\im(u)$$
+\section{Solution}
+On raisonne par double implication. Montrons un premier lemme. Supposons $\im(u)\subset\ker(u)$ et montrons que $$\ker(u+u\st)=\ker(u)\cap\ker(u\st)$$ L'inclusion réciproque est immédiate. Dans l'autre sens, supposons $u(x)+u\st(x)=0$. Alors $u\st(x)\in\im(u)$ donc $u(u\st(x))=0$. On en déduit que $(x\mid u(u\st(x)))=0$. Puis par propriété de l'adjoint, $\lVert u\st(x)\rVert=0$ donc $u\st(x)=0$ et donc $u(x)=0$, ce qui est bien la propriété recherchée.
+\begin{itemize}
+	\item Sens direct : la première hypothèse fournit $\im(u)\subset\ker(u)$. La deuxième fournit $\ker(u+u\st)=\{0\}$. Ensuite, prenons $x\in\ker(u)$. Par surjectivité de $u+u\st$, on peut écrire $x=u(y)+u\st(y)$. Or, $u(x)=0$ et $u(x)=u(u\st(y))$ car $u^2=0$. On en déduit que $u\st(y)=0$ donc que $x\in\im(u)$. 
+	\item Sens réciproque : l'inclusion $\im(u)\in\ker(u)$ fournit $u^2=0$ et le lemme donne que si $x\in\ker(u+u\st)$, alors il existe $y$ tel que $x=u(y)$. Or, $u\st(x)=0$ donc $u\st(u(y))=0$ donc $u(y)=0$ donc $x=0$ donc $u+u\st$ est injective donc bijective en dimension finie.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,67 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{TD Euclidiens\\ Exercice 32}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Énoncé}
+On dit que $u$ est antisymétrique lorsque $\forall x\in E,\ (u(x)\mid x)=0$.
+\begin{enumerate}
+	\item Déterminer les valeurs propres possibles pour $u$.
+	\item Montrer : $\forall (x,y)\in E^2,\ (x\mid u(y))=-(u(x)\mid y)$.
+	\item Montrer qu'il existe une base orthonormée de $E$ telle que la matrice de $u$ dans cette base soit diagonale par blocs, avec des blocs nuls ou des blocs de la forme $$\begin{pmatrix}
+		0&-a\\
+		a&0
+	\end{pmatrix}$$
+\end{enumerate}
+\section{Solution}
+\begin{enumerate}
+	\item Les valeurs propres complexes sont imaginaires pures. La seule valeur propre réelle possible est $0$.
+	\item Appliquer l'hypothèse à $x+y$.
+	\item On procède par récurrence en distinguant si on possède un plan stable ou une droite stable. On utilise le fait que $(u(x)|y)=-(x|u(y))$ pour obtenir le bloc $2\times 2$ souhaité.
+\end{enumerate}
+\end{document}

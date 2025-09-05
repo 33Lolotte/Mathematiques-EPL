@@ -1,0 +1,61 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{TD Euclidiens\\ Exercice 30}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Énoncé}
+Soit $E$ un espace euclidien et $u\in\mathcal{L}(E)$ tel que $\forall x\in E,\ \lVert u(x)\rVert\leqslant\lVert x\rVert$. Pour $x\in E$ et $n\in\N$, on pose : $$v_n(x)=\frac{1}{n+1}\sum_{k=0}^{n}u^k(x)$$
+\begin{enumerate}
+	\item Montrer, pour tout $x$ appartenant à $\ker(u-\text{Id}_E)$ ou à $\text{Im}(u-\text{Id}_E)$, que la suite $(v_n(x))_{n\in\N}$ converge, et préciser sa limite.
+	\item En déduire $E=\ker(u-\text{Id}_E)\oplus \text{Im}(u-\text{Id}_E)$ et que pour tout $x\in E$, $(v_n(x))_{n\in\N}$ converge.
+	\item $\star$ Montrer que cette somme directe est orthogonale.
+\end{enumerate}
+\section{Solution}
+On peut construire $$v_n=\frac{1}{n+1}\sum_{k=0}^{n}u^k(x)$$ qui vaut $x$ sur $\text{Ker}(u-\text{id})$ et tend vers 0 sur $\text{Im}(u-\text{id})$. Cela permet de montrer que $$E=\text{Ker}(u-\text{id})\oplus\text{Im}(u-\text{id})$$ $v_n$ tend alors vers la projection sur $\text{Ker}(u-\text{id})$ parallèlement à $\text{Im}(u-\text{id})$. De plus, $v_n$ est de norme triple inférieure à $1$, donc la projection vers laquelle elle tend aussi. Cette projection est donc une projection orthogonale (\textit{cf} une caractérisation des projecteurs orthogonaux), donc la somme directe prouvée précédemment est orthogonale.
+
+\end{document}

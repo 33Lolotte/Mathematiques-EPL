@@ -1,0 +1,68 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{TD Euclidiens\\ Exercice 11}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Énoncé}
+\begin{enumerate}
+	\item Montrer que toute matrice inversible $M$ peut s'écrire $M=OT$ avec $O$ orthogonale et $T$ triangulaire supérieure.
+	\item Montrer l'unicité d'un tel couple si on impose que les coefficients diagonaux de $T$ soient tous strictement positifs.
+	\item Mêmes questions pour la décomposition $TO$.
+	\item Application : inégalité de Hadamard. Montrer : $$\lvert\det(M)\rvert\leqslant\prod_{j=1}^{n}\lVert C_j\rVert$$ où les $C_j$ sont les colonnes de $M$ et où $\lVert\cdot\rVert$ désigne la norme euclidienne canonique sur $\R^n$.
+	\item Que reste-t-il de ces résultats pour les matrices non inversibles ?
+\end{enumerate}
+\section{Solution}
+\begin{enumerate}
+	\item Appliquer le processus de Gram-Schmidt aux colonnes de $M$ et effectuer un changement de base.
+	\item Utiliser le fait que les matrices triangulaires et orthogonales sont des diagonales de $\pm 1$ et conclure avec les strictes positivités.
+	\item Idem, mais à l'envers (ou transposer).
+	\item Reprendre les étapes de la décompositions $OT$ et utiliser l'inégalité de Cauchy-Schwarz.
+	\item L'existence des décompositions reste vraie par compacité de $\mathcal{O}_n(\R)$ mais pas l'unicité. L'inégalité de Hadamard est trivialement vraie.
+\end{enumerate}
+
+\end{document}

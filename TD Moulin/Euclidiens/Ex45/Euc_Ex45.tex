@@ -1,0 +1,60 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{TD Euclidiens\\ Exercice 45}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Énoncé $\star\star$}
+Soient $A$ et $B$ des matrices de $S_n^+(\R)$. Montrer : $$\forall t\in[0,1],\ \sqrt[n]{\det((1-t)A+tB)}\geqslant(1-t)\sqrt[n]{\det(A)}+t\sqrt[n]{\det(B)}$$
+\section{Solution}
+Il y a deux méthodes :
+\begin{itemize}
+	\item Commencer par le cas où $A=I_n$ en orthodiagonalisant $B$. Ensuite, passer au cas où $A\in\mathcal{S}_n^{++}(\R)$ en prenant $C\in\mathcal{S}_n^{++}(\R)$ telle que $A=C^2$ puis écrire : $$A+B=C(I_n+C\inv BC\inv)C$$ et remarquer qu'en ayant ainsi symétrisé la chose, $CBC\inv\in\mathcal{S}_n^{+}(\R)$. Ensuite, raisonner par densité pour le cas général.
+	\item Utiliser la pseudo-réduction simultanée permet de griller des étapes dans la méthode précédente (mais ça coûte plus cher).
+\end{itemize}
+Ici, pour l'inégalité de convexité de la première étape, s'intéresser à la fonction $t\mapsto \ln(1+e^t)$.
+\end{document}

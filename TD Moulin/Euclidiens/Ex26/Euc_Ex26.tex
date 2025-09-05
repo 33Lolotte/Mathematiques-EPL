@@ -1,0 +1,59 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{TD Euclidiens\\ Exercice 26}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Énoncé}
+Déterminer les matrices $A\in\mathcal{S}_n(\R)$ telles que pour tout matrice $B\in\mathcal{S}_n^+(\R)$, on ait $\Tr(AB)\geqslant0$.
+\section{Solution}
+Raisonner par analyse-synthèse. Ce sont les matrices symétriques positives.
+\begin{itemize}
+	\item Analyse : soit $A$ une telle matrice. Sans perte de généralité, on remplace $A$ par $\text{Diag}(\lambda_1,\ldots,\lambda_n)$. Avec $$B=\text{Diag}(0,\ldots,0,\underset{\text{position }i}{1},0,\ldots,0)$$ on a $\Tr(AB)=\lambda_i\geqslant 0$ donc $A$ est symétrique positive.
+	\item Synthèse : faire le calcul et cela devrait bien se passer.
+\end{itemize} Néanmoins, il est beaucoup plus rapide de passer par la pseudo réduction simultanée pour faire cet exercice.
+\end{document}

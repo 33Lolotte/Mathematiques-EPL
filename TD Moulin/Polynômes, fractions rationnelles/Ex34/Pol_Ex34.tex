@@ -1,0 +1,64 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\title{TD Polynômes \\ Exercice 34}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Énoncé}
+Soit $n$ et $k$ deux entiers naturels. On considère des réels $x_1,\ldots,x_n$ deux à deux distincts et des réels $y_1,\ldots,y_n$ quelconques. Pour $P\in\R_{k-1}[X]$, on note $E_P=\{i\in\llbracket1,n\rrbracket\ : \ P(x_i)=y_i\}$.
+\begin{enumerate}
+	\item Donner une condition nécessaire et suffisante sur $k$ et $n$ pour que, quel que soit $(y_1,\ldots,y_n)$, il existe $P\in\R_{k-1}[X]$ tel que $\card(E_P)=n$. Y a-t-il alors unicité de $P$ ?
+	\item On suppose $k< n$.
+	\begin{enumerate}[label=\alph*.]
+		\item Montrer qu'il existe au plus un polynôme $P\in\R_{k-1}[X]$ tel que $\displaystyle\card(E_P)\geqslant\frac{n+k}{2}$.
+		\item Montrer qu'il existe deux polynômes $Q$ et $R$, avec $R\ne 0$, tels que $$\deg(Q)<\frac{n+k}{2},\ \deg(R)\leqslant\frac{n-k}{2}\ \text{et}\ \forall i\in\llbracket1,n\rrbracket,\ Q(x_i)-y_iR(x_i)=0$$
+		\item Montrer que s'il existe $P\in\R_{k-1}[X]$ tel que $\displaystyle\card(E_P)\geqslant\frac{n+k}{2}$, alors $P=Q/R$.
+	\end{enumerate}
+\end{enumerate}
+\section{Solution}
+
+\end{document}
