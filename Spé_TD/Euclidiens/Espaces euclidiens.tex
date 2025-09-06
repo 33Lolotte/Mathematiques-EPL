@@ -1,0 +1,775 @@
+\documentclass[french,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théorème}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{ex}[2][]{colback=white, colframe=green!50!white, coltitle=black, fonttitle=\bfseries, title={Exercice~\thetcbcounter~: #2}, after title={\hfill #1}}
+
+\title{TD Espaces euclidiens}
+
+\begin{document}
+
+\maketitle
+
+\section{Révisions sur les espaces préhilbertiens réels}
+
+\begin{ex}[Moulin.01]{}
+	Soit $V=\left\{M\in\mathcal{M}_2(\C)\ : \ \overline{M}^T=M\ \text{et}\ \Tr(M)=0\right\}$.
+	\begin{enumerate}
+		\item Montrer que $V$ est un sous-espace vectoriel du $\R$-espace vectoriel $\mathcal{M}_2(\C)$ et en déterminer la dimension.
+		\item Montrer que la fonction $M\mapsto\sqrt{-\det(M)}$ définit une norme euclidienne sur $V$. Préciser le produit scalaire associé ainsi qu'une base orthonormée pour ce produit scalaire.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.02]{}
+	On se donne $F$ et $G$ deux sous-espaces vectoriels d'un espace préhilbertien réel $E$.
+	\begin{enumerate}
+		\item A-t-on $F\cap G^T=\{0\}\implies G\cap F^T=\{0\}$ ?
+		\item Et si $F$ et $G$ ont même dimension finie ? On pourra commencer par le cas où $E$ est de dimension finie.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.03]{$\Delta$ Matrices de Gram}
+	Soit $E$ un espace préhilbertien réel. Pour tout famille finie $(x_i)_{1\leqslant i\leqslant p}$, on pose : $$G(x_1,\ldots,x_p)=((x_i|x_j))_{1\leqslant i,j\leqslant p}\ \ \text{et} \ \ \text{Gram}(x_1,\ldots,x_p)=\det G(x_1,\ldots,x_p)$$
+	\begin{enumerate}
+		\item Montrer que $(x_i)$ est liée si, et seulement si, $\text{Gram}(x_i)=0$.
+		\item Montrer qu'ajouter à l'un des $x_i$ une combinaison linéaire des autres ne change pas le rang de $G(x_i)$.
+		\item Montrer que $\text{rg}G(x_i)=\text{rg}(x_i)$.
+		\item On suppose $E$ muni d'une base $\mathcal{B}=(e_1,\ldots,e_p)$. Donner une relation entre $G(x_i)$, $G(e_i)$ et $M_\mathcal{B}(x_i)$.
+		\item Montrer que $G(x_i)$ est positive et en déduire que $\text{Gram}(x_i)\geqslant0$.
+		\item Si $F$ est un sous-espace vectoriel dont $y_1$, ..., $y_p$ est une base, on a la formule : $$d(x,F)^2=\frac{\text{Gram}(x,y_1,\ldots,y_p)}{\text{Gram}(y_1,\ldots,y_p)}$$
+		\item Lorsque $E$ est de dimension finie $n$, exprimer $\text{Gram}(x_i)$ en fonction du produit mixte des vecteurs $x_i$ pour une orientation quelconque de $E$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Hyper classique ! Peut servir dans d'autres exercices.
+	\begin{enumerate}
+		\item Raisonner en termes de produit scalaire.
+		\item Faire des opérations élémentaires.
+		\item Utiliser la question précédente.
+		\item $G(x_i)=M^TG(e_i)M$ en faisant le calcul des coefficients en exprimant dans la base $\mathcal{B}$.
+		\item Calculer comme dans la question précédente.
+		\item Commencer par le cas où $x\in F^\bot$ puis utiliser la projection orthogonale qui s'exprime comme $x$ plus une combinaison linéaire des $y_i$.
+		\item Le déterminant de Gram est le carré du produit mixte des vecteurs en utilisant la question 4.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.04]{}
+	On note $E=\mathcal{C}^1([0,1],\R)$. Pour $(f,g)\in E^2$, on pose : $$(f\mid g)=\int_{0}^{1}(fg+f'g')$$ On pose : $$V=\left\{f\in E\ : \ f(0)=f(1)=0\right\}\ \ \text{et}\ \ W=\left\{f\in E\ : \ f''=f\right\}$$
+	\begin{enumerate}
+		\item Montrer que $E$ est ainsi muni d'une structure d'espace préhilbertien réel.
+		\item Montrer que $V$ et $W$ sont supplémentaires orthogonaux. Expliciter la projection orthogonale sur $W$.
+		\item Pour $(a,b)\in\R^2$, on pose $F=\left\{f\in E\ : \ f(0)=a\ \text{et}\ f(1)=b\right\}$. Déterminer : $$\underset{f\in F}{\inf}\int_{0}^{1}(f^2+f'^2)$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.05]{}
+	Soit $f\in\mathcal{C}^{0}([0,1])$ telle que $\displaystyle\int_{0}^{1}f(x)\ dx=\int_{0}^{1}xf(x)\ dx=1$. Montrer que $$\int_{0}^{1}f(x)^2\ dx\geqslant 4$$
+\end{ex}
+\begin{proof}
+	On veut appliquer l'inégalité de Cauchy-Schwarz. Ici, il faut l'appliquer à $x\mapsto \displaystyle\left(x-\frac{1}{3}\right)f(x)$ et on tombe sur le bon résultat en calculant. Pour avoir l'idée, appliquer Cauchy-Schwarz avec $$x\mapsto(\alpha x+\beta)f(x)$$ et chercher une condition suffisante pour obtenir le résultat. Ici, il suffit d'avoir $\alpha =3\beta$.
+\end{proof}
+
+\begin{ex}[Moulin.06]{}
+	Soit $E$ un espace euclidien et $x_1,\ldots,x_p$ des vecteurs de $E$ tels que $$\forall (i,j),\ i\ne j\implies (x_i\mid x_j)=-1$$ Montrer que $$\sum_{i=1}^{p}\frac{1}{1+\lVert x_i\rVert^2}\leqslant 1$$ Quels sont les cas d'égalité ?
+\end{ex}
+\begin{proof}
+	On crée un nouveau produit scalaire sur $E\times\R$ par : $$\langle (x,\lambda),(y,\mu)\rangle:=(x|y)+\lambda\mu$$ puis on applique l'inégalité de Bessel (inégalité liée à la projection sur un SEV) avec ce nouveau produit scalaire. Le cas d'égalité est une conséquence de l'inégalité de Bessel.
+\end{proof}
+
+\begin{ex}[Moulin.07]{}
+	Soit $p_1,\ldots,p_n$ des projecteurs orthogonaux d'un espace préhilbertien réel $E$.
+	\begin{enumerate}
+		\item $\star$ Montrer que si $p_1\circ\cdots\circ p_n$ est un projecteur, alors c'est un projecteur orthogonal dont on déterminera l'image et le noyau.
+		\item On suppose $E$ de dimension finie. Montrer que $p_1\circ p_2$ est un projecteur (orthogonal d'après la question précédente) si, et seulement si, $p_1$ et $p_2$ commutent.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	La première question est difficile.
+	\begin{enumerate}
+		\item Pour montrer que ce projecteur est orthogonal, c'est une simple application de l'exercice précédent. L'image est l'intersection des images et le noyau est la somme des noyaux. Pour l'image, on écrira les inégalités avec les normes en chaîne et on raisonnera par l'absurde puis par récurrence. Pour les noyaux, l'inclusion directe se fait par récurrence. l'inclusion réciproque se fait avec le lemme qui dit que l'orthogonal de la somme est l'intersection des orthogonaux, et on applique lemme aux orthogonaux des $\im(p_i)$.
+		\item Passer à l'adjoint.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Châteaux]{Projecteurs orthogonaux}
+	\begin{enumerate}
+		\item Soit $p$ un projecteur de $E$. Démontrer l'équivalence des assertions suivantes : 
+		\begin{enumerate}[label=(\roman*)]
+			\item $p$ est un projecteur orthogonal ;
+			\item $\forall x\in E,\ \lVert p(x)\rVert\leqslant\lVert x\rVert$ ;
+			\item $p$ est symétrique.
+		\end{enumerate}
+		\item Soient $p$ et $q$ deux projecteurs orthogonaux.
+		\begin{enumerate}[label=\alph*.]
+			\item Montrer que $p\circ q=0\implies q\circ p=0$.
+			\item Montrer que $p\circ q$ est un projecteur orthogonal si, et seulement si, $p$ et $q$ commutent.
+			\item Montrer que c'est le cas si les valeurs propres non nulles de $p+q$ sont supérieures à $1$.
+		\end{enumerate}
+		\item Soient $p$ et $q$ deux projecteurs orthogonaux.
+		\begin{enumerate}[label=\alph*.]
+			\item Montrer que les valeurs propres de $p\circ q$ sont comprises entre $0$ et $1$.
+			\item Montrer que $\ker(p\circ q)=\ker q\oplus(\im(q)\cap\ker(p))$
+			\item Montrer que $p\circ q$ est diagonalisable. Indication : on considérera $\im(p)+\ker(q)$.
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+
+\section{Matrices orthogonales}
+
+\begin{ex}[Moulin.08]{Matrices triangulaires et orthogonales}
+	Quelles sont les matrices triangulaires orthogonales ? Et combien y en a-t-il ?
+\end{ex}
+\begin{proof}
+	On montre par récurrence que ce sont les matrices diagonales avec uniquement des $-1$ ou des $1$ sur la diagonale. Il y en a donc $2^n$ dans $\mathcal{M}_n(\R)$. Sinon, on peut aussi (et plus simplement) observer que la transposée (l'inverse) est à la fois triangulaire supérieure et inférieure.
+\end{proof}
+
+\begin{ex}[Moulin.09]{Trigonalisation en base orthonormée}
+	Soit $A\in\mathcal{M}_n(\R)$. On suppose que $\chi_A$ est scindé sur $\R$. Montrer que $A$ est orthogonalement semblable à une matrice triangulaire supérieure.
+\end{ex}
+\begin{proof}
+	Trigonaliser $A$ puisque son polynôme caractéristique est scindé, puis appliquer l'algorithme d'orthonormalisation de Gram-Schmidt à la base de trigonalisation obtenue précédemment.
+\end{proof}
+
+\begin{ex}[Moulin.10]{}
+	Soit $A\in\mathcal{M}_n(\R)$ de rang $r$ telle que $A^TA=A^3$.
+	\begin{enumerate}
+		\item Montrer que $\text{Im}(A)=\text{Im}(A^3)$.
+		\item Montrer qu'il existe $B\in\mathcal{O}_r(\R)$ telle que $B^3=I_r$ et $A$ soit orthogonalement semblable à la matrice s'écrivant par blocs : $$\begin{pmatrix}
+			B&0\\
+			0&0
+		\end{pmatrix}$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.11]{$\Delta$ Décomposition OT}
+	\begin{enumerate}
+		\item Montrer que toute matrice inversible $M$ peut s'écrire $M=OT$ avec $O$ orthogonale et $T$ triangulaire supérieure.
+		\item Montrer l'unicité d'un tel couple si on impose que les coefficients diagonaux de $T$ soient tous strictement positifs.
+		\item Mêmes questions pour la décomposition $TO$.
+		\item Application : inégalité de Hadamard. Montrer : $$\lvert\det(M)\rvert\leqslant\prod_{j=1}^{n}\lVert C_j\rVert$$ où les $C_j$ sont les colonnes de $M$ et où $\lVert\cdot\rVert$ désigne la norme euclidienne canonique sur $\R^n$.
+		\item Que reste-t-il de ces résultats pour les matrices non inversibles ?
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Appliquer le processus de Gram-Schmidt aux colonnes de $M$ et effectuer un changement de base.
+		\item Utiliser le fait que les matrices triangulaires et orthogonales sont des diagonales de $\pm 1$ et conclure avec les strictes positivités.
+		\item Idem, mais à l'envers (ou transposer).
+		\item Reprendre les étapes de la décompositions $OT$ et utiliser l'inégalité de Cauchy-Schwarz.
+		\item L'existence des décompositions reste vraie par compacité de $\mathcal{O}_n(\R)$ mais pas l'unicité. L'inégalité de Hadamard est trivialement vraie.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.12]{$\star$}
+	Soit $u\in\mathcal{L}(E)$ de trace nulle.
+	\begin{enumerate}
+		\item Montrer qu'il existe un vecteur unitaire $\varepsilon_1$ tel que $(u(\varepsilon_1)\mid\varepsilon_1)=0$.
+		\item Montrer qu'il existe une base orthonormée de $E$ dans laquelle la matrice de $u$ est à diagonale nulle.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Pour une BON $(e_k)$, on doit avoir $(u(e_i)|e_i)\geqslant0$ et $(u(e_j)|e_j)\leqslant0$ pour un i et un j. On fait alors tourner ces vecteurs (ou on les relie rectilignement mais il faut alors renormaliser après) et on utilise le théorème des valeurs intermédiaires.
+		\item Récurrence en utilisant la première question et en raisonnant par blocs.
+	\end{enumerate}
+\end{proof}
+
+\section{Théorème de représentation de Riesz, adjoint}
+
+\begin{ex}[Moulin.13]{}
+	Dans tout l'exercice, on munit $\R_n[X]$ du produit scalaire défini par : $$(P\mid Q)=\int_{0}^{1}P(t)Q(t)\ dt$$
+	\begin{enumerate}
+		\item Montrer qu'il existe un unique $A_n\in\R_n[X]$ tel que $$\forall \in\R_n[X],\ P(0)=\int_{0}^{1}A_n(t)P(t)\ dt$$ et vérifier que l'on a $\deg(A_n)=n$.
+		\item Existe-t-il un polynôme $A\in\R[X]$ tel que $\forall P\in\R[X],\ \displaystyle\int_{0}^{1}A(t)P(t)\ dt$ ?
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Théorème de représentation de Riesz. Vérifier pour le degré.
+		\item Utiliser la question précédente pour conclure à une absurdité par restriction.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.14]{}
+	Soit $\varphi$ une forme linéaire sur $\mathcal{M}_n(\R)$. Montrer qu'il existe une unique matrice $A\in\mathcal{M}_n(\R)$ telle que : $$\forall M\in\mathcal{M}_n(\R),\ \varphi(M)=\Tr(AM)$$
+\end{ex}
+\begin{proof}
+	Appliquer le théorème de représentation de Riesz avec le produit scalaire canonique sur $\mathcal{M}_n(\R)$.
+\end{proof}
+
+\begin{ex}[Moulin.15]{}
+	Soit $u\in\mathcal{L}(E)$. Montrer que l'on a l'égalité $\text{Ker}(u)=\text{Ker}(u\st\circ u)$. En déduire, en dimension finie, l'égalité $\im(u\st\circ u)=\im(u\st)$.
+\end{ex}
+\begin{proof}
+	L'inclusion directe est immédiate, et l'inclusion réciproque s'obtient en calculant $\lVert x\rVert^2$ avec la définition de l'adjoint. On en déduit l'égalité $$\text{Im}(u\st)=\text{Im}(u\st\circ u)$$ avec l'inclusion réciproque immédiate et le théorème du rang (en dimension finie donc).
+\end{proof}
+
+\begin{ex}[Moulin.16]{}
+	Soit $u\in\mathcal{L}(E)$. Montrer l'équivalence : $$\left(u^2=0\ \ \text{et} \ \ u+u\st\in\mathcal{GL}(E)\right)\iff \ker(u)=\im(u)$$
+\end{ex}
+\begin{proof}
+	On raisonne par double implication. Montrons un premier lemme. Supposons $\im(u)\subset\ker(u)$ et montrons que $$\ker(u+u\st)=\ker(u)\cap\ker(u\st)$$ L'inclusion réciproque est immédiate. Dans l'autre sens, supposons $u(x)+u\st(x)=0$. Alors $u\st(x)\in\im(u)$ donc $u(u\st(x))=0$. On en déduit que $(x\mid u(u\st(x)))=0$. Puis par propriété de l'adjoint, $\lVert u\st(x)\rVert=0$ donc $u\st(x)=0$ et donc $u(x)=0$, ce qui est bien la propriété recherchée.
+	\begin{itemize}
+		\item Sens direct : la première hypothèse fournit $\im(u)\subset\ker(u)$. La deuxième fournit $\ker(u+u\st)=\{0\}$. Ensuite, prenons $x\in\ker(u)$. Par surjectivité de $u+u\st$, on peut écrire $x=u(y)+u\st(y)$. Or, $u(x)=0$ et $u(x)=u(u\st(y))$ car $u^2=0$. On en déduit que $u\st(y)=0$ donc que $x\in\im(u)$. 
+		\item Sens réciproque : l'inclusion $\im(u)\in\ker(u)$ fournit $u^2=0$ et le lemme donne que si $x\in\ker(u+u\st)$, alors il existe $y$ tel que $x=u(y)$. Or, $u\st(x)=0$ donc $u\st(u(y))=0$ donc $u(y)=0$ donc $x=0$ donc $u+u\st$ est injective donc bijective en dimension finie.
+	\end{itemize}
+\end{proof}
+
+\begin{ex}[Moulin.17]{}
+	Soit $x_0$ un vecteur non nul d'un espace euclidien $E$ ainsi que $a$ et $b$ deux éléments de $E$. Donner une CNS pour qu'il existe $u\in\mathcal{L}(E)$ tel que $u(x_0)=a$ et $u\st(x_0)=b$.
+\end{ex}
+\begin{proof}
+	Il est nécessaire que $(a\mid x_0)=(b\mid x_0)$ par définition de l'adjoint. Voyons en quoi cela est suffisant. Supposons dans un premier temps $\lVert x_0\rVert=1$. On considère $\mathcal{B}=(x_0,e_2,\ldots,e_n)$ une BON de $E$. Alors on regarde la matrice $A$ qui a pour première ligne les $(b\mid b_j)$, pour première colonne les $(a\mid b_i)$ (bien définie car $(a\mid x_0)=(b\mid x_0)$) et des $0$ partout ailleurs. On considère alors l'unique $u\in\mathcal{L}(E)$ tel que la matrice de $u$ dans $\mathcal{B}$ soit $A$, qui convient. Dans le cas général, on considère $u$ construit comme précédemment mais avec cette fois $$\left(\frac{a}{\lVert x_0\rVert}\mid\frac{x_0}{\lVert x_0\rVert}\right)=\left(\frac{b}{\lVert x_0\rVert}\mid\frac{x_0}{\lVert x_0\rVert}\right)$$ et alors par linéarité un tel $u$ convient.
+\end{proof}
+
+\begin{ex}[Moulin.18]{}
+	On considère $E$ un espace préhilbertien ainsi que $u$ et $v$ deux fonctions de $E$ dans $E$ telles que $$\forall x,y,\ (u(x)|y)=(x|v(y))$$ Montrer que $u$ et $v$ sont linéaires.
+\end{ex}
+\begin{proof}
+	Revenir à la définition et effectuer les calculs qui correspondraient à la linéarité. Utiliser le caractère défini positif du produit scalaire.
+\end{proof}
+
+\begin{ex}[Moulin.19]{}
+	On munit $\R[X]$ du produit scalaire définit par : $$\left( \sum_{n=0}^{+\infty}a_nX^n \bigg| \sum_{n=0}^{+\infty}b_nX^n\right)=\sum_{n=0}^{+\infty}a_nb_n$$
+	\begin{enumerate}
+		\item Déterminer l'adjoint de l'endomorphisme $P\mapsto P(X+1)$ de $\R_n[X]$. On fera intervenir le comportement au voisinage de $0$ de la fonction $x\mapsto P(x/(1-x))$.
+		\item Montrer que l'endomorphisme $P\mapsto P(X+1)$ de $\R[X]$ n'admet pas d'adjoint.
+	\end{enumerate}
+\end{ex}
+
+\section{Endomorphismes autoadjoints, matrices symétriques réelles}
+
+\begin{ex}[Moulin.20]{}
+	On munit $\R_n[X]$ du produit scalaire $(P\mid Q)=\displaystyle\int_{0}^{1}PQ$.
+	\begin{enumerate}
+		\item Montrer que l'on définit un endomorphisme $u\in\mathcal{L}(\R_n[X])$ en posant : $$u(P)(x)=\int_{0}^{1}(x+y)^nP(y)\ dy$$
+		\item Montrer que cet endomorphisme est autoadjoint.
+		\item Soit $(P_0,\ldots,P_n)$ une base orthonormée de vecteurs propres de $u$ et soit $(\lambda_0,\ldots,\lambda_n)$ la famille de valeurs propres associée. Montrer : $$\forall (x,y)\in\R^2,\ (x+y)^n=\sum_{k=0}^{n}\lambda_kP_k(x)P_k(y)$$
+		\item Calculer la trace de $u$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.21]{}
+	Soit $A$ une matrice symétrique réelle $n\times n$ dont le polynôme caractéristique est scindé à racines simples. Soit $P\in\mathcal{GL}_n(\R)$. Montrer que si $P\inv AP$ est diagonale, alors il en est de même de $P^TP$.
+\end{ex}
+
+\begin{ex}[Moulin.22]{}
+	Soit $A=(a_{i,j})\in\mathcal{S}_n(\R)$ de valeurs propres $\lambda_1,\ldots,\lambda_n$ comptées avec multiplicité. Montrer : $$\sum_{1\leqslant i,j\leqslant n}a_{i,j}^2=\sum_{k=1}^{n}\lambda_k^2$$
+\end{ex}
+
+\begin{ex}[Moulin.23]{}
+	Soit $(a_1,\ldots,a_n)\in\R^n$ et $(b_1,\ldots,b_{n-1})\in(\R\st)^{n-1}$.
+	\begin{enumerate}
+		\item Montrer sans calcul que $\displaystyle\begin{pmatrix}
+			a_1&b_1&&(0)\\
+			b_1&a_2&\ddots&\\
+			&\ddots&\ddots&b_{n-1}\\
+			(0)&&b_{n-1}&a_n
+		\end{pmatrix}$ est diagonalisable à valeurs propres simples.
+		\item $\star$ En déduire que le résultat subsiste dans le cas d'une matrice de la forme $\displaystyle\begin{pmatrix}
+			a_1&c_1&&(0)\\
+			b_1&a_2&\ddots&\\
+			&\ddots&\ddots&c_{n-1}\\
+			(0)&&b_{n-1}&a_n
+		\end{pmatrix}$ où $\forall i\in\llbracket1,n-1\rrbracket,\ b_ic_i>0$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Châteaux]{Décomposition de Choleski et applications}
+	\begin{enumerate}
+		\item Démontrer que toute matrice de $\mathcal{S}_n^{++}(\R)$ s'écrit de façon unique sous la forme $AA^T$ où $A$ est triangulaire inférieure à coefficients diagonaux strictement positifs. Indication : appliquer la décomposition QR à la racine carrée.
+		\item Soit $A\in\mathcal{S}_n^{+}(\R)$.
+		\begin{enumerate}[label=\alph*.]
+			\item Montrer que pour tout $i$, $a_{i,i}\geqslant0$.
+			\item Montrer que $\det(A)\leqslant\displaystyle\prod_{i=1}^{n}a_{i,i}$. Indication : utiliser la décomposition de Choleski.
+		\end{enumerate}
+		Soit $A\in\mathcal{S}_n^{++}(\R)$ s'écrivant par blocs $$A=\begin{pmatrix}
+			B&C\\
+			C^T&D
+		\end{pmatrix}$$ avec $1\leqslant p\leqslant n-1$. Montrer que $\det(B)>0$, puis que $\det(A)\leqslant\det(B)\det(D)$. retrouver le résultat de la question précédente.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.24]{Co-orthodiagonalisation}
+	Soit $(u_i)_{i\in I}$ une famille d'endomorphismes autoadjoints d'un espace euclidien $E$ commutant deux à deux. Montrer qu'il existe une base orthonormée de $E$ formée de vecteurs propres communs à tous les $u_i$.
+\end{ex}
+\begin{proof}
+	Récurrence sur la dimension, comme pour la co-diagonalisation, mais avec des bases orthonormées.
+\end{proof}
+
+\begin{ex}[Moulin.25]{}
+	Soit $\mathcal{A}$ une sous-algèbre de $\mathcal{M}_n(\R)$ dont tous les éléments sont symétriques. Montrer qu'il existe $P\in\mathcal{O}_n(\R)$ telle que pour tout $A\in\mathcal{A}$, la matrice $P\inv AP$ soit diagonale.
+\end{ex}
+\begin{proof}
+	Une telle algèbre est commutative. Utiliser ensuite le résultat de co-orthodiagonalisation.
+\end{proof}
+
+\begin{ex}[Moulin.26]{$\star$}
+	Déterminer les matrices $A\in\mathcal{S}_n(\R)$ telles que pour tout matrice $B\in\mathcal{S}_n^+(\R)$, on ait $\Tr(AB)\geqslant0$.
+\end{ex}
+\begin{proof}
+	Raisonner par analyse-synthèse. Ce sont les matrices symétriques positives.
+	\begin{itemize}
+		\item Analyse : soit $A$ une telle matrice. Sans perte de généralité, on remplace $A$ par $\text{Diag}(\lambda_1,\ldots,\lambda_n)$. Avec $$B=\text{Diag}(0,\ldots,0,\underset{\text{position }i}{1},0,\ldots,0)$$ on a $\Tr(AB)=\lambda_i\geqslant 0$ donc $A$ est symétrique positive.
+		\item Synthèse : faire le calcul et cela devrait bien se passer.
+	\end{itemize} Néanmoins, il est beaucoup plus rapide de passer par la pseudo réduction simultanée pour faire cet exercice.
+\end{proof}
+
+\begin{ex}[Moulin.27]{}
+	Soit $A\in\mathcal{M}_n(\R)$. Montrer qu'il existe $O\in\mathcal{O}_n(\R)$ telle que $OA^TAO\inv=AA^T$.
+\end{ex}
+\begin{proof}
+	Elles ont le même polynôme caractéristique donc les mêmes valeurs propres comptées avec multiplicité (de façon générale, $\chi_{AB}=\chi_{BA}$, mais il y a peut être plus rapide ici). Elle sont donc orthogonalement semblables à une même matrice diagonale (car elles sont aussi diagonalisables car symétriques réelles), donc sont semblables.
+\end{proof}
+
+\begin{ex}[Moulin.28]{}
+	Soit $E$ un espace euclidien.
+	\begin{enumerate}
+		\item Soit $f\in\mathcal{L}(E)$ tel que $\forall x\in E,\ (f(x)\mid x)=0$. Montrer que $f=0$.
+		\item Soit $f\in\mathcal{L}(E)$ autoadjoint tel que $\forall x\in E,\ (f(x)\mid x)=\lVert f(x)\rVert^2$. Montrer que $f$ est un projecteur orthogonal.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Remarquer que pour la deuxième question, il suffira de prouver que $f$ est un projecteur car par théorème de cours, un projecteur est orthogonal si, et seulement si, il est autoadjoint.
+	\begin{enumerate}
+		\item $f$ est autoadjoint donc diagonalisable à valeurs propres réelles. Soit $\lambda$ une valeur propre de $f$ et $x$ un vecteur propre. Comme $(f(x)\mid x)=0$, on en déduit que $\lambda\lVert x\rVert^2=0$ donc que $\lambda=0$ car $x$ est non nul en tant que vecteur propre. Donc $f$ est diagonalisable et toutes ses valeurs propres sont nulles donc $f=0$.
+		\item On cherche à prouver que $f^2=f$ en se ramenant à la question précédente. Remarquons que $g=f^2-f$ est autoadjoint. Et $$(g(x)\mid x)=(f^2(x)\mid x)-(f(x)\mid x)=(f(x)\mid f(x))-\lVert f(x)\rVert^2=0$$ Donc $g=0$ par la question précédente. Donc $f$ est un projecteur. Donc $f$ est un projecteur orthogonal car il est autoadjoint.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.29]{}
+	Soit $u$ un endomorphisme d'un espace vectoriel euclidien $E$. Montrer qu'il existe une base orthonormée $(e_1,\ldots,e_n)$ de $E$ telle que la famille $(u(e_1),\ldots,u(e_n))$ soit orthogonale.
+\end{ex}
+\begin{proof}
+	Appliquer le théorème spectral à $u\st u$ qui est autoadjoint. Une base orthonormée de vecteurs propres convient alors.
+\end{proof}
+
+\begin{ex}[Moulin.30]{}
+	Soit $E$ un espace euclidien et $u\in\mathcal{L}(E)$ tel que $\forall x\in E,\ \lVert u(x)\rVert\leqslant\lVert x\rVert$. Pour $x\in E$ et $n\in\N$, on pose : $$v_n(x)=\frac{1}{n+1}\sum_{k=0}^{n}u^k(x)$$
+	\begin{enumerate}
+		\item Montrer, pour tout $x$ appartenant à $\ker(u-\text{Id}_E)$ ou à $\text{Im}(u-\text{Id}_E)$, que la suite $(v_n(x))_{n\in\N}$ converge, et préciser sa limite.
+		\item En déduire $E=\ker(u-\text{Id}_E)\oplus \text{Im}(u-\text{Id}_E)$ et que pour tout $x\in E$, $(v_n(x))_{n\in\N}$ converge.
+		\item $\star$ Montrer que cette somme directe est orthogonale.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	On peut construire $$v_n=\frac{1}{n+1}\sum_{k=0}^{n}u^k(x)$$ qui vaut $x$ sur $\text{Ker}(u-\text{id})$ et tend vers 0 sur $\text{Im}(u-\text{id})$. Cela permet de montrer que $$E=\text{Ker}(u-\text{id})\oplus\text{Im}(u-\text{id})$$ $v_n$ tend alors vers la projection sur $\text{Ker}(u-\text{id})$ parallèlement à $\text{Im}(u-\text{id})$. De plus, $v_n$ est de norme triple inférieure à $1$, donc la projection vers laquelle elle tend aussi. Cette projection est donc une projection orthogonale (\textit{cf} une caractérisation des projecteurs orthogonaux), donc la somme directe prouvée précédemment est orthogonale.
+\end{proof}
+
+\begin{ex}[Moulin.31]{$\star$}
+	Soit $E$ un espace euclidien et $u\in\mathcal{L}(E)$ tel que $\forall x\in E,\ \lVert u(x)\rVert\leqslant\lVert x\rVert$.
+	\begin{enumerate}
+		\item Montrer que $\ker(u-\text{Id}_E)^T$ est stable par $u$.
+		\item En déduire $\text{Im}(u-\text{Id}_E)=\ker(u-\text{Id}_E)^T$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.32]{Réduction des endomorphismes antisymétriques}
+	On dit que $u$ est antisymétrique lorsque $\forall x\in E,\ (u(x)\mid x)=0$.
+	\begin{enumerate}
+		\item Déterminer les valeurs propres possibles pour $u$.
+		\item Montrer : $\forall (x,y)\in E^2,\ (x\mid u(y))=-(u(x)\mid y)$.
+		\item Montrer qu'il existe une base orthonormée de $E$ telle que la matrice de $u$ dans cette base soit diagonale par blocs, avec des blocs nuls ou des blocs de la forme $$\begin{pmatrix}
+			0&-a\\
+			a&0
+		\end{pmatrix}$$
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Les valeurs propres complexes sont imaginaires pures. La seule valeur propre réelle possible est $0$.
+		\item Appliquer l'hypothèse à $x+y$.
+		\item On procède par récurrence en distinguant si on possède un plan stable ou une droite stable. On utilise le fait que $(u(x)|y)=-(x|u(y))$ pour obtenir le bloc $2\times 2$ souhaité.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.33]{}
+	Soit $M\in\R_+$.
+	\begin{enumerate}
+		\item Montrer que l'ensemble des matrices symétriques à spectre inclus dans $[0,M]$ est un compact de $\mathcal{S}_n(\R)$.
+		\item $\star$ Montrer que $A\mapsto A^2$ est un homéomorphisme de l'ensemble des matrices symétriques positives dans lui-même.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	La deuxième question est difficile.
+	\begin{enumerate}
+		\item Orthodiagonaliser, utiliser la compacité de $\mathcal{O}_n(\R)$ et de $[0,M]^n$ puis le fait que $\mathcal{S}_n(\R)$ est fermé.
+		\item Par théorème de cours HP, cette application est bijective. Elle est de plus continue car polynomiale. On veut montrer que sa réciproque est continue. On prend $A_p$ qui tend vers $A$. On montre que toutes les valeurs d'adhérence de $(A_p^{1/2})$ sont nécessairement $A^{1/2}$ par unicité de la limite et compacité des ensembles mis en jeu (on a alors affaire à des fermés bornés car le spectre des matrices est borné) en utilisant la première question.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.34]{}
+	Soit $u$ un endomorphisme d'un espace euclidien $E$. Montrer l'équivalence des propriétés suivantes : 
+	\begin{enumerate}
+		\item $u$ commute avec $u\st$ ;
+		\item $\forall x\in E,\ \lVert u(x)\rVert=\lVert u\st(x)\rVert$ ;
+		\item $\forall x\in E,\ \lVert u(x)\rVert\leqslant \lVert u\st(x)\rVert$.
+	\end{enumerate}
+	On appelle endomorphisme normal tout endomorphisme vérifiant ces trois conditions équivalentes.
+\end{ex}
+\begin{proof}
+	On procède à des implications circulaires.
+	\begin{itemize}
+		\item $1\implies 2$ : soit $x\in E$. On a : $$\lVert u(x)\rVert2=(u(x)\mid u(x))=(x\mid u\st\circ u(x))=(x\mid u\circ u\st(x))=(u\st(x)\mid u\st(x))=\lVert u\st(x)\rVert^2$$ donc par positivité, $\lVert u(x)\rVert=\lVert u\st(x)\rVert$
+		\item $2\implies 3$ : immédiat
+		\item $3\implies 1$ : alors pour tout $x\in E$, par bilinéarité et symétrie : $$\left(\underbrace{u\st \circ u-u\circ u\st}_{=v}(x)\mid x\right)\leqslant 0$$ Or, il est clair que $v\st=v$ donc on en déduit que $(v(x)\mid x)\geqslant0$ et donc $(v(x)\mid x)=0$. Puis comme $v$ est diagonalisable, toutes ses valeurs propres sont nulles et $v=0$ (se référer à un exercice de la partie précédente pour les détails). Donc $u$ et $u\st$ commutent.
+	\end{itemize}
+\end{proof}
+
+\section{Endomorphismes autoadjoints positifs}
+
+\begin{ex}{$\Delta\star$ Racine carrée d'un endomorphisme autoadjoint positif} Montrer : $$\forall u\in S^+(E),\ \exists! v\in S^+(E), \ u=v^2$$
+\end{ex} \begin{proof}
+	Pour l'existence, orthodiagonaliser et prendre les racines carrées des valeurs propres. Pour l'unicité, on peut montrer que tout candidat est nécessairement égal à notre candidat proposé dans l'existence. Pour cela, on remarque que toute racine carré commute avec l'endomorphisme de départ, puis on considère les endomorphismes induits sur les sous-espaces propres. Les induits des racines carrées sont aussi des endomorphismes symétriques positifs, et alors on ne peut avoir que le candidat proposé dans l'existence.
+\end{proof}
+
+\begin{ex}{$\Delta\star$ Décomposition polaire} Montrer, pour toute matrice inversible $M$ : $$\exists! O\in\mathcal{O}_n(\R),\ \exists! S\in S_n^+(\R),\ M=OS$$
+\end{ex}
+\begin{proof}
+	Appliquer l'existence unicité de la racine carrée à $M^TM$. L'existence reste vraie pour une matrice non inversible en utilisant la densité des matrices inversibles et la compacité de $\mathcal{O}_n(\R)$.
+\end{proof}
+
+\begin{ex}[Moulin.35]{$\Delta$}
+	Soit $A\in\mathcal{S}_n(\R)$ avec $n\geqslant 2$. On note $B$ la matrice extraite de $A$ obtenue en supprimant la dernière ligne et la dernière colonne.
+	\begin{enumerate}
+		\item Montrer que si $A$ est positive, alors $B$ l'est aussi.
+		\item En déduire que $\max\text{Sp}(B)\leqslant \max\text{Sp}(A)$ et $\min\text{Sp}(A)\leqslant\min\text{Sp}(B)$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice classique.
+	\begin{enumerate}
+		\item Écrire $(X\mid BX)=(Y\mid AY)$ où $Y=\begin{pmatrix}
+			Y\\
+			0
+		\end{pmatrix}$
+		\item Ajouter ou enlever à $A$ les matrices $\min(\text{Sp}(A))I_n$ et $\max(\text{Sp}(A))I_n$ pour se ramener à la question précédente.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.36]{}
+	Soit $A=\displaystyle\begin{pmatrix}
+		r&s\\
+		s&t
+	\end{pmatrix}\in\mathcal{S}_2(\R)$. Montrer que $$A\in\mathcal{S}_{2}^{++}(\R)\iff r>\ \ \text{et} \ \ rt>s^2$$
+\end{ex}
+\begin{proof}
+	Utiliser le fait que les valeurs propres sont les racines de $$\chi_A=X^2-\Tr(A)X+\det(A)$$ et traduire le fait que $A\in\mathcal{S}_2^{++}(\R)$ sur les racines.
+\end{proof}
+
+\begin{ex}[Moulin.37]{}
+	\begin{enumerate}
+		\item Montrer que l'ensemble des matrices symétriques positives est un fermé de $\mathcal{S}_n(\R)$.
+		\item Montrer que l'ensemble des matrices symétriques définies positives est un ouvert connexe par arcs de $\mathcal{S}_n(\R)$. Déterminer son adhérence dans $\mathcal{S}_n(\R)$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}{Matrice de Hilbert}
+	Soit $n\in\N\st$. Montrer que la matrice de Hilbert $$H_n=\left(\frac{1}{i+j-1}\right)_{1\leqslant i,j\leqslant n}$$ est symétrique définie positive.
+\end{ex}
+\begin{proof}
+	Le caractère symétrique ne pose pas de problème vu le caractère symétrique en $i$ et $j$ de la définition de $H_n$. Pour le caractère défini positif, remarquer que $$\frac{1}{i+j-1}=\int_{0}^{1}t^{i+j-2}\ dt$$ Faire ensuite le calcul de $X^TH_nX$ pour obtenir une intégrale positif et utiliser le théorème "continue-positive" pour conclure.
+\end{proof}
+
+\begin{ex}[Moulin.38]{$\star$}
+	Soit $S$ et $T$ symétriques positives telles que $S^2$ et $T^2$ commutent. Montrer que $S$ et $T$ commutent. Est-ce que la conclusion subsiste si l'on suppose seulement les matrices $S$ et $T$ symétriques ?
+\end{ex}
+\begin{proof}
+	Grâce au polynôme minimal et à l'injectivité de la fonction carré sur $\R_+$, on montre que $\R[S]=\R[S^2]$ (inclusion et égalité de dimensions), et de même pour $T$. On en déduit rapidement le résultat. Sinon, on peut regarder sur les sous-espaces propres mais c'est plus moche. Dans le cas général, ce serait étonnant que cela reste vrai (en tout cas, les preuves précédentes ne fonctionnent plus). Mais on ne sait jamais...
+\end{proof}
+
+\begin{ex}[Moulin.39]{$\star$}
+	Soit $A\in\mathcal{S}_n^{++}(\R)$ et $B\in\mathcal{S}_n(\R)$.
+	\begin{enumerate}
+		\item Montrer que $AB$ est diagonalisable. On pourra utiliser une racine carrée.
+		\item On suppose $B$ positive et on note respectivement $\lambda_A$ et $\lambda_B$ les plus grands valeurs propres de $A$ et $B$. Montrer que toute valeur propre de $AB$ est inférieure ou égale à $\lambda_A\lambda_B$.
+		\item Montrer que le résultat de la question précédente reste vrai si l'on suppose seulement $A$ et $B$ positives. 
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item En effet, avec $C$ la racine carrée de $A$ (donc inversible), on écrit : $$AB=C(CBC)C\inv=CP^T DPC\inv$$ avec le théorème spectral appliqué à $B$.
+		\item Soit $X\in\R^n$. On a : $$(X\mid CBCX)=(CX\mid BCX)\leqslant\lambda_B\lVert CX\rVert^2=\lambda_B(CX\mid CX)=\lambda_B(X\mid AX)\leqslant \lambda_A\lambda_B\lVert X\rVert^2$$ Pour un vecteur propre $X$ de $AB$ associé à la valeur propres $\lambda$, on obtient : $$\lambda\lVert X\rVert^2\leqslant\lambda_1\lambda_B\lVert X\rVert^2$$ donc $\lambda\leqslant\lambda_A\lambda_B$.
+		\item On utilise le fait que la plus grande valeur propre vaut $\displaystyle\underset{\lVert X\rVert=1}{\max}(X\mid AX)$ puis on raisonne par densité et compacité de la sphère unité.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.40]{$\star$ Ordre de Löwner}
+	Soit $(A,B)\in\mathcal{S}_n(\R)^2$. on note $A\leqslant B$ pour signifier que $B-A$ est positive.
+	\begin{enumerate}
+		\item On suppose $B$ définie positive. Montrer que $A\leqslant B$ si, et seulement si, le spectre de $B\in A$ est majoré par $1$.
+		\item On suppose $A$ et $B$ définies positives. montrer que $A\leqslant B\implies B\inv\leqslant A\inv$.
+		\item On suppose $A$ et $B$ définies positives. Montrer que $A\leqslant B\implies A^{1/2}\leqslant B^{1/2}$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.41]{}
+	Soit $A\in\mathcal{M}_n(\R)$. Montrer que $\det(I_n+A^TA)>0$.
+\end{ex}
+\begin{proof}
+	Remarquer que $A^TA$ est symétrique positive. Donc $I_n+A^TA$ est semblable à $$\text{Diag}(1+\lambda_1,\ldots,1+\lambda_n)$$ où $\forall i,\ \lambda_i\geqslant 0$. Donc $$\det(I_n+A^TA)=\prod_{i=1}^{n}(1+\lambda_i)>0$$
+\end{proof}
+
+\begin{ex}[Moulin.42]{$\star$ Critère de Jacobi-Sylvester}
+	Soit $A=(a_{i,j})_{1\leqslant i,j\leqslant n}\in\mathcal{S}_n(\R)$. On définit les mineurs principaux de $A$, pour $A\leqslant k\leqslant n$, par : $$D_k=\det((a_{i,j})_{1\leqslant i,j\leqslant k})$$
+	\begin{enumerate}
+		\item Montrer que $A$ est définie positive si, et seulement si, $\forall k\in\llbracket1,n\rrbracket,\ D_k>0$.
+		\item Le résultat est-il toujours vrai pour des matrices symétriques positives et des mineurs principaux tous positifs ?
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Le sens direct est simple. Pour le sens réciproque, procéder par récurrence sur $n$ et effectuer un calcul par blocs.
+		\item Le sens direct reste vrai. En revanche, le sens réciproque devient faut, considérer pour cela la matrice comportant uniquement des $0$ sauf un $-1$ en $(n,n)$.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.43]{}
+	Soit $A\in\mathcal{S}_n(\R)$ symétrique définie positive. Montrer : $$\forall X\in\R^n\setminus\{0\},\ \det\begin{pmatrix}
+		0&X^T\\
+		X&A
+	\end{pmatrix}<0$$
+\end{ex}
+
+\begin{ex}[Moulin.44]{$\star\star$}
+	Soient $A$ et $B$ des matrices de $S_n^+(\R)$. Montrer : $$\det(A+B)\geqslant \det(A)+\det(B)$$
+\end{ex}
+\begin{proof}
+	Il y a deux méthodes :
+	\begin{itemize}
+		\item Commencer par le cas où $A=I_n$ en orthodiagonalisant $B$. Ensuite, passer au cas où $A\in\mathcal{S}_n^{++}(\R)$ en prenant $C\in\mathcal{S}_n^{++}(\R)$ telle que $A=C^2$ puis écrire : $$A+B=C(I_n+C\inv BC\inv)C$$ et remarquer qu'en ayant ainsi symétrisé la chose, $CBC\inv\in\mathcal{S}_n^{+}(\R)$. Ensuite, raisonner par densité pour le cas général.
+		\item Utiliser la pseudo-réduction simultanée permet de griller des étapes dans la méthode précédente (mais ça coûte plus cher).
+	\end{itemize}
+\end{proof}
+
+\begin{ex}[Moulin.45]{$\star\star$}
+	Soient $A$ et $B$ des matrices de $S_n^+(\R)$. Montrer : $$\forall t\in[0,1],\ \sqrt[n]{\det((1-t)A+tB)}\geqslant(1-t)\sqrt[n]{\det(A)}+t\sqrt[n]{\det(B)}$$
+\end{ex}
+\begin{proof}
+	Il y a deux méthodes :
+	\begin{itemize}
+		\item Commencer par le cas où $A=I_n$ en orthodiagonalisant $B$. Ensuite, passer au cas où $A\in\mathcal{S}_n^{++}(\R)$ en prenant $C\in\mathcal{S}_n^{++}(\R)$ telle que $A=C^2$ puis écrire : $$A+B=C(I_n+C\inv BC\inv)C$$ et remarquer qu'en ayant ainsi symétrisé la chose, $CBC\inv\in\mathcal{S}_n^{+}(\R)$. Ensuite, raisonner par densité pour le cas général.
+		\item Utiliser la pseudo-réduction simultanée permet de griller des étapes dans la méthode précédente (mais ça coûte plus cher).
+	\end{itemize}
+	Ici, pour l'inégalité de convexité de la première étape, s'intéresser à la fonction $t\mapsto \ln(1+e^t)$.
+\end{proof}
+
+\begin{ex}[Moulin.46]{$\star$}
+	\begin{enumerate}
+		\item Soit $A$ une matrice symétrique définie positive. Montrer que pour tout $y\ne 0$ : $$\frac{1}{(y\mid A\inv y)}=\min\left\{(x\mid Ax)\ \mid\ x\in\R^n\ \text{et}\ (x\mid y)=1\right\}$$
+		\item Soit $A$ et $B$ deux matrices symétriques définies positives. On note $A_1$ et $B_1$ les matrices obtenues à partir de $A$ et $B$ en retirant la dernière ligne et la dernière colonne. Montrer : $$\frac{\det(A+B)}{\det(A_1+B_1)}\geqslant\frac{\det(A)}{\det(A_1)}+\frac{\det(B)}{\det(B_1)}$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.47]{$\Delta\star$ Égalités de Courant-Fischer}
+	On considère $u\in S(E)$ avec $E$ euclidien de dimension $n$. On note $\lambda_1\leqslant\ldots\leqslant\lambda_n$ ses valeurs propres. On note $\mathcal{F}_k$ l'ensemble des sous-espaces vectoriels de $E$ de dimension $k$ et $S$ la sphère unité de $E$. Montrer que :  $$\lambda_k=\inf_{F\in\mathcal{F}_k}\sup_{x\in S\cap F}(x|u(x))$$ puis montrer que $$\lambda_{n+1-k}=\sup_{F\in\mathcal{F}_k}\inf_{x\in S\cap F}(x|u(x))$$
+\end{ex}
+\begin{proof}
+	Pour cela, prendre une BON de diagonalisation de $u$ et montrer que $S\cap F$ a une intersection avec $\text{Vect}(e_k,\ldots,e_n)$ non nulle (Grassmann) puis prendre un vecteur de norme $1$ dedans, ce qui montre que tous les sup sont atteints. Pour le sens réciproque, s'intéresser à $\text{Vect}(e_1,\ldots,e_k)$ et faire le produit scalaire (comme dans le cours). Pour montrer la deuxième égalité : $$\lambda_{n+1-k}=\sup_{F\in \mathcal{F}_k}\inf_{x\in S\cap F}(x|u(x))$$ on peut appliquer la première égalité à $-u$, ce qui échange essentiellement les $\sup$ et les $\inf$.
+\end{proof}
+
+\begin{ex}[Moulin.48]{$\Delta\star$ Entrelacement des valeurs propres}
+	Soit $A\in\mathcal{S}_n(\R)$ avec $n\geqslant 2$. On note $B$ la matrice extraite de $A$ en lui supprimant sa dernière ligne et sa dernière colonne. On note $\lambda_1\leqslant\ldots\leqslant\lambda_n$ les valeurs propres de $A$ et $\mu_1\leqslant\ldots\leqslant\mu_{n-1}$ celles de $B$. Montrer : $$\lambda_1\leqslant\mu_1\leqslant\lambda_2\leqslant\ldots\leqslant\mu_{n-1}\leqslant\lambda_n$$ On pourra utiliser les égalités de Courant-Fischer.
+\end{ex}
+\begin{proof}
+	Utiliser les égalités de Courant Fischer en étendant les SEV. Une seule partie des inégalités suffit, on obtient l'autre en prenant les matrices opposées.
+\end{proof}
+
+\begin{ex}[Moulin.49]{$\Delta$ Inégalités de Weyl}
+	Pour $A\in\mathcal{S}_n(\R)$, on note $\lambda_1(A)\geqslant\ldots\geqslant\lambda_n(A)$ les valeurs propres de $A$, comptées avec multiplicité. Montrer : $$\forall (A,B)\in\mathcal{S}_n(\R)^2,\ \lambda_{i+j-1}(A+B)\leqslant\lambda_i(A)+\lambda_j(B)$$
+	On pourra utiliser les égalités de Courant-Fischer.
+\end{ex}
+
+\begin{ex}[cas]{Inégalité de Kantorovitch}
+	Soit $A\in\mathcal{S}_n^{++}(\R)$, dont on note $\lambda_m$ la plus petite valeur propre et $\lambda_M$ la plus grande valeur propre. Montrer l'inégalité de Kantorovitch : $$\forall X\in\R^n,\ (X^TAX)(X^TA\inv X)\leqslant\frac{1}{4}\left(\sqrt{\frac{\lambda_M}{\lambda_m}}+\sqrt{\frac{\lambda_m}{\lambda_M}}\right)^2(X^TX)^2$$
+\end{ex}
+\begin{proof}
+	Poser $a=\sqrt{\lambda_m\lambda_M}$ et étudier la fonction : $$x\mapsto\frac{x}{a}+\frac{a}{x}$$ sur $\R_+\st$, convexe et minorée par $2$. Conclure avec l'inégalité arithmético-géométrique en écrivant $1=a/a$ dans le membre de gauche.
+\end{proof}
+
+\begin{ex}[Châteaux]{Propriétés topologiques des matrices}
+	\begin{enumerate}
+		\item Théorème de Jacobi-Sylvester : soit $A\in\mathcal{S}_n(\R)$. On note $\Delta_k$ le déterminant de la matrice formée des $k$ premières lignes et $k$ premières colonnes de $A$. Démontrer que $$A\in\mathcal{S}_n^{++}(\R)\iff \forall i\in\llbracket1,n\rrbracket,\ \Delta_k>0$$ On pourra procéder par récurrence pour l'implication réciproque. 
+		\item En déduire que $\mathcal{S}_n^{++}(\R)$ est un ouvert de $\mathcal{S}_n(\R)$.
+		\item Montrer que l'application $\exp:\mathcal{S}_n(\R)\to\mathcal{S}_n^{++}(\R)$ est bien définie, continue et bijective. Montrer que sa bijection réciproque est continue.
+		\item Montrer que l'application $\exp:\mathcal{A}_n(\R)\to\mathcal{O}_n(\R)$ est bien définie, continue et surjective.
+		\item Justifier que $\mathcal{O}_n(\R)$ est un sous-groupe compact de $\mathcal{GL}_n(\R)$.
+		\item Soit $G$ un sous-groupe compact de $\mathcal{GL}_n(\R)$ contenant $\mathcal{O}_n(\R)$. Montrer que $G=\mathcal{O}_n(\R)$. indication : on pourra utiliser la décomposition polaire.
+		\item Démontrer que $\mathcal{SO}_n(\R)$ est connexe par arcs. Déterminer les composantes connexes par arcs de $\mathcal{O}_n(\R)$.
+	\end{enumerate}
+\end{ex}
+
+\section{Isométries vectorielles}
+
+\begin{ex}[Moulin.50]{}
+	Identifier les endomorphismes de $\R^3$ de matrices dans la base canonique : $$A=\frac{1}{9}\begin{pmatrix}
+		8&1&-4\\
+		-4&4&-7\\
+		1&8&4
+	\end{pmatrix}\ \ \text{et}\ \  B=\frac{1}{3}\begin{pmatrix}
+		2&2&-1\\
+		2&-1&2\\
+		-1&2&2
+	\end{pmatrix}$$
+\end{ex}
+
+\begin{ex}[Moulin.51]{}
+	Soit $(u,v)\in\mathcal{O}(E)^2$ et $\lambda\in]0,1[$. On suppose que $(1-\lambda)u+\lambda v\in\mathcal{O}(E)$. Montrer que $u=v$.
+\end{ex}
+\begin{proof}
+	Soit $x\in S$ la sphère unité. Alors $u(x)\in S$ et $v(x)\in S$. Or, $(1-\lambda)u(x)+\lambda v(x)\in S$, donc par stricte convexité de la boule unité (on est dans un espace euclidien), $u(x)=v(x)$. Donc $u$ et $v$ coïncident sur $S$ donc sur $E$ tout entier par homogénéité.
+\end{proof}
+
+\begin{ex}[Moulin.52]{}
+	On pose $A=\displaystyle\begin{pmatrix}
+		0&1&0\\
+		0&0&1\\
+		1&0&0
+	\end{pmatrix}$. Montrer que $A$ appartient à $\mathcal{SO}_3(\R)$ et expliciter $P\in\mathcal{O}_3(\R)$ et $\theta\in\R$ tels que $$A=P\begin{pmatrix}
+		1&0&0\\
+		0&\cos(\theta)&-\sin(\theta)\\
+		0&\sin(\theta)&\cos(\theta)
+	\end{pmatrix}P\inv$$
+\end{ex}
+
+\begin{ex}[Moulin.53]{}
+	Une matrice $A\in\mathcal{O}_n(\R)$ est-elle nécessairement diagonalisable sur $\C$ ?
+\end{ex}
+
+\begin{ex}[Moulin.54]{}
+	Soit $A=(a_{i,j})\in\mathcal{O}_n(\R)$. Montrer que $$\left\lvert\sum_{1\leqslant i,j\leqslant n}a_{i,j}\right\rvert\leqslant n$$
+\end{ex}
+\begin{proof}
+	Notons $(e_i)$ la base canonique de $\R^n$ et $u$ l'endomorphisme canoniquement associé à $A$. Alors d'après l'inégalité de Cauchy-Schwarz : \begin{align*}
+		\left\lvert\sum_{1\leqslant i,j\leqslant n}a_{i,j}\right\rvert&=\left\lvert\left(\sum u(e_i)\mid \sum e_i\right)\right\rvert \\
+		&\leqslant\sqrt{\left(\sum u(e_i)\mid \sum u(e_i)\right)}\sqrt{\left(\sum e_i\mid \sum e_i\right)}\\
+		&=\sqrt{n}\sqrt{n}\\
+		&=n
+	\end{align*}
+\end{proof}
+
+\begin{ex}[Moulin.55]{$\Delta$ Transformation de Cayley}
+	Soit $A$ une matrice antisymétrique réelle.
+	\begin{enumerate}
+		\item Montrer que $I-A$ est inversible.
+		\item Montrer que $(I-A)\inv(I+A)$ est orthogonale directe.
+		\item Étudier la réciproque.
+		\item Déterminer $\{(I-A)\inv(I+A)\ \mid\ A\in\mathcal{A}_n(\R)\}$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.56]{}
+	Soit $u$ un endomorphisme d'un espace euclidien.
+	\begin{enumerate}
+		\item Montrer qu'il y a équivalence entre :
+		\begin{itemize}
+			\item $\forall x\in E,\ (x\mid u(x))=0$ ;
+			\item $u\st=-u$
+		\end{itemize}
+		\item Montrer que deux quelconques des trois propositions suivantes impliquent la troisième :
+		\begin{itemize}
+			\item $u$ est une isométrie ;
+			\item $u^2=-\text{Id}_E$ ;
+			\item $\forall x\in E,\ (x\mid u(x))=0$
+		\end{itemize}
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Cela se fait sans trop de problème.
+	\begin{enumerate}
+		\item Dans le sens direct, l'écrire pour $x+y$ et développer en réutilisant l'hypothèse pour $x$ et $y$. Réciproquement, utiliser la définition de l'adjoint et le fait que $\R$ est de caractéristique nulle.
+		\item Cela se fait très bien. On pourra utiliser la première question.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.57]{$\Delta\star$}
+	Déterminer les endomorphismes d'un espace vectoriel euclidien qui conservent l'orthogonalité.
+\end{ex}
+\begin{proof}
+	On remarque que si $x$ et $y$ ont même norme, $x+y$ et $x-y$ sont orthogonaux. Cela prouve qu'une tel endomorphisme est constant ur la sphère unité, et donc que c'est $k$ fois une isométrie. Réciproquement, cela est clairement suffisant.
+\end{proof}
+
+\begin{ex}[Moulin.58]{}
+	Soit $(a,b,c)\in\R^3$. Montrer que la matrice $$\begin{pmatrix}
+		a&b&c\\
+		c&a&b\\
+		b&c&a
+	\end{pmatrix}$$ appartient à $\mathcal{SO}_3(\R)$ si, et seulement s'il existe $k\in\displaystyle\left[0,\frac{4}{27}\right]$ tel que $a$, $b$ et $c$ soient les racines du polynôme $X^3-X^2+k$, comptées avec multiplicité.
+\end{ex}
+\begin{proof}
+	Écrire les relations qui caractérisent l'appartenance à $\mathcal{SO}_3(\R)$ (colonnes de norme $1$, déterminant) et les regrouper pour obtenir un polynôme.
+\end{proof}
+
+\begin{ex}[Moulin.59]{}
+	Soit $E$ un espace euclidien de dimension $3$. Montrer que deux rotations de $E$ commutent si, et seulement si, elles ont un vecteur fixe commun non nul ou s'il s'agit de symétrie orthogonales par rapport à des droites orthogonales.
+\end{ex}
+
+\begin{ex}[Moulin.60]{}
+	Soit $u$ une isométrie vectorielle d'un espace euclidien $E$ et $s$ une réflexion de $E$. Montrer que si $1$ n'est pas valeur propre de $u$, alors $1$ est valeur propre de $s\circ u$.
+\end{ex}
+
+\begin{ex}[Moulin.61]{$\star$ Sous-groupes compacts de $\mathcal{GL}_n(\R)$ contenant $\mathcal{O}_n(\R)$}
+	Soit $G$ un sous-groupe compact de $\mathcal{GL}_n(\R)$ qui contient $\mathcal{O}_n(\R)$. Montrer que $G=\mathcal{O}_n(\R)$. On pourra utiliser la décomposition polaire.
+\end{ex}
+\begin{proof}
+	On utilise la décomposition polaire pour prouver que la matrice diagonale est dedans. En prenant la suite des puissances de la matrice diagonale, on en déduit que celle-ci est nécessairement l'identité comme $G$ est compact. Donc la matrice symétrique est l'identité et la matrice qu'on a considérée initialement est orthogonale. Et l'inclusion réciproque est donnée par hypothèse.
+\end{proof}
+
+\begin{ex}[Moulin.62]{}
+	Soit $E$ un espace euclidien. Montrer que le groupe $\mathcal{O}(E)$ des isométries vectorielles est engendré par l'ensemble des réflexions.
+\end{ex}
+
+\end{document}

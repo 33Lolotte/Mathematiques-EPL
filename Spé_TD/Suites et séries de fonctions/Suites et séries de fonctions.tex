@@ -1,0 +1,401 @@
+\documentclass[french,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théorème}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{ex}[2][]{colback=white, colframe=green!50!white, coltitle=black, fonttitle=\bfseries, title={Exercice~\thetcbcounter~: #2}, after title={\hfill #1}}
+
+\title{TD Suites et séries de fonctions}
+
+\begin{document}
+
+\maketitle
+
+\section{Suites de fonctions, modes de convergence}
+
+\begin{ex}[Moulin.01]{}
+	Étudier la convergence simple et la convergence uniforme, sur des ensembles à préciser, des suites de fonctions : 
+	\begin{enumerate}
+		\item $f_n:x\mapsto\sin(x)e^{-nx}$ ;
+		\item $g_n:x\mapsto\displaystyle\frac{x\sqrt{n}}{1+nx^2}$ ;
+		\item $h_n:x\mapsto\arctan\displaystyle\left(\frac{n-x}{1+nx}\right)$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.02]{}
+	Montrer que la suite de fonctions définie par $\displaystyle f_n(x)=\frac{x^n}{1+x^{2n}}$ converge simplement sur $\R$ vers une limite $f$. Étudier la convergence uniforme de cette suite, puis celle de la série de fonction $f_n-f$.
+\end{ex}
+
+\begin{ex}[Moulin.03]{}
+	Étude (convergence simple, convergence uniforme sur $\R$, convergence uniforme sur des segments de $\R$) de la suite de fonctions définie par $f_n(x)=\displaystyle\frac{1}{1+(1+nx)^2}$ puis de la série $\sum f_n$.
+\end{ex}
+
+\begin{ex}[Moulin.04]{$\Delta$ Une étude de suite de fonctions}
+	Convergence simple et convergence uniforme sur tout segment de $\R_+$ de la suite $(f_n)$, où : $$f_n(x)=\begin{cases}
+		\displaystyle\left(1-\frac{x}{n}\right)^n&\text{si }0\leqslant x\leqslant n \\ 0&\text{sinon}
+	\end{cases}$$ Montrer la convergence uniforme sur $\R_+$.
+\end{ex}
+\begin{proof}
+	Exercice classique. Remarquer que la limite simple est $e^{-x}$. Pour la convergence uniforme sur tout segment $[0,b]$, utiliser la formule de Taylor-Lagrange comme on a obtenu la limite simple avec un équivalent. Enfin, soit $\varepsilon>0$. A partir d'un certain $A\geqslant 0$, on a : $$0\leqslant f_n(x)\leqslant e^{_x}\leqslant \varepsilon$$ Et ensuite, pour $n$ assez grand, OK sur le segment $[0,A]$ par ce qui précède.
+\end{proof}
+
+\begin{ex}{Une deuxième étude de suite de fonctions}
+	Soit $f\in\mathcal{C}^2(\R,\C)$. Montrer que la suite de fonctions $$f_n:x\mapsto n\left[f\left(x+\frac{1}{n}\right)-f(x)\right]$$ converge uniformément sur tout segment de $\R$.
+\end{ex}
+\begin{proof}
+	On prouve que la limite simple est $f'$. Ensuite, l'inégalité de Taylor-Lagrange permet d'obtenir : $$\lvert f_n(x)-f'(x)\rvert\leqslant\frac{1}{2n}\lVert f''\rVert_{\infty,\left[x,x+\frac{1}{n}\right]}$$ On prend alors $x\in[a,b]$ et alors $f''$ est bornée par $M$ sur $[a,b+1]$ donc $$\forall x\in[a,b],\ \lvert f_n(x)-f'(x)\rvert\leqslant\underbrace{\frac{1}{2n}\lVert f''\rVert_{\infty,\left[a,b+1\right]}}_{\text{indépendant de }x}\xrightarrow[n\to+\infty]{}0$$
+\end{proof}
+\begin{ex}{Une troisième étude de suite de fonctions}
+	Convergence simple et uniforme de $$u_n(x)=\prod_{k=1}^{n}(1+x^k)$$ Où ça ?
+\end{ex}
+\begin{proof}
+	En passant au $\ln$, on obtient un domaine qui vaut $[-1,1[$. En effet, si $x\in]-1,1[$, on a : $$\ln(u_n(x))=\sum_{k=1}^{n}\underbrace{\ln(1+x^k)}_{\sim x^k\text{ sommable}}$$ donc convergence. Ensuite, $$\ln(1-a^n)\leqslant\ln(1+x^n)\leqslant a^n$$ si $x\in[-a,a]$ avec $a\in[0,1[$ donc CVN sur $[-a,a]$.
+\end{proof}
+\begin{ex}{Une quatrième étude de suite de fonctions}
+	Etablir la convergence simple et uniforme sur $\R_+$ de la suite $(f_n)$ de fonctions définies par : $$f_n(t)=\frac{\sin(nt)}{n\sqrt{t}}\ \ \text{si }t>0 \ \ \text{et} \ \ f(0)=0$$
+\end{ex}
+\begin{proof}
+	La limite simple est la fonction nulle. Ensuite, on utilise l'\textbf{arme anti-colleur} (merci pour la dénomination François). On considère $$\varphi(u)=\frac{\sin(u)}{\sqrt{u}}$$ Alors $\varphi$ est bornée sur $\R_+$ (après prolongement par continuité en $0$). Et ensuite : $$\lvert f_n(t)\rvert\leqslant \frac{\mathcal{N}_\infty(\varphi)}{\sqrt{n}}$$ donc on a une convergence normale.
+\end{proof}
+\begin{rmq}
+	\textbf{Quand il y a du $nt$, penser à utiliser cette technique !!!}
+\end{rmq}
+\begin{ex}{$\Delta$ Composition}
+	Soit $\varphi$ une application continue de $[a,b]$ dans $\C$. Montrer que si $(f_n)$ est une suite de fonctions de $\R$ dans $[a,b]$ convergeant uniformément vers $f:\R\to\R$, alors $(\varphi\circ f_n)$ converge uniformément sur $\R$ vers $\varphi\circ f$.
+\end{ex}
+\begin{proof}
+	Revenir à la définition de la convergence uniforme avec les $\varepsilon$ et utiliser l'uniforme continuité de $\varphi$, permise par le théorème de Heine. On prend le $\eta$ qui correspond et on prend $n_0$ à partir duquel $$\lVert f-f_n\rVert_\infty\leqslant\eta$$ avant de conclure avec l'uniforme continuité de $\varphi$.
+\end{proof}
+\begin{ex}{$\Delta$ Convergence uniforme sur $\R$ d'une suite de polynômes}
+	Soit $(P_n)$ une suite de polynômes de $\C[X]$ convergeant uniformément sur $\R$ vers une fonction $f:\R\to\C$. Montrer que $f$ est polynomiale.
+\end{ex}
+\begin{proof}
+	Avec l'inégalité triangulaire, on montre qu'à partir d'un certain rang $n_0$, on a : $$\lVert P_n-P_{n_0}\rVert_\infty\leqslant1$$ Or, les seuls polynômes bornés sont les polynômes constants. On prend donc $c_n\in\C$ tel que $P_n-P_{n_0}=c_n$. En particulier, $c_n=P_n(0)-P_{n_0}(0)$ Mais par convergence simple vers $f$, on a $$c_n\xrightarrow[n\to+\infty]{}f(0)-P_{n_0}(0)$$ Et avec la limite simple on a : $$f=P_{n_0}+f(0)-P_{n_0}(0)$$ donc $f$ est bien polynomiale.
+\end{proof}
+\begin{ex}{$\star$ Itérées d'une fonction qui diminue strictement la norme}
+	Soit $A$ un réel strictement positif et $f:\R\to\R$ une fonction continue vérifiant $$\forall x\in\R\st,\ \lvert f(x)\rvert<\lvert x\rvert$$ Montrer que la suite $f^=f\circ \cdots\circ f$ converge uniformément vers $0$ sur tout segment $[-A,A]$.
+\end{ex}
+\begin{proof}
+	On remarque par passage à la limite que $f(0)=0$ puis on prend $\varepsilon>0$ suffisamment petit. On applique le théorème des bornes atteintes à $\displaystyle\frac{\lvert f(x)\rvert}{\lvert x\rvert}$ sur $[-A,-\varepsilon]$ et su $[\varepsilon,A]$ pour obtenir qu'elle est contractante (ou presque) sur ces ensembles. Nécessairement, les itérées rentrent dans $[-\varepsilon,\varepsilon]$ à partir d'un certain $n$ qui ne dépend que $A$ et $\varepsilon$.
+\end{proof}
+\begin{ex}{Une intégrale}
+	Soit $f:[0,1]^2\to\R$ continue.
+	\begin{enumerate}
+		\item Montrer que pour tout suite convergente $(x_n)$ d'éléments de $[0,1]$, la suite de fonctions $(y\mapsto f(x_n,y))$ converge uniformément sur $[0,1]$.
+		\item Montrer que $x\mapsto\displaystyle\int_{0}^{1}f(x,y)\ dy$ est continue.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	On utilise le théorème de Heine pour obtenir que $f$ est uniformément continue et on prend $\varepsilon>0$ et $\eta>0$ associé.
+	\begin{enumerate}
+		\item On note $x$ la limite. Alors on prend $n_0$ tel que pour $n\geqslant n_0$ on ait $\lvert x_n-x\rvert\leqslant\eta$ puis on utilise l'uniforme continuité.
+		\item On fait la différence des deux intégrales et on utilise encore l'uniforme continuité.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{$\Delta$ Limite simple de fonctions lipschitziennes de même rapport sur un segment}
+	Soit $k\in\R_+\st$ et $(f_n)_{n\in\N}$ une suite de fonctions toutes $k$-lipschitziennes définies sur un segment $[a,b]$ de $\R$ et à valeurs dans $\C$. On suppose que $(f_n)_{n\in\N}$ converge simplement vers une limite $f$. Montrer que la convergence est uniforme.
+\end{ex}
+\begin{proof}
+	Un passage à la limite montre que $f$ est $k$-lipschitzienne. Ensuite, pour $\varepsilon>0$, on prend une subdivision $a_0<\ldots<a_p$ de $[a,b]$ telle que $$\lvert a_{i+1}-a_i\rvert\leqslant\frac{\varepsilon}{3k}$$ Ensuite, on prend un $n_0\in\N$ tel que $$\forall n\geqslant n_0,\ \lvert f_n(a_i)-f(a_i)\rvert\leqslant\frac{\varepsilon}{3}$$ Finalement, pour $x\in[a,b]$, dont le plus proche élément de la subdivision est $a_i$, on écrit : $$\lvert f_n(x)-f(x)\rvert\leqslant\lvert f_n(x)-f_n(a_i)\rvert+\lvert f_n(a_i)-f(a_i)\rvert+\lvert f(a_i)-f(x)\rvert$$ et on utilise la lipschitzianité et le fait que $$\lvert x-a_i\rvert\leqslant \frac{\varepsilon}{3k}$$ puis l'hypothèse sur $n_0$ pour majorer le tout par $\varepsilon$, indépendamment de $x$.
+\end{proof}
+\begin{rmq}
+	Cette technique de prendre une subdivision est fortement utile.
+\end{rmq}
+\begin{ex}{$\star$ $\star$ $\star$ Version faible du théorème d'Ascoli}
+	\begin{enumerate}
+		\item Soit $k>0$ et $(f_n)$ une suite de fonctions de $[0,1]$ dans $[-1,1]$ toutes $k$-lipschitziennes. Montrer que l'on peut extraire de $(f_n)$ une sous-suite convergeant uniformément.
+		\item Application :montrer qu'est de dimension finie tout sous-espace vectoriel $F$ de $\mathcal{C}^1([0,1],\R)$ sur lequel $f\mapsto\mathcal{N}_\infty(f)$ et $f\mapsto\mathcal{N}_\infty(f)+\mathcal{N}_\infty(f')$ sont équivalentes.
+		\item Application 2 : soit $(f_n)$ une suite de fonctions convexes bornées sur un intervalle $I$ ouvert (donc continues) : montrer que si la suite $(f_n)$ est bornée pour $\mathcal{N}_\infty$, elle admet une sous-suite convergeant uniformément sur tout segment de $I$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice \textbf{très} difficile !
+	\begin{enumerate}
+		\item Mettre en place une extraction diagonale après avoir pris des limites simples en tout point de $[0,1]\cap \Q$ qui est dénombrable, puis utiliser la lipschitzianité un peu comme dans l'exercice précédent. Pour plus de détail, se référer au DM qui concerne ce théorème.
+		\item Utilise l'équivalence de ces normées pour essayer de se ramener à des fonctions lipschitziennes
+		\item Écrire une inégalité des pentes et ce que signifie le fait d'être bornée.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{$\star$ Lemme de Riemann-Lebesgue sur un intervalle quelconque}
+	On rappelle que si $f$ est continue par morceaux sur un segment $I$, alors $\displaystyle\in_If(t)e^{int}\ dt$ tend vers $0$ lorsque $n$ tend vers $+\infty$. Généraliser ce résultat à un intervalle $I$ quelconque pour une fonction $f$ intégrable sur $I$. On pourra se contenter de traiter le cas $I=\R_+$.
+\end{ex}
+\begin{proof}
+	On définit $$I_n=\int_{0}^{+\infty}f(t)e^{int}\ dt \ \ \text{et} \ \ I_n(p)=\int_{0}^{p}f(t)e^{int}\ dt$$ Alors, on a : $$\lvert I_n-I_n(p)\rvert\leqslant\int_{p}^{+\infty}\lvert f(t)\rvert \lvert e^{int}\rvert\ dt=\underbrace{\int_{p}^{+\infty}\lvert f(t)\rvert \ dt}_{\text{indépendant de }n}\xrightarrow[p\to+\infty]{}0$$ On a donc une convergence uniforme puis on applique le théorème de la double limite en utilisant le cas des segments.
+\end{proof}
+\section{Théorèmes de Dini}
+\begin{ex}{$\Delta\star$ Premier théorème de Dini}
+	On considère une suite décroissante de fonctions $(f_n)$ sur un compact $K$ qui converge simplement vers $0$. Alors la convergence est uniforme.
+\end{ex}
+\begin{proof}
+	Déjà, remarquons que toutes les $f_n$ sont par conséquent positives. Il est possible de démontrer le résultat à la main en prenant les \textit{maxima} sur le segment, mais il y a plus élégant. Soit $\varepsilon>0$. On considère $$K_n:=\left\{x\in K \ : \ f_n(x)\geqslant\varepsilon\right\}$$ puis on raisonne par l'absurde. On suppose que tous ces compacts (fermés dans un compact) sont non vides. Alors, puisque $(K_n)$ forme une suite décroissante de compacts, d'après le théorème des compacts emboîtés, on peut prendre $x$ dans l'intersection de tous ces compacts. Mais alors il ne peut y avoir convergence simple en $x$. Cela est absurde. Ainsi, il existe un $K_{n_0}$ vide, et par décroissance, tous les suivants le sont. On a donc bien convergence uniforme.
+\end{proof}
+\begin{rmq}
+	On peut aussi le faire à la main mais c'est un peu bourbier. Sinon, ceux qui veulent pourront le faire avec Borel-Lebesgue mais c'est un peu overkill (et pas démontrable très vite).
+\end{rmq}
+\begin{ex}{$\star$ Deuxième théorème de Dini}
+	On considère une suite de fonctions $(f_n)$ définies sur $[a,b]$ à valeurs réelles qui sont toutes croissantes et qui converge simplement vers $f$ continue. Montrer que
+	la convergence est uniforme.
+\end{ex}
+\begin{proof}
+	Un passage à la limite montre que $f$ est croissante. On fixe $\varepsilon>0$ Et par croissance et uniforme continuité de $f$, on peut fixer $c_0<\ldots<c_n$ une subdivision de $[0,1]$ telle que $$\forall i,\ f(c_{i+1})-f(c_i)\leqslant\frac{\varepsilon}{2}$$ Ensuite, si $x\in[0,1]$, on prend $i$ tel que $c_i\leqslant x\leqslant c_{i+1}$. Par croissance de $f$ et de $f_n$ on a alors : $$\begin{cases}
+		f_n(x)-f(x)\leqslant f_n(c_{i+1})-f(c_i)\leqslant\frac{\varepsilon}{2}+f_n(c_{i+1})-f(c_{i+1})\\
+		f_n(x)-f(x)\geqslant f_n(c_i)-f(c_{i+1})\geqslant f_n(c_i)-f(c_i)-\frac{\varepsilon}{2}
+	\end{cases}$$ Or, il y a un nombre fini de $c_i$ donc on peut prend $n_0$ tel que $$\forall i,\ \forall n\geqslant n_0,\ \lvert f_n(c_i)-f(c_i)\rvert\leqslant\frac{\varepsilon}{2}$$ On a donc : $$\forall x,\forall n\geqslant n_0,\ \lvert f_n(x)-f(x)\rvert\leqslant\varepsilon$$ ce qui est bien la convergence uniforme souhaitée.
+\end{proof}
+\begin{ex}{$\star$ Théorème de Dini pour les fonctions convexes}
+	Montrer que si une suite de fonctions convexes sur un intervalle ouvert $I$ converge simplement sur $I$, alors la convergence est uniforme sur tout segment de $I$.
+\end{ex}
+\begin{proof}
+	On note $(f_n)$ la suite de fonctions et $f$ la limite simple. On prend $[b,c]\in I$ puis $(a,d)\in I^2$ tel que $a<b<c<d$. Soit $x\ne y\in[b,c]$. La convexité fournit : $$\frac{f_n(b)-f_n(a)}{b-a}\leqslant\frac{f_n(y)-f_n(x)}{y-x}\leqslant\frac{f_n(d)-f_n(c)}{d-c}$$ Or, les deux suite extrémales admettent des limites indépendantes de $x$ et $y$. Donc on en déduit que $$\forall n,\ \forall x\ne y,\ \left\lvert \frac{f_n(y)-f_n(x)}{y-x}\right\rvert\leqslant M$$ où $M$ ne dépend pas ni de $x$, ni de $y$, ni de $n$. Ensuite, il s'agit d'un des exercices précédents (à refaire donc).
+\end{proof}
+\begin{rmq}
+	il est peut-être possible de se ramener à une autre théorème de Dini, peut-être celui sur les fonctions croissantes.
+\end{rmq}
+\section{Propriétés des limites simples et uniformes}
+\begin{ex}{Zéros}
+	Soit $(f_n)$ une suite de fonctions de $[a,b]$ dans $\R$ convergeant uniformément sur $[a,b]$ vers une fonction continue $f$. Montrer que si chacune des fonctions $f_n$ admet un zéro, il en est de même pour $f$. Donner un contre-exemple si l'on ne suppose qu'une convergence simple.
+\end{ex}
+\begin{proof}
+	Extraire une valeur d'adhérence d'une suite de zéros puis utiliser la convergence uniforme. Comme contre-exemple, considérer : $$fn(x)=x^n-\frac{1}{2}$$ sur $[0,1]$.
+\end{proof}
+\begin{ex}{Uniforme continuité}
+	Montrer que si $(f_n)$ converge uniformément sur $A$ vers $f$, et si pour tout $n$, la fonction $f_n$ est uniformément continue sur $A$, alors $f$ l'est également.
+\end{ex}
+\begin{proof}
+	Revenir à la définition. Écrire $$\lVert f(x)-f(y)\rVert\leqslant\lVert f(x)-f_{n_0}(x)\rVert+\lVert f_{n_0}(x)-f_{n_0}(y)\rVert+\lVert f_{n_0}(y)-f_{n_0}(y)\rVert$$ en utilisant les hypothèses de convergence uniforme avec $$\lVert f-f_{n_0}\rVert_\infty\leqslant\frac{\varepsilon}{3}$$ et avec l'hypothèse d'uniforme continuité sur $f_{n_0}$. 
+\end{proof}
+\begin{ex}{Intégrale et limite nulle}
+	Soit $f$ continue par morceaux sur $\R_+$ telle que $\lim_{+\infty}=0$. Montrer que $$\lim_{n\to+\infty}\int_{0}^{1}f(nx)\ dx=0$$ mais qu'il n'y a convergence uniforme vers $0$ de $f_n:x\mapsto f(nx)$ que si $f$ est nulle.
+\end{ex}
+\begin{proof}
+	Revenir avec des $\varepsilon$ et couper l'intégrale en deux en utilisant l'hypothèse. On montre le deuxième point par contraposée en prenant $x_0$ tel que $f(x_0)\ne 0$ et en écrivant $$x_0=n\frac{x_0}{n}$$
+\end{proof}
+\section{Séries de fonctions}
+\begin{ex}{$\star$ Un résultat autour de la constante d'Euler $\gamma$}
+	Montrer $$\lim_{x\to 0^+}\left[\left(\sum_{n=1}^{+\infty}\frac{1}{n^{1+x}}\right)-\frac{1}{x}\right]=\gamma$$ où $\gamma$ désigne la constante d'Euler (qui apparaît dans le développement asymptotique de la série harmonique). On pourra remarquer que $$\frac{1}{x}=\lim_{N\to+\infty}\sum_{n=1}^{N}\int_{n}^{n+1}\frac{dt}{t^{1+x}}$$
+\end{ex}
+\begin{proof}
+	On pose $$u_n(x)=\frac{1}{n^{1+x}}-\int_{n}^{n+1}\frac{dt}{t^{1+x}}$$ Un calcul d'intégrale et un DL donnent $$u_n(x)\xrightarrow[x\to 0^+]{}\frac{1}{n}-\ln(n+1)+\ln(n)$$ Or, on sait que : $$\sum_{n=1}^{+\infty}\left(\frac{1}{n}-\ln(n+1)+\ln(n)\right)=\gamma$$ Il suffit alors de montrer la convergence uniforme de $\sum u_n$ au voisinage de $0$. Faire une comparaison série-intégrale pour obtenir : $$\left\lvert\sum_{k=n+1}^{+\infty}\left(\frac{1}{k^{1+x}}-\int_{k}^{k+1}\frac{dt}{t^{1+x}}\right)\right\rvert\leqslant\int_{n}^{n+1}\frac{dt}{t^{1+x}}=\frac{1}{xn^x}\left(1-e^{-x\ln\left(1+\frac{1}{n}\right)}\right)$$ or, pour $n\in\N\st$ et $x\in[0,1]$, on a : $$-x\ln\left(1+\frac{1}{n}\right)\in[-1,0]$$ Avec l'IAF, $\exp$ est $1$-lipschitzienne sur $[-1,0]$ et alors : $$\left\lvert\sum_{k=n+1}^{+\infty}\left(\frac{1}{k^{1+x}}-\int_{k}^{k+1}\frac{dt}{t^{1+x}}\right)\right\rvert\leqslant\frac{\ln\left(1+\frac{1}{n}\right)}{n^x}\leqslant\underbrace{\ln\left(1+\frac{1}{n}\right)}_{\text{indépendant de }x}\xrightarrow[n\to+\infty]{}0$$ On a donc la CVU souhaitée et le théorème d'interversion de limites fournit le résultat.
+\end{proof}
+\begin{ex}{Suite décroissante positive}
+	Soit $(a_n)$ une suite décroissante positive et $u_n:t\mapsto a_nt^n(1-t)$.
+	\begin{enumerate}
+		\item Montrer que $\sum u_n$ converge simplement sur $[0,1]$.
+		\item Montrer que $\sum u_n$ converge normalement sur $[0,1]$ si, et seulement si, $\sum\displaystyle\frac{a_n}{n}$ converge.
+		\item $\star$ Montrer que $\sum u_n$ converge uniformément sur $[0,1]$ si, et seulement si, $(a_n)$ tend vers $0$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	La troisième question est difficile. Remarquons déjà que $a_n$ est bornée.
+	\begin{enumerate}
+		\item Si $t\in[0,1[$, Ok car $(a_n)$ est bornée. Si $t=1$, c'est la série nulle.
+		\item On étudie les variations de $u_n$ : $$u_n'(t)=a_nt^{n-1}(n-(n+1)t)$$ Cela permet de montrer que $u_n$ admet pour maximum $$a_n\frac{n^n}{(n+1)^{n+1}}$$ On prouve alors aisément que $$\mathcal{N}_\infty(u_n)\sim\frac{a_n}{ne}$$ Par équivalence et comme $1/e\ne 0$, on a le résultat.
+		\item Supposons $a_n\to l>0$. Alors on montre aisément avec un télescopage que $$\left\lvert\sum_{n=N}^{+\infty}a_nt^n(1-t)\right\rvert\geqslant lt^N$$ donc pas de convergence uniforme car alors $\lVert R_{N-1}\rVert_\infty\geqslant l$. Supposons $a_n\to 0$. Alors : $$\left\lvert\sum_{n=N}^{+\infty}a_nt^n(1-t)\right\rvert\leqslant a_N\sum_{n=N}^{+\infty}(t^n-t^{n+1})\leqslant a_Nt^N\leqslant \underbrace{a_N}_{\text{ind. de }t}\to 0$$ (la deuxième inégalité est valable aussi si $t=1$ même si le télescopage ne tient plus).
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Sommes de puissances}
+	\begin{enumerate}
+		\item Pour tout $n\in\N\st$, on pose : $$S_n=\sum_{k=0}^{n}\left(1-\frac{k}{n}\right)^n$$ Montrer que la suite $(S_n)_{n\in\N\st}$ converge et préciser sa limite.
+		\item En déduire un équivalent simple de la suite $$S_n'=\sum_{j=0}^{n}j^n$$
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	On fait comme d'habitude.
+	\begin{enumerate}
+		\item On pose $u_k(n)$ qui vaut $\displaystyle\left(1-\frac{k}{n}\right)$ si $k<n$ et $0$ sinon. On a alors $$S_n=\sum_{k=0}^{+\infty}u_k(n)$$ Or, pour tout $k\in\N$, $u_k(n)\xrightarrow[n\to+\infty]{}e^{-k}$ Et on a $$\lvert _k(n)\rvert\leqslant \underbrace{e^{-k}}_{\text{ind. de }n}\text{ sommable}$$ donc on a une convergence normale. On a donc convergence et la limite est $$\frac{1}{1-e^{-1}}$$
+		\item Avec un changement d'indice, on montre que $$S_n=\frac{1}{n^n}S_n'$$ On en déduit que $$S_n'\sim\frac{n^n}{1-e^{-1}}$$
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Une étude de série de fonctions}
+	On pose $\displaystyle f=\sum_{n=0}^{+\infty}f_n$ où $f_n:t\mapsto te^{-n^2t^2}$.
+	\begin{enumerate}
+		\item Définition et continuité de $f$ ?
+		\item Limite en $+\infty$ ?
+		\item Limite en $0$ ?
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item \begin{itemize}
+			\item Définition : OK pour $t=0$, et OK si $t\ne 0$ car on a un $O(e^{-nt^2})$ qui est sommable car $t^2>0$.
+			\item Continuité : avec une majoration du reste par une intégrale et un changement de variable, on trouve une CVU sur tout $]-\infty,-a]$ et $[a,+\infty[$ pour tout $a>0$ donc une continuité en tout point de $\R\st$. Remarquer que la continuité en $0$ est l'objet de la troisième question.
+		\end{itemize}
+		\item On a en particulier convergence uniforme au voisinage de $+\infty$. or, $f_n(t)\xrightarrow[t\to+\infty]{}0$ donc le théorème de la double limite donne $f(t)\xrightarrow[t\to+\infty]{}0$.
+		\item Une comparaison série-intégrale (et le dessin qui va avec !) donnent pour $t>0$ : $$\left\lvert f(t)-\underbrace{\int_{0}^{+\infty}te^{-x^2t^2}\ dx}_{=\sqrt{\pi}/2} \right\rvert\leqslant t$$ donc $$f(t)\xrightarrow[t\to0^+]{}\frac{\sqrt{\pi}}{2}$$ On constate qu'il n'y a pas de continuité en $0$ et donc pas de convergence uniforme au voisinage de $0$.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Une deuxième étude de série de fonctions}
+	\begin{enumerate}
+		\item Déterminer le domaine de convergence réel de la série de fonctions de terme général $f_n:x\mapsto\displaystyle\frac{xe^{-nx}}{\ln(n)}$. on note $\varphi(x)$ sa somme.
+		\item Montrer qu $\varphi$ est continue sur $\R_+\st$.
+		\item La série est-elle normalement convergente sur son domaine de définition ?
+		\item Déterminer la limite puis un équivalent de $\varphi$ en $0^+$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Si $x<0$, divergence grossière. Si $x=0$,$f_n(x)=0$. Si $x>0$, $f_n(x)=o(n^{-2})$ donc OK.
+		\item $$\lvert f_n(x)\rvert\leqslant \frac{be^{-na}}{\ln(n)}\text{ sommable}$$ si $x\in[a,b]$ avec $a<b$. CVN sur tout segment de $\R_+\st$ donc continuité.
+		\item On écrit $$f_n(x)=\frac{\psi(nx)}{n\ln(n)}$$ avec $\psi:t\mapsto te^{-t}$ On a alors : $$\lVert f_n\rVert_\infty=\frac{\lVert\psi\rVert_\infty}{n\ln(n)}$$ Or, $\lVert\psi\rVert_\infty\ne0$ et la série des inverses de $n\ln(n)$ diverge (cas limite des séries de Bertrand) donc on n'a pas convergence normale sur $\R_+$.
+		\item Comparaison série intégrale puis ???
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Une troisième étude de séries de fonctions : $\zeta$ alternée}
+	\begin{enumerate}
+		\item Ensemble de définition de $\chi:s\mapsto\displaystyle\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n^s}$
+		\item Montrer que $\chi$ est de classe $\mathcal{C}^\infty$ sur son ensemble de définition.
+		\item Préciser la monotonie de $\chi$ au voisinage de $+\infty$.
+		\item $\star$ Montrer que $\chi$ tend vers $1/2$ en $0^+$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	La dernière question est difficile.
+	\begin{enumerate}
+		\item Si $s\leqslant0$, divergence grossière. Si $s>0$, OK avec le théorème des séries alternées.
+		\item Dériver et dominer.
+		\item Dériver $\chi$ et utiliser le théorème des séries alternées.
+		\item Calculer sur $2f$ en sortant un terme d'une des deux sommes et en faisant un décalage d'indice sur l'autre. On utilise ensuite le théorème des séries alternées sur cette série alternée convexe.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{$\star$ Théorème de Mertens}
+	Soit $\sum u_n$ et $\sum v_n$ deux séries à termes complexes convergentes. On pose $$w_n=\sum_{p+q=n}u_p v_q$$ Montrer que si $\sum u_n$ est absolument convergente, alors le produit de Cauchy $\sum w_n$ converge et vérifie : $$\sum_{n=0}^{+\infty}w_n=\left(\sum_{n=0}^{+\infty}u_n\right)\left(\sum_{n=0}^{+\infty}v_n\right)$$ On pourra écrire $$\sum_{k=0}^{n}w_k=\sum_{p=0}^{+\infty}u_pV_{n-p}$$ où $(V_n)$ est la suite des sommes partielles de $\sum v_n$ convenablement prolongée à $\Z$.
+\end{ex}
+\begin{proof}
+	Comme suggéré, on définit $V_n=0$ pour $n<0$. On veut alors utiliser le théorème de la double limite. On montre alors une convergence normale. On sait que $(V_n)$ est bornée donc $\lvert u_pV_{n-p}\rvert\leqslant C\lvert u_p\rvert$ qui est sommable et indépendante de $n$. On peut alors utiliser le théorème de la double limite sur les sommes partielles.
+\end{proof}
+\begin{ex}{$\star$ Réciproque d'un résultat classique}
+	Soit $D=\{d_n| n\in\N\}$ un ensemble au plus dénombrable. Alors il existe une fonction $f$ croissante dont l'ensemble des points de discontinuité est exactement $D$.
+\end{ex} \begin{proof}
+	Pour tout $n\in\N$, on pose $$\begin{array}{lrcl}
+		f_n:&\R&\longrightarrow&\R \\
+		&x&\longmapsto&\begin{cases}
+			1/2^n\ \text{si} \ x\geqslant d_n \\
+			0\ \text{si} \ x<d_n
+		\end{cases}
+	\end{array}$$ Alors $f=\sum f_n$ converge simplement. En effet, pour $x\in\R$, on pose $$I_x=\{n\in\N\ : \ d_n\leqslant x\}$$ Alors $f(x)=\sum_{i\in I_x}2^{-i}$ qui est bien finie comme sous-famille de la famille $(2^{-n})_{n\in\N}$ qui est sommable. De plus, $f$ est croissante comme limite simple de fonctions croissantes. Par conséquent, elle admet des limites à gauche et à droite en tout point. Soit $n\in\N$ et notons $l_n$ cette limite. Il est clair que la limite à droite de $f$ en $d_n$ est supérieure à $f(d_n)$ par croissance. Or, pour $x<d_n$ : $$f(x)=\sum_{i\in I_x}2^{-i}\leqslant\sum_{d_i<d_n}2^{-i}=f(d_n)-\frac{1}{2^n}$$ Donc $l_n<f(d_n)$ et $d_n$ est un point de discontinuité de $f$. Et, si $x\notin D$, on peut distinguer les cas : 
+	\begin{itemize}
+		\item si $x$ n'est pas un point d'accumulation de $D$, alors on a convergence normale au voisinage de $x$ donc continuité car les $f_i$ sont continues au voisinage de $x$ ;
+		\item si $x$ est un point d'accumulation de $D$ : on revient à la définition en prenant $\varepsilon$, puis on s'approche suffisamment de $x$ pour que la différence causée par une $\sum_{j\in J}2^{-j}$ soit inférieure à $\varepsilon$ (possible car la série converge). 
+	\end{itemize}
+\end{proof}
+\section{Approximation uniforme}
+\begin{ex}{Approximation de la fonction et de ses dérivées sur un segment}
+	Soit $f:[0,1]\to\R$.
+	\begin{enumerate}
+		\item Montrer que si $f$ est de classe $\mathcal{C}^p$ avec $p\in\N$, il existe une suite de polynômes $(P_n)$ telle que $(P_n^{(k)})$ converge uniformément vers $f^{(k)}$ pour tout $k\in\llbracket0,p\rrbracket$.
+		\item $\star$ Montrer que si $f$ est de classe $\mathcal{C}^\infty$, alors il existe une suite de polynômes $(P_n)$ telle que $(P_n^{(k)})$ converge uniformément vers $f^{(k)}$ pour tout $k\in\N$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	La deuxième question est difficile.
+	\begin{enumerate}
+		\item Prendre l'exemple de la fin du cours de fonctions vectorielles et ajouter $$P_n=\sum_{k=0}^{p-1}\frac{f^{(k)}(0)}{k!}X^k$$
+		\item Soit $p\in\N$. Par la première question, prenons $P_p\in\R[X]$ tel que $$\forall k\leqslant p,\ \lVert P_p^{(k)}-f^{(k)}\rVert_\infty\leqslant\frac{1}{2^p}$$ On montre que $(P_p)_{p\in\N}$ convient. Soit $k\in\N$. Si $p\geqslant k$, on a par construction $$\lVert P_p^{(k)}-f^{(k)}\rVert_\infty\leqslant\frac{1}{2^p}\xrightarrow[p\to+\infty]{}0$$
+	\end{enumerate}
+\end{proof}
+\begin{ex}{$\Delta$ Application du théorème de Weierstrass}
+	Soit $f:[a,b]\to\C$ continue telle que $$\forall n\in\N,\ \int_{a}^{b}t^nf(t)\ dt=0$$ Montrer que $f$ est nulle. On pourra commencer par le cas où $f$ est à valeurs réelles.
+\end{ex}
+\begin{proof}
+	Le prouver dans le cas où $f$ est réelle. Le résultat s'en déduire en passant aux parties réelle et imaginaire. utiliser le théorème de Weierstrass pour approximer $f$ par une suite de polynômes. Alors, l'hypothèse permet de montrer que l'intégrale de $f^2$ est nulle, donc $f=0$ car continue positive.
+\end{proof}
+\begin{ex}{Analogue au précédent}
+	Montrer qu'il n'existe pas de fonction $f\in\mathcal{C}^0([0,1])$ telle que $$\int_{0}^{1}xf(x)\ dx=1 \ \ \text{et}\ \ \forall n\geqslant 2,\ \int_{a}^{b}x^nf(x)\ dx=0$$
+\end{ex}
+\begin{proof}
+	Raisonnons par l'absurde et supposons l'existence d'une telle fonction $f$. Alors, en faisant comme dans l'exercice précédent, on montre que $$\forall x\in[0,1],\ x^2f(x)=0$$ On en déduit que $$\forall x\in[0,1],\ xf(x)=0$$ et donc que $$\int_{0}^{1}xf(x)\ dx=0$$ ce qui est absurde.
+\end{proof}
+\section{TD Châteaux}
+\begin{ex}{Théorèmes de Dini}
+	\begin{enumerate}
+		\item Montrer le premier théorème de Dini : soit $K$ un compact et $(f_n)$ une suite croissante de fonctions continues de $K$ dans $\R$ qui converge simplement vers $f$ continue. Alors, la convergence est uniforme. Indication : on pourra considérer $\Omega_n=\{x\in K\ \mid\ f(x)-\varepsilon< f_n(x)\}$ et utiliser le théorème des compacts emboités.
+		\item Montrer le deuxième théorème de Dini : soit $(f_n)$ une suite de fonctions croissantes et continues sur $[a,b]$ qui converge simplement vers $f$ continue. Alors, la convergence est uniforme. Indication : on pourra utiliser le théorème de Heine.
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Convergence d'une suite de fonctions lipschitziennes}
+	\begin{enumerate}
+		\item Soit $(f_n)$ une suite de fonctions toutes $M$-lipschitziennes sur $[a,b]$ et qui converge simplement vers $f$. Montrer que $f$ est $M$-lipschitzienne et que la convergence est uniforme.
+		\item On pose $f_n(x)=\min(nx,\sqrt{x})$. Vérifier que chaque fonction $f_n$ est lipschitzienne. Démontrer que la suite $(f_n)$ converge uniformément sur $[0,1]$ vers la fonction racine carré, qui n'est pas lipschitzienne sur $[0,1]$.
+		\item Soit $(f_n)$ une suite de fonctions convexes qui converge simplement vers $f$ sur un intervalle $I$. Démontrer que la convergence est uniforme sur tout segment inclus dans l'intérieur de $I$. 
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Fonctions $\alpha$ et $\zeta$ de Riemann}
+	On pose, sous réserve d'existence, $\zeta(s)=\displaystyle\sum_{n=1}^{+\infty}\frac{1}{n^s}$ et $\alpha(s)=\displaystyle\sum_{n=1}^{+\infty}\frac{(-1)^n}{n^s}$.
+	\begin{enumerate}
+		\item Démontrer la convergence normale sur tout compact du demi-plan $\text{Re}(s)>1$ de ces deux séries de fonctions. En déduire que les fonctions $\zeta$ et $\alpha$ sont définies dans le champ complexe pour $\text{Re}(s)>1$, et sont continues sur ce demi-plan. \\
+		Désormais, \textbf{on se limite à la variable réelle}.
+		\item Démontrer que $\zeta$ est de classe $\mathcal{C}^\infty$ sur $]1,+\infty[$ et que $\zeta'(x)=\displaystyle-\sum_{n=1}^{+\infty}\frac{\ln(n)}{n^x}$.
+		\item Démontrer que la série de fonctions définissant $\alpha$ converge uniformément sur tout segment inclus dans $]0,+\infty[$. En déduire que $\alpha$ est continue sur $]0,+\infty[$, et de classe $\mathcal{C}^\infty$ sur cet intervalle.
+		\item Démontrer : $\forall x>1,\ \alpha(x)=(1-2^{1-x})\zeta(x)$. Indication : on pourra séparer les indices pairs et impairs.
+		\item Déterminer $\alpha(1)$. En déduire que $\zeta(x)\displaystyle\underset{x\to 1^+}{\sim}\frac{1}{x-1}$.
+		\item Démontrer : $\zeta(x)-1\underset{x\to1^+}{\sim}\displaystyle\frac{1}{2^x}$. Indication : on pourra effectuer une comparaison série-intégrale.
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Équicontinuité}
+	Soit $K$ une partie compacte d'un espace vectoriel normée $E$. L'espace $\mathcal{E}=\mathcal{C}^0(K,\C)$ est muni de la norme infinie. On dit qu'une partie $\mathcal{F}$ de $\mathcal{E}$ est équicontinue lorsque $$\forall\varepsilon>0,\ \forall x\in K,\ \exists\eta>0,\ \forall y\in K,\ \forall f\in\mathcal{F},\ \lVert x-y\rVert\leqslant\eta\implies\lvert f(x)-f(y)\rvert\leqslant\varepsilon$$ On dit qu'une partie $\mathcal{F}$ de $\mathcal{E}$ est uniformément équicontinue lorsque $$\forall\varepsilon>0,\ \exists\eta>0,\ \forall(x,y)\in K^2,\ \forall f\in\mathcal{F},\ \lVert x-y\rVert\implies\lvert f(x)-f(y)\rvert\leqslant\varepsilon$$
+	\begin{enumerate}
+		\item Montrer que toute partie équicontinue est uniformément équicontinue.
+		\item Soit $(f_n)$ une suite d'éléments de $\mathcal{E}$ qui converge simplement et telle que l'ensemble $\{f_n\ \mid\ n\in\N\}$ soit équicontinu. Montrer que $(f_n)$ converge uniformément vers $f$.
+		\item Soit $A$ une partie dense de $K$ et soit $\{f_n\ \mid\ n\in\N\}$ une partie équicontinue de $\mathcal{E}$ telles que $(f_n)$ converge simplement vers $f$ sur $A$. Montrer que $f$ se prolonge en une application $\hat{f}$ continue sur $K$ telle que $(f_n)$ converge simplement vers $\hat{f}$ sur $K$.
+		\item \textbf{Théorème d'Ascoli} : supposons $E$ de dimension finie et soit $\mathcal{F}$ une partie de $\mathcal{E}$. Prouver que les assertions suivantes sont équivalentes :
+		\begin{enumerate}[label=(\roman*)]
+			\item $\mathcal{F}$ est d'adhérence compacte
+			\item $\mathcal{F}$ est équicontinue et $\forall x\in K,\ \{f(x)\ \mid \ f\in\mathcal{F}\}$ est borné
+		\end{enumerate}
+		Indication : pour le sens $(ii)\implies(i)$, on montrera que de toute suite de $\mathcal{F}$, on peut extraire une suite convergeant simplement dans $K\cap D$ où $D$ est dénombrable dense par le biais d'un procédé diagonal.
+		\item Application : retrouver le résultat de la première question sur la convergence d'une suite de fonctions toutes lipschitziennes de même rapport.
+	\end{enumerate}
+\end{ex}
+\end{document}
