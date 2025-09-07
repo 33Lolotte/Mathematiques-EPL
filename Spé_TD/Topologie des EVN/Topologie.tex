@@ -1,0 +1,487 @@
+\documentclass[french,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théorème}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{ex}[2][]{colback=white, colframe=green!50!white, coltitle=black, fonttitle=\bfseries, title={Exercice~\thetcbcounter~: #2}, after title={\hfill #1}}
+
+\title{TD Topologie des espaces vectoriels normés}
+
+\begin{document}
+
+\maketitle
+
+\section{Normes}
+
+\begin{ex}[Moulin.01]{}
+	Soit $N_1$ et $N_2$ deux normes sur un espace vectoriel $E$. Parmi les applications suivantes, lesquelles sont des normes ? $$S=N_1+N_2\ \ N=\sup(N_1,N_2)\ \ n=\inf(N_1,N_2)$$
+\end{ex}
+
+\begin{ex}[Moulin.02]{}
+	Soit $N_1$ et $N_2$ deux normes non comparables sur un espace vectoriel $E$. Montrer qu'il existe une norme $N$ qui domine $N_1$ et $N_2$ et qui n'est équivalente ni à $N_1$, ni à $N_2$.
+\end{ex}
+
+\begin{ex}[Moulin.03]{}
+	Si $A$ et $B$ sont deux parties d'un espace vectoriel normé, on note : $$A+B=\{a+b\ \mid\ (a,b)\in A\times B\}$$ Pour $(a,b)\in E^2$ et $(r,s)\in\left(\R_+\st\right)^2$, déterminer : $$B_O(a,r)+B_O(b,s),\ \ B_O(a,r+B_F(b,s))\ \ \text{et}\ \ B_F(a,r)+B_F(b,s)$$
+\end{ex}
+
+\begin{ex}[Moulin.04]{$\Delta$ Norme de Frobenius}
+	Montrer que $\lVert \cdot\rVert :A\mapsto\sqrt{\Tr(A^TA)}$ est une norme sur $\mathcal{M}_n(\R)$ vérifiant : $$\forall (A,B)\in\mathcal{M}_n(\R)^2,\ \lVert AB\rVert\leqslant\lVert A\rVert \times\lVert B\rVert$$
+\end{ex}
+\begin{proof}
+	Pour montrer que c'est une norme, on peut remarquer que c'est la norme euclidienne associée au produit scalaire canonique sur $\mathcal{M}_n(\R)$. Pour montrer la sous-multiplicativité, utiliser l'inégalité triangulaire et la croissance de la fonction carré sur $\R_+$ puis l'inégalité de Cauchy-Schwarz.
+\end{proof}
+\begin{rmq}
+	Cette norme est appelée \textbf{norme de Frobenius}. On a la même sur $\mathcal{M}_n(\C)$ avec $$A\mapsto\sqrt{\Tr\left(\overline{A}^T A\right)}$$
+\end{rmq}
+
+\begin{ex}[Moulin.05]{}
+	Existe-t-il une norme $\lVert\cdot\rVert$ sur $\mathcal{M}_n(\C)$ vérifiant : $$\forall(A,B)\in\mathcal{M}_n(\C)^2,\ \lVert AB\rVert=\lVert A\rVert\lVert B\rVert$$
+\end{ex}
+\begin{proof}
+	Si $n=1$, la réponse est oui, c'est le module. Mais dès que $n\geqslant 2$, cela n'est plus possible car il existe des matrices non nulles dont le produit est nul (prendre les matrices élémentaires $E_{1,1}$ et $E_{2,2}$).
+\end{proof}
+
+\begin{ex}[Moulin.06]{$\Delta$ Normes $l^p$}
+	\begin{enumerate}
+		\item Soit $p\in\N\st$. On définit $\lVert\cdot\rVert_p$ sur $\R^n$ par : $$\lVert x\rVert_p=\left(\sum_{k=1}^{n}\lvert x_k\rvert^p\right)^{1/p}$$ Montrer que $\lVert\cdot\rVert_p$ définit une norme sur $\R^n$.
+		\item Que peut-on dire quand $p=1$, $p=2$ et $p\longrightarrow+\infty$ ?
+		\item Les normes $\lVert\cdot\rVert_p$, pour $p\in[1,\infty]$ sont-elles équivalentes ? Plus précisément, pour tout $(p,q)\in[1,\infty]^2$, déterminer la plus petite constante $C$ possible (si elle existe) telle que $\forall x\in\R^n,\ \lVert x\rVert_p\leqslant C\lVert x\rVert_q$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.07]{}
+	Reprendre l'étude de l'exercice précédent sur $\mathcal{C}^0([a,b],\R)$ avec : $$\mathcal{N}_p(f)=\left(\int_{a}^{b}\lvert f\rvert^p\right)^{1/p}$$
+\end{ex}
+
+\begin{ex}[Moulin.08]{}
+	Comparer les normes $N_p$ étendues à $\R[X]$ : $$N_p\left(\sum_{n=0}^{+\infty}a_nX^n\right)=\left(\sum_{n=0}^{+\infty}\lvert a_n\rvert^p\right)^{1/p}$$
+\end{ex}
+
+\begin{ex}[Moulin.09]{}
+	Soit $E=\mathcal{C}^0([0,1],\R)$. Pour $g\in E$, on définit $\mathcal{N}_g(f)=\displaystyle\underset{[0,1]}{\sup}\lvert fg\rvert$.
+	\begin{enumerate}
+		\item Condition nécessaire et suffisante sur $g$ pour que $\mathcal{N}_g$ soit une norme ?
+		\item Montrer que $\mathcal{N}_\infty$ (norme de la convergence uniforme sur $[0,1]$) domine $\mathcal{N}_g$.
+		\item Donner une condition nécessaire et suffisante sur $g$ pour que $\mathcal{N}_g$ soit équivalente à $\mathcal{N}_\infty$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.10]{}
+	Soit $E=\mathcal{C}^0([0,1],\R)$. Pour $g\in E$, on définit $\mathcal{N}_g(f)=\displaystyle\int_{0}^{1}\lvert fg\rvert$.
+	\begin{enumerate}
+		\item Condition nécessaire et suffisante sur $g$ pour que $\mathcal{N}_g$ soit une norme ?
+		\item Montrer que $\mathcal{N}_\infty$ (norme de la convergence uniforme sur $[0,1]$) domine $\mathcal{N}_g$.
+		\item Existe-t-il $g\in E$ telle que $\mathcal{N}_g$ soit équivalente à $\mathcal{N}_\infty$ ?
+		\item Donner une condition nécessaire et suffisante sur $g$ pour que $\mathcal{N}_g$ soit équivalente à $\mathcal{N}_1$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.11]{}
+	Dans $\R[X]$, on considère les normes suivantes : $$\mathcal{N}_1(P)=\int_{-1}^{1}\lvert P\rvert \ ; \ \mathcal{N}_\infty(P)=\underset{[-1,1]}{\sup}\lvert P\rvert \ ; \ \lVert P\rVert_1=\sum_{n=0}^{+\infty}\lvert a_n\rvert \ \text{et}\ \lVert P\rVert_\infty=\underset{n\in\N}{\sup}\lvert a_n\rvert$$ où $P=\displaystyle\sum_{n=0}^{+\infty}a_nX^n$.
+	\begin{enumerate}
+		\item Comparer $\mathcal{N}_\infty$ et $\lVert\cdot\rVert_\infty$.
+		\item Comparer $\mathcal{N}_1$ et $\lVert\cdot\rVert_1$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item \begin{itemize}
+			\item $\lVert\cdot\rVert_\infty$ ne domine pas $\mathcal{N}_\infty$. Il suffit de considérer $$P_n=\sum_{k=0}^{n}X^k$$ On a : $\mathcal{N}_\infty(P_n)\geqslant n=P(1)$ et $\lVert P_n\rVert_\infty=1$
+			\item $\mathcal{N}_\infty$ ne domine pas $\lVert\cdot\rVert_\infty$. il suffit de considérer $$P_n=(1-X^2)^n$$ On a : $\mathcal{N}_\infty(P_n)=1$ mais $\lVert P_n\rVert_\infty\geqslant \binom{n}{1}=n$.
+		\end{itemize}
+		\item \begin{itemize}
+			\item $\mathcal{N}_1$ ne domine pas $\lVert\cdot\rVert_1$. Il suffit de considérer $$P_n=X^n$$ On a : $\mathcal{N}_1(P_n)=\displaystyle\frac{2}{n+1}\to 0$ mais pourtant $\lVert P_n\rVert_1=1$.
+			\item $\lVert\cdot\rVert_1$ domine $\mathcal{N}_1$. En effet, pour tout $t\in[-1,1]$, on a : \begin{align*}
+				\lvert P(t)\rvert&\leqslant\sum_{n=0}^{+\infty}\lvert a_n\rvert\lvert t\rvert \\
+				&\leqslant\sum_{n=0}^{+\infty}\lvert a_n\rvert\\
+				&=\lVert P\rVert_1
+			\end{align*} donc $\mathcal{N}_1(P)\leqslant 2\lVert P\rVert_1$, si bien que $\lVert\cdot\rVert_1$ domine $\mathcal{N}_1$.
+		\end{itemize}
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.12]{}
+	Sur $\mathcal{D}^1([0,1])$, on considère $\mathcal{N}(f)=\lvert f(0)\rvert+\mathcal{N}_\infty(f'-f)$.
+	\begin{enumerate}
+		\item Est-ce une norme sur $\mathcal{D}^1([0,1],\R)$ ? Et sur $\mathcal{C}^1([0,1],\R)$ ?
+		\item La comparer à $\mathcal{N}_\infty$ ?
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.13]{$\circ$}
+	Montrer que deux normes sur un même espace vectoriel $E$ sont égales si, et seulement si, elles définissent la même sphère unité dans $E$. Même question avec la boule unité fermée, puis la boule unité ouvert, puis les sphères, boules fermée et ouvert de n'importe quel rayon.
+\end{ex}
+\begin{proof}
+	Raisonner par homogénéité.
+\end{proof}
+
+\begin{ex}[Moulin.14]{Norme de variation totale}
+	Pour $f:[a,b]\to\C$ et $\sigma=(a_0,\ldots,a_n)$ une subdivision de $[a,b]$, on note : $$V_\sigma(f)=\sum_{k=0}^{n-1}\lvert f(a_{k+1})-f(a_k)\rvert$$ On définit : $$V_f=\sup\{V_\sigma(f)\}\in\R_+\subset\{+\infty\}$$
+	\begin{enumerate}
+		\item Montrer que l'ensemble $VB([a,b])$ des fonctions $f$ de $[a,b]$ dans $\C$ telles que $V(f)<+\infty$ est un sous-espace vectoriel des fonctions bornées de $[a,b]$ dans $\C$ et que : $$N_{vb}:f\mapsto\lvert f(a)\rvert+V(f)$$ définit une norme sur celui-ci.
+		\item Comparer $N_{vb}$ à $\mathcal{N}_\infty$ sur l'espace $VB([a,b])$.
+		\item Montrer que $\mathcal{C}^1([a,b])$ est un sous-espace vectoriel de $VB([a,b])$ et que : $$N_1:f\mapsto\lvert f(a)\rvert+\mathcal{N}_\infty(f')$$ définit une norme sur $\mathcal{C}^1([a,b])$. la comparer à $N_{vb}$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.15]{Norme quotient}
+	Soit $(E,\lVert\cdot\rVert)$ un $\K$-espace vectoriel normé, et $F$ un sous-espace vectoriel fermé de $E$. On définit sur $E$ la relation de congruence modulo $F$ par $$x\equiv y\ \mod \ F\iff x-y\in F$$
+	\begin{enumerate}
+		\item Montrer que la congruence modulo $F$ est une relation d'équivalence, et préciser la nature géométrique de ses classes d'équivalence. On notera $E/F$ l'ensemble quotient associé.
+		\item Montrer qu'il existe une unique structure de $\K$-espace vectoriel sur $E/F$ faisant de la projection canonique une application linéaire.
+		\item Montrer que la fonction $N$ définie sur $E/F$ par : $$N([x])=d(x,F)$$ est bien définie et est une norme sur $E/F$.
+	\end{enumerate}
+\end{ex}
+
+\section{Convexité}
+
+\begin{ex}[Moulin.16]{$\Delta$}
+	Soit $E$ un espace vectoriel normé. 
+	\begin{enumerate}
+		\item La boule unité fermée $B$ est-elle strictement convexe, c'est-à-dire vérifie-t-elle pour tout $(x,y)\in B^2$ tel que $x\ne y$ :
+		$$\forall\lambda\in]0,1[,\ \lVert\lambda x+(1-\lambda)y\rVert <1$$
+		\item Vérifier que la boule unité fermée est strictement convexe si la norme est euclidienne.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Considérer la norme $1$.
+		\item Raisonner par contraposée en utilisant le cas d'égalité de l'inégalité triangulaire.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.17]{Convexes denses de $\R^d$}
+	Déterminer les parties convexes denses de $\R^d$.
+\end{ex}
+\begin{proof}
+	La réponse est $\R^d$. On peut raisonner par récurrence sur $d$. On peut ainsi passer par des hyperplans médiateurs et utiliser la convexité. Sinon, avec un dessin et avec les mains, on peut trianguler le point de $\R^d$ dont on veut montrer qu'il est dans l'ensemble puis utiliser la convexité.
+\end{proof}
+
+\begin{ex}[Moulin.18]{}
+	Soit $A$ un convexe.
+	\begin{enumerate}
+		\item Montrer que l'adhérence $\overline{A}$ de $A$ est convexe.
+		\item Montrer que l'intérieur $\mathring{A}$ de $A$ est convexe.
+		\item $\star$ Montrer que si $a$ est adhérent à $A$ et $b$ intérieur à $A$, alors tous les points du segment $[a,b]$ différents de $a$ sont intérieurs à $A$.
+		\item Montrer que $\mathring{\overline{A}}=\mathring{A}$. A quelle condition a-t-on $\overline{\mathring{A}}=\overline{A}$ ?
+	\end{enumerate}
+\end{ex}
+\begin{proof} Faire des dessins !
+	\begin{enumerate}
+		\item Le faire par caractérisation séquentielle.
+		\item Prendre des petites boules autour de $a$ et $b$ et faire un couloir de boules autour du segment $[a,b]$.
+		\item Cette question est la plus difficile de l'exercice. Si $a\in A$, dessiner le cône qui joint $a$ à une petite boule autour de $b$. Mettre une petite boule de rayon $r_c=tr_b$ où $c=(1-t)a+tb$. Si $a\notin A$, prendre $\tilde{a}=a+u$ qui est dans $A$ avec $\lVert u\rVert\leqslant t\times r_b$ et essayer de faire pareil en prenant un $\tilde{c}$ et un cône, de sorte que $c$ et $\tilde{c}$ soient proches.
+		\item Par croissance de l'intérieur, on a $\mathring{A}\subset\mathring{\overline{A}}$. Réciproquement, on suppose $\mathring{A}$ non vide et on prend $a\in\mathring{\overline{A}}$ et une boule autour de $a$ dans $\overline{A}$. Ensuite, on montrer que la boule de rayon moitié est dans $A$ en prenant des barycentres de $\tilde{a}\in\mathring{A}$ et $x\in\overline{A}$.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.19]{$\star$}
+	Soit $C$ un convexe non vide d'un $\R$-espace vectoriel de dimension finie. Montrer que $C$ est d'intérieur non vide dans le plus petit sous-espace affine de $E$ incluant $C$.
+\end{ex}
+
+\begin{ex}[Moulin.20]{$\Delta\star$ Théorème de Gauss-Lucas} Montrer que si $P$ est un polynôme complexe non constant, alors les racines de $P'$ sont dans l'enveloppe convexe des racines de $P$.
+\end{ex}
+\begin{proof}
+	Scinder $P$ sur $\C[X]$ et utiliser la formule de $P'/P$. Prendre ensuite une racine de $P'$ non racine de $P$, la mettre dans la formule précédente et utiliser la formule de l'inverse d'un nombre complexe en fonction de son conjugué et de son module carré. Passer au conjugué. Éclater pour obtenir une combinaison convexe des racines de $P$, et vérifier que c'est bien un barycentre à coefficients positifs.
+\end{proof}
+
+\section{Topologie}
+
+\begin{ex}[Moulin.21]{$\Delta$}
+	Soit $H$ un hyperplan d'un espace vectoriel normé $E$. Montrer que $H$ est fermé dans $E$ ou dense dans $E$.
+\end{ex}
+\begin{proof}
+	Utiliser l fait que l'adhérence d'un SEV est un SEV. Par croissance de l'adhérence, $\overline{H}$ est un SEV coincé entre $H$ et $E$, donc c'est soit $H$, soit $E$, donc $H$ est soit fermé dans $E$, soit dense dans $E$.
+\end{proof}
+
+\begin{ex}[Moulin.22]{}
+	Soit $A$ et $B$ deux parties d'un espace vectoriel normé $E$. On note $$A+B=\{a+b\ \mid\ (a,b)\in A\times B\}$$ Vrai ou faux ?
+	\begin{enumerate}
+		\item si $A$ ou $B$ est ouvert, alors $A+B$ est ouvert ;
+		\item si $A$ et $B$ sont fermés, alors $A+B$ est fermé.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.23]{}
+	Existe-t-il dans $\R^2$ deux fermés disjoints à distance nulle ? Et dans $\R$ ?
+\end{ex}
+
+\begin{ex}[Moulin.24]{$\circ$}
+	Soit $E$ un espace métrique ainsi que $O$ un ouvert de $E$ et $A$ une partie de $E$ telle que $O\cap A=\emptyset$. Montrer que $O\cap\overline{A}=\emptyset$.
+\end{ex}
+
+\begin{ex}{$\Z$ est fermé}
+	Montrer que $\Z$ est un fermé de $\R$ pour la topologie usuelle.
+\end{ex}
+\begin{proof}
+	Voici trois méthodes différentes :
+	\begin{itemize}
+		\item voir $\Z$ comme le complémentaire de $$\bigcup_{k\in\Z}]k,k+1[$$ qui est ouvert comme union d'ouverts ;
+		\item passer par une caractérisation séquentielle en utilisant le fait qu'une suite d'entiers convergente est stationnaire ;
+		\item voir $\Z$ comme l'image réciproque de $\{0\}$ par $x\mapsto\sin(\pi x)$ qui est continue.
+	\end{itemize}
+\end{proof}
+
+\begin{ex}[Moulin.25]{}
+	Soit $A$ (respectivement $B$) une partie d'un espace métrique $E$ (respectivement $F$). Quels sont les intérieur, adhérence et frontière de $A\times B$ dans $E\times F$ ?
+\end{ex}
+
+\begin{ex}[Moulin.26]{Parties discrètes}
+	\begin{enumerate}
+		\item Soit $a>0$ et $A$ une partie d'un espace métrique $E$ telle que $$\forall(x,y)\in A,\ x\ne y\implies d(x,y)\geqslant a$$ Montrer que $A$ est fermée.
+		\item Une partie discrète de $E$ (\textit{ie} une partie $A$ de $E$ telle qu'aucun point $a\in A$ ne soit adhérent à $A\setminus\{a\}$) est-elle fermée ?
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Passer par une caractérisation séquentielle. Une suite à valeur dans cet ensemble admettant une limite est nécessairement stationnaire donc la limite est dans $A$.
+		\item Considérer $$\left\{\frac{1}{2^n}\bigg|n\in\N\right\}$$ Cet ensemble est discret et $0$ lui adhère mais ne lui appartient pas, donc cette partie n'est pas fermée.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.27]{}
+	\begin{enumerate}
+		\item $\circ$ Soit $E$ un espace vectoriel normé non trivial. Le complémentaire d'une partie discrète de $E$ (c'est-à-dire une partie $A$ de $E$ telle qu'aucun point $a\in A$ ne soit adhérent à $A\setminus\{a\}$) est-il dense dans $E$ ?
+		\item Et dans un espace métrique quelconque ?
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.28]{}
+	Soit $F$ un sous-espace vectoriel fermé d'un espace vectoriel normé $E$ et $a$ un élément de $E$ n'appartenant pas à $F$. Montrer que $F+\text{Vect}(a)$ est un fermé de $E$.
+\end{ex}
+
+\begin{ex}[Moulin.29]{$\star$}
+	Soit $E$ l'espace vectoriel des suites complexes bornées muni de la norme $N_\infty$. Déterminer l'intérieur et l'adhérence de l'ensemble $PN$ des suites presque nulles et de l'ensemble des suites stationnaires $S$.
+\end{ex}
+\begin{proof}
+	$PN$ et $S$ sont des SEV stricts donc leur intérieur est vide (classique).
+	\begin{itemize}
+		\item On montre par double inclusion que l'adhérence de $PN$ est $C_0$, l'ensemble des suites qui convergent vers $0$. Si $(v_n)$ tend vers $0$, on prend des suites qui ont les mêmes premiers termes puis qui sont stationnaires nulles. Réciproquement, il suffit de montrer que $C_0$ est fermé. C'est le noyau d'une forme linéaire continue (l'application limite qui est majorée par la norme infinie), puis on utilise un argument de double limite.
+		\item On montre par double inclusion que l'adhérence de $S$ est l'ensemble $C$ des suites convergentes. On peut faire pareil dans le premier sens. Puis on montre encore par double limite que $C$ est fermé.
+	\end{itemize}
+\end{proof}
+
+\begin{ex}[Moulin.30]{}
+	Dans $E=\mathcal{C}^0([0,1],\R)$ muni de la norme $\mathcal{N}_\infty$, on considère : $$F=\left\{f\in E\ : \ f(0)=f(1)=0\ \text{et}\ \int_{0}^{1}f(t)\ dt=1\right\}$$
+	\begin{enumerate}
+		\item Montrer que $F$ est un sous-espace affine fermé de $E$.
+		\item Montrer que la distance de $0$ à $F$ n'est pas atteinte.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.31]{$\star$}
+	Soit $E$ un espace vectoriel normé. Montrer que l'ensemble des couples $(u,v)$ de vecteurs linéairement indépendants est un ouvert de $E^2$.
+\end{ex}
+\begin{proof}
+	On montre par caractérisation séquentielle que son complémentaire $F$ l'ensemble des couples de vecteurs liés est un fermé. Sans perte de généralité, on suppose $v_n\ne 0$ APCR puis on écrit $u_n+\lambda_nv_n=0$ et alors $\lvert\lambda_n\rvert$ est bornée. On extrait et OK par unicité de la limite.
+\end{proof}
+
+\begin{ex}[Moulin.32]{}
+	Montrer qu'une intersection finie d'ouverts denses d'un espace vectoriel normé est un ouvert dense de ce même espace vectoriel normé.
+\end{ex}
+\begin{proof}
+	Procéder par récurrence, il suffit donc de prouver que c'est le cas pour deux. On utilise la densité du premier pour obtenir une première intersection, puis appliquer la densité du second avec cette première intersection.
+\end{proof}
+
+\begin{ex}[Moulin.33]{}
+	Soit $X$ une partie d'un espace vectoriel normé.
+	\begin{enumerate}
+		\item $\circ$ Comparer $\overline{X}$ et $\overline{\mathring{X}}$, ainsi que $\mathring{X}$ et $\mathring{\overline{X}}$.
+		\item Comparer $\mathring{\overline{\mathring{\overline{X}}}}$ et $\mathring{\overline{X}}$, ainsi que $\overline{\mathring{\overline{\mathring{X}}}}$ et $\overline{\mathring{X}}$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.34]{$\Delta$ Sous-groupes de $(\R,+)$}
+	Montrer que tout sous-groupe de $(\R,+)$ est soit dense dans $\R$, soit de la forme $a\Z$ pour un certain réel positif $a$.
+\end{ex}
+\begin{proof}
+	Voir la preuve dans les exercices classique du chapitre d'algèbre générale.
+\end{proof}
+
+\begin{ex}[Moulin.35]{$\star$}
+	Soit $A$ et $B$ deux parties d'un espace vectoriel normé $E$ telles que $A\cap\overline{B}=\overline{A}\cap B=\emptyset$. montrer qu'il existe deux ouverts disjoints $U$ et $V$ de $E$ tels que $A\subset U$ et $B\subset V$.
+\end{ex}
+
+\begin{ex}[Moulin.36]{}
+	Soit $I$ (respectivement $S$, $B$) l'ensemble des fonctions $f:[0,1]\to[0,1]$ injectives (respectivement surjectives, bijectives). Vus comme des parties de l'espace vectoriel normé $(\mathcal{C}^0([0,1],[0,1]),\lVert\cdot\rVert_\infty)$, ces ensembles sont-ils ouverts ? Fermés ?
+\end{ex}
+
+\section{Suites, séries vectorielles}
+
+\begin{ex}[Moulin.37]{$\Delta$} 
+	\begin{enumerate}
+		\item Trouver une norme sur $E=\R[X]$ pour laquelle $(X^n)$ converge vers $0$. Généraliser à une base quelconque de $E$.
+		\item Donner un exemple de sous-espace vectoriel de $E$ no fermé pour cette norme.
+		\item $\star$ Montrer que si $P$ est un polynôme quelconque de $E$, alors il existe une norme sur $E$ pour laquelle la suite $(X^n)$ converge vers $P$. Ce résultat n'est-il pas contradictoire avec l'unicité de la limite ?
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Si on prend une base $(Y_k)$, la norme $$N\left(\sum_{k=0}^{+\infty}a_kY_k\right)=\sum_{k=0}^{+\infty}\frac{\lvert a_k\rvert}{2^k}$$ fait converger la suite $(Y_k)$ vers $0$. Et si on prend un polynôme $P$ non nul, la famille $(Z_k)=(X^0,\ldots,X^{\deg(P)-1},P,X^{\deg(P)+1},\ldots)$ est une base de $\K[X]$. Alors, la norme $$N\left(\sum_{k=0}^{+\infty}a_kZ_k\right)=\left\lvert\sum_{k=0}^{+\infty} a_k\right\rvert+\sum_{\substack{k=0 \\ k\ne\deg(P)}}^{+\infty}\frac{\lvert a_k\rvert}{2^k}$$ fait converger $(X^k)$ vers $P$.
+\end{proof}
+
+\begin{ex}[Moulin.38]{$\circ$}
+	Montrer qu'une suite d'un espace vectoriel normé est non bornée si, et seulement si, elle admet une sous-suite qui tend vers l'infini.
+\end{ex}
+
+\begin{ex}[Moulin.39]{$\Delta$}
+	On admet que dans un espace vectoriel normé de dimension finie, toute série absolument convergente est convergente. Soit $A$ une algèbre de dimension finie sur $\R$ munie d'une norme $N$ sous-multiplicative. On note $1_A$ son élément unité.
+	\begin{enumerate}
+		\item Montrer que pour tout $a\in A$ tel que $N(a)<1$, l'élément $1_A-a$ de $A$ est inversible.
+		\item En déduire que l'ensemble des éléments inversibles de $A$ est ouvert dans $A$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	La série des $a^n$ est absolument convergente donc convergente en dimension finie. On vérifie que c'est bien l'inverse par continuité du produit (bilinéarité en dimension finie). L'ensemble des unités d'un telle algèbre est un ouvert : en effet, si $a\in\mathcal{U}(a)$, remarquer que $a+h=a(1-(-a\inv h))$ et prendre $h$ pour rentrer dans les hypothèses de norme strictement plus petite que $1$.
+\end{proof}
+
+\begin{ex}[Moulin.40]{}
+	Soit $u$ une suite complexe bornée dont l'ensemble des valeurs d'adhérence est noté $A$. Soit $U$ un ouvert de $\C$ incluant $A$. Montrer que $u_n\in U$ à partir d'un certain rang.
+\end{ex}
+\begin{proof}
+	Raisonner par l'absurde et construire une nouvelle valeur d'adhérence qui n'est pas dans $U$.
+\end{proof}
+
+\begin{ex}[Moulin.41]{}
+	Soit $u$ une suite réelle telle que $(u_{n+1}-u_n)_{n\in\N}$ tend vers $0$. Montrer que l'ensemble des valeurs d'adhérence de $u$ est un intervalle fermé.
+\end{ex}
+\begin{proof}
+	Pour le caractère fermé, voir l'exercice suivant. Pour le caractère d'intervalle, revenir à la définition et utiliser le fait que $u_{n+1}-u_n$ tend vers $0$.
+\end{proof}
+
+\begin{ex}{Valeurs d'adhérence} L'ensemble des valeurs d'adhérence de la suite $(u_n)$ est $$\text{Adh}(u)=\bigcap_{n\in\N}\overline{\left\{u_p|p\geqslant n\right\}}$$ C'est donc un fermé comme intersection de fermés.
+\end{ex}
+\begin{proof}
+	C'est une simple réécriture de la définition des valeurs d'adhérence.
+\end{proof}
+
+\begin{ex}[Moulin.42]{$\star$}
+	Soit $u$ une suite complexe bornée telle que $(u_{n+1}-u_n)_{n\in\N}$ converge vers $0$. On note $A$ l'ensemble des valeurs d'adhérence de $u$. Soit $V_1$ et $V_2$ deux ouverts disjoints de $\C$ tels que $A\subset V_1\cup V_2$. Montrer que $A\subset V_1$ ou $A\subset V_2$. Montrer que le résultat peut tomber en défaut si on ne suppose plus que $u$ est bornée.
+\end{ex}
+
+\begin{ex}[Moulin.43]{$\Delta$}
+	Soit $(u_n)$ une suite de réels tendant vers $+\infty$ et telle que $(u_{n+1}-u_n)$ tende vers $0$. Montrer que l'ensemble $$\{u_p-u_q|(p,q)\in\N^2\}$$ est dense dans $\R$.
+\end{ex}
+\begin{proof}
+	Revenir à la définition. Par symétrie, il suffit de prouver le résultat sur $\R_+$. Ensuite, revenir à la définition et utiliser le fait que la suite doit avancer, mais doit aussi ralentir.
+\end{proof}
+\begin{app}
+	En particulier, cela fonctionne avec $(\sqrt{n})_{n\in\N}$ et $(\ln(n))_{n\in\N}$.
+\end{app}
+
+\section{Topologie et matrices}
+
+Ici, $\K$ désigne $\R$ ou $\C$ et on ne précisera pas la norme utilisée par équivalence des normes en dimension finie.
+
+\begin{ex}[Moulin.44]{Topologie des matrices nilpotentes}
+	On se place dans $\mathcal{M}_n(\K)$.
+	\begin{enumerate}
+		\item L'ensemble des matrices nilpotentes est-il un ouvert ? un fermé ?
+		\item Déterminer l'intérieur et l'adhérence des matrices nilpotentes d'indice $p\in\llbracket1,n\rrbracket$ donné.
+		\item $\star$ Montrer que l'ensemble des matrices nilpotentes d'indice $n$ est un ouvert relatif de l'ensemble des matrices nilpotentes.
+		\item $\star$ Quelle est l'adhérence de l'ensemble des matrices nilpotentes de rang $r$, pour n'importe quel $r\in\llbracket0,n-1\rrbracket$ ?
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.45]{$\Delta$}
+	Pour $A\in\mathcal{M}_n(\C)$, on note $S(A)$ la classe de similitude de $A$ dans $\mathcal{M}_n(\C)$.
+	\begin{enumerate}
+		\item On suppose $A$ diagonalisable. Caractériser $S(A)$ à l'aide du polynôme caractéristique et du polynôme minimal de $A$. En déduire qu'il est fermé.
+		\item $\star$ Montrer que si $A$ n'est pas diagonalisable, il existe une matrice diagonalisable dans l'adhérence de $S(A)$.
+		\item Qu'en déduire ?
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item On doit avoir $\pi_A=\pi_B$ et $\chi_A=\chi_B$. Utiliser ensuite la continuité de l'évaluation et du polynôme caractéristique.
+		\item On trigonalise $A$ et il doit alors y avoir un coefficient non diagonal non nul. On utiliser alors les matrices $Q_\varepsilon$ (voir la partie astuces) pour montrer qu'il existe une matrice diagonale dans l'adhérence classe de similitude.
+		\item On en déduit que la classe de similitude d'une matrice est fermée si, et seulement si, la matrice est diagonalisable.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.46]{$\Delta\star$}
+	Soit $A\in\mathcal{M}_n(\C)$. Montrer que la suite $(A^k)_{k\in\N}$ est bornée si, et seulement si, les deux conditions suivantes sont simultanément réunies : 
+	\begin{itemize}
+		\item Toute valeur propre de $A$ est de module inférieur à $1$.
+		\item On a $\C^n=\ker(A-\lambda I_n)\oplus\im(A-\lambda I_n)$ pour toute valeur propre $\lambda$ de $A$ de module $1$.
+	\end{itemize}
+\end{ex}
+\begin{proof}
+	On prend une norme sous-multiplicative pour le sens direct, puis on prend $Y\in\ker(A-\lambda I_n)\cap\im(A-\lambda I_n)$. On écrit $Y=(A-\lambda I_n)X$. On montre par récurrence que $$\forall k\in\N,\ A^kX=k\lambda^{k-1}Y+\lambda^k X$$ Puisque $(A^kX)$ doit être bornée donc on doit avoir $Y=0$. La somme est directe puis le théorème du rang conclut. Réciproquement, on travaille matriciellement en construisant une base tel que la matrice de $u$ l'endomorphisme canoniquement associé à $A$ soit dans cette base diagonale par blocs avec des blocs scalaires et un blocs avec toutes ses valeurs propres de module strictement inférieur à $A$ puis le résultat suit.
+\end{proof}
+
+\begin{ex}[Moulin.47]{$\Delta\star$}
+	Montrer qu'une matrice $A\in\mathcal{M}_n(\K)$ est nilpotente si, et seulement si, la matrice nulle est adhérente à la classe de similitude de $A$.
+\end{ex}
+\begin{proof}
+	Dans le sens direct, trigonaliser pour obtenir une matrice triangulaire supérieure stricte puis utiliser les matrices $Q_\varepsilon$ pour montrer que $0$ adhère à la classe de similitude. Dans le sens réciproque, utiliser la continuité du polynôme caractéristique et le fait que le polynôme caractéristique est constant sur la classe de similitude.
+\end{proof}
+
+\begin{ex}[Moulin.48]{}
+	Dans $\mathcal{M}_n(\K)$, trouver l'intérieur et l'adhérence de :
+	\begin{enumerate}
+		\item $\mathcal{GL}_n(\K)$ ;
+		\item l'ensemble des matrices de rang inférieur ou égal à $p\in\llbracket0,n-1\rrbracket$ ;
+		\item l'ensemble des matrices de rang $p\in\llbracket0,n-1\rrbracket$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	A faire...
+	\begin{enumerate}
+		\item L'adhérence est $\mathcal{M}_n(\K)$ tout entier.
+	\end{enumerate}
+\end{proof}
+
+\end{document}

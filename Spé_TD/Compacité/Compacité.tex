@@ -1,0 +1,683 @@
+\documentclass[french,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théorème}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{ex}[2][]{colback=white, colframe=green!50!white, coltitle=black, fonttitle=\bfseries, title={Exercice~\thetcbcounter~: #2}, after title={\hfill #1}}
+
+\title{TD Compacité, connexité par arcs et dimension finie}
+
+\begin{document}
+
+\maketitle
+
+\section{Compacité : généralités}
+
+\begin{ex}{$\Delta$ Théorème des compacts emboîtés} Montrer qu'une suite décroissante de compacts $(K_n)$ tous non vides est d'intersection non vide.
+\end{ex}
+\begin{proof}
+	En effet, prendre $\forall ,\ x_n\in K_n$. Alors la suite $(x_n)$ est à valeurs dans $K_0$ donc admet une valeur d'adhérence $x$. On montre que $x$ appartient à tous les $K_p$. Si $n\geqslant p$, alors $x_{\varphi(n)}\in K_p$ car $$\varphi(n)\geqslant\varphi(p)\geqslant p$$ donc par le caractère caractère fermé de $K_p$, $x\in K_p$. Donc $x$ appartient à l'intersection des $K_n$, qui est donc non vide.
+\end{proof}
+\begin{app}
+	Premier théorème de Dini, variante dénombrable du point fixe de Kakutani
+\end{app}
+
+\begin{ex}[Moulin.01]{}
+	Soit $(x_n)$ une suite bornée d'un espace vectoriel de dimension finie admettant un nombre fini de valeurs d'adhérence et telle que $x_{n+1}-x_n\xrightarrow[n\to+\infty]{}0$. Montrer qu'elle converge.
+\end{ex}
+\begin{proof}
+	Cela revient à montrer qu'elle ne possède qu'une seule valeur d'adhérence. Par l'absurde, on suppose que la suite possède plus de deux valeurs d'adhérence. Alors, avec le fait qu'elle ralentit, on construit une nouvelle valeur d'adhérence entre les anciennes. Donc elle possède plus de valeurs d'adhérence que ce qu'elle n'en possède, c'est absurde. Donc la suite possède au plus une valeur d'adhérence. Mais elle est bornée en dimension finie, donc elle en possède au moins une. Donc elle en possède exactement une et converge.
+\end{proof}
+
+\begin{ex}{$\Delta\star$ Théorème de Riesz} Un espace vectoriel normé est de dimension finie si, et seulement si, sa sphère unité est compacte.
+\end{ex}
+\begin{proof}
+	A COMPLETER (cf le cours) Il y a des lemmes à démontrer.
+\end{proof}
+
+\begin{ex}[Moulin.02]{$\star$}
+	Y a-t-il des compacts d'intérieur non vide dans un espace vectoriel normé de dimension infinie ?
+\end{ex}
+\begin{proof}
+	Il n'y en a pas. En effet, s'il existe un compact d'intérieur non vide, on peut mettre une boule fermée non réduite à un singleton dedans, qui est donc compacte comme fermé dans un compact. Alors, la boule unité, qui se déduit de la boule précédente par similitude, est elle aussi compacte (la similitude en question est continue). Donc la boule unité est compacte, et donc la dimension est finie d'après le théorème de Riesz.
+\end{proof}
+
+\begin{ex}[Moulin.03]{$\star$}
+	Soit $E$ un espace vectoriel de dimension finie. Pour toute partie $A$ compacte de $E$, on considère $\mathcal{L}_A=\{f\in\mathcal{L}(E)\ \mid\ f(A)\subset A\}$.
+	\begin{enumerate}
+		\item Montrer que si $A$ est d'intérieur non vide, alors $\mathcal{L}_A$ est compact.
+		\item Caractériser les compacts $A$ tels que $\mathcal{L}_A$ soit compact.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.04]{}
+	Soit $P\in\C[X]$ non constant.
+	\begin{enumerate}
+		\item Montrer que l'image par $P$ de tout fermé de $\C$ est un fermé de $\C$.
+		\item $\star\star$ Montrer que l'image par $P$ de tout ouvert de $\C$ est un ouvert de $\C$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.05]{}
+	Soit $E$ un espace vectoriel normé. On note $l_n(E)$ l'ensemble des familles libres de $E$ à $n$ éléments. Montrer que $l_n(E)$ est un ouvert de $E^n$ pour la norme produit.
+\end{ex}
+\begin{proof}
+	Montrer que le complémentaire est fermé par caractérisation séquentielle en renormalisant la relation de liaison afin que tous les scalaires soient de valeur absolue inférieure à $1$ et un soit égal à $1$. Extraire car on est dans la boule unité de $\R^n$ ou $\C^n$, puis utiliser un argument d'unicité de la limite.
+\end{proof}
+
+\begin{ex}[Moulin.06]{$\star$ Demi-espaces fermés}
+	Soit $E$ un $\R$-espace vectoriel de dimension $n$ et de sphère unité $S$. Un demi-espace fermé est une partie de la forme $f\in(\R_+)$ où $f$ est une forme linéaire non nulle. Soit $p\in\N\st$. Montrer que l'ensemble des $p$-listes $(x_1,\ldots,x_p)\in S^p$ telles qu'aucun demi-espace fermé ne contienne tous les $x_i$ est un ouvert de $S^p$.
+\end{ex}
+\begin{proof}
+	On note $A_p$ cet ensemble. On va montrer que $B_p=S^p\setminus A_p$ est fermé. On considère une suite $(u_n)=(u_n^{(1)},\ldots,u_n^{(p)})$ à valeurs dans $B$ qui converge vers $l=(l^{(1)},\ldots,l^{(p)})$. On considère une suite de forme linéaires non nulles $(f_n)$ telle que pour tout $n\in\N$, la tous les $u_n^{(i)}$ soient dans $f\inv(\R_+)$. On considère $(g_n)$ la suite des renormalisés des $f_n$. On a alors : $$\forall n\in\N,\ \forall i\in\llbracket1,p\rrbracket,\ g_n(u_n^{(i)})\leqslant 0$$ On extrait de $(g_n)$ une limite $g$ ($E\st$ de dimension finie). On note $$\begin{array}{lrcl}
+		\varphi:&E\times E\st&\longrightarrow&\R \\
+		&(x,f)&\longmapsto&f(x)
+	\end{array}$$ Alors $\varphi$ est bilinéaire donc continue (dimension finie). En particulier, par passage à la limite et continuité, on en déduit que $$\forall i\in\llbracket1,p\rrbracket,\ g(l_i)\geqslant 0$$ Donc $l\in B_p$. Donc $A_p$ est un ouvert.
+\end{proof}
+
+\begin{ex}[Moulin.07]{}
+	\begin{enumerate}
+		\item Soit $E$ un espace vectoriel normé de dimension finie, $C$ un convexe fermé non borné de $E$ et $a\in C$. montrer que $C$ contient une demi-droite d'origine $a$.
+		\item Et si $C$ n'est plus supposé fermé ?
+		\item $\star$ Et sans l'hypothèse de dimension finie ?
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.08]{$\Delta$ Enveloppe convexe et théorème de Carathéodory}
+	Soit $E$ un $\R$-espace vectoriel. pour tout $k\in\N$, on note $\Delta_k$ l'ensemble des $(k+1)$-uplets de nombres réels positifs de somme 1 et étant donné un $(k+1)$-uplet $(p_0,\ldots,p_k)$ d'éléments de $E$, on note : $$H(p_0,\ldots,p_k)=\left\{\sum_{i=0}^{k}\lambda_ip_i \mid (\lambda_0,\ldots,\lambda_k)\in\Delta_k\right\}$$ Enfin, soit $A$ une partie de $E$. On définit sont enveloppe convexe par : $$\text{Conv}(A)=\bigcup_{k\in\N}\bigcup_{(p_0,\ldots,p_k)\in A^{k+1}}H(p_0,\ldots,p_k)$$
+	\begin{enumerate}
+		\item Montrer que $\text{Conv}(A)$ est la plus petite partie convexe contenant $A$.
+		\item Soit $(p_0,\ldots,p_k)\in E^{k+1}$. On suppose qu'il existe une relation de liaison non triviale $\displaystyle\sum_{i=0}^{k}\mu_ip_i=0$ telle que $\displaystyle\sum_{i=0}^{k}\mu_i=0$. Montrer alors que $$H(p_0,\ldots,p_k)=\bigcup_{i=0}^{k}H(p_0,\ldots,p_{i-1},p_{i+1},\ldots,p_k)$$
+		\item En déduire le \textbf{théorème de Carathéodory} : si $A$ est une partie d'un $\R$-espace vectoriel de dimension $n$, alors : $$\text{Conv}(A)=\bigcup_{(p_0,\ldots,p_k)\in A^{k+1}}H(p_0,\ldots,p_k)$$
+		\item En deduire que si $A$ est une partie compacte d'un $\R$-espace vectoriel de dimension finie, alors $\text{Conv}(A)$ est également compacte.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Faire les questions 2 et 3 plus proprement...
+	\begin{enumerate}
+		\item Comme d'habitude dans les propriétés de cours.
+		\item L'inclusion réciproque est immédiate. Pour l'inclusion directe, utiliser les hypothèse pour éliminer $p_i$ si $\mu_i\ne 0$.
+		\item On a clairement $H(p_0)\subset H(p_0,p_1)$, etc. Et si $k\geqslant n+1$, on peut redescendre d'un étage car toute famille de plus de $n+1$ vecteurs est liée en dimension $n$. il faut alors bien utiliser la deuxième question.
+		\item Le théorème de Carathéodory permet d'écrire $\text{Conv}(A)$ comme l'image directe de $A^{n+1}\times\Delta_n$ qui est compact comme produit de compacts ($\Delta_n$ est un fermé dans un compact). L'application en question est multilinéaire donc continue en dimension finie puis on a l'image d'un compact par une application continue.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.09]{$\Delta$}
+	Soit $E$ l'espace vectoriel des suites complexes bornées muni de la norme $\lVert\cdot\rVert_\infty$. A tout $u=(u_n)\in E$, on associe : $$A(u)=\left\{(x_n)\in E\mid \forall n\in\N,\ \lvert x_n\rvert \leqslant\lvert u_n\rvert\right\}$$
+	\begin{enumerate}
+		\item  Montrer que si $A(u)$ est compact, alors $u$ tend vers $0$.
+		\item $\star$ Montrer la réciproque. Indication : effectuer un procédé diagonal. Étant donnée une suite $(x^{(k)})$ d'éléments de $A(u)$, on pourra considérer des extractions $\varphi_n$ telles que $\left(x^{\left((\varphi_0\circ\ldots\circ\varphi_n)(k)\right)}\right)_{k\in\N}$ converge pour tout $n$ et pose $\psi(k)=(\varphi_0\circ\ldots\circ\varphi_k)(k)$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Joli exercice !
+	\begin{enumerate}
+		\item On suppose $A(u)$ compact. On définit pour tout $p\in\N$ la suite $(u_n^{(p)})$ par $u_n^{(p)}=0$ si $n<p$ et $u_n^{(p)}=u_n$ si $n\geqslant p$. La suite $(u^{(p)})$ appartient à $A(u)$, on extrait puis on montre que la valeur d'adhérence est la suite nulle. On en déduit qu'il y a même convergence vers cette suite, puis on montre qu'alors $u$ tend vers $0$.
+		\item Effectuer le procédé diagonal et ne pas oublier cette méthode lorsque l'on travaille avec des suites de suites. Normalement, cela devrait bien se passer.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.10]{}
+	Soit $K$ une partie bornée non vide d'un espace vectoriel normé de dimension finie. Montrer qu'il existe une boule fermée de rayon minimal incluant $K$. Y a-t-il unicité ? Montrer qu'il y a unicité dans le cas où la norme est euclidienne. Montrer alors que toute isométrie qui laisse invariante une partie bornée non vide admet un point fixe.
+\end{ex}
+
+\begin{ex}[Moulin.11]{}
+	Soit $P$ un polynôme complexe de degré supérieur ou égal à $2$. Pour tout $z$ dans $\C$, on définit la suite $(u_n(z))$ par la condition $u_0(z)=z$ et la relation de récurrence $u_{n+1}(z)=P(u_n(z))$. On note $K$ l'ensemble des $z$ pour lesquels cette suite est bornée. Montrer que $K$ est compact.
+\end{ex}
+
+\begin{ex}[Moulin.12]{$\Delta\star$ Théorème de Baire}
+	Soit $A$ une partie localement compacte d'un espace vectoriel normé (\textit{ie} dans laquelle tout point possède un voisinage compact).
+	\begin{enumerate}
+		\item Soit $(O_n)$ une suite d'ouverts de $A$, tous denses dans $A$. Montrer que $$\Omega=\bigcap_{n\in\N} O_n$$ est dense dans $A$. Est-il nécessairement ouvert ?
+		\item En déduire que si une suite $(F_n)$ de fermés de $A$ a une réunion d'intérieur non vide, alors l'un des $F_n$ est d'intérieur non vide.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice difficile.
+	\begin{enumerate}
+		\item Procéder par récurrence pour la densité en construisant une suite de boules autour du point recherché et utiliser la compacité locale. Aucune idée pour le caractère ouvert.
+		\item Passer au complémentaire pour se ramener à la première partie de la question précédente.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.13]{Lemme de Croft}
+	Soit $f$ une fonction de $\R_+$ dans un espace vectoriel normé qui vérifie : $$\forall x\in\R_+\st,\ \lim_{n\to+\infty}f(nx)=0$$
+	\begin{enumerate}
+		\item On suppose $f$ uniformément continue. Montrer qu'elle tend vers $0$ en $+\infty$.
+		\item $\star$ Montrer qu'il en est de même si l'on suppose seulement $f$ continue. Indication : on pourra utiliser le théorème de Baire (exercice précédent) et $$F_n=\left\{x\in\R_+\mid \forall p\geqslant n,\ \lVert f(px)\rVert\geqslant\varepsilon\right\}$$
+		\item $\star$ Et sans hypothèse de continuité ? Indication : on pourra utiliser une base de $\R$ en tant que $\Q$-espace vectoriel. 
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Les deux dernières questions sont difficiles. A faire...
+\end{proof}
+
+\section{Compacité et fonctions}
+
+\begin{ex}[Moulin.14]{$\circ$}
+	Soit $K$ un compact. montrer que l'inverse d'une fonction lipschitzienne de $K$ dans $\C\st$ est lipschitzienne. Et sans l'hypothèse de compacité ?
+\end{ex}
+
+\begin{ex}[Moulin.15]{$\circ$}
+	Montrer que dans un espace vectoriel de dimension finie, tout ouvert contenant la boule unité fermée contient une boule de rayon strictement supérieur à $1$.
+\end{ex}
+
+\begin{ex}[Moulin.16]{$\Delta$}
+	On définit la distance entre deux parties $A$ et $B$ d'une espace vectoriel normée par $d(A,B)=\displaystyle\underset{(a,b)\in A\times B}{\inf}d(a,b)$. On répondra à chacune des questions d'abord en dimension finie puis en dimension quelconque.
+	\begin{enumerate}
+		\item $\circ$ Montrer que la distance d'un point à un compact non vide est atteinte.
+		\item Et la distance d'un point à un fermé non vide ?
+		\item Est-ce que la distance d'un compact non vide à un fermé non vide est toujours atteinte ?
+		\item Et pour deux compacts ?
+		\item Et pour deux fermés ?
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.17]{}
+	Vrai ou faux ? Si $K$ est un compact et si $f:\K\to\K$ vérifie : $$\forall (x,y)\in K^2,\ x\ne y\implies d(f(x),f(y))<d(x,y)$$ alors $f$ est contractante sur $K$, c'est-à-dire $k$-lipschitzienne pour un certain $k<1$.
+\end{ex}
+
+\begin{ex}[Moulin.18]{}
+	\begin{enumerate}
+		\item Soit $E$ un espace vectoriel de dimension finie. Montrer que toute application continue $f:E\mapsto\R$ telle que $\displaystyle\lim_{\infty}f=+\infty$ admet un minimum sur $E$.
+		\item $\star\star$ En déduire le théorème de d'Alembert-Gauss. Indication : pour $P\in\C[X]$ non constant, on pourra considérer $z\mapsto\lvert P(z)\rvert$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	La première question est classique, la deuxième est beaucoup plus difficile.
+	\begin{enumerate}
+		\item Pour la première, utiliser la définition de la limite pour pouvoir appliquer le théorème des bornes atteintes sur une un compact( en l'occurrence une boule fermée centrée en $0$ par exemple).
+		\item Ensuite, suivre l'indication puis raisonner par l'absurde pour montrer que ce minimum vaut $0$.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.19]{$\star$}
+	Montrer qu'une application est continue si, et seulement si, sa restriction à tout compact est continue.
+\end{ex}
+\begin{proof}
+	Le sens direct est immédiat. Pour le sens réciproque, passer par une caractérisation séquentielle de la continuité. On utiliser ensuite le fait que si $x_n\to l$, alors l'ensemble $$\left\{x_n\mid n\in\N\right\}\cup\{l\}$$ est compact puis le tour est joué.
+\end{proof}
+
+\begin{ex}[Moulin.20]{}
+	Soit $f:[0,1]\to\R$ continue. Pour tout $(a,b)\in\R^2$, on pose : $$g(a,b)=\underset{x\in[0,1]}{\max}\lvert f(x)-ax-b\rvert$$ Montrer que $g$ admet un minimum sur $\R^2$.
+\end{ex}
+
+\begin{ex}[Moulin.21]{}
+	Soit $f:X\to Y$ une injection envoyant tout compact de $X$ sur un compact de $Y$. Montrer que $f$ est continue. Le résultat subsiste-t-il si l'on ne suppose plus que $f$ est injective ?
+\end{ex}
+
+\begin{ex}[Moulin.22]{}
+	Soit $f$ une application continue d'un compact non vide $K$ dans lui-même. Montrer qu'il existe une partie non vide de $K$ telle que $f(X)=X$.
+\end{ex}
+
+\begin{ex}[Moulin.23]{}
+	Soit $E$ un espace vectoriel normé.
+	\begin{enumerate}
+		\item Montrer qu'une application linéaire continue de $E$ dans un espace vectoriel normé $F$ est bornée sur tout boule de $E$.
+		\item $\star\star$ Qu'en est-il sans hypothèse de linéarité ? Indication : on pourra penser à la démonstration du théorème de Riesz.
+	\end{enumerate}
+\end{ex}
+
+\section{Compacité et points fixes}
+
+\begin{ex}[Moulin.24]{$\star$}
+	Soit $f:\R^N\to\R^N$ continue et $(u_n)_{n\in\N}$ une suite d'éléments de $\R^N$ telle que : $$\forall n\in\N,\ u_{n+1}=f(u_n)$$ Montrer que si $(u_n)_{n\in\N}$ admet une unique valeur d'adhérence, alors elle converge.
+\end{ex}
+
+\begin{ex}[Moulin.25]{$\Delta$ Application contractante}
+	Soit $X$ une partie fermée non vide d'un espace vectoriel de dimension finie, $k\in[0,1[$ et $f:X\to X$ une application $k$-lipschitzienne. Montrer que $f$ possède un unique point fixe. Indication : on pourra, étant donné $x\in X$, considérer la série $$\sum (f^{n+1}(x)-f^n(x))$$
+\end{ex}
+\begin{proof}
+	Pour l'existence, cette série est absolument convergente ($O(k)$) donc convergente en dimension finie. Donc $f^{n}(x)\to l$. Mais par continuité, $f(l)=l$. Et comme $x$ est fermé, $l\in X$. Pour l'unicité, deux candidats sont nécessairement égaux car l'application est contractante.
+\end{proof}
+
+\begin{ex}[Moulin.26]{$\Delta\star$ Théorème de Kakutani} Pour un compact convexe non vide $K$, une application linéaire continue qui stabilise $K$ admet un point fixe.
+\end{ex}
+\begin{proof}
+	Pour cela, introduire $$v_n=\frac{1}{n+1}\sum_{k=0}^{n}u^k$$ qui stabilise aussi $K$ par convexité. Alors $u(v_n(x))-v_n(x)$ tend vers $0$ avec $x\in K$ car $K$ est non vide. Or, $v_n(x)$ admet une valeur d'adhérence, et on conclut que cette valeur d'adhérence est un point fixe de $u$ par continuité.
+\end{proof}
+\begin{app}
+	Dans le cas où on a une famille d'endomorphismes qui commutent, on peut montrer qu'ils ont un point fixe commun. En effet, l'ensemble des points fixes de la première est alors convexe compact non vide et on recommence. En fonction du nombre d'applications dont on dispose, on peut conclure par récurrence si on en a un nombre fini, par les compacts emboîtés si on en a un nombre dénombrable, voire avec Borel-Lebesgue si on n'est pas dans les cas précédents.
+\end{app}
+
+\begin{ex}[Moulin.27]{$\Delta$ Application presque contractante}
+	Soit $A$ un compact non vide et $f:A\to A$ vérifiant $$\forall (x,y)\in A^2,\ d(f(x),f(y))<d(x,y)$$
+	\begin{enumerate}
+		\item Montrer que $f$ admet un unique point fixe $a$. On pourra utiliser l'application $x\mapsto d(x,f(x))$.
+		\item On définit une suite $(x_n)$ par $x_0\in A$ et $\forall n\in\N,\ x_{n+1}=f(x_n)$. Montrer que $(x_n)$ converge vers $a$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Bien remarquer qu'ici l'application n'est pas contractante.
+	\begin{enumerate}
+		\item Pour l'existence, considérer le minimum de la fonction suggérée (on montre qu'elle est continue car elle est 2-lipschitzienne). On prend $a$ en lequel le minimum est atteint. En raisonnant par l'absurde, si $a\ne f(a)$, alors $d(f(a),f(f(a)))<d(a,f(a))$ ce qui est absurde par minimalité donc $a=f(a)$. Pour l'unicité, la contraposée de l'hypothèse sur $f$ la fournit directement.
+		\item Ensuite, $(d(x_n,a))$ décroît donc converge car est minorée par $0$. On note $l\geqslant 0$ sa limite. On raisonne par l'absurde en supposant $l>0$. On extrait une sous-suite qui tend vers $x$. Alors $d(f(x),a)=l$ par continuité de $f$. Or, comme $x\ne a$, on a $$l=d(f(x),a)=d(f(x),f(a))<d(x,a)=l$$ ce qui est absurde. Donc $l=0$ et toute valeur d'adhérence de $(x_n)$ est égale à $a$, et on est dans un compact.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.28]{$\star$}
+	Soit $C$ une partie convexe compacte non vide et $f:C\to C$ 1-lipschitzienne. Montrer que $f$ admet au moins un point fixe. On pourra commencer par le cas où $f$ est $k$-lipschitzienne avec $k<1$.
+\end{ex}
+\begin{proof}
+	Pour l'existence dans le cas où $k<1$, se référer à l'exercice précédent. Ensuite, on peut fixer $a\in C$ et on considère : $$\begin{array}{lrcl}
+		f_n:&C&\longrightarrow&C\\
+		&x&\longmapsto &\displaystyle\frac{a}{n+1}+\left(1-\frac{1}{n+1}\right)f(x)
+	\end{array}$$ Ces fonctions sont bien définies par convexité et sont clairement toutes $\displaystyle 1-\frac{1}{n}$-lipschitziennes. Elles possèdent donc un point fixe par le cas précédent. On extrait de cette suite de points fixe une valeur d'adhérence, et on prouve aisément que cette valeur d'adhérence est un point fixe de $f$.
+\end{proof}
+
+\begin{ex}[Moulin.29]{$\star$}
+	Soit $f:[0,1]\to[0,1]$ une fonction continue et $(x_n)_{n\in\N}$ une suite d'éléments de $[0,1]$ vérifiant $\forall n\in\N,\ x_{n+1}=f(x_n)$. On suppose que tout valeur d'adhérence de $(x_n)_{n\in\N}$ est un point fixe de $f$.
+	\begin{enumerate}
+		\item Montrer que $(x_{n+1}-x_n)_{n\in\N}$ converge vers $0$.
+		\item Montrer que $(x_n)_{n\in\N}$ est convergente.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.30]{$\star$}
+	Soit $E$ un espace vectoriel normé de dimension finie non nulle et $f:E\to E$ une fonction continue. On se propose de montrer qu'il existe une partie fermée $X$ de $E$ stable par $f$ et distincte de $\emptyset$ et $E$. On raisonne par l'absurde en supposant que tel n'est pas le cas.
+	\begin{enumerate}
+		\item Montrer que pour tout $x\in E$, l'ensemble $\{f^n(x)\ \mid \ n\in\N\st\}$ est dense dans $E$.
+		\item Montrer que pour tout $p\in\N\st$, il existe $x\in E$ tel que : $$\lVert x\rVert\leqslant 1\ \ \text{et}\ \ \forall k\in\llbracket1,p\rrbracket,\ \lVert f^k(x)\rVert\geqslant 1$$
+		\item En déduire une contradiction.
+	\end{enumerate}
+\end{ex}
+
+\section{Problèmes de recouvrement}
+
+\begin{ex}[Moulin.31]{$\Delta$ Précompacité} Montrer que si $A$ est compacte, pour tout $\varepsilon>0$, il existe une partie finie $C$ de $A$ telle que $$A\subset\bigcup_{x\in C}B(x,\varepsilon)$$ On dit que $A$ est \textbf{précompacte} lorsqu'elle vérifie la propriété ci-dessus.
+\end{ex}
+\begin{proof}
+	Raisonner par l'absurde et construire par récurrence une suite d'éléments qui sont deux à deux à distances au moins égale à $\varepsilon$. Cette suite ne peut pas admettre de valeur d'adhérence, ce qui est absurde.
+\end{proof}
+\begin{app}
+	Preuve du théorème de Borel-Lebesgue ; permet de faire des extractions diagonales.
+\end{app}
+
+\begin{ex}[Moulin.32]{$\Delta$Théorème de Borel-Lebesgue} Une partie $A$ est compacte si, et seulement si, de tout recouvrement de $A$ par des ouverts, on peut extraire un sous-recouvrement fini ouvert de $A$. On se propose de montrer en deux questions le sens direct, puis de montrer le sens réciproque. Soit $A$ une partie compacte.
+	\begin{enumerate}
+		\item Soit $(O_i)_{i\in I}$ une famille d'ouverts de $A$ recouvrant $A$. Montrer qu'il existe $\varepsilon>0$ tel que $$\forall x\in A,\ \exists i\in I\ : \ B_o(x,\varepsilon)\subset O_i$$
+		\item Montrer que pour toute famille $(O_i)_{i\in I}$ d'ouverts de $A$ recouvrant $A$, il existe une partie finie $J$ de $I$ telle que $(O_j)_{j\in J}$ recouvre $A$. On pourra utiliser la précompacité de $A$ (exercice précédent).
+		\item Montrer que la propriété de la deuxième question est suffisante pour que $A$ soit compacte. On pourra utiliser le fait que l'ensemble des valeurs d'adhérence d'une suite $(u_n)$ est $\displaystyle\bigcap_{n\in\N}\overline{\{u_k\mid k\geqslant n\}}$
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item On raisonne par l'absurde avec $\varepsilon=1/2^n$ et un $x_n$ correspondant. On prend $x$ une valeur d'adhérence de $(x_n)$. Il existe $i$ tel que $x\in O_i$. Mais alors, à partir d'un certain rang : $$B\left(x_{\varphi(n)},\frac{1}{2^{\varphi(n)}}\right)\subset O_i$$ ce qui est une contradiction.
+		\item On prend le $\varepsilon>0$ obtenu à la première question et on lui applique la précompacité de $A$. On prend ensuite, par hypothèse sur $\varepsilon$, un ouvert pour chaque boule de rayon $\varepsilon$ centrée sur un élément de $F$.
+		\item On suppose désormais que de tout recouvrement par des ouverts on peut extraire un sous-recouvrement fini par des ouverts. On prouve d'abord un lemme. Soit $(F_n)$ une suite décroissante de fermés tous non vides. Raisonnons par l'absurde et supposons $$\bigcap_{n\in\N} F_n=\emptyset$$ Alors $$\bigcup_{n\in\N}\underbrace{A\setminus F_n}_{:=O_n}=A$$ Alors, par hypothèse, il existe une sous-famille $(O_i)_{i\in I}$ finie telle que $$\bigcup_{i\in I}O_i=A$$ Donc $$F_{\max(I)}=\bigcap_{i\in I}F_i=\emptyset$$ ce qui est absurde. Ensuite, on se donne une suite $(u_n)\in A^\N$ et on pose $$F_n=\overline{\{u_k\mid k\geqslant n\}}$$ $(F_n)$ est une suite décroissante de fermés tous non vide donc l'intersection de tous les $F_n$, qui vaut exactement l'ensemble des valeurs d'adhérence de $(u_n)$ est non vide. Donc $(u_n)$ admet une valeur d'adhérence. Donc $A$ est compacte.
+	\end{enumerate}
+\end{proof}
+\begin{app}
+	Lemme de Croft ; variante quelconque du point fixe de Kakutani.
+\end{app}
+
+\begin{ex}[Moulin.33]{Espaces séparables}
+	Un espace vectoriel normé $E$ est séparable s'il existe une partie dénombrable dense dans $E$.
+	\begin{enumerate}
+		\item Montrer que tout espace vectoriel normé de dimension finie est séparable.
+		\item Montrer que tout espace compact est séparable.
+		\item  $\star$ Montrer que l'espace $l^\infty$ des suites réelles bornées, muni de la norme infinie, n'est pas séparable.
+		\item $\star$ Montrer que l'espace $C_0$ des suites réelles de limite nulle, muni de la norme infinie, est séparable.		
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Les deux dernières questions sont difficiles.
+	\begin{enumerate}
+		\item Pour $E=\R^n$, $\Q^n$ est dense dedans (un produit de parties denses est dense de le produit). Puis $\C^n$ est homéomorphe à $\R^{2n}$ et $E$ de dimension finie est homéomorphe à $\K^{\dim(E)}$.
+		\item On suppose $E$ compact. On prend $E_n$ finie qui correspond à l'utilisation de la précompacité de $E$ avec $\varepsilon=1/2^n$. Alors $$A=\bigcup_{n\in\N} E_n$$ est dénombrable comme union dénombrable de parties finies. En revenant à la définition avec les boules, on montre aisément que $A$ est dense dans $E$.
+		\item Supposons l'existence de $I$ indénombrable tel que $$\forall (i,j)\in I^2,\ i\ne j\implies d(x_i,x_j)\geqslant 1$$ et de $(u_j)_{j\in J}$ dense dans $E$. On montre alors que $J$ est indénombrable. En effet, on considère $$\begin{array}{lrcl}
+			f:&I&\longrightarrow&J\\
+			&i&\longmapsto&\text{un }j\text{ tel que }d(x_i,x_j)\leqslant\frac{1}{4}
+		\end{array}$$ Cette fonction est bien définie avec l'axiome du choix et elle est injective par hypothèse sur $I$, donc $J$ est indénombrable. On a donc prouvé un résultat plus vaste. Par conséquent, en considérant les indicatrices de parties de $\N$ dans notre cas, on dispose d'un tel $I$ indénombrable si bien que $l^\infty$ n'est pas séparable.
+		\item Utiliser un argument diagonal.
+	\end{enumerate}
+\end{proof}
+
+\section{Connexité par arcs}
+
+\begin{ex}[Moulin.34]{Vers la connexité}
+	Soit $A$ une partie non triviale d'un espace vectoriel normé $E$. Montrer que la frontière de $A$ est non vide.
+\end{ex}
+\begin{proof}
+	$E$ est connexe par arcs donc connexe. Comme $A$ est non triviale, ce n'est pas un ouvert-fermé et sa frontière est non vide. Voici une preuve plus "au programme" : on prend $a\in A$ et $b\in E\setminus A$ et on s'intéresse au segment $[a,b]$. On prend $s$ la borne supérieure des $t$ tels que la combinaison convexe $(1-t)a+tb$ soit dans $A$. On montre alors que $(1-s)a+sb$ appartient à la frontière de $A$. Mieux, on montre que la fonction indicatrice de $A$ est continue (en montrant qu'elle continue en tout point de $A$ comme $A$ est ouvert, et qu'elle l'est en tout point de $E\setminus A$ comme cet ensemble est ouvert car $A$ est fermé). On en déduit que cette indicatrice vaut constamment $0$ ou constamment $1$, donc que $A$ est vide ou vaut $E$ tout entier.
+\end{proof}
+
+\begin{ex}[Moulin.35]{$\circ$}
+	Soit $A$ et $B$ deux parties connexes par arcs d'un espace vectoriel normé $E$.
+	\begin{enumerate}
+		\item Le produit cartésien $A\times B$ est-il connexe par arcs ?
+		\item Montrer que $A+B=\{a+b\ \mid\ (a,b)\in A\times B\}$ est connexe par arcs. Le résultat subsiste-t-il si seule une des deux parties $A$ ou $B$ est connexe par arcs ?
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.36]{$\star$}
+	Montrer qu'un connexe par arcs qui contient au moins deux points distincts en contient une infinité non dénombrable.
+\end{ex}
+\begin{proof}
+	Prendre $a$ et $b$ ces deux points distincts. Prendre un arc continu $\gamma$ liant $a$ à $b$. Se ramener à un intervalle de $\R$ non réduit à un point qui est infini non dénombrable.
+\end{proof}
+
+\begin{ex}[Moulin.37]{$\Delta$}
+	$\R$ et $\R^2$ sont-ils homéomorphes ?
+\end{ex}
+\begin{proof}
+	La réponse est non. Raisonner par l'absurde et considérer $f:\R^2\to\R$ un homéomorphisme. Remarquer qu'en enlevant un point à $\R^2$, celui reste connexe par arcs alors que $\R$ ne le reste pas. Il y a alors un problème car l'image d'un connexe par arcs est un connexe par arcs, donc la restriction de $f$ à $\R^2\setminus\{(0,0)\}$ ne peut pas atteindre la moitié des réels, ce qui est absurde par surjectivité de $f$.
+\end{proof}
+\begin{rmq}
+	Il est possible de prouver que $\R^m$ et $\R^n$ ne sont pas homéomorphes dès que $m\ne n$. En revanche, nous ne disposons pas des bons outils pour le faire. Le bon outil est la notion de \textbf{simple connexité} et la théorie des l'homologie (lacets, groupes d'homotopie) qui permet de correctement formaliser les choses et de prouver ce résultat difficile. Pour plus de détail, aller dans une école où on "fait vraiment des maths" et "avec strictement plus d'une lettre". Merci François.
+\end{rmq}
+
+\begin{ex}[Moulin.38]{}
+	Vrai ou faux ? L'intérieur d'un connexe par arcs est connexe par arcs.
+\end{ex}
+
+\begin{ex}[Moulin.39]{$\star$}
+	On considère $f$ définie sur $\R_+\st$ par : $$\forall x>0,\ f(x)=\sin\left(\frac{1}{x}\right)$$ ainsi que $G$ le graphe de $f$.
+	\begin{enumerate}
+		\item Montrer que $G$ est un connexe par arcs dont l'adhérence est non connexe par arcs.
+		\item Montrer que les seules parties de $\overline{G}$ à la fois ouvertes et fermées dans $\overline{G}$ sont $\emptyset$ et $G$ (c'est-à-dire que $\overline{G}$ est connexe).
+		\item Quelles sont les composantes connexes par arcs de $\overline{G}$ ? Sont-elles ouvertes dans $\overline{G}$ ? Sont-elles fermées dans $\overline{G}$ ?
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.40]{$\star$}
+	Soit $f:]a,b[\to\R$ dérivable. On suppose que pour tout $(x,y)\in]a,b[^2$ tel que $x<y$, il existe un unique $z\in]x,y[$ tel que $f'(z)=\displaystyle\frac{f(y)-f(x)}{y-x}$. Montrer que $f$ est convexe ou concave.
+\end{ex}
+
+\begin{ex}[Moulin.41]{}
+	Soit $d\geqslant 2$ et $f:\R^d\to\R$ continue.
+	\begin{enumerate}
+		\item On suppose qu'il existe $c\in\R$ tel que $f\inv(\{c\})$ soit un singleton. Que dire de $f$ en $c$ ?
+		\item Supposons qu'il existe $c\in\R$ tel que $f\inv(\{c\})$ soit un compact non vide. Montrer que $f$ admet un extremum global.
+		\item $\star$ On suppose que pour tout $c\in\R$, $f\inv(\{c\})$ est compact. Montrer : $$f(x)\xrightarrow[\lVert x\rVert\to+\infty]{}l\in\overline{\R}$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.42]{}
+	Soit $H$ un hyperplan d'un $\K$-espace vectoriel normé $E$. On note $\varphi$ une forme linéaire sur $E$ dont le noyau est $H$. On sait que $H$ est fermé si, et seulement si, $\varphi$ est continue, et que sinon il est dense dans $E$.
+	\begin{enumerate}
+		\item Montrer que si $\K=\C$, alors $E\setminus H$ est connexe par arcs.
+		\item Montrer que si $\K=\R$ et si $H$ est fermé, alors $E\setminus H$ n'est pas connexe par arcs.
+		\item $\star$ On suppose $H$ dense dans $E$. Soit $y\in E\setminus H$. Montrer qu'il existe une suite $(x_n)$ à valeurs dans $H$ telle la suite $(x_n-y)$ converge vers $y$. En déduire un chemin reliant $y$ à $-y$ dans $E\setminus H$. Que peut-on en déduire ?
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.43]{$\star$ Complémentaires denses connexes par arcs}
+	Existe-t-il dans $\R^3$ deux parties complémentaires denses et connexes par arcs ?
+\end{ex}
+\begin{proof}
+	La réponse est oui. Prendre pour l'un des plans d'abscisses dans $\Q$ et l'autre des plans d'abscisses dans $\R\setminus\Q$ puis percer toutes ces plans par deux droites orthogonales pour les rendre connexes par arcs.
+\end{proof}
+\begin{rmq}
+	On peut faire des même dans $\R^2$ en considérant des cercles concentriques de rayons rationnels et irrationnels percé par des demi-droites partant de l'origine.
+\end{rmq}
+
+\begin{ex}[Moulin.44]{$\star$}
+	Soient $a\in\R^n$ et $E$ l'ensemble des $z\in\C^n$ tels que $$\sum_{k=1}^{n}\lvert z_k\rvert^2=1\ \ \text{et}\ \ \sum_{k=1}^{n}a_k\lvert z_k\rvert^2=1$$ Montrer que $E$ est connexe par arcs.
+\end{ex}
+
+\section{Topologie et polynômes}
+
+\begin{ex}[Moulin.45]{$\circ$}
+	Soit $n\in\N$. Montrer qu'il existe $M\in\R_+$ tel que pour tout polynôme $$P=\sum_{k=0}^{n}a_kX^k\in\R_n[X]$$ et pour tout $k\in\llbracket0,n\rrbracket$, on ait : $$\lvert a_k\rvert\leqslant M\int_{0}^{1}\lvert P(t)\rvert\ dt$$
+\end{ex}
+\begin{proof}
+	Utiliser l'équivalence des normes en dimension finie avec la norme infinie sur les coefficients et la norme un intégrale.
+\end{proof}
+
+\begin{ex}[Moulin.46]{$\star\star$}
+	Soit $(P_n)_{n\in\N}$ une suite de polynômes unitaires de degré $N$ convergeant dans $\R_N[X]$ vers un polynôme $P$ unitaire de degré $N$. Montrer qu'il existe des suites complexes convergentes $a^{(1)},\ldots,a^{(N)}$ telle que $$\forall n\in\N,\ P_n=\prod_{k=1}^{N}(X-a_n^{(k)}) \ \ \ \text{et} \ \ \ P=\prod_{k=1}^{n}(X-\lim a^{(k)})$$ Indication : construire d'abord une suite $a^{(1)}$ convenable, convergeant vers une racine fixée de $P$.
+\end{ex}
+\begin{rmq}
+	Une "bonne preuve" de ce résultat consiste à passer par les espaces topologiques quotients (très largement HP).
+\end{rmq}
+
+\begin{ex}[Moulin.47]{$\star$}
+	Soit $n$ et $m$ deux entiers naturels et $g\in\mathcal{C}([0,1],\R)$. On note $R_{m,n}$ l'ensemble des fonctions rationnelles de la forme $\displaystyle t\mapsto \frac{P(t)}{Q(t)}$ avec $(P,Q)\in\R_m{X}\times\R_n[X]$ et $Q$ sans zéro dans $[0,1]$. Soit $f\in\mathcal{C}([0,1],\R)$. Montrer que la fonction $$\begin{array}{lrcl}
+		\varphi:&R_{m,n}&\longrightarrow&\R \\
+		&R&\longmapsto&\lVert R-f\rVert_\infty
+	\end{array}$$ admet un minimum.
+\end{ex}
+
+\section{Topologie et matrices}
+
+Dans cette section, $\K$ désigne $\R$ ou $\C$.
+
+\begin{ex}[Moulin.48]{Presque sous-multiplicativité}
+	Soit $\lVert\cdot\rVert$ une norme sur $\mathcal{M}_n(\K)$. Montrer qu'il existe $M$ un réel positif tel que $$\forall(A,B)\in\mathcal{M}_n(\K)^2,\ \lVert AB\rVert\leqslant M\lVert A\rVert\lVert B\rVert$$
+\end{ex}
+\begin{proof}
+	Le produit est bilinéaire. Or, il est continu car on est en dimension finie donc le critère de continuité des applications multilinéaires s'applique et fournit le résultat.
+\end{proof}
+
+\begin{ex}[Moulin.49]{$\Delta$ Compacité de $\mathcal{O}_n(\R)$ et $\mathcal{U}_n(\C)$} $\mathcal{O}_n(\R)$ et $\mathcal{U}_n(\C)$ sont compacts.
+\end{ex} \begin{proof}
+	Ce sont des fermés bornés en dimension finie, donc compacts. Le caractère fermé s'obtient car ce sont les images réciproques de fermés par des applications continues. Le caractère borné s'obtient en considérant les colonnes par exemple. En fonction de la norme choisie, les bornes peuvent varier.
+\end{proof}
+\begin{app} La compacité de $\mathcal{O}_n(\R)$ permet de prolonger des théorèmes d'existence de plusieurs décompositions dans le chapitre d'espace euclidiens \end{app}
+
+\begin{ex}{}
+	Montrer que l'ensemble des matrices nilpotentes est connexe par arcs.
+\end{ex}
+\begin{proof}
+	Étoilé par rapport à la matrice nulle.
+\end{proof}
+
+\begin{ex}[Moulin.50]{$\Delta\star$}
+	Étudier la connexité par arcs de $\mathcal{GL}_n(\R)$, $\mathcal{GL}_n(\C)$ et $\mathcal{M}_n(\K)\setminus\mathcal{GL}_n(\K)$.
+\end{ex}
+\begin{proof}
+	$\mathcal{GL}_n(\R)$ n'est pas connexe par arcs. Les composantes connexes par arcs de $\mathcal{GL}_n(\R)$ sont exactement les matrices de déterminant strictement positif et les matrices de déterminant strictement négatif. En revanche, $\mathcal{GL}_n(\C)$ et $\mathcal{M}_n(\K)\setminus\mathcal{GL}_n(\K)$ sont connexes par arcs.
+	\begin{enumerate}
+		\item Pour la non connexité par arcs, son image par le déterminant (continu) possède deux composantes connexes par arcs, $\R_+\st$ et $\R_-\st$. Pour obtenir les composantes connexes par arcs, on peut appliquer un théorème de structure sur les matrices inversible (suite de transpositions avec une dilatation en dernier) et relier continument toutes ces matrices les unes aux autres.
+		\item Pour deux matrices inversibles $A$ et $B$ à coefficients complexes, priver $\C$ de l'ensemble fini des racines de $$\det((1-z)A+zB)$$ qui est polynomial en $z$, ce qui reste alors connexe par arcs. On relie alors nos matrices par un chemin continu.
+		\item Étoilé par rapport à la matrice nulle.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}{Connexité par arcs des matrices symétriques et leurs variantes}
+	Montrer que $S_n(\R)$, $S_n^+(\R)$ et $S_n^{++}(\R)$ sont connexes par arcs.
+\end{ex}
+\begin{proof}
+	Ils sont convexes.
+\end{proof}
+
+\begin{ex}{Matrices bistochastiques} 
+	Montrer que l'ensemble des matrices bistochastiques, \textit{ie} des matrices à coefficient positifs dont la somme des coefficients pour chaque ligne et chaque colonne fait $1$, est une ensemble compact et convexe (donc \textit{a fortiori} connexe par arcs).
+\end{ex}
+\begin{proof}
+	Cet ensemble est fermé et borné en dimension finie donc compact. La convexité se vérifie à la main.
+\end{proof}
+\begin{app}{Important : utilisation des matrices orthogonales et bistochastiques}
+	Se souvenir que si on a une matrice orthogonale, la matrice dont les coefficients sont les carrés des coefficients de la matrice orthogonale est bistochastique.
+\end{app}
+
+\begin{ex}[Moulin.51]{Matrices de rang fixé non plein}
+	Soit $r\in\llbracket0,n-1\rrbracket$. Montrer que l'ensemble des matrices de rang $r$ $\mathcal{M}_n(\R)$ est connexe par arcs.
+\end{ex}
+\begin{proof}
+	On se donne $A=PJ_rQ$ et $A'=P'J_rQ'$. Il suffit simplement relier $P$ et $P'$ (de même pour $Q$) puis on utilise la bilinéarité (donc continuité en dimension finie) du produit. Pour cela, notons que cela ne change rien au problème de remplacer $P$ par $$P\times\begin{pmatrix}
+		1&&\\
+		&\ddots&&\\
+		&&1&\\
+		&&&-1
+	\end{pmatrix}$$ puisque $$\begin{pmatrix}
+		1&&\\
+		&\ddots&&\\
+		&&1&\\
+		&&&-1
+	\end{pmatrix}\times J_r=J_r \times \begin{pmatrix}
+		1&&\\
+		&\ddots&&\\
+		&&1&\\
+		&&&-1
+	\end{pmatrix}=J_r$$ comme $r<n$. On peut donc sans perte de généralité supposer que $\det(P)$ et $\det(P')$ ont même signe. On utilise ensuite la connexité par arcs de $\mathcal{GL}_n^+(\R)$ et $\mathcal{GL}_n^-(\R)$.
+\end{proof}
+
+\begin{ex}[Moulin.52]{$\Delta$ Matrices de projecteurs}
+	Déterminer les composantes connexes par arcs de l'ensemble des matrices $P\in\mathcal{M}_n(\K)$ telles que $P^2=P$ lorsque :
+	\begin{enumerate}
+		\item $\K=\C$
+		\item $\star$ $\K=\R$
+	\end{enumerate} 
+\end{ex}
+\begin{proof}
+	La deuxième question est censée être plus difficile (car l'argument utilisé dans la première ne fonctionnera plus \textit{a priori}). Remarquons dans les deux cas que la trace, continue, est égale au rang sur ces matrices donc fournit au moins $n+1$ composantes connexes par arcs correspondant au moins aux rangs. Montrons que cela sont bien des composantes connexes par arcs. Remarquons que ce sont les ensembles $$\left\{PJ_rQ\mid (P,Q)\in\mathcal{GL}_n(\K)\right\}$$
+	\begin{enumerate}
+		\item Dans $\C$, ce sont bien des connexes par arcs en utilisant la connexité par arcs de $\mathcal{GL}_n(\C)$ et le fait que le produit est continu car bilinéaire en dimension finie.
+		\item Dans $\R$, cela peut paraître plus compliqué au premier abord, mais le résultat est presque inchangé. Si $r=n$, il y a désormais deux composantes connexes par arcs, $\mathcal{GL}_n^+(\R)$ et $\mathcal{GL}_n^-(\R)$. Lorsque $r<n$, on peut multiplier $J_r$ par $$\begin{pmatrix}
+			1&&\\
+			&\ddots&&\\
+			&&1&\\
+			&&&-1
+		\end{pmatrix}$$ pour supposer que les déterminants des matrices inversibles ont même signe et se ramener à la connexité par arcs de $\mathcal{GL}_n^+(\R)$ et $\mathcal{GL}_n^-(\R)$ comme dans l'exercice précédent.
+	\end{enumerate}
+\end{proof}
+\begin{rmq}
+	On a un exercice analogue avec les matrices de symétries.
+\end{rmq}
+
+\begin{ex}[Moulin.53]{Matrices cycliques}
+	Une matrice $M\in\mathcal{M}_n(\C)$ est dite \textbf{cyclique} s'il existe $X\in\C^n$ tel que $(X,MX,\ldots,M^{n-1}X)$ soit une base de $\C^n$.
+	\begin{enumerate}
+		\item Montrer que l'ensemble des matrices cycliques est un ouvert de $\mathcal{M}_n(\C)$.
+		\item $\star$ Montrer que l'ensemble des matrices cycliques est connexe par arcs.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	La deuxième question est difficile.
+	\begin{enumerate}
+		\item Soit $C\in\C^n$. On note $$\begin{array}{lrcl}
+			\det_X:&\mathcal{M}_n(\C)&\longrightarrow&\C\\
+			&M&\longmapsto&\det(X\mid MX\mid\ldots\mid M^{n-1}X)
+		\end{array}$$ qui est continue par multilinéarité en dimension finie. Alors l'ensemble des matrices cycliques est $$\bigcup_{X\in\C^n}\det_X\inv(\C\st)$$ C'est donc un ouvert comme union d'ouverts.
+		\item On considère $M$ cyclique, $X$ un vecteur cyclique associé et $\mathcal{B}=(X,MX,\ldots,M^{n-1}X)$. On note $u$ l'endomorphisme canoniquement associé à $M$. Alors : $$M_\mathcal{B}(u)=\begin{pmatrix}
+			0&&&a_1\\
+			1&\ddots&&\vdots\\
+			&\ddots&\ddots&\vdots\\
+			&&1&a_n
+		\end{pmatrix}=A(a_1,\ldots,a_n)$$ Or, toute matrice $A(x_1,\ldots,x_n)$ est cyclique. on considère alors : $$\varphi(t)=A(ta_1,\ldots,ta_n)$$ qui est continue et relie $A(a_1,\ldots,a_n)$ à $A(0,\ldots,0)$. On fait de même avec $B$ cyclique et $\tilde{B}$. Puis on utilise la connexité par arcs de $\mathcal{GL}_n(\C)$ et la continuité du produit (bilinéaire en dimension finie). C'est donc un chemin "en 3 temps".
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.54]{$\star\star$}
+	Soit $f:[0,1]\to\mathcal{M}_n(\R)$ continue et $p\in\llbracket0,n\rrbracket$ tels que $$\forall t\in[0,1],\ \text{rg}(M(t))=n-p$$
+	\begin{enumerate}
+		\item Montrer que pour tout $t_0\in[0,1]$, il existe des applications continues $f_1,\ldots,f_p$ définies dans un voisinage $V$ de $t_0$ dans $[0,1]$, à valeurs dans $\R^n$, telles que $\forall t\in V,\ \ker(M(t))=\text{Vect}(f_1(t),\ldots,f_p(t))$.
+		\item Montrer que l'on peut trouver $f_1,\ldots,f_p$ continues de $[0,1]$ dans $\R^n$ telles que $\forall t\in [0,1],\ \ker(M(t))=\text{Vect}(f_1(t),\ldots,f_p(t))$.
+	\end{enumerate}
+\end{ex}
+
+\section{Topologie et réduction}
+
+Dans cette section, $\K$ désigne $\R$ ou $\C$.
+
+\begin{ex}[Moulin.55]{Matrices cycliques version réduction}
+	Montrer que l'ensemble des matrices de $\mathcal{M}_n(\K)$ dont les polynômes caractéristique et minimal sont égaux est un ouvert de $\mathcal{M}_n(\K)$.
+\end{ex}
+\begin{proof}
+	Ce sont encore les matrices cycliques. A faire...
+\end{proof}
+
+\begin{ex}[Moulin.56]{Matrices diagonalisables et trigonalisables}
+	Soit $n\in\N\st$. On note $T_n(\K)$, $D_n(\K)$ et $D_n'(\K)$ les parties de $\mathcal{M}_n(\K)$ constituées respectivement des matrices trigonalisables; des matrices diagonalisables et des matrices diagonalisables avec $n$ valeurs propres distinctes.
+	\begin{enumerate}
+		\item Intérieur et adhérence de $\mathcal{T}_n(\C)$ dans $\mathcal{M}_n(\C)$.
+		\item Adhérence de $D_n(\K)$ dans $T_n(\K)$ ? Et pour $D_n'(\K)$ ?
+		\item $\star$ Montrer que l'ensemble des polynômes unitaires de degré $n$ de $\R_n[X]$ scindés sur $\R$ est un fermé de $\R_n[X]$. En déduire l'adhérence dans $\mathcal{M}_n(\R)$ de $D_n(\R)$ et de $T_n(\R)$.
+		\item $\star$ Montrer que l'intérieur de $D_n(\R)$ est $D_n'(\R)$.
+		\item $\star\star$ Montrer que l'intérieur de $D_n(\C)$ est $D_n'(\C)$.
+		\item Montrer que l'intérieur de $T_n(\R)$ est $D_n'(\R)$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	La première question est une application immédiate du cours. Les question 3 et 4 sont difficiles. La question 5 est très difficile.
+	\begin{enumerate}
+		\item $T_n(\C)=\mathcal{M}_n(\C)$ par théorème de cours.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.57]{$\star$ Dimension du commutant}
+	Le commutant de $A\in\mathcal{M}_n(\K)$ et $\mathcal{C}_\K(A)=\left\{M\in\mathcal{M}_n(\K)\mid AM=MA\right\}$.
+	\begin{enumerate}
+		\item Soit $A\in\mathcal{M}_n(\C)$ diagonalisable à $n$ valeurs propres distinctes. montrer que son commutant $\mathcal{C}_\C(A)$ est de dimension $n$.
+		\item En déduire que $\dim_\C\mathcal{C}_\C(A)\geqslant n$ pour tout $A\in\mathcal{M}_n(\C)$. on pourra utiliser la densité des matrices diagonalisables à $n$ valeurs propres distinctes.
+		\item En déduire que $\dim_\R\mathcal{C}_\R(A)\geqslant n$ pour tout $A\in\mathcal{M}_n(\R)$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	A faire...
+\end{proof}
+
+\begin{ex}[Moulin.58]{$\Delta$ Racines de l'unité}
+	Quelle est l'adhérence de l'ensemble des matrices $M\in\mathcal{M}_n(\C)$ pour lesquelles il existe $p\in\N\st$ tel que $M^p=I_n$ ?
+\end{ex}
+\begin{proof}
+	Il me semble qu'il s'agit de l'ensemble des matrices diagonalisables à valeurs propres dans le cercle unité. A vérifier et à faire...
+\end{proof}
+
+\begin{ex}[Moulin.59]{Classe de similitude compacte}
+	Condition nécessaire et suffisante sur $A\in\mathcal{M}_n(\C)$ pour que la classe de similitude soit compacte ?
+\end{ex}
+\begin{proof}
+	La CNS est que $A$ doit être scalaire. Cela est clairement suffisant. Dans l'autre sens, on suppose $A$ non scalaire. Alors il est classique que $A$ est semblable à une matrice de la forme : $$\begin{pmatrix}
+		0&&(*)&\\
+		1&&&\\
+		0&&(*)&\\
+		\vdots&&&
+	\end{pmatrix}$$ En agissant avec les matrices $Q_\varepsilon$, la classe de similitude de $A$ n'est pas bornée donc n'est pas compacte. 
+\end{proof}
+
+\end{document}
