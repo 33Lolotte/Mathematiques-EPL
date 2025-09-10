@@ -1,0 +1,482 @@
+\documentclass[french,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théorème}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{ex}[2][]{colback=white, colframe=green!50!white, coltitle=black, fonttitle=\bfseries, title={Exercice~\thetcbcounter~: #2}, after title={\hfill #1}}
+
+\title{TD Suites et séries numériques}
+
+\begin{document}
+
+\maketitle
+
+\section{Suites}
+
+\begin{ex}{Valeurs d'adhérences et suite qui tend vers l'infini en ralentissant}
+	Soit $(u_n)$ une suite de réels tendant vers $+\infty$ telle que $$\lim_{n\to+\infty}(u_{n+1}-u_n)=0$$ Montrer que l'ensemble des valeurs d'adhérence de la suite $(u_n-\lfloor u_n\rfloor)_{n\in\N}$ est le segment $[0,1]$. En déduire l'ensemble des valeurs d'adhérence de la suite $\left(\exp(2i\pi u_n)\right)_{n\in\N}$.
+\end{ex}
+
+\begin{proof}
+	Commencer par faire un dessin ! Puisque la différence tend vers $0$, la suite va aller de plus en plus doucement, mais elle doit continuer à avancer pour tendre vers $+\infty$. Donc sa partie fractionnaire va toujours repasser à $\varepsilon$ près d'un élément du segment. Cela se formalise correctement mais c'est plus clair avec les mains. On en déduit, en écrivant $$\exp(2i\pi u_n)=\exp(2i\pi (u_n-\lfloor u_n\rfloor))$$ que l'ensemble des valeurs d'adhérence de $\left(\exp(2i\pi u_n)\right)_{n\in\N}$ est $\U$ tout entier.
+\end{proof}
+
+\begin{app}
+	Cela montre par exemple que $\cos(\ln(n))$ n'admet pas de limite en $+\infty$, ce qui peut servir dans des déterminations de natures de séries.
+\end{app}
+
+\begin{ex}{Suites de Cauchy}
+	Montrer qu'une suite réelle converge si, et seulement si, elle est de Cauchy.
+\end{ex}
+
+\begin{proof}
+	Le sens direct est immédiat en utilisant la définition de la limite et l'inégalité triangulaire. Pour le sens réciproque, on montre d'abord qu'une suite de Cauchy est bornée, puis qu'elle admet au plus une valeur d'adhérence.
+\end{proof}
+
+\begin{ex}{Une limite}
+	Déterminer la limite quand $n$ tend vers $+\infty$ de $$S_n=\sum_{k=0}^{n}\sin\left(\frac{k}{n}\right)\sin\left(\left(\frac{k}{n^2}\right)\right)$$
+\end{ex}
+\begin{proof}
+	Cette limite vaut $$\int_{0}^{1}x\sin(x)\ dx$$ En effet, il suffit de se ramener à $$T_n=\frac{1}{n}\sum_{k=0}^{n}\frac{k}{n}\sin\left(\frac{k}{n}\right)$$ et d'utiliser le théorème sur les sommes de Riemann. Pour prouver qu'on peut s'y ramener légitimement, majorer l'erreur commise en remplaçant $\displaystyle\sin\left(\frac{k}{n^2}\right)$ par $\displaystyle\frac{k}{n^2}$.
+\end{proof}
+\begin{ex}{$\Delta\star$ Lemme de Fekete} Soit $(u_n)_{n\in\N\st}$ sous-additive, \textit{ie} telle que $\forall(p,q)\in\N^2,\ u_{p+q}\leqslant u_p+u_q$. Alors on a : $$\frac{u_n}{n}\xrightarrow[n\to+\infty]{}l \ \ \text{où} \ \ l=\inf_{n\in\N\st}\frac{u_n}{n}\in\R\cup\{-\infty\}$$
+\end{ex} \begin{proof}
+	On traite séparément plusieurs cas :
+	\begin{itemize}
+		\item si $l=0$, on passe par les $\varepsilon$ en prenant $n_0$ tel que $u_{n_0}/n_0$ soit $\varepsilon$ proche de $l$. On effectue alors une division euclidienne de $n$ par $n_0$ et on majore par sous-additivité et une inégalité de partie entière.
+		\item si $l\in\R$, on se ramène au cas précédent en posant $v_n=u_n-ln$ qui est tout aussi sous-additive.
+		\item si $l=-\infty$, on utilise la même idée que dans le premier cas, mais il faut faire un peu plus attention car l'inégalité de partie entière s'inverse puisque la suite est à valeurs négatives APCR.
+	\end{itemize}
+\end{proof}
+\begin{app}
+	Sert pas mal dans des exercices assez complexes de probabilités où on demande une limite de $\P(X=n)^{1/n}$ par exemple : en effet, si on peut passer au $\ln$, il y a des chances que la nouvelle suite soit sous-additive.
+\end{app}
+\begin{ex}{$\Delta\star$ Formule d'inversion de Pascal}
+	Soit $(u_n)_{n\in\N}$ et $(v_n)_{n\in\N}$ deux suites. Montrer la formule d'inversion de Pascal : $$\forall p\in\N,\ u_p=\sum_{k=0}^{p}\binom{p}{k}v_k \iff \forall p\in\N,\ v_p=(-1)^p\sum_{k=0}^{p}(-1)^k\binom{p}{k}u_k$$
+\end{ex}
+\begin{proof}
+	On peut le faire :
+	\begin{itemize}
+		\item à la main, en remarquant que $$\forall i\in\llbracket0,n\rrbracket,\ \sum_{k=i}^{n}(-1)^{n-k}\binom{n}{k}\binom{k}{i}=\binom{n}{i}0^{n-i}$$ en calculant le coefficient en $x^{n-i}$ dans le DSE $\exp(x)\exp(-x)=1$ ou bien en se ramenant à un binôme. Ensuite, intervertir les sommes et utiliser ce lemme pour prouver le résultat ;
+		\item matriciellement ,en écrivant matriciellement la relation supposée, puis en inversant la matrice pour obtenir la relation voulue. Pour inverser la matrice, on remarquera que $X=X-1+1$ et on utilisera le binôme de Newton (comme d'habitude pour une matrice dont les coefficients sont des coefficients binomiaux) ;
+		\item par récurrence sur $n$ ;
+		\item avec des polynômes, ce qui ressemble à un mélange des deux premiers points.
+	\end{itemize}
+\end{proof}
+\section{Comparaison et convergence}
+
+\begin{ex}{Nature d'une série en fonction d'un paramètre réel}
+	Nature de la série de terme général $\displaystyle\exp\left(\cosh\left(\frac{1}{\sqrt{n}}\right)\right)-a\sqrt{\frac{n-1}{n+1}}$
+\end{ex}
+\begin{proof}
+	Si $a\ne e$, on a divergence grossière. Dans le cas où $a=e$, un DL donne un équivalent en $$\frac{3e}{2n}$$ donc la série diverge par comparaison avec la série harmonique.
+\end{proof}
+
+\section{Séries à termes généraux positifs}
+
+\begin{ex}{Suites réelles décroissantes sommables} Soit $(a_n)_{n\in\N}$ une suite réelle décroissante dont la série de terme général converge. Alors : $$a_n=o\left(\frac{1}{n}\right)$$
+\end{ex}
+
+\begin{proof}
+	En effet, on travaille sur une tranche de Cauchy de taille $n$ et on utilise la décroissance de la suite. Cela donne le résultat pour $(2nu_{2n})$. On l'obtient alors facilement en majorant pour $((2n+1)u_{2n+1})$, et cela permet de conclure.
+\end{proof}
+
+\begin{ex}{$\Delta$ Condensation}
+	\begin{enumerate}
+		\item Soit $(u_n)$ une suite décroissante de réels positifs. Montrer que la série $\sum u_n$ converge si, et seulement si, la série $\sum 2^nu_{2^n}$ converge.
+		\item Retrouver la nature de :
+		\begin{enumerate}
+			\item $\displaystyle\sum\frac{1}{n^a}$ en fonction de $a\in\R_+\st$ ;
+			\item $\displaystyle\sum\frac{1}{n^a\ln^b(n)}$ en fonction de $(a,b)\in\R_+\st$
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Cela se fait bien. Prendre des tranches de tailles $2^n$.
+		\item Appliquer le critère précédent permet de retrouver le comportement des séries de Riemann et de Bertrand très facilement.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}{Mieux que Stirling !}
+	On fixe un réel positif $x$. Donner un équivalent de $$P_n=\prod_{k=1}^{n}(x+k^2)$$ (on ne déterminera pas la constante multiplicative).
+\end{ex}
+
+\begin{proof}
+	Diviser $P_n$ par $(n!)^2$ puis passer au $\ln$ et le terme général de la série obtenu est équivalent à un $\displaystyle\frac{x}{k^2}$ donc la série converge. L'équivalent est donc $$e^{C}(n!)^2$$ où $C$ est la somme de la série convergente des $\ln\left(1+\frac{x}{k^2}\right)$.
+\end{proof}
+
+\begin{ex}{Puissances de inverses des nombres premiers}
+	On note $\mathcal{P}$ l'ensemble des nombres premiers. Donner une condition nécessaire et suffisante sur $\alpha\in\R_+\st$ pour que $$\sum_{p\in\mathcal{P}}\frac{1}{p^\alpha}$$ soit une série convergente.
+\end{ex}
+
+\begin{proof}
+	La CNS est $\alpha >1$. Pour montrer que cela est suffisant, majorer par une série de Riemann convergente. Ensuite, si $\alpha=1$, utiliser le fait que $$\frac{1}{p}\sim -\ln\left(1-\frac{1}{p}\right)$$ De la sorte, développer le produit $$\prod_{p\leqslant m}\frac{1}{1-\frac{1}{p}}$$ pour le minorer par la série harmonique et conclure à une divergence en prenant le $\ln$. Lorsque $\alpha<1$, utiliser le fait que $$\frac{1}{p^\alpha}\geqslant\frac{1}{p}$$
+\end{proof}
+
+\begin{ex}{Injection de $\N\st$ dans $\N\st$}
+	Soit $f:\N\st\to\N\st$ une fonction injective. Déterminer la nature de la série $$\sum_{n\geqslant 1}\frac{f(n)}{n^2}$$
+\end{ex}
+
+\begin{proof}
+	Cette série est divergente. On peut utiliser une inégalité de réordonnement pour minorer par le cas où $f$ est l'identité. Sinon, utiliser un principe des tiroirs pour minorer $f$ à partir d'un certain rang. 
+\end{proof}
+
+\section{Séries à termes généraux quelconques}
+\begin{ex}{Produit de Cauchy et Cesàro}
+	Soit $(a_n)_{n \in\N}$ et $(b_n)_{n \in\N}$ deux suites complexes et soit $(a,b) \ \C^2$ tels que $a_n \underset{n \longrightarrow + \infty}{\longrightarrow} a $ et $b_n \underset{n \longrightarrow + \infty}{\longrightarrow} b $. On pose $$\forall n \in \N, \ u_n = \frac{1}{n+1}\sum_{k=0}^{n}a_k b_{n-k} $$ Montrer que $u_n \xrightarrow[n\to+\infty]{} ab$
+\end{ex}
+\begin{proof}
+	Adapter la preuve de Cesàro vue en cours (oui, les $\varepsilon$ sont de sortie...). Cette fois, il faut couper aux deux extrémités de la somme, on ne pourra contrôler que le milieu.
+\end{proof}
+\begin{ex}{Cesàro binomial}
+	Soit $(a_n)_{n \in\N}$ une suite complexe convergente complexe de limite $l$. Montrer que $$\frac{1}{2^n}\sum_{k=0}^{n}\binom{n}{k}a_k \xrightarrow[n\to+\infty]{}l $$ On pourra commencer par le cas où $l=0$.
+\end{ex}
+\begin{proof}
+	Adapter la preuve vue en classe de Cesàro vue en classe. Dans un premier temps, supposons que $l=0$. Soit $\varepsilon>0$. Par hypothèse, il existe un rang $n_1 \in \N$ tel que $$\forall n \in \N, \ n \geqslant n_1 \Longrightarrow \lvert a_n\rvert\leqslant\frac\varepsilon2$$ Fixons un tel rang. Aussi, il existe un rang $n_2 \in \N$ tel que $$\forall n \in \N, \ n \geqslant n_2 \Longrightarrow\left\lvert\frac{1}{2^n}\sum_{k=0}^{n_1}\binom{n}{k}a_k\right\rvert\leqslant\frac\varepsilon2$$ puisqu'on a une somme d'un nombre fini de termes qui sont tous dominés par $n^{n_1}$, donc ces termes sont tous négligeables devant $2^n$. Fixons un tel rang. Ensuite, posons $n_0=\max(n_1, n_2)$. Soit $n\geqslant n_0$. On a alors :
+	\begin{align*}
+		\left\lvert\frac{1}{2^n}\sum_{k=0}^{n}\binom{n}{k}a_k\right\rvert &\leqslant \left\lvert\frac{1}{2^n}\sum_{k=0}^{n_1}\binom{n}{k}a_k\right\rvert + \frac{1}{2^n}\sum_{k=n_1+1}^{n}\binom{n}{k}\lvert a_k\rvert\\
+		& \leqslant \frac\varepsilon2 + \frac{1}{2^n}\sum_{k=n_1+1}^{n}\binom{n}{k}\frac\varepsilon2 \\
+		& \leqslant \frac\varepsilon2 + \frac{1}{2^n}\sum_{k=0}^{n}\binom{n}{k}\frac\varepsilon2 \\
+		& \leqslant \frac\varepsilon2 + \frac\varepsilon2 \frac{1}{2^n}\sum_{k=0}^{n}\binom{n}{k} \\
+		& \leqslant \frac\varepsilon2 + \frac\varepsilon2 \\
+		& \leqslant \varepsilon
+	\end{align*}
+	On a bien le résultat souhaité. \\ \\ Désormais, ne nous restreignons plus au cas $l=0$. Il suffit alors d'appliquer le résultat qui précède à la suite $(a_n-l)_{n \in \N}$ qui tend bien vers 0. Une simple somme de limites permet alors de conclure.
+\end{proof}
+\begin{ex}{$\star$ Une hypothèse logarithmique}
+	Soit $f\in\mathcal{C}^1(\R,\R)$. On suppose que $f'/f$ est définie au voisinage de $+\infty$ et tend vers une limite non nulle $\lambda$. Déterminer la nature de la série $\sum f(n)$.
+\end{ex}
+\begin{proof}
+	Immédiatement penser à une dérivée de $\ln\circ \lvert f\rvert$. Utiliser une intégrale pour obtenir le comportement de $\ln\circ\lvert f\rvert$ et remonter à la série de terme général $f(n)$.
+\end{proof}
+\begin{ex}{Une nature de série}
+	Nature de la série de terme général $u_n=\sin(\pi\sqrt{n^2+5n+3})$
+\end{ex}
+\begin{proof}
+	Faire un développement asymptotique du terme général.
+\end{proof}
+\begin{ex}{Une deuxième nature de série}
+	Nature de la série de terme général $u_n\displaystyle(-1)^n\frac{\cos(\sqrt{n})}{n}$
+\end{ex}
+\begin{proof}
+	Poser $\displaystyle v_n=(-1)^n\frac{e^{i\sqrt{n}}}{n}$. Montrer que la série de terme général $v_{2n}+v_{2n+1}$ converge en faisant un développement asymptotique. Cela donne le fait que les sommes partielles impaires convergent. Mais comme le terme général tend vers $0$, les sommes partielles paires convergent vers la même limite donc OK.
+\end{proof}
+\begin{ex}{Une troisième nature de série}
+	Nature de la série de terme général $u_n=\displaystyle \frac{(-1)^{\lfloor\ln(n)\rfloor}}{n}$
+\end{ex}
+\begin{proof}
+	Regrouper par paquets pour se débarrasser de la partie entière.
+\end{proof}
+\begin{ex}{Une quatrième nature de série}
+	Nature des séries de termes général $\sin(\pi e n!)/n$ et $\sin(\pi en!)$.
+\end{ex}
+\begin{proof}
+	Les deux sont convergentes. Utiliser la stratégie habituelle en écrivant $e$ comme la somme de la série des inverses des factorielles pour obtenir le terme général comme un $(-1)^{A_n}\sin(C_n)$. Dans le premier cas, le critère de Riemann suffit à conclure, mais dans le deuxième cas, il faut travailler un peu plus pour se ramener au critère des séries alternées.
+\end{proof}
+\begin{ex}{$\Delta\star$ Utilisation des stratégies intégrales}
+	Nature des séries de terme général :
+	$$u_n=\frac{\cos(n\pi/3)}{\sqrt{n}}\ \ ; \ \ v_n=\frac{\cos(\ln(n))}{n}\ \ \text{et} \ \ \frac{\sin(\sqrt{n})}{n}$$
+\end{ex}
+\begin{proof}
+	\begin{itemize}
+		\item Pour la première, utiliser la stratégie de l'IPP pour trouver la bonne suite annexe à considérer : en l'occurrence, c'est $\displaystyle\frac{\sin(n\pi/2-\pi/6)}{\sqrt{n}}$ puis faire un DL de la suite télescopique associée. On obtient finalement une convergence.
+		\item Pour la deuxième, utiliser la stratégie de la primitive pour poser la bonne suite annexe qui est $\sin(\ln(n))$. On obtient finalement une divergence.
+		\item Enfin, soit on reconnaît la partie imaginaire de l'exemple du cours (qui se fait avec une IPP), soit on fait l'IPP soi-même et on considère la suite annexe de terme général $\displaystyle\frac{\cos(\sqrt{n})}{\sqrt{n}}$ dont on fait un DA de la série télescopique associée. On trouve finalement une convergence.
+	\end{itemize}
+\end{proof}
+\begin{ex}{$\Delta\star$ Utilisation de développements asymptotiques}
+	Nature des séries de terme général : 
+	$$u_n=\frac{\sin(n)}{n+(-1)^n}\ \ \text{et} \ \ v_n=\sin\left(\frac{\sin(n)}{\sqrt[3]{n}}\right)$$
+\end{ex}
+\begin{proof}
+	Pour la première, faire un développement asymptotique puis utiliser la stratégie de l'IPP. On trouve une convergence. Pour la deuxième, faire un développement asymptotique puis faire une stratégie de l'IPP, linéariser $\sin^3$ puis refaire une stratégie de l'IPP. On trouve une convergence.
+\end{proof}
+\begin{ex}{$\star$ Une dernière fois des intégrales}
+	Nature de la série de terme général $$u_n=\frac{e^{i\sqrt{n}}}{\sqrt{n}}$$
+\end{ex}
+\begin{proof}
+	Utiliser une primitive pour trouver la suite annexe $v_n=e^{i\sqrt{n}}$. Faire un développement asymptotique de $v_{n+1}-v_n$ pour tomber sur $u_n$, $e^{i\sqrt{n}}/n$ et un grand O de $n^{-3/2}$. Comme dans le cours, la série de terme général $e^{i\sqrt{n}}/n$, en faisant une intégration par parties pour obtenir la bonne suite annexe, converge. Or, $(v_n)$ n'admet pas de limite (classique car la racine tend vers l'infini mais la différence de deux termes consécutifs tend vers 0). Par conséquent, comme la série des $u_n$ possède la même nature que celle des $v_{n+1}-v_n$, la série de terme général $u_n$ diverge.
+\end{proof}
+\begin{ex}{$\star\star$ Une caractérisation des fonctions localement linéaires}
+	Soit $f:\R\to\R$. On suppose que pour tout série réelle convergente $\sum u_n$, la série $\sum f(u_n)$ converge.
+	\begin{enumerate}
+		\item Montrer que $f(0)=0$ et que $f$ est continue en $0$.
+		\item Montrer que $f$ est impaire au voisinage de $0$.
+		\item On veut montrer qu'il existe un intervalle ouvert $\mathcal{V}$ contenant $0$ tel que $$\forall (x,y)\in\mathcal{V}^2,\ x+y\in\mathcal{V}\implies f(x+y)=f(x)+f(y)$$ En supposant ce résultat faux, montrer qu'il existe des suites $(x_n)$ et $(y_n)$ de limites nulles telle que $$\forall n\in\N,\ f(x_n+y_n)-f(x_n)-f(y_n)>0$$ et en déduire une contradiction en construisant une série dont les termes sont à choisir parmi les suites $(x_n+y_n)$, $(x_n)$ et $(y_n)$.
+		\item Montrer qu'il existe un intervalle ouvert contenant $0$ et $\lambda\in\R$ tels que $$\forall x\in\mathcal{V},\ f(x)=\lambda x$$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item $\sum 0$ converge donc $\sum f(0)$ aussi donc $f(0)=0$. Ensuite, on raisonne par l'absurde en construisant une suite $(x_n)$ qui est un grand O de $2^{-n}$ telle qu'il existe $\varepsilon>0$ pour lequel $\forall n\in\N,\ \lvert f(x_n)\rvert\geqslant\varepsilon$. On obtient alors la continuité en $0$.
+		\item On raisonne par l'absurde en prenant à chaque fois $x_n\in\displaystyle\left[-\frac{1}{2^n},\frac{1}{2^n}\right]$ tel que $f(-x_n)\ne f(x_n)$. Puis on construit une suite avec $n_0$ fois $x_0$ puis $n_0$ fois $-x_0$, etc. où $n_k\lvert f(-x_k)+f(x_k)\rvert\geqslant1$. Une série de terme général cette suite converge, mais la série des images diverge par construction.
+		\item On construit la suite comme suggéré par l'énoncé, avec comme précédemment des valeurs plus petites que $2^{-n}$ en valeur absolue. On prend alors $n_0$ fois $x_0+y_0$, puis $n_0$ fois $-x_0$ puis $n_0$ fois $-y_0$, etc. avec les $n_k$ comme précédemment. On conclut de même à une absurdité.
+		\item C'est un exercice classique mais il faut ici faire attention au domaine de validité des résultats précédents. Cela ne change pas la méthode à appliquer et le résultat.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{$\star\star\star$ Théorème de Riemann}
+	Soit $\sum a_n$ une série réelle semi-convergente. Montrer que pour tout $x \in \R$, il existe $\sigma$ une permutation de $\N$ telle que $$\sum_{n=0}^{+\infty} a_{\sigma(n)}=x $$
+\end{ex}
+\begin{proof}
+	Cet exercice est redoutable. Il me semble que l'idée est de prouver dans un premier temps qu'il y a nécessairement une infinité de termes strictement négatifs et une infinité de termes strictement positifs. Ensuite, pour $x\in\R$, on construit notre bijection de la façon suivante :
+	\begin{itemize}
+		\item tant que la somme partielle est inférieure à $x$, on pioche dans les termes strictement positifs et on prend ce terme comme étant le suivant pour notre bijection ;
+		\item si la somme partielle dépasse strictement $x$, on pioche dans les termes strictement positifs.
+	\end{itemize}
+	Il faut alors prouver que la fonction obtenue est bien une bijection. L'injectivité est rapide, mais la surjectivité est plus embêtante (je crois qu'on peut raisonner par l'absurde). Enfin, il faut montrer que la série obtenue par réordonnement converge et est de somme $x$, ce qui se comprend bien, mais il me semble là encore qu'on peut le prouver en raisonnant par l'absurde.
+\end{proof}
+\section{Comparaison série-intégrale}
+\begin{ex}{Équivalent de $\zeta$ en $1^+$}
+	Donner un équivalent en $1^+$ de $\displaystyle\zeta(x)=\sum_{n=1}^{+\infty}\frac{1}{n^x}$
+\end{ex}
+\begin{proof}
+	Un comparaison série-intégrale (et le dessin qui s'impose avec) fournissent rapidement : $$\zeta(x)\underset{1^+}{\sim}\frac{1}{x-1}$$
+\end{proof}
+\begin{ex}{$\Delta$ Sommes partielles et comparaison série-intégrale}
+	Soit $\sum u_n$ une série divergente à terme général strictement positif. On pose $$S_n=\sum_{k=0}^{n}u_k$$ Déterminer en fonction de $\alpha\in\R$ la nature de la série $$\sum\frac{u_n}{S_n^\alpha}$$ En déduire qu'il existe une série divergente $\sum v_n$ à terme général positif telle que $v_n=o(u_n)$.
+\end{ex}
+\begin{proof}
+	Écrire $$\frac{u_n}{S_n^\alpha}=\frac{S_n-S_{n-1}}{S_n^\alpha}$$ et interpréter ceci comme une intégrale. Remarquer ensuite que $(S_n)$ est croissante et tend vers $+\infty$. Effectuer une comparaison série-intégrale avec une fonction puissance. Je crois (à vérifier, je ne suis pas sûr) que la limite de la convergence est autour de $\alpha=1$.
+\end{proof}
+\begin{ex}{$\Delta$ Restes et comparaison série-intégrale (dual du précédent)}
+	Soit $\sum u_n$ une série convergente à terme général strictement positif. On pose $$R_n=\sum_{k=n}^{+\infty}u_k$$ Déterminer en fonction de $\alpha\in\R$ la nature de la série $$\sum\frac{u_n}{R_n^\alpha}$$ En déduire qu'il existe une série convergente $\sum v_n$ à terme général positif telle que $u_n=o(v_n)$.
+\end{ex}
+\begin{proof}
+	Écrire $$\frac{u_n}{S_n^\alpha}=\frac{R_n-R_{n+1}}{R_n^\alpha}$$ et interpréter ceci comme une intégrale. Remarquer ensuite que $(R_n)$ est décroissante et tend vers $0$. Effectuer une comparaison série-intégrale avec une fonction puissance. Je crois (à vérifier, je ne suis pas sûr) que la limite de la convergence est autour de $\alpha=1$.
+\end{proof}
+
+\section{Recherche d'équivalents}
+\begin{ex}{$\star$ Développement asymptotique}
+	Déterminer un équivalent simple de $$u_n=\sum_{k=1}^{n}\frac{\ln(k)}{k}$$ Donner un développement asymptotique à 2 termes puis à 3 termes de $u_n$.
+\end{ex}
+\begin{proof}
+	\begin{itemize}
+		\item Pour obtenir l'équivalent, faire une comparaison série-intégrale  avec $$f:x\mapsto\frac{\ln(x)}{x}$$ qui est décroissante à partir de $e$. On obtient, en faisant un dessin (essentiel) et le calcul les intégrales, l'équivalent : $$u_n\sim\frac{1}{2}\ln(n)^2$$
+		\item  Ensuite, on pose $v_n=u_n-\displaystyle\frac{1}{2}\ln(n)^2$. On montre en faisant des DL que $$v_{n+1}-v_n=O\left(\frac{1}{n^{3/2}}\right)$$ donc $(v_n)$ converge vers une constante $C$.
+		\item On pose $w_n=v_n-C$. Un calcul analogue donne $$w_{n+1}-w_n\sim-\frac{1}{2}\underbrace{\frac{\ln(n)}{n^2}}_{\text{positif sommable}}$$ On somme les relations de comparaison (cas convergent) pour avoir $$w_n\sim\sum_{k=n}^{+\infty}\frac{1}{2}\frac{\ln(n)}{n^2}$$ car $w_n\to 0$. Ensuite, on fait encore une comparaison série-intégrale suivie d'une IPP qui donne $$\sum_{k=n}^{+\infty}\frac{1}{2}\frac{\ln(n)}{n^2}\sim\frac{1}{2}\frac{\ln(n)}{n}$$ On en déduit finalement le développement asymptotique : $$u_n=\frac{1}{2}\ln(n)^2+C+\frac{1}{2}\frac{\ln(n)}{n}+o\left(\frac{\ln(n)}{n}\right)$$
+	\end{itemize}
+\end{proof}
+
+\section{Suites récurrentes}
+
+\begin{ex}{Une étude de suite récurrente}
+	Soit la suite $(u_n)$ définie par $u_0\in]0,1[$ et $u_{n+1}=u_n-u_n^2$.
+	\begin{enumerate}
+		\item Donner la limite de la suite $(u_n)$ puis un équivalent de la suite $(u_n)$.
+		\item Donner un développement asymptotique à deux termes de $u_n$.
+	\end{enumerate}
+\end{ex}
+
+\begin{proof}
+	\begin{enumerate}
+		\item On vérifie la stabilité, la décroissance et tout le bazar. Le théorème de la limite monotone et l'étude des points fixes d'une fonction bien choisie donne une limite $l=0$. On applique ensuite la stratégie de l'équation différentielle et on pose la suite annexe $v_n=\displaystyle\frac{1}{u_n}$. On obtient $v_{n+1}-v_n\equiv 1$ puis on somme les relations de comparaison, on télescope tout ça, on enlève ce qui ne sert à rien puis en repassant à l'inverse on trouve $$u_n\sim\frac{1}{u_n}$$
+		\item On pose $w_n=v_n-n$ : \textbf{TOUJOURS TRAVAILLER SUR LA SUITE ANNexE QUI NOUS A PERMIS D'OBTENIR L'ÉQUIVALENT ET PAS DIRECTEMENT SUR L'ÉQUIVALENT}. On obtient $$w_{n+1}-w_n\sim\frac{1}{n}$$ On somme les relations de comparaison pour obtenir $w_n\sim\ln(n)$. Ensuite, on fait un DL et on obtient $$u_n=\frac{1}{n}-\frac{\ln(n)}{n^2}+o\left(\frac{\ln(n)}{n^2}\right)$$
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}{Une deuxième étude de suite récurrente}
+	La suite $(u_n)_{n\geqslant0}$ est définie par : $$u_0\in]0,2\pi[\ \ \text{et} \ \ \forall n\in\N,\ u_{n+1}=\sin\left(\frac{u_n}{2}\right)$$
+	\begin{enumerate}
+		\item Montrer que $(u_n)_{n\geqslant0}$ converge vers $0$.
+		\item Montrer qu'il existe $A>0$ tel que $u_n\sim A2^{-n}$.
+		\item Trouver un équivalent de $u_n-A2^{-n}$.
+	\end{enumerate}
+\end{ex}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Vérifier la stabilité puis montrer la décroissance. La limite nulle vient facilement avec le théorème de la limite monotone et l'étude des points fixes.
+		\item On pose $v_n=\ln(2^nu_n)$. Alors $$v_{n+1}-v_n\sim-\frac{u_n^2}{24}$$ Or, par récurrence, on prouve que $u_n=O(2^{-n})$. Donc $$v_{n+1}-v_n=O(4^{-n})$$ donc $v_n$ converge vers $\alpha\in\R$. On pose alors $A=e^{\alpha}$.
+		\item On pose $w_n=2^nu_n$. Alors $$w_{n+1}-w_ns\sim 2^n\times 2\times\frac{-u_n^3}{48}\sim-\frac{A^3}{24}\frac{1}{4^n}$$ où ce dernier équivalent est négatif sommable. On somme les relations de comparaison sur les restes ce qui donne, comme $w_n\to A$ : $$A-u_n2^n\sim-\frac{A^3}{18\times 4^n}$$ Par conséquent, on a : $$u_n-A2^{-n}\sim\frac{A^3}{18}\times\frac{1}{8^n}$$
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}{$\Delta$ Une troisième étude de suite récurrente : un grand classique}
+	Déterminer la limite et donner un équivalent des suites vérifiant la relation : $$u_{0}\in]0,\pi[ \ \ \text{et} \ \ \forall n\in\N,\ u_{n+1}=\sin(u_n)$$
+\end{ex}
+
+\begin{proof}
+	On trouve une limite nulle avec la méthode habituelle. La suite annexe à poser est $$v_n=\frac{1}{u_n^2}$$ La différence $v_{n+1}-v_n$ tend vers $1/3$. En sommant les relations de comparaison, on trouve finalement $$u_n\sim\sqrt{\frac{3}{n}}$$
+\end{proof}
+
+\begin{ex}{$\star$ Une quatrième étude de suite récurrente}
+	On considère la suite $u$ définie par $u_0=1$ et $\forall n\in\N, u_{n+1}=u_n^2+1$. Étudier la limite de $u$. Montrer qu'il existe un réel $a>0$ tel que $$u_n\sim a^{2^n}$$
+\end{ex}
+
+\begin{proof}
+	On remarque par récurrence que $u_n\geqslant 2^n$ donne $u$ tend vers l'infini (l'étude habituelle marche aussi). On pose ensuite $$v_n=\frac{\ln(u_n)}{2^n}$$ et on prie pour que tout se passe bien. Les calculs donnent $$v_{n+1}-v_n\sim\frac{1}{2^{n+1}u_n^2}$$ donc $(v_n)$ admet une limite $K$. En sommant les relations de comparaison, on trouve $$v_n=K+o\left(\frac{1}{2^n}\right)$$ On multiplie par $2^n$ et la différence des deux termes tendant vers $0$, on peut passer l'équivalent à l'exponentielle et alors $$u_n\sim a^{2^n}$$ avec $a=e^K>0$.
+\end{proof}
+
+\begin{ex}{Une cinquième étude de suite récurrente avec lipschitzianité}
+	Soit $f:[0,1]\to[0,1]$ une fonction $1$-lipschitzienne. Soit $(x_n)$ une suite d'éléments de $[0,1]$ vérifiant la relation de récurrence $$\forall n\in\N,\ x_{n+1}=\frac{x_n+f(x_n)}{2}$$ Montrer que la suite $(x_n)$ converge.
+\end{ex}
+
+\begin{proof}
+	On considère $$g:x\mapsto\frac{x+f(x)}{2}$$ On a pour $x\leqslant y$ : \begin{align*}
+		g(y)-g(x)&=\frac{y-x}{2}+\frac{f(y)-f(x)}{2} \\
+		&\geqslant \frac{y-x}{2}-\frac{1}{2}\lvert f(y)-f(x)\rvert \\
+		&\geqslant\frac{y-x}{2}-\frac{1}{2}\underbrace{\lvert y-x\rvert}_{=y-x}\\
+		&=0
+	\end{align*} donc $g$ est croissante, donc $x_n$ est monotone ($g$ stabilise aussi $[0,1$]). Or, $(x_n)$ est bornée donc converge en vertu du théorème de la limite monotone. De plus, elle converge vers un point fixe de $g$, qui est aussi un point fixe de $f$ ($f$ est continue car lipschitzienne donc $g$ est continue).
+\end{proof}
+
+\begin{ex}{$\Delta$ Un peu plus pour la route}
+	Limite, équivalent puis développement asymptotique à deux termes des suites récurrentes définies par :
+	\begin{itemize}
+		\item $u_0=0$ et $u_{n+1}=u_n+e^{-u_n}$
+		\item $u_0=1$ et $u_{n+1}=u_n+\displaystyle\frac{1}{u_n}$
+		\item $u_0=1$ et $u_{n+1}=\arctan(u_n)$
+	\end{itemize}
+\end{ex}
+
+\begin{proof}
+	Utiliser la stratégie de l'équation différentielle pour obtenir les équivalents.
+\end{proof}
+
+\begin{ex}{$\star\star$ Le boss de fin}
+	Soit $(u_n)_{n\geqslant0}$ la suite définie par $u_0=2$ et $$\forall n\in\N,\ u_{n+1}=u_n+\ln(u_n)$$ Déterminer un équivalent de $u_n$.
+\end{ex}
+\begin{proof}
+	Déjà, on montre que $u_n\to+\infty$. Ensuite, cet exercice est infaisable si on ne trouve pas la suite annexe. On peut la chercher à tâtons ou mieux, tenter la stratégie de l'équation différentielle. Malheureusement, on se retrouve avec l'intégrale suivante : $$\text{Li}(x)=\int_{2}^{x}\frac{du}{\ln(u)}$$ qui ne s'exprime pas à l'aide de fonctions et de radicaux simples (raison pour laquelle c'est une fonction spéciale à laquelle on donne le nom de \textbf{dilogarithme}). Or, le plot twist est que $$\text{Li}(x)\sim\pi(x)\sim\frac{x}{\ln(x)}$$ où $\pi$ est la fonction de répartition des nombres premiers (ce n'est pas une blague). On pose donc $$v_n=\frac{u_n}{\ln(u_n)}$$ On trouve $$v_{n+1}-v_n\sim 1$$ donc on en déduit par sommation des relations de comparaison (cas divergent) que $$v_n\sim n$$ En passant cette relation au $\ln$, on trouve $$\ln(u_n)-\underbrace{\ln(\ln(u_n))}_{=o(\ln(u_n))}=\ln(n)+o(\ln(n))$$ D'où $\ln(u_n)\sim\ln(n)$. or, $u_n\sim n\ln(u_n)$. Donc finalement : $$u_n\sim n\ln(n)$$
+\end{proof}
+
+\section{TD Châteaux}
+\begin{ex}{Obtention d'équivalents de suites récurrentes}
+	Soit $a>0$ et $f:[0,a[ \to[0,a[$ continue telle que $f(0)=0$ et $\forall x>0,\ 0<f(x)<x$. On étudie la suite récurrente définie par $u_0\in]0,a[$ et $u_{n+1}=f(u_n)$.
+	\begin{enumerate}
+		\item Montrer que la suite $(u_n)$ converge vers $0$.
+		\item On suppose que $f$ admet au voisinage de $0$ à droite une développement limité de la forme : $$f(x)=x-\lambda x^\alpha+o(x^\alpha)$$ avec $\lambda>0$ et $\alpha>1$. Montrer que $$u_n\underset{n\to+\infty}{\sim}\frac{1}{\left(\lambda(\alpha-1)n\right)^{1/(\alpha-1)}}$$ Etudier le cas particulier où $f$ est deux fois dérivable en $0$, $f'(0)=1$ et $f''(0)<0$.
+		\item On suppose que $f$ admet un développement limité au voisinage de $0$ à droite de la forme : $$f(x)=\alpha x+O(x^2)$$ avec $0<\alpha<1$.
+		\begin{enumerate}[label=\alph*.]
+			\item On pose $v_n=\alpha^{-n}u_n$. Montrer que la série de terme général $\ln(v_{n+1})-\ln(v_n)$ converge.
+			\item En déduire qu'il existe $C>0$ tel que $\displaystyle u_n\underset{n\to+\infty}{\sim}C\alpha^n$.
+		\end{enumerate}
+		\item On suppose que $f$ admet un développement limité au voisinage de $0$ à droite de la forme : $$f(x)=\beta x^2+O(x^3)$$ avec $0<\beta$.
+		\begin{enumerate}[label=\alph*.]
+			\item Montrer que la suite $\displaystyle\left(\frac{\ln(u_n)}{2^n}\right)$ converge vers une limite $l<0$, puis que la suite $\ln(u_n)-l2^n$ converge.
+			\item En déduire un équivalent de $u_n$ quand $n$ tend vers $+\infty$.
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Exemples d'applications}
+	\begin{enumerate}
+		\item En utilisant la deuxième question de l'exercice précédent, traiter les exemples suivants : 
+		\begin{enumerate}[label=\alph*.]
+			\item $u_{n+1}=\sin(u_n)$ avec $0<u_0<\pi$ ;
+			\item $u_{n+1}=\ln(1+u_n)$ avec $u_0>0$ ;
+			\item $u_{n+1}=\arctan(u_n)$ avec $u_0>0$.
+		\end{enumerate}
+		\item En utilisant les troisième et quatrième questions de l'exercice précédent, traiter les exemples suivants :
+		\begin{enumerate}[label=\alph*.]
+			\item $u_{n+1}=\alpha\sin(u_n)$ avec $0<\alpha<1$ et $u_{0}>0$ ;
+			\item $u_{n+1}=\sin^2(u_n)$ avec $u_{0}\in\R$ ;
+			\item $\displaystyle u_{n+1}=\frac{1+u_n}{\sqrt{1+u_n^2}}-1$ avec $u_{0}>0$.
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Suites telles que $u_{n+1}-u_n$ tende vers $0$}
+	\begin{enumerate}
+		\item Soit $(u_n)$ une suite réelle bornée telle que $u_{n+1}-u_n$ converge vers $0$. Montrer que l'ensemble des valeurs d'adhérence de $(u_n)$ est un segment.
+		\item Soit $f:[a,b]\to[a,b]$ continue. On pose $u_{n+1}=f(u_n)$ avec $u_0\in[a,b]$. On suppose que $u_{n+1}-u_n$ converge vers $0$. Démontrer que la suite $(u_n)$ converge.
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Propriétés des produits infinis}
+	Soit $(u_n)$ une suite à valeurs dans $\R$ ou $\C$. On pose $P_n(u)=\displaystyle\prod_{k=1}^{n}u_k$. on dire que le produit $\prod u_n$ converge lorsque la suite $(P_n)$ converge vers une limite non nulle, et on notera $\displaystyle\prod_{n=1}^{+\infty}u_n$ cette limite.
+	\begin{enumerate}
+		\item Montrer que si le produit infini $\prod u_n$ converge, alors la suite $(u_n)$ converge vers $1$.
+		\item On suppose dans cette question que $\forall n\in\N\st,\ 0\leqslant a_n<1$. Démontrer que le produit infini $\prod(1-a_n)$ converge si, et seulement si, la série $\sum a_n$ converge. Quelle est sa limite dans le cas contraire ?\\ Désormais, on posera $P_n=\displaystyle\prod_{k=1}^{n}(1+a_k)$ en supposant que la suite $(a_n)$ tende vers $0$ et ne prenne pas la valeur $-1$.
+		\item On suppose dans cette question que $\forall n\in\N\st,\ 0\leqslant a_n<1$. Démontrer que le produit infini converge si, et seulement si, la série $\sum a_n$ converge. Quelle est sa limite dans le cas contraire ?
+		\item On suppose la suite $(a_n)$ réelle et la série $\sum a_n$ convergente. Prouver que la série $\sum a_n^2$ et le produit infini $\prod(1+a_n)$ sont de même nature.
+		\item On suppose la suite $(a_n)$ complexe. On dit que le produit infini est absolument convergent lorsque le produit infini $\prod(1+\lvert a_n\rvert)$ converge. Démontrer que tout produit infini absolument convergent est convergent.
+		\item On suppose la suite $(a_n)$ complexe et les séries $\sum a_n$ est $\sum\lvert a_n\rvert^2$ convergentes. Démontrer que le produit infini converge. Indication : on établira le lemme suivant : $$\forall z\in\C,\ \lvert e^{z}-1-z\rvert\leqslant\frac{\lvert z\rvert^2}{2}e^{\lvert z\rvert}$$ puis on vérifiera que le produit $\prod(1+a_n)e^{-a_n}$ est absolument convergent.		
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Exemples de produits infinis}
+	\begin{enumerate}
+		\item Étudier la nature des produits suivants, et calculer le cas échéant la valeur du produit infini : $$\prod_{k=1}^{n}\left(1+\frac{1}{k}\right)\ \ ;\ \ \prod_{k=0}^{n}(1+x^{2^k}) \ \ \text{et}\ \ \prod_{k=1}^{n}\cos\left(\frac{\theta}{2^k}\right)$$
+		\item Étudier la nature des produits infinis suivants :
+		\begin{enumerate}[label=\alph*.]
+			\item $\displaystyle\prod_{n\geqslant 2}\left(1+\frac{(-1)^n}{\sqrt{n}}\right)$ ;
+			\item $\displaystyle\prod_{n\geqslant 0}\left(1+P(n)z^n\right)$ où $P\in\C[X]$ ;
+			\item $\prod_{n\geqslant 1}\left(\cos\left(\frac{1}{n^a}\right)\right)^n$ pour $a>0$.
+		\end{enumerate}
+		\item On pose $a_{2n-1}=\displaystyle-\frac{1}{\sqrt{n}}$ et $a_{2n}=\displaystyle\frac{1}{\sqrt{n}}+\frac{1}{n}-\frac{1}{n\sqrt{n}}$ pour $n\geqslant 2$. Démontrer que les séries $\sum a_n$ et $\sum a_n^2$ divergent, mais que le produit infini $\prod(1+a_n)$ converge.
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Inégalités de Hölder et Minkowski}
+	Si $p>1$, on note $q$ l'exposant conjugué de $p$, tel que $\displaystyle\frac{1}{p}+\frac{1}{q}=1$.
+	\begin{enumerate}
+		\item Démontrer que $\forall (x,y)\in\R_+^2,\ xy\leqslant\displaystyle\frac{x^p}{p}+\frac{y^q}{q}$
+		\item Démontrer l'inégalité de Hölder : pour tous $(x_1,\ldots,x_n)$ et tous $(y_1,\ldots,y_n)$ $n$-uplets d'éléments de $\K$, on a $$\left\lvert\sum_{k=1}^nx_ky_k\right\rvert\leqslant\left(\sum_{k=1}^{n}\lvert x_k\rvert^p\right)^{1/p}\left(\sum_{k=1}^{n}\lvert y_k\rvert^q\right)^{1/q}$$
+		L'inégalité de Hölder est une généralisation de l'inégalité de Cauchy-Schwarz.
+		\item Démontrer l'inégalité de Minkowski : pour tous $(x_1,\ldots,x_n)$ et $(y_1,\ldots,y_n)$ $n$-uplets d'éléments de $\K$, on a $$\left(\sum_{k=1}^{n}\lvert x_k+y_k\rvert^p\right)^{1/p}\leqslant\left(\sum_{k=1}^{n}\lvert x_k\rvert^p\right)^{1/p}+\left(\sum_{k=1}^{n}\lvert y_k\rvert^p\right)^{1/p}$$
+		\item En déduire que $\lVert (x_1,\ldots,x_n)\rVert_p=\left(\sum_{k=1}^{n}\lvert x_k\rvert^p\right)^{1/p}$ est une norme sur $\K^n$.
+		\item Montrer que si $1\leqslant p<p'$, alors : $$\forall x\in\R^n,\ n^{1/p-1/p'}\lVert x\rVert_p\leqslant\lVert x\rVert_{p'}\leqslant\lVert x\rVert_p$$
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Espaces $l^p(\K)$}
+	Pour $p\geqslant 1$, on note $l^p(\K)$ l'ensemble des suites $(u_n)$ à valeurs dans $\K$ telles que la série $\sum \lvert u_n\rvert^p$ converge. On notera alors : $\lVert u\rVert_p=\displaystyle\left(\sum_{n=0}^{+\infty}\lvert u_n\rvert^p\right)^{1/p}$.
+	\begin{enumerate}
+		\item Montrer que pour tout $p\geqslant 1$, $l^p(\K)$ est un $\K$-espace vectoriel et que $\lVert\cdot\rVert_p$ est une norme sur cet espace.
+		\item Si $p<1$, a-t-on encore une norme ?
+		\item Vérifier que $\lVert\cdot\rVert_p$ est préhilbertienne si, set seulement si, $p=2$.
+		\item Vérifier que si $p<q$, alors $l^p(\K)\subset l^q(\K)$ et que l'inclusion est stricte.
+		\item Si $p<q$, les normes $\lVert \cdot\rVert_p$ et $\lVert\cdot\rVert_q$ sont-elles équivalentes sur $l^p(\K)$ ?
+	\end{enumerate}
+\end{ex}
+
+\end{document}
