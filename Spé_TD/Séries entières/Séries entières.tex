@@ -1,0 +1,468 @@
+\documentclass[french,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théorème}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{ex}[2][]{colback=white, colframe=green!50!white, coltitle=black, fonttitle=\bfseries, title={Exercice~\thetcbcounter~: #2}, after title={\hfill #1}}
+
+\title{TD Séries entières}
+
+\begin{document}
+
+\maketitle
+
+\section{Rayon de convergence}
+
+\begin{ex}[Moulin.01]{$\circ$}
+	Déterminer les rayons de convergence des séries entières :
+	\begin{enumerate}
+		\item $\displaystyle\sum n^{(-1)^n}x^n$ ;
+		\item $\displaystyle\sum (1+\sqrt{n})^{-n}x^n$ ;
+		\item $\displaystyle\sum 2nnx^{n^2}$ ;
+		\item $\displaystyle\sum nx^{2^n}$ ;
+		\item $\displaystyle\sum_{n\geqslant 2} \frac{x^n}{\ln(n!)}$ ;
+		\item $\displaystyle\sum_{n\geqslant 1} \arccos\left(\frac{n-1}{n}\right)x^n$ ;
+		\item $\displaystyle\sum \frac{x^n}{(\ln n)^n}$ ;
+		\item $\displaystyle\sum \left(1+\frac{(-1)^n}{n}\right)^{n^2}x^n$ ;
+		\item $\displaystyle\sum_{n\geqslant 1} \frac{(1+2i)^n-(2i)^n}{n(n+1)}x^n$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.02]{}
+	Soit $\sum a_nz^n$ une série entière de rayon de convergence $R$. on note $R'$ le rayon de convergence de la série entière $\sum a_nz^{2n}$.
+	\begin{enumerate}
+		\item On suppose que $R\in\R_+$. Montrer que $R'=\sqrt{R}$.
+		\item On suppose que $R=+\infty$. Montrer que $R'=+\infty$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Revenir à la définition dans les deux cas.
+\end{proof}
+
+\begin{ex}[Moulin.03]{}
+	Soit $\sum a_nz^n$ une série entière de rayon de convergence $R\in\R_+\st$. Montrer que le rayon de convergence de la série entière $\sum a_n^2z^n$ est $R^2$.
+\end{ex}
+\begin{proof}
+	Revenir à la définition.
+\end{proof}
+
+\begin{ex}[Moulin.04]{$\circ$}
+	Quelles sons les séries entières qui convergent normalement sur $\R$ ? Qui convergent uniformément sur $\R$ ?
+\end{ex}
+
+\begin{ex}[Moulin.05]{Coefficients binomiaux centraux}
+	Trouver le rayon de convergence $R$ de la série entière $\sum \binom{2n}{n}x^n$. Convergence de la série pour $x=\pm R$ ?
+\end{ex}
+\begin{proof}
+	Appliquer la règle de d'Alembert. $$\left\lvert\frac{a_{n+1}}{a_n}\right\rvert\xrightarrow[n\to+\infty]{}4$$ donc $R=1/4$. Si on n'arrive pas pour la convergence, on peut tenter d'utiliser Raabe-Duhamel.
+\end{proof}
+
+\begin{ex}[Moulin.06]{Série hypergéométrique}
+	Trouver le rayon de convergence $R$ de la série hypergéométrique : $$1+\frac{ab}{c}x+\frac{a(a+1)b(b+1)}{2!c(c+1)}x^2+\frac{a(a+1)(a+2)b(b+1)(b+1)}{3!c(c+1)(c+2)}x^3+\ldots$$ où $a$, $b$ et $c$ sont des réels positifs. $\star$ Convergence de la série pour $x=\pm R$ ?
+\end{ex}
+\begin{proof}
+	Avec la règle de d'Alembert, on trouve $R=1/1=1$. Bon courage pour les convergences (A faire...)
+\end{proof}
+
+\begin{ex}[Moulin.07]{}
+	Soit $(u_n)$ une suite à valeurs dans $\C\st$ telle que : $$\underset{n\to+\infty}{\lim}\left\lvert\frac{u_{2n+1}}{u_{2n}}\right\rvert=a_1\in\overline{\R_+}\ \ \text{et}\ \ \underset{n\to+\infty}{\lim}\left\lvert\frac{u_{2n}}{u_{2n-1}}\right\rvert=a_2\in\overline{\R_+}$$
+	\begin{enumerate}
+		\item Quel est le rayon de convergence de $\displaystyle\sum u_nx^n$ lorsque $a_1$ et $a_2$ sont réels ?
+		\item Que peut-on dire dans le cas général ?
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.08]{}
+	Soit $(a_n)$ une suite de réels positifs telle que $\displaystyle\lim_{n\to+\infty}\sqrt[n]{a_n}=l$. Déterminer le rayon de convergence de la série entière $\sum a_nz^n$.
+\end{ex}
+\begin{proof}
+	On rappelle le résultat classique suivant : pour une telle série, si $l\in[0,1[$, alors la série $\sum a_n$ converge, et si $l>1$, cette série diverge. Dans notre cas $\sqrt[n]{a_nr^n}\to lr$ donc on en déduit que le rayon de convergence vaut $1/l$ (faire avec divergence grossière et convergence).
+\end{proof}
+
+\begin{ex}[Moulin.09]{Autour du sinus et de $\pi\sqrt{3}$}
+	Calculer les rayons de convergence $R$ des séries entières :
+	\begin{itemize}
+		\item $\displaystyle\sum \sin(\pi\sqrt{3}n)z^n$ ;
+		\item $\star$ $\displaystyle\sum \frac{1}{\sin(\pi\sqrt{3}n)}z^n$
+	\end{itemize}
+\end{ex}
+\begin{proof}
+	La deuxième est difficile.
+	\begin{itemize}
+		\item $\sin(\pi\sqrt{3}n)=O(1)$ donc $R\geqslant1$ La densité de $\pi\sqrt{3}\Z+\pi\Z$ dans $\R$ permet de montrer élégamment que $R\leqslant 1$, donc $R=1$.
+		\item $\displaystyle\left\lvert\frac{1}{\sin(\pi\sqrt{3}n)}\right\rvert\geqslant 1$ donc $R\leqslant 1$. Ensuite, on prend l'unique $p_n\in\N$ tel que $$p_n-\frac{1}{2}\leqslant n\sqrt{3}<p_n+\frac12$$ Alors : $$\lvert\sin(n\pi\sqrt{2})\rvert\geqslant\frac{2}{\pi}\lvert n\pi\sqrt{3}-p_n\rvert$$ On en déduit que $$\left\lvert\frac{1}{\sin(\pi\sqrt{3}n)}\right\rvert\leqslant\frac{\pi}{2}\frac{p_n+n\sqrt{3}}{\underbrace{\lvert 3n^2-p_n^2\rvert}_{\in\Z\setminus\{0\}}}$$ donc $$\frac{1}{\sin(\pi\sqrt{3}n)}=O(n)$$ et alors $R\geqslant 1$ donc $R=1$.
+	\end{itemize}
+\end{proof}
+
+\section{Propriétés de la somme}
+
+\begin{ex}[Moulin.10]{}
+	Soit $\displaystyle\sum a_nx^n$ une série entière de rayon de convergence $R>0$ et de somme $S(x)$.
+	\begin{enumerate}
+		\item Montrer que la série entière $\displaystyle\sum\frac{a_n}{n!}z^n$ a un rayon de convergence infini. On note $\varphi(z)$ sa somme.
+		\item Montrer l'existence de $I(x)=\displaystyle\int_{0}^{+\infty}\varphi(tx)e^{-t}dt$ lorsque $\lvert x\rvert<R$.
+		\item Exprimer $I(x)$ en fonction de $S(x)$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.11]{$\Delta$ Très important !}
+	Soit $\sum b_nx^n$ une série entière de rayon de convergence $1$. On suppose $\forall n\in\N,\ b_n\in\R_+$ et $\displaystyle\sum_{n=0}^{+\infty}b_n=+\infty$.
+	\begin{enumerate}
+		\item Soit $(a_n)$ une suite complexe vérifiant respectivement $a_n=o(b_n)$, $a_n=O(b_n)$ ou $a_n\sim b_n$. Montrer que la série entière $\sum a_nx^n$ a un rayon de convergence au moins égal à $1$ et qu'en notant, pour $\lvert x\rvert<1$ : $$A(x)=\sum_{n=0}^{+\infty}a_nx^n \ \ \text{et}\ \ B(x)=\sum_{n=0}^{+\infty}b_nx^n$$ on a respectivement 
+		$A(x)=o(B(x))$, $A(x)=O(B(x))$ ou $A(x)\sim B(x)$ au voisinage de $1$.
+		\item Même question en supposant cette fois ci $A_n=o(B_n)$, $A_n=O(B_n)$ ou $A_n\sim B_n$ où $$A_n=\sum_{p=0}^{n}a_p\ \ \text{et} \ \ \sum_{p=0}^{n}b_p$$
+		\item Application : déterminer un équivalent en $1$ de $\displaystyle\sum_{n=1}^{+\infty}\ln(n)x^n$. Retrouver ce résultat avec une comparaison série-intégrale.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice important.
+	\begin{enumerate}
+		\item Le faire avec des $\varepsilon$ : cela se fait bien (d'après Baptou le douzeur fou).
+		\item Faire de même.
+		\item Appliquer les questions précédentes.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.12]{}
+	\begin{enumerate}
+		\item Déterminer le rayon de convergence de la série entière $f(x)=\displaystyle\sum_{n=0}^{+\infty}\sqrt{n}x^n$.
+		\item En utilisant le résultat de la première question et en calculant $f(x)^2$, déterminer un équivalent de $f$ en $1$.
+		\item Retrouver ce résultat par comparaison avec une intégrale.
+		\item En comparant $f(x)$ au développement en série entière de $(1-x)^{-3/2}$, retrouver la constante de la formule de Stirling.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.13]{$\star$ Injectivité locale de la somme}
+	Soit $\sum a_nz^n$ une série entière de rayon de convergence $R$ non nul et telle que $a_1\ne 0$. Montrer qu'il existe un voisinage de $0$ dans $\C$ sur lequel la somme est injective.
+\end{ex}
+\begin{proof}
+	Exercice difficile. On prouve d'abord le lemme suivant : si $$\sum_{n=2}^{+\infty}n\lvert a_n\rvert\leqslant a_1$$ alors $R\geqslant 1$ la somme est injective sur le disque ouvert de rayon $1$. En effet, $a_n=O(1)$ donc $R\geqslant 1$. Raisonnons-par l'absurde et prenons $x\ne y$ de module strictement inférieur à $1$ tels que $f(x)=f(y)$ Alors, en écrivant cette égalité sous forme sommatoire et en divisant par $x-y$, on obtient : $$a_1+\sum_{n=2}^{+\infty}a_n(x^{n-1}+x^{n-2}y+\ldots+y^{n-1})=0$$ Puisque $f$ n'est pas injective, au moins un $a_n$ est non nul pour $n\geqslant 2$. Or, $\lvert x^{n-1}+x^{n-2}y+\ldots+y^{n-1}\rvert<n$ donc $$\lvert a_1\rvert <\sum_{n=2}^{+\infty}n\lvert a_n\rvert$$ ce qui est absurde. Munis de ce lemme, on dérive $f$. Donc $\sum na_nz^{n-1}$ a même rayon de convergence et $\sum n\lvert a_n\rvert z^{n-1}$ aussi, et elles sont toutes deux continues. Par conséquent : $$\sum_{n=2}^{+\infty}n\lvert a_n\rvert r^{n-1}\xrightarrow[r\to 0^+]{}0$$ donc pour un certain $r>0$, comme $a_1\ne 0$, on a : $$\sum_{n=2}^{+\infty}n\lvert a_n\rvert r^{n-1}\leqslant \lvert a_1\rvert$$ Le lemme montre alors que $$f(rz)=\sum_{n=1}^{+\infty}a_nr^{n-1}z^{n-1}$$ est injective sur le disque unité ouvert. On en déduit que $f$ est injective sur le disque ouvert de centre $r$.
+\end{proof}
+
+\section{Calcul de sommes}
+
+\begin{ex}{Avec un polynôme}
+	Montrer que pour tout polynôme $P\ne 0$, la série entière $\sum P(n)z^n$ a un rayon de convergence égal à $1$. Montrer que sa somme est une fonction rationnelle sur $D_O(0,1)$. Comment déterminer cette fonction rationnelle ?
+\end{ex}
+\begin{proof}
+	Avec $\alpha$ le coefficient dominant de $P$ et $k=\deg(P)$ on a $P(n)\sim\alpha n^k$ donc $R=1$. Puis s'intéresser à $$P_k=\frac{X(X-1)\cdots(X-k+1)}{k!}$$
+\end{proof}
+\begin{ex}{Décimales}
+	Rayon de convergence de la série $\displaystyle\sum_{n\geqslant 1}a_nx^n$ où $a_n$ est le $n$-ème chiffre de l'écriture décimale de $a\in[0,1[$. Donner sa somme pour $a=\frac{1}{7}$.
+\end{ex}
+\begin{proof}
+	On rappelle qu'un nombre est décimal si, et seulement si, son développement décimal est presque nul.
+	\begin{itemize}
+		\item Supposons $a$ décimal : alors $R=+\infty$ car $(a_n)$ est presque nulle.
+		\item Si $a$ n'est pas décimal, alors on a immédiatement $R\geqslant 1$, et si $r>1$, il suffit d'attendre que $a_n$ soit non nul et assez grand pour avoir $a_nr^n\geqslant M$ pour $M$ quelconque. Donc $R=1$.
+		\item Pour $a=1/7$, on utilise le fait que $a=0,142857142857\ldots$. Avec la convergence absolue, on obtient réécrit la somme en sommant par paquets de 6. Cela donne finalement : $$\sum_{n=1}^{+\infty}a_nx^n=\frac{1}{1-x^6}\left(x+'x^2+2x^38x^4+5x^5+7x^6\right)$$
+	\end{itemize}
+\end{proof}
+\begin{ex}{$\Delta$ Nombre de façons de former $n$ avec $N$ entiers fixés}
+	\begin{enumerate}
+		\item Pour $n\in\N$, soit $a$ le nombre de façons de former un tas de $n$ kg avec des poids de $2$ kg et des poids de $3$ kg. Calculer $a_n$ pour tout entier $n$ et donner un équivalent de la suite $(a_n)$.
+		\item $\star$ Soit $(p_1,\ldots,p_N)\in(\N\st)^N$. Pour tout $n\in\N$, on note $\alpha_n$ le nombre de $N$-uplets $(k_1,\ldots,k_N)\in\N^N$ tels que $\displaystyle\sum_{i=1}^{N}k_ip_i=n$. Donner un équivalent simple de $\alpha_n$. Indication : se ramener au cas où $p_1,\ldots,p_N$ sont premiers entre eux dans leur ensemble.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice classique. La deuxième question est difficile. Écrire la chose avec un produit de Cauchy de séries entières puis décomposer en éléments simples. Cela est très calculatoire.
+\end{proof}
+\begin{ex}{Une technique de filtre}
+	Pour $x\in\R$, donner une expression simple de $$\sum_{n=0}^{+\infty}\frac{x^n}{(2n!)} \ \ \text{et}\ \ \sum_{n=0}^{+\infty}\frac{x^n}{(3n!)}$$ puis généraliser la méthode.
+\end{ex}
+\begin{proof}
+	Pour la première, lorsque $x\geqslant0$, écrire $x=t^2$ et écrire $x=-t^2$ lorsque $x<0$. On trouve $\cos(\sqrt{-x})$ si $x\leqslant0$ et $\cosh(\sqrt{x})$ si $x\geqslant0$. Pour la deuxième somme, qu'on note comme $f(x)$, on pose $g_0(t)=f(t^3)$. On pose ensuite : $$g_1(t)=\sum_{n=0}^{+\infty}\frac{t^{3n+1}}{(3n+1)!} \ \ \text{et} \ \ g_2(t)=\sum_{n=0}^{+\infty}\frac{t^{3n+2}}{(3n+2)!}$$ On remarque alors que : $$\begin{cases}
+		g_0(t)+g_1(t)+g_2(t)=e^t \\
+		g_0(t)+jg_1(t)+j^2g_2(t)=e^{jt} \\
+		g_0(t)+j^2g_1(t)+jg_2(t)=e^{j^2t}
+	\end{cases}$$ On en déduit $$g_0(t)=\frac{1}{3}(e^{t}+e^{jt}+e^{j^2t})$$ Et par conséquent : $$f(x)=\frac{1}{3}\left(e^{\sqrt[3]{x}}+2e^{-\sqrt[3]{x}/2}\cos\left(\frac{\sqrt{2}}{2}\sqrt[3]{x}\right)\right)$$ De façon générale, on aura une matrice de Vandermonde de taille $p$ à inverser.
+\end{proof}
+\begin{ex}{$\Delta$ Une intégrale particulière}
+	Soit $a$ un nombre complexe de module différent de $1$. Calculer : $$I(a)=\int_{0}^{2\pi}\frac{d\theta}{e^{i\theta}-a}$$
+\end{ex}
+\begin{proof}
+	Distinguer selon que le module de $a$ est strictement inférieur à $1$ ou strictement supérieur à $1$. Ensuite, développer en une série géométrique selon ce qui est de module strictement inférieur à 1 ($a$ ou son inverse) puis intégrer terme à terme en vérifiant les hypothèses. Lorsque $\lvert a\rvert <1$, on trouve $I(a)=0$. Lorsque $\lvert a\rvert >1$, on trouve : $$I(a)=\frac{-2\pi}{a}$$
+\end{proof}
+\section{Formule de Cauchy et applications}
+\begin{ex}{$\Delta$ Fonction bornée DSE sur $\C$}
+	Montrer qu'une fonction bornée, somme sur $\C$ d'une série entière, est constante.
+\end{ex}
+\begin{proof}
+	La formule de Cauchy donne avec l'inégalité triangulaire et $M$ une borne de $f$ : $$\forall n\in\N\st,\forall r\in\R_+\st, \ \lvert a_n\rvert\frac{M}{r^n}\xrightarrow[n\to+\infty]{}0$$ Si bien que $\forall n\geqslant 1,\ a_n=0$ donc cette fonction est constante.
+\end{proof}
+\begin{ex}{$\star$ Principe du maximum}
+	On note $E$ l'ensemble des fonctions continues sur le disque unité fermé $\Delta$ et sommes, sur ce disque fermé, d'une série entière que l'on notera $\sum a_n(f)z^n$.
+	\begin{enumerate}
+		\item Montrer que $\displaystyle\underset{z\in\U}{\sup}\lVert f(z)\rVert=\underset{z\in\Delta}{\sup}\lVert f(z)\rVert$
+		\item Montrer qu'il existe $K\geqslant0$ telle que $$\forall f\in E,\ \forall n\in\N\st,\ \left\lVert\sum_{k=0}^{n}a_n(f)\right\rVert\leqslant K\lVert f\rVert_\infty\ln(n)$$
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice difficile. A faire...
+\end{proof}
+\begin{ex}{$\Delta$ Fonctions nulles sur un arc de cercle}
+	On note $E$ l'ensemble des fonctions continues sur le disque unité fermé $\Delta$ et sommes, sur le disque ouvert, d'une série entière.
+	\begin{enumerate}
+		\item On suppose $f\in E$ nulle sur $\U$. Montrer que $f=0$.
+		\item Montrer que $E$ est un anneau intègre.
+		\item $\star$ Montrer que le résultat de la première question subsiste si l'on suppose seulement $f$ nulle sur un arc non nul de $\U$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Très bel exercice ! La troisième question est difficile.
+	\begin{enumerate}
+		\item Appliquer la formule de Cauchy et s'approcher du cercle en utilisant l'uniforme continuité de $f$ (théorème de Heine). Sinon, utiliser le théorème de continuité d'une intégrale à paramètre avec la formule de Cauchy.
+		\item Cela ne dépend pas vraiment des hypothèses présentes ici et est un résultat plus général sur les séries entières.Le caractère d'anneau est immédiat. Pour l'intégrité, faire le raisonnement contraire du raisonnement habituel. On prend deux séries entières non nulles, on note $i$ et $j$ les indices respectifs des termes de plus bas degré non nuls, et on montre aisément que le terme du produit de degré $i+j$ est non nul (c'est la même preuve que pour l'intégrité de l'anneau des polynômes).
+		\item Construire une fonction $g$ qui correspond au produit des rotations de $f$ de sorte qu'une des fonctions ayant fait une rotation se trouve toujours dans l'arc où $f$ est nulle. Ainsi, $g$ est nulle d'après la première question. Mais par intégrité, l'une des rotations de $f$ est alors nulle, donc $f$ est nulle. Formellement, considérer le produit des $z\mapsto f(ze^{ik\alpha})$ de sorte que les $k\alpha$ recouvrent le cercle avec un pas de longueur inférieure à la longueur de l'arc sur lequel $f$ est nulle.
+	\end{enumerate}
+\end{proof}
+\section{Développement en série entière}
+\begin{ex}{Un calcul d'intégrale par un DSE}
+	Existence et calcul de $\displaystyle\int_{0}^{1}\frac{\ln(u)}{1-u}\ du$.
+\end{ex}
+\begin{proof}
+	Comme d'habitude pour l'existence. Pour le calcul, développer $1/(1-u)$ en série entière puis intervertir somme et intégrale pour faire le calcul formel, dont on fait la justification après. On trouve : $$\int_{0}^{1}\frac{\ln(u)}{1-u}\ du=-\frac{\pi^2}{6}$$ Pour justifier l'interversion, on a : $$\int_{0}^{1}\lvert u^n\ln(u)\rvert\ du=-\int_{0}^{1}u^n\ln(u)=\frac{1}{(n+1)^2}$$ qui est sommable.
+\end{proof}
+\begin{ex}{Une CNS de contrôle des dérivées pour être DSE}
+	Soit $a>0$ et $f\in\mathcal{C}^\infty(]-a,a[,\C)$. 
+	\begin{enumerate}
+		\item On suppose qu'il existe $(M,\rho)\in\R_+\times\R_+\st$ tel que $$\forall n\in\N,\ \forall x\in]-a,a[,\ \lvert f^{(n)}(x)\rvert\leqslant M\frac{n!}{\rho^n}$$ Montrer que $f$ est développable en série entière.
+		\item $\star$ Réciproquement, supposons qu'il existe $R>0$ et $(a_n)_{n\in\N}\in\C^\N$ tels que : $$\forall x\in]-R,R[,\ f(x)=\sum_{n=0}^{+\infty}a_nx^n$$ Montrer qu'il existe $b>0$ ainsi que $(M,r)\in\R_+\times\R_+\st$ tels que $$\forall n\in\N,\ \forall x\in]-b,b[,\ \lvert f^{(n)}(x)\rvert\leqslant M\frac{n!}{r^n}$$
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	La deuxième question est difficile.
+	\begin{enumerate}
+		\item Utiliser l'inégalité de Taylor-Lagrange et l'hypothèse pour montrer que $f$ est DSE sur $D_O(0,\rho)$.
+		\item Nécessairement, on a : $$\forall n\in\N,\ a_n=\frac{f^{(n)(0)}}{n!}$$ puis on a : $$f^{(n)}(x)=\sum_{k=0}^{+\infty}\frac{f^{(n+k)}(0)}{k!}x^k$$ Prenons $r=R/2$ et $M\in\R_+$ tel que $$\forall n\in\N,\ \lvert r^na_n\rvert\leqslant M$$ On en déduit que $$\lvert f^{(n)}(x)\rvert\leqslant\frac{Mn!}{r^k}\sum_{k=0}^{+\infty}\binom{n+k}{k}\left\lvert\frac{x}{r}\right\rvert^k=\frac{Mn!}{r^k}\frac{1}{\left(1-\frac{\lvert x\rvert}{r}\right)^{n+1}}$$ En fait, si $2\lvert x\rvert\leqslant r$, alors on a même mieux : $$\lvert f^{(n)}(x)\rvert\leqslant\frac{Mn!}{r^k}\frac{1}{\left(1-\frac{1}{2}\right)^{n+1}}=\frac{(2M)n!}{\left(\frac{r}{2}\right)^n}$$ Donc $M'=2M$ et $b=r/2$ conviennent.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{$\Delta$ Nombre de partitions}
+	Pour $n\in\N$, on note $B_n$ le nombre de partitions de l'ensemble $\llbracket1,n\rrbracket$, une partition étant un ensemble de parties non vides deux à deux disjointes et recouvrant $\llbracket1,n\rrbracket$. On note $R$ le rayon de convergence de la série entière $\displaystyle\sum\frac{B_n}{n!}x^n$.
+	\begin{enumerate}
+		\item Montrer la relation $$\forall n\in\N,\ B_{n+1}=\sum_{k=0}^{n}\binom{n}{k}B_k$$
+		\item On suppose que $R=+\infty$. Montrer alors que $$\forall x\in\R,\ \sum_{n=0}^{+\infty}\frac{B_n}{n!}x^n=\exp(e^x-1)$$
+		\item montrer que $R=+\infty$ et en déduire la formule $$\forall n\in\N,\ B_n=\frac{1}{e}\sum_{k=0}^{+\infty}\frac{k^n}{k!}$$
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice classique.
+	\begin{enumerate}
+		\item Le faire par dénombrement.Se donner une partition de $\llbracket0,n\rrbracket$ revient à se donner une partie $B$ de $\llbracket1,n\rrbracket$ et une partition de $\llbracket1,n\rrbracket\setminus B$ (on greffe $B$ à $\{0\}$).
+		\item On dérive la somme qu'on note désormais $f$. La formule de la question permet de voir un produit de Cauchy et de montrer en séparant astucieusement le coefficient binomial que $$\forall x\in\R,\ f'(x)=e^xf(x)$$ Cette équation différentielle se résout aisément pour obtenir la formule demandée.
+		\item Si on se donne $r\in\R_+\st$, on écrit avec la formule de la question $1$ et les $M_k$ des majorants les plus petits possibles des $\displaystyle\frac{B_k}{k!}r^k$ : $$\frac{B_{n+1}}{(n+1)!}r^{n+1}=\frac{r}{n+1}\sum_{k=0}^{n}\frac{r^{n-k}}{(n-k)!}\underbrace{\frac{B_k}{k!}r^k}_{\leqslant M_k}\leqslant \frac{re^r}{n+1}M_n$$ donc cette suite de majorants est décroissante APCR et ainsi $\displaystyle\left(\frac{B_n}{n!}r^n\right)$ est bornée donc le rayon de convergence est infini. Ensuite, on écrit le DSE de $e^{e^x}$ dans lequel on peut intervertir les sommes car les séries exponentielles convergent absolument. Par unicité avec la question 2, on en déduit la formule souhaitée.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{$\Delta$ Théorème de Bernstein} Soit $a>0$ et $f\in\mathcal{C}^\infty(]-a,a[,\R)$ telle que $\forall n\in\N,\ \forall x\in]-a,a[,\ f^{(n)}(x)\geqslant 0$. Alors, $f$ est développable en série entière sur $[0,a[$ et sur $]-a,a[$.
+\end{ex} \begin{proof}
+	Pour cela, montrer que la fonction $x\mapsto R_n(x)/x^{n+1}$ est une fonction croissante de $x$ en utilisant la formule de Taylor avec reste intégral sous sa deuxième forme. On majore ensuite $R_n(x)$ par $R_n(y)x^{n+1}/y^{n+1}$ avec $x<y<a$. Or, $R_n(y)$ est bornée en écrivant la formule de Taylor, donc $R_n(x)$ tend vers $0$ quand $n$ tend vers $+\infty$ et $f$ est DSE sur $[0,a[$. Pour symétriser le résultat : $$\lvert R_n(-x)\rvert \leqslant \frac{\lvert x\rvert^{n+1}f^{n+1}(0)}{(n+1)!}\xrightarrow[n\to+\infty]{}0$$ car c'est le terme général d'une série convergente par ce qui précède. On a donc le résultat sur $]-a,a[$.
+\end{proof}
+\begin{app}
+	En fait, il suffit qu'on suppose la positivité sur $[0,a[$ pour avoir le résultat. Cela permet de montrer que $\tan$ est DSE. 
+\end{app}
+\begin{ex}{$\Delta$ Fonctions analytiques} En utilisant une série double, on montre que si $f$ est DSE sur $I=]-R,R[$, alors pour tout $x_0\in I$, la fonction $t\mapsto f(x_0+t)$ est DSE sur $]-\alpha,\alpha[$ avec $\alpha=R-\lvert x_0\rvert$. On dit que $f$ est analytique sur $I$.
+\end{ex}
+\begin{proof}
+	Utiliser une série double et intervertir les sommes après avoir développé avec un binôme de Newton en série. Pour la justification de l'interversion, on prendra $\lvert h\rvert<R-\lvert z_0\rvert$.
+\end{proof}
+\section{Étude au bord du disque de convergence}
+
+\begin{ex}[Moulin.51]{}
+	Soit $\displaystyle\sum a_n$ une série convergente à terme général positif. Montrer que $$S:x\mapsto\sum_{n=0}^{+\infty}a_nx^n$$ est dérivable en $1$ si, et seulement si, $\displaystyle\sum na_n$ converge.
+\end{ex}
+
+\begin{ex}[Moulin.52]{}
+	\begin{enumerate}
+		\item Déterminer le rayon de convergence $R$ de la série entière $\sum a_nx^n$ où $$a_n=\int_{1}^{+\infty}e^{-t^n}\ dt$$
+		\item Étudier la somme au voisinage des points $R$ et $-R$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Il est clair que la suite $(a_n)$ est décroissante. Avec un changement de variable $u=t^n$ et le théorème de convergence dominée, on montre que $$a_n\sim\frac{1}{n}\underbrace{\int_{1}^{+\infty}\frac{e^{-u}}{u}\ du}_{:= C\ne 0}$$
+	\begin{enumerate}
+		\item De cet équivalent on obtient directement $R=1$.
+		\item L'équivalent donne la divergence de la somme en $R$, le fait que la suite $a_n$ soit positive, décroissante et tende vers $0$ donne la convergence de la somme en $-1$ avec le théorème des séries alternées.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.53]{}
+	\begin{enumerate}
+		\item $\circ$ Montrer que si une série entière converge normalement sur la frontière du disque de convergence, alors elle converge normalement sur le disque fermé.
+		\item $\star$ Montrer que si une série entière converge uniformément sur la frontière du disque de convergence, alors elle converge uniformément sur le disque fermé.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.54]{Une série entière dont la somme n'est pas continue}
+	On considère la série entière $\displaystyle\sum_{n\geqslant 1}\frac{z^{n!}}{n}$. On note $f$ sa somme, $D$ son domaine de définition et $R$ son rayon de convergence.
+	\begin{enumerate}
+		\item Montrer que $R=1$.
+		\item Soit $(p,q)\in\Z\times\N\st$ et $z=\exp(i\pi p/q)$. Montrer que $z\notin D$ et, plus précisément, que $f$ est non bornée au voisinage de $z$.
+		\item $\star$ Montrer que : $$\sum_{k=n+1}^{+\infty}\frac{1}{k!}=O\left(\frac{1}{(n+1)!}\right)$$ et en déduire que $z_0=\exp(i\pi e)\in D$.
+		\item Montrer que $f$ est non continue en $z_0$.
+		\item $\star$ Montrer que $D\cap\U$ et $\U\setminus D$ sont denses dans $\U$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Les question 3 et 5 sont difficiles.
+	\begin{enumerate}
+		\item La suite $a_n$ est bornée donc $R\geqslant 1$. Pour $z=1$, la série diverge donc $R\leqslant 1$. Donc $R=1$.
+		\item Pour $n\geqslant 2q$, $z^{n!}=1$. Donc $\sum\frac{z^{n!}}{n}$ diverge par divergence de la série harmonique. Pour $r\in[0,1]$, on a : $$f(rz)=P(r)+\sum_{n=q}^{+\infty}\frac{r^{n!}}{n}$$ Le premier terme est borné au voisinage de $1$, alors que le deuxième diverge vers $+\infty$ (prendre les sommes partielles de la série harmonique, s'approcher par continuité, puis rajouter les termes positifs manquant).
+		\item Cela découle du fait que $$\frac{1}{n!}-\frac{1}{(n+1)!}=\frac{n}{(n+1)!}\sim\frac{1}{n!}$$ puis on somme les relations de comparaison (cas convergent). Ensuite, on écrit $$n!e=\underbrace{\sum_{k=0}^{n}\frac{n!}{k!}}_{=p_n\in\N}+n!R_n$$ où $\displaystyle R_n=\sum_{k=n+1}^{+\infty}\frac{1}{k!}$. Ensuite, on en déduit que $$\frac{z_0^{n!}}{n}=\frac{(-1)^{p_n}}{n}+O\left(\frac{1}{n^2}\right)$$ Or, en sortant les deux derniers termes, on montre que $p_n-n-1$ est pair, donc $(-1)^{p_n}=(-1)^{n+1}$ et on conclut avec le théorème des séries alternées.
+		\item Se rapprocher de $e$ avec des rationnels et utiliser la deuxième question.
+		\item \begin{itemize}
+			\item Pour $\U\setminus D$ : par la deuxième question, $\{e^{i\pi x}\mid x\in\Q\}\subset\U\setminus D$ et comme $\Q$ est dense dans $\R$, on en déduit que $\U\setminus D$ est dense dans $\U$.
+			\item Pour $D$ : on pose $z=z_{0}e^{i\pi x}$ avec $x\in\Q$. A partir d'un certain rang, $z^{n!}=z_0^n$ si bien que $z\in D\cap \U$. Comme $e+\Q$ est dense dans $\R$, on a de même le fait que $D\cap\U$ est dense dans $\U$.
+		\end{itemize}
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.55]{$\star\star$ Théorème d'Abel non tangentiel}
+	Si on a la convergence de la série au bord du disque de convergence, on a non seulement la continuité radiale, mais aussi la continuité dans tout secteur angulaire non tangentiel.
+\end{ex}
+\begin{proof}
+	Exercice difficile.
+	Effectuer une transformation d'Abel. Je n'ai ensuite pas trouvé mieux que de repasser par les $\varepsilon$. Couper en deux la série et utiliser pour le terme "reste" une majoration brutale par une suite géométrique totale. On devra utiliser la majoration : $$\frac{1}{1-\lvert z\rvert}\leqslant\frac{2}{1-\lvert z\rvert^2}$$ (vraie car $(\lvert z\rvert -1)^2\geqslant0$)
+\end{proof}
+
+\begin{ex}[Moulin.56]{$\star\star\star$ Théorème de Tauber}
+	Si $\sum a_nz^n$ est une série de rayon entière de rayon de convergence $1$, si sa somme $S$ tend vers une limite finie $l$ radialement en $1$ et si $a_n=\displaystyle o\left(\frac{1}{n}\right)$, alors $\sum a_n$ converge et on a : $$\sum_{n=0}^{+\infty} a_n=l$$
+\end{ex}
+\begin{proof}
+	Exercice très difficile. Montrer que $$\sum_{k=1}^{n}a_n-S\left(1-\frac{1}{n}\right)$$ tend vers $0$. Pour cela, écrire : $$\sum_{k=1}^{n}a_n-S\left(1-\frac{1}{n}\right)=\sum_{k=1}^{n}a_k\left(1-\left(1-\frac{1}{n}\right)^k\right)+\sum_{k=n=1}^{+\infty}a_k\left(1-\frac{1}{n}\right)^k$$ On montre que les deux termes tendent vers 0. Pour le premier, utiliser le fait que $$1-\left(1-\frac{1}{n}\right)^k\leqslant \frac{n}{k}$$ (le démontrer avec une factorisation de Bernoulli) puis utiliser le théorème de Cesàro avec $(na_n)$ qui tend vers $0$ par hypothèse. Pour le second terme, écrire artificiellement $$a_k=a_k\frac{k}{k}$$ Majorer tous les $1/k$ par $1/(n+1)$ puis majorer en module tous $a_kk$ par la borne supérieure de ces éléments pour $k\geqslant n+1$, borne supérieure qui tend vers $0$ par hypothèse. Enfin, pour le reste, majorer brutalement par la série géométrique totale pour avoir une expression simple, et majorer $1-1/n$ par $1$.
+\end{proof}
+
+\begin{ex}[Moulin.57]{$\star\star$}
+	\begin{enumerate}
+		\item $\circ$ Rayon de convergence de $\displaystyle\sum\frac{(-1)^{\lfloor\sqrt{n}\rfloor}}{n}z^n$. On note $C$ le "cercle de convergence".
+		\item Montrer qu'il y a convergence, mais pas convergence absolue, en tout point de $C$.
+		\item Montrer que la somme est continue en tout point de $C\setminus\{1\}$.
+	\end{enumerate}
+\end{ex}
+
+\section{TD Châteaux}
+\begin{ex}{Formule de Cauchy et identité de Parseval}
+	Soit $f:z\mapsto\displaystyle\sum_{n=0}^{+\infty}a_nz^n$ la somme d'une série entière de rayon de convergence $R>0$.
+	\begin{enumerate}
+		\item Soit $r\in[0,R[$. Montrer la formule de Cauchy : $$\forall n\in\N,\ a_nr^n=\frac{1}{2\pi}\int_{0}^{2\pi}f(re^{it})e^{-int}\ dt$$ On note $M(r)=\displaystyle\sup_{\lvert z\rvert=r}\lvert f(z)\rvert$. En déduire les inégalités de Cauchy : $$\forall n\in\N,\ \lvert a_nr^n\rvert\leqslant M(r)$$
+		\item Soit $r\in[0,R[$. Montrer l'identité de Parseval : $$\frac{1}{2\pi}\int_{0}^{2\pi}\lvert f(re^{it})\rvert^2=\sum_{n=0}^{+\infty}\vert a_n\rvert^2r^{2n}$$
+		\item On suppose que $f$ est la somme d'une série entière de rayon de convergence infini (on dit que $f$ est une fonction entière). 
+		\begin{enumerate}[label=\alph*.]
+			\item Théorème de Liouville : montrer que si $f$ est bornée sur $\C$, alors elle est constante.
+			\item Que peut-on dire si $\forall z\in\C,\ \lvert f(z)\rvert\leqslant A\lvert z\rvert^d+B$ où $A$ et $B$ sont des constantes et $d\in\N$ ?
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Interversion série intégrale puis inégalité triangulaire pour les inégalités de Cauchy.
+		\item On écrit $\lvert f\rvert=f\overline{f}$, on développe en série entière puis on intervertit somme et intégrale.
+		\item \begin{enumerate}[label=\alph*.]
+			\item Utiliser les inégalités de Cauchy, ce qui montre que $f=a_0$.
+			\item En utilisant l'identité de Parseval et un équivalent à l'infini, on trouve $\forall n\geqslant d,\ a_n=0$ donc $f$ est polynomiale.
+		\end{enumerate}
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Analycité ; principe du maximum et holomorphie}
+	Soit $f:z\mapsto\displaystyle\sum_{n=0}^{+\infty}a_nz^n$ la somme d'une série entière de rayon de convergence $R>0$.
+	\begin{enumerate}
+		\item Analycité de $f$ : soit $z_0$ dans le disque ouvert $D_R$. Démontrer que la fonction $u\mapsto f(u+z_0)$ est développable en série entière sur le disque ouvert $D_{R-\lvert z_0\rvert}$. Indication : on utilisera le théorème de Fubini pour échanger deux sommes.
+		\item Principe du maximum : soit $r\in[0,R[$. Prouver que $\lvert f\rvert$ atteint son maximum sur le disque fermé $D_r'$ en un point $z_0$ de module égal à $r$, et que si $\lvert f\rvert$ atteint son maximum en un point de module strictement inférieur à $r$, alors $f$ est constate sur $D_R$.
+		\item Holomorphie de $f$ : démontrer que pour tout $z\in D_R$, le rapport $\displaystyle\frac{f(z+h)-f(z)}{h}$ tend vers une limite que l'on calculera quant le nombre complexe $f$ tend vers $0$ (autrement dit, $f$ est dérivable par rapport à la variable complexe). On dit que $f$ est holomorphe.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Pour l'analycité, se référer au cours de Moulin.
+		\item Si un point où le maximum est atteint n'est pas sur le cercle, alors on utilise l'analycité et l'identité de Parseval pour montrer que la fonction est constante.
+		\item L'analycité de $f$ donne : $$\frac{f(z+h)-f(z)}{h}=\sum_{n=0}^{+\infty}b_{n+1}h^n\xrightarrow[h\to 0]{}b_1=\sum_{n=0}^{+\infty}na_nz^n$$
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Inverse d'une série entière et une preuve du théorème de d'Alembert-Gauss}
+	\begin{enumerate}
+		\item Soit $f$ DSE sur le disque ouvert $D_R$ et ne s'annulant pas.
+		Démontrer que $1/f$ est DSE au voisinage de $0$. Indication : si $f(z)=1+\displaystyle\sum_{n=1}^{+\infty}a_nz^n$ avec $\displaystyle\sum_{n=1}^{+\infty}\lvert a_nz^n\rvert \leqslant 1$ pour $\lvert z\rvert\leqslant r$, on cherchera une suite $(b_n)$ telle que le produit de Cauchy de $(a_n)$ et $(b_n)$ soit égal à $(1,0,\ldots)$ et on montrera que $\displaystyle\left(\left\lvert b_n\left(\frac{r}{2}\right)^n\right\rvert\right)$ est bornée.
+		\item  Une preuve du théorème de d'Alembert-Gauss : on suppose que $P\in\C[X]$ non constant ne possède pas de racine dans $\C$.
+		\begin{enumerate}[label=\alph*.]
+			\item Montrer qu'il existe $z_0\in\C$ tel que $\forall z\in\C,\ \lvert P(z)\rvert\geqslant\lvert P(z_0)\rvert$.
+			\item Montrer que $1/P$ est DSE au voisinage de $z_0$.
+			\item En appliquant l'identité de Parseval, montrer que $1/P$ est constante au voisinage de $z_0$ et conclure à une absurdité.
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Équivalent au bord de l'intervalle de convergence}
+	Soit $(a_n)$ et $(b_n)$ deux suites strictement positives équivalentes. On note $R$ le rayon de convergence commun à ces deux séries. On pose $f(x)=\displaystyle\sum_{n=0}^{+\infty}a_nx^n$ et $g(x)=\displaystyle\sum_{n=0}^{+\infty}b_nx^n$.
+	\begin{enumerate}
+		\item On suppose que $R=1$ et que $\sum a_n$ diverge. Montrer que $f(x)\sim_{x\to 1}g(x)$. Indication : on utilisera des $\varepsilon$.
+		\item On suppose que $R=+\infty$. Montrer que $f(x)\sim_{x\to +\infty}g(x)$. Indication : on utilisera des $\varepsilon$.
+		\item Applications : 
+		\begin{enumerate}[label=\alph*.]
+			\item On suppose que la suite $(a_n)$ converge vers le réel $l$. Démontrer que $\displaystyle e^{-x}\sum_{n=0}^{+\infty}\frac{a_n}{n!}x^n\xrightarrow[x\to +\infty]{}l$.
+			\item Soit $(a_n)$ une suite réelle de limite $l$ non nulle. Montrer que $\displaystyle\sum_{n=1}^{+\infty}a_nx^n\sim_{x\to 1}\frac{l}{1-x}$.
+			\item Donner des équivalents simples des sommes suivantes lorsque $x\to 1$ : $$\sum_{n=1}^{+\infty}\ln(n)x^n\ ; \ \sum_{n=1}^{+\infty}n^px^n\ (p\in\N)\ ;\ \sum_{n=1}^{+\infty}\frac{x^n}{\sqrt{n}}$$
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Le faire avec les $\varepsilon$.
+\end{proof}
+
+\begin{ex}{Théorème de Tauber}
+	Soit $\displaystyle\sum a_nx^n$ une série entière de rayon de convergence $1$. On note $f$ sa somme et $S_n=\displaystyle\sum_{k=0}^{n}a_k$. On suppose que $f(x)\xrightarrow[x\to 1^-]{}l$ et $na_n\xrightarrow[n\to+\infty]{}0$. Démontrer que la série $\sum a_n$ converge et que sa somme vaut $l$. Indication : partir de $\displaystyle S_n-f\left(1-\frac{1}{n}\right)$. Donner un contre-exemple en enlevant l'hypothèse $na_n\xrightarrow[n\to+\infty]{}0$.
+\end{ex}
+\begin{proof}
+	Se référer à la section d'exercices qui précède.
+\end{proof}
+
+\end{document}

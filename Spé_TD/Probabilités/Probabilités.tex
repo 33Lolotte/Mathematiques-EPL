@@ -1,0 +1,731 @@
+\documentclass[french,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théorème}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{ex}[2][]{colback=white, colframe=green!50!white, coltitle=black, fonttitle=\bfseries, title={Exercice~\thetcbcounter~: #2}, after title={\hfill #1}}
+
+\title{TD Probabilités}
+
+\begin{document}
+
+\maketitle
+
+\section{Probabilités finies}
+\begin{ex}{QCM}
+	Un élève répond à un test de cours portant sur une question à choix multiples dans lequel il y a 5 réponses possibles. Si l'élève a bien appris son cours, il choisit sûrement la bonne réponse. Si l'élève n'a pas bien appris son cours, il choisit une réponse au hasard. La probabilité qu'un élève ait bien appris sont cours est de $3/4$. Sachant que l'élève a choisi la bonne réponse, quelle est la probabilité qu'il ait bien appris son cours ?
+\end{ex}
+\begin{proof}
+	Utiliser la formule de Bayes et la formule des probabilités totales.
+\end{proof}
+\begin{ex}{Loi du cardinal d'une intersection de variables aléatoires}
+	Soit $X_1,\ldots,X_r:\Omega\to\mathcal{P}(\llbracket1,n\rrbracket)$ des variables aléatoires indépendantes suivant une loi uniforme. Déterminer la loi du cardinal $$\lvert X_1\cap\ldots\cap X_r\rvert$$
+\end{ex}
+\begin{proof}
+	A faire...
+\end{proof}
+\begin{ex}{Taille de l'orbite de $1$}
+	On munit le groupe symétrique $\mathcal{S}_n$ de la probabilité uniforme. Déterminer la probabilité pour que l'orbite de $1$ pour $\sigma$ soit de longueur $k$.
+\end{ex}
+\begin{proof}
+	C'est un exercice de dénombrement. Se donner une permutation dont l'orbite de $1$ est de taille $k$ revient à se donner $k-1$ éléments avec ordre parmi les $n-1$ restants puis une permutation des $n-k$ restants. Donc, il y en a : $$\binom{n-1}{k-1}(n-k)!=\frac{(n-1!)}{(n-k)!}(n-k)!=(n-1)!$$ donc une probabilité $1/n$.
+\end{proof}
+\begin{ex}{$\Delta$ Téléphone arabe}
+	Soit $X_0,\varepsilon_1,\ldots,\varepsilon_n$ des variables aléatoires indépendantes à valeurs dans $\{-1,1\}$. On suppose qu'il existe $p\in]0,1[$ tel que $$\forall k\in\llbracket1,n\rrbracket,\ \P(\varepsilon_k=1)=p$$ et l'on pose $X_n=X_0\varepsilon_1\cdots\varepsilon_n$. Calculer $p_n:=\P(X_n=X_0)$ et étudier la convergence de la suite $(p_n)_{n\in N}$.
+\end{ex}
+\begin{proof}
+	Faire une récurrence en utilisant la formule des probabilités totales. On trouve $$p_{n+1}=pp_n+(1-p)(1-p_n)=(2p-1)p_n+(1-p)$$ Ensuite, étude classique de suite arithmético-géométrique qui donne $$p_n=\frac{1}{2}+(2p-1)^n\left(p_0-\frac{1}{2}\right)$$ Or, $-1<2p-1<1$ donc la suite converge vers $1/2$.
+\end{proof}
+\begin{ex}{$\Delta$ Indicatrice d'Euler}
+	Soit $n\geqslant 2$. On munit $\llbracket 1,n\rrbracket$ de la probabilité uniforme. Pour $p$ un diviseur de $n$, on note $A_p$ l'événement "le nombre choisi est divisible par $p$".
+	\begin{enumerate}
+		\item Montrer que les $A_p$ pour $p$ premier divisant $n$ sont mutuellement indépendants.
+		\item En déduire le nombre $\varphi(n)$ d'éléments de $\llbracket1,n\rrbracket$ premiers avec $n$ vérifie $$\frac{\varphi}{n}=\prod_{p\in\mathcal{P}(n)}\left(1-\frac{1}{p}\right)$$ où $P(n)$ est l'ensemble des diviseurs premiers de $n$.
+		\item Bonus (sans rapport) : montrer que $n=\displaystyle\sum_{d\mid n}\varphi(d)$
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice classique. Cet exercice présente deux formules très utiles pour les exercices en lien avec l'indicatrice d'Euler.
+	\begin{enumerate}
+		\item Revenir à la définition et utiliser des théorèmes d'arithmétique en travaillant directement sur les événements.
+		\item Utiliser le fait qu'on travaille avec la probabilité uniforme pour établir le membre de gauche. Pour le membre de droite, considérer le complémentaire de la question précédente et utiliser l'indépendance des $\overline{A_p}$ puisque les $A_p$ sont indépendants.
+		\item Se référer aux astuces du chapitre arithmétique. Formule très utile dans les exercices en lien avec l'indicatrice d'Euler.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Les allumettes de Banach}
+	Un fumeur a deux poches contenant respectivement $n$ et $n+1$ allumettes. Chaque fois qu'il a besoin d'une allumette, il prend au hasard dans l'une des poches. On fixe un entier $k\in\llbracket0,n+1\rrbracket$. Quelle est la probabilité pour que, lorsqu'il prend la dernière allumette d'une boîte, l'autre boîte contienne encore au moins $k$ allumettes ?
+\end{ex}
+\begin{proof}
+	Exercice difficile. A faire...
+\end{proof}
+\begin{ex}{$\star$ Placement dans un avion}
+	Un avion comporte $n$ sièges ($n\geqslant 2$). Chacun des $n$ passagers a une place qui lui est réservée.
+	\begin{itemize}
+		\item Le premier passager arrive. Il est distrait et s'installe à une place choisie au hasard.
+		\item Les passagers suivants, quand ils arrivent, s'installent à leur place sauf si celle-ci est déjà occupée, auquel cas ils choisissent une place au hasard parmi les places restantes.
+	\end{itemize}
+	En raisonnant par récurrence sur $n$, déterminer la probabilité que le $n$-ème passager s'installe à sa place.
+\end{ex}
+\begin{proof}
+	Exercice difficile. On peut tester sur les petites valeurs de $n$ pour se convaincre que cette probabilité vaudra tout le temps $1/2$. Ensuite, faire une récurrence forte et distinguer les cas pour se ramener à l'hypothèse de récurrence.
+\end{proof}
+\begin{ex}{Le problème des ménages}
+	\begin{enumerate}
+		\item Soit $n$ et $k$ deux entiers naturels tels que $n\geqslant 1$ et $2k\leqslant n$. Montrer que le nombre de manières de choisir $k$ paires de points adjacents disjointes dans $\llbracket1,n\rrbracket$ est $\displaystyle\binom{n-k}{k}$. En déduire que le nombre de manières de choisir $k$ paires de points adjacents, disjointes, parmi $n$ points sur un cercle est $\displaystyle\frac{n}{n-k}\binom{n-k}{k}$.
+		\item $\star$ On installe $n$ couples, constitués chacun d'un homme et d'une femme, autour d'une table rode, en alternant hommes et femmes. Montrer que la probabilité que personne ne soit assis à côté de son ou sa partenaire est : $$\frac{1}{n!}\sum_{k=0}^{n}(-1)^k\frac{2n}{2n-k}\binom{2n-k}{k}(n-k)!$$
+		\item Reprendre la question précédente en supposant cette fois-ci que l'on n'alterne pas nécessairement hommes et femmes autour de la table.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	La deuxième question est difficile. A faire...
+\end{proof}
+\begin{ex}{$\Delta\star$ Urnes de Polya} Une urne contient des boules blanches et des boules rouges. 
+	\begin{itemize}
+		\item A l'instant $0$, elle contient $b$ boules blanches et $r$ boules rouges.
+		\item A l'instant $n$, un opérateur tire une boule au hasard dans l'urne avec probabilité uniforme, puis il la remet dans l'urne et y rajoute $c$ boules de la même couleur que la boule tirée.
+		\item Il répète l'opération à l'instant $n+1$.
+	\end{itemize}Quelle est la probabilité de tirer une boule blanche au $n$-ème tirage ?
+\end{ex}
+\begin{proof}
+	Exercice difficile. On note $\P_n(b,r)$ cette probabilité. Il faut \textbf{conditionner par rapport au premier événement} (en effet, on ne peut pas le faire par rapport au dernier, puisque celui-ci dépend de tout ce qu'il s'est passé avant). On obtient la relation de récurrence : $$\P_n(b,r)=\frac{b}{b+r}\P_{n-1}(b+c,r)+\frac{r}{b+r}\P_{n-1}(b,r+c)$$ Par récurrence, cela permet de montrer que pour tous $n$, $b$ et $r$, on a : $$\P_n(b,r)=\frac{b}{b+r}$$
+\end{proof}
+\begin{ex}{$\Delta$ Espérance et variance d'une matrice à coefficients suivant des lois de Rademacher indépendantes}
+	Chacun des $n^2$ coefficients d'une matrice est tiré aléatoirement dans $\{-1,1\}$, avec probabilité uniforme pour chaque issue et indépendance des tirages. On considère la variable aléatoire "déterminant de la matrice". Calculer son espérance et sa variance.
+\end{ex}
+\begin{proof}
+	Utiliser la formule des signatures pour trouver une espérance nulle. Calculer le déterminant du carré de la matrice avec la formule des signatures en faisant un produit de sommes. Noter qu'en prenant l'espérance, les termes correspondant à deux permutations distinctes sont nulles par indépendance.
+\end{proof}
+\begin{ex}{$\Delta$ Espérance et variance du nombre de points fixes d'un élément de $\mathcal{S}_n$}
+	On considère une permutation aléatoire de $\llbracket1,n\rrbracket$ avec probabilité uniforme.
+	\begin{enumerate}
+		\item Quelle est l'espérance du nombre de points fixes ?
+		\item Quelle est la variance du nombre de point fixes ?
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Pour calculer l'espérance et la variance, écrire le nombre de points fixes comme une somme d'indicatrice et déterminer les probabilités des événements associés. On peut notamment calculer l'espérance et la variance du nombre de points fixes d'une permutation $\sigma\in S_n$ de cette façon. Pour la variance, on passera par les covariances.
+\end{proof}
+\begin{ex}{$\star$ Urne d'Erhenfest}
+	On se donne deux urnes $A$ et $B$ contenant en tout $b$ boules avec $b\geqslant2$. A chaque étape, une boule est choisie avec équiprobabilité et change d'urne. On note $X_0$ le nombre de boules dans l'urne $A$ à l'instant initial, $X_n$ le nombre de boules dans l'urne $A$ à l'issue de la $n$ème étape. Calculer l'espérance de $X_n$.
+\end{ex}
+\begin{proof}
+	Exercice difficile. Procéder par récurrence pour le calcul de l'espérance. Conditionner. Se représenter matriciellement le problème peut aider : on a une matrice dont tous les coefficients sont nuls sauf ceux sur la sous-diagonale et la sur-diagonale. Ensuite, on peut faire le calcul à la main en regroupant bien les termes pour obtenir une relation arithmético-géométrique sur l'espérance.
+\end{proof}
+\begin{ex}{Réciproque d'un théorème de cours ?}
+	Soit $X$ une variable aléatoire suivant une loi $\mathcal{B}(n,p)$. Est-ce que $X$ est nécessairement la somme de $n$ variables aléatoires de Bernoulli indépendantes de de paramètre $p$ ?
+\end{ex}
+\begin{proof}
+	La réponse est non. Si c'est le cas, l'univers doit être de cardinal supérieur à $2^n$ (construire une injection avec les variables aléatoires indépendantes) et il est pourtant possible d'avoir une telle loi sur un univers de cardinal $n$.
+\end{proof}
+\section{Tribus, mesures de probabilité}
+\begin{ex}{Une "probabilité" sur $\N\st$ et sa tribu totale}
+	On note $\mathcal{P}$ l'ensemble des nombres premiers. On admet que la famille $\displaystyle\left(\frac{1}{p}\right)_{p\in\mathcal{P}}$ n'est pas sommable. on suppose qu'il existe une probabilité $\P$ sur $(\N\st,\mathcal{P}(\N\st))$ telle que l'événement $A_n=\{k\in\N\st\ : \ n\mid k\}$ soit systématiquement de probabilité $\displaystyle\frac{1}{n}$.
+	\begin{enumerate}
+		\item Montrer que $(A_p)_{p\in\mathcal{P}}$ est une famille d'événements indépendants.
+		\item Montrer que $\P(\{1\})=0$.
+		\item Montrer plus généralement que pour tout famille finie $(p_1,\ldots,p_N)$ de nombres premiers deux à deux distincts, l'événement "tous les diviseurs premiers de $k$ sont dans $\{p_1,\ldots,p_N\}$ est négligeable.
+		\item Conclure.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	A faire...
+	\begin{enumerate}
+		\item Revenir à la définition et travailler sur les événements avec des théorèmes d'arithmétique.
+		\item 
+		\item 
+		\item Il devrait y avoir une absurdité.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Une inégalité}
+	Soit $A_1,\ldots, A_n$ des événements d'un espace probabilisé $(\Omega,\mathcal{A},\P)$. Montrer que $$\P\left(\bigcup_{i=1}^nA_i\right)\leqslant\underset{1\leqslant k\leqslant n}{\min}\left(\sum_{i=1}^{n}\P(A_i)-\sum_{\substack{1\leqslant i\leqslant n \\ i\ne k}}\P(A_i\cap A_k)\right)$$
+\end{ex}
+\begin{proof}
+	Raisonner par récurrence.
+\end{proof}
+\begin{ex}{Loi du zéro-un de Borel}
+	Soit $(A_n)_{n\in\N}$ une suite d'événements d'un espace probabilisé $(\Omega,\mathcal{A},\P)$. On pose : $$\forall n\in\N,\ B_n=\bigcup_{k\geqslant n}A_k \ \text{et} \ C_n=\bigcap_{k\geqslant n}A_k \ \ \text{puis}\ \ B=\bigcap_{n\in\N}B_n \ \text{et}\ C=\bigcup_{n\in\N}C_n$$ On dit que la suite $(A_n)_{n\in\N}$ converge si $B=C$, et, par définition, sa limite $A$ est $A=B=C$.
+	\begin{enumerate}
+		\item Montrer que si la suite $(A_n)_{n\in\N}$ converge, alors $A$ est un événement et la suite $(\P(A_n))_{n\in\N}$ converge vers $\P(A)$.
+		\item On suppose que, pour tout $n\in\N$, les événements $B_n$ et $C_n$ sont indépendants. Montrer que $B$ et $C$ sont indépendants. En déduire que si de plus la suite $(A_n)_{n\in\N}$ converge vers $A$, alors $\P(A)=0$ ou $\P(A)=1$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	A rapprocher des exemples du cours sur Borel-Cantelli. A faire...
+\end{proof}
+\begin{ex}{$\star$ Une probabilité qui prend une infinité de valeurs}
+	Soit $(\Omega,\mathcal{T},\P)$ un espace probabilisé. on suppose que l'ensemble des valeurs prises par $\P$ est infini.
+	\begin{enumerate}
+		\item Montrer l'existence d'une suite décroissante $(A_n)$ d'événements pour lesquels $\{\P(B)\mid B\subset A_n\}$ est infini et tels que $(\P(A_n))$ soit strictement décroissante.
+		\item En déduire une suite d'événements $(B_n)$ non négligeables et deux à deux incompatibles.
+		\item Montrer que $\P(\mathcal{T})$ est indénombrable.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice difficile. Merci Pierre pour la correction quand Moulin a dispawn.
+	\begin{enumerate}
+		\item Construire par récurrence une telle suite en coupant à chaque fois en deux comme dans la preuve de Bolzano-Weierstrass en sup.
+		\item Prendre $B_n=A_{n}\setminus A_{n+1}$.
+		\item On a : $$\P\left(\left\{\bigcup_{n\in A}B_n\mid A\in\mathcal{P}(\N)\right\}\right)\subset\P(\mathcal{T})$$ et le premier ensemble est indénombrable car en bijection avec $\mathcal{P}(\N)$ en utilisant la deuxième question.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Intersection de tribus et tribu engendrée}
+	Soit $\left(\mathcal{T}_i\right)_{i\in I}$ une famille non vide de tribus sur $\Omega$. Montrer que $\displaystyle\bigcap_{i\in I}\mathcal{T}_i$ est une tribu sur $\Omega$. En déduire qu'étant donnée une partie $\mathcal{A}$ de $\mathcal{P}(\Omega)$, il existe une plus petite tribu parmi celles incluant $\mathcal{A}$ : on l'appelle tribu engendrée par $\mathcal{A}$ et on la note $\sigma(\mathcal{A})$.
+\end{ex}
+\begin{proof}
+	Application du cours. Le faire à la main, comme d'habitude dans ce genre de choses (considérer l'intersection de toutes les tribus contenant $\mathcal{A}$ pour la tribu engendrée).
+\end{proof}
+\begin{ex}{Théorème d'Ulam}
+	Soit $(E,\leqslant)$ un ensemble totalement ordonné indénombrable tel que pour tout $x\in E$; l'ensemble $\{y\in E\ :\ y\leqslant x\}$ soit au plus dénombrable. Soit $\P$ une mesure de probabilité sur $(E,\mathcal{P}(E))$. On se propose de montrer qu'il existe $x\in E$ tel que $\P(\{x\})>0$. Pour cela, on raisonne par l'absurde en supposant que $\forall x\in E,\ \P(\{x\})=0$. pour tout $x\in E$, on choisit une injection $f_x$ de $\{y\in E\ :\ y<x\}$ dans $\N$ puis pour tout $x\in E$ et $n\in\N$, on pose $$A_{x,n}=\{y\in E\ : \ y>x\ \text{et}\ f_y(x)=n\}$$
+	\begin{enumerate}
+		\item Montrer que $(A_{x,n})_{x\in E}$ est constituée de parties deux à deux disjointes, pour tout $n\in\N$.
+		\item Montrer que pour tout $x\in E$, il existe $n\in\N$ tel que $\P(A_{x,n})>0$.
+		\item $\star$ En déduire une contradiction.
+		\item $\star$ Montrer que $\P$ est une loi de probabilité discrète.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Les deux dernières question sont difficiles. Merci à Gustave pour la correction des trois premières !
+	\begin{enumerate}
+		\item Se donner $a\in A_{x,n}\cap A_{y,n}$. Par injectivité de $f_a$, comme $f_a(x)=n=f_a(y)$, on en déduit que $x=y$.
+		\item On écrit que $$\bigsqcup_{n\in\N}A_{x,n}=E\setminus\bigcup_{y\leqslant x}\{y\}$$ donc $$\P\left(\bigsqcup_{n\in\N}A_{x,n}\right)=1$$ car $$\P\left(\bigcup_{y\leqslant x}\{y\}\right)=\sum_{y\leqslant x}\P(\{y\})=\sum_{y\leqslant x}0=0$$ Par conséquent, $$\sum_{n\in\N}\P(A_{x,n})=1$$ et il existe donc $n\in\N$ tel que $\P(A_{x,n})>0$.
+		\item On définit $$B_n=\{x\in E\mid \P(A_{x,n})>0\}$$ Alors on a $E=\displaystyle\bigcup_{n\in\N}B_n$ d'après la deuxième question. Or : $$\sum_{x\in B_{n_0}}\P(A_{x,n_0})=+\infty$$ ce qui est absurde.
+		\item A faire...
+	\end{enumerate}
+\end{proof}
+\section{Suites de pile ou face}
+\begin{ex}{$\Delta$ La ruine des joueurs}
+	Deux joueurs $A$ et $B$ ayant pour capitaux initiaux respectivement $a$ et $b$ euros avec $(a,b)\in\N^2$, s'affrontent dans un jeu constitué d'une succession de parties indépendantes. A chaque partie, $A$ a la probabilité $p\in]0,1[$ de gagner et $B$ la probabilité $q=1-p$. A l'issue de chaque partie, le perdant donne $1$ euro au gagnant. Le jeu s'arrête lorsque l'un des joueurs est ruiné. On note $R(a,b)$ la probabilité que $A$ soit ultimement ruiné.
+	\begin{enumerate}
+		\item Montrer que si $a\geqslant 1$ et $b\geqslant 1$, alors : $$R(a,b)=pR(a+1,b-1)+qR(a-1,b+1)$$
+		\item Calculer $R(a,b)$. On pourra remarquer que le capital total $a+b$ total reste fixe au cours de la partie.
+		\item Montrer que, presque sûrement, le jeu se termine au bout d'un nombre fini de parties.
+		\item Calculer la limite de $R(a,b)$ quand $b$ tend vers $+\infty$ et $a$ reste fixe.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice classique. A faire...
+	\begin{enumerate}
+		\item utiliser la formule des probabilités totales.
+	\end{enumerate}
+\end{proof}
+\section{Variables aléatoires discrètes}
+\begin{ex}{$\Delta$ Taux de panne}
+	Soit $(\Omega,\mathcal{A},\P)$ un espace probabilisé, $X$ une variable aléatoire discrète définie sur cet espace probabilisé à valeurs dans $\N\st$ et vérifiant : $$\forall n\in\N\st,\ \P(x\geqslant n)>0$$ On appelle taux de panne associé à $X$ la suite réelle $(x_n)_{n\in\N\st}$ définie par : $$\forall n\in\N\st,\ x_n=\P(X=n\mid X\geqslant n)$$
+	\begin{enumerate}
+		\item Exprimer $p_n=\P(X=n)$ en fonction des $x_k$.
+		\item Soit $(x_n)_{n\in\N\st}$ le taux de panne associé à une variable aléatoire $X$. montrer que, pour tout $n\in\N\st$, on a $0\leqslant x_n<1$ et que la série de terme général $x_n$ diverge.
+		\item Réciproque, soit $(x_n)_{n\in\N}$ une suite à valeurs dans $[0,1[$ telle que la série de terme général $x_n$ diverge. Montrer qu'il existe une variable aléatoire dont le taux de panne est la suite $(x_n)$.
+		\item Montrer que la variable $X$ suit une loi géométrique si, et seulement si, sont taux de panne est constant.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Avec $(x_n)_{n\in\N\st}$, on obtient par récurrence : $$\P(X\geqslant n)=\prod_{k=1}^{n-1}(1-x_k)$$ et par conséquent $\P(X=n)=x_n\prod_{k=1}^{n-1}(1-x_k)$. Ensuite, il s'agit simplement d'utiliser ces formules dans tous les sens, de remarquer que $$\P(X\geqslant n)\to 0$$ et de passer au $\ln$ les produits pour montrer qu'ils tendent vers $-\infty$.
+\end{proof}
+\begin{ex}{$\Delta$ Minimum de deux lois géométriques indépendantes}
+	Soit $X$ et $Y$ deux variables aléatoires indépendantes suivant des lois géométriques de paramètres respectifs $\lambda$ et $\mu$. Montrer que $Z=\inf(X,Y)$ suit aussi une loi géométrique dont on précisera le paramètre.
+\end{ex}
+\begin{proof}
+	Exercice classique. On se donne $X\sim\mathcal{G}(p_1)$ et $Y\sim\mathcal{G}(p_2)$ indépendantes. On pose $q_1=1-p_1$, $q_2=1-p_2$ ainsi que $p=1-q_1q_2$. Alors $\min(X,Y)\sim\mathcal{G}(p)$. En effet, on a : $$\left\{\min(X,Y)\geqslant k\right\}=\left\{X\geqslant k\right\}\cap\left\{Y\geqslant k\right\}$$ donc par indépendance, on a : $$\P(\min(X,Y)\geqslant k)=q_1^{k-1}q_2^{k-1}$$ On obtient donc, puisque $\left\{\min(X,Y)=k\right\}=\left\{\min(X,Y)\geqslant k\right\}\cap\overline{\left\{\min(X,Y)\geqslant k+1\right\}}$, la relation : $$\P(\min(X,Y)=k)=(1-q_1q_2)(q_1q_2)^{k-1}$$ Cela traduit bien le fait que $\min(X,Y)\sim\mathcal{G}(p)$.
+\end{proof}
+\begin{ex}{$\Delta$ Somme de deux lois de Poisson indépendantes}
+	Soit $X$ et $Y$ deux variables aléatoires réelles indépendantes. On suppose que $X$ suit une loi de Poisson de paramètre $\lambda>0$ et que $Y$ suit une loi de Poisson de paramètre $\mu>0$.
+	\begin{enumerate}
+		\item Montrer que $S=X+Y$ suit une loi de Poisson de paramètre $\lambda+\mu$.
+		\item Étant donné $n>0$, déterminer la loi de $X$ sachant $S=n$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice classique.
+	\begin{enumerate}
+		\item On peut le faire à la main avec les sommes et faire apparaître un binôme de Newton et un produit de Cauchy, ou alors on peut aussi le faire avec les fonctions génératrices.
+		\item Le faire à la main avec les sommes. Cela se fait bien. Voir l'exercice suivant.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{$\Delta$ Une caractérisation de la loi de Poisson}
+	On considère une variable aléatoire discrète $N$ sur l'espace probabilisé $(\omega,\mathcal{A},\P)$ telle que $N(\Omega)=\N$ et $\P(N=n)\ne0$ pour tout $n\in\N$. Si la variable $N$ prend la valeur $n$, on procède à une succession de $n$ épreuves de Bernoulli indépendantes de paramètre $p\in]0,1[$. On note $S$ et $E$ les variables aléatoires représentant respectivement le nombre de succès et d'échecs dans ces $n$ épreuves.
+	\begin{enumerate}
+		\item Montrer que si $N$ suit la loi de Poisson de paramètre $\lambda>0$, les variables$S$ et $E$ suivent aussi des lois de Poisson dont on déterminera les paramètres. Montrer que les variables $S$ et $E$ sont indépendantes.
+		\item Montrer réciproquement que si $S$ et $E$ sont indépendantes, alors $N$ suit une loi de Poisson. Pour cela, on montrer :
+		\begin{itemize}
+			\item qu'il existe deux suites $(u_n)$ et $(v_n)$ telle que $$\forall (m,n)\in\N^2,\ (m+n)!\P(N=m+n)=u_mv_n$$
+			\item que les suites $(u_n)$ et $(v_n)$ sont géométriques
+		\end{itemize}
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice classique. On pose $q=1-p$.
+	\begin{enumerate}
+		\item On calcule directement pour trouver : $$\P(S=n,E=m)=\binom{m+n}{n}p^nq^me^{-\lambda}\frac{\lambda^{m+n}}{(m+n)!}=\left[e^{-\lambda p}\frac{(\lambda p)^n}{n!}\right]\times \left[e^{-\lambda q}\frac{(\lambda q)^n}{n!}\right]$$ ce qui donne l'indépendance et les lois de $S$ et $E$.
+		\item \begin{itemize}
+			\item Comme dans le première question, on calcule directement pour obtenir par indépendance : $$(m+n)!\P(N=m+n)=\frac{n!\P(S=n)}{p^n}\times\frac{m!\P(E=m)}{q^m}$$
+			\item En utilisant ce qui précède, on trouve $u_{m}v_{n+1}=u_{m+1}v_n$ donc les suites sont géométriques de même paramètre. On reporte dans l'expression du point précédent pour obtenir une loi de Poisson.
+		\end{itemize}
+	\end{enumerate}
+\end{proof}
+\section{Espérance, variance}
+\begin{ex}{$\Delta$ Espérance et Cauchy-Schwarz}
+	Montrer que, pour une variable aléatoire discrète $X$ à valeurs dans $\R_+\st$, on a : $$\E(X)\E\left(\frac{1}{X}\right)\geqslant 1$$
+\end{ex}
+\begin{proof}
+	Appliquer l'inégalité de Cauchy-Schwarz à $\sqrt{X}$ et $\displaystyle\frac{1}{\sqrt{X}}$ et déterminer ainsi les cas d'égalité.
+\end{proof} 
+\begin{ex}{Variante du précédent}
+	On a une variante si $X\sim Y$ avec $X$ et $Y$ sont indépendantes et à valeurs dans $\R_+\st$, montrer que $$\E\left(\frac{X}{Y}\right)\geqslant1$$
+\end{ex}
+\begin{proof}
+	On peut alors appliquer le résultat précédent avec un transfert d'indépendance et de loi, ou bien on peut simplement remarquer que par transfert d'indépendance et de loi $$\E\left(\frac{X}{Y}\right)=\E\left(\frac{Y}{X}\right)$$ sommer les deux, puis utiliser le fait que la fonction $$x\mapsto x+\frac{1}{x}$$ est minorée par $2$ sur $\R_+\st$
+\end{proof}
+\begin{ex}{Une caractérisation de l'indépendance des variables aléatoires}
+	Soit $X$ et $Y$ deux variables aléatoires définies sur un même espace probabilisé, et à valeurs dans des ensembles respectifs $E$ et $F$. Montrer l'équivalence entre les conditions suivantes :
+	\begin{itemize}
+		\item Les variables $X$ et $Y$ sont indépendantes.
+		\item Quelles que soient les fonctions bornées $f:E\mapsto \R$ et $g:F\mapsto\R$, on a : $$\E(f(X)g(Y))=\E(f(X))\E(g(Y))$$
+	\end{itemize}
+\end{ex}
+\begin{proof}
+	Le sens direct est immédiat par transfert d'indépendance. Dans le sens réciproque, revenir à la définition et appliquer l'hypothèse aux fonctions indicatrices des événements considérés.
+\end{proof}
+\begin{ex}{$\Delta$ Le problème du collectionneur}
+	Une urne contient $n$ boules numérotées de $1$ à $n$. On y effectue un tirage avec remise. Le tirage s'arrête dès que chaque boule a été tirée au moins une fois.
+	\begin{enumerate}
+		\item Montrer que le tirage s'arrête presque sûrement.
+		\item On note $T:\Omega\to\N\st\cup\{+\infty\}$ la variable aléatoire donnant le temps d'arrêt du triage. Montrer que $T$ est d'espérance finie et calculer son espérance. Réaliser un équivalent de cette dernière lorsque $n$ tend vers $+\infty$.
+		\item Montrer que $T$ est dans $L^2$ et calculer sa variance. Réaliser un équivalent de cette dernière lorsque $n$ tend vers $+\infty$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice classique. A faire...
+\end{proof}
+\begin{ex}{Inégalité de Bonferroni}
+	\begin{enumerate}
+		\item Soit $(n,p)\in\N^2$ tel que $p\leqslant n$. Simplifier : $$\sum_{k=0}^{p}(-1)^k\binom{n}{k}$$ et en déduire son signe.
+		\item Soit $A_1,\ldots,A_n$ des événements d'un espace probabilisé $(\Omega,\mathcal{A},\P)$. Soit $l\in\llbracket1,n\rrbracket$. Déterminer le signe de la variable aléatoire $$\mathbb{1}_{A_1\cup\ldots\cup A_n}+\sum_{\substack{I\subset\llbracket1,n\rrbracket \\ 0<\lvert i\rvert\leqslant l}}(-1)^{\lvert I\rvert}\prod_{i\in I}\mathbb{A}_{A_i}$$
+		\item En déduire l'inégalité de Bonferroni : $$(-1)^l\left(\P\left(\bigcup_{k=1}^nA_k\right)-\sum_{\substack{I\subset\llbracket1,n\rrbracket \\ 0<\lvert i\rvert\leqslant l}}(-1)^{\lvert I\rvert-1}\P\left(\bigcap_{i\in I}A_i\right)\right)\geqslant0$$
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Se faire une idée sur les petites valeurs (c'est quelque chose du style $(-1)^p\binom{n}{p-1}$) puis le prouver par récurrence avec la formule de Pascal.
+		\item Faire comme dans la démonstration de la formule du crible.
+		\item Utiliser les questions précédentes.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Un encadrement}
+	Soit $X$ et $Y$ deux variables aléatoires réelles définies sur le même espace probabilisé. on suppose $X$ et $Y$ d'espérance finie et centrées. Montrer que si $-1\leqslant X\leqslant 1$ et $Y\geqslant -1$, alors $$\lvert\E(XY)\rvert\leqslant 1$$
+\end{ex}
+\begin{proof}
+	On "remarque" que $Y+1\geqslant 0$. D'où : $$-(Y+1)\leqslant XY +X\leqslant (Y+1)$$ On obtient le résultat par croissance de l'espérance et avec l'hypothèse $X$ et $Y$ centrées.
+\end{proof}
+\begin{ex}{$\star\star$ Un autre encadrement}
+	Soit $X$ et $Y$ deux variables aléatoires réelles indépendantes, avec $Y$ centrée. Montrer que $$\E(\lvert X+Y\rvert)\geqslant\E(\lvert X\rvert)$$
+\end{ex}
+\begin{proof}
+	Exercice très difficile. A faire...
+\end{proof}
+\begin{ex}{Une majoration de la variance}
+	Soit $X$ une variable aléatoire discrète à valeurs dans le segment $[a,b]$, d'espérance $m$. Montrer que $$\V(X)\leqslant(b-m)(m-a)$$
+\end{ex}
+\begin{proof}
+	Remarquer que $$(b-X)(X-a)\geqslant0$$ développer, utiliser la croissance de l'espérance et ajouter ce qu'il manque pour arriver au résultat.
+\end{proof}
+\begin{ex}{$\Delta$ Inégalité de Hölder}
+	Soit $p$ et $q$ des réels strictement positifs tels que $\displaystyle\frac{1}{p}+\frac{1}{q}=1$.
+	\begin{enumerate}
+		\item Montrer que, pour tout $(x,y)\in(\R_+)^2$, on a $\displaystyle xy\leqslant\frac{x^p}{p}+\frac{y^q}{q}$ (\textbf{inégalité de Young}).
+		\item Soit $X$ et $Y$ deux variables aléatoires réelles discrètes sur $(\Omega,\mathcal{A},\P)$ telles que $\lvert X\rvert^p$ et $\lvert Y\rvert^q$ soient d'espérance finie. Montrer que $XY$ est d'espérance finie et que l'on a : $$\E(\lvert XY\rvert)\leqslant\E(\lvert X\rvert^p)^{1/p}\E(\lvert Y\rvert^q)^{1/q}$$ (\textbf{inégalité de Hölder}).
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice classique qu'on retrouve dans d'autres domaines.
+	\begin{enumerate}
+		\item Utiliser la concavité de $\ln$.
+		\item Utiliser la question précédente.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{$\star$ Une inégalité}
+	Soit $X$ et $Y$ deux variables aléatoires discrètes indépendantes identiquement distribuées à valeurs dans un intervalle $I$ de $\R$. Soit $f:I\to\R$ et $g:I\to\R$ deux fonctions croissantes bornées. Montrer que $$\E(f(X))\E(g(Y))\leqslant\E((fg)(X))$$ Application : soit $f$ et $g$ croissantes continues par morceaux sur $[0,1]$. Montrer que $$\int_{0}^{1}f\int_{0}^{1}g\leqslant\int_{0}^{1}fg$$
+\end{ex}
+\begin{proof}
+	Exercice difficile. Pour cela, remarquer que : $$\forall(x,y)\in I^2,\ (f(y)-f(x))(g(y)-g(x))\geqslant0$$ par croissance. On en déduit que $(fg)(Y)+(fg)(X)\geqslant f(Y)g(X)+f(X)g(Y)$ et on conclut par croissance de l'espérance (le caractère borné de $f$ et $g$ assure l'existence de ces espérances). Pour l'application, chercher à se ramener à des sommes de Riemann. On considèrera $X$ et $Y$ iid qui suivent une loi uniforme sur $\{0,\ldots,(n-1)/n\}$. On applique ensuite l'inégalité précédente et on passe à la limite.
+\end{proof}
+\begin{ex}{$\star$ Inégalité des \textit{maxima} de Kolmogorov}
+	Soit $X_1,\ldots,X_n$ une suite finie de variables aléatoires réelles indépendantes centrées et dans $L^2$. Pour $k\in\llbracket1,n\rrbracket$, on pose $$S_k=\sum_{i=1}^{k}X_i$$ Soit $\alpha>0$. Montrer que : $$\P\left(\underset{1\leqslant k\leqslant n}{\max}\lvert S_k\rvert\geqslant\alpha\right)\leqslant\frac{\V(S_n)}{\alpha^2}$$ On pourra introduire l'événement $$A_k=\left\{\lvert S_1\rvert <\alpha,\ldots,\lvert S_{k-1}\rvert<\alpha,\lvert S_k\rvert\geqslant\alpha\right\}$$ et utiliser l'inégalité $$\lvert S_n\rvert^2\geqslant\sum_{k=1}^{n}\lvert S_n\rvert^2\mathbf{1}_{A_k}$$
+\end{ex}
+\begin{proof}
+	Exercice difficile. Il est clair que $$\left\{\underset{1\leqslant k\leqslant n}{\max}\lvert S_k\rvert\geqslant\alpha\right\}=\bigsqcup_{k=1}^nA_k$$ D'où : $$\P\left(\underset{1\leqslant k\leqslant n}{\max}\lvert S_k\rvert\geqslant\alpha\right)=\sum_{k=1}^{n}\E(\mathbf{1}_{A_k})$$ On en déduit que $$\alpha^2\P\left(\underset{1\leqslant k\leqslant n}{\max}\lvert S_k\rvert\geqslant\alpha\right)=\sum_{k=1}^{n}\E(\alpha^2\mathbf{1}_{A_k})\leqslant\sum_{k=1}^{n}\E(\lvert S_k\rvert^2\mathbf{1}_{A_k})$$ Or, on a : $$\E((S_n-S_k)^2\mathbf{1}_{A_k})=\E(S_n^2\mathbf{1}_{A_k})+\E(S_k^2\mathbf{1}_{A_k})-2\E(S_nS_k\mathbf{1}_{A_k})$$ Or, par indépendance et comme toutes les $X_i$ sont centrées, on prouve aisément que $$\E((S_n-S_k)S_k\mathbf{1}_{A_k})=0$$ On en déduit que $$\underbrace{\E((S_n-S_k)^2\mathbf{1}_{A_k})}_{\geqslant0}=\E(S_n^2\mathbf{1}_{A_k})-\E(S_k^2\mathbf{1}_{A_k})$$ Et par conséquent : $$\alpha^2\P\left(\underset{1\leqslant k\leqslant n}{\max}\lvert S_k\rvert\geqslant\alpha\right)\leqslant\sum_{k=1}^{n}\E(S_n^2\mathbf{1}_{A_k})=\E\left(\sum_{k=1}^{n}S_n^2\mathbf{1}_{A_k}\right)$$ L'inégalité soufflée par l'énoncé se démontre aisément car les $A_k$ sont deux à deux incompatibles. On en déduit que $$\alpha^2\P\left(\underset{1\leqslant k\leqslant n}{\max}\lvert S_k\rvert\geqslant\alpha\right)\leqslant\E(S_n^2)$$ Or, $$\E(S_n)=\sum_{k=1}^{n}\E(X_k)=0$$ par linéarité de l'espérance, donc $\V(S_n)=\E(S_n^2)$ d'après la formule de König-Huygens, ce qui conclut.
+\end{proof}
+\begin{app}
+	Séries aléatoires (\textit{cf} la dernière pâle de l'année...).
+\end{app}
+\section{Fonctions génératrices}
+\begin{ex}{$\Delta\star$ Foot à Palaiseau}
+	Peut-on piper deux dés à $6$ faces (indépendamment l'un de l'autre) afin que le résultat du jet de ces deux dés suive une loi uniforme sur $\llbracket1,12\rrbracket$ ?
+\end{ex}
+\begin{proof}
+	La réponse est non. Raisonner par l'absurde et considérer les deux fonctions génératrices $G_X$ et $G_Y$ des dés. On doit avoir, pour $S=X+Y$, par indépendance : $G_S=G_XG_Y$ Or, par hypothèse, on doit avoir : $$G_S(t)=\sum_{n=2}^{12}\frac{1}{11}t^k=\frac{t^2}{11}\frac{1-t^{11}}{1-t}$$ Or, $G_X$ et $G_Y$ possèdent toutes les deux au moins 2 racines réelles : $0$ puis après factorisation par $t$, on a des fonctions polynomiales de degré 5 exactement (sans quoi on ne pourrait pas obtenir 12 pour la somme) qui admettent une racine réelle. Or, $G_S$ possède exactement 2 racines réelles, ce qui est absurde.
+\end{proof}
+\section{Convergence de suites de variables aléatoires, loi des grands nombres}
+\begin{ex}{$\star$ Une inégalité de grande déviation}
+	\begin{enumerate}
+		\item Soit $a,b\in\R$ tels que $a<b$ et $X$ une variable aléatoire discrète, centrée et à valeurs dans $[a,b]$. Montrer que $$\E(e^X)\leqslant\frac{be^a-ae^b}{b-a}$$ et en déduire que $$\E(e^X)\leqslant e^{(b-a)^2/8}$$ On pourra introduire les quantités $s=\displaystyle\frac{a+b}{2}$, $t=\displaystyle\frac{b-a}{2}$ et $\alpha=\displaystyle\frac{s}{t}$ pour se ramener à l'inégalité : $$\ln\left(\cosh(t)-\alpha\sinh(t)\right)\leqslant-\alpha t+\frac{t^2}{2}$$
+		\item Soit $X_1,\ldots, X_n$ des variables aléatoires discrètes, réelles bornées et indépendantes. Soit $a_1,\ldots,a_n$, $b_1,\ldots,b_n$ des réelles tels que $a_i\leqslant X_i\leqslant b_i$ pour tout $i$. On pose $S_n=X_1+\ldots+X_n$. Montrer que $$\forall t>0,\ \P(S_n-\E(S_n)\geqslant t)\leqslant\exp\left(\frac{-2t^2}{\displaystyle\sum_{i=1}^{n}(b_i-a_i)^2}\right)$$ On pourra appliquer l'inégalité de la première question aux variables $sX_i$ pour un réel $s>0$ bien choisi. Comment peut-on majorer $\P(S_n-\E(S_n)\leqslant -t)$ ?
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Exercice difficile mais magnifique !
+	\begin{enumerate}
+		\item Écrire $$X=\frac{b-X}{b-a}a+\frac{X-a}{b-a}b$$ puis utiliser la convexité de l'exponentielle puis la croissance de l'espérance et le fait que $X$ est centrée.  Ensuite, suivre l'indication pour se ramener à prouver l'inégalité suggérée.
+		\item Remarquer qu'on peut SPG supposer $a_i<b_i$ sinon le résultat à prouver se ramène à un cas avec $n$ inférieur ou alors n'a tout bonnement pas de sens. Chercher par CN des informations sur les bons $s$ à choisir en appliquant l'inégalité de Markov puis utilisant un transfert d'indépendance et le fait que l'espérance du produit de variables aléatoires indépendantes est le produit des espérances. Ensuite, utiliser la première question. On souhaite alors avoir : $$-st+\frac{s^2}{8}\sum_{i=1}^{n}(b_i-a_i)^2=\frac{-2t^2}{\displaystyle\sum_{i=1}^{n}(b_i-a_i)^2}$$ Cela se réécrit $$\left(\frac{s}{\sqrt{8}}\sqrt{\sum_{i=1}^{n}(b_i-a_i)^2}-\frac{\sqrt{2}t}{\sqrt{\displaystyle\sum_{i=1}^{n}(b_i-a_i)^2}}\right)^2=0$$ En appliquant les calculs avec $$s=\frac{4t}{\displaystyle\sum_{i=1}^{n}(b_i-a_i)^2}$$ on obtient le bon résultat. Ensuite, remarquer que $$\left\{S_n-\E(S_n)\leqslant -t\right\}=\left\{-S_n-\E(-S_n)\geqslant t\right\}$$ donc on obtient la même majoration en appliquant le résultat précédent aux $-X_i$ qui sont tout autant centrées, indépendantes et à valeurs dans $[-b_i,-a_i]$. 
+	\end{enumerate}
+\end{proof}
+\begin{ex}{$\Delta$ Loi forte des grands nombres dans $L^4$}
+	Soit $(X_n)_{n\in\N\st}$ une suite de variables indépendantes centrées de même loi telle que $X_1^4$ soit d'espérance finie. Pour $n\in\N\st$, on pose : $$S_n=\sum_{k=1}^{n}X_k$$
+	\begin{enumerate}
+		\item Montrer que $X_1$ est dans $L^2$.
+		\item Calculer l'espérance de $S_n^4$.
+		\item En déduire que pour tout $\varepsilon>0$, $$\sum_{n=1}^{+\infty}\P\left(\left\lvert\frac{S_n}{n}\right\rvert>\varepsilon\right)<+\infty$$ puis que "la suite $\displaystyle\frac{S_n(\omega)}{n}$ converge vers $0$" est un événement presque sûr. 
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	$X_1^2$ est donc dans $L^2$, donc dans $L^1$ donc $X_1$ est dans $L^2$. Il faut ensuite utiliser l'inclusion $$\left\{\frac{X_1+\ldots+X_n}{n}\geqslant\varepsilon\right\}\subset \left\{\frac{\left(X_1+\ldots+X_n\right)^4}{n^4}\geqslant\varepsilon^4\right\}$$ On distribue ensuite pour montrer que  $$\E\left((X_1+\ldots+X_n)^4\right)=n\E(X_1^4)+3n(n-1)\E(X_1^2)^2=O(n^2)$$ En effet, seul les termes où les 4 indices sont distincts, ou bien ou les termes où on a deux indices $i$ et deux indices $j$ avec $i\ne j$ ne sont pas nuls après passage à l'espérance et par indépendance, donc on obtient bien le $O(n^2)$. L'inégalité de Markov fournit alors un $O\left(\displaystyle\frac{1}{n^2}\right)$, ce qui permet de conclure.
+\end{proof}
+
+\section{TD Châteaux}
+\subsection{Généralités}
+\begin{ex}{Limites supérieure et inférieure d'une suite d'événements}
+	Soit $(A_n)$ une suite de parties de $\Omega$. On note : $$\limsup A_n=\bigcap_{n=1}^{+\infty}\bigcup_{m\geqslant n} A_m \ \text{et} \ \liminf A_n=\bigcup_{n=1}^{+\infty}\bigcap_{m\geqslant n} A_m$$
+	\begin{enumerate}
+		\item Montrer que $\liminf A_n$ est l'ensemble des éléments appartenant à tous les $A_n$ sauf pour un nombre fini d'indices $n$, et que $\limsup A_n$ est l'ensemble des éléments appartenant à $A_n$ pour une infinité d'indices $n$.
+		\item Soient $A$ et $B$ deux parties de $\Omega$. On pose $A_n$ qui vaut $A$ si $n$ est pair, et $B$ sinon. Déterminer $\limsup A_n$ et $\liminf A_n$.
+		\item Que valent $\liminf A_n$ et $\limsup A_n$ lorsque la suite $(A_n)$ est monotone ?
+		\item Soit $\mathcal{A}$ une tribu sur $\Omega$. Montrer que si $(A_n)$ est une suite d'événements, alors $\liminf A_n$ et $\limsup A_n$ sont des événements.
+		\item On dit que la suite $(A_n)$ converge lorsque $\liminf A_n=\limsup A_n$, et on note alors $\lim A$ cette valeur commune. Montrer qu'une suite monotone d'événements converge.
+		\item Si $(u_n)$ est une suite réelle bornée, on note $\liminf u_n$ la plus petite valeur d'adhérence de $(u_n)$ et $\limsup u_n$ la plus grande valeur d'adhérence de $(u_n)$. Soit $\P$ une probabilité sur $(\Omega,\mathcal{A})$ et $(A_n)$ une suite d'événements.
+		\begin{enumerate}[label=\alph*.]
+			\item Montrer les inégalités de Fatou : $$\P(\liminf A_n)\leqslant\liminf\P(A_n) \ \ \text{et} \ \ \P(\limsup A_n)\geqslant\limsup\P(A_n)$$
+			\item En déduire que si la suite d'événements $(A_n)$ converge vers $A$, alors $\P(A_n)\xrightarrow[n\to+\infty]{}\P(A)$.
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Le faire par double inclusion.
+		\item La limite inférieure est $A\cap B$, et la limite supérieure est $A\cup B$.
+		\item Si la suite est croissante, les limites inférieure et supérieure valent toutes les deux $\displaystyle\bigcup_{n=1}^{+\infty}A_n$. Si la suite est décroissante, les limites inférieure et supérieure valent toutes les deux $\displaystyle\bigcap_{n=1}^{+\infty}A_n$.
+		\item Utiliser le fait qu'une tribu est stable par intersection et union au plus dénombrables.
+		\item Utiliser le résultat de la question $4$.
+		\item \begin{enumerate}[label=\alph*.]
+			\item Utiliser la croissance de la probabilité.
+			\item Dans ce cas, la seule valeur d'adhérence de $(\P(A_n))$ est $\P(A)$.
+		\end{enumerate}
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Probabilité sur $\llbracket1;n\rrbracket$}
+	Soit $n$ un entier supérieur ou égal à $2$. On munit $\Omega=\llbracket1,n\rrbracket$ de la probabilité uniforme $\P$. Si $d$ est un diviseur de $n$ dans $\N$, on note $D_d$ l'ensemble des multiples de $d$ dans $\Omega$.
+	\begin{enumerate}
+		\item Déterminer $\P(D_d)$.
+		\item On écrit $n=\displaystyle\prod_{i=1}^{r}p_i^{\alpha_i}$ en facteurs premiers. Les événements $D_{p_1}$, $\ldots$, $D_{p_r}$ sont-ils mutuellement indépendants ?
+		\item En déduire que $\displaystyle\frac{\varphi(n)}{n}=\prod_{i=1}^{r}\left(1-\frac{1}{p_i}\right)$
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item $\displaystyle\P(D_d)=\frac{\left\lfloor\frac{n}{d}\right\rfloor}{n}=\frac{1}{d}$
+		\item Utiliser le lemme de Gauss.
+		\item Passer au complémentaire et utiliser les deux questions précédentes.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Probabilité que deux entiers soient premiers entre eux}
+	On pose $\zeta(s)=\displaystyle\sum_{n=1}^{+\infty}\frac{1}{n^s}$ lorsque $s>1$. On admet que $\zeta(2)=\displaystyle\frac{\pi^2}{6}$.
+	\begin{enumerate}
+		\item Montrer que $\displaystyle\frac{1}{\zeta(s)}=\sum_{n=1}^{+\infty}\frac{\mu(n)}{n^s}$.
+		\item Montrer que pour tout $n\in\N\st$, on a : $\displaystyle\frac{\varphi(n)}{n}=\sum_{d\mid n}\frac{\mu(d)}{d}$
+		\item Montrer que $\displaystyle \frac{1}{n^2}\sum_{k=1}^{n}\varphi(k)\xrightarrow[n\to+\infty]{}\frac{3}{\pi^2}$
+		\item Pour tout $n\in\N\st$, on considère deux variables aléatoires indépendantes $X_n$ et $Y_n$ suivant la loi uniforme sur $\llbracket1,n\rrbracket$, et on note $p_n$ la probabilité que $X_n$ et $Y_n$ soient premiers entre eux. Montrer que la suite $(p_n)$ converge, et déterminer sa limite.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Calculer $\zeta(s)\times\displaystyle\sum_{n=1}^{+\infty}\frac{\mu(n)}{n}$ en décomposant les $n$ en facteurs premiers dans la somme double. Intervertir les sommes et utiliser après démonstration le fait que $$\sum_{d\mid k}=\delta_{1,k}$$
+		\item Utiliser l'expression de $\varphi(n)/n$ obtenue dans l'exercice précédent.
+		\item Utiliser la formule de la question précédente et prouver que la différence entre l'expression cherchée multipliée par $n^2$ et $$S_n=\sum_{k=1}^{n}\frac{\mu(k)\left(\frac{n}{k}\right)^2}{2}$$ tend vers $0$, puis on montre que $S_n/n^2$ tend vers $3/\pi^2$ avec la question $1$.
+		\item On a $p_n=\displaystyle\frac{1}{n^2}\left(2\sum_{k=1}^{n}\varphi(k)-1\right)$ puis on utilise la question précédente.
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Probabilité uniforme sur $\N$}
+	On se propose de prouver qu'il n'existe pas de probabilité $\P$ sur l'espace probabilisable $(\N,\mathcal{P}(\N))$ telle que pour tout $n\in\N\st$, $\P(n\N)=\displaystyle\frac{1}{n}$.
+	\begin{enumerate}
+		\item Démontrer que si une telle probabilité existe, alors les événements $A_p=p\N$ pour $p$ premier sont mutuellement indépendants.
+		\item Conclure à l'aide du lemme de Borel-Cantelli. On pourra utiliser sans démonstration le fait que la famille des inverses des nombres premiers n'est pas sommable.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Utiliser le lemme de Gauss.
+		\item Par indépendance mutuelle,
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Loi de Zipf}
+	Soit $a\in]1,+\infty[$. On pose $\zeta(a)=\displaystyle\sum_{n=1}^{+\infty}\frac{1}{n^a}$.
+	\begin{enumerate}
+		\item Montrer que l'on peut définit une probabilité $\P_a$ sur $\N\st$ à l'aide des réels $q_k$ définis par $$q_k=\P_a(\{k\})=\frac{1}{\zeta(a)k^a}$$
+		\item Soient $m\in\N\st$ et $A_m=\{km\ \mid \ k\in\N\st\}$. Calculer $\P_a(A_m)$.
+		\item Donner une condition nécessaire et suffisante sur deux entiers $i$ et $j$ pour que $A_i$ et $A_j$ soient indépendants.
+		\item On note $p_i$ le $i$-ème nombre premier et $C_n$ l'ensemble des entiers divisibles par aucun des $p_i$ pour $1\leqslant i\leqslant n$.
+		\begin{enumerate}[label=\alph*.]
+			\item Calculer $\P_a(C_n)$.
+			\item Déterminer $\displaystyle\bigcap_{n\in\N\st}C_n$.
+			\item En déduire le développement eulérien de la fonction $\zeta$ : $$\forall a>1,\ \zeta(a)=\prod_{n=1}^{+\infty}\left(1-\frac{1}{p_n^a}\right)\inv$$
+			\item Déterminer la probabilité pour qu'un entier tiré soit sans facteur carré.
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Urnes de Polya}
+	Une urne contient $r$ boules et $n$ boules noires. Une boule est retirée au hasard, on note sa couleur puis on remet l'urne $d+1$ boules de la même couleur (de sorte qu'il y ait $d$ boules de la couleur de celle tirée en plus dans l'urne à la fin de l'opération). Puis on recommence la même procédure aussi souvent que nécessaire.
+	\begin{enumerate}
+		\item Trouver la probabilité pour que : 
+		\begin{itemize}
+			\item la deuxième boule tirée soit noire ;
+			\item la première boule ait été noire, sachant que la seconde est noire.
+		\end{itemize}
+		\item On note $Y$ la variable aléatoire donnant le numéro du premier tirage pour lequel on tire une boule rouge. Calculer la loi de $Y$ et étudier si $Y$ est d'espérance finie.
+		\item On note $B_m$ l'événement selon lequel la $m$-ème boule tirée est noire. Montrer que $\P(B_m)=\P(B_1)$.
+		\item Trouver la probabilité pour que la première boule soit noire, sachant que les $m-1$ suivantes sont noires. Que se passe-t-il quand $m$ tend vers $+\infty$ ?
+	\end{enumerate}
+\end{ex}
+\subsection{Probabilités sur les permutations et les graphes}
+\begin{ex}{Nombre de dérangements}
+	On munit le groupe symétrique $\mathcal{S}_n$ de la probabilité uniforme. On dit qu'une permutation est un dérangement si elle ne possède aucun point fixe. On note $D_n$ l'ensemble des dérangements, qui est un sous-ensemble de $\mathcal{S}_n$, dont on note $d_n$ le cardinal.
+	\begin{enumerate}
+		\item Pour $k\in\llbracket1,n\rrbracket$, on note $E_k$ la variable aléatoire telle que $E_k(\sigma)=\delta_{\sigma(k),k}$. Déterminer la loi de $E_k$.
+		\item On note $X_n$ le nombre de points fixes d'une permutation aléatoire. Déterminer l'espérance et la variance de $X_n$.
+		\item On pose $f(x)=\displaystyle\sum_{n=0}^{+\infty}\frac{d_n}{n!}x^n$. En partitionnant $\mathcal{S}_n$ selon le nombre de points fixes, déterminer l'expression de $f(x)$ pour $x\in]-1,1[$. En déduire l'expression de $d_n$, ainsi qu'un équivalent quand $n$ tends vers $+\infty$. Déterminer la loi de $X_n$ et retrouver la valeur du nombre moyen de points fixes d'une permutation.
+		\item Pour $k\in\N$, déterminer la limite quand $n$ tend vers $+\infty$ de $\P(X_n=k)$.
+		\item Soit $X$ une variable aléatoire discrète suivant la loi de Poisson de paramètre $1$. Montrer que $$\sum_{n=0}^{+\infty}\lvert\P(X_n=k)-\P(X=k)\rvert\xrightarrow[n\to+\infty]{}0$$
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Nombre de cycles à support disjoints dans la décomposition}
+	On munit le groupe symétrique $\mathcal{S}_n$ de la probabilité uniforme. Soit $n\in\N\st$. On définit les $\displaystyle\begin{bmatrix}
+		n\\ k
+	\end{bmatrix}$ pour $k\in\llbracket0,n\rrbracket$ comme les coefficients du polynôme $P_n$ suivant : $$P_n=X(X+1)\cdots(X+n-1)=\sum_{k=0}^{n}\begin{bmatrix}
+		n\\ k
+	\end{bmatrix}X^k$$
+	\begin{enumerate}
+		\item Montrer que $\displaystyle\begin{bmatrix}
+			n\\ k
+		\end{bmatrix}=(n-1)\begin{bmatrix}
+			n-1\\ k
+		\end{bmatrix}+\begin{bmatrix}
+			n-1 \\ k-1
+		\end{bmatrix}$ pour $k\in\llbracket1,n-1\rrbracket$.
+		\item Montrer que $\displaystyle\begin{bmatrix}
+			n\\ k
+		\end{bmatrix}$ est le nombre de permutations de $\llbracket1,n\rrbracket$ dont la décomposition en cycles à support disjoints comporte $k$ cycles.
+		\item Si $\sigma$ est une permutation aléatoire, on note $X_n(\sigma)$ le nombre de cycles disjoints de $\sigma$.
+		\begin{enumerate}[label=\alph*.]
+			\item Calculer $\E(X_n)$ et en déduire que $\E(X_n)\sim\ln(n)$ en $+\infty$.
+			\item Démontrer que $\V(X_n)\sim\ln(n)$ en $+\infty$.
+			\item En déduire que $\displaystyle\frac{X_n}{\ln(n)}$ converge en probabilité vers $1$.
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Probabilités sur les applications de $\llbracket1;m\rrbracket$ dans $\llbracket1;n\rrbracket$}
+	L'univers $E$ des applications de $\llbracket1,m\rrbracket$ dans $\llbracket1,n\rrbracket$ est muni de la probabilité uniforme. On note $X$ la variable aléatoire égale au nombre de points de $\llbracket1,n\rrbracket$ sans antécédent.
+	\begin{enumerate}
+		\item Soit $Y_j$ la variable aléatoire de Bernoulli telle que $Y_j(\omega)=1$ si $j$ est dans l'image de $\omega$ et $0$ sinon. Déterminer la loi de $Y_j$.
+		\item Déterminer $\E(X)$ et $\V(X)$.
+		\item Dans un immeuble de $n$ étages, $m$ personnes prennent un ascenseur. Déterminer le nombre moyen d'arrêts de cet ascenseur.
+		\item On suppose $m=n$. Déterminer des équivalents simples de $\E(X)$ et $\V(X)$.
+		\item Soit $(m_n)$ une suite d'entiers naturels telle que $m_n\sim cn$ avec $c>0$. On note $X_n$ la variable aléatoire $X$ égale au nombre de points sans antécédents de $\llbracket1,n\rrbracket$. Démontrer que la suite $\displaystyle\left(\frac{X_n}{n}\right)$ converge en probabilité vers $e^{-c}$.
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Graphes aléatoires : modèle d'Erdös-Renyi}
+	Soit $p$ un réel appartenant à $]0,1[$. Un graphe aléatoire non orienté à $n$ sommets avec probabilité de liaison égale à $p$ est un graphe dont deux sommets distincts portent une arête avec la probabilité $p$, les liaisons étant mutuellement indépendantes. Le modèle décrit est appelé modèle d'Erdös-Renyi.
+	\begin{enumerate}
+		\item Modéliser cette situation avec une famille de variables aléatoires de Bernoulli. Justifier que le nombre de sommets reliés à un sommet fixé suit une loi binomiale de paramètres $n-1$ et $p$.
+		\item Déterminer la loi du nombre total d'arêtes.
+		\item Soit $X$ la variable aléatoire égale au nombre de sommets isolés. Déterminer l'espérance et la variance de $X$. Indication : on pourra introduire la variable de Bernoulli $U_s$ égale à $1$ si, et seulement si, $s$ est un sommet isolé. Calculer l'espérance du nombre de paires de sommets sans voisin commun.
+		\item Si $k\geqslant 3$, un $k$-cycle du graphe est un sous-ensemble de $k$ sommets tous reliés entre eux. Calculer l'espérance du nombre de $k$-cycles. 
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Suites de graphes aléatoires}
+	On se donne une suite $(p_n)_{n\in\N\st}$ à valeurs dans $]0,1[$. On note $G_n$ un graphe aléatoire non orienté de sommets $1,\ldots,n$. Pour tout $(i,j)$ tel que $1\leqslant i<j\leqslant n$, on note $X_{i,j}$ une variable aléatoire qui vaut $1$ lorsque $(i,j)$ est une arête de $G_n$, et $0$ sinon. On suppose que les $X_{i,j}$ sont mutuellement indépendantes et suivent toutes la loi de Bernoulli de paramètre $p_n$. On note $Y_n$ la variable aléatoire qui donne le nombre de sommets isolés de $G_n$.
+	\begin{enumerate}
+		\item Montrer que $\P(Y_n=0)\leqslant\displaystyle\frac{\V(Y_n)}{\E(Y_n^2)}$.
+		\item On suppose que $\displaystyle\frac{\ln(n)}{n}=o(p_n)$. Montrer que $\P(Y_n>0)\xrightarrow[n\to+\infty]{}0$.
+		\item On suppose que $\displaystyle p_n=o\left(\frac{\ln(n)}{n}\right)$. Montrer que $\P(Y_n>0)\xrightarrow[n\to+\infty]{}1$.
+		\item On suppose que $p_n=c\displaystyle\frac{\ln(n)}{n}$ avec $c>0$. Étudier la suite $(\P(Y_n=0))$. 
+	\end{enumerate}
+\end{ex}
+\subsection{Marches aléatoires}
+\begin{ex}{Marche aléatoire sur une droite : généralité}
+	On se donne un réel $p\in]0,1[$ et une suite $(X_n)$ de variables aléatoires mutuellement indépendantes telles que $\P(X_n=1)=p$ et $\P(X_n=-1)=1-p$. On pose $S_n=X_1+\cdots+X_n$. Dans une marche aléatoire sur la droite, $X_n$ correspond au $n$ème déplacement, valant $1$ si on se déplace vers la droite et $-1$ si on se déplace vers la gauche. $S_n$ désigne la position après $n$ pas. Dans un jeu de pile ou face où la probabilité de tirer pile vaut $p$ et où on gagne $1$ si on tire pile et on perd $1$ si on tire face, $S_n$ correspond au portefeuille après $n$ tirages. On note $T$ la date du premier retour en $0$ : $$T=\min\{n\geqslant 1\ \mid S_n=0\}$$ avec $T=+\infty$ si on ne retourne jamais en $0$. On pose $X_i=2Y_i-1$ et $Y=Y_1+\cdots+Y_n$.
+	\begin{enumerate}
+		\item Déterminer la loi de $Y_n$. En déduire la loi de $S_n$. 
+		\item Déterminer l'espérance et la variance de $S_n$.
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Marche équilibrée}
+	On suppose ici que $p=\displaystyle\frac{1}{2}$. Les $X_n$ sont alors appelées des variables aléatoires de Rademacher. On pose, pour tout $t\in[0,1]$ : $$f(t)=\sum_{n=0}^{+\infty}\P(S_{2n}=0)t^{2n}\ \ \text{et}\ \ g(t)=G_T(t)=\sum_{n=0}^{+\infty}\P(T=2n)t^{2n}$$
+	\begin{enumerate}
+		\item Vérifier que $\P(S_{2n}=0)=\displaystyle\binom{2n}{n}\frac{1}{2^{2n}}$.
+		\item Démontrer que $f(t)=\displaystyle\frac{1}{\sqrt{1-t^2}}$.
+		\item En partitionnant l'événement $\{S_{2n}=0\}$ selon la date du premier retour en $0$, démontrer que $f(t)-1=f(t)g(t)$.
+		\item En déduire que $\P(T=2n)=\displaystyle\binom{2n-2}{n-1}\frac{1}{n2^{2n-1}}$. Calculer $\E(T)$.
+		\item Soit $A$ l'événement "la marche aléatoire repasse par $0$". Démontrer que $\P(A)=1$. Il en résulte que la marche aléatoire repasse presque sûrement par l'origine, mais au bout d'un temps d'espérance infinie.
+		\item On note $A_n$ l'événement "la marche aléatoire repasse $n$ fois par $0$". Démontrer que $\P(A_n)=1$ pour tout $n$. En déduire que la marche aléatoire repasse presque sûrement une infinité de fois par l'origine. On dit que le retour à l'origine est un phénomène récurrent.
+		\item On note $T_n$ le temps du $n$-ème passage en $0$. Démontrer que $G_{T_n}=G_T^n$.
+		\item On cherche à estime la distance à l'origine.
+		\begin{enumerate}[label=\alph*.]
+			\item Montrer que $\E(\lvert S_{n+1}\rvert)=\E(\lvert S_n\rvert)+\P(S_n=0)$.
+			\item En déduire que $\displaystyle\E\left(\left\lvert\sum_{k=1}^{2n}X_k\right\rvert\right)\underset{n\to+\infty}{\sim}\sqrt{\frac{4n}{\pi}}$.
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Marche déséquilibrée}
+	On suppose ici que $p\ne\displaystyle\frac{1}{2}$ et on conserve les notations des deux exercices précédents.
+	\begin{enumerate}
+		\item Montrer que $f(t)=\displaystyle\frac{1}{\sqrt{1-4p(1-p)t^2}}$ et $g(t)=1-\sqrt{1-4p(1-p)t^2}$.
+		\item Calculer $\P(A_n)$. En déduire $\P\left(\bigcap_{n\in\N\st}A_n\right)$. Interpréter le résultat.
+	\end{enumerate}
+\end{ex}
+\subsection{Inégalités de concentration}
+\begin{ex}{Grandes déviations}
+	\begin{enumerate}
+		\item \begin{enumerate}[label=\alph*.]
+			\item Montrer que $\forall(t,x)\in\R\times[-1,1],\ e^{tx}\leqslant\displaystyle\frac{1-x}{2}e^{-t}+\frac{1+x}{2}e^{t}$.
+			\item Soit $(X_1,\ldots,X_n)$ une suite finie de variables aléatoires centrées mutuellement indépendantes à valeurs dans $[-1,1]$. On pose $S_n=X_1+\cdots+X_n$. En considérant $\E(e^{tS_n})$, démontrer que : $$\forall a>0,\ \P(\lvert S_n\rvert\geqslant a)\leqslant 2\exp\left(-\frac{a^2}{2n}\right)$$
+		\end{enumerate}
+		\item Soit $(X_n)_{n\in\N\st}$ une suite de variables aléatoires i.i.d. suivant une loi de Poisson de paramètre $\lambda$. On pose pour tout $n\in\N\st$, $S_n=X_1+\cdots+X_n$.
+		\begin{enumerate}[label=\alph*.]
+			\item Montrer que pour tout $\varepsilon>0$, il existe $K>0$ et $c>0$ tels que $$\forall n\in\N,\ \P(S_n>n(\lambda+\varepsilon))\leqslant Ke^{-cn}$$
+			\item En déduire que pour tout $\varepsilon>0$, il existe $K>à$ et $c>0$ tels que $$\forall n\in\N\st,\ \P\left(\left\lvert \frac{S_n}{n}-\lambda\right\rvert>\varepsilon\right)\leqslant Ke^{-cn}$$
+			\item Quelle est la limite presque sûre de $\displaystyle\frac{S_n}{n}$ ?
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Inégalité de Paley-Zygmund}
+	Soit $X$ une variable aléatoire discrète positive de variance finie. Démontrer que, pour tout réel $\theta\in]0,1[$, on a : $$\P(X\geqslant\theta\E(X))\geqslant(1-\theta^2)\frac{\E(X)^2}{\E(X^2)}$$ On pourra introduire la variable aléatoire $\mathbf{1}_{X\geqslant\theta\E(X)}$. 
+\end{ex}
+\begin{ex}{Inégalité de Hoeffding}
+	\begin{enumerate}
+		\item Soit $(a,b)\in\R^2$ tel que $a<b$ et $Z$ une variable aléatoire centrée à valeurs dans $[a,b]$. Montrer : $$\forall t\in\R,\ \E(e^{tZ})\leqslant\exp\left(\frac{(b-a)^2t^2}{8}\right)$$
+		\item Soient $X_1,\ldots,X_n$ des variables aléatoires indépendantes et $a_1,\ldots,a_n,b_1,\ldots,b_n$ des réels tels $a_k\leqslant X_k\leqslant b_k$ pour tout $k$. On pose $S_n=X_1+\cdots+X_n$. Démontrer : $$\forall u>0,\ \P(\lvert S_n-\E(S_n)\rvert\geqslant u)\leqslant 2\exp\left(-\frac{2u}{\sum_{i=1}^{n}(b_i-a_i)^2}\right)$$
+	\end{enumerate}
+\end{ex}
+\subsection{Loi forte des grands nombres}
+On dit qu'une suite $(X_n)$ de variables aléatoires converge presque sûrement vers une variable aléatoire $X$ lorsque $$\P\left(\left\{\omega\ \mid\ X_n(\omega)\xrightarrow[n\to+\infty]{}X(\omega)\right\}\right)=1$$On se propose de montrer que si une suite de variables aléatoires i.i.d admet un moment d'ordre $4$, alors $\displaystyle\frac{S_n}{n}$ converge presque sûrement vers $\E(X_1)$, où $S_n=X_1+\cdots+X_n$. Quitte à soustraire $\E(X_1)$, on supposera $\E(X_1)=0$.
+\begin{enumerate}
+	\item Prouver le lemme suivant : une suite $(X_n)$ converge presque sûrement vers $X$ si, et seulement si $$\forall\varepsilon>0,\ \P\left(\limsup \{\lvert X_n-X\rvert>\varepsilon\}\right)=0$$
+	\item Calculer $S_n^4$ et démontrer à l'aide de l'inégalité de Markov que $\displaystyle\sum\P\left(\frac{S_n}{n}>\varepsilon\right)$ converge.
+	\item En utilisant le lemme de Borel-Cantelli, démontrer que$$\forall\varepsilon>0,\ \P\left(\limsup \{\lvert X_n-X\rvert>\varepsilon\}\right)=0$$
+	\item Conclure que $\displaystyle\frac{S_n}{n}$ converge presque sûrement vers $0$. 
+\end{enumerate}
+\subsection{Files d'attente et fonction caractéristique}
+On considère la file d'attente à une caisse de supermarché. il y a un serveur et un nombre de places infini. Les clients sont servis selon le principe "premier arrivé, premier servi". On appelle système l'ensemble des clients en attente et du client en service. On considère la suite $(A_n)_{n\in\N\st}$ de variables aléatoires à valeurs dans $\N$ où $A_n$ représente le nombre de clients arrivés pendant le service du client $n$. On définit la suite de variables aléatoires $(X_n)_{n\in\N\st}$ de la manière suivante : $$X_0=0\ \ \text{et} \ \ \forall n\in\N,\ X_{n+1}=\begin{cases}
+	A_{n+1}\ \text{si }X_n=0\\
+	X_{n}-1+A_{n+1}\ \text{si }X_n>0
+\end{cases}$$ On suppose que les variables aléatoires $A_n$ sont indépendantes et de même loi, égale à celle d'une variable aléatoire $A$ vérifiant les hypothèses suivantes : 
+\begin{itemize}
+	\item $A$ est à valeurs entières ;
+	\item $\P(A\geqslant n)>0$ pour tout entier $n$ ;
+	\item $A$ est d'espérance finie, notée $\rho$.
+\end{itemize}
+
+\begin{ex}{Fonctions caractéristique : définition et premières propriétés}
+	Ici, $X$ représente une variable aléatoire à valeurs dans $\N$. On définit sa fonction caractéristique $\phi_X$ sur $\R$ par $$\forall t\in\R,\ \phi_X(t)=\E(e^{itX})$$
+	\begin{enumerate}
+		\item Montrer que $\phi_X$ est continue sur $\R$ et périodique.
+		\item Soit $X$ et $Y$ deux variables aléatoires à valeurs dans $\N$ telles que $\phi_X=\phi_Y$. Montrer que $X$ et $Y$ ont même loi.
+		\item Si $\E(X)<+\infty$, montrer que $\phi_X$ est dérivable sur $\R$ et calculer $\phi_X'(0)$.
+		\item Calculer la fonction caractéristique d'une variable aléatoire $Z=Y-1$ où $Y$ suit une loi géométrique de paramètre $p$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item On note $f_n(t)=\P(X=n)e^{itn}$. On a convergence normale de la série des $f_n$ sur $\R$ donc $\phi_X$ est continue sur $\R$. La périodicité est immédiate par périodicité des $e^{itn}$.
+		\item On a : $$\P(X=n)=\frac{1}{2\pi}\int_{0}^{2\pi}e^{-itn}\phi_X(t)$$ car $X$ est à valeurs entières donc $\phi_X$ suffit à définir entièrement $X$.
+		\item L'hypothèse se traduit par la convergence de $\sum\P(X=n)n$ donc on a convergence normale de la série des $f_n'$ d'où la dérivabilité. On a en particulier : $$\phi_X'(0)=i\E(X)$$
+		\item 
+	\end{enumerate}
+\end{proof}
+\begin{ex}{Remarques préliminaires}
+	\begin{enumerate}
+		\item Que représente $X_n$ ?
+		\item Existe-t-il $M>0$ tel que $\P(X_n\leqslant M)=1$ pour tout $n\geqslant 0$ ?
+		\item Montrer que pour tout $n\geqslant 1$, $X_{n+1}-X_n\geqslant -1$.
+		\item Pour tout $n\geqslant 0$, montrer que les variables aléatoires $X_n$ et $A_{n+1}$ sont indépendantes.
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Convergence}
+	\begin{enumerate}
+		\item Établir l'identité suivante lorsque $X$ est une variable aléatoire à valeurs entières : $$\E(e^{itX}\mathbf{1}_{X>0})=\phi_X(t)-\P(X=0)$$
+		\item Pour tout entier $n\in\N$, établir la relation suivante : $$\phi_{X_{n+1}}(t)=\phi_A(t)\left(e^{-it}\phi_{X_n}(t)+(1-e^{-it})\P(X_n=0)\right)$$ On suppose dorénavant que $0<\rho<1$. On admet qu'alors, la suite $(\P(X_n=0))_{n\in\N\st}$ converge vers une limite $\alpha$. On suppose que $A$ n'est pas arithmétique, c'est-à-dire que $\lvert\phi_A\rvert<1$ pour $t\notin2\pi\Z$. On définit alors $\theta:[-\pi,\pi]\to\C$ par $\theta(0)=1$ et $$\forall t\in[-\pi,\pi]\setminus\{0\},\ \theta(t)=\alpha\frac{\phi_A(t)(1-e^{-it})}{1-\phi_A(t)e^{-it}}$$
+		\item Établir le développement limité à l'ordre $1$ de $\phi_A$ au voisinage de $0$.
+		\item Que doit valoir $\alpha$ (en fonction de $\rho$) pour que $\theta$ soit continue en $0$ ?
+		\item On fixe $\varepsilon>0$. Pour tout $t\in[-\pi,\pi]\setminus\{0\}$, identifier $\beta_t\in]0,1[$ tel que pour tout entier $n$ suffisamment grand, on ait l'identité suivante : $$\lvert\phi_{X_{n+1}}(t)-\theta(t)\rvert\leqslant\beta_t\lvert\phi_{X_n}(t)-\theta(t)\rvert+\varepsilon$$
+		\item Montrer que la suite de fonctions de fonctions $(\phi_{X_n})_{n\in\N\st}$ converge simplement
+	\end{enumerate}
+\end{ex}
+\begin{ex}{Application}
+	On admet que $\theta$ est la fonction caractéristique d'une variable aléatoire $Y$ à valeurs entières : $$\forall t\in[-\pi,\pi],\ \theta(t)=\E(e^{itY})$$ De plus, on suppose que $\displaystyle\phi_A(t)=\frac{1}{1+\rho-\rho e^{it}}$.
+	\begin{enumerate}
+		\item Identifier la loi de $A$.
+		\item Montrer que $\phi_A$ satisfait les hypothèses requises.
+		\item Calculer $\theta$ et identifier la loi de $Y$.
+	\end{enumerate}
+\end{ex}
+
+\end{document}

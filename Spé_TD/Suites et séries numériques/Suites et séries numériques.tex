@@ -65,7 +65,11 @@
 
 \section{Suites}
 
-\begin{ex}{Valeurs d'adhérences et suite qui tend vers l'infini en ralentissant}
+\begin{ex}[Moulin.01]{}
+	Soit $(u_n)_{n\in\N}$ une suite de réels positifs vérifiant $2u_n+u_{2n}\xrightarrow[n\to+\infty]{}1$. Montrer que $(u_n)_{n\in\N}$ converge. Et si l'on supprime l'hypothèse de positivité ?
+\end{ex}
+
+\begin{ex}[Moulin.02]{$\Delta$}
 	Soit $(u_n)$ une suite de réels tendant vers $+\infty$ telle que $$\lim_{n\to+\infty}(u_{n+1}-u_n)=0$$ Montrer que l'ensemble des valeurs d'adhérence de la suite $(u_n-\lfloor u_n\rfloor)_{n\in\N}$ est le segment $[0,1]$. En déduire l'ensemble des valeurs d'adhérence de la suite $\left(\exp(2i\pi u_n)\right)_{n\in\N}$.
 \end{ex}
 
@@ -76,6 +80,10 @@
 \begin{app}
 	Cela montre par exemple que $\cos(\ln(n))$ n'admet pas de limite en $+\infty$, ce qui peut servir dans des déterminations de natures de séries.
 \end{app}
+
+\begin{ex}[Moulin.03]{}
+	Soit $(a_n)_{n\in\N\st}$ une suite de réels positifs. On définit la suite $(u_n)_{n\in\N\st}$ par : $$\forall n\in\N\st,\ u_n=\displaystyle\sqrt{a_1+\sqrt{a_2+\cdots+\sqrt{a_{n-1}+\sqrt{a_n}}}}$$ Montrer que la suite $(u_n)_{n\in\N}$ converge si, et seulement si, l'on a : $$\exists k\in\R_+,\ \forall n\in\N\st,\ a_n\leqslant k^{2^n}$$ On commencera par étudier le cas où $(a_n)_{n\in\N\st}$ est constante.
+\end{ex}
 
 \begin{ex}{Suites de Cauchy}
 	Montrer qu'une suite réelle converge si, et seulement si, elle est de Cauchy.
@@ -91,8 +99,15 @@
 \begin{proof}
 	Cette limite vaut $$\int_{0}^{1}x\sin(x)\ dx$$ En effet, il suffit de se ramener à $$T_n=\frac{1}{n}\sum_{k=0}^{n}\frac{k}{n}\sin\left(\frac{k}{n}\right)$$ et d'utiliser le théorème sur les sommes de Riemann. Pour prouver qu'on peut s'y ramener légitimement, majorer l'erreur commise en remplaçant $\displaystyle\sin\left(\frac{k}{n^2}\right)$ par $\displaystyle\frac{k}{n^2}$.
 \end{proof}
-\begin{ex}{$\Delta\star$ Lemme de Fekete} Soit $(u_n)_{n\in\N\st}$ sous-additive, \textit{ie} telle que $\forall(p,q)\in\N^2,\ u_{p+q}\leqslant u_p+u_q$. Alors on a : $$\frac{u_n}{n}\xrightarrow[n\to+\infty]{}l \ \ \text{où} \ \ l=\inf_{n\in\N\st}\frac{u_n}{n}\in\R\cup\{-\infty\}$$
-\end{ex} \begin{proof}
+
+\begin{ex}[Morlot]{$\star$}
+	Soit $\varphi:\N\st\to\N\st$ une bijection telle que la suite $\displaystyle\left(\frac{\varphi(n)}{n}\right)_{n\in\N\st}$ soit convergente. Montrer que la limite de cette suite vaut $1$.
+\end{ex}
+
+\begin{ex}[Moulin.04]{$\Delta\star$ Lemme de Fekete}
+	Soit $(u_n)_{n\in\N\st}$ sous-additive, \textit{ie} telle que $\forall(p,q)\in\N^2,\ u_{p+q}\leqslant u_p+u_q$. Alors on a : $$\frac{u_n}{n}\xrightarrow[n\to+\infty]{}l \ \ \text{où} \ \ l=\inf_{n\in\N\st}\frac{u_n}{n}\in\R\cup\{-\infty\}$$
+\end{ex}
+\begin{proof}
 	On traite séparément plusieurs cas :
 	\begin{itemize}
 		\item si $l=0$, on passe par les $\varepsilon$ en prenant $n_0$ tel que $u_{n_0}/n_0$ soit $\varepsilon$ proche de $l$. On effectue alors une division euclidienne de $n$ par $n_0$ et on majore par sous-additivité et une inégalité de partie entière.
@@ -103,6 +118,7 @@
 \begin{app}
 	Sert pas mal dans des exercices assez complexes de probabilités où on demande une limite de $\P(X=n)^{1/n}$ par exemple : en effet, si on peut passer au $\ln$, il y a des chances que la nouvelle suite soit sous-additive.
 \end{app}
+
 \begin{ex}{$\Delta\star$ Formule d'inversion de Pascal}
 	Soit $(u_n)_{n\in\N}$ et $(v_n)_{n\in\N}$ deux suites. Montrer la formule d'inversion de Pascal : $$\forall p\in\N,\ u_p=\sum_{k=0}^{p}\binom{p}{k}v_k \iff \forall p\in\N,\ v_p=(-1)^p\sum_{k=0}^{p}(-1)^k\binom{p}{k}u_k$$
 \end{ex}
@@ -115,10 +131,56 @@
 		\item avec des polynômes, ce qui ressemble à un mélange des deux premiers points.
 	\end{itemize}
 \end{proof}
+
+\begin{ex}[Morlot]{$\star\star$}
+	On se donne $(u_n)_{n\in\N}$ une suite réelle telle que $$\begin{cases}
+		u_{n}\xrightarrow[n\to+\infty]{}+\infty\\
+		u_{n+1}-u_{n}\xrightarrow[n\to+\infty]{}0
+	\end{cases}$$ Montrer que l'on peut trouver une extraction $\varphi:\N\to\N$ strictement croissante telle que $$u_{\varphi(n)}-n\xrightarrow[n\to+\infty]{}0$$
+\end{ex}
+
+\begin{ex}[Morlot]{$\star\star$}
+	Soit $(r_n)_{n\in\N\st}\in\{0,1\}^{\N\st}$. Montrer qu'il existe $\alpha>0$ tel que $$\forall n\in\N\st,\ \lfloor\alpha^n\rfloor\ \equiv\ r_n\ [2]$$
+\end{ex}
+
 \section{Comparaison et convergence}
 
-\begin{ex}{Nature d'une série en fonction d'un paramètre réel}
-	Nature de la série de terme général $\displaystyle\exp\left(\cosh\left(\frac{1}{\sqrt{n}}\right)\right)-a\sqrt{\frac{n-1}{n+1}}$
+\begin{ex}[Moulin.05]{$\circ$}
+	Soit $(x,y)\in\R^2$. Déterminer les limites éventuelles des suites (lorsque cela a un sens) : $$u_n=\left(1+\frac{x}{n}\right)^{xy}\ \ \text{et}\ \ v_n=(1+nx)^{y/n}$$
+\end{ex}
+
+\begin{ex}[Moulin.06]{$\circ$}
+	Que penser de l'équivalence : $$\sum a_n\ \text{converge}\iff a_n=o\left(\frac{1}{n}\right)\ ?$$ Et pour des séries à terme général positif ?
+\end{ex}
+
+\begin{ex}[Moulin.07]{}
+	Étudier les séries de terme général :
+	\begin{enumerate}
+		\item $\sqrt{n^2+n+1}-\sqrt{n^2-n+1}$ ;
+		\item $1-\displaystyle n\ln\left(\frac{2n+1}{2n-1}\right)$ ;
+		\item $\displaystyle\left(\frac{n^2-5n+1}{n^2-4n+2}\right)^{n^2}$ ;
+		\item $\displaystyle n^{(-1)^n/\sqrt{n}}-1$ ;
+		\item $\displaystyle\frac{n^{\ln n}}{(\ln(n))^n}$ ;
+		\item $\displaystyle\left(\frac{\arctan n}{\arctan(n+1)}\right)^{n^\alpha}$ ;
+		\item $\displaystyle\left(\frac{\ln n}{\ln(n+1)}\right)^{n^2}$ ;
+		\item $\displaystyle\arccos\left(\frac{n^\alpha}{1+n^\alpha}\right)$ ;
+		\item $\displaystyle\ln\left(\cos\frac{1}{n}\right)\ln\left(\sin\frac{1}{n}\right)$ ;
+		\item $\displaystyle\frac{a^n+(\ln n)^{\sqrt{n}}}{b^n+(\sqrt{n})^{\ln n}}$ ;
+		\item $\displaystyle\left(1+\frac{1}{\sqrt{n}}\right)^{-n\sqrt{n}}$ ;
+		\item $\displaystyle\left(\sqrt{n+1}-\sqrt{n}\right)^{\sqrt{n}}$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.08]{}
+	Étudier les séries de termes généraux : $$\frac{1!+2!+\cdots+n!}{(n+p)!}\ (p\in\N)\ \ \text{et}\ \ n^{-\alpha}\left((n+1)^{\frac{n+1}{n}}-(n-1)^{\frac{n-1}{n}}\right)\ (\alpha\in\R)$$
+\end{ex}
+
+\begin{ex}[Moulin.09]{}
+	Soit $a$ et $\alpha$ dans $\R_+\st$. Nature de la série de terme général $u_n=\displaystyle a^{\sum_{k=1}^{n}\frac{1}{k^\alpha}}$ ?
+\end{ex}
+
+\begin{ex}[Moulin.10]{}
+	Nature de la série de terme général $\displaystyle\exp\left(\cosh\left(\frac{1}{\sqrt{n}}\right)\right)-a\sqrt{\frac{n-1}{n+1}}$ ?
 \end{ex}
 \begin{proof}
 	Si $a\ne e$, on a divergence grossière. Dans le cas où $a=e$, un DL donne un équivalent en $$\frac{3e}{2n}$$ donc la série diverge par comparaison avec la série harmonique.
@@ -126,14 +188,43 @@
 
 \section{Séries à termes généraux positifs}
 
-\begin{ex}{Suites réelles décroissantes sommables} Soit $(a_n)_{n\in\N}$ une suite réelle décroissante dont la série de terme général converge. Alors : $$a_n=o\left(\frac{1}{n}\right)$$
+\begin{ex}[Moulin.11]{}
+	Étudier, selon la valeur du réel $a$; la nature de la série $\displaystyle\sum\frac{(2n)!}{n!n^na^n}$.
+\end{ex}
+\begin{proof}
+	Déterminer un équivalent du terme général à l'aide de la formule de Stirling puis discuter en fonction de $a$.
+\end{proof}
+
+\begin{ex}[Moulin.12]{}
+	Soit $\sum a_n$ une série convergente à termes strictement positifs. Étudier les séries :
+	$$\sum a_n^2\ \ \ \sum_{n\geqslant 1}\frac{\sqrt{a_n}}{n}\ \ \ \sum\frac{a_n}{1+a_n}\ \ \ \sum a_n\ln a_n$$
+\end{ex}
+
+\begin{ex}[Moulin.13]{}
+	Soit $\sum a_n$ une série divergente à termes strictement positifs. Étudier les séries :
+	$$\sum a_n^2\ \ \ \sum\frac{a_n}{1+a_n}\ \ \ \sum\frac{a_n}{1+n^2a_n}\ \ \ \sum \frac{a_n}{1+na_n}\ \ \ \sum\frac{a_n}{\ln a_n}$$
+\end{ex}
+
+\begin{ex}[Moulin.14]{$\Delta$} Soit $(a_n)_{n\in\N}$ une suite réelle décroissante dont la série de terme général converge. Montrer : $$a_n=o\left(\frac{1}{n}\right)$$ Peut-on aussi montrer que $a_n=\displaystyle o\left(\frac{1}{n\ln n}\right)$ ?
 \end{ex}
 
 \begin{proof}
 	En effet, on travaille sur une tranche de Cauchy de taille $n$ et on utilise la décroissance de la suite. Cela donne le résultat pour $(2nu_{2n})$. On l'obtient alors facilement en majorant pour $((2n+1)u_{2n+1})$, et cela permet de conclure.
 \end{proof}
 
-\begin{ex}{$\Delta$ Condensation}
+\begin{ex}[Moulin.15]{}
+	Soit $p_n$ le nombre de chiffres dans l'écriture décimale de l'entier non nul $n$. Étudier les séries : $$ \sum\frac{1}{n^\alpha p_n^\beta}\ \ \ \star\ \sum p_n^{-p_n}\ \ \ \star\ \sum\left(10-n^{1/p_n}\right)$$
+\end{ex}
+
+\begin{ex}[Moulin.16]{}
+	Soit $x\in\R$. Étudier la convergence absolue de $\displaystyle\sum_{n\geqslant 1}\frac{\cos(nx)}{n}$ et $\displaystyle\sum_{n\geqslant 1}\frac{\sin(nx)}{n}$. On pourra regrouper par tranches.
+\end{ex}
+
+\begin{ex}[Moulin.17]{}
+	Soit $\varphi$ la fonction indicatrice de l'ensemble des entiers naturels non nuls ne comportant aucun $9$ dans leur écriture décimale. Discuter, selon la valeur de $\alpha\in\R$, de la convergence de la série $$\sum_{n\geqslant 1}\frac{\varphi(n)}{n^\alpha}$$
+\end{ex}
+
+\begin{ex}[Moulin.18]{$\Delta$ Condensation}
 	\begin{enumerate}
 		\item Soit $(u_n)$ une suite décroissante de réels positifs. Montrer que la série $\sum u_n$ converge si, et seulement si, la série $\sum 2^nu_{2^n}$ converge.
 		\item Retrouver la nature de :
@@ -151,7 +242,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}{Mieux que Stirling !}
+\begin{ex}[Moulin.19]{}
 	On fixe un réel positif $x$. Donner un équivalent de $$P_n=\prod_{k=1}^{n}(x+k^2)$$ (on ne déterminera pas la constante multiplicative).
 \end{ex}
 
@@ -159,7 +250,11 @@
 	Diviser $P_n$ par $(n!)^2$ puis passer au $\ln$ et le terme général de la série obtenu est équivalent à un $\displaystyle\frac{x}{k^2}$ donc la série converge. L'équivalent est donc $$e^{C}(n!)^2$$ où $C$ est la somme de la série convergente des $\ln\left(1+\frac{x}{k^2}\right)$.
 \end{proof}
 
-\begin{ex}{Puissances de inverses des nombres premiers}
+\begin{ex}[Moulin.20]{}
+	Soit $(a_n)_{n\geqslant 1}$ une suite réelle. On suppose que la série de terme général $a_n^2$ converge. On pose, pour $n\in\N\st$ : $$u_n=\frac{1}{\sqrt{n}}\sum_{k=1}^{n}a_k$$ Étudier la suite $(u_n)_{n\in\N\st}$.
+\end{ex}
+
+\begin{ex}[]{$\star$}
 	On note $\mathcal{P}$ l'ensemble des nombres premiers. Donner une condition nécessaire et suffisante sur $\alpha\in\R_+\st$ pour que $$\sum_{p\in\mathcal{P}}\frac{1}{p^\alpha}$$ soit une série convergente.
 \end{ex}
 
@@ -167,7 +262,7 @@
 	La CNS est $\alpha >1$. Pour montrer que cela est suffisant, majorer par une série de Riemann convergente. Ensuite, si $\alpha=1$, utiliser le fait que $$\frac{1}{p}\sim -\ln\left(1-\frac{1}{p}\right)$$ De la sorte, développer le produit $$\prod_{p\leqslant m}\frac{1}{1-\frac{1}{p}}$$ pour le minorer par la série harmonique et conclure à une divergence en prenant le $\ln$. Lorsque $\alpha<1$, utiliser le fait que $$\frac{1}{p^\alpha}\geqslant\frac{1}{p}$$
 \end{proof}
 
-\begin{ex}{Injection de $\N\st$ dans $\N\st$}
+\begin{ex}[Morlot]{$\star$}
 	Soit $f:\N\st\to\N\st$ une fonction injective. Déterminer la nature de la série $$\sum_{n\geqslant 1}\frac{f(n)}{n^2}$$
 \end{ex}
 
@@ -176,12 +271,14 @@
 \end{proof}
 
 \section{Séries à termes généraux quelconques}
+
 \begin{ex}{Produit de Cauchy et Cesàro}
 	Soit $(a_n)_{n \in\N}$ et $(b_n)_{n \in\N}$ deux suites complexes et soit $(a,b) \ \C^2$ tels que $a_n \underset{n \longrightarrow + \infty}{\longrightarrow} a $ et $b_n \underset{n \longrightarrow + \infty}{\longrightarrow} b $. On pose $$\forall n \in \N, \ u_n = \frac{1}{n+1}\sum_{k=0}^{n}a_k b_{n-k} $$ Montrer que $u_n \xrightarrow[n\to+\infty]{} ab$
 \end{ex}
 \begin{proof}
 	Adapter la preuve de Cesàro vue en cours (oui, les $\varepsilon$ sont de sortie...). Cette fois, il faut couper aux deux extrémités de la somme, on ne pourra contrôler que le milieu.
 \end{proof}
+
 \begin{ex}{Cesàro binomial}
 	Soit $(a_n)_{n \in\N}$ une suite complexe convergente complexe de limite $l$. Montrer que $$\frac{1}{2^n}\sum_{k=0}^{n}\binom{n}{k}a_k \xrightarrow[n\to+\infty]{}l $$ On pourra commencer par le cas où $l=0$.
 \end{ex}
@@ -197,37 +294,88 @@
 	\end{align*}
 	On a bien le résultat souhaité. \\ \\ Désormais, ne nous restreignons plus au cas $l=0$. Il suffit alors d'appliquer le résultat qui précède à la suite $(a_n-l)_{n \in \N}$ qui tend bien vers 0. Une simple somme de limites permet alors de conclure.
 \end{proof}
-\begin{ex}{$\star$ Une hypothèse logarithmique}
+
+\begin{ex}[Moulin.21]{$\circ$}
+	Étudier la convergence de la série $\displaystyle\sum\frac{(-1)^n}{\left(n-(-1)^n\right)^2}$.
+\end{ex}
+
+\begin{ex}[Moulin.22]{$\circ$}
+	Soit $(u_n)$ une suite positive et $(v_n)$ une suite complexe équivalente à $(u_n)$. A-t-on l'équivalence : $\displaystyle\sum u_n$ converge si, et seulement si, $\displaystyle\sum v_n$ converge ?
+\end{ex}
+
+\begin{ex}[Moulin.23]{$\star$}
+	Étudier la convergence des séries suivantes :
+	$$\sum\frac{(-1)^n}{n+\cos n}\ \ \text{et}\ \ \sum\frac{(-1)^n}{n^\alpha+(-1)^nn^\beta}$$
+\end{ex}
+
+\begin{ex}[Moulin.24]{$\star$}
+	Soit $(a_n)$ une suite de réels non nuls convergeant vers $0$. On suppose qu'il existe $k\in]0,1[$ tel que : $$\forall n\in\N,\ -1\leqslant\frac{a_{n+1}}{a_n}\leqslant k$$ Montrer que $\sum a_n$ converge.
+\end{ex}
+
+\begin{ex}[Moulin.25]{}
+	Soit $(u_n)$ une suite réelle décroissante de limite nulle.
+	\begin{enumerate}
+		\item Montrer que pour tout $p\in\N\st$, la série $\displaystyle\sum_n(-1)^n\left(\sum_{k=0}^{p-1}u_{np+k}\right)$ converge. On note $S_p$ sa somme.
+		\item $\star$ Étudier la limite éventuelle de $S_p$ quand $p$ tend vers $+\infty$. on pourra distinguer selon que $\sum u_n$ converge ou non.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.26]{$\Delta$}
+	Soit $f:\R_+\to\R_+$ continue, décroissante, convexe et de limite nulle en $+\infty$.
+	\begin{enumerate}
+		\item Montrer que pour tout $h>0$, la série $\displaystyle\sum (-1)^nf(nh)$ converge.
+		\item Montrer : $$\sum_{n=0}^{+\infty}(-1)^nf(nh)\xrightarrow[h\to 0^+]{}\frac{f(0)}{2}$$
+		\item Déterminer al limite de $\displaystyle\sum_{n=0}^{+\infty}(-1)^nf(nh)$ quand $h$ tend vers $+\infty$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.27]{$\star$}
 	Soit $f\in\mathcal{C}^1(\R,\R)$. On suppose que $f'/f$ est définie au voisinage de $+\infty$ et tend vers une limite non nulle $\lambda$. Déterminer la nature de la série $\sum f(n)$.
 \end{ex}
 \begin{proof}
 	Immédiatement penser à une dérivée de $\ln\circ \lvert f\rvert$. Utiliser une intégrale pour obtenir le comportement de $\ln\circ\lvert f\rvert$ et remonter à la série de terme général $f(n)$.
 \end{proof}
-\begin{ex}{Une nature de série}
+
+\begin{ex}[Moulin.28]{}
 	Nature de la série de terme général $u_n=\sin(\pi\sqrt{n^2+5n+3})$
 \end{ex}
 \begin{proof}
 	Faire un développement asymptotique du terme général.
 \end{proof}
-\begin{ex}{Une deuxième nature de série}
-	Nature de la série de terme général $u_n\displaystyle(-1)^n\frac{\cos(\sqrt{n})}{n}$
+
+\begin{ex}[Moulin.29]{}
+	Nature de la série de terme général $u_n=\displaystyle(-1)^n\frac{\cos(\sqrt{n})}{n}$
 \end{ex}
 \begin{proof}
 	Poser $\displaystyle v_n=(-1)^n\frac{e^{i\sqrt{n}}}{n}$. Montrer que la série de terme général $v_{2n}+v_{2n+1}$ converge en faisant un développement asymptotique. Cela donne le fait que les sommes partielles impaires convergent. Mais comme le terme général tend vers $0$, les sommes partielles paires convergent vers la même limite donc OK.
 \end{proof}
-\begin{ex}{Une troisième nature de série}
+
+\begin{ex}[Moulin.30]{}
+	Étudier la convergence de la série de terme général $u_n$ où $$u_n=\sum_{k=1}^{n}\frac{(-1)^{n+k}}{nk}$$
+\end{ex}
+
+\begin{ex}[Moulin.31]{}
+	Soient $(a_n)_{n\geqslant 1}$ et $(b_n)_{n\geqslant 1}$ deux suites réelles. On suppose que la série de terme général $a_n$ est convergente, que $(b_n)$ croît strictement vers $+\infty$ et que $b_1>0$. Étudier la convergence de la suite de terme général : $$u_n=\frac{1}{b_n}\sum_{k=1}^{n}a_kb_k$$
+\end{ex}
+
+\begin{ex}[Moulin.32]{}
+	Convergence et calcul de la somme de la série $\displaystyle\sum_{n\geqslant 1}\frac{\cos(2n\pi/3)}{n}$.
+\end{ex}
+
+\begin{ex}[Moulin.33]{}
 	Nature de la série de terme général $u_n=\displaystyle \frac{(-1)^{\lfloor\ln(n)\rfloor}}{n}$
 \end{ex}
 \begin{proof}
 	Regrouper par paquets pour se débarrasser de la partie entière.
 \end{proof}
-\begin{ex}{Une quatrième nature de série}
+\begin{ex}{}
 	Nature des séries de termes général $\sin(\pi e n!)/n$ et $\sin(\pi en!)$.
 \end{ex}
 \begin{proof}
 	Les deux sont convergentes. Utiliser la stratégie habituelle en écrivant $e$ comme la somme de la série des inverses des factorielles pour obtenir le terme général comme un $(-1)^{A_n}\sin(C_n)$. Dans le premier cas, le critère de Riemann suffit à conclure, mais dans le deuxième cas, il faut travailler un peu plus pour se ramener au critère des séries alternées.
 \end{proof}
-\begin{ex}{$\Delta\star$ Utilisation des stratégies intégrales}
+
+\begin{ex}[Moulin.34]{$\Delta\star$}
 	Nature des séries de terme général :
 	$$u_n=\frac{\cos(n\pi/3)}{\sqrt{n}}\ \ ; \ \ v_n=\frac{\cos(\ln(n))}{n}\ \ \text{et} \ \ \frac{\sin(\sqrt{n})}{n}$$
 \end{ex}
@@ -238,20 +386,23 @@
 		\item Enfin, soit on reconnaît la partie imaginaire de l'exemple du cours (qui se fait avec une IPP), soit on fait l'IPP soi-même et on considère la suite annexe de terme général $\displaystyle\frac{\cos(\sqrt{n})}{\sqrt{n}}$ dont on fait un DA de la série télescopique associée. On trouve finalement une convergence.
 	\end{itemize}
 \end{proof}
-\begin{ex}{$\Delta\star$ Utilisation de développements asymptotiques}
+
+\begin{ex}[Moulin.35]{$\Delta\star$}
 	Nature des séries de terme général : 
 	$$u_n=\frac{\sin(n)}{n+(-1)^n}\ \ \text{et} \ \ v_n=\sin\left(\frac{\sin(n)}{\sqrt[3]{n}}\right)$$
 \end{ex}
 \begin{proof}
 	Pour la première, faire un développement asymptotique puis utiliser la stratégie de l'IPP. On trouve une convergence. Pour la deuxième, faire un développement asymptotique puis faire une stratégie de l'IPP, linéariser $\sin^3$ puis refaire une stratégie de l'IPP. On trouve une convergence.
 \end{proof}
-\begin{ex}{$\star$ Une dernière fois des intégrales}
+
+\begin{ex}[Moulin.36]{$\star$}
 	Nature de la série de terme général $$u_n=\frac{e^{i\sqrt{n}}}{\sqrt{n}}$$
 \end{ex}
 \begin{proof}
 	Utiliser une primitive pour trouver la suite annexe $v_n=e^{i\sqrt{n}}$. Faire un développement asymptotique de $v_{n+1}-v_n$ pour tomber sur $u_n$, $e^{i\sqrt{n}}/n$ et un grand O de $n^{-3/2}$. Comme dans le cours, la série de terme général $e^{i\sqrt{n}}/n$, en faisant une intégration par parties pour obtenir la bonne suite annexe, converge. Or, $(v_n)$ n'admet pas de limite (classique car la racine tend vers l'infini mais la différence de deux termes consécutifs tend vers 0). Par conséquent, comme la série des $u_n$ possède la même nature que celle des $v_{n+1}-v_n$, la série de terme général $u_n$ diverge.
 \end{proof}
-\begin{ex}{$\star\star$ Une caractérisation des fonctions localement linéaires}
+
+\begin{ex}[Moulin.37 / Ulm]{$\star\star$}
 	Soit $f:\R\to\R$. On suppose que pour tout série réelle convergente $\sum u_n$, la série $\sum f(u_n)$ converge.
 	\begin{enumerate}
 		\item Montrer que $f(0)=0$ et que $f$ est continue en $0$.
@@ -265,10 +416,15 @@
 		\item $\sum 0$ converge donc $\sum f(0)$ aussi donc $f(0)=0$. Ensuite, on raisonne par l'absurde en construisant une suite $(x_n)$ qui est un grand O de $2^{-n}$ telle qu'il existe $\varepsilon>0$ pour lequel $\forall n\in\N,\ \lvert f(x_n)\rvert\geqslant\varepsilon$. On obtient alors la continuité en $0$.
 		\item On raisonne par l'absurde en prenant à chaque fois $x_n\in\displaystyle\left[-\frac{1}{2^n},\frac{1}{2^n}\right]$ tel que $f(-x_n)\ne f(x_n)$. Puis on construit une suite avec $n_0$ fois $x_0$ puis $n_0$ fois $-x_0$, etc. où $n_k\lvert f(-x_k)+f(x_k)\rvert\geqslant1$. Une série de terme général cette suite converge, mais la série des images diverge par construction.
 		\item On construit la suite comme suggéré par l'énoncé, avec comme précédemment des valeurs plus petites que $2^{-n}$ en valeur absolue. On prend alors $n_0$ fois $x_0+y_0$, puis $n_0$ fois $-x_0$ puis $n_0$ fois $-y_0$, etc. avec les $n_k$ comme précédemment. On conclut de même à une absurdité.
-		\item C'est un exercice classique mais il faut ici faire attention au domaine de validité des résultats précédents. Cela ne change pas la méthode à appliquer et le résultat.
+		\item C'est un exercice classique mais il faut ici faire attention au domaine de validité des résultats précédents. Cela ne change pas la méthode à appliquer ni le résultat.
 	\end{enumerate}
 \end{proof}
-\begin{ex}{$\star\star\star$ Théorème de Riemann}
+
+\begin{ex}[Moulin.38]{$\star$}
+	Étudier, selon la valeur de $a\in\R$, la convergence de la série de terme général $\displaystyle\frac{(\ln n)^a}{n}e^{i\ln n}$.
+\end{ex}
+
+\begin{ex}[X]{$\star\star\star$ Théorème de Riemann}
 	Soit $\sum a_n$ une série réelle semi-convergente. Montrer que pour tout $x \in \R$, il existe $\sigma$ une permutation de $\N$ telle que $$\sum_{n=0}^{+\infty} a_{\sigma(n)}=x $$
 \end{ex}
 \begin{proof}
@@ -280,27 +436,68 @@
 	Il faut alors prouver que la fonction obtenue est bien une bijection. L'injectivité est rapide, mais la surjectivité est plus embêtante (je crois qu'on peut raisonner par l'absurde). Enfin, il faut montrer que la série obtenue par réordonnement converge et est de somme $x$, ce qui se comprend bien, mais il me semble là encore qu'on peut le prouver en raisonnant par l'absurde.
 \end{proof}
 \section{Comparaison série-intégrale}
-\begin{ex}{Équivalent de $\zeta$ en $1^+$}
+
+\begin{ex}[Moulin.39]{}
 	Donner un équivalent en $1^+$ de $\displaystyle\zeta(x)=\sum_{n=1}^{+\infty}\frac{1}{n^x}$
 \end{ex}
 \begin{proof}
 	Un comparaison série-intégrale (et le dessin qui s'impose avec) fournissent rapidement : $$\zeta(x)\underset{1^+}{\sim}\frac{1}{x-1}$$
 \end{proof}
-\begin{ex}{$\Delta$ Sommes partielles et comparaison série-intégrale}
+
+\begin{ex}[Moulin.40]{$\Delta$}
 	Soit $\sum u_n$ une série divergente à terme général strictement positif. On pose $$S_n=\sum_{k=0}^{n}u_k$$ Déterminer en fonction de $\alpha\in\R$ la nature de la série $$\sum\frac{u_n}{S_n^\alpha}$$ En déduire qu'il existe une série divergente $\sum v_n$ à terme général positif telle que $v_n=o(u_n)$.
 \end{ex}
 \begin{proof}
 	Écrire $$\frac{u_n}{S_n^\alpha}=\frac{S_n-S_{n-1}}{S_n^\alpha}$$ et interpréter ceci comme une intégrale. Remarquer ensuite que $(S_n)$ est croissante et tend vers $+\infty$. Effectuer une comparaison série-intégrale avec une fonction puissance. Je crois (à vérifier, je ne suis pas sûr) que la limite de la convergence est autour de $\alpha=1$.
 \end{proof}
-\begin{ex}{$\Delta$ Restes et comparaison série-intégrale (dual du précédent)}
+
+\begin{ex}[Moulin.41]{$\Delta$ Dual du précédent}
 	Soit $\sum u_n$ une série convergente à terme général strictement positif. On pose $$R_n=\sum_{k=n}^{+\infty}u_k$$ Déterminer en fonction de $\alpha\in\R$ la nature de la série $$\sum\frac{u_n}{R_n^\alpha}$$ En déduire qu'il existe une série convergente $\sum v_n$ à terme général positif telle que $u_n=o(v_n)$.
 \end{ex}
 \begin{proof}
 	Écrire $$\frac{u_n}{S_n^\alpha}=\frac{R_n-R_{n+1}}{R_n^\alpha}$$ et interpréter ceci comme une intégrale. Remarquer ensuite que $(R_n)$ est décroissante et tend vers $0$. Effectuer une comparaison série-intégrale avec une fonction puissance. Je crois (à vérifier, je ne suis pas sûr) que la limite de la convergence est autour de $\alpha=1$.
 \end{proof}
 
+\begin{ex}[Moulin.42]{}
+	\begin{enumerate}
+		\item Pour quels réels $y$ la série $\displaystyle\sum nte^{-t^2n^2}$ converge-t-elle ? Lorsque cette série est convergente, on note $S(t)$ sa somme.
+		\item Calculer la limite de $S$ en $0^+$, puis en donner un équivalent.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.43]{}
+	Soit $f:\R_+\to\R_+\st$ continue, décroissante et intégrable.
+	\begin{enumerate}
+		\item Montrer que $\displaystyle\sum f(nh)$ converge pour tout $h\in\R_+\st$.
+		\item Déterminer un équivalent de $\displaystyle\sum_{n=0}^{+\infty}f(nh)$ quand $h$ tend vers $0^+$.
+		\item $\star$ Généraliser au cas où $f$ est n'est supposée décroissante qu'à partir d'un certain réel.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.44]{$\Delta\star$}
+	Soit $f:\R_+\to\C$ de classe $\mathcal{C}^1$ et de dérivée intégrable $\R_+$. Montrer que $\displaystyle\int_{0}^{+\infty}f$ converge si, et seulement si, $\displaystyle\sum f(n)$ converge. \\
+	Application : étudier la nature des séries $\displaystyle\sum\frac{\cos(\ln n)}{n}$ et $\displaystyle\sum\frac{\cos(\sqrt{n})}{n}$.
+\end{ex}
+
 \section{Recherche d'équivalents}
-\begin{ex}{$\star$ Développement asymptotique}
+
+\begin{ex}[Moulin.45]
+	Nature de la série de terme général $u_n=\displaystyle\frac{1}{n^\alpha}\left(\sum_{k=1}^{n}(\ln k)^{1/3}\right)$.
+\end{ex}
+
+\begin{ex}[Moulin.46]{}
+	Montrer qu'il existe $C>0$ tel que : $$\prod_{k=2}^{n}\left(1+\frac{(-1)^k}{\sqrt{k}}\right)\sim\frac{C}{\sqrt{n}}$$
+\end{ex}
+
+\begin{ex}[Moulin.47]{}
+	Déterminer un équivalent simple de : $$\sum_{k=0}^{n}\frac{1}{\sqrt{1+k^2}}\ \ \text{et}\ \ \sum_{k=n+1}^{2n}\frac{1}{\sqrt{k}}$$
+\end{ex}
+
+\begin{ex}[Moulin.48]{}
+	Déterminer un équivalent simple pour les suites : $$u_n=\sum_{k=1}^{n}k^{1/k}\ \ \ \ \star\ v_n=\sum_{k=1}^{n}k^k\ \ \ \ \star\ w_n=\sum_{k=1}^{n}\frac{2^k}{k}$$
+\end{ex}
+
+\begin{ex}[Moulin.49]{$\star$}
 	Déterminer un équivalent simple de $$u_n=\sum_{k=1}^{n}\frac{\ln(k)}{k}$$ Donner un développement asymptotique à 2 termes puis à 3 termes de $u_n$.
 \end{ex}
 \begin{proof}
@@ -311,9 +508,37 @@
 	\end{itemize}
 \end{proof}
 
+\begin{ex}[Moulin.50]{$\star$}
+	Soit $\alpha>0$. Établir l'existence et donner un équivalent simple de : $$R_n=\sum_{k=n}^{+\infty}\frac{(-1)^k}{k^\alpha}$$
+\end{ex}
+
+\begin{ex}[Moulin.51]{$\Delta$}
+	Soit $u\in\R^\N$ à valeurs strictement positives.
+	\begin{enumerate}
+		\item On suppose que $u_{n+1}\sim l u_n$ avec $l\in]0,1[$. Étudier la convergence de $\sum u_n$ et donner un équivalent de la suite de ses restes.
+		\item On suppose que $u_{n+1}\sim l u_n$ avec $l\in]1,+\infty[$. Étudier la convergence de $\sum u_n$ et donner un équivalent de la suite de ses sommes partielles.
+		\item Que peut-on dire lorsque $u_{n+1}\sim u_n$ ?
+		\item Mêmes questions avec $u_{n+1}=o(u_n)$ puis $u_n=o(u_{n+1})$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.52]{}
+	Limite et équivalent de $u_n=\displaystyle\sum_{k=1}^{n}\frac{1}{k}\left(\frac{n-1}{n}\right)^k$.
+\end{ex}
+
 \section{Suites récurrentes}
 
-\begin{ex}{Une étude de suite récurrente}
+\begin{ex}[Moulin.53]{}
+	Étudier les suites récurrentes définies par :
+	\begin{enumerate}
+		\item $\displaystyle u_{n+1}=1+u_n^2$ ;
+		\item $\displaystyle u_{n+1}=\frac{2}{1+u_n^2}$ ;
+		\item $\displaystyle u_{n+1}=\frac{1+u_n^2}{2}$ ;
+		\item $\displaystyle u_{n+1}=\frac{1-u_n}{1+u_n^2}$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.54]{}
 	Soit la suite $(u_n)$ définie par $u_0\in]0,1[$ et $u_{n+1}=u_n-u_n^2$.
 	\begin{enumerate}
 		\item Donner la limite de la suite $(u_n)$ puis un équivalent de la suite $(u_n)$.
@@ -324,11 +549,11 @@
 \begin{proof}
 	\begin{enumerate}
 		\item On vérifie la stabilité, la décroissance et tout le bazar. Le théorème de la limite monotone et l'étude des points fixes d'une fonction bien choisie donne une limite $l=0$. On applique ensuite la stratégie de l'équation différentielle et on pose la suite annexe $v_n=\displaystyle\frac{1}{u_n}$. On obtient $v_{n+1}-v_n\equiv 1$ puis on somme les relations de comparaison, on télescope tout ça, on enlève ce qui ne sert à rien puis en repassant à l'inverse on trouve $$u_n\sim\frac{1}{u_n}$$
-		\item On pose $w_n=v_n-n$ : \textbf{TOUJOURS TRAVAILLER SUR LA SUITE ANNexE QUI NOUS A PERMIS D'OBTENIR L'ÉQUIVALENT ET PAS DIRECTEMENT SUR L'ÉQUIVALENT}. On obtient $$w_{n+1}-w_n\sim\frac{1}{n}$$ On somme les relations de comparaison pour obtenir $w_n\sim\ln(n)$. Ensuite, on fait un DL et on obtient $$u_n=\frac{1}{n}-\frac{\ln(n)}{n^2}+o\left(\frac{\ln(n)}{n^2}\right)$$
+		\item On pose $w_n=v_n-n$ : \textbf{TOUJOURS TRAVAILLER SUR LA SUITE ANNEXE QUI NOUS A PERMIS D'OBTENIR L'ÉQUIVALENT ET PAS DIRECTEMENT SUR L'ÉQUIVALENT}. On obtient $$w_{n+1}-w_n\sim\frac{1}{n}$$ On somme les relations de comparaison pour obtenir $w_n\sim\ln(n)$. Ensuite, on fait un DL et on obtient $$u_n=\frac{1}{n}-\frac{\ln(n)}{n^2}+o\left(\frac{\ln(n)}{n^2}\right)$$
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}{Une deuxième étude de suite récurrente}
+\begin{ex}[Moulin.55]{$\star$}
 	La suite $(u_n)_{n\geqslant0}$ est définie par : $$u_0\in]0,2\pi[\ \ \text{et} \ \ \forall n\in\N,\ u_{n+1}=\sin\left(\frac{u_n}{2}\right)$$
 	\begin{enumerate}
 		\item Montrer que $(u_n)_{n\geqslant0}$ converge vers $0$.
@@ -345,15 +570,15 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}{$\Delta$ Une troisième étude de suite récurrente : un grand classique}
-	Déterminer la limite et donner un équivalent des suites vérifiant la relation : $$u_{0}\in]0,\pi[ \ \ \text{et} \ \ \forall n\in\N,\ u_{n+1}=\sin(u_n)$$
+\begin{ex}[Moulin.56]{$\Delta$}
+	Déterminer la limite et donner un équivalent des suites vérifiant : $$u_{0}\in]0,\pi[ \ \ \text{et} \ \ \forall n\in\N,\ u_{n+1}=\sin(u_n)$$
 \end{ex}
 
 \begin{proof}
 	On trouve une limite nulle avec la méthode habituelle. La suite annexe à poser est $$v_n=\frac{1}{u_n^2}$$ La différence $v_{n+1}-v_n$ tend vers $1/3$. En sommant les relations de comparaison, on trouve finalement $$u_n\sim\sqrt{\frac{3}{n}}$$
 \end{proof}
 
-\begin{ex}{$\star$ Une quatrième étude de suite récurrente}
+\begin{ex}[Moulin.57]{$\star$}
 	On considère la suite $u$ définie par $u_0=1$ et $\forall n\in\N, u_{n+1}=u_n^2+1$. Étudier la limite de $u$. Montrer qu'il existe un réel $a>0$ tel que $$u_n\sim a^{2^n}$$
 \end{ex}
 
@@ -361,7 +586,7 @@
 	On remarque par récurrence que $u_n\geqslant 2^n$ donne $u$ tend vers l'infini (l'étude habituelle marche aussi). On pose ensuite $$v_n=\frac{\ln(u_n)}{2^n}$$ et on prie pour que tout se passe bien. Les calculs donnent $$v_{n+1}-v_n\sim\frac{1}{2^{n+1}u_n^2}$$ donc $(v_n)$ admet une limite $K$. En sommant les relations de comparaison, on trouve $$v_n=K+o\left(\frac{1}{2^n}\right)$$ On multiplie par $2^n$ et la différence des deux termes tendant vers $0$, on peut passer l'équivalent à l'exponentielle et alors $$u_n\sim a^{2^n}$$ avec $a=e^K>0$.
 \end{proof}
 
-\begin{ex}{Une cinquième étude de suite récurrente avec lipschitzianité}
+\begin{ex}[Moulin.58]{}
 	Soit $f:[0,1]\to[0,1]$ une fonction $1$-lipschitzienne. Soit $(x_n)$ une suite d'éléments de $[0,1]$ vérifiant la relation de récurrence $$\forall n\in\N,\ x_{n+1}=\frac{x_n+f(x_n)}{2}$$ Montrer que la suite $(x_n)$ converge.
 \end{ex}
 
@@ -374,7 +599,11 @@
 	\end{align*} donc $g$ est croissante, donc $x_n$ est monotone ($g$ stabilise aussi $[0,1$]). Or, $(x_n)$ est bornée donc converge en vertu du théorème de la limite monotone. De plus, elle converge vers un point fixe de $g$, qui est aussi un point fixe de $f$ ($f$ est continue car lipschitzienne donc $g$ est continue).
 \end{proof}
 
-\begin{ex}{$\Delta$ Un peu plus pour la route}
+\begin{ex}[Moulin.59]{$\Delta$ Méthode de Héron}
+	Étudier la suite définie par $u_0>0$ et $u_{n+1}=\displaystyle\frac{1}{2}\left(u_n+\frac{a}{u_n}\right)$ où $a>0$. Évaluer $\lvert u_{n+1}-\sqrt{a}\rvert$ en fonction de $u_n$. Donner une valeur approchée de $\sqrt{2}$ à $10^{-10}$ près (à la main !).
+\end{ex}
+
+\begin{ex}[Moulin.60]{$\Delta$}
 	Limite, équivalent puis développement asymptotique à deux termes des suites récurrentes définies par :
 	\begin{itemize}
 		\item $u_0=0$ et $u_{n+1}=u_n+e^{-u_n}$
@@ -387,11 +616,15 @@
 	Utiliser la stratégie de l'équation différentielle pour obtenir les équivalents.
 \end{proof}
 
-\begin{ex}{$\star\star$ Le boss de fin}
+\begin{ex}[Moulin.61]{}
+	Soit $\displaystyle\sum a_n$ une série à terme général positif. On définit $(b_n)_{n\in\N}$ par : $$b_0=0\ \ \text{et}\ \ \forall n\in\N,\ b_{n+1}=\frac{b_n+\sqrt{b_n^2+a_n}}{2}$$ Montrer que la convergence de la suite $(b_n)_{n\in\N}$ est équivalente à la convergence de la série $\displaystyle\sum a_n$.
+\end{ex}
+
+\begin{ex}[Moulin.62]{$\star\star$ Le boss de fin}
 	Soit $(u_n)_{n\geqslant0}$ la suite définie par $u_0=2$ et $$\forall n\in\N,\ u_{n+1}=u_n+\ln(u_n)$$ Déterminer un équivalent de $u_n$.
 \end{ex}
 \begin{proof}
-	Déjà, on montre que $u_n\to+\infty$. Ensuite, cet exercice est infaisable si on ne trouve pas la suite annexe. On peut la chercher à tâtons ou mieux, tenter la stratégie de l'équation différentielle. Malheureusement, on se retrouve avec l'intégrale suivante : $$\text{Li}(x)=\int_{2}^{x}\frac{du}{\ln(u)}$$ qui ne s'exprime pas à l'aide de fonctions et de radicaux simples (raison pour laquelle c'est une fonction spéciale à laquelle on donne le nom de \textbf{dilogarithme}). Or, le plot twist est que $$\text{Li}(x)\sim\pi(x)\sim\frac{x}{\ln(x)}$$ où $\pi$ est la fonction de répartition des nombres premiers (ce n'est pas une blague). On pose donc $$v_n=\frac{u_n}{\ln(u_n)}$$ On trouve $$v_{n+1}-v_n\sim 1$$ donc on en déduit par sommation des relations de comparaison (cas divergent) que $$v_n\sim n$$ En passant cette relation au $\ln$, on trouve $$\ln(u_n)-\underbrace{\ln(\ln(u_n))}_{=o(\ln(u_n))}=\ln(n)+o(\ln(n))$$ D'où $\ln(u_n)\sim\ln(n)$. or, $u_n\sim n\ln(u_n)$. Donc finalement : $$u_n\sim n\ln(n)$$
+	Déjà, on montre que $u_n\to+\infty$. Ensuite, cet exercice est infaisable si on ne trouve pas la suite annexe. On peut la chercher à tâtons ou mieux, tenter la stratégie de l'équation différentielle. Malheureusement, on se retrouve avec l'intégrale suivante : $$\text{Li}(x)=\int_{2}^{x}\frac{du}{\ln(u)}$$ qui ne s'exprime pas à l'aide de fonctions et de radicaux simples (raison pour laquelle c'est une fonction spéciale à laquelle on donne le nom de \textbf{dilogarithme}). Or, le plot twist est que $$\text{Li}(x)\sim\pi(x)\sim\frac{x}{\ln(x)}$$ où $\pi$ est la fonction de répartition des nombres premiers (ce n'est pas une blague). Sinon, on peut aussi le trouver en faisant une IPP et en intégrant les relations de comparaison, mais c'est moins fun... On pose donc $$v_n=\frac{u_n}{\ln(u_n)}$$ On trouve $$v_{n+1}-v_n\sim 1$$ donc on en déduit par sommation des relations de comparaison (cas divergent) que $$v_n\sim n$$ En passant cette relation au $\ln$, on trouve $$\ln(u_n)-\underbrace{\ln(\ln(u_n))}_{=o(\ln(u_n))}=\ln(n)+o(\ln(n))$$ D'où $\ln(u_n)\sim\ln(n)$. or, $u_n\sim n\ln(u_n)$. Donc finalement : $$u_n\sim n\ln(n)$$
 \end{proof}
 
 \section{TD Châteaux}
