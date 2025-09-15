@@ -299,7 +299,7 @@
 	\end{itemize}
 \end{proof}
 
-\begin{ex}[$\star\star$ Groupes finis dont le groupe des automorphismes est trivial]
+\begin{ex}[Ulm]{$\star\star$ Groupes finis dont le groupe des automorphismes est trivial}
 	On cherche à déterminer les groupes finis dont le seul automorphisme est l'identité.
 	\begin{enumerate}
 		\item Soit $G$ un groupe fini d'élément neutre $e$ tel que $\forall x\in G,\ x^2=e$. Montrer que $\card(G)$ est une puissance de $2$.
@@ -326,8 +326,11 @@
 \end{ex}
 
 \begin{ex}[Moulin.28]{$\circ$}
-	Que peut-on dire de deux décompositions $E=\displaystyle\bigoplus_{i=1}^nF_i=\bigoplus_{i=1}^nF_i$ de $E$ telles que $\forall i\in\llbracket1,n\rrbracket,\ F_i\subset G_i$ ?
+	Que peut-on dire de deux décompositions $E=\displaystyle\bigoplus_{i=1}^nF_i=\bigoplus_{i=1}^n G_i$ de $E$ telles que $$\forall i\in\llbracket1,n\rrbracket,\ F_i\subset G_i\ ?$$
 \end{ex}
+\begin{proof}
+	On montre que $$\forall i\in\llbracket1,n\rrbracket,\ F_i=G_i$$ Soit $i\in\llbracket1,n\rrbracket$ et soit $x\in G_i$. On décompose $x$ sur $E=\displaystyle\bigoplus_{j=1}^nF_j$ en $$x=\sum_{j=1}^{n}x_j$$ Alors $x-x_i\in G_i$, et $\forall j\ne i$, $x_j\in G_j$. Le caractère direct de la somme impose donc : $$\forall j\ne i,\ x_j=0\ \ \text{et}\ \ x-x_i=0$$ Donc $x=x_i\in F_i$ et $F_i=G_i$.
+\end{proof}
 
 \begin{ex}[Moulin.29]{}
 	Soit $E$ et $F$ deux espaces vectoriels de dimension finie, $E_1,\ldots,E_p$ des sous-espaces vectoriels de $E$ et $$\begin{array}{lrcl}
@@ -380,7 +383,7 @@
 	Or $f(x)\ne0$ et $g(y)\ne0$ donc $f(x)g(y)\ne0$ par intégrité de $\K$, ce qui est \textbf{absurde}. Ainsi, $f=0$ ou $g=0$.
 \end{proof}
 
-\begin{ex}[]{$\star$}
+\begin{ex}[Morlot]{$\star$}
 	On note $E=\R^\N$ le $\R$-espace vectoriel des suites réelles. On se donne $\varphi\in E\st$ telle que $$\forall u\in E,\ \exists n(u)\in \N,\ \varphi(u)=u_{n(u)}$$ Montrer : $\exists n\in\N,\ \forall u\in E,\ \varphi(u)=u_n$
 \end{ex}
 
@@ -396,11 +399,18 @@
 \end{ex}
 
 \begin{ex}[Moulin.35]{$\Delta$}
-	Soit $u\in\mathcal{L}(E,F)$ et $\in\mathcal{L}(F,G)$. Montrer les équivalences : $$\begin{cases}
+	Soit $u\in\mathcal{L}(E,F)$ et $v\in\mathcal{L}(F,G)$. Montrer les équivalences : $$\begin{cases}
 		\ker(v\circ u)=\ker(u)\iff\text{Im}(u)\cap\ker(v)=\{0\} \\
 		\text{Im}(v\circ u)=\text{Im}(v)\iff \text{Im}(u)+\ker(v)=F
 	\end{cases}$$
 \end{ex}
+\begin{proof}
+	On procède par implications successives dans les deux cas.
+	\begin{itemize}
+		\item Dans le sens direct, prendre $u(x)\in\ker(v)$. Alors, $x\in\ker(v\circ u)\subset\ker(u)$ donc $u(x)=0$. Dans le sens réciproque, il est immédiat que $\ker(u)\subset\ker(v\circ u)$ (toujours vrai). Mais si $x\in\ker(v\circ u)$, alors $u(x)=0$ par hypothèse donc $x\in\ker(u)$ et on a l'égalité.
+		\item Dans le sens direct, on prend $y\in F$. On écrit ensuite $v(y)=v(u(x))$. Puis on remarque que $$y=y-u(x)+u(x)$$ avec $y-u(x)\in\ker(v)$ et $u(x)\in\text{Im}(u)$. Dans le sens réciproque, on a toujours $\text{Im}(v\circ u)\subset\text{Im}(v)$. Et si on regarde $v(x)$, on écrit $x=a+b$ avec $a\in\text{Im}(u)$ et $b\in\ker(v)$ donc $v(x)=v(a)\in\text{Im}(v\circ u)$.
+	\end{itemize}
+\end{proof}
 
 \begin{ex}[Moulin.36]{$\Delta$}
 	Soit $u\in\mathcal{L}(E)$.
@@ -413,6 +423,14 @@
 		\item Trouver des exemples montrant que chacune des deux implications de la question précédente est fausse en dimension infinie.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Remarquer la ressemblance avec l'exercice précédent !
+	\begin{enumerate}
+		\item Comme dans l'exercice précédent. C'est le cas particulier $u=v$.
+		\item Utiliser la formule du rang pour relier les deux équivalences de la question précédente.
+		\item Considérer la dérivation sur $\R[X]$ pour montrer que l'implication directe est fausse. Considérer la multiplication par $X$ sur $\R[X]$ pour montrer que l'implication réciproque est fausse.
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}[Moulin.37]{$\Delta$ Inégalité de Frobenius}
 	Soit $u\in\mathcal{L}(E,F)$, $v\in\mathcal{L}(F,G)$ et $w\in\mathcal{L}(G,H)$ où $E$, $F$, $G$ et $H$ sont de dimension finie. Montrer que $$\text{rg}(v\circ u)+\text{rg}(w\circ v)\leqslant\text{rg}(v)+\text{rg}(w\circ v\circ u)$$
