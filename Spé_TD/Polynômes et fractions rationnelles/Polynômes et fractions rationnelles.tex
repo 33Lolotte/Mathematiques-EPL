@@ -1,0 +1,566 @@
+\documentclass[french,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théorème}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{ex}[2][]{colback=white, colframe=green!50!white, coltitle=black, fonttitle=\bfseries, title={Exercice~\thetcbcounter~: #2}, after title={\hfill #1}}
+
+\title{TD Polynômes et fractions rationnelles}
+
+\begin{document}
+
+\maketitle
+
+Dans toute cette feuille, sauf mention explicite du contraire, $\K$ désigne un surcorps de $\Q$.
+
+\section{Algèbre des polynômes}
+
+\begin{ex}[Moulin.01]{$\star$ Une équation polynomiale}
+	Déterminer tous les polynômes $P\in\C[X]$ tels que $P(X^2)=P(X)^2$.
+\end{ex}
+
+\begin{ex}[Moulin.02]{Une équation polynomiale}
+	Déterminer les $P\in\R[X]$ tels que $P(0)=0$ et $P(X^2)=P(X)^2+1$.
+\end{ex}
+
+\begin{ex}[Moulin.03]{Polynômes positifs}
+	Soit $P\in\R[X]$ tel que $\forall x\in\R_+,\ P(x)\geqslant 0$. Montrer qu'il existe $(A,B)\in\R[X]^2$ tel que $P=A^2+B^2$. Indication : on pourra commencer par remarquer que l'ensemble des polynômes qui sont somme de deux carrés est stable par multiplication.
+\end{ex}
+
+\begin{ex}[Moulin.04]{$\star\star$}
+	Soit $P\in\R[X]$ tel que $\forall x\in\R_+,\ P(x)>0$. Montrer qu'il existe $N\in\N$ tel que $(1+X)^NP$ soit à coefficients positifs.
+\end{ex}
+
+\begin{ex}[Moulin.05]{$\Delta$}
+	\begin{enumerate}
+		\item $\circ$ Déterminer les polynômes $P\in\C[X]$ tels que $P(\C)=\C$.
+		\item Déterminer les polynômes $P\in\C[X]$ tels que $P(\R)=\R$.
+		\item $\star\star$ Déterminer les polynômes $P\in\C[X]$ tels que $P(\Q)=\Q$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.06]{$\star$ Que des $1$ en base $10$}
+	On note $A$ l'ensemble des entiers naturels ne s'écrivant en base $10$ qu'avec des $1$. Déterminer les polynômes $P\in\R[X]$ stabilisant $A$.
+\end{ex}
+
+\begin{ex}[Morlot]{Un polynôme toujours positif}
+	Soit $P$ un polynôme de degré $n$ positif sur tout $\R$. Montrer que $Q=P+P'+\ldots+P^{(n)}$ est positif sur tout $\R$. 
+\end{ex}
+\begin{proof}
+	Dériver $e^{-x}Q(x)$ en remarquant que $Q'-Q=P$. Utiliser un argument de limite en $+\infty$ pour conclure.
+\end{proof}
+
+\section{Relations coefficients-racines}
+
+\begin{ex}[Moulin.07]{Système d'équations \textit{via} les polynômes}
+	Résoudre le système d'équations : $$\begin{cases}
+		a+b+c=2 \\
+		a^2+b^2+c^2=6 \\
+		a^3+b^3+c^3=8
+	\end{cases}$$
+\end{ex}
+
+\begin{ex}[Moulin.08]{CNS pour qu'une racine soit somme des autres}
+	Donner une condition nécessaire et suffisante sur $(p,q,r)\in\C^3$ pour que l'une des racines du polynôme $X^3+pX^2+qX+r$ soit la somme des deux autres.
+\end{ex}
+
+\begin{ex}[Moulin.09]{$\star$ CNS pour que les racines forment un triangle équilatéral}
+	Donner une condition nécessaire et suffisante sur $(p,q,r)\in\C^3$ pour que les racines du polynôme $X^3+pX^2+qX+r$ forment un triangle équilatéral (éventuellement réduit à un point).
+\end{ex}
+
+\begin{ex}[Moulin.10]{$\star$ CNS pour que les racines forment un parallélogramme}
+	Donner une condition nécessaire et suffisante sur $(p,q,r,s)\in\C^4$ pour que les racines du polynôme $X^4+pX^3+qX^2+rX+s$ forment un parallélogramme (éventuellement plat).
+\end{ex}
+
+\begin{ex}[Moulin.11]{$\star\star$}
+	Soit $n\in\N$ avec $n\geqslant 2$ et $P=\displaystyle X^n+\sum_{k=1}^{n}a_kX^{n-k}\in\R[X]$. On suppose que toutes les racines de $P$ sont réelles. Montrer qu'elles appartiennent à l'intervalle $$\left[\frac{a_1}{n}-\frac{n-1}{n}\sqrt{a_1^2-\frac{2n}{n-1}a_2},\frac{a_1}{n}-\frac{n-1}{n}\sqrt{a_1^2-\frac{2n}{n-1}a_2}\right]$$
+\end{ex}
+
+\section{Racines complexes}
+
+\begin{ex}[Moulin.12]{$\Delta$ CNS pour être scindé sur $\R$}
+	Soit $P\in\R[X]$ unitaire de degré $n\geqslant1$. Alors, $P$ est scindé sur $\R$ si, et seulement si, $$\forall z\in\C,\ \lvert P(z)\rvert\geqslant\lvert\im(z)\rvert^n$$
+\end{ex}
+\begin{proof}
+	On procède par double implication :
+	\begin{itemize}
+		\item Sens direct : si $P$ est scindé sur $\R$, on écrit $$P=\prod_{k=1}^{n}(X-\lambda_k)$$ Alors pour tout $z\in\C$ : $$\lvert P(z)\rvert=\prod_{k=1}^{n}\lvert z-\lambda_k\rvert \geqslant \prod_{k=1}^{n}\lvert\im(z-\lambda_k)\rvert=\prod_{k=1}^{n}\lvert\im(z)\rvert=\lvert\im(z)\rvert ^n$$
+		\item Sens réciproque : notons $\lambda_k$ les racines \textit{a priori} complexes de $P$ après l'avoir scindé sur $\C$. On a alors : $$\lvert\im(\lambda_k)\rvert^n\leqslant\lvert P(\lambda_k)\rvert=0$$ Puisque $n\geqslant1$, on en déduit que $\im(\lambda_k)=0$ et donc que $\lambda_k\in\R$, si bien que $P$ est scindé sur $\R$.
+	\end{itemize}
+\end{proof}
+
+\begin{ex}[Moulin.13]{Des décompositions}
+	On pose $P=(X+1)^7-X^7-1\in\R[X]$.
+	\begin{enumerate}
+		\item Calculer $P(j)$ et en déduire la décomposition en facteurs irréductibles de $P$ dans $\R[X]$.
+		\item Donner la décomposition en facteurs irréductibles dans $\R[X]$ de $$\frac{(X^3-1)^4}{P^2}$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Châteaux]{Théorème de Gauss-Lucas et applications}
+	\begin{enumerate}
+		\item Soit $P$ un polynôme complexe non constant. Démontrer que les racines du polynôme $P'$ sont situées dans l'enveloppe convexe des racines de $P$, c'est-à-dire sont des barycentres à coefficients positifs des racines de $P$. Indication : on pourra considérer $P'/P$.
+		\item En déduire que si $P$ est scindé dans $\R$, alors $P'$ l'est également, puis que si toute racine de $P$ est de partie réelle positive, alors il en va de même pour $P'$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Morlot]{Pas de racine multiple}
+	Soit $n \ge 2$ un entier naturel. On considère le polynôme $$P = \sum_{k=0}^{n}\frac{X^k}{k!}$$ Le polynôme $P$ admet-il une racine multiple ?
+\end{ex}
+\begin{proof}
+	La réponse est non. Pour le prouver, raisonner par l'absurde et considérer une racine multiple $z$ de $P$. Par caractérisation de la multiplicité des racines, $z$ est racine de $P'$. Or, on a immédiatement : $$P'=\sum_{k=0}^{n-1}\frac{X^k}{k!}$$ En soustrayant les égalités $P(z)=0$ et $P'(z)=0$, on obtient que $\displaystyle \frac{z^n}{n!}=0$. Par intégrité de $\C$, $z=0$. Or, $z$ n'est clairement pas racine de $P$ car $P(0)=1$. Donc 0 n'est même pas racine mais est racine multiple, ce qui est \textbf{absurde}. Ainsi, pas de racine multiple pour $P$. On remarquera que cet exercice fonctionne car $n \ge 2$ donc $n-1 \ge 1$ donc on a le "droit" à $P'$ quand on applique la caractérisation de la multiplicité des racines.
+\end{proof}
+
+\begin{ex}[Moulin.14]{$\Delta\star$}
+	Soit $a\in\R$ et $n\in\N\st$.
+	\begin{enumerate}
+		\item Résoudre dans $\C$ l'équation $(z+1)^n=e^{2ina}$.
+		\item En déduire $\displaystyle\prod_{k=0}^{n-1}\sin\left(a+\frac{k\pi}{n}\right)$ puis $\displaystyle\prod_{k=1}^{n-1}\sin\left(\frac{k\pi}{n}\right)$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.15]{$\star\star$ Un produit moche}
+	Calculer $\displaystyle\prod_{k=1}^{n}\left(5-4\cos\left(\frac{k\pi}{n}\right)\right)$.
+\end{ex}
+
+\begin{ex}[Moulin.16]{}
+	Déterminer les $P\in\C[X]$ tels que $P(X+1)P(X)=P(X^2)$.
+\end{ex}
+\begin{proof}
+	S'intéresser aux racines potentielles de ce polynôme. Elle doivent être nulles ou de module $1$, puis on peut même prouver que ce doivent des racines de l'unité particulières.
+\end{proof}
+
+\begin{ex}[Moulin.17]{$\star$}
+	Soit $P\in\C[X]$ de degré $n\geqslant 1$.
+	\begin{enumerate}
+		\item Montrer que l'on peut écrire $P=P_1+P_2$ avec les $P_i$ de degré $n$ et de racines complexes de module inférieur à $1$.
+		\item $\star\star$ Montrer que l'on peut écrire $P=P_1+P_2+P_3+P_4$ avec les $P_i$ de degré $n$ et de racines complexes de module $1$. Indication : on pourra utiliser l'application $$z\mapsto\frac{z-u}{1-z\overline{u}}$$ lorsque $\lvert u\rvert <1$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.18]{Un lemme}
+	Pour une fraction rationnelle non nulle $F\in\R(X)$, on note $n(F)$ le nombre de ses racines (distinctes), et $p(F)$ le nombre de ses pôles.
+	\begin{enumerate}
+		\item Soit $P\in\C[X]$ non constant. Montrer que $n(P)+n(P-1)>\deg(P)$.
+		\item $\star$ Soit $F\in\C(X)$ non constante. Montrer que $n(F)+n(F-1)+p(F)>a$, où $a$ désigne le degré du numérateur de $F$ dans son écriture sous forme irréductible.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.19]{Applications de l'exercice précédent}
+	\begin{enumerate}
+		\item Soit $P$ et $Q$ deux polynômes non constants dans $\C[X]$ tels que $P\inv(\{0\})=Q\inv(\{0\})$ et $P\inv(\{1\})=Q\inv(\{1\})$. Montrer que $P=Q$.
+		\item Théorème de Mason : soit $A$, $B$ et $C$ trois polynômes non nuls premiers entre eux dans leur ensemble, non tous constants et tels que $A+B+C=0$. On note $n$ le maximum des degrés de $A$, $B$ et $C$. Montrer que $ABC$ possède au moins $n+1$ racines distinctes.
+		\item Soit $m\geqslant 3$ entier et $(A,B,C)\in\C[X]^3$ un triplet de polynômes premiers entre eux dans leur ensemble tel que $A^m+B^m=C^m$. Montrer que $A$, $B$ et $C$ sont tous constants.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.20]{Autour de l'image de $\U$}
+	\begin{enumerate}
+		\item Déterminer tous les polynômes $P\in\C[X]$ tels que $\P(\U)\subset\U$ puis tels que $\P(\U)=\U$.
+		\item $\star$ Déterminer toutes les fractions rationnelles $F\in\C(X)$ n'ayant pas de pôle dans $\U$ et telles que $F(\U)\subset\U$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.21]{Contrôle du module d'une racine particulière}
+	Soit $p_1,\ldots,p_n$ des réels positifs non tous nuls.
+	\begin{enumerate}
+		\item Montrer que $P=X^n-p_1X^{n-1}-\cdots-p_n$ admet une unique racine dans $\R_+\st$.
+		\item Soit $a_1,\ldots,a_n$ des nombres complexes non tous nuls, $z_0$ une racine de $X^n+a_1X^{n-1}+\cdots+a_n$ et $e$ la racine strictement positive du polynôme $P$ où on a pris $p_i=\lvert a_i\rvert$ et $P$ est défini dans la première question. Montrer que $\lvert z_0\rvert\leqslant e$.
+		\item Soit $b_1,\ldots,b_n$ des réels strictement positifs de somme inférieure ou égale à $1$. Montrer que $$\lvert z_0\rvert\leqslant\max_{i\in\llbracket1,n\rrbracket}\left\lvert\frac{a_i}{b_i}\right\rvert^{1/i}$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.22]{Un polynôme scindé à racines simples}
+	Soit $n\in\N\st$ et $P(X)=nX^n-\sum_{k=0}^{n-1}X^k\in\C[X]$.
+	\begin{enumerate}
+		\item Soit $z$ une racine de $P$ distincte de $1$. Montrer que $\lvert z\rvert <1$.
+		\item Montrer que les racines de $P$ sont simples.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.23]{$\star$}
+	Soit $(a_0,\ldots,a_n)\in\R^{n+1}$ et $P=\displaystyle\sum_{k=0}^{n}a_kX^k$.
+	\begin{enumerate}
+		\item Montrer que si $a_0\geqslant a_1\geqslant\cdots\geqslant a_n>0$, alors toutes les racines complexes de $P$ sont de module au moins $1$. Indication : on pourra poser $\alpha_k=a_k-a_{k+1}$.
+		\item En déduire que si l'on suppose seulement les $a_k$ strictement positifs, alors toute racine $z$ de $P$ vérifie : $$\min_{0\leqslant k<n}\frac{a_k}{a_{k+1}}\leqslant \lvert z\rvert\leqslant\max_{0\leqslant k<n}\frac{a_k}{a_{k+1}}$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.24]{$\star\star$}
+	Soit $(a_0,\ldots,a_n)\in\R^{n+1}$ et $f:\theta\mapsto\displaystyle\sum_{k=0}^{n}a_k\cos(k\theta)$. On suppose $\forall\theta\in\R,\ f(\theta)\geqslant0$. Montrer qu'il existe $(b_0,\ldots,b_n)\in\C^{n+1}$ tel que $$\forall\theta\in\R,\ f(\theta)=\left\lvert\sum_{k=0}^{n}b_ke^{ik\theta}\right\rvert$$
+\end{ex}
+
+\begin{ex}[Moulin.25]{$\star\star$}
+	Soit $P=\displaystyle\sum_{k=0}^{n}a_kX^k\in\C[X]$ dont toutes les racines ont une partie imaginaire strictement positive. Montrer que $\displaystyle\sum_{k=0}^{n}\text{Re}(a_k)X^k$ est scindé sur $\R$. Indication : comparer $\lvert P(z)\rvert$ et $\lvert P(\overline{z})\rvert$ pour $z$ non réel.
+\end{ex}
+
+\begin{ex}[Moulin.26]{Une CS d'irréductibilité}
+	Soit $P=a_0+\cdots+a_nX^n\in\Z[X]$ avec $n\in\N\st$ et $a_n\ne 0$. On pose $M=\displaystyle\sup_{i\in\llbracket0,n-1\rrbracket}\lvert a_i/a_{n}\rvert$.
+	\begin{enumerate}
+		\item Montrer que toute racine de $P$ est de module strictement inférieur à $M+1$.
+		\item On suppose qu'il existe un entier naturel $k\geqslant M+2$ tel que $P(k)$ soit premier. Montrer que $P$ est irréductible dans $\Z[X]$.
+	\end{enumerate}
+\end{ex}
+
+\section{Racines réelles}
+
+\begin{ex}[Moulin.27]{$\Delta$}
+	Soit $P \in \R[X]$ un polynôme scindé.
+	\begin{enumerate}
+		\item Supposons que $P$ est à racines simples. Montrer que $P'$ est scindé.
+		\item Le résultat est-il toujours valable lorsque les racines de $P$ ne sont plus nécessairement simples ?
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Le maître mot : théorème de Rolle. 
+	\begin{enumerate}
+		\item Ordonner les racines de $P$ et utiliser le théorème de Rolle entre deux racines successives de $P$.
+		\item Réutiliser l'idée précédente en faisant attention à la multiplicité potentielle des racines. Le résultat reste valable.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.28]{Comportement des racines de $P'$}
+	\begin{enumerate}
+		\item Montrer que pour tout polynôme $P$ réel de degré $n$ à racines $a_1<\ldots<a_n$, le polynôme $P'$ a $n-1$ racines vérifiant $a_1<b_1<a_2<\ldots<a_{n-1}<b_{n-1}<a_n$.
+		\item Montrer que pour tout $i\in\llbracket1,n\rrbracket$ : $$n\prod_{j=1}^{a_i-b_j}=\prod_{j\ne i}(a_i-a_j)$$
+		\item En déduire : $$\forall i\in\llbracket1,n\rrbracket,\ a_i+\frac{a_{i+1}-a_i}{n}\leqslant b_i\leqslant a_{i+1}-\frac{a_{i+1}-a_i}{n}$$
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.29]{$\Delta$}
+	Montrer que $L_n=\left((X^2-1)\right)^{(n)}$ est scindé à racines simples sur $\R$.
+\end{ex}
+
+\begin{ex}[Moulin.30]{Une suite de polynômes scindés}
+	Montrer qu'il existe une suite $(a_n)\in(\R\st)^\N$ telle que pour tout $n\in\N\st$, $P_n=\displaystyle\sum_{k=0}^{n}a_kX^k$ soit scindé à racines simples sur $\R$.
+\end{ex}
+\begin{proof}
+	Construire la suite par récurrence en prenant les coefficients suffisamment petits pour scinder encore sans trop modifier les racines.
+\end{proof}
+
+\begin{ex}[Moulin.31]{$\star$ Majoration du nombre de racines réelles distinctes}
+	Soit $P\in\R[X]$ admettant exactement $p>0$ coefficients non nuls.
+	\begin{enumerate}
+		\item Montrer que $P$ admet au plus $2p-1$ racines réelles distinctes.
+		\item Montrer que cette majoration est optimale pour tout $p$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.32]{$\star$}
+	Soit $P\in\R[X]$ scindé sur $\R$.
+	\begin{enumerate}
+		\item Montrer que pour tout $\alpha\in\R$, le polynôme $P'-\alpha P$ est scindé sur $\R$.
+		\item Montrer que si $Q=\displaystyle\sum_{k=0}^{n}b_kX^k$ est aussi scindé sur $\R$, alors il en est de même pour $\displaystyle\sum_{k=0}^{n}b_kP^{(k)}$.
+	\end{enumerate}
+\end{ex}
+
+\section{Polynômes d'interpolation}
+
+\begin{ex}[Morlot]{$\circ$ Coefficients rationnels}
+	Soit $P \in \C[X]$ tel que $\forall x \in \Q, \ P(x)\in\Q$. Montrer que $P$ est à coefficients rationnels.
+\end{ex}
+\begin{proof}
+	Considérer $n$ le degré du polynôme puis utiliser les polynômes interpolateurs de Lagrange. associés à $1$, $\ldots$, $n$.	
+\end{proof}
+
+\begin{ex}[Moulin.33]{$\star$}
+	Soit $d$ et $n$ deux entiers tels que $d\geqslant n\geqslant 1$, et $F\in\C_n[X]$. On suppose qu'il existe un sous-ensemble $A$ de $\U_{d+1}$ de cardinal $n+1$ tel que $\forall z\in A,\ \lvert F(z)\rvert\leqslant 1$. Montrer que $$\max_{z\in\U}\lvert F(z)\rvert\leqslant 2^d$$
+\end{ex}
+
+\begin{ex}[Moulin.34]{Interpolation}
+	Soit $n$ et $k$ deux entiers naturels. On considère des réels $x_1,\ldots,x_n$ deux à deux distincts et des réels $y_1,\ldots,y_n$ quelconques. Pour $P\in\R_{k-1}[X]$, on note $E_P=\{i\in\llbracket1,n\rrbracket\ : \ P(x_i)=y_i\}$.
+	\begin{enumerate}
+		\item Donner une condition nécessaire et suffisante sur $k$ et $n$ pour que, quel que soit $(y_1,\ldots,y_n)$, il existe $P\in\R_{k-1}[X]$ tel que $\card(E_P)=n$. Y a-t-il alors unicité de $P$ ?
+		\item On suppose $k< n$.
+		\begin{enumerate}[label=\alph*.]
+			\item Montrer qu'il existe au plus un polynôme $P\in\R_{k-1}[X]$ tel que $\displaystyle\card(E_P)\geqslant\frac{n+k}{2}$.
+			\item Montrer qu'il existe deux polynômes $Q$ et $R$, avec $R\ne 0$, tels que $$\deg(Q)<\frac{n+k}{2},\ \deg(R)\leqslant\frac{n-k}{2}\ \text{et}\ \forall i\in\llbracket1,n\rrbracket,\ Q(x_i)-y_iR(x_i)=0$$
+			\item Montrer que s'il existe $P\in\R_{k-1}[X]$ tel que $\displaystyle\card(E_P)\geqslant\frac{n+k}{2}$, alors $P=Q/R$.
+		\end{enumerate}
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.35]{$\star$}
+	Soit $P=\displaystyle\sum_{k=0}^{n-1}a_jX^j\in\Z[X]$. On suppose que $a_0=1$ et $P(\U_n)\subset\R_+$ où $\U_n$ désigne le groupe des racines $n$-èmes de l'unité. Montrer que les $a_j$ sont dans $\{-1,0,1\}$.
+\end{ex}
+
+\section{Fractions rationnelles}
+
+\begin{ex}[Moulin.36]{Automorphismes de $\K(X)$}
+	\begin{enumerate}
+		\item Soit $\Phi$ un endomorphisme de $\K(X)$. Montrer que $\Phi(X)$ est non nul et caractérise entièrement $\Phi$.
+		\item Soit $(a,b,c,d)\in\K^4$ tel que $ad-bc\ne 0$. Montrer que $\Phi(X)=\displaystyle\frac{aX+b}{cX+d}$ définit un automorphisme de $\K(X)$.
+		\item $\star$ Montrer que tout automorphisme de $\K(X)$ est de cette forme.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.37]{Des sommes}
+	Soit $P(X)=\displaystyle\prod_{k=1}^{n}(X-x_k)$, où les $x_k$ sont deux à deux distincts dans $\K$. Calculer : 
+	\begin{enumerate}
+		\item $\displaystyle\sum_{k=1}^{n}\frac{1}{P'(x_k)}$ ;
+		\item $\displaystyle\sum_{k=1}^{n}\frac{x_k}{P'(x_k)}$ ;
+		\item $\displaystyle\sum_{k=1}^{n}\frac{1}{x_kP'(x_k)}$ (en supposant que les $x_k$ sont non nuls pour cette dernière).
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.38]{$\star$ Inégalité de Bernstein}
+	Soit $n\geqslant 1$ un entier. On note $z_1,\ldots,z_n$ les racines de $X^n+1$.
+	\begin{enumerate}
+		\item Montrer que pour tout $P\in\C_n[X]$ $$XP'=\frac{n}{2}P+\frac{2}{n}\sum_{k=1}^{n}\frac{z_kP(z_kX)}{(z_k-1)^2}$$
+		\item Pour $Q\in\C[X]$, on pose $\lVert Q\rVert=\displaystyle\sup_{z\in\U}\lvert Q(z)\rvert$. Montrer que pour tout $P\in\C_n[X]$, $$\lVert P'\rVert\leqslant n\lVert P\rVert$$
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Pour la première question, remarquer une linéarité en $P$ pour se ramener à la base canonique de $\C_n[X]$.
+\end{proof}
+
+\begin{ex}[Moulin.39]{Un calcul de somme par des fractions rationnelles}
+	\begin{enumerate}
+		\item Soit $x_0,\ldots,x_n$ des éléments de $\K$ distincts deux à deux. Calculer $$\sum_{k=0}^{n}\frac{x_k^p}{\prod_{i\ne k}(x_k-x_i)}$$ en fonction de $p\in\llbracket0,n\rrbracket$.
+		\item $\star$ En déduire la valeur de $\displaystyle\sum_{k=0}^{n}(-1)^kk^p\binom{n}{k}$ pour $p\in\llbracket0,n\rrbracket$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.40]{Inégalités sur les coefficients d'un polynôme scindé}
+	Soit $P=\displaystyle\sum_{k=0}^{n}a_kX^k\in\R[X]$ scindé.
+	\begin{enumerate}
+		\item Montrer : $\forall x\in\R,\ P(x)P''(x)\leqslant P'(x)^2$.
+		\item En déduire : $\forall k\in\llbracket1,n-1\rrbracket,\ a_{k-1}a_{k+1}\leqslant a_k^2$.
+		\item $\star$ Montrer plus précisément : $\forall x\in\R,\ nP(x)P''(x)\leqslant(n-1)P'(x)^2$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.41]{$\star$ Théorème de Jensen}
+	Soit $P\in\R[X]$ de degré supérieur ou égal à $2$. On note $x_1,\ldots,x_p$ les racines réelles de $P$ et $z_1,\overline{z_1},\ldots,z_q,\overline{z_q}$ les racines de $P$ dans $\C\setminus\R$. Si $k\in\llbracket 1,q\rrbracket$, on note $D_k$ le disque de diamètre $[z_k,\overline{z_k}]$. Montrer que les racines non réelles de $P'$ sont dans $D_1\cup\ldots\cup D_p$.
+\end{ex}
+
+\begin{ex}[Moulin.42]{$\star$}
+	Soient $n\in\N\st$, $P\in\C[X]$ de degré $n$ et $Q=2XP'-nP$.
+	\begin{enumerate}
+		\item On suppose que les racines de $P$ sont toutes dans $\U$. Montrer qu'il en est de même pour celles de $Q$.
+		\item Soit $R\in\R_+$. On suppose que toutes les racines de $P$ sont de module $R$. Que dire de celles de $Q$ ?
+	\end{enumerate}
+\end{ex}
+
+\section{Arithmétique des polynômes}
+
+\begin{ex}{Restes de divisons euclidiennes}
+	Soit $P \in \K[X]$ et $(a,b) \in\K^2$ distincts. 
+	\begin{enumerate}
+		\item Déterminer le reste de la division euclidienne de $P$ par $(X-a)(X-b)$
+		\item Déterminer le reste de la division euclidienne de $P$ par $(X-a)^2$
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Quel est le degré du reste ? Utiliser des évaluations précises et/ou la dérivation suivie d'une évaluation. Ne pas tenter l'algorithme sur un polynôme quelconque dans un corps quelconque !!! On va plutôt utiliser le fait que le reste est à chaque fois de la forme $\lambda X + \mu$ avec $(\lambda,\mu) \in \K^2$.
+	\begin{enumerate}
+		\item On peut fixer $Q \in\K[X]$ tel que $P=(X-a)(X-b)Q + (\lambda X + \mu)$. En évaluant en $a$ et en $b$, on obtient $\lambda a + \mu =P(a)$ et $\lambda b + \mu = P(b)$. De simples combinaisons linéaires permettent de conclure.
+		\item Là encore, on peut fixer $Q \in\K[X]$ tel que $P=(X-a)^2Q + (\lambda X + \mu)$. Toutefois, on ne peut plus réaliser deux évaluations. Cependant, une évaluation en $a$ fournit déjà
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}{$\star\star$ Caractérisation d'un corps par la principalité de son anneau de polynômes}
+	Soit $A$ un anneau. Montrer que $A$ est un corps si, et seulement si, $A[X]$ est principal.
+\end{ex}
+\begin{proof}
+	Les sens direct est un théorème de cours. Réciproquement, supposons que $A[X]$ soit principal. Il ne nous reste plus qu'à montrer l'inversibilité des éléments non nuls. Soit $a\in A\setminus\{0\}$. On considère $I$ l'idéal engendré par $a$ et $X$. Alors il existe $P\ne 0$ tel que $I=P\times A[X]$. Puisque $a\in I$, $P\mid a$ donc $P$ constant et, abusivement, $P=p\in A$. De plus, puisque $X\in I$, on en déduit que $P\mid X$. Par conséquent, il existe $Q\in A[X]$, de coefficient dominant $q\in A$ tel que $PQ=X$. En passant aux coefficients dominants, on obtient $pq=1$ et $p$ est inversible. Or, de même, il existe $b$ tel que $a=pb$. Or, $P$ est constant et appartient à $I$, donc il existe $c\in A$ tel que $P=p=ac$. On en déduit que $p=pbc$ donc $b$ et $c$ sont inversibles.  Par conséquent, $a=pb$ est inversible comme produit d'inversibles. 
+\end{proof}
+
+\begin{ex}[Moulin.AG.61]{Divisibilité et sur-corps}
+	Soit $\L$ un sur-corps de $\K$ ainsi que $A$ et $B$ deux polynômes de $\K[X]$. Montrer que $B$ divise $A$ dans $\K[X]$ si, et seulement si, $B$ divise $A$ dans $\L[X]$.
+\end{ex}
+\begin{proof}
+	Écrire les divisions euclidiennes de $A$ par $B$ dans $\L[X]$ et dans $\K[X]$ puis utiliser un argument d'unicité.
+\end{proof}
+
+\begin{ex}[Châteaux]{Invariance du PGCD selon le corps de base}
+	Soit $\K$ et $\L$ deux corps tels que $\K\subset\L$. Soient $P$ et $Q$ deux polynômes de $\K[X]$.
+	\begin{enumerate}
+		\item Montrer que le PGCD de $P$ et $Q$ dans $\K[X]$ est le même que dans $\L[X]$.
+		\item En déduire que si $P$ et $Q$ sont premiers entre eux dans $\K[X]$ si, et seulement s'ils sont premiers entre eux dans $\L[X]$.
+		\item Soit $P$ un polynôme irréductible de $\K[X]$. montrer que $P$ n'a que des racines simples dans $\L$. Indication : on pourra considérer $P'$ et $P\wedge P'$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.AG.62]{}
+	Soit $n\in\N$ et $a\in\R$. Effectuer la division euclidienne dans $\R_[X]$ de $A_n=X^{n+1}\cos((n-1)a)-X^n\cos(na)$ par $B=X^2-2X\cos(a)+1$.
+\end{ex}
+
+\begin{ex}[Moulin.AG.63]{$\star$}
+	Pour quelles valeurs de l'entier $n$ le polynôme $(X+1)^n-X^n-1\in\K[X]$ est-il divisible par le polynôme $X^2+X+1$ ? On pourra commencer par $\K=\C$ puis $\K=\R$.
+\end{ex}
+
+\begin{ex}[Moulin.AG.64]{Premiers entre eux et racines communes}
+	\begin{enumerate}
+		\item Montrer que deux polynômes $P$ et $Q$ de $\C[X]$ sont premiers entre eux si, et seulement s'ils n'ont pas de racine complexe commune.
+		\item Montrer que deux polynômes $P$ et $Q$ de $\Q[X]$ sont premiers entre eux si, et seulement s'ils n'ont pas de racine complexe commune.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Moulin.AG.65]{$\star$ Racines de polynômes à coefficients dans $\Q$}
+	Soit $P\in\Q[X]$.
+	\begin{enumerate}
+		\item On suppose $P$ irréductible sur $\Q$. Montrer que les racines complexes de $P$ sont toutes simples. Indication : on pourra utiliser $P'$.
+		\item Soit $P\in\Q[X]$ de degré 5. Supposons que $P$ admette une racine double $a$ complexe. Montrer que $P$ possède une racine dans $\Q$.
+		\item $\star\star$ On suppose que $P\ne 0$ a une racine $\alpha\in\C$ d'ordre de multiplicité strictement supérieur à $\displaystyle\frac12\deg(P)$. Montrer que $\alpha\in\Q$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Puisque $P$ est irréductible, $P\wedge P'=1$ puisque cette quantité doit être unitaire, diviser $P$ et $\deg(P')<\deg(P)$. Par conséquent, $X-a$ ne divise pas $P'$ est $a$ est racine simple de $P$ par théorème de cours.
+		\item Par contraposée de la question précédente, $P$ n'est pas irréductible et on peut l'écrire sous la forme $P=QR$. SPG, on peut supposer $P$, $Q$ et $R$ unitaires. Si $Q$ ou $R$ est de degré $1$, il n'y a rien à prouver, donc on peut supposer par l'absurde $Q$ et $R$ de degré supérieur à $1$ et irréductibles. Ensuite, puisque $Q\ne R$ comme $\deg(P)=5$, $Q$ et $R$ sont premiers entre eux car leur PGCD vaut $1$, $Q$ ou $R$. Mais si $\deg(Q)=2$, comme $Q$ et $R$ sont irréductibles, d'après l'exercice précédent, on a nécessairement $Q(a)=R(a)=0$ ce qui est absurde. Cela est aussi absurde si $\deg(Q)=3$ car on a alors $\deg(R)=2$.
+		\item Raisonner par l'absurde et utiliser la question $1$.
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Moulin.AG.66]{$\Delta$}
+	Déterminer les polynômes de $\C[X]$ qui divisent leur polynôme dérivé.
+\end{ex}
+\begin{proof}
+	Utiliser la DES de $P'/P$. Ce sont les $\lambda(X-z)^n$.
+\end{proof}
+
+\begin{ex}[Moulin.AG.67]{Composition et divisibilité}
+	Soit $(A,B,P)\in\K[X]^3$ avec $\deg(P)\geqslant 1$. Montrer que $B\circ P$ divise $A\circ P$ si, et seulement si, $B$ divise $A$.
+\end{ex}
+
+\begin{ex}[Moulin.AG.68]{}
+	Soit $P$ et $Q$ deux polynômes de $\R[X]$ premiers entre eux. Montrer que s'il existe $R\in\R[X]$ tel que $P$ divise $R^3-Q$, alors il existe $S\in\R[X]$ tel que $P^2$ divise $S^3-Q$.
+\end{ex}
+
+\begin{ex}[Moulin.AG.69]{Résultant}
+	\begin{enumerate}
+		\item $\Delta$ Soit $P$ et $Q$ dans $\C[X]$ de degrés respectifs $P$ et $Q$. On considère l'application : $$\begin{array}{lrcl}
+			\Phi:&\C_{p-1}[X]\times\C_{q-1}[X]&\longrightarrow&\C_{p+q-1}[X]\\
+			&(M,N)&\longmapsto&MQ+NP
+		\end{array}$$ et l'on pose $\text{Res}(P,Q)$ le déterminant de sa matrice dans les bases canoniques. Montrer que $P$ et $Q$ sont premiers entre eux si, et seulement si, $\text{Res}(P,Q)\ne 0$.
+		\item $\star$ Soit $R$ et $S$ dans $\C[X,Y]$ et $\Omega=\left\{(x,y)\in\C^2\ : \ R(x,y)=S(x,y)=0\right\}$. On pose $$\begin{array}{lrcl}
+			\pi:&\C^2&\longrightarrow&\C\\
+			&(x,y)&\longmapsto&x
+		\end{array}$$ Montrer que $\pi(\Omega)$ ou $\C\setminus\pi(\Omega)$ est fini.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Pour la première question, utiliser la linéarité de $\Phi$ et déterminer son noyau. On  pourra se référer à la première pâle MP$\st$ 2024-2025.
+\end{proof}
+
+\begin{ex}[Moulin.AG.70]{Une amélioration de l'algorithme d'Euclide}
+	Montrer que si $A$ et $B$ sont deux polynômes premiers entre eux et non tous deux constants, alors il existe un unique couple $(U,V)\in\K[X]^2$ tel que $AU+BV=1$ avec $\deg(U)<\deg(B)$ et $\deg(V)<\deg(A)$, et que l'algorithme d'Euclide donne ce couple-là (à condition que ...).
+\end{ex}
+\begin{ex}[Moulin.AG.71]{Presque parties réelles et imaginaires}
+	Soit $P$, $Q$ et $R$ trois polynômes de $\C[X]$ tels que $P^2=Q^2+R^2$ et $Q\wedge R=1$. Montrer qu'il existe deux polynômes $P_1$ et $P_2$ premiers entre eux tels que : $$Q=\frac{P_1^2+P_2^2}{2}\ \ \text{et}\ \ R=\frac{P_1^2-P_2^2}{2i}$$
+\end{ex}
+
+\begin{ex}[Moulin.AG.72]{$\Delta\star$ Contenu d'un polynôme et applications}
+	Soit $P=\displaystyle\sum_{k=0}^{n}a_kX^k\in\Z[X]$. On note $c(P)=\text{PGCD}(a_0,\ldots,a_n)$ le contenu de $P$.
+	\begin{enumerate}
+		\item Soit $(P,Q)\in\Z[X]^2$. Montrer que $c(PQ)=c(P)c(Q)$. Indication : on pourra se ramener au cas où $c(P)=c(Q)=1$.
+		\item Montrer que l'on peut prolonger la fonction $c$ à $\Q[X]$ en conservant la propriété de la première question.
+		\item Application 1 : retrouver le fait que les racines rationnelles d'un polynôme unitaire à coefficients entiers sont entières.
+		\item Application 2 : soit $P\in\Z[X]$ non constant. Montrer que $P$ est irréductible dans $\Z[X]$ si, et seulement s'il est irréductible dans $\Q[X]$ et $c(P)=1$.
+		\item Application 3 : montrer que le polynôme minimal d'ne matrice de $\mathcal{M}_n(\Z)$, considérée comme une matrice de $\mathcal{M}_n(\Q)$, est à coefficients entiers.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Pour la première question, on procède en deux étapes.
+	\begin{itemize}
+		\item Supposons $C(A)=C(B)=1$. Par l'absurde, supposons $C(AB)\ne 1$. Prenons alors $p$ un nombre premier qui divise $C(AB)$. Alors, en passant au quotient dans $\Z/p\Z[X]$, on a $\overline{0}=\overline{AB}=\overline{A}\times\overline{B}$. Puisque $\Z/p\Z$ est un corps, $\Z/p\Z[X]$ est intègre donc $\overline{A}=\overline{0}$ ou $\overline{B}=\overline{0}$, et donc $p$ divise $C(A)$ ou $C(B)$, ce qui est absurde. Donc $C(AB)=1$.
+		\item Dans le cas général, on écrit $A=C(A)A'$ et $B=C(B)B'$ avec $C(A')=C(B')=1$ (en effet, $C(nP)=\lvert n\rvert C(P)$). Alors, par le cas précédent : $$C(AB)=C\big(C(A)C(B)A'B'\big)=C(A)C(B)C(A'B')=C(A)C(B)$$
+	\end{itemize}
+\end{proof}
+
+\begin{ex}[Morlot]{$\star$ Polynômes à valeurs dans les nombres premiers}
+	On note $\mathcal{P}$ l'ensemble des nombres premiers. Trouver tous les polynômes $A \in \Z[X]$ tels que $\forall n \in \N, \ A(n) \in \mathcal{P}$.
+\end{ex}
+\begin{proof}
+	Utiliser l'astuce classique pour les polynômes $Q$ à coefficients dans $\Z$ : pour tous $a$ et $b$ entiers, $b-a$ divise $Q(b)-Q(a)$. On montre par analyse-synthèse que seuls les polynômes constants égaux à des nombre premiers conviennent.
+	\begin{itemize}
+		\item \textbf{Analyse} : Soit $A$ qui convienne et on pose $p=A(0)$. Soit $n \in \N\st$. En vertu de la remarque introductive, on sait que $np-0$ divise $A(np)-A(0)=A(np)-p$. Ainsi, on peut fixer $m$ dans $\Z$ tel que $A(np)-p=mnp$. Puis on obtient, $A(np)=(mn+1)p$ donc $p$ divise $A(np)$. Or, $A(np) \in \mathcal{P}$, donc nécessairement, $A(np)=p$. La suite $(np)_{n \in \N}$ étant injective, $A$ et le polynôme constant égal à $p$ coïncident en une infinité de points et sont donc égaux.
+		\item \textbf{Synthèse} : Réciproquement, pour tout nombre premier $p$, le polynôme contant égal à $p$ convient.
+	\end{itemize}
+\end{proof}
+
+\begin{ex}[Morlot]{$\Delta\star$ Critère d'Eisenstein}
+	Soit $p$ un nombre premier et $P\in\Z[X]$ \textbf{unitaire} qu'on écrit sous la forme $$P=\sum_{k=0}^{n}a_kX^k$$ Supposons que l'on ait :
+	\begin{itemize}
+		\item $\forall k\in\llbracket0,n-1\rrbracket,\ p\mid a_k$ ;
+		\item $p^2\nmid a_0$.
+	\end{itemize}
+	Alors $P$ est irréductible dans $\Z[X]$.
+\end{ex}
+\begin{proof}
+	Supposons par l'absurde que $P$ puisse s'écrire sous la forme $P=AB$ avec $A$ et $B$ des polynômes non constants à coefficients entiers. On passe au quotient et on se place dans $\Z/p\Z[X]$. $\Z/p\Z[X]$ est un anneau intègre puisque $\Z/p\Z$ est un corps. Or, on a : $$X^n=\overline{P}=\overline{A}\times\overline{B}$$ puisque $p$ divise les coefficients de $P$ qui ne correspondent pas au terme de degré $N$. Par conséquent, on a $\overline{A}=X^i$ et $\overline{B}=X^j$ avec $i+j=n$ ainsi que $i\geqslant 1$ et $j\geqslant 1$. Ainsi, les coefficients de degré $0$ de $A$ et de $B$ sont divisibles par $p$. Or, le coefficient de degré $0$ de $P$ est égal au produit de celui de $A$ par celui de $B$. Par conséquent, $p^2\mid a_0$, ce qui est absurde.
+\end{proof}
+
+\begin{ex}[Morlot]{Une famille de polynômes irréductibles}
+	Soit $a_1,\ldots,a_n$ des entiers deux à deux distincts. Montrer que le polynôme $$P=(X-a_1)\times\cdots\times(X-a_n)-1$$ est irréductible sur $\Z[X]$.
+\end{ex}
+\begin{proof}
+	Raisonner par l'absurde en écrivant $P=QR$. On a donc $R(a_i)=\pm 1$ et $Q(a_i)=\mp 1$ (signe opposé). Donc $Q+R$ possède $n$ racines. Discuter ensuite sur les degrés et la limite en $+\infty$ pour conclure à une absurdité.
+\end{proof}
+
+\begin{ex}[Révisions]{Polynômes cyclotomiques}
+	Soit $n\in\N\st$. On appelle racine primitive $n$-ème de l'unité tout générateur du groupe multiplicatif $\U_n$. On notera $P_n$ l'ensemble des racines primitives $n$-ème de l'unité. Le $n$-ème polynôme cyclotomique est le polynôme : $$\Phi_n=\prod_{x\in P_n}x$$
+	\begin{enumerate}
+		\item Quel est le degré de $\Phi_n$ ? Montrer que $$X^n-1=\prod_{d\mid n}\Phi_n$$
+		\item Montrer que $\Phi$ est à coefficients entiers.
+		\item $\star$ Montrer que si $p$ est un nombre premier ne divisant pas $n$, alors $\Phi_n$ est scindé à racines simples sur $\F_p$. 
+		\item $\star$ Soit $a\in\Z$ et $p$ un nombre premier qui divise $\Phi_n(a)$ mais aucun des $\Phi_d(a)$ pour $d$ diviseur strict de $n$. Montrer que $n\ \equiv\ 1\ [p]$.
+		\item Soit $k>n$ et $p$ un diviseur de $\Phi_n(k!)$. Montrer que $p$ est strictement supérieur à $k$ et qu'il est premier avec $n$.
+		\item $\star\star$ Montrer que $p\ \equiv\ 1\ [n]$ et en déduire que l'ensemble des nombres premiers congrus à $1$ modulo $n$ est infini.
+	\end{enumerate}
+\end{ex}
+
+\end{document}
