@@ -65,7 +65,7 @@
 
 \section{Calcul intégral sur un segment}
 
-\begin{ex}[Moulin.01]{}
+\begin{ex}[Moulin.IG.01]{}
 	Trouver des primitives pour les fonctions suivantes :
 	\begin{enumerate}
 		\item $x\mapsto\displaystyle\frac{x^4\arctan x}{1+x^2}$ ;
@@ -78,7 +78,7 @@
 
 \section{Intégration sur un segment}
 
-\begin{ex}[Moulin.02]{$\circ$}
+\begin{ex}[Moulin.IG.02]{$\circ$}
 	Montrer qu'une fonction continue par morceaux qui admet une primitive est continue.
 \end{ex}
 
@@ -101,11 +101,11 @@
 	On note $f:x \mapsto \frac{1}{1+x^2}$. On remarque que sur sur le segment $[0,1]$, on a $\frac{1}{2} < f <1$. Il suffit alors d'intégrer sur ce segment avec la stricte croissance de l'intégrale, puis de multiplier le tout par 4. On peut aussi raisonner avec un quart de cercle ou un demi-cercle dans la plan, mais c'est alors un peu plus embêtant de justifier les inégalités.
 \end{proof}
 
-\begin{ex}[Moulin.03]{$\circ$}
+\begin{ex}[Moulin.IG.03]{$\circ$}
 	Déterminer la limite de $\displaystyle\sum_{k=1}^{n}\frac{1}{2n+2k-1}$.
 \end{ex}
 
-\begin{ex}[Moulin.04]{}
+\begin{ex}[Moulin.IG.04]{}
 	Soit $f$ et $g$ deux fonctions continues sur $[0,1]$ à valeurs complexes.
 	\begin{enumerate}
 		\item Déterminer la limite quand $n$ tend vers $+\infty$ de $\displaystyle\frac{1}{n}\sum_{k=1}^{n}f\left(\frac{k}{n}\right)g\left(\frac{k-1}{n}\right)$.
@@ -113,11 +113,11 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.05]{}
+\begin{ex}[Moulin.IG.05]{}
 	Soit $f:\R\to\C$ une fonction continue et $T$-périodique, avec $T>0$. Montrer que la fonction $\displaystyle a\mapsto\int_{a}^{a+2T}f(t)\ dt$ est constante.
 \end{ex}
 
-\begin{ex}[Moulin.06]{}
+\begin{ex}[Moulin.IG.06]{}
 	Soit $f$ une fonction continue $T$-périodique de $\R$ dans $\R$, avec $T>0$. On pose : $$\forall x\in\R,\ F(x)=\int_{0}^{x}f(t)\ dt$$
 	\begin{enumerate}
 		\item A quelle condition la fonction $F$ est-elle périodique ? Déterminer une transformation simple du plan (autre que l'identité) laissant invariant le graphe de $F$.
@@ -128,7 +128,7 @@
 	Distinguer selon que la valeur moyenne de $f$ est nulle ou non.
 \end{proof}
 
-\begin{ex}[Moulin.07]{$\Delta$ Avec la fonction réciproque}
+\begin{ex}[Moulin.IG.07]{$\Delta$ Avec la fonction réciproque}
 	Soit $f:[0,1]\to[0,1]$ une bijection strictement croissante de classe $\mathcal{C}^1$. Montrer que $$\int_{0}^{1}f+\int_{0}^{1}f\inv=1$$ Interpréter géométriquement.
 \end{ex}
 
@@ -136,11 +136,11 @@
 	Faire un changement de variable dans la deuxième. Le résultat se comprend bien car la courbe de la bijection réciproque est le symétrique de la courbe par rapport à la première bissectrice du repère.
 \end{proof}
 
-\begin{ex}[Moulin.08]{}
+\begin{ex}[Moulin.IG.08]{}
 	Soit $f\in\mathcal{C}^1([0,1],\C)$ telle que $f(0)=0$. Montrer : $$\int_{0}^{1}\lvert f(t)\rvert^2\ dt\leqslant\frac{1}{2}\int_{0}^{1}\lvert f'(t)\rvert^2\ dt$$ Quels sont les cas d'égalité ? On ajoute l'hypothèse $f(1)=0$. Peut-on améliorer l'inégalité précédente ?
 \end{ex}
 
-\begin{ex}[Moulin.09]{$\star$}
+\begin{ex}[Moulin.IG.09]{$\star$}
 	Soit $f$ et $g$ deux fonctions continues de $[a,b]$ dans $\R$ à valeurs strictement positives ($a<b$). ON pose $m=\displaystyle\underset{[a,b]}{\inf}\frac{f}{g}$ et $M=\displaystyle\underset{[a,b]}{\sup}\frac{f}{g}$.
 	\begin{enumerate}
 		\item Montrer l'inégalité : $$(m+M)^2\left(\int_{a}^{b}f(t)g(t)\ dt\right)^2\geqslant 4mM\left(\int_{a}^{b}f(t)^2\ dt\right)\left(\int_{a}^{b}g(t)^2\ dt\right)$$ Quels sont les cas d'égalité ?
@@ -148,11 +148,11 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.10]{}
+\begin{ex}[Moulin.IG.10]{}
 	Soit $\alpha$ et $\beta$ des réels tels que $\alpha<0<\beta$. On considère l'ensemble : $$E=\left\{f\in\mathcal{C}^0([0,1],\R)\ : \ \underset{[0,1]}{\min}f=\alpha,\ \underset{[0,1]}{\max}f=\beta\ \text{et}\\int_{0}^{1}f=0 \right\}$$ Déterminer $\displaystyle\underset{f\in E}{\sup}\int_{0}^{1}f^2$. Interprétation probabiliste ?
 \end{ex}
 
-\begin{ex}[Moulin.11]{$\Delta$}
+\begin{ex}[Moulin.IG.11]{$\Delta$}
 	Soit $f$ et $\varphi$ deux applications de $[a,b]$ dans $\R$ à valeurs respectivement positives et strictement positives. Pour tout $n\in\N$, on pose $I_n=\displaystyle\int_{a}^{b}\varphi f^n$.
 	\begin{enumerate}
 		\item Déterminer la limite de $(\sqrt[n]{I_n})$.
@@ -161,15 +161,15 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.12]{}
+\begin{ex}[Moulin.IG.12]{}
 	Soit $f\in\mathcal{C}^0([0,\pi],\R)$ telle que $\displaystyle\int_{0}^{\pi}f(t)\sin(t)\ dt=\int_{0}^{\pi}f(t)\cos(t)\ dt=0$. Montrer que $f$ admet au moins deux zéros dans $]0,\pi[$.
 \end{ex}
 
-\begin{ex}[Moulin.13]{$\Delta$ Théorème des moments}
+\begin{ex}[Moulin.IG.13]{$\Delta$ Théorème des moments}
 	Soit $f\in\mathcal{C}^0([a,b],\R)$ et $n\in\N$. Montrer que si $$\forall i\in\llbracket0,n\rrbracket,\ \int_{a}^{b}t^if(t)\ dt=0$$ alors $f$ s'annule au moins $n+1$ fois sur $]a,b[$.
 \end{ex}
 
-\begin{ex}[Moulin.14]{}
+\begin{ex}[Moulin.IG.14]{}
 	Soit $f\in\mathcal{C}^0([0,1],\R)$ telle que $$\forall g\in\mathcal{C}^\infty([0,1],\R),\ \int_{0}^{1}f(t)g(t)\ dt=0$$ Montrer que $f$ est nulle.
 \end{ex}
 
@@ -183,7 +183,7 @@
 	Écrire $$e^{i\lambda\varphi(x)}=\frac{i\lambda\varphi'(x)}{i\lambda\varphi'(x)}e^{i\lambda\varphi(x)}$$ puis peut-être une IPP ?
 \end{proof}
 
-\begin{ex}[Moulin.15]{$\star\star$}
+\begin{ex}[Moulin.IG.15]{$\star\star$}
 	Déterminer les polynômes $P$ qui envoient $[0,1]$ dans lui-même et tels que $$\forall f\in\mathcal{C}^0([0,1],\R),\ \int_{0}^{1}f(P(t))\ dt=\int_{0}^{1}f(t)\ dt$$
 \end{ex}
 
@@ -192,7 +192,7 @@
 \end{proof}
 \section{Suites d'intégrales sur un segment}
 
-\begin{ex}[Moulin.16]{}
+\begin{ex}[Moulin.IG.16]{}
 	Déterminer $$\lim_{{n\to+\infty}}\int_{0}^{\pi/2}(\sin(x))^{1/n}\ dx$$
 \end{ex}
 
@@ -200,7 +200,7 @@
 	Utiliser l'inégalité :$$\forall x\in\left[0,\frac{\pi}{2}\right],\ \frac{2}{\pi}x\leqslant\sin(x)\leqslant x$$ pour se ramener à des intégrales de fonctions puissances. Calculer les intégrales qui encadrent et déterminer leur limite. Le théorème des gendarmes permet de conclure que la limite recherchée est $\displaystyle\frac{\pi}{2}$.
 \end{proof}
 
-\begin{ex}[Moulin.17]{$\Delta$ Norme infinie}
+\begin{ex}[Moulin.IG.17]{$\Delta$ Norme infinie}
 	Soit $f\in\mathcal{C}^0([a,b],\R_+)$ avec $a<b$. Déterminer $$\lim_{n\to+\infty}\left(\int_{a}^{b}f(t)^{n}\ dt\right)^{1/n}$$
 \end{ex}
 
@@ -208,7 +208,7 @@
 	Il s'agit de $\lVert f\rVert_\infty$. Il faut le faire par encadrement avec des $\varepsilon$. Un côté de l'inégalité est simple. Pour l'autre, s'approcher à $\eta$ de là où on est à $\varepsilon$ du maximum puis minorer brutalement le reste. On s'en sort.
 \end{proof}
 
-\begin{ex}[Moulin.18]{}
+\begin{ex}[Moulin.IG.18]{}
 	Soit $f\in\mathcal{C}^0([0,1],E)$.
 	\begin{enumerate}
 		\item Quelle est la limite de $$I_n=\displaystyle n^2\int_{0}^{1}(t^n-t^{n+1})f(t)\ dt\ ?$$
@@ -216,7 +216,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.19]{$\Delta$ Lemme de Riemann-Lebesgue sur un segment}
+\begin{ex}[Moulin.IG.19]{$\Delta$ Lemme de Riemann-Lebesgue sur un segment}
 	Soit $f$ une fonction continue par morceaux sur un segment $[a,b]$ avec $a<b$.
 	\begin{enumerate}
 		\item Déterminer $$\lim_{\lvert\lambda\rvert\to+\infty}\int_{a}^{b}f(t)e^{i\lambda t}\ dt$$ On pourra commencer par le cas où $f$ est de classe $\mathcal{C}^1$, puis en escalier.
@@ -231,7 +231,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.20]{Théorème de Dirichlet}
+\begin{ex}[Moulin.IG.20]{Théorème de Dirichlet}
 	Soit $f:\R\to\C$ continue par morceaux et $2\pi$-périodique. Pour $n\in\Z$, on définit : $$\hat{f}(n)=\frac{1}{2\pi}\int_{-\pi}^{\pi}f(t)e^{-int}\ dt$$
 	\begin{enumerate}
 		\item $\star$ On suppose qu'il existe deux complexes $\alpha$ et $\beta$ tels que $$f(t)=f(0^+)+\alpha t+o_{t\to 0^+}(t)\ \ \text{et}\ \ f(t)=f(0^-)+\beta t+o_{t\to 0^-}(t)$$ Montrer que : $$\sum_{k=-n}^{n}\hat{f}(k)\xrightarrow[n\to+\infty]{}\frac{f(0^+)+f(0^-)}{2}$$ On pourra appliquer le lemme de Riemann-Lebesgue.
@@ -240,7 +240,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.21]{$\Delta\star$ Irrationalité de $\pi$}
+\begin{ex}[Moulin.IG.21]{$\Delta\star$ Irrationalité de $\pi$}
 	On se propose de montrer par l'absurde que $\pi$ est irrationnel. Pour cela, on suppose $\pi=a/b$ avec $a$ et $b$ dans $\N\st$ et l'on pose $$I_n=\int_{0}^{\pi}\frac{x^n(a-bx)^n}{n!}\sin(x)\ dx$$
 	\begin{enumerate}
 		\item Montrer que $(I_n)$ converge vers $0$.
@@ -260,18 +260,18 @@
 
 \section{Calcul intégral sur un intervalle quelconque}
 
-\begin{ex}[Moulin.22]{}
+\begin{ex}[Moulin.IG.22]{}
 	Convergence et calcul éventuel des intégrales : $$\int_{0}^{1}\frac{x}{\sqrt{1-x}}\ dx \ \ \text{et} \ \ \int_{-1}^{1}\frac{dx}{\sqrt{x^2(1+x)}}$$
 \end{ex}
 \begin{proof}
 	On commence par vérifier la continuité par morceaux sur ! Pour la première, une primitive fournit l'existence et le calcul (=1). Et on n'a pas de continuité par morceaux en $0$ pour la deuxième et pas de prolongement possible (non bornée au voisinage de $0$) donc l'intégrale n'existe pas.
 \end{proof}
 
-\begin{ex}[Moulin.23]{}
+\begin{ex}[Moulin.IG.23]{}
 	Convergence des intégrales : $$\int_{0}^{1}\frac{\ln(1-x^2)}{\sqrt[3]{x-x^2}}dx\ \ \ \ \int_{0}^{1}\frac{dx}{\arccos(x)}\ \ \ \ \int_{0}^{+\infty}\frac{\ln(x)}{\sqrt{x}}dx$$
 \end{ex}
 
-\begin{ex}[Moulin.24]{}
+\begin{ex}[Moulin.IG.24]{}
 	Étudier la convergence des intégrales suivantes :
 	\begin{enumerate}[label=(\roman*)]
 		\item $\displaystyle\int_{1}^{+\infty}\frac{\sqrt{x^2+x+1}-\sqrt{x^2-x+1}}{x}dx$ ;
@@ -287,51 +287,51 @@
 		\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.25]{}
+\begin{ex}[Moulin.IG.25]{}
 	Pour $n\in\N\st$, convergence et calcul éventuel de $\displaystyle\int_{0}^{+\infty}\frac{dt}{(t+1)(t+2)\cdots(t+n)}$.
 \end{ex}
 
-\begin{ex}[Moulin.26]{}
+\begin{ex}[Moulin.IG.26]{}
 	Soit $P=aX^2+bX+c\in\R_2[X]$. Convergence et calcul éventuel de $\displaystyle\int_{-\infty}^{+\infty}e^{-P(x)}dx$. On admettre l'égalité : $$\int_{-\infty}^{+\infty}e^{-x^2}dx=\sqrt{\pi}$$
 \end{ex}
 
-\begin{ex}[Moulin.27]{}
+\begin{ex}[Moulin.IG.27]{}
 	Discuter, selon la valeur du réel $\alpha$, de la convergence de $\displaystyle\int_{0}^{1}\frac{\lvert\ln x\rvert^\alpha}{\sqrt{1-x^2}}dx$.
 \end{ex}
 
-\begin{ex}[Moulin.28]{}
+\begin{ex}[Moulin.IG.28]{}
 	Étant donné un réel $\alpha$, convergence et calcul de $$I(\alpha)=\int_{0}^{+\infty}\frac{dt}{\cosh(t)+\cosh(\alpha)}$$
 \end{ex}
 \begin{proof}
 	On a continuité (par morceaux) sur $[0,+\infty[$ et un équivalent en $\displaystyle\frac{2}{e^t}$ en $+\infty$ donc l'intégrabilité et la convergence de l'intégrale quel que soit $\alpha$. Ensuite, remplacer $\cosh(t)$ par des exponentielles et multiplier le dénominateur et le numérateur par $e^t$. Faire un changement de variable $u=e^t$. On obtient : $$I(\alpha)=\int_{1}^{+\infty}\frac{2 \ du}{u^2+2u\cosh(\alpha)+1}$$ Ensuite, distinguer si $\alpha =0$ (on trouve $1$) ou non : dans ce dernier cas, on trouve après factorisation et DES $$I(\alpha)=\frac{1}{\sinh(\alpha)}\ln\left(\frac{1+e^\alpha}{1+e^{-\alpha}}\right)$$
 \end{proof}
 
-\begin{ex}[Moulin.29]{}
+\begin{ex}[Moulin.IG.29]{}
 	Montrer que la fonction $f$ définie sur $]0,1]$ par : $$f(t)=\frac{1}{t}-\left\lfloor\frac{1}{t}\right\rfloor$$ est intégrable et calculer son intégrale.
 \end{ex}
 \begin{proof}
 	On a une continuité par morceaux due au caractère de partie fractionnaire. Ensuite, poser $$u_k=\int_{1/(k+1)}^{1/k}f(t)\ dt$$ et considérer les sommes partielles. Calculer sur ces intervalles-là pour faire apparaître dans la somme partielle une série harmonique, puis utiliser le développement asymptotique habituel avec la constante d'Euler $\gamma$. Cela fournit la convergence et la valeur : $$\int_{0}^{1}f(t)\ dt=1-\gamma$$
 \end{proof}
 
-\begin{ex}[Moulin.30]{$\Delta\star$}
+\begin{ex}[Moulin.IG.30]{$\Delta\star$}
 	Convergence et calcul de l'intégrale $$I=\int_{0}^{\pi/2}\ln(\sin(x))\ dx$$
 \end{ex}
 \begin{proof}
 	La convergence se fait bien. Ne pas oublier la continuité-par-morceaux-sur ! Montrer que cela ne change rien de transformer le $\sin$ en $\cos$ avec le changement de variable $u=\displaystyle\frac{\pi}{2}-x$. Ensuite, calculer $2I$ et utiliser la propriété fonctionnelle du $\ln$ : $$2I=-\frac{\pi\ln(2)}{2}+\underbrace{\int_{0}^{\pi/2}\ln(\sin(2x))\ dx}_{=J}$$ Or, un changement de variable $u=\displaystyle\frac{x}{2}$ puis un découpage en 2 et l'utilisation du fait que $\sin(\pi-u)=\sin(u)$ donnent $J=I$. Miraculeusement, cela se termine et on obtient alors : $$I=-\frac{\pi\ln(2)}{2}$$ 
 \end{proof}
 
-\begin{ex}[Moulin.31]{}
+\begin{ex}[Moulin.IG.31]{}
 	Convergence et calcul de $\displaystyle\int_{0}^{+\infty}\frac{\sqrt{x}\ln(x)}{(1+x)^2}dx$.
 \end{ex}
 
-\begin{ex}[Moulin.32]{}
+\begin{ex}[Moulin.IG.32]{}
 	Montrer que $\displaystyle I=\int_{0}^{+\infty}\frac{\ln(t)}{1+t^2}\ dt=0$ et calculer $$J_a=\int_{1/a}^{a}\frac{\arctan(t)}{t}\ dt$$ pour $a>0$.
 \end{ex}
 \begin{proof}
 	Le changement de variable $u=1/t$ donne $I=-I$ donc $I=0$. Pour $J_a$, faire une IPP et on tombe sur une deuxième intégrale $$\int_{1/a}^{a}\frac{\ln(t)}{1+t^2}\ dt$$ Le même changement de variable montre que celle-ci est encore nulle. Avec le terme tout intégré, on a donc : $$J_a=\frac{\pi}{2}\ln(a)$$
 \end{proof}
 
-\begin{ex}[Moulin.33]{$\star$}
+\begin{ex}[Moulin.IG.33]{$\star$}
 	Convergence et calcul de $\displaystyle\int_{0}^{+\infty}\frac{\ln(1+t^2)}{1+t^2}\ dt$ et $\displaystyle\int_{0}^{+\infty}\left(\frac{\arctan(t)}{t}\right)^2 \ dt$.
 \end{ex}
 \begin{proof}
@@ -341,11 +341,11 @@
 	Askip il est possible de le faire en utilisant l'exercice précédent.
 \end{rmq}
 
-\begin{ex}[Moulin.34]{Formule des résidus}
+\begin{ex}[Moulin.IG.34]{Formule des résidus}
 	Soit $G\in\R(X)$ une fraction rationnelle de degré inférieur ou égal à $-2$ et sans pôle réel. Pour chaque pôle $a$ de $G$, on appelle \textbf{résidu de $G$ en $a$} le coefficient de $\displaystyle\frac{1}{X-a}$ dans la décomposition en éléments simples de $G$ (sur $\C$). \\ Montrer que $G$ est intégrable sur $\R$ et que son intégrale est le produit par $2i\pi$ de la somme de tous les résidus en les pôles de partie imaginaire strictement positive.
 \end{ex}
 
-\begin{ex}[Moulin.35]{$\star\star$}
+\begin{ex}[Moulin.IG.35]{$\star\star$}
 	Convergence et calcul de $\displaystyle\int_{-\infty}^{+\infty}\frac{dx}{1+x^{2n}}$. On pourra utiliser la formule des résidus.
 \end{ex}
 \begin{proof}
@@ -354,7 +354,7 @@
 
 \section{Intégration sur un intervalle quelconque}
 
-\begin{ex}[Moulin.36]{$\Delta\star$}
+\begin{ex}[Moulin.IG.36]{$\Delta\star$}
 	Soit $f:R\to\C$ intégrable. Déterminer : $$\lim_{x\to+\infty}\int_{-\infty}^{+\infty}\lvert f(t-x)-f(t)\rvert\ dt$$ Indication : on pourra se ramener à $\displaystyle\int_{-\infty}^{+\infty}\lvert f(t-x)-f(t+x)\rvert\ dt$
 \end{ex}
 \begin{proof}
@@ -372,11 +372,11 @@
 	Considérer $$S_{X,Y}(x)=\int_{-Y}^{X}(f(x+t)-f(t))\ dt$$ pour $X,Y>0$, séparer en deux intégrales, faire un petit changement de variables et utiliser la relation de Chasles. Finir avec des $\varepsilon$.
 \end{proof}
 
-\begin{ex}[Moulin.37]{$\star$}
+\begin{ex}[Moulin.IG.37]{$\star$}
 	Déterminer les limites quand $n$ tend vers $+\infty$ des quantités : $$\sum_{k=1}^{n}\frac{1}{k(n-k)}\ \ \text{et}\ \ \sum_{k=1}^{n}\frac{1}{\sqrt{k(n-k)}}$$
 \end{ex}
 
-\begin{ex}[Moulin.38]{}
+\begin{ex}[Moulin.IG.38]{}
 	Soit $f:]0,1]$ continue monotone intégrable.
 	\begin{enumerate}
 		\item Quelle est la limite de $u_n=\displaystyle\frac{1}{n}\sum_{p=1}^nf\left(\frac{p}{n}\right)$ ?
@@ -385,7 +385,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.39]{$\Delta$}
+\begin{ex}[Moulin.IG.39]{$\Delta$}
 	Soit $f$ uniformément continue sur $\R_+$ et intégrable sur $\R_+$.
 	\begin{enumerate}
 		\item On suppose $f$ réelle positive. Montrer que $f$ converge vers $0$ en $+\infty$.
@@ -395,7 +395,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.40]{$\Delta$}
+\begin{ex}[Moulin.IG.40]{$\Delta$}
 	Soit $f:\R_+\to\R_+$ continue par morceaux et décroissante.
 	\begin{enumerate}
 		\item Montrer que si $f$ est intégrable sur $\R_+$, alors $\lim_{t\to+\infty}tf(t)=0$. Étudier la réciproque.
@@ -409,7 +409,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.41]{$\star$}
+\begin{ex}[Moulin.IG.41]{$\star$}
 	Soit $f\in\mathcal{C}^0(\R_+,\R_+\st)$ décroissante et de limite nulle en $+\infty$. Étudier la convergence de l'intégrale $$\int_{0}^{+\infty}\frac{f(x+1)-f(x)}{f(x)}\ dx$$
 \end{ex}
 
@@ -429,7 +429,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.42]{$\Delta$ Inégalité de Hardy}
+\begin{ex}[Moulin.IG.42]{$\Delta$ Inégalité de Hardy}
 	Soit $f:\R_+\to\R$ continue de carré intégrable. On pose $$F(x)=\frac{1}{x}\int_{0}^{x}f(t)\ dt$$
 	\begin{enumerate}
 		\item Montrer que $F(x)$ est négligeable devant $1/\sqrt{x}$ au voisinage de $+\infty$.
@@ -459,11 +459,11 @@
 	Faire comme dans le cas de l'exercice sur les inégalités de Hölder et Minkowski pour les vecteurs de $\K^n$. Pour la dernière, effectuer une intégration par parties puis appliquer l'inégalité de Hölder. On trouve une constante : $$C_p=\left(\frac{p}{p-1}\right)^p$$
 \end{proof}
 
-\begin{ex}[Moulin.43]{}
+\begin{ex}[Moulin.IG.43]{}
 	Soit $f\in\mathcal{C}^1(\R_+,\R)$. On suppose que les fonctions $f'$ et $x\mapsto xf(x)$ sont de carré intégrable. Montrer que $f$ est de carré intégrable et démontrer l'inégalité : $$\int_{0}^{+\infty}f^2(t)\ dt\leqslant2\sqrt{\int_{0}^{+\infty}t^2f^2(t)\ dt}\sqrt{\int_{0}^{+\infty}f'(t)^2\ dt}$$
 \end{ex}
 
-\begin{ex}[Moulin.44]{}
+\begin{ex}[Moulin.IG.44]{}
 	Soit $f\in\mathcal{C}^2(\R_+,\R)$.
 	\begin{enumerate}
 		\item Montrer que si $f$ est bornée et $f''$ est intégrable sur $\R_+$, alors $f'$ est de carré intégrable et a une limite nulle en $+\infty$.
@@ -472,7 +472,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.45]{$\star$}
+\begin{ex}[Moulin.IG.45]{$\star$}
 	Soit $f:\R_+\to\R$ de classe $\mathcal{C}^1$ telle que $\displaystyle\int_{0}^{+\infty}f$ converge et $x\mapsto\displaystyle\int_{x}^{x+1}f'(t)^2\ dt$ soit bornée. \\ Montrer que $f$ tend vers $0$ en $+\infty$.
 \end{ex}
 
@@ -493,11 +493,11 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.46]{}
+\begin{ex}[Moulin.IG.46]{}
 	Convergence, suivant la valeur de $\alpha\in\R$, de $\displaystyle\int_{0}^{+\infty}e^{-t^\alpha\sin^2 t}\ dt$.
 \end{ex}
 
-\begin{ex}[Moulin.47]{$\star$}
+\begin{ex}[Moulin.IG.47]{$\star$}
 	Soit $f\in\mathcal{C}(\R,\R)$ intégrable. Pour tout $x\in\R\st$, on pose $g(x)=\displaystyle f\left(x-\frac{1}{x}\right)$.
 	\begin{enumerate}
 		\item Montrer que $g$ est intégrable sur $\R_+\st$ et sur $\R_-\st$.
@@ -505,11 +505,11 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.48]{$\star$}
+\begin{ex}[Moulin.IG.48]{$\star$}
 	Soit $a_1<\cdots<a_n$ des réels. On pose : $$F:t\mapsto t-\sum_{k=1}^{n}\frac{1}{t-a_k}$$ On convient que $a_0=-\infty$ et $a_{n+1}=+\infty$. Montrer que pour tout fonction $f:\R\to\C$ intégrable, la fonction $t\mapsto f(F(t))$ est intégrable sur chaque intervalle $]a_k,a_{k+1}[$ avec : $$\int_\R f=\sum_{k=0}^{n}\int_{a_k}^{a_{k+1}}f(F(u))\ du$$
 \end{ex}
 
-\begin{ex}[Moulin.49]{$\star\star$}
+\begin{ex}[Moulin.IG.49]{$\star\star$}
 	Soit $f\in\mathcal{C}^2(\R_+,\R)$ intégrable telle que $f''$ soit de carré intégrable. Montrer que $f$ et $f'$ admettent une limite nulle en $+\infty$. On pourra utiliser une formule de Taylor.
 \end{ex}
 \begin{proof}
@@ -518,12 +518,12 @@
 
 \section{Intégrales semi-convergentes}
 
-\begin{ex}[Moulin.50]{}
+\begin{ex}[Moulin.IG.50]{}
 	Soit $f:\R\to\R$ continue et $1$-périodique. Pour quelle(s) valeur(s) de $a\in\R$ l'intégrale $\displaystyle\int_{1}^{+\infty}\frac{a-f(t)}{t}\ dt$ converge-t-elle ? \\
 	La fonction $t\mapsto\displaystyle\frac{a-f(t)}{t}$ est-elle alors intégrable sur $[1,+\infty[$ ?
 \end{ex}
 
-\begin{ex}[Moulin.51]{}
+\begin{ex}[Moulin.IG.51]{}
 	Soit $f\in\mathcal{C}^0(\R_+,\R_+)$ décroissante.
 	\begin{enumerate}
 		\item On suppose $f$ de classe $\mathcal{C}^1$. Montrer que l'intégrale $\displaystyle\int_{0}^{+\infty}f(t)\sin(t)\ dt$ converge.
@@ -532,7 +532,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.52]{$\star$}
+\begin{ex}[Moulin.IG.52]{$\star$}
 	Pour $p\in\N$, soit $f_p:x\mapsto\sin(x^p+x)$.
 	\begin{enumerate}
 		\item Pour quelles valeurs de $p$ la fonction $f_p$ est-elle intégrable sur $\R_+$ ?
@@ -540,7 +540,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.53]{}
+\begin{ex}[Moulin.IG.53]{}
 	Soit $f$ continue de $\R$ dans $\C$ admettant des limites finies en $-\infty$ et en $+\infty$.
 	\begin{enumerate}
 		\item Montrer la convergence, pour $a\in\R$, de l'intégrale $\displaystyle\int_{-\infty}^{+\infty}(f(x+a)-f(x))\ dx$ et la calculer.
@@ -548,7 +548,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.54]{$\Delta$ Intégrales de Frullani}
+\begin{ex}[Moulin.IG.54]{$\Delta$ Intégrales de Frullani}
 	Soit $f$ continue de $\R_+$ dans $\C$ admettant une limite finie $l$ en $+\infty$.
 	\begin{enumerate}
 		\item Pour $b>a>0$, montrer la convergence de $I_{a,b}=\displaystyle\int_{0}^{+\infty}\frac{f(bx)-f(ax)}{x}\ dx$ et la calculer.
@@ -566,14 +566,14 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.55]{}
+\begin{ex}[Moulin.IG.55]{}
 	Convergence de $\displaystyle\int_{0}^{+\infty}\frac{\sin(t)}{\sqrt{t+\cos(t)}}\ dt$
 \end{ex}
 \begin{proof}
 	Pas de problème de continuité par morceaux, de définition ni au voisinage de $0$. Faire un développement asymptotique au voisinage de $+\infty$ pour obtenir : $$f(t)=\frac{\sin(t)}{\sqrt{t}}+O\left(\frac{1}{t^{3/2}}\right)$$ En intégrant par parties, on montre que l'intégrale de $\displaystyle\frac{\sin(t)}{\sqrt{t}}$ converge, ce qui permet de conclure.
 \end{proof}
 
-\begin{ex}[Moulin.56]{}
+\begin{ex}[Moulin.IG.56]{}
 	On considère l'intégrale $I=\displaystyle\int_{0}^{+\infty}\frac{\sin^3(x)}{x^2}\ dx$ et on définit la fonction $$g:x>0\mapsto\int_{x}^{3x}\frac{\sin(t)}{t^2}\ dt$$
 	\begin{enumerate}
 		\item Justifier que l'intégrale $I$ est bien convergente. 
@@ -591,11 +591,11 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.57]{}
+\begin{ex}[Moulin.IG.57]{}
 	Convergence de $\displaystyle\int_{0}^{+\infty}\sin(t^\alpha)$ suivant la valeur du paramètre $\alpha\in\R$.
 \end{ex}
 
-\begin{ex}[Moulin.58]{}
+\begin{ex}[Moulin.IG.58]{}
 	\begin{enumerate}
 		\item Étudier l'intégrabilité sur $[1,+\infty[$ de $t\mapsto\sqrt{t-\cos(t)}-\sqrt{t}$.
 		\item Donner un équivalent de $x\mapsto\displaystyle\int_{1}^{x}\left\lvert\sqrt{t-\cos(t)}-\sqrt{t}\right\rvert\ dt$ quand $x$ tend vers $+\infty$.
@@ -604,7 +604,7 @@
 
 \section{Intégration des relations de comparaison}
 
-\begin{ex}[Moulin.59]{}
+\begin{ex}[Moulin.IG.59]{}
 	Déterminer un développement asymptotique à deux termes de :
 	\begin{enumerate}
 		\item $\displaystyle\int_{x}^{+\infty}e^{-t^2}\ dt$ lorsque $x$ tend vers $+\infty$ ;
@@ -613,7 +613,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.60]{}
+\begin{ex}[Moulin.IG.60]{}
 	Déterminer un développement asymptotique
 	\begin{enumerate}
 		\item à $2$ termes de $\displaystyle\int_{0}^{x}e^{t^2}\ dt$ lorsque $x$ tend vers $+\infty$ ;
@@ -622,11 +622,11 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.61]{}
+\begin{ex}[Moulin.IG.61]{}
 	Pour $\alpha>1$, montrer la convergence de $\displaystyle\int_{0}^{+\infty}e^{it^\alpha}\ dt$ puis réaliser un développement asymptotique à deux termes de $\displaystyle\int_{x}^{+\infty}e^{it^\alpha}\ dt$ quand $x$ tend vers $+\infty$.
 \end{ex}
 
-\begin{ex}[Moulin.62]{}
+\begin{ex}[Moulin.IG.62]{}
 	On considère la fonction définie sur $\R_+\st$ par : $$\forall x\in\R_+\st,\ f(x)=e^{1/x}\int_{0}^{x}\frac{e^{-1/t}}{t}\ dt$$
 	\begin{enumerate}
 		\item Montrer que $f$ admet un développement limité à tout ordre en $0$ et le préciser.
@@ -635,7 +635,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.63 / X]{}
+\begin{ex}[Moulin.IG.63 / X]{}
 	Soit $f:\R_+\to\R$ une fonction de classe $\mathcal{C}^1$ ne s'annulant pas. On suppose qu'il existe un réel $\alpha\in\R\setminus\{-1,0\}$ tel que $$\frac{f'(x)}{f(x)}\underset{x\to+\infty}{\sim}\frac{\alpha}{x}$$
 	\begin{enumerate}
 		\item Montrer que si $\alpha>-1$, alors $\displaystyle\int_{0}^{+\infty}f$ diverge et $\displaystyle\int_{0}^{x}f\underset{x\to+\infty}{\sim}\frac{xf(x)}{\alpha+1}$.

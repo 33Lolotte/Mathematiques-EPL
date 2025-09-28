@@ -67,7 +67,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 
 \section{Différentiabilité}
 
-\begin{ex}[Moulin.01]{}
+\begin{ex}[Moulin.CD.01]{}
 	Pour chacune des fonctions suivantes de $\R^2$ dans $\R$, étudier au point $(0,0)$ sa continuité, sa dérivabilité selon tout vecteur de $\R^2$, puis sa différentiabilité.
 	\begin{enumerate}
 		\item $\displaystyle f_1:(x,y)\mapsto\begin{cases}
@@ -89,7 +89,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.02]{$\circ$ Application de la règle de la chaîne}
+\begin{ex}[Moulin.CD.02]{$\circ$ Application de la règle de la chaîne}
 	Soit $f:\R^2\to\R$ une fonction de classe $\mathcal{C}^1$.
 	\begin{enumerate}
 		\item Justifier la dérivabilité de $g:x\mapsto f(x,f(x,x))$.
@@ -101,7 +101,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	Appliquer la règle de la chaîne...
 \end{proof}
 
-\begin{ex}[Moulin.03]{}
+\begin{ex}[Moulin.CD.03]{}
 	\begin{enumerate}
 		\item Déterminer le domaine de définition de $f:(x,y)\mapsto\displaystyle\arccos\left(\frac{1-xy}{\sqrt{1+x^2+y^2+x^2y^2}}\right)$.
 		\item Déterminer un ouvert $U$ de $\R^2$ sur lequel $f$ est de classe $\mathcal{C}^1$, et calculer les dérivées partielles $\displaystyle\frac{\partial f}{\partial x}$ et $\displaystyle\frac{\partial f}{\partial y}$ sur celui-ci.
@@ -109,16 +109,16 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.04]{}
+\begin{ex}[Moulin.CD.04]{}
 	Soit $(E,N)$ un espace vectoriel normé de dimension finie. \\
 	Etudier la différentiabilité en $0$ de l'application $N$.
 \end{ex}
 
-\begin{ex}[Moulin.05]{}
+\begin{ex}[Moulin.CD.05]{}
 	Etudier les points de différentiabilité sur $\R^n$ des applications $\lVert\cdot\rVert_\infty$ et $\lVert\cdot\rVert_1$.
 \end{ex}
 
-\begin{ex}[Moulin.06]{$\star$}
+\begin{ex}[Moulin.CD.06]{$\star$}
 	Soit $E=\R_+\st\times\R_+\st$. Pour $(x,y)\in E$, on pose : $$f(x,y)=\sum_{n=0}^{+\infty}\frac{(-1)^n}{x+ny}$$
 	\begin{itemize}
 		\item Montrer que $f$ est bien définie sur $E$ et que la série converge uniformément sur tout ensemble de la forme $[a,+\infty[^2$ avec $a>0$. En déduire que $f$ est continue sur $E$.
@@ -133,7 +133,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.07]{}
+\begin{ex}[Moulin.CD.07]{}
 	On considère la série de fonctions définie par : $$u_n(x,y)=\frac{x^n}{1+y^{2n}}$$ et $E\subset\R^2$ son ensemble de convergence.
 	\begin{enumerate}
 		\item Déterminer $E$ et montrer que c'est un ouvert de $\R^2$.
@@ -143,7 +143,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.08]{}
+\begin{ex}[Moulin.CD.08]{}
 	\begin{enumerate}
 		\item Déterminer l'ensemble de définition $A$ de $f:(x,y)\mapsto\displaystyle\int_{0}^{\pi}\ln(x+y\cos t)dt$.
 		\item L'application $f$ est-elle continue sur $A$ ?
@@ -151,7 +151,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.09]{$\Delta$ Fonctions homogènes}
+\begin{ex}[Moulin.CD.09]{$\Delta$ Fonctions homogènes}
 	On pose $U=E\setminus\{0\}$. Soit $\alpha\in\R$ et $f:U\to F$ de classe $\mathcal{C}^1$. On dit que $f$ est \textbf{homogène de degré} $\alpha$ lorsqu'elle vérifie : $$\forall x\in U,\ \forall t\in\R_+\st,\ f(tx)=t^\alpha f(x)$$
 	\begin{enumerate}
 		\item Montrer que $f$ est homogène de degré $\alpha$ si, et seulement si, on a : $$\forall x\in U,\ \forall t\in\R_+\st,\ df(x)\cdot x=\alpha f(x)$$
@@ -166,7 +166,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.10]{$\Delta$ Différentiation des coefficients du polynôme caractéristique}
+\begin{ex}[Moulin.CD.10]{$\Delta$ Différentiation des coefficients du polynôme caractéristique}
 	On fixe $n\in\N\st$.
 	\begin{enumerate}
 		\item Pour $M\in\mathcal{M}_n(\C)$, on note $\det(I_n+XM)=\displaystyle\sum_{k=0}^{+\infty}c_k(M)X^k$. montrer que $c_k$ est de classe $\mathcal{C}^1$ pour tout $k\in\N$.
@@ -177,7 +177,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.11 / X]{$\Delta$ Matrices cycliques}
+\begin{ex}[Moulin.CD.11 / X]{$\Delta$ Matrices cycliques}
 	On considère : $$\begin{array}{lrcl}
 		\varphi:&\mathcal{M}_n(\R)&\longrightarrow&\R^n \\
 		&M&\longmapsto&(\Tr(M),\ldots,\Tr(M^n))
@@ -204,7 +204,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	Montrer que $\exp:\mathcal{M}_n(\K)\to\mathcal{M}_n(\K)$ est de classe $\mathcal{C}^1$.
 \end{app}
 
-\begin{ex}[Moulin.12]{$\star$ Différentiation de l'exponentielle}
+\begin{ex}[Moulin.CD.12]{$\star$ Différentiation de l'exponentielle}
 	\begin{enumerate}
 		\item Soit $\mathcal{A}$ une $\C$-algèbre de dimension finie ainsi que $a$ et $b$ deux éléments de $\mathcal{A}$ qui commutent. Montrer l'identité : $$\sum_{n=0}^{+\infty}\left(\frac{1}{n!}\sum_{k=0}^{n-1}a^kb^{n-1-k}\right)=e^b\sum_{n=0}^{+\infty}\frac{(a-b)^n}{(n+1)!}$$ On pourra commencer par le cas où $a-b$ est inversible.
 		\item Montrer que $\exp:\mathcal{M}_n(\C)\mathcal{M}_n(\C)$ est de classe $\mathcal{C}^1$.
@@ -212,7 +212,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 		\item Soit $A\in\mathcal{M}_n(\C)$. Montrer que $d\ \exp(A)$ est un automorphisme de $\mathcal{M}_n(\C)$ si, et seulement si, le spectre de $A$ ne contient pas deux éléments distincts $z$ et $z'$ tels que $z-z'\in 2i\pi\Z$.
 	\end{enumerate}
 \end{ex}
-\begin{ex}[Moulin.13]{Fonctions holomorphes}
+\begin{ex}[Moulin.CD.13]{Fonctions holomorphes}
 	Soit $U$ un ouvert de $\C$ ainsi que $f$ définie sur $U$. On pose $P=\text{Re}(f)$ et $Q=\text{Im}(f)$.\\
 	Soit $z_0\in U$. Montrer l'équivalence entre : 
 	\begin{enumerate}[label=(\roman*)]
@@ -225,7 +225,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	Montrer que sous ces conditions, il existe alors un unique complexe $a$ tel que $df(z_0):h\mapsto ah$.
 \end{ex}
 
-\begin{ex}[Moulin.14]{}
+\begin{ex}[Moulin.CD.14]{}
 	Soit $U$ un ouvert convexe de $\R^2$. On considère une fonction $f:U\to\R$ convexe et différentiable.
 	\begin{enumerate}
 		\item Montrer que $f$ admet un minimum en tout point où sa différentielle est nulle.
@@ -233,15 +233,15 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.15]{$\star$ Théorème fondamental avec hypothèses affaiblies}
+\begin{ex}[Moulin.CD.15]{$\star$ Théorème fondamental avec hypothèses affaiblies}
 	Soit $U$ un ouvert de $\R^2$ et $f:U\to F$. On suppose que $\displaystyle\frac{\partial f}{\partial x}$ et $\displaystyle\frac{\partial f}{\partial y}$ sont définies en tout point, et que la seconde est continue sur $U$. \\ Montrer que $f$ est différentiable en tout point.
 \end{ex}
 
-\begin{ex}[Moulin.16]{Inégalité des accroissements finis}
+\begin{ex}[Moulin.CD.16]{Inégalité des accroissements finis}
 	Soit $U$ un ouvert de $E$ et $f:U\to F$ de classe $\mathcal{C}^1$. Soit $(a,b)\in U^2$ tel que le segment $[a,b]$ soit inclus dans $U$. Montrer l'inégalité : $$\lVert f(b)-f(a)-df(a)[b-a]\rVert\leqslant\underset{x\in[a,b]}{\sup}\lVert(df(x)-df(a))\rVert_{op}\lVert b-a\rVert$$
 \end{ex}
 
-\begin{ex}[Moulin.17]{$\star$ Lemme pour l'inversion locale}
+\begin{ex}[Moulin.CD.17]{$\star$ Lemme pour l'inversion locale}
 	Soit $\Omega$ un ouvert de $E$ contenant $0$ ainsi que $f:\Omega\to E$ de classe $\mathcal{C}^1$ telle que $f(0)=0$ et $df(0)=\text{Id}_E$.
 	\begin{enumerate}
 		\item Montrer l'existence d'un réel $r>0$ tel que, pour tout $y\in B_f(0,r/2)$, la fonction $g_y:x\mapsto y+x-f(x)$ soit $1/2$-lipschitzienne de $B=B_f(0,r)$ dans lui-même et en déduire l'injectivité de $f$ sur $B$.
@@ -258,7 +258,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.18]{$\star$ Théorème d'inversion locale}
+\begin{ex}[Moulin.CD.18]{$\star$ Théorème d'inversion locale}
 	Soit $\Omega$ un ouvert de $E$ ainsi que $f:\Omega\to E$ de classe $\mathcal{C}^1$ et $a\in\Omega$ tel que $df(a)\in\mathcal{GL}(E)$.
 	\begin{enumerate}
 		\item Montrer que $df(x)$ est inversible pour tout $x$ dans un voisinage $\Omega'$ de $a$.
@@ -273,16 +273,16 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.19]{$\star\star$ Inégalité des accroissements finis inversée}
+\begin{ex}[Moulin.CD.19]{$\star\star$ Inégalité des accroissements finis inversée}
 	On suppose $E$ muni d'une structure euclidienne. Soit $f:E\to\R$ de classe $\mathcal{C}^1$. On suppose que $\lVert\nabla f(x)\rVert\geqslant 1$ pour tout $x$ dans $B(0,1)$. \\
 	Montrer qu'il existe $x\in B(0,1)$ tel que $f(x)\geqslant f(0)+1$. On pourra commencer par traiter le cas où $\lVert\nabla f(x)\rVert>1$ pour tout $x$ dans $B(0,1)$.
 \end{ex}
 
-\begin{ex}[Moulin.20 / X]{$\star$}
+\begin{ex}[Moulin.CD.20 / X]{$\star$}
 	Soit $f:\R\to\R$ telle que $\forall x\in\R,\ f(x+2\pi)-f(x)\in 2\pi\Z$. Soit $F:\R^2\to\R^2$ telle que : $$\forall (r,q)\in\R_+\times\R,\ F(r\cos q,r\sin q)=(r\cos(f(q)),r\sin(f(q)))$$ A quelle condition (nécessaire et suffisante) la fonction $F$ est-elle différentiable en $(0,0)$ ?
 \end{ex}
 
-\begin{ex}[Moulin.21]{}
+\begin{ex}[Moulin.CD.21]{}
 	Soit $n\in\N\st$. On note $U$ l'ouvert de $\R^n$ constitué des $n$-uplets strictement croissants. Montrer que : $$(x_1,\ldots,x_n)\mapsto\prod_{k=1}^{n}(X-x_k)-X^n$$ est de classe $\mathcal{C}^1$ de $U$ dans $\R_{n-1}[X]$ et qu'en tout point sa différentielle est bijective.
 \end{ex}
 \begin{proof}
@@ -291,7 +291,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 
 \section{Fonctions de classe $\mathcal{C}^k$}
 
-\begin{ex}[Moulin.22]{$\circ$}
+\begin{ex}[Moulin.CD.22]{$\circ$}
 	Sur $\R^2$, on définit $f(x,y)=\displaystyle4xy\frac{x^2-y^2}{x^2+y^2}$ si $(x,y)\ne(0,0)$ et $f(0,0)=0$.
 	\begin{enumerate}
 		\item Montrer que $f$ est de classe $\mathcal{C}^1$.
@@ -299,35 +299,35 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.23]{}
+\begin{ex}[Moulin.CD.23]{}
 	\begin{enumerate}
 		\item Montrer que la fonction $f$ définie pour $x\ne 0$ par $f(x)=e^{-1/x^2}$ est prolongeable en une fonction de classe $\mathcal{C}^\infty$ sur $\R$ et que on prolongement, que l'on note également $f$, vérifie $\forall k\in\N,\ f^{(k)}(0)=0$.
 		\item $\star$ On définit $g(x,y)=\displaystyle\frac{f(x)f(y)}{f(x)+f(y)}$ si $(x,y)\ne(0,0)$ et $g(0,0)=0$. \\ Montrer que $g$ admet des dérivées partielles à tout ordre sur $\R^2$ mais qu'elle n'est pas continue en $(0,0)$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.24]{Un prolongement $\mathcal{C}^\infty$}
+\begin{ex}[Moulin.CD.24]{Un prolongement $\mathcal{C}^\infty$}
 	On note $\Delta=\R^2\setminus\{(x,y)\in\R^2\ : \ x=y\}$. Montrer que la fonction $f$ définie sur $\Delta$ par la formule $$f(x,y)=\frac{\sin(x)-\sin(y)}{x-y}$$ se prolonge en une fonction de classe $\mathcal{C}^\infty$.
 \end{ex}
 \begin{proof}
 	Par trigonométrie, si $(x,y)\in\Delta$, on a : $$g(x,y)=\text{sinc}\left(\frac{x-y}{2}\right)\cos\left(\frac{x+y}{2}\right)$$ Or, le sinus cardinal se prolonge par continuité en $0$, de façon $\mathcal{C}^\infty$ car ce prolongement est alors DSE avec un RCV infini. Comme le cosinus est de classe $\mathcal{C}^\infty$, on obtient le résultat par composition.
 \end{proof}
 
-\begin{ex}[Moulin.25]{$\star$ Prolongement $\mathcal{C}^\infty$ : cas général}
+\begin{ex}[Moulin.CD.25]{$\star$ Prolongement $\mathcal{C}^\infty$ : cas général}
 	On note $\Delta=\R^2\setminus\{(x,y)\in\R^2\ : \ x=y\}$ et considère une fonction $f:\R\to\C$ de classe $\mathcal{C}^\infty$. Montrer que la fonction $g$ définie sur $\Delta$ par la formule $$g(x,y)=\frac{f(x)-f(y)}{x-y}$$ se prolonge en une fonction de classe $\mathcal{C}^\infty$.
 \end{ex}
 \begin{proof}
 	La ruse employée à l'exercice précédent ne fonctionne plus. Et si on veut le faire à la main, ça va être très moche. Donc, on utilise une classe de fonction. On considère : $$S=\left\{(x,y)\mapsto\int_{0}^{1}\sum_{n\in\N}P_n(t)f^{(n)}(x+t(y-x))\ dt \ \mid \ (P_n)\in\R[X]^{(\N)}\right\}$$ Il est clair que $$g:(x,y)\to\int_{0}^{1}f'(x+t(y-x))\ dt$$ est dedans, et c'est le seul prolongement convenable pour $g$. De plus, en dominant, on voit que toute fonction de $S$ est continue. Enfin, en dominant, on montre que $S$ est stable par dérivation partielle. Cela permet de conclure, conformément au point méthode du cours, que $g$ est de classe $\mathcal{C}^\infty$.
 \end{proof}
 
-\begin{ex}[Moulin.26]{$\star$ $\mathcal{C}^p$-difféomorphismes}
+\begin{ex}[Moulin.CD.26]{$\star$ $\mathcal{C}^p$-difféomorphismes}
 	Soit $U$ et $V$ deux ouverts de $\R^n$ et $f:U\to V$ une application de classe $\mathcal{C}^p$ avec $p\geqslant 1$. On suppose que $f$ est bijective et que $f\inv$ est différentiable. Montrer que $f\inv$ est de classe $\mathcal{C}^p$.
 \end{ex}
 \begin{proof}
 	A faire...
 \end{proof}
 
-\begin{ex}[Moulin.27]{Indépendance du laplacien vis-à-vis des bases orthonormées}
+\begin{ex}[Moulin.CD.27]{Indépendance du laplacien vis-à-vis des bases orthonormées}
 	On suppose $E$ muni d'une structure euclidienne et de dimension $n$. Soit $f:U\to\R$ une fonction de classe $\mathcal{C}^2$. Montrer que $$\Delta f=\sum_{k=1}^{n}\partial_k\partial_k f$$ ne dépend pas de la base orthonormée dans laquelle on le calcule. On l'appelle le laplacien de $f$.
 \end{ex}
 \begin{proof}
@@ -348,15 +348,15 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	Il s'agit de la version énervée du précédent. Un conseil : le faire calmement. Calculer les dérivées partielles premières et secondes de $g$ par rapport à $r$ et $\theta$ en utilisant la règle de la chaîne. Ensuite, sommer les dérivées secondes puis ajuster.
 \end{proof}
 
-\begin{ex}[Moulin.28]{}
+\begin{ex}[Moulin.CD.28]{}
 	Soit $V$ un espace euclidien et $a\in V$. \\ Donner une condition nécessaire et suffisante pour que $x\mapsto\ln\lVert x-a\rVert$ soit une fonction harmonique, c'est-à-dire qu'elle soit de classe $\mathcal{C}^2$ et de laplacien nul.
 \end{ex}
 
-\begin{ex}[Moulin.29]{$\star$ Théorème de Schwarz avec hypothèses affaiblies}
+\begin{ex}[Moulin.CD.29]{$\star$ Théorème de Schwarz avec hypothèses affaiblies}
 	Soit $U$ un ouvert de $\R^2$ et $f:U\to F$. on suppose que les dérivées partielles premières de $f$ existent partout et sont partiellement continues, et que $\displaystyle\frac{\partial^2 f}{\partial x\partial y}$ est définie sur tout $U$ et continue. Montrer alors que $\displaystyle\frac{\partial^2f}{\partial y\partial x}$ est définie sur tout $U$ et que $\displaystyle\frac{\partial^2f}{\partial y\partial x}=\frac{\partial^2 f}{\partial x\partial y}$. On pourra remarquer que : $$f(x,y)=f(x,b)+(y-b)\int_{0}^{1}\frac{\partial f}{\partial y}(x,(1-t)b+ty)\ dt$$
 \end{ex}
 
-\begin{ex}[Moulin.30]{$\star$ Théorème de Schwarz avec hypothèses inhabituelles}
+\begin{ex}[Moulin.CD.30]{$\star$ Théorème de Schwarz avec hypothèses inhabituelles}
 	Soit $U$ un ouvert de $\R^2$ et $f:U\to F$. On suppose que les dérivées partielles secondes $\displaystyle\frac{\partial^2f}{\partial x^2}$, $\displaystyle\frac{\partial^2f}{\partial x\partial y}$ et $\displaystyle\frac{\partial^2f}{\partial y^2}$ existent en tout point et que la dernière est continue en tout point. On suppose que $(0,0)\in U$.
 	\begin{enumerate}
 		\item Montrer que, pour $(x,y)$ voisin de $(0,0)$ : $$f(x,y)=f(0,0)+df(0,0)[x,y]+\frac{x^2}{2}\frac{\partial^2 f}{\partial x^2}(0,0)+xy\frac{\partial^2}{\partial x\partial t}(0,0)+\frac{y^2}{2}\frac{\partial^2 f}{\partial y^2}(0,0)+o(x^2+y^2)$$ On pourra appliquer la formule de Taylor avec reste intégral à la fonction $y\mapsto f(x,y)$.
@@ -364,7 +364,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.31]{$\star$ Théorème de Poincaré}
+\begin{ex}[Moulin.CD.31]{$\star$ Théorème de Poincaré}
 	Soit $V$ un ouvert étoilé par rapport à $a$ d'un espace euclidien et $f:V\to V$ une fonction de classe $\mathcal{C}^1$ telle que $df(a)$ soit un endomorphisme symétrique pour tout $a$ (on dit aussi que $f$ est de \textbf{rotationnel} nul). Montrer que $f$ est le gradient d'une fonction $F:V\to\R$ de classe $\mathcal{C}^1$. On pourra remarquer que si $f=\nabla F$, alors pour tout $x\in V$ : $$F(x)-F(a)=\int_{0}^{1}\left(f(a+t(x-a))\mid x-a\right)\ dt$$
 \end{ex}
 \begin{proof}
@@ -392,11 +392,11 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 
 \section{\textit{Extrema}}
 
-\begin{ex}[Moulin.32]{}
+\begin{ex}[Moulin.CD.32]{}
 	Etudier les \textit{extrema} locaux des fonctions suivantes sur leur ensemble de définition : $$(x,y)\mapsto x^3-3x+xy^2 \ \ \text{et}\ \ (x,y)\mapsto\frac{1}{1-x}+\frac{1}{1-y}+\frac{1}{x+y}$$
 \end{ex}
 
-\begin{ex}[Moulin.33]{}
+\begin{ex}[Moulin.CD.33]{}
 	Etudier les \textit{extrema} des fonctions suivantes :
 	\begin{enumerate}
 		\item $(x,y)\mapsto\sqrt{x^2+(y-1)^2}+\sqrt{(x-1)^2+y^2}$ ;
@@ -406,7 +406,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.34]{Principe du maximum et fonction harmonique}
+\begin{ex}[Moulin.CD.34]{Principe du maximum et fonction harmonique}
 	Soit $U$ un ouvert non vide borné de $\R^2$ et $f$ une fonction définie sur l'adhérence $U$, continue sur l'adhérence de $U$ et de classe $\mathcal{C}^2$ sur $U$ à valeurs dans $\R$.
 	\begin{enumerate}
 		\item Montrer que si $\Delta f$ ne prend que des valeurs strictement positives sur $U$, alors $f$ n'a pas de maximum local sur $U$.
@@ -421,27 +421,27 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.35]{}
+\begin{ex}[Moulin.CD.35]{}
 	\textit{Extrema} de $(x,y)\mapsto xe^y+ye^x$.
 \end{ex}
 
-\begin{ex}[Moulin.36]{$\circ$}
+\begin{ex}[Moulin.CD.36]{$\circ$}
 	Déterminer les \textit{extrema} globaux de la fonction $f:\R^2\to\R$ définie par : $$\forall (x,y)\in\R^2,\ f(x,y)=x^4+y^4-x(x^2-y^2)$$
 \end{ex}
 
-\begin{ex}[Moulin.37]{}
+\begin{ex}[Moulin.CD.37]{}
 	Pour $a\in\R$, on définit $f_a:\R^2\to\R$ par : $$\forall (x,y)\in\R^2,\ f_a(x,y)=(2y+(1+a)x)e^{\displaystyle-\frac{x^2+xy+(1+a)y^2}{2}}$$ Discuter, selon les valeurs de $a$, des \textit{extrema} globaux de $f_a$.
 \end{ex}
 
-\begin{ex}[Moulin.38]{}
+\begin{ex}[Moulin.CD.38]{}
 	Pour $a\in\R$, on définit $g_a:\R^2\to\R$ par : $$\forall (x,y)\in\R^2,\ g_a(x,y)=(2y+x)e^{\displaystyle-\frac{x^2+xy+(1+a)y^2}{2}}$$ Discuter, selon les valeurs de $a$, des \textit{extrema} globaux de $g_a$.
 \end{ex}
 
-\begin{ex}[Moulin.39]{}
+\begin{ex}[Moulin.CD.39]{}
 	Déterminer les \textit{extrema} de la fonction $f:x\mapsto\displaystyle\sum_{i=1}^{n}x_i\ln(x_i)$ sur le simplexe standard (ouvert) $$\Sigma=\left\{(x_1,\ldots,x_n)\in(\R_+\st)^n\ : \ \sum_{i=1}^{n}x_i=1\right\}$$
 \end{ex}
 
-\begin{ex}[Moulin.40]{}
+\begin{ex}[Moulin.CD.40]{}
 	Soit $A\in\mathcal{S}_n(\R)$ non nulle, $U\in\R^n$ et $a\in\R$. Pour $X\in\R^n$, on pose : $$f(X)=X^TAX-2U^TX+a$$
 	\begin{enumerate}
 		\item Montrer que $f$ est de classe $\mathcal{C}^1$ et calculer son gradient.
@@ -451,15 +451,15 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.41]{}
+\begin{ex}[Moulin.CD.41]{}
 	Soit $(ABC)$ un triangle dans $\R^2$ affine euclidien. Déterminer le maximum du produit des distances d'un point $M$ intérieur au triangle aux côtés du triangle.
 \end{ex}
 
-\begin{ex}[Moulin.42]{}
+\begin{ex}[Moulin.CD.42]{}
 	Quels sont les triangles de périmètre maximum inscrit dans un cercle ?
 \end{ex}
 
-\begin{ex}[Moulin.42]{Fonctions strictement monotones}
+\begin{ex}[Moulin.CD.42]{Fonctions strictement monotones}
 	Soit $E$ un espace vectoriel euclidien. Une fonction $f\in\mathcal{C}^1(E,E)$ est dite strictement monotone lorsqu'il existe $k>0$ tel que : $$\forall (x,y)\in E^2,\ \left(f(x)-f(y)\mid x-y\right)\geqslant k\lVert x-y\rVert^2$$
 	\begin{enumerate}
 		\item Quelles sont les fonctions $\mathcal{C}^1$ strictement monotone de $\R$ dans $\R$ ? Déterminer leur image.
@@ -471,17 +471,17 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 
 \section{\textit{Extrema} liés}
 
-\begin{ex}[Moulin.44]{}
+\begin{ex}[Moulin.CD.44]{}
 	Soit $(\alpha_1,\ldots,\alpha_n)\in\R_+^n$ tel que $\displaystyle\sum_{i=1}^{n}\alpha_i=1$. \\
 	Etudier les \textit{extrema} de $f:x\mapsto\displaystyle\prod_{i=1}^{n}x_i^{\alpha_i}$ sur $K=\displaystyle\left\{(x_1,\ldots,x_n)\in\R_+^n\ : \ \sum_{i=1}^{n}\alpha_ix_i=1\right\}$. \\
 	En déduire : $$\forall (x_1,\ldots,x_n)\in\R_+^n,\ \prod_{i=1}^{n}x_i^{\alpha_i}\leqslant\sum_{i=1}^{n}\alpha_ix_i$$
 \end{ex}
 
-\begin{ex}[Moulin.45]{}
+\begin{ex}[Moulin.CD.45]{}
 	Soit $(a,b,c)\in\R^3$ tel que $a>b>c>0$ et : $$S=\left\{(x,y,z)\in\R^3\\ : \ p(x,y,z)=1\right\}\ \ \text{où}\ \ p(x,y,z)=\frac{x^4}{a^4}+\frac{y^4}{b^4}+\frac{z^4}{c^4}$$ Déterminer les \textit{extrema} de $f:(x,y,z)\mapsto x^2+y^2+z^2$ sur $S$.
 \end{ex}
 
-\begin{ex}[Moulin.46]{}
+\begin{ex}[Moulin.CD.46]{}
 	Soit $K_n=\left\{(x_1,\ldots,x_n)\in\R_+^n\ : \ x_1+\cdots+x_n=1\right\}$. On note $M_n$ le \textit{maximum} de sur $K_n$, s'il existe, de : $$f_n:(x_1,\ldots,x_n)\mapsto\sum_{1\leqslant i,j\leqslant n}x_ix_j(x_i+x_j)^2$$
 	\begin{enumerate}
 		\item Montrer que $M_n$ est bien défini.
@@ -490,11 +490,11 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.47]{$\star$}
+\begin{ex}[Moulin.CD.47]{$\star$}
 	Etudier les \textit{extrema} globaux de $\lvert \sin\rvert$ sur le disque unité fermé de $\C$.
 \end{ex}
 
-\begin{ex}[Moulin.48]{}
+\begin{ex}[Moulin.CD.48]{}
 	On note $\mathcal{SL}_n(\R)$ l'ensemble des matrices $M\in\mathcal{M}_n(\R)$ telles que $\det(M)=1$. On munit $\mathcal{M}_n(\R)$ de sa structure euclidienne canonique.
 	\begin{enumerate}
 		\item Montrer que le gradient du déterminant en $M\in\mathcal{SL}_n(\R)$ est $M^{-T}$.
@@ -502,7 +502,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.49]{}
+\begin{ex}[Moulin.CD.49]{}
 	Soit $A\in\mathcal{M}_n(\R)$. On définit : $$\begin{array}{lrcl}
 		\varphi_A:&\mathcal{O}_n(\R)&\longrightarrow&\R\\
 		&O&\longmapsto&\Tr(AO)
@@ -513,11 +513,11 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.50]{}
+\begin{ex}[Moulin.CD.50]{}
 	\textit{Extrema} sur $\R_+^2$ de $(x,y)\mapsto\displaystyle\frac{xy}{(1+y)(1+y)(1+xy)}$
 \end{ex}
 
-\begin{ex}[Moulin.51]{}
+\begin{ex}[Moulin.CD.51]{}
 	Soit $E$ un espace vectoriel euclidien et $f:E\to\R$ une fonction de classe $\mathcal{C}^1$ telle que $$\frac{f(x)}{\lVert x\rVert}\xrightarrow[\lVert x\rVert\to+\infty]{}+\infty$$
 	\begin{enumerate}
 		\item Soit $v\in E$. Démontrer que $g:w\mapsto f(x)-(x\mid v)$ admet un \textit{minimum}.
@@ -525,11 +525,11 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.51]{$\Delta$}
+\begin{ex}[Moulin.CD.51]{$\Delta$}
 	Démontrer l'inégalité arithmético-géométrique : $$\forall x\in\R_+^n,\ \left(\prod_{i=1}^{n}x_i\right)^{1/n}\leqslant\frac{1}{n}\sum_{i=1}^{n}x_i$$
 \end{ex}
 
-\begin{ex}[Moulin.53]{$\Delta\circ$ Théorème spectral}
+\begin{ex}[Moulin.CD.53]{$\Delta\circ$ Théorème spectral}
 	Soit $E$ un espace euclidien de dimension non nulle, $S$ sa sphère unité et $u$ un endomorphisme autoadjoint de $E$. On définit $f_u$ de $E$ dans $\R$ par : $$f_u:x\mapsto (u(x)\mid x)$$
 	\begin{enumerate}
 		\item Montrer que $f$ est de classe $\mathcal{C}^1$ et déterminer son gradient.
@@ -556,32 +556,32 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 
 \section{Équations aux dérivées partielles}
 
-\begin{ex}[Moulin.54]{$\circ$}
+\begin{ex}[Moulin.CD.54]{$\circ$}
 	Déterminer les fonctions $f:\R^2\to\R$ de classe $\mathcal{C}^1$ telles que $$\frac{\partial f}{\partial x}=x^2-y^2\ \ \text{et}\ \ \frac{\partial f}{\partial y}=-2xy$$
 \end{ex}
 
-\begin{ex}[Moulin.55]{$\circ$}
+\begin{ex}[Moulin.CD.55]{$\circ$}
 	Déterminer les fonctions $f:\R^2\to\R$ de classe $\mathcal{C}^1$ telles que $$\frac{\partial f}{\partial x}=x^3-y^3\ \ \text{et}\ \ \frac{\partial f}{\partial y}=-x^2y^2$$
 \end{ex}
 
-\begin{ex}[Moulin.56]{}
+\begin{ex}[Moulin.CD.56]{}
 	Résoudre sur $\R^2$ l'équation aux dérivées partielles : $$5\frac{\partial f}{\partial x}-3\frac{\partial f}{\partial y}=x+y$$
 \end{ex}
 
-\begin{ex}[Moulin.57]{}
+\begin{ex}[Moulin.CD.57]{}
 	Résoudre sur $\R^2$ l'équation aux dérivées partielles : $$x\frac{\partial f}{\partial x}-y\frac{\partial f}{\partial y}=0$$
 \end{ex}
 
-\begin{ex}[Moulin.58]{}
+\begin{ex}[Moulin.CD.58]{}
 	On considère l'équation aux dérivées partielles $\displaystyle x\frac{\partial f}{\partial x}+y\frac{\partial f}{\partial y}=0$. \\
 	Quelles sont les solutions de cette équation sur $\R_+\st\times\R$ ? sur $\R^2\setminus(\R_-\times\{0\})$ ? sur $\R^2\setminus\{(0,0)\}$ ? sur $\R^2$ ?
 \end{ex}
 
-\begin{ex}[Moulin.59]{}
+\begin{ex}[Moulin.CD.59]{}
 	Soit $f\in\mathcal{C}^1(\R^2,\R)$ telle que $(\nabla f(x),x)$ soit liée pour tout $x\in\R^2$. Que dire de $f$ ?
 \end{ex}
 
-\begin{ex}[Moulin.60]{$\star$}
+\begin{ex}[Moulin.CD.60]{$\star$}
 	Résoudre sur $\R^2$ l'équation aux dérivées partielles : $$\frac{\partial^2 f}{\partial x^2}+2\frac{\partial^2 f}{\partial y\partial x}-3\frac{\partial^2f}{\partial y^2}=0$$
 \end{ex}
 \begin{proof}
@@ -590,7 +590,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 
 \section{Vecteurs tangents}
 
-\begin{ex}[Moulin.61]{}
+\begin{ex}[Moulin.CD.61]{}
 	Déterminer, en tout point des parties suivantes de $\R^3$, l'ensemble des vecteurs tangents, et préciser sa structure selon le point considéré.
 	\begin{enumerate}
 		\item $(S_1)$ : $z=xy+3y^2$ ;
@@ -599,7 +599,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.62]{}
+\begin{ex}[Moulin.CD.62]{}
 	Soit $S$ la surface de $\R^3$ d'équation $z=xy$ et $M_0=(x_0,y_0,z_0)$ un point de $S$.
 	\begin{enumerate}
 		\item Déterminer le plan tangent à $S$ en $M_0$.
@@ -607,7 +607,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.63]{$\star$ Espace tangent à $\mathcal{O}_n(\R)$ en $I_n$}
+\begin{ex}[Moulin.CD.63]{$\star$ Espace tangent à $\mathcal{O}_n(\R)$ en $I_n$}
 	Déterminer l'ensemble des vecteurs tangents à $\mathcal{O}_n(\R)$ en $I_n$.
 \end{ex}
 \begin{proof}
@@ -622,7 +622,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{cases}$$ si bien que $A$ est effectivement un vecteur tangent à $\mathcal{O}_n(\R)$ en $I_n$, ce qui conclut la preuve.
 \end{proof}
 
-\begin{ex}[Moulin.64]{}
+\begin{ex}[Moulin.CD.64]{}
 	Soit $G$ un sous-groupe de $\mathcal{GL}_n(\K)$ avec $\K=\R$ ou $\K=\C$, et $g\in G$.
 	\begin{enumerate}
 		\item $\circ$ Déterminer, en fonction de l'ensemble $T$ des vecteurs tangents à $G$ en $I_n$, celui des vecteurs tangents à $G$ en $g$.
@@ -630,7 +630,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.65]{}
+\begin{ex}[Moulin.CD.65]{}
 	On fixe trois entiers strictement positifs $n$, $p$ et $r$ tels que $\min(n,p)>r$. On note $\mathcal{G}_r$ l'ensemble des matrices de rang $r$ dans $\mathcal{M}_{n,p}(\R)$ et $J_r=\displaystyle\begin{pmatrix}
 		I_r&0\\
 		0&0
@@ -645,7 +645,7 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.66]{Espace tangent à $\mathcal{SL}_n(\K)$ en $I_n$}
+\begin{ex}[Moulin.CD.66]{Espace tangent à $\mathcal{SL}_n(\K)$ en $I_n$}
 	L'ensemble des vecteurs tangents à $\mathcal{SL}_n(\K)$ en $I_n$ est l'ensemble des matrices de trace nulle.
 \end{ex}
 \begin{proof}
@@ -655,19 +655,19 @@ Dans tous les exercices, $E$ et $F$ désignent des espaces vectoriels de dimensi
 	L'ensemble des matrices de trace nulle est de dimension $n^2-1$ si on travaille dans $\mathcal{M}_n(\R)$ et $2n^2-2$ si on travaille dans $\mathcal{M}_n(\C)$ (toujours en tant que $\R$-espaces vectoriels dans ce chapitre). Pour le montrer, appliquer le théorème du rang.
 \end{rmq}
 
-\begin{ex}[Moulin.67]{$\star$ Espace tangent à $\mathcal{U}_n(\C)$ en $I_n$}
+\begin{ex}[Moulin.CD.67]{$\star$ Espace tangent à $\mathcal{U}_n(\C)$ en $I_n$}
 	Déterminer l'ensemble des vecteurs tangents à $\mathcal{U}_n(\C)$ en $I_n$ et en préciser la dimension.
 \end{ex}
 \begin{proof}
 	La réponse est l'ensemble des matrices anti-hermitiennes, \textit{ie} égales à l'opposé de leur transconjuguée. Adapter la preuve donnée pour $\mathcal{O}_n(\R)$.
 \end{proof}
 
-\begin{ex}[Moulin.68]{$\star$}
+\begin{ex}[Moulin.CD.68]{$\star$}
 	Soit $S$ la nappe paramétrée par : $$x=\frac{u+v}{1-uv}\ \ \ y=\frac{1-uv}{1+uv}\ \ \ z=\frac{u-v}{1+uv}$$ Déterminer l'ensemble des vecteurs tangents à $S$ au point de paramètre $(u,v)$ et en donner une équation. \\
 	On pourra commencer par déterminer une équation cartésienne de $S$.
 \end{ex}
 
-\begin{ex}[Moulin.69]{}
+\begin{ex}[Moulin.CD.69]{}
 	On considère la surface $S$ d'équation $z=x^4-x^3+xy-y^2$.
 	\begin{enumerate}
 		\item Déterminer les points où $S$ admet un plan tangent parallèle à $(O;\overrightarrow{i},\overrightarrow{j})$.

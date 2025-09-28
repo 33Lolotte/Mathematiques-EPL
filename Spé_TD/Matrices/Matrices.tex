@@ -67,18 +67,18 @@ Dans toute la feuille d'exercices, $\K$ désigne un sur-corps de $\Q$.
 
 \section{Espaces vectoriels de matrices}
 
-\begin{ex}[Moulin.01]{}
+\begin{ex}[Moulin.Mat.01]{}
 	Soit $M\in\mathcal{M}_{n,p}(\K)$. Déterminer le sous-espace vectoriel de $\mathcal{M}_{n,p}(\K)$ engendré par les matrices équivalentes à $M$.
 \end{ex}
 
-\begin{ex}[Moulin.02]{}
+\begin{ex}[Moulin.Mat.02]{}
 	Déterminer le sous-espace vectoriel de $\mathcal{M}_n(\K)$ engendré par les matrices de projecteurs.
 \end{ex}
 \begin{proof}
 	Les $E_{i,i}$ sont des matrices de projecteur. De plus, si $i\ne j$, $E_{i,i}+E_{i,j}$ est aussi une matrice de projecteur. Donc les $E_{i,j}$ pour $i\ne j$ sont aussi dedans par différence. Le sous-espace vectoriel cherché est donc $\mathcal{M}_n(\K)$.
 \end{proof}
 
-\begin{ex}[Moulin.03]{Matrices damiers}
+\begin{ex}[Moulin.Mat.03]{Matrices damiers}
 	\begin{enumerate}
 		\item Caractériser en termes d'endomorphismes les ensembles :
 		$$D_0=\{(a_{i,j})\in\mathcal{M}_n(\K)\ : \ i+j\equiv 1\ [2]\implies a_{i,j}=0\}$$
@@ -89,7 +89,7 @@ Dans toute la feuille d'exercices, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.04]{Matrices magiques}
+\begin{ex}[Moulin.Mat.04]{Matrices magiques}
 	Soit $n\geqslant 3$. Pour $A=(a_{i,j})\in\mathcal{M}_n(\C)$, on note : $$l_i(A)=\sum_{j=1}^{n}a_{i,j}\ c_j(A)=\sum_{i=1}^{n}a_{i,j}\ d(A)=\sum_{k=1}^{n}a_{k,k}\ a(A)=\sum_{k=1}^{n}a_{k,n+1-k}$$
 	\begin{enumerate}
 		\item Montrer que l'ensemble $\mathcal{N}_0$ des matrices $A$ vérifiant : $$\forall (i,j)\in\llbracket1,n\rrbracket^2,\ l_i(A)=c_j(A)=0$$ est un sous-espace vectoriel de $\mathcal{M}_n(\C)$ de dimension $(n-1)^2$. On pourra rechercher son intersection avec un sous-espace vectoriel de dimension $2n-1$ bien choisi.
@@ -98,15 +98,15 @@ Dans toute la feuille d'exercices, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.05]{Quaternions}
+\begin{ex}[Moulin.Mat.05]{Quaternions}
 	Montrer que $$\mathbb{H}=\left\{\begin{pmatrix}
 		a&-\overline{b}\\
 		b&\overline{a}
 	\end{pmatrix}\bigg| (a,b)\in\C^2\right\}$$ est un sous-espace vectoriel réel de $\mathcal{M}_2(\C)$ mais pas un sous-espace vectoriel complexe. Montrer que $\mathbb{H}$ est une $\R$-algèbre dans laquelle tout élément non nul est inversible. Est-ce un corps ?
 \end{ex}
 
-\begin{ex}[Moulin.06]{$\Delta$ Idéaux bilatères de $\mathcal{M}_n(\K)$}
-	Un idéal bilatère de $\mathcal{M}_n(\K)$ est un SEV $\mathcal{I}$ de $\mathcal{M}_n(\K)$ tel que : $$\forall A\in\mathcal{I},\ \forall M\in\mathcal{M}_n(\K),\ AM\in\mathcal{I} \ \ \text{et} \ \ MA\in\mathcal{I}$$
+\begin{ex}[Moulin.Mat.06]{$\Delta$ Idéaux bilatères de $\mathcal{M}_n(\K)$}
+	Un idéal bilatère de $\mathcal{M}_n(\K)$ est un sous-espace vectoriel $\mathcal{I}$ de $\mathcal{M}_n(\K)$ tel que : $$\forall A\in\mathcal{I},\ \forall M\in\mathcal{M}_n(\K),\ AM\in\mathcal{I} \ \ \text{et} \ \ MA\in\mathcal{I}$$
 	\begin{enumerate}
 		\item Montrer qu'un idéal bilatère non nul contient une matrice de rang $1$, puis qu'il contient toutes les matrices de rang $1$.
 		\item Déterminer l'ensemble des idéaux bilatères de $\mathcal{M}_n(\K)$.
@@ -123,7 +123,7 @@ Dans toute la feuille d'exercices, $\K$ désigne un sur-corps de $\Q$.
 
 \section{Calcul matriciel, représentation matricielle}
 
-\begin{ex}[Moulin.07]{$\circ$}
+\begin{ex}[Moulin.Mat.07]{$\circ$}
 	Résoudre dans $\mathcal{M}_2(\R)^2$ les systèmes :
 	\begin{enumerate}
 		\item $XY=\displaystyle\begin{pmatrix}
@@ -143,7 +143,7 @@ Dans toute la feuille d'exercices, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.08]{$\Delta$}
+\begin{ex}[Moulin.Mat.08]{$\Delta$}
 	Calculer les puissances $A^k$ de la matrice $A=\displaystyle\left(\binom{j}{i}\right)_{0\leqslant i,j\leqslant n}$ pour $k\in\Z$.
 \end{ex}
 \begin{proof}
@@ -153,19 +153,19 @@ Dans toute la feuille d'exercices, $\K$ désigne un sur-corps de $\Q$.
 	\end{array}$$ dans la base canonique de $\K_n[X]$. Par conséquent, la puissance $k$ de $A$ correspond à $P\mapsto P(X+k)$, que l'on sait très facilement calculer.
 \end{proof}
 
-\begin{ex}[Moulin.09]{$\circ$}
+\begin{ex}[Moulin.Mat.09]{$\circ$}
 	Soit $A\in\mathcal{M}_n(\K)$ une matrice triangulaire supérieure stricte. Calculer $A^n$ ? A quelle condition nécessaire et suffisante une matrice triangulaire est-elle nilpotente ?
 \end{ex}
 
-\begin{ex}[Moulin.10]{$\circ$}
+\begin{ex}[Moulin.Mat.10]{$\circ$}
 	Soit $E$ un espace vectoriel de dimension finie $n$, ainsi que $F$ et $G$ des sous-espaces vectoriels de $E$ de dimensions respectives $p$ et $q$. Calculer la dimension de : $$\{u\in\mathcal{L}(E)\ :\ u(F)\subset G\}$$
 \end{ex}
 
-\begin{ex}[Moulin.11]{}
+\begin{ex}[Moulin.Mat.11]{}
 	Soit $u$ un endomorphisme de rang $r$ d'un espace vectoriel $E$ de dimension finie $n$. On pose : $$A=\{v\in\mathcal{L}(E)\ : \ u\circ v=0\}\ \ \text{et}\ \ B=\{v\in\mathcal{L}(E)\ : \ v\circ u=0\}$$ Déterminer les dimensions de $A$, $B$ et $C=A\cap B$.
 \end{ex}
 
-\begin{ex}[Moulin.12]{$\Delta$ Matrice antédiagonale}
+\begin{ex}[Moulin.Mat.12]{$\Delta$ Matrice antédiagonale}
 	Soient $a_1,\ldots,a_n$ des complexes non nuls. Donner l'inverse de la matrice antédiagonale : $$A=\begin{pmatrix}
 		(0)&&a_n \\
 		&\iddots&\\
@@ -180,16 +180,16 @@ Dans toute la feuille d'exercices, $\K$ désigne un sur-corps de $\Q$.
 	\end{pmatrix}$$ On peut le vérifier par un calcul direct ou le voir en interprétant la matrice antédiagonale comme la matrice d'une inversion des vecteurs de la base, pondérée par les coefficients $a_i$.
 \end{proof}
 
-\begin{ex}[Moulin.13]{Matrice Attila}
+\begin{ex}[Moulin.Mat.13]{Matrice Attila}
 	On note $J\in\mathcal{M}_n(\K)$ la matrice Attila dont tous les coefficients valent $1$.
 	\begin{enumerate}
-		\item Déterminer la sous-algèbre de $\mathcal{M}_n(\K)$ engendré par $J$.
+		\item Déterminer la sous-algèbre de $\mathcal{M}_n(\K)$ engendrée par $J$.
 		\item Quels sont les éléments inversibles de cette sous-algèbre ? Quels sont les rangs des éléments non inversibles ?
 		\item Calculer $(I+\alpha J)^p$ pour $p\in\N$ puis pour $p\in\Z$ lorsque cela a un sens.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.14]{}
+\begin{ex}[Moulin.Mat.14]{}
 	Soit $A$, $B$ et $C$ trois matrices carrées de même taille non nulles.
 	\begin{enumerate}
 		\item Montrer que si $ABC=0$, alors deux des trois matrices $A$, $B$ et $C$ sont non inversibles.
@@ -197,41 +197,41 @@ Dans toute la feuille d'exercices, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.15]{}
+\begin{ex}[Moulin.Mat.15]{}
 	Déterminer toutes les matrices $A$ inversibles de $\mathcal{M}_n(\R)$ telles que $A$ et $A\inv$ soient à coefficients positifs ou nuls.
 \end{ex}
 
-\begin{ex}[Moulin.16]{$\star$}
+\begin{ex}[Moulin.Mat.16]{$\star$}
 	Soit $A$ et $B$ dans $\mathcal{M}_n(\K)$. On suppose qu'il existe au moins $n+1$ scalaires $\lambda_0,\ldots,\lambda_n\in\K$ pour lesquels $A+\lambda B$ est nilpotente. Montrer que $A$ et $B$ sont nilpotentes.
 \end{ex}
 \begin{proof}
 	Remarquons que les $A+\lambda_i B$ sont nécessairement d'indice de nilpotence inférieure à $n$. On considère $$P=(A+X.B)^n\in\mathcal{M}_n(\K(X))$$ On note $P_{i,j}$ le coefficient d'indices $(i,j)$ de $P$. Alors tous les $P_{i,j}$ sont de degré au plus $n$ et s'annulent en $n+1$ points distincts, donc tous les $P_{i,j}$ sont nuls. Donc $P$ est la matrice nulle. En particulier, en substituant $0$ à $X$, on en déduit que $A$ est nilpotente. En factorisant de force dans $P(\lambda)$ par $\lambda$ et puisqu'il y a une infinité de scalaires non nuls, on en que $\tilde{P}=(X.A+B)^n$ est aussi nul, donc que $B$ est nilpotente.
 \end{proof}
 
-\begin{ex}[Moulin.17]{}
+\begin{ex}[Moulin.Mat.17]{}
 	Soit $M=\displaystyle\begin{pmatrix}
 		A&B\\
 		0&D
 	\end{pmatrix}$ avec $A$ et $D$ des matrices carrées. Montrer que $M$ est inversible si, et seulement si $A$ et $D$ le sont. Déterminer dans ce cas l'inverse de $M$.
 \end{ex}
 
-\begin{ex}[Moulin.18]{}
+\begin{ex}[Moulin.Mat.18]{}
 	Soit $A$ et $B$ dans $\mathcal{M}_n(\C)$ de même rang telles que $A^2B=A$. Montrer que $B^2A=B$.
 \end{ex}
 \begin{proof}
-	Traduire les hypothèses en termes d'applications linéaires. En déduire que $\im(a)$ et $\ker(a)$ son supplémentaires, puis raisonner matriciellement.
+	Traduire les hypothèses en termes d'applications linéaires. En déduire que $\im(a)$ et $\ker(a)$ sont supplémentaires, puis raisonner matriciellement.
 \end{proof}
 
 \section{Rang, équivalence}
 
-\begin{ex}[Moulin.19]{$\circ$}
+\begin{ex}[Moulin.Mat.19]{$\circ$}
 	\begin{enumerate}
 		\item Quel est le rang de la matrice $(i+j-1)_{1\leqslant i,j\leqslant n}$ ?
 		\item Quel est le rang de la matrice $((\alpha+i+j)^2)_{1\leqslant i,j\leqslant n}$ ?
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.20]{}
+\begin{ex}[Moulin.Mat.20]{}
 	Pour $A=(a_{i,j})\in\mathcal{M}_{n,p}(\K)$ et $B\in\mathcal{M}_{m,q}(\K)$, on note : $$A\otimes B=\begin{pmatrix}
 		a_{1,1}B&a_{1,2}B&\cdots&a_{1,n}B\\
 		a_{2,1}B&a_{2,2}B&\cdots&a_{2,n}B\\
@@ -241,38 +241,38 @@ Dans toute la feuille d'exercices, $\K$ désigne un sur-corps de $\Q$.
 	Déterminer le rang de $A\otimes B$.
 \end{ex}
 
-\begin{ex}[Moulin.21]{$\star$}
+\begin{ex}[Moulin.Mat.21]{$\star$}
 	Soit $A\in\mathcal{M}_{p,n}(\K)$ et $B\in\mathcal{M}_{m,q}(\K)$. Déterminer le rang de l'application de $\mathcal{M}_{n,m}(\K)$ dans $\mathcal{M}_{p,q}(\K)$ qui à $M$ associe $AMB$. Retrouver alors le résultat de l'exercice précédent.
 \end{ex}
 
-\begin{ex}[Moulin.22]{$\circ$}
+\begin{ex}[Moulin.Mat.22]{$\circ$}
 	Pour $A\in\mathcal{M}_{n,p}(\C)$, déterminer le rang de $\overline{A}$.
 \end{ex}
 
-\begin{ex}[Moulin.23]{}
+\begin{ex}[Moulin.Mat.23]{}
 	Quelles sont les matrices $A\in\mathcal{M}_n(\K)$ telles que : $$\forall M\in\mathcal{M}_n(\K),\ \text{rg}(AM)=\text{rg}(M)\ ?$$
 \end{ex}
 
-\begin{ex}[Moulin.24]{}
+\begin{ex}[Moulin.Mat.24]{}
 	Quelles sont les matrices $A\in\mathcal{M}_n(\K)$ telles que : $$\forall B\in\mathcal{M}_n(\K),\ \text{rg}(AB)=\text{rg}(BA)\ ?$$
 \end{ex}
 
-\begin{ex}[Moulin.25]{$\star$}
+\begin{ex}[Moulin.Mat.25]{$\star$}
 	Trouver tous les sous-espaces vectoriels de dimension $n$ de $\mathcal{M}_n(\K)$ ne contenant que des matrices de rang inférieur ou égal à $1$.
 \end{ex}
 
-\begin{ex}[Moulin.26]{$\star$}
+\begin{ex}[Moulin.Mat.26]{$\star$}
 	Soit $X_1,\ldots,X_r$, $Y_1,\ldots,Y_r$ des éléments non nuls de $\K^n$. Montrer que la matrice $M=\displaystyle\sum_{i=1}^{r}X_iY_i^T$ est de rang inférieur ou égal à $r$ et qu'elle est de rang $r$ si, et seulement si, les deux familles $(X_1,\ldots,X_r)$ et $(Y_1,\ldots,Y_r)$ sont libres.
 \end{ex}
 
-\begin{ex}[Moulin.27]{}
+\begin{ex}[Moulin.Mat.27]{}
 	Soit $M=\displaystyle\begin{pmatrix}
 		A&C\\
 		0&B
 	\end{pmatrix}$ une matrice triangulaire par blocs. Comparer le rang de $M$ à $\text{rg}(A)+\text{rg}(B)$. Peut-on préciser lorsque $A$ ou $B$ est inversible ?
 \end{ex}
 
-\begin{ex}[Moulin.28]{}
+\begin{ex}[Moulin.Mat.28]{}
 		Soit $M=\displaystyle\begin{pmatrix}
 		I_n&A\\
 		A&0
@@ -280,14 +280,14 @@ Dans toute la feuille d'exercices, $\K$ désigne un sur-corps de $\Q$.
 \end{ex}
 Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 
-\begin{ex}[Moulin.29]{}
+\begin{ex}[Moulin.Mat.29]{}
 	Soit $A\in\mathcal{M}_{p,n}(\K)$ et $B\in\mathcal{M}_{n,p}(\K)$. Montrer : $$\text{rg}\begin{pmatrix}
 		I_n&B\\
 		A&I_p
 	\end{pmatrix}=\text{rg}(I_p-AB)+n=\text{rg}(I_n-BA)+p$$
 \end{ex}
 
-\begin{ex}[Moulin.30]{$\star$ Une application combinatoire du rang}
+\begin{ex}[Moulin.Mat.30]{$\star$ Une application combinatoire du rang}
 	\begin{enumerate}
 		\item Soit $M=(m_{i,j})\in\mathcal{M}_n(\R)$ et $r>0$. On suppose :
 		\begin{itemize}
@@ -300,7 +300,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.31]{}
+\begin{ex}[Moulin.Mat.31]{}
 	Soit $\K$ un sous-corps de $\L$.
 	\begin{enumerate}
 		\item Comparer le rang dans $\mathcal{M}_{n,p}(\K)$ et le rang dans $\mathcal{M}_{n,p}(\L)$ d'une matrice $M$ de $\mathcal{M}_{n,p}(\K)$.
@@ -308,7 +308,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.32]{}
+\begin{ex}[Moulin.Mat.32]{}
 	Soit $f:\mathcal{M}_n(\C)\to\C$ non constante telle que : $$\forall(A,B)\in\mathcal{M}_n(\C)^2,\ f(AB)=f(A)f(B)$$
 	\begin{enumerate}
 		\item Montrer que $A\in\mathcal{M}_n(\C)$ est inversible si, et seulement si, $f(A)\ne 0$. On pourra penser aux matrices nilpotentes.
@@ -324,7 +324,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 \end{proof}
 \section{Similitude}
 
-\begin{ex}[Moulin.33]{$\circ$}
+\begin{ex}[Moulin.Mat.33]{$\circ$}
 	Soit $u$ un endomorphisme d'un espace vectoriel $E$ de dimension finie. Montrer que les conditions suivantes sont équivalentes :
 	\begin{enumerate}[label=(\roman*)]
 		\item $E=\ker(u)\oplus\text{Im}(u)$ ;
@@ -335,7 +335,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.34]{$\star$ Similitude et surcorps}
+\begin{ex}[Moulin.Mat.34]{$\star$ Similitude et surcorps}
 	Montrer que si $A$ est $B$ dans $\mathcal{M}_n(\R)$ sont semblables dans $\mathcal{M}_n(\C)$, alors elles sont aussi semblables dans $\mathcal{M}_n(\R)$. Même question (mais c'est plus dur) avec $\K$ et $\L$ un surcorps de $\K$ (on pourra commencer par le cas où $\L$ est de dimension finie sur $\K$).
 \end{ex}
 \begin{proof}
@@ -350,7 +350,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{itemize}
 \end{proof}
 
-\begin{ex}[Moulin.35]{$\circ$}
+\begin{ex}[Moulin.Mat.35]{$\circ$}
 	Soit $u$ un endomorphisme d'un espace vectoriel $E$ de dimension $3$. montrer que si $u\ne 0$ et $u^2=0$, il existe une base de $E$ dans laquelle la matrice de $u$ est $$\begin{pmatrix}
 		0&1&0\\
 		0&0&0\\
@@ -358,7 +358,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{pmatrix}$$
 \end{ex}
 
-\begin{ex}[Moulin.36]{}
+\begin{ex}[Moulin.Mat.36]{}
 	Soit $E$ un $\K$-espace vectoriel de dimension finie $n\geqslant 1$. Soit $u\in\mathcal{L}(E)$ non nul tel que $u^2=0$.
 	\begin{enumerate}
 		\item Montrer l'existence d'une base de $E$ dans laquelle la matrice de $u$ est diagonale par blocs $\text{Diag}(\underbrace{A,\ldots,A}_{r},0_{n-2r})$ où $r$ est le rang de $u$ et $$A=\begin{pmatrix}
@@ -370,7 +370,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.37]{}
+\begin{ex}[Moulin.Mat.37]{}
 	Soit $A\in\mathcal{M}_n(\K)$, $B\in\mathcal{M}_p(\K)$ et $C\in\mathcal{M}_{n,p}(\K)$. On considère les assertions suivantes :
 	\begin{enumerate}[label=(\roman*)]
 		\item $\exists X\in\mathcal{M}_{n,p}(\K),\ AX-XB=C$ ;
@@ -403,11 +403,11 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 
 \section{Trace}
 
-\begin{ex}[Moulin.38]{$\circ$}
+\begin{ex}[Moulin.Mat.38]{$\circ$}
 	Soit $A\in\mathcal{M}_{n,p}(\K)$ et $B\in\mathcal{M}_{p,n}(\K)$. Montrer que $(AB)^k$ et $(BA)^k$ ont même trace ($k\in$ ?).
 \end{ex}
 
-\begin{ex}[Moulin.39]{$\Delta$ Représentation des formes linéaires sur $\mathcal{M}_n(\K)$}
+\begin{ex}[Moulin.Mat.39]{$\Delta$ Représentation des formes linéaires sur $\mathcal{M}_n(\K)$}
 	Soit $\psi$ une forme linéaire sur $\mathcal{M}_n(\K)$. Montrer qu'il existe une unique matrice $A\in\mathcal{M}_n(\K)$ telle que $$\forall M\in\mathcal{M}_n(\K),\ \psi(M)=\text{Tr(AM)}$$
 \end{ex}
 \begin{proof}
@@ -420,7 +420,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{array}$$ Déjà, il est clair que les $f_A$ sont bien des formes linéaires et que $\varphi$ est bien définie et linéaire. De plus, on montre que $\varphi$ est injective car si $\forall M\in\mathcal{M}_n(\K),\ \Tr(AM)=0$, alors en utilisant des matrices d'opérations élémentaires et en annulant certaines lignes ou colonnes, on montre que $A$ est nulle. Si $\K=\R$, il est plus rapide de le faire avec $M=A^T$, et si $\K=\C$, il est plus rapide de le faire avec $M=\overline{A}^T$ (cela correspond aux produits scalaires). Par égalité de dimension, $\varphi$ est donc un isomorphisme, ce qui conclut.
 \end{proof}
 
-\begin{ex}[Moulin.40]{}
+\begin{ex}[Moulin.Mat.40]{}
 	En utilisant l'exercice précédent :
 	\begin{enumerate}
 		\item Montrer que tout hyperplan de $\mathcal{M}_n(\K)$ contient une matrice inversible pour $n>1$.
@@ -435,19 +435,19 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.41]{$\star\star$}
+\begin{ex}[Moulin.Mat.41]{$\star\star$}
 	Existe-t-il dans $\mathcal{M}_n(\K)$ un hyperplan $H$ stable par multiplication ? Indication : lorsque $n\geqslant3$, on pourra utiliser la représentation des formes linéaires pour trouver une matrice $A$ telle que $\forall X\in H,\ AX\in\text{Vect}(A)$.
 \end{ex}
 
-\begin{ex}[Moulin.42]{$\star\star$}
+\begin{ex}[Moulin.Mat.42]{$\star\star$}
 	Déterminer les hyperplans $H$ de $\mathcal{M}_n(\C)$ stables par conjugaison, c'est-à-dire tels que : $$\forall P\in\mathcal{GL}_n(\C),\ \forall M\in H,\ PMP\inv\in H$$
 \end{ex}
 
-\begin{ex}[Moulin.43]{}
+\begin{ex}[Moulin.Mat.43]{}
 	Déterminer les formes linéaires $f$ sur $\mathcal{M}_n(\K)$ vérifiant $f(ABC)=f(CBA)$ quelles que soient les matrices $A$, $B$ et $C$ de $\mathcal{M}_n(\K)$.
 \end{ex}
 
-\begin{ex}[Moulin.44]{$\star$ Matrices de trace nulle}
+\begin{ex}[Moulin.Mat.44]{$\star$ Matrices de trace nulle}
 	\begin{enumerate}
 		\item Montrer qu'une matrice de $\mathcal{M}_n(\K)$ est de trace nulle si, et seulement si, elle est semblable à une matrice dont tous les termes diagonaux sont nuls. On pourra procéder par récurrence.
 		\item Montrer que toute matrice de trace nulle est somme de deux matrices nilpotentes.
@@ -455,11 +455,11 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.45]{$\star\star$}
+\begin{ex}[Moulin.Mat.45]{$\star\star$}
 	Montrer que pour tout $(a_1,\ldots,a_n)\in\K^n$ tel que $\Tr(A)=a_1+\cdots+a_n$, il existe une matrice semblable à $A$ dont les coefficients diagonaux sont $a_1,\ldots,a_n$.
 \end{ex}
 
-\begin{ex}[Moulin.46]{Sommes de symétries dans $\mathcal{M}_n(\C)$}
+\begin{ex}[Moulin.Mat.46]{Sommes de symétries dans $\mathcal{M}_n(\C)$}
 	\begin{enumerate}
 		\item Que peut-on dire de la trace d'une somme de matrices de symétries ?
 		\item Montrer que $\displaystyle\begin{pmatrix}
@@ -471,20 +471,20 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.47]{}
+\begin{ex}[Moulin.Mat.47]{}
 	\begin{enumerate}
 		\item Soit $M\in\mathcal{M}_n(\C)$. Résoudre $X+X^T=\Tr(X)M$ dans $\mathcal{M}_n(\C)$.
 		\item Soit $(A,B)\in\mathcal{M}_n(\K)^2$. Résoudre $X+\Tr(X)A=B$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.48]{}
+\begin{ex}[Moulin.Mat.48]{}
 	Montrer que tout automorphisme de l'algèbre $\mathcal{M}_n(\K)$ conserve la trace.
 \end{ex}
 
 \section{Systèmes linéaires, opérations élémentaires}
 
-\begin{ex}[Moulin.49]{$\Delta$ Matrices à diagonale dominante}
+\begin{ex}[Moulin.Mat.49]{$\Delta$ Matrices à diagonale dominante}
 	On dit qu'une matrice $A=(a_{i,j})\in\mathcal{M}_n(\C)$ est à diagonale dominante lorsque : $$\forall i\in\llbracket 1,n\rrbracket,\ \lvert a_{i,i}\rvert>\sum_{j\ne i}\lvert a_{i,j}\rvert$$
 	\begin{enumerate}
 		\item $\Delta$ Montrer qu'une matrice à diagonale dominante est inversible. On pourra raisonner par l'absurde et considérer $X\ne 0$ tel que $AX=0$. Il peut être instructif de redémontrer ce résultat par récurrence sur $n$ à l'aide d'un pivot de Gauss.
@@ -498,11 +498,11 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.50]{$\Delta$}
+\begin{ex}[Moulin.Mat.50]{$\Delta$}
 	Résoudre le système linéaire : $$\forall i\in\llbracket0,n\rrbracket,\ \sum_{j=0}^{n}a_i^jx_j=a_i^{n+1}$$ où $(a_0,\ldots,a_n)$ est une famille fixée de scalaires distincts deux à deux.
 \end{ex}
 
-\begin{ex}[Moulin.51]{$\Delta$}
+\begin{ex}[Moulin.Mat.51]{$\Delta$}
 	Soit $$A=\begin{pmatrix}
 		1+\lambda^2&-\lambda&&(0)\\
 		-\lambda&1+\lambda^2&\ddots&\\
@@ -511,21 +511,46 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{pmatrix}$$ avec $\lambda\in\C$. Résoudre le système $AX=0$. On pourra introduire une récurrence linéaire.
 \end{ex}
 
-\begin{ex}[Moulin.52]{}
-	Résoudre : $$\forall i\in\llbracket0,n\rrbracket,\ \sum_{j=0}^{n-1}jîx_j=\lambda^i$$
+\begin{ex}[Moulin.Mat.52]{}
+	Résoudre : $$\forall i\in\llbracket0,n\rrbracket,\ \sum_{j=0}^{n-1}j^ix_j=\lambda^i$$
 \end{ex}
+
+\begin{ex}[]{$\Delta$ Générateurs de $\mathcal{SL}_n(\K)$ et de $\mathcal{GL}_n(\K)$}
+	Montrer que les matrices de transvection engendrent $\mathcal{SL}_n(\K)$. Montrer que toute matrice de $\mathcal{GL}_n(\K)$ s'écrit comme le produit de matrices de transvection et d'une matrice de dilatation.
+\end{ex}
+\begin{proof}
+	On réalise un pivot de Gauss en utilisant uniquement des transvections.
+	\begin{itemize}
+		\item On se ramène à $a_{1,1}=1$ par la transvection $L_1\leftarrow\displaystyle L_1+\frac{1-a_{1,1}}{a_{k,1}}L_k$ avec $k$ tel que $a_{k,1}\ne 0$.
+		\item Ensuite, en effectuant les transvections $L_k\leftarrow L_k-a_{k,1}L_1$ pour $k\in\llbracket2,n\rrbracket$, on se ramène à : $$T_{d_1}\cdots T_1A=\begin{pmatrix}
+			1&*&*&*\\
+			0&&&\\
+			\vdots&&(*)&\\
+			0&&&
+		\end{pmatrix}$$
+		\item On se ramène à $a_{1,1}=1$ par la transvection $L_1\leftarrow\displaystyle L_1+\frac{1-a_{1,1}}{a_{k,1}}L_k$ avec $k$ tel que $a_{k,1}\ne 0$.
+		\item Puis, en effectuant les transvections $C_k\leftarrow C_k-a_{1,k}C_1$ pour $k\in\llbracket2,n\rrbracket$, on se ramène à : $$T_{d_1}\cdots T_1A\tilde{T}_{1}\cdots\tilde{T}_{e_1}=\begin{pmatrix}
+			1&0&\cdots&0\\
+			0&&&\\
+			\vdots&&A_1&\\
+			0&&&
+		\end{pmatrix}$$ avec $A_1\in\mathcal{GL}_{n-1}(\K)$.
+		\item On réitère sur $A_1$ par récurrence pour obtenir :  $$T_{d_1}\cdots T_1A\tilde{T}_{1}\cdots\tilde{T}_{e_1}=\text{Diag}(1,\cdots,1,k)$$ avec $k=\det(A)$.
+	\end{itemize}
+	Ensuite, si $A\in\mathcal{SL}_n(\K)$, $k=\det(A)=1$ donc on obtient le résultat. Et sinon, $k\ne 0$ donc on obtient le résultat pour $\mathcal{GL}_n(\K)$.
+\end{proof}
 
 \section{Déterminants}
 
-\begin{ex}[Moulin.53]{$\Delta$}
+\begin{ex}[Moulin.Mat.53]{$\Delta$}
 	Soit $E$ un espace vectoriel de dimension $n$ et $u\in\mathcal{L}(E)$. Montrer que pour toute forme $n$-linéaire alternée $f$ sur $E$, on a : $$\forall (x_1,\ldots,x_n)\in E^n,\ \sum_{i=1}^{n}f(x_1,\ldots,x_{i-1},u(x_i),x_{i+1},\ldots,x_n)=\Tr(u)f(x_1,\ldots,x_n)$$
 \end{ex}
 
-\begin{ex}[Moulin.54]{$\Delta$}
+\begin{ex}[Moulin.Mat.54]{$\Delta$}
 	Montrer que l'espace vectoriel des formes $p$-linéaires alternées sur un espace vectoriel de dimension $n$ est de dimension $\displaystyle\binom{n}{p}$.
 \end{ex}
 
-\begin{ex}[Moulin.55]{}
+\begin{ex}[Moulin.Mat.55]{}
 	Calculer le déterminant $\displaystyle\begin{vmatrix}
 		1&2&\cdots&n\\
 		n&1&\cdots&n-1\\
@@ -534,18 +559,18 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{vmatrix}$.
 \end{ex}
 
-\begin{ex}[Moulin.56]{$\Delta$ Vers la densité des matrices inversibles}
+\begin{ex}[Moulin.Mat.56]{$\Delta$ Vers la densité des matrices inversibles}
 	Soit $A\in\mathcal{M}_n(\K)$ où $\K$ est un corps infini. Montrer qu'il existe une infinité de $\lambda\in\K$ tels que $\lambda I_n-A$ soit inversible.
 \end{ex}
 \begin{proof}
 	L'application qui à $\lambda$ associe le déterminant de $\lambda I_n-A$ est polynomiale en $\lambda$. Elle est non nulle car de degré $n\geqslant 1$ (sinon l'exercice n'a pas d'intérêt). donc elle possède un nombre fini de racines, c'est-à-dire qu'il existe une infinité de $\lambda$ tels que le déterminant de $\lambda I_n-1$ soit non nul, \textit{ie} que $\lambda I_n-A$ soit inversible.
 \end{proof}
 
-\begin{ex}[Moulin.57]{$\circ$}
+\begin{ex}[Moulin.Mat.57]{$\circ$}
 	Soit $\sigma\in\mathcal{S}_n$. Calculer le déterminant de la matrice $P_\sigma=\left(\delta_{i,\sigma(j)}\right)_{1\leqslant i,j\leqslant n}$.
 \end{ex}
 
-\begin{ex}[Moulin.58]{}
+\begin{ex}[Moulin.Mat.58]{}
 	Soit $p\in\llbracket0,n-1\rrbracket$. Calculer le déterminant : $$\begin{vmatrix}
 		a_1^0&\cdots&a_1^{p-1}&a_1^{p+1}&\cdots&a_1^n\\
 		\vdots&&\vdots&\vdots&&\vdots\\
@@ -555,12 +580,12 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{vmatrix}$$
 \end{ex}
 
-\begin{ex}[Moulin.59]{Déterminant circulant}
+\begin{ex}[Moulin.Mat.59]{Déterminant circulant}
 	Soit $(a_0,\ldots,a_{n-1})\in\C^n$. Calculer le déterminant de la matrice $(b_{i,j})_{1\leqslant i,j\leqslant n}$ avec $$b_{i,j}=a_{[j-i]}$$ où $[k]$ est le reste de la division euclidienne de $k$ par $n$. On pourra utiliser une matrice de Vandermonde associée aux racines $n$-èmes de l'unité. \\
 	Application : factoriser $a^3+b^3+c^3-3abc$ dans $\C$, puis dans $\R$.
 \end{ex}
 
-\begin{ex}[Moulin.60]{Déterminant de Cauchy}
+\begin{ex}[Moulin.Mat.60]{Déterminant de Cauchy}
 	Calculer le déterminant de Cauchy : $$C(a_1,\ldots,a_n,b_1,\ldots,b_n)=\displaystyle\begin{vmatrix}
 		\displaystyle\frac{1}{a_1+b_1}&\displaystyle\frac{1}{a_1+b_2}&\cdots&\displaystyle\frac{1}{a_1+b_n}\\
 		\displaystyle\frac{1}{a_2+b_1}&\displaystyle\frac{1}{a_2+b_2}&\cdots&\displaystyle\frac{1}{a_2+b_n}\\
@@ -575,7 +600,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	Calcul du déterminant de la matrice de Hilbert.
 \end{app}
 
-\begin{ex}[Moulin.61]{}
+\begin{ex}[Moulin.Mat.61]{}
 	Soit $a_1,\ldots,a_n,b_1,\ldots,b_n$ des nombres complexes. Calculer le déterminant : $$\begin{vmatrix}
 		a_1+b_1&b_1&\cdots&b_1\\
 		b_2&a_2+b_2&\cdots&b_2\\
@@ -587,7 +612,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	Utiliser la multilinéarité.
 \end{proof}
 
-\begin{ex}[Moulin.62]{}
+\begin{ex}[Moulin.Mat.62]{}
 	Soit $a_1,\ldots,a_n,b_1,\ldots,b_n$ des nombres complexes.
 	\begin{enumerate}
 		\item Calculer le déterminant de la matrice $((a_i+b_j)^{n-1})_{1\leqslant i,j\leqslant n}$. On pourra penser à un produit matriciel.
@@ -595,7 +620,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.63]{$\Delta$}
+\begin{ex}[Moulin.Mat.63]{$\Delta$}
 	Soit $n \in \N\st$.
 	Soit $M \in \mathcal{M}_n(\Z)$. Montrer que $$ M \in \mathcal{GL}_n(\Z) \Longleftrightarrow \det(M)=\pm 1 $$ où on a posé $$\mathcal{GL}_n(\Z)=\left\{A \in \mathcal{M}_n(\Z) \mid \exists B \in \mathcal{M}_n(\Z), \ AB=I_n\right\}$$
 \end{ex}
@@ -603,15 +628,15 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	Pour $\Longrightarrow$, utiliser le fait que le déterminant de $M$ doit être une unité de $\Z$. Pour $\Longleftarrow$, utiliser la formule de la comatrice et le fait que le déterminant est polynomial.
 \end{proof}
 
-\begin{ex}[Moulin.64]{}
+\begin{ex}[Moulin.Mat.64]{}
 	Calculer le déterminant de la matrice de $\mathcal{M}_n(\R)$ de terme général $\sin(a_i+b_j)$.
 \end{ex}
 
-\begin{ex}[Moulin.65]{}
+\begin{ex}[Moulin.Mat.65]{}
 	Calculer le déterminant de la matrice de $\mathcal{M}_n(\R)$ de terme général $\lvert j-i\rvert$.
 \end{ex}
 
-\begin{ex}[Moulin.66]{}
+\begin{ex}[Moulin.Mat.66]{}
 	Calculer le déterminant $\displaystyle\begin{vmatrix}
 		1+x^2&x&&(0)\\
 		x&1+x^2&\ddots&\\
@@ -620,7 +645,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{vmatrix}$.
 \end{ex}
 
-\begin{ex}[Moulin.67]{}
+\begin{ex}[Moulin.Mat.67]{}
 	Calculer le déterminant $\displaystyle\begin{vmatrix}
 		a+b&ab&&(0)\\
 		1&a+b&\ddots&\\
@@ -629,7 +654,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{vmatrix}$.
 \end{ex}
 
-\begin{ex}[Moulin.68]{$\star$ Produit de Kronecker} Pour $A=(a_{i,j})\in\mathcal{M}_n(\K)$ et $B\in\mathcal{M}_m(\K)$, on note : $$A\otimes B=\begin{pmatrix}
+\begin{ex}[Moulin.Mat.68]{$\star$ Produit de Kronecker} Pour $A=(a_{i,j})\in\mathcal{M}_n(\K)$ et $B\in\mathcal{M}_m(\K)$, on note : $$A\otimes B=\begin{pmatrix}
 		a_{1,1}B&a_{1,2}B&\cdots&a_{1,n}B\\
 		a_{2,1}B&a_{2,2}B&\cdots&a_{2,n}B\\
 		\vdots&\vdots&&\vdots\\
@@ -643,14 +668,14 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	En effet, on utilise la relation fonctionnelle $(AC)\otimes(BD)=(A\otimes B)\times(C\otimes D)$ avec des matrices identités. Le plus dur est alors de montrer que $A\otimes B$ est semblable à $B\otimes A$, ce qui permettra de conclure. Pour cela, prendre une base adaptée à la structure de produit tensoriel, et, au lieu de sommer d'abord sur les indices des premières composantes de cette famille produit tensoriel, sommer sur l'autre composante. Cela permet de passer de $A\otimes B$ à $B\otimes A$ en changeant de base, donc ces matrices sont semblables et ont le même déterminant. On conclut en appliquant ceci avec les matrices identités car le déterminant de $I\otimes B$ se calcule très bien comme déterminant diagonal par blocs.
 \end{proof}
 
-\begin{ex}[Moulin.69]{}
+\begin{ex}[Moulin.Mat.69]{}
 	Calculer le déterminant de l'endomorphisme qui à une matrice associe sa transposée.
 \end{ex}
 \begin{proof}
 	L'essentiel est de mettre la base canonique de $\mathcal{M}_n(\K)$ dans le bon ordre. On met d'abord les $E_{i,i}$, puis on met ensemble les $E_{i,j}$ et $E_{j,i}$. On trouve en calculant le déterminant par blocs dans cette base : $$(-1)^{n(n-1)/2}$$
 \end{proof}
 
-\begin{ex}[Moulin.70]{}
+\begin{ex}[Moulin.Mat.70]{$\circ$}
 	Soit $A\in\mathcal{M}_{p,n}(\K)$ et $B\in\mathcal{M}_{n,p}(\K)$. En effectuant dans les deux sens le produit par blocs entre les matrices : $$\begin{pmatrix}
 		I_n&B\\
 		A&\lambda I_p
@@ -666,7 +691,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	Permet de montrer que $\chi_{AB}=\chi_{BA}$ en prenant $p=n$.
 \end{app}
 
-\begin{ex}[Moulin.71]{}
+\begin{ex}[Moulin.Mat.71]{}
 	Soit $(A,B,C,D)\in\mathcal{M}_n(\K)^4$ tel que $CD=CD$. Montre que $$\det\begin{pmatrix}
 		A&B\\
 		C&D
@@ -686,7 +711,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{itemize} puis calculer le déterminant obtenu. Dans le cas général, utiliser la densité des matrices inversibles (en considérant $D_X=D-X.I_n$ par exemple).
 \end{proof}
 
-\begin{ex}[Moulin.72]{}
+\begin{ex}[Moulin.Mat.72]{}
 	Soit $z_1,\ldots,z_n$ les racines complexes du polynôme : $$X^n+a_{n-1}X^{n-1}+\cdots+a_1X+a_0$$ Montrer : $$\begin{vmatrix}
 		n&z_1&\cdot&z_n \\
 		z_1&1+z_1^2&&\\
@@ -695,21 +720,21 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{vmatrix}=a_1^2$$ Indication : on pourra utiliser la somme des inverses des $z_i$ lorsqu'ils sont tous non nuls.
 \end{ex}
 
-\begin{ex}[Moulin.73]{$\Delta\star$}
+\begin{ex}[Moulin.Mat.73]{$\Delta\star$}
 	Soit $A\in\mathcal{M}_n(\Z)$ ayant tous les coefficients diagonaux impairs et tous les coefficients non diagonaux pairs. Montrer que $A$ est inversible dans $\mathcal{M}_n(\R)$.
 \end{ex}
 \begin{proof}
 	Déjà, $\det(A)\in\Z$ et, si on note $\overline{A}$ la matrice des classes des coefficients de $A$ dans $\Z/2\Z$,  la formule des signatures prouve que $$\overline{\det(A)}=\det(\overline{A})$$ Or, $\overline{A}=I_n$ donc $\det(\overline{A})=\overline{1}$. Par conséquent, $\det(A)$ est impair donc non nul donc $A$ est inversible dans $\mathcal{M}_n(\R)$.
 \end{proof}
 
-\begin{ex}[Moulin.74]{$\star$}
+\begin{ex}[Moulin.Mat.74]{$\star$}
 	Soit $A$ et $B$ dans $\mathcal{M}_n(\R)$ telles que $A^2+B^2=\sqrt{3}(AB-BA)$ et $AB-BA$ soit inversible. Montrer que $n$ est un multiple de $6$.
 \end{ex}
 \begin{proof}
 	L'astuce est de calculer $(A+iB)(A-iB)$. L'hypothèse nous donne : $$(A+iB)(A-iB)=(\sqrt{3}-i)(AB-BA)=2e^{-i\pi/6}(AB-BA)$$ Or, la formule des signatures donne rapidement $$\overline{\det(A+iB)}=\det(A-iB)$$ Par conséquent, $\det((A+iB)(A-iB))\in\R$. Or, $$\det((A+iB)(A-iB))=2^ne^{-in\pi/6}\underbrace{\det(AB-BA)}_{\in\R\st}$$ Par conséquent, $e^{-in\pi/6}\in\R$ donc $6$ divise $n$.
 \end{proof}
 
-\begin{ex}[Moulin.75]{}
+\begin{ex}[Moulin.Mat.75]{}
 	Soit $M$ une matrice inversible de $\mathcal{M}_n(\C)$ que l'on décompose par blocs en : $$M=\begin{pmatrix}
 		A&B\\
 		C&D
@@ -719,7 +744,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{pmatrix}$$ Montrer qu'alors $\det(A)=\det(M)\det(D')$. Indication : dans le cas où $A$ est inversible, on pourra commencer par exprimer $D'$ à l'aide de $A$, $B$, $C$ et $D$.
 \end{ex}
 
-\begin{ex}[Moulin.76]{}
+\begin{ex}[Moulin.Mat.76]{}
 	Soit $(A,B)\in\mathcal{M}_n(\K)^2$ et la matrice $M\in\mathcal{M}_{2n}(\K)$ définie par blocs par $$M=\begin{pmatrix}
 		A&B\\
 		B&A
@@ -786,7 +811,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	Écrire $$\displaystyle\frac{1}{\text{inv}(\sigma)+1}=\int_{0}^{1}x^{\text{inv}(\sigma)}\ dx$$ puis utiliser la linéarité de l'intégrale. S'intéresser au polynôme obtenu sous le symbole d'intégration. Interpréter ce polynôme comme un déterminant (suite de l'indication : celui de la matrice comportant des $1$ partout et une diagonale de $x$). Calculer ensuite ce déterminant par opérations.
 \end{proof}
 
-\begin{ex}{Déterminant de Pascal}
+\begin{ex}[Châteaux]{Déterminant de Pascal}
 	Pour tout $n\in\N$, on note $B_n\in\mathcal{M}_{n+1}(\R)$ de terme général : $$[B_n]_{i,j}=\binom{i+j}{j}$$ où $(i,j)\in\llbracket0,n\rrbracket$ (on numérote les lignes et les colonnes à partir du rang $0$ pour avoir des formules plus jolies). On se propose de démontrer $\forall n\in\N,\ \det(B_n)=1$ de deux façons différentes.
 	\begin{enumerate}
 		\item \begin{enumerate}[label=\alph*.]
@@ -801,9 +826,16 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{enumerate}
 \end{ex}
 
+\begin{ex}[]{}
+	Soit $A$ et $B$ deux éléments de $\mathcal{M}_n(\K)$. Pour $j\in\llbracket1,n\rrbracket$, on note $A_j$ la matrice dont toutes les colonnes sont celles de $A$, sauf la première qui est la $j$-ème colonne de $B$, et $B_j$ la matrice dont toutes les colonnes sont celles de $B$, sauf la $j$-ème qui est la première colonne de $A$. Montrer la formule : $$\det(A)\det(B)=\sum_{j=1}^{n}\det(A_j)\det(B_j)$$
+\end{ex}
+\begin{proof}
+	Fixer la matrice $B$ et montrer que le membre de droite est une forme $n$-linéaire alternée sur $\K^n$. Conclure en regardant la valeur sur la base canonique. On pourra reconnaître un développement par rapport à la première ligne (en développant les $\det(B_j)$ par rapport à la $j$-ème colonne).
+\end{proof}
+
 \section{Comatrice}
 
-\begin{ex}[Moulin.77]{}
+\begin{ex}[Moulin.Mat.77]{}
 	Résoudre dans $\mathcal{M}_n(\R)$ : 
 	\begin{enumerate}
 		\item $A=\text{Com}(A)$ ;
@@ -811,7 +843,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.78]{}
+\begin{ex}[Moulin.Mat.78]{}
 	\begin{enumerate}
 		\item $\Delta$ Déterminer le rang de $\text{Com}(A)^T$ en fonction du rang de $A$.
 		\item Calculer $\det(\text{Com}(A)^T)$ en fonction de $\det(A)$.
@@ -820,7 +852,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.79]{$\Delta\star$ Comatrice du produit}
+\begin{ex}[Moulin.Mat.79]{$\Delta\star$ Comatrice du produit}
 	Soit $A, B \in \mathcal{M}_n(\C)$. Montrer que $$\text{Com}(AB)=\text{Com}(A)\text{Com}(B)$$
 \end{ex}
 \begin{proof}

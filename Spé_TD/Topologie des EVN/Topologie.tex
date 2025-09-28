@@ -65,19 +65,19 @@
 
 \section{Normes}
 
-\begin{ex}[Moulin.01]{}
+\begin{ex}[Moulin.Top.01]{}
 	Soit $N_1$ et $N_2$ deux normes sur un espace vectoriel $E$. Parmi les applications suivantes, lesquelles sont des normes ? $$S=N_1+N_2\ \ N=\sup(N_1,N_2)\ \ n=\inf(N_1,N_2)$$
 \end{ex}
 
-\begin{ex}[Moulin.02]{}
+\begin{ex}[Moulin.Top.02]{}
 	Soit $N_1$ et $N_2$ deux normes non comparables sur un espace vectoriel $E$. Montrer qu'il existe une norme $N$ qui domine $N_1$ et $N_2$ et qui n'est équivalente ni à $N_1$, ni à $N_2$.
 \end{ex}
 
-\begin{ex}[Moulin.03]{}
+\begin{ex}[Moulin.Top.03]{}
 	Si $A$ et $B$ sont deux parties d'un espace vectoriel normé, on note : $$A+B=\{a+b\ \mid\ (a,b)\in A\times B\}$$ Pour $(a,b)\in E^2$ et $(r,s)\in\left(\R_+\st\right)^2$, déterminer : $$B_O(a,r)+B_O(b,s),\ \ B_O(a,r+B_F(b,s))\ \ \text{et}\ \ B_F(a,r)+B_F(b,s)$$
 \end{ex}
 
-\begin{ex}[Moulin.04]{$\Delta$ Norme de Frobenius}
+\begin{ex}[Moulin.Top.04]{$\Delta$ Norme de Frobenius}
 	Montrer que $\lVert \cdot\rVert :A\mapsto\sqrt{\Tr(A^TA)}$ est une norme sur $\mathcal{M}_n(\R)$ vérifiant : $$\forall (A,B)\in\mathcal{M}_n(\R)^2,\ \lVert AB\rVert\leqslant\lVert A\rVert \times\lVert B\rVert$$
 \end{ex}
 \begin{proof}
@@ -87,14 +87,14 @@
 	Cette norme est appelée \textbf{norme de Frobenius}. On a la même sur $\mathcal{M}_n(\C)$ avec $$A\mapsto\sqrt{\Tr\left(\overline{A}^T A\right)}$$
 \end{rmq}
 
-\begin{ex}[Moulin.05]{}
+\begin{ex}[Moulin.Top.05]{}
 	Existe-t-il une norme $\lVert\cdot\rVert$ sur $\mathcal{M}_n(\C)$ vérifiant : $$\forall(A,B)\in\mathcal{M}_n(\C)^2,\ \lVert AB\rVert=\lVert A\rVert\lVert B\rVert$$
 \end{ex}
 \begin{proof}
 	Si $n=1$, la réponse est oui, c'est le module. Mais dès que $n\geqslant 2$, cela n'est plus possible car il existe des matrices non nulles dont le produit est nul (prendre les matrices élémentaires $E_{1,1}$ et $E_{2,2}$).
 \end{proof}
 
-\begin{ex}[Moulin.06]{$\Delta$ Normes $l^p$}
+\begin{ex}[Moulin.Top.06]{$\Delta$ Normes $l^p$}
 	\begin{enumerate}
 		\item Soit $p\in\N\st$. On définit $\lVert\cdot\rVert_p$ sur $\R^n$ par : $$\lVert x\rVert_p=\left(\sum_{k=1}^{n}\lvert x_k\rvert^p\right)^{1/p}$$ Montrer que $\lVert\cdot\rVert_p$ définit une norme sur $\R^n$.
 		\item Que peut-on dire quand $p=1$, $p=2$ et $p\longrightarrow+\infty$ ?
@@ -102,15 +102,15 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.07]{}
+\begin{ex}[Moulin.Top.07]{}
 	Reprendre l'étude de l'exercice précédent sur $\mathcal{C}^0([a,b],\R)$ avec : $$\mathcal{N}_p(f)=\left(\int_{a}^{b}\lvert f\rvert^p\right)^{1/p}$$
 \end{ex}
 
-\begin{ex}[Moulin.08]{}
+\begin{ex}[Moulin.Top.08]{}
 	Comparer les normes $N_p$ étendues à $\R[X]$ : $$N_p\left(\sum_{n=0}^{+\infty}a_nX^n\right)=\left(\sum_{n=0}^{+\infty}\lvert a_n\rvert^p\right)^{1/p}$$
 \end{ex}
 
-\begin{ex}[Moulin.09]{}
+\begin{ex}[Moulin.Top.09]{}
 	Soit $E=\mathcal{C}^0([0,1],\R)$. Pour $g\in E$, on définit $\mathcal{N}_g(f)=\displaystyle\underset{[0,1]}{\sup}\lvert fg\rvert$.
 	\begin{enumerate}
 		\item Condition nécessaire et suffisante sur $g$ pour que $\mathcal{N}_g$ soit une norme ?
@@ -119,7 +119,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.10]{}
+\begin{ex}[Moulin.Top.10]{}
 	Soit $E=\mathcal{C}^0([0,1],\R)$. Pour $g\in E$, on définit $\mathcal{N}_g(f)=\displaystyle\int_{0}^{1}\lvert fg\rvert$.
 	\begin{enumerate}
 		\item Condition nécessaire et suffisante sur $g$ pour que $\mathcal{N}_g$ soit une norme ?
@@ -129,7 +129,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.11]{}
+\begin{ex}[Moulin.Top.11]{}
 	Dans $\R[X]$, on considère les normes suivantes : $$\mathcal{N}_1(P)=\int_{-1}^{1}\lvert P\rvert \ ; \ \mathcal{N}_\infty(P)=\underset{[-1,1]}{\sup}\lvert P\rvert \ ; \ \lVert P\rVert_1=\sum_{n=0}^{+\infty}\lvert a_n\rvert \ \text{et}\ \lVert P\rVert_\infty=\underset{n\in\N}{\sup}\lvert a_n\rvert$$ où $P=\displaystyle\sum_{n=0}^{+\infty}a_nX^n$.
 	\begin{enumerate}
 		\item Comparer $\mathcal{N}_\infty$ et $\lVert\cdot\rVert_\infty$.
@@ -153,7 +153,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.12]{}
+\begin{ex}[Moulin.Top.12]{}
 	Sur $\mathcal{D}^1([0,1])$, on considère $\mathcal{N}(f)=\lvert f(0)\rvert+\mathcal{N}_\infty(f'-f)$.
 	\begin{enumerate}
 		\item Est-ce une norme sur $\mathcal{D}^1([0,1],\R)$ ? Et sur $\mathcal{C}^1([0,1],\R)$ ?
@@ -161,14 +161,14 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.13]{$\circ$}
+\begin{ex}[Moulin.Top.13]{$\circ$}
 	Montrer que deux normes sur un même espace vectoriel $E$ sont égales si, et seulement si, elles définissent la même sphère unité dans $E$. Même question avec la boule unité fermée, puis la boule unité ouvert, puis les sphères, boules fermée et ouvert de n'importe quel rayon.
 \end{ex}
 \begin{proof}
 	Raisonner par homogénéité.
 \end{proof}
 
-\begin{ex}[Moulin.14]{Norme de variation totale}
+\begin{ex}[Moulin.Top.14]{Norme de variation totale}
 	Pour $f:[a,b]\to\C$ et $\sigma=(a_0,\ldots,a_n)$ une subdivision de $[a,b]$, on note : $$V_\sigma(f)=\sum_{k=0}^{n-1}\lvert f(a_{k+1})-f(a_k)\rvert$$ On définit : $$V_f=\sup\{V_\sigma(f)\}\in\R_+\subset\{+\infty\}$$
 	\begin{enumerate}
 		\item Montrer que l'ensemble $VB([a,b])$ des fonctions $f$ de $[a,b]$ dans $\C$ telles que $V(f)<+\infty$ est un sous-espace vectoriel des fonctions bornées de $[a,b]$ dans $\C$ et que : $$N_{vb}:f\mapsto\lvert f(a)\rvert+V(f)$$ définit une norme sur celui-ci.
@@ -177,7 +177,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.15]{Norme quotient}
+\begin{ex}[Moulin.Top.15]{Norme quotient}
 	Soit $(E,\lVert\cdot\rVert)$ un $\K$-espace vectoriel normé, et $F$ un sous-espace vectoriel fermé de $E$. On définit sur $E$ la relation de congruence modulo $F$ par $$x\equiv y\ \mod \ F\iff x-y\in F$$
 	\begin{enumerate}
 		\item Montrer que la congruence modulo $F$ est une relation d'équivalence, et préciser la nature géométrique de ses classes d'équivalence. On notera $E/F$ l'ensemble quotient associé.
@@ -188,7 +188,7 @@
 
 \section{Convexité}
 
-\begin{ex}[Moulin.16]{$\Delta$}
+\begin{ex}[Moulin.Top.16]{$\Delta$}
 	Soit $E$ un espace vectoriel normé. 
 	\begin{enumerate}
 		\item La boule unité fermée $B$ est-elle strictement convexe, c'est-à-dire vérifie-t-elle pour tout $(x,y)\in B^2$ tel que $x\ne y$ :
@@ -203,14 +203,14 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.17]{Convexes denses de $\R^d$}
+\begin{ex}[Moulin.Top.17]{Convexes denses de $\R^d$}
 	Déterminer les parties convexes denses de $\R^d$.
 \end{ex}
 \begin{proof}
 	La réponse est $\R^d$. On peut raisonner par récurrence sur $d$. On peut ainsi passer par des hyperplans médiateurs et utiliser la convexité. Sinon, avec un dessin et avec les mains, on peut trianguler le point de $\R^d$ dont on veut montrer qu'il est dans l'ensemble puis utiliser la convexité.
 \end{proof}
 
-\begin{ex}[Moulin.18]{}
+\begin{ex}[Moulin.Top.18]{}
 	Soit $A$ un convexe.
 	\begin{enumerate}
 		\item Montrer que l'adhérence $\overline{A}$ de $A$ est convexe.
@@ -228,11 +228,11 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.19]{$\star$}
+\begin{ex}[Moulin.Top.19]{$\star$}
 	Soit $C$ un convexe non vide d'un $\R$-espace vectoriel de dimension finie. Montrer que $C$ est d'intérieur non vide dans le plus petit sous-espace affine de $E$ incluant $C$.
 \end{ex}
 
-\begin{ex}[Moulin.20]{$\Delta\star$ Théorème de Gauss-Lucas} Montrer que si $P$ est un polynôme complexe non constant, alors les racines de $P'$ sont dans l'enveloppe convexe des racines de $P$.
+\begin{ex}[Moulin.Top.20]{$\Delta\star$ Théorème de Gauss-Lucas} Montrer que si $P$ est un polynôme complexe non constant, alors les racines de $P'$ sont dans l'enveloppe convexe des racines de $P$.
 \end{ex}
 \begin{proof}
 	Scinder $P$ sur $\C[X]$ et utiliser la formule de $P'/P$. Prendre ensuite une racine de $P'$ non racine de $P$, la mettre dans la formule précédente et utiliser la formule de l'inverse d'un nombre complexe en fonction de son conjugué et de son module carré. Passer au conjugué. Éclater pour obtenir une combinaison convexe des racines de $P$, et vérifier que c'est bien un barycentre à coefficients positifs.
@@ -240,14 +240,14 @@
 
 \section{Topologie}
 
-\begin{ex}[Moulin.21]{$\Delta$}
+\begin{ex}[Moulin.Top.21]{$\Delta$}
 	Soit $H$ un hyperplan d'un espace vectoriel normé $E$. Montrer que $H$ est fermé dans $E$ ou dense dans $E$.
 \end{ex}
 \begin{proof}
 	Utiliser l fait que l'adhérence d'un SEV est un SEV. Par croissance de l'adhérence, $\overline{H}$ est un SEV coincé entre $H$ et $E$, donc c'est soit $H$, soit $E$, donc $H$ est soit fermé dans $E$, soit dense dans $E$.
 \end{proof}
 
-\begin{ex}[Moulin.22]{}
+\begin{ex}[Moulin.Top.22]{}
 	Soit $A$ et $B$ deux parties d'un espace vectoriel normé $E$. On note $$A+B=\{a+b\ \mid\ (a,b)\in A\times B\}$$ Vrai ou faux ?
 	\begin{enumerate}
 		\item si $A$ ou $B$ est ouvert, alors $A+B$ est ouvert ;
@@ -255,11 +255,11 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.23]{}
+\begin{ex}[Moulin.Top.23]{}
 	Existe-t-il dans $\R^2$ deux fermés disjoints à distance nulle ? Et dans $\R$ ?
 \end{ex}
 
-\begin{ex}[Moulin.24]{$\circ$}
+\begin{ex}[Moulin.Top.24]{$\circ$}
 	Soit $E$ un espace métrique ainsi que $O$ un ouvert de $E$ et $A$ une partie de $E$ telle que $O\cap A=\emptyset$. Montrer que $O\cap\overline{A}=\emptyset$.
 \end{ex}
 
@@ -275,11 +275,11 @@
 	\end{itemize}
 \end{proof}
 
-\begin{ex}[Moulin.25]{}
+\begin{ex}[Moulin.Top.25]{}
 	Soit $A$ (respectivement $B$) une partie d'un espace métrique $E$ (respectivement $F$). Quels sont les intérieur, adhérence et frontière de $A\times B$ dans $E\times F$ ?
 \end{ex}
 
-\begin{ex}[Moulin.26]{Parties discrètes}
+\begin{ex}[Moulin.Top.26]{Parties discrètes}
 	\begin{enumerate}
 		\item Soit $a>0$ et $A$ une partie d'un espace métrique $E$ telle que $$\forall(x,y)\in A,\ x\ne y\implies d(x,y)\geqslant a$$ Montrer que $A$ est fermée.
 		\item Une partie discrète de $E$ (\textit{ie} une partie $A$ de $E$ telle qu'aucun point $a\in A$ ne soit adhérent à $A\setminus\{a\}$) est-elle fermée ?
@@ -292,18 +292,18 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.27]{}
+\begin{ex}[Moulin.Top.27]{}
 	\begin{enumerate}
 		\item $\circ$ Soit $E$ un espace vectoriel normé non trivial. Le complémentaire d'une partie discrète de $E$ (c'est-à-dire une partie $A$ de $E$ telle qu'aucun point $a\in A$ ne soit adhérent à $A\setminus\{a\}$) est-il dense dans $E$ ?
 		\item Et dans un espace métrique quelconque ?
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.28]{}
+\begin{ex}[Moulin.Top.28]{}
 	Soit $F$ un sous-espace vectoriel fermé d'un espace vectoriel normé $E$ et $a$ un élément de $E$ n'appartenant pas à $F$. Montrer que $F+\text{Vect}(a)$ est un fermé de $E$.
 \end{ex}
 
-\begin{ex}[Moulin.29]{$\star$}
+\begin{ex}[Moulin.Top.29]{$\star$}
 	Soit $E$ l'espace vectoriel des suites complexes bornées muni de la norme $N_\infty$. Déterminer l'intérieur et l'adhérence de l'ensemble $PN$ des suites presque nulles et de l'ensemble des suites stationnaires $S$.
 \end{ex}
 \begin{proof}
@@ -314,7 +314,7 @@
 	\end{itemize}
 \end{proof}
 
-\begin{ex}[Moulin.30]{}
+\begin{ex}[Moulin.Top.30]{}
 	Dans $E=\mathcal{C}^0([0,1],\R)$ muni de la norme $\mathcal{N}_\infty$, on considère : $$F=\left\{f\in E\ : \ f(0)=f(1)=0\ \text{et}\ \int_{0}^{1}f(t)\ dt=1\right\}$$
 	\begin{enumerate}
 		\item Montrer que $F$ est un sous-espace affine fermé de $E$.
@@ -322,21 +322,21 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.31]{$\star$}
+\begin{ex}[Moulin.Top.31]{$\star$}
 	Soit $E$ un espace vectoriel normé. Montrer que l'ensemble des couples $(u,v)$ de vecteurs linéairement indépendants est un ouvert de $E^2$.
 \end{ex}
 \begin{proof}
 	On montre par caractérisation séquentielle que son complémentaire $F$ l'ensemble des couples de vecteurs liés est un fermé. Sans perte de généralité, on suppose $v_n\ne 0$ APCR puis on écrit $u_n+\lambda_nv_n=0$ et alors $\lvert\lambda_n\rvert$ est bornée. On extrait et OK par unicité de la limite.
 \end{proof}
 
-\begin{ex}[Moulin.32]{}
+\begin{ex}[Moulin.Top.32]{}
 	Montrer qu'une intersection finie d'ouverts denses d'un espace vectoriel normé est un ouvert dense de ce même espace vectoriel normé.
 \end{ex}
 \begin{proof}
 	Procéder par récurrence, il suffit donc de prouver que c'est le cas pour deux. On utilise la densité du premier pour obtenir une première intersection, puis appliquer la densité du second avec cette première intersection.
 \end{proof}
 
-\begin{ex}[Moulin.33]{}
+\begin{ex}[Moulin.Top.33]{}
 	Soit $X$ une partie d'un espace vectoriel normé.
 	\begin{enumerate}
 		\item $\circ$ Comparer $\overline{X}$ et $\overline{\mathring{X}}$, ainsi que $\mathring{X}$ et $\mathring{\overline{X}}$.
@@ -344,24 +344,24 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.34]{$\Delta$ Sous-groupes de $(\R,+)$}
+\begin{ex}[Moulin.Top.34]{$\Delta$ Sous-groupes de $(\R,+)$}
 	Montrer que tout sous-groupe de $(\R,+)$ est soit dense dans $\R$, soit de la forme $a\Z$ pour un certain réel positif $a$.
 \end{ex}
 \begin{proof}
 	Voir la preuve dans les exercices classique du chapitre d'algèbre générale.
 \end{proof}
 
-\begin{ex}[Moulin.35]{$\star$}
+\begin{ex}[Moulin.Top.35]{$\star$}
 	Soit $A$ et $B$ deux parties d'un espace vectoriel normé $E$ telles que $A\cap\overline{B}=\overline{A}\cap B=\emptyset$. montrer qu'il existe deux ouverts disjoints $U$ et $V$ de $E$ tels que $A\subset U$ et $B\subset V$.
 \end{ex}
 
-\begin{ex}[Moulin.36]{}
+\begin{ex}[Moulin.Top.36]{}
 	Soit $I$ (respectivement $S$, $B$) l'ensemble des fonctions $f:[0,1]\to[0,1]$ injectives (respectivement surjectives, bijectives). Vus comme des parties de l'espace vectoriel normé $(\mathcal{C}^0([0,1],[0,1]),\lVert\cdot\rVert_\infty)$, ces ensembles sont-ils ouverts ? Fermés ?
 \end{ex}
 
 \section{Suites, séries vectorielles}
 
-\begin{ex}[Moulin.37]{$\Delta$} 
+\begin{ex}[Moulin.Top.37]{$\Delta$} 
 	\begin{enumerate}
 		\item Trouver une norme sur $E=\R[X]$ pour laquelle $(X^n)$ converge vers $0$. Généraliser à une base quelconque de $E$.
 		\item Donner un exemple de sous-espace vectoriel de $E$ no fermé pour cette norme.
@@ -372,11 +372,11 @@
 	Si on prend une base $(Y_k)$, la norme $$N\left(\sum_{k=0}^{+\infty}a_kY_k\right)=\sum_{k=0}^{+\infty}\frac{\lvert a_k\rvert}{2^k}$$ fait converger la suite $(Y_k)$ vers $0$. Et si on prend un polynôme $P$ non nul, la famille $(Z_k)=(X^0,\ldots,X^{\deg(P)-1},P,X^{\deg(P)+1},\ldots)$ est une base de $\K[X]$. Alors, la norme $$N\left(\sum_{k=0}^{+\infty}a_kZ_k\right)=\left\lvert\sum_{k=0}^{+\infty} a_k\right\rvert+\sum_{\substack{k=0 \\ k\ne\deg(P)}}^{+\infty}\frac{\lvert a_k\rvert}{2^k}$$ fait converger $(X^k)$ vers $P$.
 \end{proof}
 
-\begin{ex}[Moulin.38]{$\circ$}
+\begin{ex}[Moulin.Top.38]{$\circ$}
 	Montrer qu'une suite d'un espace vectoriel normé est non bornée si, et seulement si, elle admet une sous-suite qui tend vers l'infini.
 \end{ex}
 
-\begin{ex}[Moulin.39]{$\Delta$}
+\begin{ex}[Moulin.Top.39]{$\Delta$}
 	On admet que dans un espace vectoriel normé de dimension finie, toute série absolument convergente est convergente. Soit $A$ une algèbre de dimension finie sur $\R$ munie d'une norme $N$ sous-multiplicative. On note $1_A$ son élément unité.
 	\begin{enumerate}
 		\item Montrer que pour tout $a\in A$ tel que $N(a)<1$, l'élément $1_A-a$ de $A$ est inversible.
@@ -387,14 +387,14 @@
 	La série des $a^n$ est absolument convergente donc convergente en dimension finie. On vérifie que c'est bien l'inverse par continuité du produit (bilinéarité en dimension finie). L'ensemble des unités d'un telle algèbre est un ouvert : en effet, si $a\in\mathcal{U}(a)$, remarquer que $a+h=a(1-(-a\inv h))$ et prendre $h$ pour rentrer dans les hypothèses de norme strictement plus petite que $1$.
 \end{proof}
 
-\begin{ex}[Moulin.40]{}
+\begin{ex}[Moulin.Top.40]{}
 	Soit $u$ une suite complexe bornée dont l'ensemble des valeurs d'adhérence est noté $A$. Soit $U$ un ouvert de $\C$ incluant $A$. Montrer que $u_n\in U$ à partir d'un certain rang.
 \end{ex}
 \begin{proof}
 	Raisonner par l'absurde et construire une nouvelle valeur d'adhérence qui n'est pas dans $U$.
 \end{proof}
 
-\begin{ex}[Moulin.41]{}
+\begin{ex}[Moulin.Top.41]{}
 	Soit $u$ une suite réelle telle que $(u_{n+1}-u_n)_{n\in\N}$ tend vers $0$. Montrer que l'ensemble des valeurs d'adhérence de $u$ est un intervalle fermé.
 \end{ex}
 \begin{proof}
@@ -407,11 +407,11 @@
 	C'est une simple réécriture de la définition des valeurs d'adhérence.
 \end{proof}
 
-\begin{ex}[Moulin.42]{$\star$}
+\begin{ex}[Moulin.Top.42]{$\star$}
 	Soit $u$ une suite complexe bornée telle que $(u_{n+1}-u_n)_{n\in\N}$ converge vers $0$. On note $A$ l'ensemble des valeurs d'adhérence de $u$. Soit $V_1$ et $V_2$ deux ouverts disjoints de $\C$ tels que $A\subset V_1\cup V_2$. Montrer que $A\subset V_1$ ou $A\subset V_2$. Montrer que le résultat peut tomber en défaut si on ne suppose plus que $u$ est bornée.
 \end{ex}
 
-\begin{ex}[Moulin.43]{$\Delta$}
+\begin{ex}[Moulin.Top.43]{$\Delta$}
 	Soit $(u_n)$ une suite de réels tendant vers $+\infty$ et telle que $(u_{n+1}-u_n)$ tende vers $0$. Montrer que l'ensemble $$\{u_p-u_q|(p,q)\in\N^2\}$$ est dense dans $\R$.
 \end{ex}
 \begin{proof}
@@ -425,7 +425,7 @@
 
 Ici, $\K$ désigne $\R$ ou $\C$ et on ne précisera pas la norme utilisée par équivalence des normes en dimension finie.
 
-\begin{ex}[Moulin.44]{Topologie des matrices nilpotentes}
+\begin{ex}[Moulin.Top.44]{Topologie des matrices nilpotentes}
 	On se place dans $\mathcal{M}_n(\K)$.
 	\begin{enumerate}
 		\item L'ensemble des matrices nilpotentes est-il un ouvert ? un fermé ?
@@ -435,7 +435,7 @@ Ici, $\K$ désigne $\R$ ou $\C$ et on ne précisera pas la norme utilisée par �
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.45]{$\Delta$}
+\begin{ex}[Moulin.Top.45]{$\Delta$}
 	Pour $A\in\mathcal{M}_n(\C)$, on note $S(A)$ la classe de similitude de $A$ dans $\mathcal{M}_n(\C)$.
 	\begin{enumerate}
 		\item On suppose $A$ diagonalisable. Caractériser $S(A)$ à l'aide du polynôme caractéristique et du polynôme minimal de $A$. En déduire qu'il est fermé.
@@ -451,7 +451,7 @@ Ici, $\K$ désigne $\R$ ou $\C$ et on ne précisera pas la norme utilisée par �
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.46]{$\Delta\star$}
+\begin{ex}[Moulin.Top.46]{$\Delta\star$}
 	Soit $A\in\mathcal{M}_n(\C)$. Montrer que la suite $(A^k)_{k\in\N}$ est bornée si, et seulement si, les deux conditions suivantes sont simultanément réunies : 
 	\begin{itemize}
 		\item Toute valeur propre de $A$ est de module inférieur à $1$.
@@ -462,14 +462,14 @@ Ici, $\K$ désigne $\R$ ou $\C$ et on ne précisera pas la norme utilisée par �
 	On prend une norme sous-multiplicative pour le sens direct, puis on prend $Y\in\ker(A-\lambda I_n)\cap\im(A-\lambda I_n)$. On écrit $Y=(A-\lambda I_n)X$. On montre par récurrence que $$\forall k\in\N,\ A^kX=k\lambda^{k-1}Y+\lambda^k X$$ Puisque $(A^kX)$ doit être bornée donc on doit avoir $Y=0$. La somme est directe puis le théorème du rang conclut. Réciproquement, on travaille matriciellement en construisant une base tel que la matrice de $u$ l'endomorphisme canoniquement associé à $A$ soit dans cette base diagonale par blocs avec des blocs scalaires et un blocs avec toutes ses valeurs propres de module strictement inférieur à $A$ puis le résultat suit.
 \end{proof}
 
-\begin{ex}[Moulin.47]{$\Delta\star$}
+\begin{ex}[Moulin.Top.47]{$\Delta\star$}
 	Montrer qu'une matrice $A\in\mathcal{M}_n(\K)$ est nilpotente si, et seulement si, la matrice nulle est adhérente à la classe de similitude de $A$.
 \end{ex}
 \begin{proof}
 	Dans le sens direct, trigonaliser pour obtenir une matrice triangulaire supérieure stricte puis utiliser les matrices $Q_\varepsilon$ pour montrer que $0$ adhère à la classe de similitude. Dans le sens réciproque, utiliser la continuité du polynôme caractéristique et le fait que le polynôme caractéristique est constant sur la classe de similitude.
 \end{proof}
 
-\begin{ex}[Moulin.48]{}
+\begin{ex}[Moulin.Top.48]{}
 	Dans $\mathcal{M}_n(\K)$, trouver l'intérieur et l'adhérence de :
 	\begin{enumerate}
 		\item $\mathcal{GL}_n(\K)$ ;

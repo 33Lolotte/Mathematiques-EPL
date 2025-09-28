@@ -67,11 +67,11 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 
 \section{Éléments propres}
 
-\begin{ex}[Moulin.01]{}
+\begin{ex}[Moulin.Red.01]{}
 	Déterminer les valeurs propres de l'endomorphisme $u$ de $\R[X]$ défini par : $$\forall P\in\R[X],\ u(P)=(X^2-1)P''+(2X+1)P'$$
 \end{ex}
 
-\begin{ex}[Moulin.02]{}
+\begin{ex}[Moulin.Red.02]{}
 	Déterminer les valeurs propres et les vecteurs de la matrice : $$\begin{pmatrix}
 		1&1&\cdots&1\\
 		1&0&\cdots&0\\
@@ -80,11 +80,11 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{pmatrix}$$
 \end{ex}
 
-\begin{ex}[Moulin.03]{$\star$}
+\begin{ex}[Moulin.Red.03]{$\star$}
 	Déterminer les valeurs propres et les vecteurs propres de l'endomorphisme $u$ de $\mathcal{C}^0(\R,\C)$ défini par : $$u(f)(x)=\int_{0}^{2\pi}\sin(x-t)f(t)\ dt$$
 \end{ex}
 
-\begin{ex}[Moulin.04]{$\star$}
+\begin{ex}[Moulin.Red.04]{$\star$}
 	Soit $u$ un endomorphisme d'un espace vectoriel de dimension finie.
 	\begin{enumerate}
 		\item Montrer que $u^T:\varphi\mapsto\varphi\circ u$ est un endomorphisme de $E\st$.
@@ -94,7 +94,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.05]{$\star$}
+\begin{ex}[Moulin.Red.05]{$\star$}
 	Pour $A\in\C_{n-1}[X]$, on définit $\Phi:\C_{n-1}[X]\to\C_{n-1}[X]$ en posant $\Phi(P)$ le reste de la division euclidienne de $AP$ par $X^n-1$. Déterminer les éléments propres de $\Phi$. \\
 	Application : diagonalisation de la matrice circulante $$\begin{pmatrix}
 		a_0&a_{n-1}&\cdots&a_1\\
@@ -104,7 +104,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{pmatrix}$$
 \end{ex}
 
-\begin{ex}[Moulin.06]{}
+\begin{ex}[Moulin.Red.06]{}
 	Soit $A\in\mathcal{M}_n(\C)$ et $B$ la transposée de la comatrice de $A$.
 	\begin{enumerate}
 		\item Montrer que tout vecteur propre de $A$ est vecteur propre de $B$.
@@ -126,25 +126,28 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 
 \section{Polynôme caractéristique}
 
-\begin{ex}[Moulin.07]{}
+\begin{ex}[Moulin.Red.07]{}
 	Quels sont les coefficients des termes de degrés $n-2$ et $1$ du polynôme caractéristique d'une matrice de taille $n$ ?
 \end{ex}
+\begin{proof}
+	Trigonaliser pour se faire une idée et développer le calcul du polynôme minimal. Quitte à se placer dans une clôture algébrique, on pourra le faire de toute façon... Et donc cela donne le bon résultat, même si on n'a pas le droit de le faire !
+\end{proof}
 
-\begin{ex}[Moulin.08]{$\star$}
+\begin{ex}[Moulin.Red.08]{$\star$}
 	Montrer que tout plan vectoriel de $\mathcal{M}_n(\C)$ ($n\geqslant 2$) contient au moins une matrice singulière non nulle (une matrice singulière est une matrice non inversible).
 \end{ex}
 \begin{proof}
 	On considère $(A,B)$ une base d'un tel plan. Si $B$ est singulière, OK. On peut donc supposer $B$ inversible. Alors : $$\forall\lambda\in\C,\ \det(A=\lambda B)=\underbrace{\det(B)}_{\ne 0}\underbrace{\det(\lambda I_n-B\inv A)}_{\text{ de degré }n}$$ D'après le théorème de d'Alembert-Gauss, il existe donc $\lambda\in\C$ tel que $\det(A+\lambda B)=0$. Et $A+\lambda B\ne 0$ car $1\ne 0$ et $(A,B)$ est libre. Donc $A+\lambda B$ est bien une matrice singulière non nulle.
 \end{proof}
 
-\begin{ex}[Moulin.09]{}
+\begin{ex}[Moulin.Red.09]{}
 	Soit $N\in\mathcal{M}_n(\K)$ une matrice nilpotente. Que dire de $\det(A+N)$ pour $A\in\mathcal{GL}_n(\K)$ commutant avec $N$ ?
 \end{ex}
 \begin{proof}
 	On commence par le cas simple où $A=I_n$. En trigonalisant $N$, $I_n+N$ est semblable à une matrice triangulaire supérieure avec des 1 sur la diagonale donc $$\det(I_n+N)=1=\det(I_n)$$ Dans le cas général, on écrit $$\det(A+N)=\det(A)\det(I_n+A\inv N)$$ Or, $A$ et $N$ commutent, donc $A\inv$ et $N$ commutent et $A\inv N$ est nilpotente. D'après le cas précédent, on en déduit que $$\det(A+N)=\det(A)\times 1=\det(A)$$ 
 \end{proof}
 
-\begin{ex}[Moulin.16]{$\det(A+N)$ avec commutation et nilpotence}
+\begin{ex}[Moulin.Red.16]{$\det(A+N)$ avec commutation et nilpotence}
 	Soit $N\in\mathcal{M}_n(\K)$ une matrice nilpotente. Montrer que si $A\in\mathcal{M}_n(\K)$ commute avec $N$, alors $\det(A)=0\implies\det(A+N)=0$ (voir l'exercice précédent).
 \end{ex}
 \begin{proof}[Première méthode]
@@ -163,15 +166,23 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{pmatrix}$$ Or, l'induit de $n$ sur $\ker(a)$ est aussi nilpotent et $\ker(a)$ n'est pas l'espace nul donc $P$ est non inversible. Un déterminant triangulaire par blocs conclut.
 \end{proof}
 
-\begin{ex}[Moulin.10]{$\Delta$}
+\begin{ex}[Moulin.Red.10]{$\Delta$}
 	\begin{enumerate}
-		\item $\star$ Soit $(A,B)\in\mathcal{M}_n(\K)^2$. Montrer que $AB$ et $BA$ ont le même polynôme caractéristique. On pourra suppose que $\K$ est un sous-corps de $\C$ et commencer par le cas où l'une des deux matrices est inversible.
+		\item $\star$ Soit $(A,B)\in\mathcal{M}_n(\K)^2$. Montrer que $AB$ et $BA$ ont le même polynôme caractéristique. On pourra supposer que $\K$ est un sous-corps de $\C$ et commencer par le cas où l'une des deux matrices est inversible.
 		\item Soit $A\in\mathcal{M}_{n,p}(\K)$ et $B\in\mathcal{M}_{p,n}(\K)$. Trouver une relation simple entre les polynômes caractéristiques de $AB$ et $BA$. On pourra remplacer $A$ par une matrice équivalente plus simple. Retrouver alors le résultat de la première question.
 		\item Retrouver le résultat de la deuxième question à partir de la première question en complétant les matrices $A$ et $B$ avec des $0$ pour les rendre carrées.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Plusieurs méthodes importantes.
+	\begin{enumerate}
+		\item Raisonner par densité. Le cas inversible est trivial car $AB$ et $BA$ sont alors semblables. Ensuite, raisonner par densité en perturbant légèrement $A$, ou alors plonger $\K$ dans $\K(X)$ !
+		\item On obtient la relation $X^p\chi_{AB}=X^n\chi_{BA}$. Pour la trouver, on peut par exemple se référer à un exercice du TD sur les matrices. Sinon, bidouiller avec des matrices inversibles dans les déterminants et utiliser de la densité comme dans le première question. La première question est simplement le cas $p=n$.
+		\item En complétant avec des $0$, on se ramène à un calcul de polynôme caractéristique par blocs et on peut utiliser le résultat de la première question.
+	\end{enumerate}
+\end{proof}
 
-\begin{ex}[Moulin.11]{$\Delta$}
+\begin{ex}[Moulin.Red.11]{$\Delta$}
 	Soit $u$ un endomorphisme d'un espace vectoriel de dimension finie, et $\lambda$ une valeur propre de $u$ d'ordre $p$. Montrer que les conditions suivantes sont équivalentes :
 	\begin{enumerate}[label=(\roman*)]
 		\item $p=\dim\ker(u-\lambda\text{id}_E)$ ;
@@ -179,8 +190,15 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 		\item $\ker(u-\lambda\text{id}_E)$ possède un supplémentaire stable par $u$.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	\begin{itemize}
+		\item $(i)\implies(ii)$ : on écrit $\chi_u=(X-\lambda)^p\times P$. Le théorème de Cayley-Hamilton fournit : $$\text{Im}(u-\lambda\text{id})\subset\ker(P)$$ puis le théorème du rang et le lemme des noyaux fournissent l'égalité et le résultat.
+		\item $(ii)\implies(iii)$ : trivial.
+		\item $(iii)\implies(i)$ : prendre $F$ un tel supplémentaire. Le polynôme caractéristique de $u$ vaut alors, par blocs : $$\chi_u=(X-\lambda)^{\dim\ker(u-\lambda\text{id})}\times\chi_{u_F}$$ en sachant que $X-\lambda$ ne divise pas $\chi_{u_F}$. Invoquer ensuite l'unicité de la décomposition en facteurs irréductibles pour obtenir, par degré, l'égalité souhaitée.
+	\end{itemize}
+\end{proof}
 
-\begin{ex}[Moulin.12]{$\Delta$ Trace et nilpotence}
+\begin{ex}[Moulin.Red.12]{$\Delta$ Trace et nilpotence}
 	\begin{enumerate}
 		\item Montrer que $A\in\mathcal{M}_n(\C)$ est nilpotente si, et seulement si, pour tout $k\in\llbracket1,n\rrbracket$, $\Tr(A^k)=0$.
 		\item Montrer que $A$ et $B$ dans $\mathcal{M}_n(\C)$ ont même polynôme caractéristique si, et seulement si, pour tout $k\in\N$, $\Tr(A^k)=\Tr(B^k)$.
@@ -197,7 +215,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.13]{$\star$}
+\begin{ex}[Moulin.Red.13]{$\star$}
 	Soit $(A,B)\in\mathcal{M}_n(\C)^2$ tel que $A$ et $AB-BA$ commutent. Montrer en utilisant l'exercice précédent que $AB-BA$ est nilpotente.
 \end{ex}
 \begin{proof}
@@ -208,14 +226,14 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{align*} par commutation. Donc $\Tr((AB-BA)^{k+1})=0$. Donc $AB-BA$ est nilpotente.
 \end{proof}
 
-\begin{ex}[Moulin.14]{$\Delta$}
+\begin{ex}[Moulin.Red.14]{$\Delta$}
 	Soit $A$ et $B$ dans $\mathcal{M}_n(\K)$. On suppose qu'il existe $X$ dans $\mathcal{M}_n(\K)$ de rang $r$ tel que $AX=XB$. Montrer que le PGCD de $\chi_A$ et $\chi_B$ est de degré au moins $r$.
 \end{ex}
 \begin{proof}
 	Sr ramener à $X=J_r$ par équivalence. Ensuite, écrire $A$ et $B$ par blocs. La condition donne le fait que les blocs supérieures gauches de $A$ et $B$ sont égaux, que le bloc supérieure droit de $B$ est nul et que le bloc inférieur gauche de $A$ est nul. Donc le polynôme caractéristique du bloc supérieur gauche divise les polynômes caractéristiques de $A$ et de $B$, donc leur PGCD.
 \end{proof}
 
-\begin{ex}[Moulin.15]{$\star$}
+\begin{ex}[Moulin.Red.15]{$\star$}
 	Soit $A$ et $B$ deux matrices de $\mathcal{GL}_n(\C)$.
 	\begin{enumerate}
 		\item On suppose que $\forall M\in\mathcal{M}_n(\C),\ \chi_{AM+B}=\chi{AM}$. Montrer que $B$ est nilpotente. Montrer que $$\forall M\in\mathcal{M}_n(\C),\ \Tr(BAM)=0$$ En conclure que $BA=0$.
@@ -242,10 +260,19 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 		\item $\star$ Montrer que deux permutations $\sigma$ et $\tau$ sont conjuguées si, et seulement si, les matrices $P_\sigma$ et $P_\tau$ sont semblables.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Grand classique !
+	\begin{enumerate}
+		\item On définit $P_\sigma$ comme étant $(\delta_{i,\sigma(j)})_{1\leqslant i,j\leqslant n}$. Pour vérifier la propriété de morphisme, raisonner en termes d'applications linéaires car les $P_\sigma$ opèrent une permutation des vecteurs d'une base de $\C^n$.
+		\item Il s'agit du nombre de points fixes.
+		\item Travailler au préalable sur un seul cycle. Si la permutation est un $n$-cycle, le polynôme caractéristique est $X^n-1$ (facile). Ensuite, réduire par blocs les matrices de permutation en regroupant les vecteurs de la base par cycles, puis calculer le polynôme caractéristique par blocs.
+		\item Dans le sens direct, c'est une conséquence immédiate du morphisme de la première question. Dans le sens réciproque, on peut observer que les traces des puissances de ces matrices sont égales. Ensuite, on observe que l'égalité des traces fournit le même nombre de points fixes (\textit{ie} de $1$-cycles), ensuite, l'égalité des traces des carrés fournit l'égalité du nombre de $2$-cycles (en enlevant les $1$-cycles qui sont déjà au même nombre). Par récurrence, les deux permutations ont le même nombre de cycles de même longueur. On conclut avec le lemme classique qui dit que tous les $k$-cycles sont toujours conjugués entre eux dans $\mathcal{S}_n$.
+	\end{enumerate}
+\end{proof}
 
 \section{Sous-espaces stables, commutants}
 
-\begin{ex}[Moulin.17]{}
+\begin{ex}[Moulin.Red.17]{}
 	Déterminer les sous-espaces vectoriels stables par les endomorphismes canoniquement associés aux matrices suivantes : 
 	\begin{enumerate}
 		\item $A=\displaystyle\begin{pmatrix}
@@ -271,25 +298,28 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.18]{}
+\begin{ex}[Moulin.Red.18]{}
 	En dimension finie égale à $n$, montrer que si $u$ est nilpotent d’indice $n$, alors les sous-espaces stables par $u$ sont exactement les $\ker(u^k)$ pour $k\in\llbracket0, n\rrbracket$.
 \end{ex}
 \begin{proof}
 	En effet, soit $F$ un sous-espace stable par $u$ de dimension $k$. Alors $\chi_{u_F}=X^k$ donc $u_F^k=0$ donc $F\subset\ker(u^k)$, et on a l'égalité par dimension (en utilisant la concavité des noyaux itérés).
 \end{proof}
 
-\begin{ex}[Moulin.19]{}
+\begin{ex}[Moulin.Red.19]{}
 	Quels sont les sous-espaces vectoriels stables par l'endomorphisme : $$\begin{array}{rcl}
 		\K[X]&\longrightarrow&\K[X]\\
 		P&\longmapsto&P(X+1)-P(X)
 	\end{array}\ ?$$
 \end{ex}
 
-\begin{ex}[Moulin.20]{$\Delta$}
+\begin{ex}[Moulin.Red.20]{$\Delta$}
 	Déterminer le commutant d'une matrice diagonalisable.
 \end{ex}
+\begin{proof}
+	Diagonaliser pour travailler à similitude près (les commutants sont conjugués). On obtient les matrices qui laissent stables tous les sous-espaces propres de $A$.
+\end{proof}
 
-\begin{ex}[Moulin.21]{$\star$ Endomorphismes cycliques}
+\begin{ex}[Moulin.Red.21]{$\star$ Endomorphismes cycliques}
 	Soit $u$ un endomorphisme d'un espace vectoriel $E$ de dimension finie $n$. On suppose que $u$ est cyclique, \textit{ie} qu'il existe un vecteur $x$ de $E$ tel que $$E=\text{Vect}(x,u(x),\ldots,u^{n-1}(x))$$ Montrer que les sous-espaces vectoriels de $E$ stables par $u$ sont en nombre fini et tous de la forme $\text{Vect}\{u^k(y)\mid k\in\N\}$ avec $y\in E$.
 \end{ex}
 \begin{proof}
@@ -300,11 +330,11 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	Soit $E$ un $\K$-espace vectoriel de dimension finie et $f$ un endomorphisme de $E$. Démontrer qu'il existe un nombre fini de sous-espaces vectoriels de $E$ stables par $f$ si, et seulement si, $f$ est cyclique.
 \end{ex}
 
-\begin{ex}[Moulin.22]{$\Delta$}
+\begin{ex}[Moulin.Red.22]{$\Delta$}
 	Soit $A_1,\ldots,A_n$ des matrices nilpotentes de $\mathcal{M}_n(\K)$ qui commutent deux à deux. Montre que $A_1A_1\cdots A_n=0$.
 \end{ex}
 \begin{proof}
-	Les noyaux sont stables par commutation. La nilpotence diminue strictement le rang à chaque nouvelle matrice. il est plus facile de le formaliser en termes d'applications linéaires (sinon, cela est rapide en les cotrigonalisant).
+	Les noyaux sont stables par commutation. La nilpotence diminue strictement le rang à chaque nouvelle matrice. il est plus facile de le formaliser en termes d'applications linéaires (sinon, cela est rapide en les cotrigonalisant, je dis ça, je dis rien...).
 \end{proof}
 
 \begin{ex}[Châteaux]{$\star$ Bicommutant d'une matrice diagonalisable}
@@ -316,7 +346,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 
 \section{Diagonalisation}
 
-\begin{ex}[Moulin.23]{$\circ$}
+\begin{ex}[Moulin.Red.23]{$\circ$}
 	Diagonaliser les matrices suivantes : 
 	$$\begin{pmatrix}
 		3&-1&1\\
@@ -335,7 +365,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{pmatrix}$$
 \end{ex}
 
-\begin{ex}[Moulin.24]{}
+\begin{ex}[Moulin.Red.24]{}
 	Diagonaliser $\displaystyle\begin{pmatrix}
 		(a)&&b\\
 		&\iddots&\\
@@ -343,10 +373,10 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{pmatrix}$ avec $(a,b)\in\R^2$.
 \end{ex}
 \begin{proof}
-	Les lignes sont de somme constante !
+	Les lignes sont de somme constante ! Sommer toutes les colonnes sur la première peut alors s'avérer très utile et fournit pas mal de valeurs propres dans le calcul du polynôme caractéristique.
 \end{proof}
 
-\begin{ex}[Moulin.25]{}
+\begin{ex}[Moulin.Red.25]{}
 	Calculer les puissances $n$-ièmes $(n\in\N$ puis $n\in\Z$ si cela est possible) des matrices proposées par chacune des méthodes suivantes. Comparer.
 	\begin{itemize}
 		\item En diagonalisant complètement.
@@ -366,7 +396,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{pmatrix}$$
 \end{ex}
 
-\begin{ex}[Moulin.26]{$\circ$}
+\begin{ex}[Moulin.Red.26]{$\circ$}
 	La matrice $A=\displaystyle\begin{pmatrix}
 		0&1&2&3\\
 		0&4&5&6\\
@@ -384,7 +414,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{itemize}
 \end{proof}
 
-\begin{ex}[Moulin.27]{}
+\begin{ex}[Moulin.Red.27]{}
 	Soit $(a,b,c,d)\in\K^4$ et $M=\displaystyle\begin{pmatrix}
 		a&0&0&0\\
 		1&b&0&0\\
@@ -392,8 +422,11 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 		0&0&1&d
 	\end{pmatrix}\in\mathcal{M}_4(\K)$. Montrer que $M$ est diagonalisable si, et seulement si, $a$, $b$, $c$ et $d$ sont deux à deux distincts.
 \end{ex}
+\begin{proof}
+	Le sens réciproque est immédiat car dans ce cas, $M$ possède $4$ valeurs propres distinctes en dimension $4$. Raisonner par contraposée dans l'autre sens, en montrant que la dimension du sous-espace propre avec une valeur propre double n'est pas suffisante.
+\end{proof}
 
-\begin{ex}[Moulin.28]{$\Delta$}
+\begin{ex}[Moulin.Red.28]{$\Delta$}
 	On considère $$A=\begin{pmatrix}
 		0&1&&(0)\\
 		1&0&\ddots&\\
@@ -416,7 +449,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.29]{$\Delta$ Matrices de rang $1$}
+\begin{ex}[Moulin.Red.29]{$\Delta$ Matrices de rang $1$}
 	Soit $n\geqslant 2$ et $A\in\mathcal{M}_n(\K)$ de rang $1$.
 	\begin{enumerate}
 		\item Montrer qu'il existe $X$ et $Y$ des éléments non nuls de $\K^n$ tels que $A=XY^T$.
@@ -425,51 +458,77 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 		\item Déterminer, à similitude près, toutes les matrices de rang $1$ et caractériser les classes de similitude de ces matrices en fonction de leur trace.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Classique !
+	\begin{enumerate}
+		\item Observer que toutes les colonnes de $A$ sont proportionnelles à une seule colonne non nulle $X$ puisque $A$ est de rang $1$. Et une colonne est non nulle, donc le $Y$ est non nul.
+		\item On remarque que $Y^TX=\Tr(A)$. On en déduit : $$A^2=\Tr(A)A$$ Ainsi, $X(X-\Tr(A))$ annule $A$.
+		\item D'après la question et les théorèmes de cours, on en déduit que $A$ est diagonalisable si, et seulement si, $\Tr(A)\ne0$.
+		\item Si $\Tr(A)\ne0$, on peut mettre $\Tr(A)$ en $(1,1)$ et des $0$ partout ailleurs. Si $\Tr(A)=0$, on met un $1$ en $(1,2)$ et des $0$ partout ailleurs.
+	\end{enumerate}
+\end{proof}
 
-\begin{ex}[Moulin.30]{$\star$}
+\begin{ex}[Moulin.Red.30]{$\star$}
 	Résoudre dans $\mathcal{M}_3(\R)$ puis dans $\mathcal{M}_3(\C)$ l'équation : $$X^2=\begin{pmatrix}
 		-1&-1&-4\\
 		-4&5&2\\
 		-10&8&-4
 	\end{pmatrix}$$
 \end{ex}
+\begin{proof}
+	Diagonaliser la matrice de droite pour se ramener à chercher des racines carrées de la matrice diagonale obtenue après diagonalisation (ce qui est beacoup plus simple !). Une matrice de passage et une matrice diagonale qui conviennent sont : $$D=\begin{pmatrix}
+		-9&0&0\\
+		0&9&0\\
+		0&0&0
+	\end{pmatrix} \ \ \text{et}\ \ P=\begin{pmatrix}
+	1/\sqrt{5}&-1/3&-2/3\\
+	0&2/3&-2/3\\
+	2/\sqrt{5}&2/3&1/3
+	\end{pmatrix}$$
+\end{proof}
 
-\begin{ex}[Moulin.31]{}
+\begin{ex}[Moulin.Red.31]{}
 	Résoudre dans $\mathcal{M}_2(\R)$ puis dans $\mathcal{M}_2(\C)$ l'équation :
 	$$M^2+M+I_2=\begin{pmatrix}
 		0&1\\
 		1&0
 	\end{pmatrix}$$
 \end{ex}
+\begin{proof}
+	S'inspirer de l'exercice précédent. En revanche, ici, durant la phase d'analyse, élever la relation au carré permet d'obtenir un polynôme annulateur de $M$ (et donc le spectre, ou presque).
+\end{proof}
 
-\begin{ex}[Moulin.32]{}
+\begin{ex}[Moulin.Red.32]{}
 	Soit $u$ un endomorphisme d'un espace vectoriel de dimension finie. Montrer que $u$ est diagonalisable si, et seulement si, $\chi_u$ est scindé et tout sous-espace propre de $u$ possède un supplémentaire stable par $u$.
 \end{ex}
+\begin{proof}
+	D'après le cours, cela revient à montrer que la deuxième assertion est équivalente au fait que $\chi_u$ soit scindé et que les dimensions des sous-espaces propres soient égales aux multiplicités des valeurs propres en tant que racines du polynôme caractéristique. Le lemme des noyaux fournit un sens, dans l'autre, fixer un supplémentaire et calculer le polynôme caractéristique par blocs, avant de conclure en invoquant l'unicité de la décomposition en facteurs irréductibles.
+\end{proof}
 
-\begin{ex}[Moulin.33]{$\Delta$}
+\begin{ex}[Moulin.Red.33]{$\Delta$}
 	Soit $u$ un endomorphisme d'un $\C$-espace vectoriel de dimension finie. Montrer que $u$ est diagonalisable si, et seulement si, tout sous-espace vectoriel stable par $u$ admet un supplémentaire stable par $u$.
 \end{ex}
 \begin{proof}
-	Dans le sens direct, si $u$ est diagonalisable et $F$ est stable par $u$, alors $u_F$ est diagonalisable. on complète une base de diagonalisation de$u_F$ avec des vecteurs propres de $u$ pour obtenir un supplémentaire stable par $u$. Réciproquement, supposons que tout SEV stable par $u$ admette un supplémentaire stable par $u$. On pose $$F=\bigoplus_{\lambda\in \text{Sp}(u)}E_\lambda(u)$$ qui est un SEV stable par $u$. Alors il admet $G$ un supplémentaire stable par $u$. Or, il ne peut y avoir de vecteurs propres dans $G$ car ils sont tous dans $F$. Donc puisqu'on travaille sur $\C$, $G=\{0\}$. Donc $$E=F=\bigoplus_{\lambda\in \text{Sp}(u)}E_\lambda(u)$$ et $u$ est bien diagonalisable.
+	Dans le sens direct, si $u$ est diagonalisable et $F$ est stable par $u$, alors $u_F$ est diagonalisable. on complète une base de diagonalisation de $u_F$ avec des vecteurs propres de $u$ pour obtenir un supplémentaire stable par $u$. Réciproquement, supposons que tout SEV stable par $u$ admette un supplémentaire stable par $u$. On pose $$F=\bigoplus_{\lambda\in \text{Sp}(u)}E_\lambda(u)$$ qui est un SEV stable par $u$. Alors il admet $G$ un supplémentaire stable par $u$. Or, il ne peut y avoir de vecteurs propres dans $G$ car ils sont tous dans $F$. Donc puisqu'on travaille sur $\C$, $G=\{0\}$. Donc $$E=F=\bigoplus_{\lambda\in \text{Sp}(u)}E_\lambda(u)$$ et $u$ est bien diagonalisable.
 \end{proof}
 
-\begin{ex}[Moulin.34]{}
+\begin{ex}[Moulin.Red.34]{}
 	Soit $u$ un endomorphisme d'un $\K$-espace vectoriel de dimension finie. Montrer que $u$ est diagonalisable si, et seulement si, tout sous-espace vectoriel admet un supplémentaire stable par $u$. On pourra utiliser des hyperplans.
 \end{ex}
 
-\begin{ex}[Moulin.35]{}
+\begin{ex}[Moulin.Red.35]{}
 	Montrer qu'un endomorphisme d'un espace vectoriel de dimension finie est diagonalisable si, et seulement s'il est combinaison linéaire de projecteurs $(p_i)_{0\leqslant i\leqslant k}$ tels que : $$\forall (i,j)\in\llbracket1,k\rrbracket^2,\ i\ne j\implies p_i\circ p_j=0$$ Quels sont alors son spectre et ses sous-espaces propres ?
 \end{ex}
 
-\begin{ex}[Moulin.36]{}
+\begin{ex}[Moulin.Red.36]{}
 	Déterminer les $A\in\mathcal{M}_n(\C)$ telles que pour tout $P\in\mathcal{GL}_n(\C)$, la matrice $PA$ soit diagonalisable.
 \end{ex}
 
-\begin{ex}[Moulin.37]{}
+\begin{ex}[Moulin.Red.37]{}
 	Soit $A$, $B$ et $M$ dans $\mathcal{M}_n(\C)$. On suppose $A$ et $B$ diagonalisables, et on suppose qu'il existe $r\in\N$ avec $r\geqslant 2$ tel que $A^rMB^r=0$. Montrer que $AMB=0$.
 \end{ex}
 
-\begin{ex}[Moulin.38]{$\star$}
+\begin{ex}[Moulin.Red.38]{$\star$}
 	Donner une condition sur $(a_1,\ldots,a_n)\in\C^n$ et $(b_1,\ldots,b_n)\in\C^n$ pour que la matrice $$A=\begin{pmatrix}
 		0&a_1&\cdots&a_n\\
 		b_1&&&\\
@@ -478,14 +537,14 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{pmatrix}$$ soit diagonalisable. On pourra introduire, sauf dans un cas particulier traité à part, un plan vectoriel simple incluant l'image, et examiner l'endomorphisme induit sur ce plan vectoriel.
 \end{ex}
 
-\begin{ex}[Moulin.39]{$\Delta$}
+\begin{ex}[Moulin.Red.39]{$\Delta$}
 	Soit $M\in\mathcal{M}_n(\C)$ et $p\in\N\st$. Montrer que $M$ est diagonalisable si, et seulement si, $M^p$ est diagonalisable et $\ker(M)=\ker(M^p)$.
 \end{ex}
 \begin{proof}
-	Le sens direct est immédiat. Dans le sens réciproque, s'intéresser à des supplémentaires du noyau. Sur celui-ci; utiliser un polynôme annulateur
+	Le sens direct est immédiat. Dans le sens réciproque, s'intéresser à des supplémentaires du noyau. Sur celui-ci; utiliser un polynôme annulateur.
 \end{proof}
 
-\begin{ex}[Moulin.40]{}
+\begin{ex}[Moulin.Red.40]{}
 	Soit $A\in\mathcal{M}_{4,3}(\R)$ et $B\in\mathcal{M}_{3,4}(\R)$ telles que $BA=\displaystyle\begin{pmatrix}
 		0&1&1\\
 		1&0&1\\
@@ -493,7 +552,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{pmatrix}$. La matrice $AB$ est-elle diagonalisable ?
 \end{ex}
 
-\begin{ex}{$\star$ Une extension algébrique de $\Q$}
+\begin{ex}[Châteaux]{$\star$ Une extension algébrique de $\Q$}
 	On pose $E=\Q[j,\sqrt[3]{2}]$ la plus petite $\Q$-algèbre contenant $\{j,\sqrt[3]{2}\}$.
 	\begin{enumerate}
 		\item Démontrer que $E$ est de dimension $6$ sur $\Q$ et en donner une base.
@@ -530,7 +589,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 
 \section{Trigonalisation, nilpotents}
 
-\begin{ex}[Moulin.41]{$\circ$}
+\begin{ex}[Moulin.Red.41]{$\circ$}
 	Trigonaliser les matrices suivantes :
 	$$\begin{pmatrix}
 		3&-1&1\\
@@ -549,14 +608,14 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{pmatrix}$$
 \end{ex}
 
-\begin{ex}[Moulin.42]{}
+\begin{ex}[Moulin.Red.42]{}
 	Soit $M\in\mathcal{M}_n(\C)$ telle que $\text{rg}M=2$, $\Tr M=0$ et $M^n\ne 0$. Montrer que $M$ est diagonalisable.
 \end{ex}
 \begin{proof}
 	Les deux dernières hypothèses impliquent que $M$ possède deux valeurs propres opposées non nulles. Puis avec l'hypothèse sur le rang, on en déduit que tous les sous-espaces propres ont même dimension que la multiplicité de la valeur propre associée, donc que $M$ est diagonalisable.
 \end{proof}
 
-\begin{ex}[Moulin.43]{$\star$ Utilisation d'une matrice compagnon}
+\begin{ex}[Moulin.Red.43]{$\star$ Utilisation d'une matrice compagnon}
 	\begin{enumerate}
 		\item Soit $\displaystyle P=\prod_{k=1}^{n}(X-z_k)\in\Z[X]$ avec $(z_1,\ldots,z_n)\in\C^n$. Montrer que pour tout $N\in\N$, le polynôme $\displaystyle\prod_{k=1}^{n}(X-z_k^N)$ est aussi à coefficients entiers. Indication : considérer la matrice compagnon de $P$.
 		\item Application : montrer que si un polynôme à coefficients entiers a toutes ses racines complexes de module inférieur ou égal à 1, alors ses racines non nulles sont des racines de l'unité.
@@ -586,7 +645,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	Soit $A\in\mathcal{M}_n(\R)$ telle que $A^2$ soit triangulaire supérieure, de diagonale $(1,2,\ldots,n)$. Montrer que $A$ est triangulaire supérieure.
 \end{ex}
 
-\begin{ex}[Moulin.44]{$\Delta$}
+\begin{ex}[Moulin.Red.44]{$\Delta$}
 	Soit $V$ un sous-espace vectoriel de $\mathcal{M}_n(\K)$ de dimension strictement supérieure à $\displaystyle\frac{n(n+1)}{2}$. Montrer que $V$ contient une matrice nilpotente non nulle.
 \end{ex}
 \begin{proof}
@@ -596,7 +655,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	Dans ce genre d'exercices, toujours considérer une intersection avec un ensemble de matrices de référence possédant la propriété recherchée.
 \end{rmq}
 
-\begin{ex}[Moulin.45]{$\star$}
+\begin{ex}[Moulin.Red.45]{$\star$}
 	Soit $E=\mathcal{C}^0([-1,1],\C)$, $F$ un sous-espace vectoriel de $E$ de dimension finie et $f:[-1,1]\to[-1,1]$ croissante et surjective. On suppose que $F$ est stable par l'endomorphisme $D$ de $E$ défini par $$\forall g\in E,\ D(g)=g\circ f$$
 	\begin{enumerate}
 		\item Montrer que $D$ admet pour seule valeur propre $1$.
@@ -604,7 +663,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.46]{}
+\begin{ex}[Moulin.Red.46]{}
 	Soit $A\in\mathcal{M}_n(\C)$. Quels sont les polynômes $P\in\C[X]$ tels que $P(A)$ soit nilpotente ?
 \end{ex}
 \begin{proof}
@@ -613,7 +672,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 
 \section{Polynômes d'endomorphismes}
 
-\begin{ex}[Moulin.47]{}
+\begin{ex}[Moulin.Red.47]{}
 	Condition sur $n\in\N\st$ pour qu'il existe $A\in\mathcal{M}_n(\R)$ telle que $A^2+2A+5I_n=0$ ?
 \end{ex}
 \begin{proof}
@@ -623,15 +682,25 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{pmatrix}$$ qui convient : on peut le vérifier par le calcul ou plutôt (et c'est mieux) le voir comme la matrice compagnon du polynôme $X^2+2X+5$. On généralise ensuite par blocs.
 \end{proof}
 
-\begin{ex}[Moulin.48]{}
+\begin{ex}[Moulin.Red.48]{}
 	Soit $f$ un endomorphisme de $\R^3$ tel que $f^3+f=0$ et $\text{rg}f=2$. Déterminer les sous-espaces stables par $f$.
 \end{ex}
+\begin{proof}
+	Réduire $f$ matriciellement par blocs. Observer que $X(X^2+1)$ annule $f$, donc matriciellement, on peut écrire $f$ sous la forme : $$\begin{pmatrix}
+		0&1&0\\
+		-1&0&0\\
+		0&0&0
+	\end{pmatrix}$$ Travailler ensuite par blocs.
+\end{proof}
 
-\begin{ex}[Moulin.49]{}
+\begin{ex}[Moulin.Red.49]{}
 	Soit $A$ une matrice inversible. Montrer que $A\inv$ est un polynôme en $A$.
 \end{ex}
+\begin{proof}
+	Il est immédiat que $\text{Vect}(A^k)_{k\in\N}$ est une sous-algèbre. On utilise ensuite le résultat classique selon lequel, pour un élément inversible d'une sous-algèbre de dimension finie, l'inverse est aussi dans la sous-algèbre (pour mémoire, regarder l'endomorphisme "multiplication par $A$" - à gauche par exemple, mais peu importe - prouver l'injectivité avec l'inversibilité, puis utiliser la surjectivité obtenue en dimension finie pour montrer que l'on atteint $I$ et conclure). Donc $A\inv$ appartient à cette sous-algèbre, et est donc un polynôme en $A$. \\ \\ Sinon, on peut passer par le théorème de Cayley-Hamilton pour obtenir directement l'inverse.
+\end{proof}
 
-\begin{ex}[Moulin.50]{$\star$}
+\begin{ex}[Moulin.Red.50]{$\star$}
 	Soit $u$ un endomorphisme d'un $\K$-espace vectoriel admettant un polynôme minimal $\Pi$. Montrer que si $\Pi$ admet u facteur irréductible $P$ de degré $p$, alors $E$ admet un sous-espace vectoriel de dimension $p$ stable par $u$. On pourra prendre un vecteur non nul de $\ker(P(u))$.
 \end{ex}
 \begin{proof}
@@ -641,7 +710,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{array}$$ Elle est évidemment surjective. Montrons qu'elle est injective. Si $v(y)=0$, alors pour tout $x\in V$, $v(x)=0$ car $v$ est un polynôme en $u$. Et $v$ coïncide avec l'application nulle sur une base de $V$ donc $v=0$.
 \end{proof}
 
-\begin{ex}[Moulin.51]{}
+\begin{ex}[Moulin.Red.51]{}
 	Soit $A\in\mathcal{M}_3(\R)$ telle que $A^3+A^2+A+I_3=0$ et $A\ne -I_3$. Montrer que $A$ est semblable à $$B=\begin{pmatrix}
 		0&-1&0\\
 		1&0&0\\
@@ -655,7 +724,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{pmatrix}$$
 \end{proof}
 
-\begin{ex}[Moulin.52]{$\Delta$}
+\begin{ex}[Moulin.Red.52]{$\Delta$}
 	Montrer que toute matrice de rang $r$ admet un polynôme annulateur de degré $r+1$.
 \end{ex}
 \begin{proof}
@@ -673,49 +742,67 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 
 \section{Réduction de matrices blocs}
 
-\begin{ex}[Moulin.53]{}
+\begin{ex}[Moulin.Red.53]{}
 	Soit $A\in\mathcal{M}_n(\C)$ diagonalisable. Montrer que $$M=\begin{pmatrix}
 		A&I_n\\
 		I_n&A
 	\end{pmatrix}$$ est diagonalisable, et exprimer éléments propres en fonction de ceux de $A$.
 \end{ex}
+\begin{proof}
+	Pour se faire une idée, on peut calculer le polynôme caractéristique de $M$. Avec le lemme classique sur les déterminants "blocs $2\times2$" et la commutation, on obtient : $$\chi_M=\chi_A(X-1)\chi_A(X+1)$$ Construire ensuite des vecteurs propres satisfaisant à partir de vecteurs propres de $A$.
+\end{proof}
 
-\begin{ex}[Moulin.54]{}
+\begin{ex}[Moulin.Red.54]{}
 	Soit $A\in\mathcal{M}_n(\R)$. Dans chacun des cas suivants, donner une condition nécessaire et suffisante pour que la matrice blocs proposée soit diagonalisable : $$\begin{pmatrix}
 		A&A\\
-		1&-3A
+		A&-3A
 	\end{pmatrix}\ \ \text{et}\ \ \begin{pmatrix}
 	A&A\\
 	-A&-3A
 	\end{pmatrix}$$
 \end{ex}
+\begin{proof}
+	Essayer de calculer des puissances de ces matrices et d'y reconnaître une formule que l'on étend ensuite par linéarité.
+\end{proof}
 
-\begin{ex}[Moulin.55]{}
+\begin{ex}[Moulin.Red.55]{}
 	Soit $A\in\mathcal{M}_n(\C)$ et $$B=\begin{pmatrix}
 		A&A\\
 		0&A
 	\end{pmatrix}$$ Donner une condition nécessaire et suffisante sur $A$ pour que $B$ soit diagonalisable.
 \end{ex}
+\begin{proof}
+	Calculer les puissances $k$-èmes de $B$ pour en déduire par linéarité l'égalité : $$\forall P\in\C[X],\ P(B)=\begin{pmatrix}
+		P(A)&(XP')(A)\\
+		0&P(A)
+	\end{pmatrix}$$ Si $M$ est diagonalisable, alors $M$ est annulée par un $P$ scindé à racines simples, donc $A$ aussi donc $A$ est diagonalisable. Mais $A$ est aussi annulée par $XP'$, donc les valeurs propres de $A$, par degré, sont des racines communes de $P$ et $XP'$, donc sont nécessairement nulles. $A$ est diagonalisable et toutes ses valeurs propres sont nulles, donc $A$ est nulle. La condition suffisante est triviale.
+\end{proof}
 
-\begin{ex}[Moulin.56]{$\star$}
-	Condition nécessaire et suffisante sur $A\in\mathcal{M}_n(\R)$ pour que $\displaystyle\begin{pmatrix}
+\begin{ex}[Moulin.Red.56]{$\star$}
+	Condition nécessaire et suffisante sur $A\in\mathcal{M}_n(\R)$ pour que $\displaystyle M=\begin{pmatrix}
 		0&I_n\\
 		A&A
 	\end{pmatrix}$ soit $\C$-diagonalisable ? $\R$-diagonalisable ?
 \end{ex}
+\begin{proof}
+	Essayons de calculer $\chi_M$ : avec le lemme classique sur les déterminants par blocs qui commutent, on a : $$\chi_M=\det(XI_n(XI_n-A)-A)=\det(X^2I_n-(X+1)A)=(X+1)^n\chi_A\left(\frac{X^2}{X+1}\right)$$ Ou alors, peut-être essayer de calculer les puissances; Ce sont deux idées, mais je ne sais pas si elles fonctionnent.
+\end{proof}
 
-\begin{ex}[Moulin.57]{}
+\begin{ex}[Moulin.Red.57]{}
 	Soit $A\in\mathcal{M}_n(\K)$ et $B\in\mathcal{M}_p(\K)$. 
 	\begin{enumerate}
 		\item Montrer que si $A$ et $B$ sont diagonalisables, alors $A\otimes B$ l'est également.
 		\item Montrer que si $A$ et $B$ sont trigonalisables, alors $A\otimes B$ l'est également.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Construire des vecteurs propres par concaténation, ou bien passer par les polynômes annulateurs et les polynômes caractéristiques en utilisant les propriétés du produit de Kronecker vis-à-vis du produit.
+\end{proof}
 
 \section{Sous-espaces caractéristiques}
 
-\begin{ex}[Moulin.58]{}
-	Soit $u$ un endomorphisme d'un espace vectoriel de dimension finie, et $\lambda$ une valeur propre de $u$ d'ordre $p$. Montrer que les condition suivantes sont équivalentes :
+\begin{ex}[Moulin.Red.58]{}
+	Soit $u$ un endomorphisme d'un espace vectoriel de dimension finie, et $\lambda$ une valeur propre de $u$ d'ordre $p$. Montrer que les conditions suivantes sont équivalentes :
 	\begin{enumerate}[label=(\roman*)]
 		\item $p=\dim\ker(u-\lambda\text{id}_E)$ ;
 		\item $u$ induit sur le sous-espace caractéristique associé à $\lambda$ un endomorphisme diagonalisable ;
@@ -723,7 +810,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.59]{}
+\begin{ex}[Moulin.Red.59]{}
 	Soit $u$ un endomorphisme d'un $\C$ espace vectoriel de dimension finie $n$. Montrer que les condition suivantes sont équivalentes :
 	\begin{enumerate}[label=(\roman*)]
 		\item Les sous-espaces propres de $u$ sont tous de dimension $1$.
@@ -731,26 +818,26 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.60]{$\star$ Multiplicité dans le polynôme minimal}
+\begin{ex}[Moulin.Red.60]{$\star$ Multiplicité dans le polynôme minimal}
 	Soit $\lambda$ une valeur propre d'une matrice $A\in\mathcal{M}_n(\R)$. On note $p$ la multiplicité de $\lambda$ en tant que racine du polynôme minimal de $A$, noté $\pi_A$. Montrer que $$\R^n=\ker((A-\lambda I_n)^p)\oplus\im((A-\lambda I_n)^p)$$ 
 \end{ex}
 \begin{proof}
 	On pose : $$P=\frac{\pi_A}{(X-\lambda)^p}$$ Par conséquent, on a $P\wedge(X-\lambda)^p=1$. Comme $\pi_A$ est annulateur de $A$, le lemme des noyaux fournit : $$\R^n=\ker((A-\lambda I_n)^p)\oplus\ker(P(A))$$ Il suffit donc de montrer que $\ker(P(A))=\im((A-\lambda I_n)^p)$. Or : $$\forall X\in\R^n,\ P(A)\times(A-\lambda I_n)^pX=\pi_A(A)X=0\times X=0$$ On a donc l'égalité ensembliste par inclusion (par ce qui précède) et par égalité de dimensions (grâce au théorème du rang et à l'égalité fournie par le lemme des noyaux). On a donc bien :$$\R^n=\ker((A-\lambda I_n)^p)\oplus\im((A-\lambda I_n)^p)$$ 
 \end{proof}
 
-\begin{ex}[Moulin.61]{}
+\begin{ex}[Moulin.Red.61]{}
 	Soit $u$ et $v$ deux endomorphismes commutant d'un $\C$-espace vectoriel $E$ de dimension finie. On suppose que $u$ ne possède aucun sous-espace stable non trivial.
 	\begin{enumerate}
-		\item En utilisant la décomposition en sous-espace caractéristique, montrer que $v$ est inversible ou nilpotent.
+		\item En utilisant la décomposition en sous-espaces caractéristiques, montrer que $v$ est inversible ou nilpotent.
 		\item $\star$ Le résultat reste-t-il valable sur un autre corps $\K$ ?
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.62]{}
+\begin{ex}[Moulin.Red.62]{}
 	Soit $u$ un endomorphisme d'un $\C$-espace vectoriel de dimension finie. Montrer que $u$ est diagonalisable si, et seulement si : $$\forall P\in\C[X],\ \ker P(u)+\text{Im}P(u)=E$$
 \end{ex}
 
-\begin{ex}[Moulin.63]{$\Delta$ Décomposition de Dunford}
+\begin{ex}[Moulin.Red.63]{$\Delta$ Décomposition de Dunford}
 	Soit $u$ un endomorphisme d'un espace vectoriel de dimension finie dont le polynôme caractéristique est scindé.
 	\begin{enumerate}
 		\item Montrer l'existence d'un couple $(d,n)$ d'endomorphismes de $E$, avec $d$ diagonalisable, $n$ nilpotent et $u=d+n$ et $d\circ n=n\circ d$.
@@ -774,7 +861,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.64]{$\Delta\star$ Décomposition de Jordan}
+\begin{ex}[Moulin.Red.64]{$\Delta\star$ Décomposition de Jordan}
 	Soit $E$ un $\C$-espace vectoriel de dimension finie non nulle et $u$ un endomorphisme de $E$.
 	\begin{enumerate}
 		\item On suppose $u$ nilpotent, d'indice de nilpotence $p$.
@@ -822,7 +909,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 
 \section{Coréduction}
 
-\begin{ex}[Moulin.65]{$\Delta$}
+\begin{ex}[Moulin.Red.65]{$\Delta$}
 	Vrai ou faux ?
 	\begin{itemize}
 		\item Deux endomorphismes diagonalisables sont codiagonalisables si, et seulement s'ils commutent.
@@ -842,14 +929,14 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{itemize}
 \end{proof}
 
-\begin{ex}[Moulin.66]{$\star$}
+\begin{ex}[Moulin.Red.66]{$\star$}
 	Soit $(A,B)\in\mathcal{M}_n(\K)^2$ un couple de matrices diagonalisables. Montrer que $\varphi :M\mapsto AM-MB$ est diagonalisable. Même question en remplaçant "diagonalisable(s)" par "trigonalisable(s)".
 \end{ex}
 \begin{proof}
-	On pose $\varphi_A:M\mapsto AM$ et $\varphi_B:M\mapsto MB$. On vérifie par récurrence (en mettant à part le cas $k=0$) que $$\varphi_A^k=\varphi_(A^k)$$ Par linéarité, on en déduit que $$\forall P\in\C[X],\ P(\varphi_A)=\varphi_{P(A)}$$ Or, $A$ est annulée par un polynôme scindé à racines simples (car diagonalisable) et alors, comme $\varphi_0=0$, $\varphi_A$ est aussi annulée par un polynôme scindé à racines simples, donc est diagonalisable. De même pour $B$. Or, on voit que $\varphi_A$ et $\varphi_B$ par associativité du produit matriciel. Par conséquent, $\varphi_A$ et $\varphi_B$ sont codiagonalisables, donc $\varphi=\varphi_A-\varphi_B$ est diagonalisable. Pour trigonalisable, il suffit de remplacer dans ce qui précède "diagonalisable" par "trigonalisable" et "scindé à racines simples" par scindé.
+	On pose $\varphi_A:M\mapsto AM$ et $\varphi_B:M\mapsto MB$. On vérifie par récurrence (en mettant à part le cas $k=0$) que $$\varphi_A^k=\varphi_(A^k)$$ Par linéarité, on en déduit que $$\forall P\in\C[X],\ P(\varphi_A)=\varphi_{P(A)}$$ Or, $A$ est annulée par un polynôme scindé à racines simples (car diagonalisable) et alors, comme $\varphi_0=0$, $\varphi_A$ est aussi annulée par un polynôme scindé à racines simples, donc est diagonalisable. De même pour $B$. Or, on voit que $\varphi_A$ et $\varphi_B$ par associativité du produit matriciel. Par conséquent, $\varphi_A$ et $\varphi_B$ sont codiagonalisables, donc $\varphi=\varphi_A-\varphi_B$ est diagonalisable. Pour trigonalisable, il suffit de remplacer dans ce qui précède "diagonalisable" par "trigonalisable" et "scindé à racines simples" par "scindé".
 \end{proof}
 
-\begin{ex}[Moulin.67]{}
+\begin{ex}[Moulin.Red.67]{}
 	Soit $f$ et $g$ deux endomorphismes d'un espace vectoriel $E$ de dimension finie. Pour $g\in\mathcal{L}(E)$, on pose $F(g)=g\circ f$ et $H(g)=h\circ g$, définissant ainsi deux endomorphismes de $\mathcal{L}(E)$.
 	\begin{enumerate}
 		\item Calculer $F^k$ et $H^k$ pour $k\in\N$. En déduire que $F$ est diagonalisable si, et seulement si, $f$ est diagonalisable, et de même pour $H$ et $h$.
@@ -858,19 +945,22 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.68]{}
+\begin{ex}[Moulin.Red.68]{}
 	Reprendre l'exercice précédent en remplaçant "diagonalisable" par "trigonalisable".
 \end{ex}
 
-\begin{ex}[Moulin.69]{}
+\begin{ex}[Moulin.Red.69]{}
 	Soit $$A=\begin{pmatrix}
 		1&j&j^1\\
 		j&j^2&1\\
 		j^2&1&j
 	\end{pmatrix}$$ Déterminer les matrices $B\in\mathcal{M}_3(\C)$ telles que $B^2=A$.
 \end{ex}
+\begin{proof}
+	Une telle racine carrée commute nécessairement avec $A$. $A$ est de rang $1$ et de trace nulle donc n'est pas diagonalisable. Cotrigonaliser $A$ et $B$ dans l'analyse pour obtenir des informations.
+\end{proof}
 
-\begin{ex}[Moulin.70]{Une CS de cotrigonalisabilité}
+\begin{ex}[Moulin.Red.70]{Une CS de cotrigonalisabilité}
 	Soit $A$ et $B$ deux matrices de $\mathcal{M}_n(\C)$ telles que $AB=0$. Montrer que $A$ et $B$ sont simultanément trigonalisables.
 \end{ex}
 \begin{proof}
@@ -889,7 +979,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 		\item En déduire qu'ils sont trigonalisables dans une même base.
 	\end{enumerate}
 \end{ex}
-\begin{ex}[Moulin.71]{$\Delta$ Crochet de Lie et cotrigonalisation}
+\begin{ex}[Moulin.Red.71]{$\Delta$ Crochet de Lie et cotrigonalisation}
 	Soit $(A,B)\in\mathcal{M}_n(\C)^2$ tel que $AB-BA=\lambda A+\mu B$ avec $(\lambda,\mu)\in\C^2$. On cherche à démontrer que $A$ et $B$ sont cotrigonalisables.
 	\begin{enumerate}
 		\item Traiter le cas $\lambda=\mu=0$.
@@ -917,7 +1007,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	On appelle crochet de Lie la quantité : $$[A,B]=AB-BA$$ On peut munir des espaces d'une telle opération pour obtenir la structure d'algèbre de Lie.
 \end{rmq}
 
-\begin{ex}[Moulin.72]{}
+\begin{ex}[Moulin.Red.72]{}
 	Soit $\mathcal{N}$ un sous-espace vectoriel de $\mathcal{M}_n(\K)$ stable par multiplication et constitué de matrices nilpotentes.
 	\begin{enumerate}
 		\item Soit $X\in\K^n$. Montrer que $\mathcal{N}X=\{NX\ \mid\ N\in\mathcal{N}\}$ est un sous-espace vectoriel de $\K^n$ stable par tout élément de $\mathcal{N}$.
@@ -926,7 +1016,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.73]{}
+\begin{ex}[Moulin.Red.73]{}
 	Soit $E$ un espace vectoriel de dimension finie et $(f,u)\in\mathcal{L}(E)^2$ avec $u$ inversible. On suppose que $u\circ f+f\circ u=0$.
 	\begin{enumerate}
 		\item On suppose $f$ diagonalisable. Montrer que $\text{rg}(f)$ est pair.
@@ -935,7 +1025,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.74]{$\star$}
+\begin{ex}[Moulin.Red.74]{$\star$}
 	Soit $(A,B)\in\mathcal{M}_n(\R)$ tel que $AB=BA$, $A^n=B^n=I_n$ et $\Tr(AB)=n$. Montrer que $\Tr(A)=\Tr(B)$.
 \end{ex}
 \begin{proof}

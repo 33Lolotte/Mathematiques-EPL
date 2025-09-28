@@ -65,7 +65,7 @@
 
 \section{Espaces vectoriels, sous-espaces vectoriels}
 
-\begin{ex}[Moulin.01]{$\Delta$}
+\begin{ex}[Moulin.EV.01]{$\Delta$}
 	Soit $E$ un $\K$-espace vectoriel où $\K$ est un corps de caractéristique nulle.
 	\begin{enumerate}
 		\item Montrer que si $F$ et $G$ sont deux SEV stricts de $E$, alors il existe un vecteur de $E$ n'appartenant ni à $F$ ni à $G$.
@@ -80,23 +80,23 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.02]{$\star$}
+\begin{ex}[Moulin.EV.02]{$\star$}
 	Soit $E$ un espace vectoriel admettant une base infinie. Montrer que $E$ est une réunion dénombrable d'hyperplans.
 \end{ex}
 
-\begin{ex}[Moulin.03]{$\star\star$}
+\begin{ex}[Moulin.EV.03]{$\star\star$}
 	Soit $E$ un $\R$-espace vectoriel de dimension finie. Montrer que $E$ n'est pas la réunion dénombrable de ses sous-espaces vectoriels stricts.
 \end{ex}
 
-\begin{ex}[Moulin.04]{$\circ$}
+\begin{ex}[Moulin.EV.04]{$\circ$}
 	Soit $F$ un sous-espace vectoriel strict de $E$. Quel est l'ensemble des combinaisons linéaires des éléments n'appartenant pas à $F$ ?
 \end{ex}
 
-\begin{ex}[Moulin.05]{}
+\begin{ex}[Moulin.EV.05]{}
 	Déterminer le sous-espace vectoriel de $\R[X]$ engendré par les polynômes $P$ tels que $\forall x\in\R,\ P(x)\geqslant 0$.
 \end{ex}
 
-\begin{ex}[Moulin.06]{Espace vectoriel quotient}
+\begin{ex}[Moulin.EV.06]{Espace vectoriel quotient}
 	Soit $F$ un sous-espace vectoriel d'un espace vectoriel $E$
 	\begin{enumerate}
 		\item Montrer que la relation $\sim_F$ de congruence définie sur $E$ par : $$x\sim_F\iff x-y\in F$$ est une relation d'équivalence. On note $E/F$ l'ensemble quotient associé.
@@ -108,7 +108,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.07]{Complexification d'un espace vectoriel réel}
+\begin{ex}[Moulin.EV.07]{Complexification d'un espace vectoriel réel}
 	Soit $E$ un $\R$-espace vectoriel et $u$ un endomorphisme de $E$ tel que $u^2=-\text{id}_E$.
 	\begin{enumerate}
 		\item Montrer que la multiplication par un scalaire peut être prolongée, de manière unique, en une fonction de $\C\times E$ dans $E$ faisant de $E$ un $\C$-espace vectoriel et telle que $i.x=u(x)$ pour tout $x\in E$.
@@ -118,19 +118,19 @@
 
 \section{Familles libres, familles génératrices, bases}
 
-\begin{ex}[Moulin.08]{}
+\begin{ex}[Moulin.EV.08]{}
 	La famille $(1+X,1+X^2,\ldots,1+X^n,\ldots)$ est-elle génératrice de $\R[X]$ ? Dans le cas contraire, donner une équation d'un hyperplan qui la contient.
 \end{ex}
 
-\begin{ex}[Moulin.09]{$\Delta$}
+\begin{ex}[Moulin.EV.09]{$\Delta$}
 	Soit $a$ et $b$ deux réels distincts. Montrer que la famille $(P_k)_{0\leqslant k\leqslant n}$, où $$P_k=(X-a)^k(X-b)^{n-k}$$ est une base de $\R_n[X]$.
 \end{ex}
 
-\begin{ex}[Moulin.10]{}
+\begin{ex}[Moulin.EV.10]{}
 	Étant donnés $n+1$ points distincts $a_0,\ldots,a_n$ de $\K$, montrer que les polynômes $P_i=(X+a_i)^n$, pour $i\in\llbracket0,n\rrbracket$, forment une base de $\K_n[X]$.
 \end{ex}
 
-\begin{ex}[Moulin.11]{}
+\begin{ex}[Moulin.EV.11]{}
 	Soit $J=[a,b]$ un segment de $\R$ avec $a<b$. Pour $\alpha\in\R$, on définit : $f_\alpha:J\to\R$ par $f_\alpha(x)=\lvert x-\alpha\rvert$.
 	\begin{enumerate}
 		\item Montrer que la famille $(f_\alpha)_{\alpha\in J}$ est libre. Qu'en est-il de la famille $(f_\alpha)_{\alpha\in\R}$ ?
@@ -139,7 +139,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.12]{}
+\begin{ex}[Moulin.EV.12]{}
 	Montrer que la famille des $$\begin{array}{lrcl}
 		f_a:&\R_+&\longrightarrow&\R \\
 		&x&\longmapsto&\ln(x+a)
@@ -149,7 +149,7 @@
 	Prendre une combinaison linéaire nulle et dériver. Utiliser ensuite le fait que la famille des $$\frac{1}{X+a}$$ pour $a>0$ est libre comme sous-famille de la base canonique de $\R(X)$ (théorème de décomposition en éléments simples).
 \end{proof}
 
-\begin{ex}[Moulin.13]{}
+\begin{ex}[Moulin.EV.13]{}
 	Soit $(P_n)_{n\in\N}$ une famille libre de polynômes de $\R[X]$.
 	\begin{enumerate}
 		\item On suppose : $$\forall n\in\N,\ \exists N\geqslant n\ :\ \forall k\in\llbracket0,N\rrbracket,\ \deg(P_k)\leqslant N$$ Montrer que $(P_n)$ est une base de $\R[X]$.
@@ -157,7 +157,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.14]{$\star$}
+\begin{ex}[Moulin.EV.14]{$\star$}
 	\begin{enumerate}
 		\item Soit $E$ un espace vectoriel muni d'une base dénombrable $(e_n)_{n\in\N}$. Montrer que toute famille libre de $E$ est au plus dénombrable.
 		\item Les espaces vectoriels $\C[X]$ et $\C(X)$ sont-ils isomorphes ?
@@ -170,14 +170,14 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.15]{$\star\star$ Lemme de Dedekind}
+\begin{ex}[Moulin.EV.15]{$\star\star$ Lemme de Dedekind}
 	Soit $G$ un groupe multiplicatif et $\Sigma$ l'ensemble des morphismes de $G$ dans $(\C\st,\times)$. Montrer que $\Sigma$ est une famille libre de $\C^G$. Que peut-on en déduire sur $\text{Card}(\Sigma)$ si $G$ est fini ?
 \end{ex}
 \begin{proof}
 	Procéder par récurrence sur le nombre de morphismes. Dans la récurrence, multiplier par le nouveau morphisme, mais utiliser aussi la nouvelle propriété de morphisme. On obtient : $$\forall(g,g')\in G^2,\ \sum_{i=1}^{n}\lambda_if_i(g)\left[f_i(g')-f_0(g')\right]=0$$ d'où on tire $$\forall g'\in G,\ \sum_{i=1}^{n}\lambda_i\left[f_i(g')-f_0(g')\right]f_i=0$$ Or, on a pris les $f_i$ distincts, donc on peut trouver $g'$ tel que $f_i(g')-f_0(g')\ne 0$. On utilise alors l'hypothèse de récurrence et on se ramène à $\lambda_0 f_0=0$ ce qui est l'initialisation (immédiate en évaluant en $e$ élément neutre de $G$). Lorsque $G$ est fini, $\C^G$ est de dimension finie égale à $\text{Card}(G)$ puisque $(x\mapsto \delta_{g,x})_{g\in G}$ en est une base par exemple. Donc on en déduit que $$\text{Card}(\Sigma)\leqslant\text{Card}(G)$$
 \end{proof}
 
-\begin{ex}[Moulin.16]{}
+\begin{ex}[Moulin.EV.16]{}
 	Soit $X$ un ensemble et $f:X\to\R_+\st$.
 	\begin{enumerate}
 		\item Donner une condition nécessaire et suffisante pour que $(f^n)_{n\in\N}$ soit libre.
@@ -185,7 +185,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.17]{Famille de réels sur $\R$ en tant que $\Q$-ev}
+\begin{ex}[Moulin.EV.17]{Famille de réels sur $\R$ en tant que $\Q$-ev}
 	On considère $\R$ en tant que $\Q$-espace vectoriel.
 	\begin{enumerate}
 		\item La famille $(\ln(n))_{n\geqslant 2}$ est-elle libre ?
@@ -199,11 +199,11 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.18]{$\star$}
+\begin{ex}[Moulin.EV.18]{$\star$}
 	Pour $n\in\N$, soit $f_n:x\in\R\mapsto\cos(x^n)$. Montrer que la famille $(f_n)_{n\geqslant 0}$ est libre.
 \end{ex}
 
-\begin{ex}[Moulin.19]{$\star$}
+\begin{ex}[Moulin.EV.19]{$\star$}
 	On note $P(\C)$ l'ensemble des suites complexes périodiques.
 	\begin{enumerate}
 		\item Montrer que $P(\C)$ est un sous-espace vectoriel de $\C^\N$.
@@ -217,26 +217,26 @@
 
 \section{Dimension finie}
 
-\begin{ex}[Moulin.20]{}
+\begin{ex}[Moulin.EV.20]{}
 	Soit $(x_1,\ldots,x_n)$ une famille de rang $r$. On considère une sous-famille à $p$ vecteurs de rang $s$. Montrer que $s\geqslant p+r-n$.
 \end{ex}
 
-\begin{ex}[Moulin.21]{$\Delta\star$ Multiplicativité des degrés}
+\begin{ex}[Moulin.EV.21]{$\Delta\star$ Multiplicativité des degrés}
 	Soit $\L$ un surcorps de $\K$ de dimension $p$ sur $\K$. Soit $E$ un $\L$-espace vectoriel (qui est donc aussi un $\K$-espace vectoriel). Montrer que $E$ est de dimension finie sur $\K$ si, et seulement si, $E$ est de dimension finie sur $\L$. Donner alors une relation entre ces deux dimensions.
 \end{ex}
 \begin{proof}
 	Un exemple non trivial de tels corps peut être donné par $\R$ et $\C$. Dans le sens direct, une base de $E$ comme $\K$-ev est alors génératrice d $E$ en tant que $\L$-ev car tout scalaire de $\K$ est un scalaire de $\L$. Donc OK. Réciproquement, il faut multiplier une base de $E$ en tant que $\L$-ev par une base de $\L$ en tant que $\K$-ev. On vérifie alors qu'on obtient une base de $E$ en tant que $\K$-ev. On en déduit alors que : $$\dim_\K(E)=\dim_\K(\L)\times\dim_\L(E)$$
 \end{proof}
 
-\begin{ex}[Moulin.22]{}
+\begin{ex}[Moulin.EV.22]{}
 	Soit $E$ un espace vectoriel et $F$ un sous-espace vectoriel de $E$ de dimension finie. Quelle peut être la dimension de $F\cap H$, si $H$ est un hyperplan de $E$ ? On pourra commencer par le cas où $E$ est de dimension finie.
 \end{ex}
 
-\begin{ex}[Moulin.23]{$\star$}
+\begin{ex}[Moulin.EV.23]{$\star$}
 	Donner une condition nécessaire et suffisante sur $n$ et $m$ pour qu'il existe un isomorphisme de groupes de $\Z^n$ sur $\Z^m$.
 \end{ex}
 
-\begin{ex}[Moulin.24]{$\star$}
+\begin{ex}[Moulin.EV.24]{$\star$}
 	Soit $X$ et $Y$ deux ensembles et $f:X\to Y\to\K$. On pose : $$\mathcal{G}(f)=\text{Vect}\left\{f(a,\cdot)\ \mid\ a\in X\right\}\ \ \text{et}\ \ \mathcal{D}(f)=\text{Vect}\left\{f(\cdot,b)\ \mid\ b\in Y\right\}$$
 	\begin{enumerate}
 		\item On suppose que $\mathcal{G}(f)$ est de dimension finie. En utilisant une base de $\mathcal{G}(f)$, montrer que $\mathcal{D}(f)$ est de dimension finie avec $\dim(\mathcal{D}(f))\leqslant\dim(\mathcal{G}(f))$.
@@ -245,7 +245,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.25]{$\Delta$}
+\begin{ex}[Moulin.EV.25]{$\Delta$}
 	Soit $E$ un espace vectoriel de dimension finie $n$ sur un corps $\K$ fini de cardinal $q$, et soit $p\in\N$. Dénombrer :
 	\begin{enumerate}
 		\item les éléments de $E$ ;
@@ -313,11 +313,11 @@
 
 \section{Sommes, supplémentaires}
 
-\begin{ex}[Moulin.26]{}
+\begin{ex}[Moulin.EV.26]{}
 	Dans l'espace vectoriel $\mathcal{C}^0(\R,\R)$, on considère le sous-espace vectoriel $F$ des applications $f$ vérifiant $f(1)=f(2)=0$. Donner un supplémentaire de $F$. Généralisation ?
 \end{ex}
 
-\begin{ex}[Moulin.27]{$\circ$}
+\begin{ex}[Moulin.EV.27]{$\circ$}
 	Soit $F$ et $G$ deux sous-espaces vectoriels supplémentaires dans $E$.
 	\begin{enumerate}
 		\item Soit $G'$ un sous-espace vectoriel tel que $F+G'=E$ et $G'\subset G$. Montrer que $G=G'$.
@@ -325,28 +325,28 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.28]{$\circ$}
+\begin{ex}[Moulin.EV.28]{$\circ$}
 	Que peut-on dire de deux décompositions $E=\displaystyle\bigoplus_{i=1}^nF_i=\bigoplus_{i=1}^n G_i$ de $E$ telles que $$\forall i\in\llbracket1,n\rrbracket,\ F_i\subset G_i\ ?$$
 \end{ex}
 \begin{proof}
 	On montre que $$\forall i\in\llbracket1,n\rrbracket,\ F_i=G_i$$ Soit $i\in\llbracket1,n\rrbracket$ et soit $x\in G_i$. On décompose $x$ sur $E=\displaystyle\bigoplus_{j=1}^nF_j$ en $$x=\sum_{j=1}^{n}x_j$$ Alors $x-x_i\in G_i$, et $\forall j\ne i$, $x_j\in G_j$. Le caractère direct de la somme impose donc : $$\forall j\ne i,\ x_j=0\ \ \text{et}\ \ x-x_i=0$$ Donc $x=x_i\in F_i$ et $F_i=G_i$.
 \end{proof}
 
-\begin{ex}[Moulin.29]{}
+\begin{ex}[Moulin.EV.29]{}
 	Soit $E$ et $F$ deux espaces vectoriels de dimension finie, $E_1,\ldots,E_p$ des sous-espaces vectoriels de $E$ et $$\begin{array}{lrcl}
 		\varphi:&\mathcal{L}(E,F)&\longrightarrow&\mathcal{L}(E_1,F)\times\cdots\times\mathcal{L}(E_p,F) \\
 		&h&\longmapsto&(h_{\mid E_1},\ldots,h_{\mid E_p})
 	\end{array}$$ A quelle condition nécessaire et suffisante $\varphi$ est-elle injective ? Surjective ?
 \end{ex}
 
-\begin{ex}[Moulin.30]{$\Delta$}
+\begin{ex}[Moulin.EV.30]{$\Delta$}
 	Soit $F$ un sous-espace vectoriel d'un espace vectoriel $E$. Montrer que tous les supplémentaires de $F$ dans $E$ sont isomorphes.
 \end{ex}
 \begin{proof}
 	On fixe $G$ un supplémentaire de $F$ dans $E$ et on se donne $H$ un supplémentaire de $F$ dans $E$ quelconque. On note $p$ le projecteur sur $G$ parallèlement à $F$. Puisque $H$ est un supplémentaire de $F=\ker(p)$, alors $H$ et $G=\im(p)$ sont isomorphes en vertu du théorème du rang géométrique.
 \end{proof}
 
-\begin{ex}[Moulin.31]{$\Delta$}
+\begin{ex}[Moulin.EV.31]{$\Delta$}
 	\begin{enumerate}
 		\item Soit $E$ un espace vectoriel de dimension finie. Montrer que deux sous-espaces vectoriels de même dimension admettent un supplémentaire commun.
 		\item $\star$ Est-ce vrai pour un nombre fini quelconque de sous-espaces vectoriels ?
@@ -358,7 +358,7 @@
 
 \section{Applications linéaires}
 
-\begin{ex}[Moulin.32]{}
+\begin{ex}[Moulin.EV.32]{}
 	Soit $F$ et $G$ deux sous-espaces vectoriels d'un espace vectoriel $E$ de dimension finie. Donner une condition nécessaire et suffisante pour qu'il existe $u\in\mathcal{L}(E)$ tel que $\ker(u)=F$ et $\text{Im}(u)=G$.
 \end{ex}
 
@@ -387,18 +387,18 @@
 	On note $E=\R^\N$ le $\R$-espace vectoriel des suites réelles. On se donne $\varphi\in E\st$ telle que $$\forall u\in E,\ \exists n(u)\in \N,\ \varphi(u)=u_{n(u)}$$ Montrer : $\exists n\in\N,\ \forall u\in E,\ \varphi(u)=u_n$
 \end{ex}
 
-\begin{ex}[Moulin.33]{}
+\begin{ex}[Moulin.EV.33]{}
 	Soit $E$ un espace vectoriel de dimension finie. Condition nécessaire et suffisante pour qu'il existe $u\in\mathcal{L}(E)$ tel que $\ker(u)=\im(u)$ ?
 \end{ex}
 \begin{proof}
 	D'après le théorème du rang, il est nécessaire que $\dim(E)$ soit pair. Réciproquement, prendre une base de taille paire puis envoyer les impairs sur $0$ et les pairs sur l'impair qui précède.
 \end{proof}
 
-\begin{ex}[Moulin.34]{}
+\begin{ex}[Moulin.EV.34]{}
 	Soit $E$ et $F$ deux espaces vectoriels de dimension finie et $(x_1,\ldots,x_p)$ une famille de vecteurs de $E$. Calculer la dimension de : $$\left\{(u(x_1),\ldots,u(x_p))\ \mid\ u\in\mathcal{L}(E,F)\right\}$$
 \end{ex}
 
-\begin{ex}[Moulin.35]{$\Delta$}
+\begin{ex}[Moulin.EV.35]{$\Delta$}
 	Soit $u\in\mathcal{L}(E,F)$ et $v\in\mathcal{L}(F,G)$. Montrer les équivalences : $$\begin{cases}
 		\ker(v\circ u)=\ker(u)\iff\text{Im}(u)\cap\ker(v)=\{0\} \\
 		\text{Im}(v\circ u)=\text{Im}(v)\iff \text{Im}(u)+\ker(v)=F
@@ -412,7 +412,7 @@
 	\end{itemize}
 \end{proof}
 
-\begin{ex}[Moulin.36]{$\Delta$}
+\begin{ex}[Moulin.EV.36]{$\Delta$}
 	Soit $u\in\mathcal{L}(E)$.
 	\begin{enumerate}
 		\item Prouver les équivalences : $$\begin{cases}
@@ -432,7 +432,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.37]{$\Delta$ Inégalité de Frobenius}
+\begin{ex}[Moulin.EV.37]{$\Delta$ Inégalité de Frobenius}
 	Soit $u\in\mathcal{L}(E,F)$, $v\in\mathcal{L}(F,G)$ et $w\in\mathcal{L}(G,H)$ où $E$, $F$, $G$ et $H$ sont de dimension finie. Montrer que $$\text{rg}(v\circ u)+\text{rg}(w\circ v)\leqslant\text{rg}(v)+\text{rg}(w\circ v\circ u)$$
 \end{ex}
 \begin{proof}
@@ -442,15 +442,15 @@
 	Permet de retrouver la concavité de la suite des noyaux itérés en dimension finie.
 \end{app}
 
-\begin{ex}[Moulin.38]{}
+\begin{ex}[Moulin.EV.38]{}
 	Soit $E$ un espace vectoriel de dimension finie et $f\in\mathcal{L}(E)$. Montrer que $\ker(f)=\text{Im}(f)$ si, et seulement si : $$f\circ f=0\ \ \text{et}\ \ \exists h\in\mathcal{L}(E),\ f\circ h+h\circ f=\text{id}_E$$
 \end{ex}
 
-\begin{ex}[Moulin.39]{}
+\begin{ex}[Moulin.EV.39]{}
 	Soit $E$ et $F$ deux $\K$-espaces vectoriels de dimension finie et $f\in\mathcal{L}(E,F)$. On choisit $E'$ et $F'$ tels que : $$E=E'\oplus\ker(f)\ \ \text{et}\ \ F=F'\oplus\text{Im}(f)$$ Montrer qu'il existe un unique $g\in\mathcal{L}(F,E)$ tel que : $$\ker(g)=F'\ \ \text{Im}(g)=E'\ \ f\circ g\circ f=f\ \ \text{et}\ \ g\circ f\circ g=g$$
 \end{ex}
 
-\begin{ex}[Moulin.40]{$\Delta$ Commutant d'un endomorphisme cyclique}
+\begin{ex}[Moulin.EV.40]{$\Delta$ Commutant d'un endomorphisme cyclique}
 	Soit $E$ un espace vectoriel de dimension finie $n+1$ et $u\in\mathcal{L}(E)$. On suppose qu'il existe $a\in E$ tel que $\left(u^k(a)\right)_{0\leqslant k\leqslant n}$ soit une base de $E$.
 	\begin{enumerate}
 		\item Donner un exemple d'un tel endomorphisme.
@@ -464,7 +464,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.41]{$\Delta$}
+\begin{ex}[Moulin.EV.41]{$\Delta$}
 	Soient $u$ et $v$ deux endomorphismes d'un espace vectoriel $E$ de dimension finie. Montrer l'équivalence entre les deux conditions suivantes :
 	\begin{enumerate}
 		\item $\text{rg}(u+v)=\text{rg}(u)+\text{rg}(v)$
@@ -475,7 +475,7 @@
 	Utiliser l'inégalité $$\text{rg}(u+v)\leqslant\text{rg}(u)+\text{rg}(v)-\dim\left(\im(u)\cap\im(v)\right)\leqslant\text{rg}(u)+\text{rg}(v)$$ C'est moche comme tout, mais ça se fait. Dans le sens direct, on obtiendra $$\dim(\ker(u)+\ker(v))\geqslant\dim(E)$$Dans le sens réciproque, on montrera que $$\im(u+v)=\im(u)+\im(v)$$ L'inclusion réciproque viendra du fait que $E=\ker(u)+\ker(v)$. On conclura en utilisant la formule de Grassmann. 
 \end{proof}
 
-\begin{ex}[Moulin.42]{$\Delta$} Soit $E$ un espace vectoriel de dimension quelconque ainsi qu'une famille $(\varphi_1,\ldots,\varphi_p)$ de formes linéaires sur $E$.
+\begin{ex}[Moulin.EV.42]{$\Delta$} Soit $E$ un espace vectoriel de dimension quelconque ainsi qu'une famille $(\varphi_1,\ldots,\varphi_p)$ de formes linéaires sur $E$.
 	\begin{enumerate}
 		\item Montrer que $(\varphi_1,\ldots,\varphi_p)$ est libre si, et seulement si, l'application linéaire : $$\begin{array}{lrcl}
 			v:&E&\longrightarrow&\K^p \\
@@ -487,7 +487,7 @@
 	Si $v$ est surjective, on fixe des $x_j$ tels que $\varphi_i(x_j)=\delta_{i,j}$ puis on utilise la caractérisation des familles libres. Pour l'autre sens, on raisonne par contraposée. Si $v$ n'est pas surjective, son image est incluse dans un hyperplan $H$ de $\K^p$.  On fixe une équation $\sum a_iy_i=0$ de cette hyperplan (avec $(a_1,\ldots,a_p)\ne(0,\ldots,0)$). Alors, on a la relation de liaison $\sum a_i\varphi_i=0$, si bien que la famille est liée.
 \end{proof}
 
-\begin{ex}[Moulin.43]{}
+\begin{ex}[Moulin.EV.43]{}
 	Soit $u$ et $v$ deux endomorphismes d'un $\K$-espace vectoriel $E$ ainsi que $(a,b)\in(\K\st)^2$ tels que $u\circ v=au+bv$. Calculer $(u-b\text{id}_E)\circ(v-a\text{id}_E)$. Est-ce que $u$ et $v$ commutent :
 	\begin{enumerate}
 		\item si $E$ est de dimension finie ?
@@ -495,18 +495,18 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.44]{}
+\begin{ex}[Moulin.EV.44]{}
 	\begin{enumerate}
 		\item Soit $x_1,\ldots,x_n$ des réels distincts deux à deux. Montrer que pour tout $(\lambda_1,\ldots,\lambda_n)\in\R^n$ et tout $(\mu_1,\ldots,\mu_n)\in\R^n$, il existe un unique $P\in\R_{2n-1}[X]$ tel que pour tout $i\in\llbracket1,n\rrbracket$ : $$P(x_i)=\lambda_i\ \ \text{et}\ \ P'(x_i)=\mu_i$$
 		\item Généraliser. 
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.45]{$\star$}
+\begin{ex}[Moulin.EV.45]{$\star$}
 	Soit $(A,B)\in\K[X]^2$. Calculer la dimension de : $$\{AU+BV\ \mid\ (U,V)\in\K_n[X]\times\K_m[X]\}$$
 \end{ex}
 
-\begin{ex}[Moulin.46]{}
+\begin{ex}[Moulin.EV.46]{}
 	Soit $E$ un espace vectoriel.
 	\begin{enumerate}
 		\item $\Delta$ Quels sont les endomorphismes de $E$ qui laissent stables toutes les droites vectorielles ?
@@ -515,13 +515,13 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.47]{$\star\star$}
+\begin{ex}[Moulin.EV.47]{$\star\star$}
 	Montrer que l'endomorphisme $P\mapsto XP$ de $\K[X]$ est la somme de deux automorphismes de $\K[X]$.
 \end{ex}
 
 \section{Théorèmes de factorisation}
 
-\begin{ex}[Moulin.48]{Yin}
+\begin{ex}[Moulin.EV.48]{Yin}
 	Soit $E$, $F$ et $G$ trois $\K$-espaces vectoriels de dimension finie, $u\in\mathcal{L}(E,F)$ et $w\in\mathcal{L}(E,G)$.
 	\begin{enumerate}
 		\item Montrer qu'il existe $v\in\mathcal{L}(F,G)$ tel que $w=v\circ u$ si, et seulement si, $\ker(u)\subset\ker(w)$.
@@ -530,7 +530,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.49]{Yang}
+\begin{ex}[Moulin.EV.49]{Yang}
 	Soit $E$, $F$ et $G$ trois $\K$-espaces vectoriels de dimension finie, $v\in\mathcal{L}(F,G)$ et $w\in\mathcal{L}(E,G)$.
 	\begin{enumerate}
 		\item Montrer qu'il existe $u\in\mathcal{L}(E,F)$ tel que $w=v\circ u$ si, et seulement si, $\text{Im}(w)\subset\text{Im}(v)$.
@@ -539,7 +539,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.50]{$\star$}
+\begin{ex}[Moulin.EV.50]{$\star$}
 	Soit $u$, $u_1$ et $u_2$ trois endomorphismes d'un espace vectoriel $E$ de dimension finie.
 	\begin{enumerate}
 		\item Montrer que $\text{Im}(u)\subset\text{Im}(u_1)+\text{Im}(u_2)$ si, et seulement s'il existe $(v_1,v_2)\in\mathcal{L}(E)^2$ tel que $u=u_1\circ v_1+u_2\circ v_2$.
@@ -547,13 +547,13 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.51]{$\Delta$ Indépendance des formes linéaires} Soit $(\varphi,\varphi_1,\ldots,\varphi_n)$ des formes linéaires sur $E$ (de dimension quelconque). Montrer le théorème d'indépendance des formes linéaires : $$\bigcap_{i=1}^n\ker(\varphi_i)\subset \ker(\varphi)\iff\varphi\in\text{Vect}(\varphi_1,\ldots,\varphi_n)$$
+\begin{ex}[Moulin.EV.51]{$\Delta$ Indépendance des formes linéaires} Soit $(\varphi,\varphi_1,\ldots,\varphi_n)$ des formes linéaires sur $E$ (de dimension quelconque). Montrer le théorème d'indépendance des formes linéaires : $$\bigcap_{i=1}^n\ker(\varphi_i)\subset \ker(\varphi)\iff\varphi\in\text{Vect}(\varphi_1,\ldots,\varphi_n)$$
 \end{ex}
 \begin{proof}
 	Le sens réciproque est trivial. Pour le sens direct, se réduire au cas d'une famille libre de formes linéaires puis utiliser le lemme pour la dualité en dimension quelconque.
 \end{proof}
 
-\begin{ex}[Moulin.52]{$\star\star$ Idéaux de $\mathcal{L}(E)$}
+\begin{ex}[Moulin.EV.52]{$\star\star$ Idéaux de $\mathcal{L}(E)$}
 	Soit $E$ un espace vectoriel de dimension finie, et $\mathcal{U}$ un idéal à droite de $\mathcal{L}(E)$, c'est-à-dire un sous-espace vectoriel de $\mathcal{L}(E)$ tel que : $$\forall (a,u)\in\mathcal{L}(E)\times \mathcal{U},\ u\circ a\in\mathcal{U}$$
 	\begin{enumerate}
 		\item Montrer qu'il existe un sous-espace vectoriel $F$ de $E$ tel que $\mathcal{U}=\mathcal{L}(E,F)$.
@@ -565,18 +565,18 @@
 
 \section{Projecteurs}
 
-\begin{ex}[Moulin.53]{$\circ$}
+\begin{ex}[Moulin.EV.53]{$\circ$}
 	Soit $p$ un projecteur d'un espace vectoriel $E$. Montrer qu'un endomorphisme $u$ de $E$ commute avec $p$ si, et seulement si, il laisse stable le noyau et l'image de $p$.
 \end{ex}
 \begin{proof}
 	En réalité, il s'agit là de résultats de réduction. Le sens direct est immédiat (c'est même du cours en réduction). Réciproquement, décomposer $x\in E$ sur $\ker(p)\oplus\im(p)$ en $x=a+b$ et calculer $u(p(x))$ et $p(u(x))$. On obtient dans les deux cas $u(b)$.
 \end{proof}
 
-\begin{ex}[Moulin.54]
+\begin{ex}[Moulin.EV.54]
 	Soit $E$ un espace vectoriel de dimension $n$, $F$ un espace vectoriel ainsi que $u\in\mathcal{L}(E,F)$ et $v\in\mathcal{L}(F,E)$. On suppose que $u\circ v$ est un projecteur de rang $n$. Montrer que $v\circ u=\text{id}_E$. Réciproque ?
 \end{ex}
 
-\begin{ex}[Moulin.55]{Nouveau projecteur}
+\begin{ex}[Moulin.EV.55]{Nouveau projecteur}
 	Soit $p$ et $q$ deux projecteurs d'un espace vectoriel $E$ tels que $\im(p)\subset \ker(q)$. Montrer que $$r=p+q-p\circ q$$ est un projecteur. Montrer que $$\begin{cases}
 		\im(r)=\im(p)\cap\im(q) \\
 		\ker(r)=\ker(p)+\ker(q)
@@ -586,14 +586,14 @@
 	Calculer $r^2$ et utiliser le fait que $q\circ p=0$. On trouve bien $r^2=r$. Montrer ensuite à la main toutes les inclusions qu'il faut (c'est long et embêtant).
 \end{proof}
 
-\begin{ex}[Moulin.56]{$\star$}
+\begin{ex}[Moulin.EV.56]{$\star$}
 	Soit $p_1,\ldots,p_r$ des projecteurs d'un espace vectoriel $E$ de dimension finie. Montrer que $p=p_1+\ldots+p_r$ est un projecteur si, et seulement si, $$\forall i\ne j,\ p_i\circ p_j=0$$ On montrera que l'image de $p$ est la somme directe des images des $p_i$.
 \end{ex}
 \begin{proof}
 	Le sens réciproque est immédiat. pour le sens direct, utiliser la trace (qui est égale au rang pour des projecteurs), ce qui permet d'obtenir par linéarité de la trace : $$\text{rg}(p)=\sum_{i=1}^{n}\text{rg}(p_i)$$ On en déduit que les images des $p_i$ sont en somme directe et que $$\im(p)=\bigoplus_{i=1}^n\im(p_i)$$ On remarque ensuite grâce à cette égalité que $p\circ p_i=p_i$ et on écrit pour tout $x\in E$, par définition de $p$ : $$p_i(x)=p_i(x)+\sum_{j\ne i}\underbrace{p_j\circ p_i(x)}_{\in\im(p_j)}$$ Puisque la somme est directe, on en déduit que $p_j\circ p_i(x)=0$ et donc $p_j\circ p_i=0$, ceci valant pour tout $x\in E$.
 \end{proof}
 
-\begin{ex}[Moulin.57]{}
+\begin{ex}[Moulin.EV.57]{}
 	Soit $E$ un espace vectoriel. On considère deux projecteurs $p$ et $q$ de $E$ tels que $p\circ q-q\circ p=q-p$.
 	\begin{enumerate}
 		\item Montrer que $p$ et $q$ ont la même image.
@@ -601,14 +601,14 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.58]{$\Delta$}
+\begin{ex}[Moulin.EV.58]{$\Delta$}
 	Soit $p$, $q$ et $r$ trois projecteurs d'un $\R$-espace vectoriel de dimension finie. On suppose que $p+\sqrt{2}q+\sqrt{3}r=0$. Montrer que $p=q=r=0$.
 \end{ex}
 \begin{proof}
 	En dimension finie, la trace d'un projecteur est égale à son rang. On passe à la trace. Tout revient alors à prouver que la famille $(1,\sqrt{2},\sqrt{3})$ est $\Q$-libre. Pour cela, élever une relation de liaison au carré et utiliser le fait que $\sqrt{2}$ est irrationnel (savoir redémontrer ce fait rapidement avec des valuations 2-adiques). Ou dans ce cas, on a la somme de trois nombres réels positifs qui est nulle...
 \end{proof}
 
-\begin{ex}[Moulin.59]{$\star\star$}
+\begin{ex}[Moulin.EV.59]{$\star\star$}
 	Soit $p$, $q$ et $r$ trois projecteurs d'un espace vectoriel $E$ sur un corps de caractéristique différente de 2 et de 3. On suppose que $p+q+r=0$. Montrer que $p=q=r=0$.
 \end{ex}
 \begin{proof}

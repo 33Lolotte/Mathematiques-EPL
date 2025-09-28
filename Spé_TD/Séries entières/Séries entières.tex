@@ -65,7 +65,7 @@
 
 \section{Rayon de convergence}
 
-\begin{ex}[Moulin.01]{$\circ$}
+\begin{ex}[Moulin.SE.01]{$\circ$}
 	Déterminer les rayons de convergence des séries entières :
 	\begin{enumerate}
 		\item $\displaystyle\sum n^{(-1)^n}x^n$ ;
@@ -80,7 +80,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.02]{}
+\begin{ex}[Moulin.SE.02]{}
 	Soit $\sum a_nz^n$ une série entière de rayon de convergence $R$. on note $R'$ le rayon de convergence de la série entière $\sum a_nz^{2n}$.
 	\begin{enumerate}
 		\item On suppose que $R\in\R_+$. Montrer que $R'=\sqrt{R}$.
@@ -91,32 +91,32 @@
 	Revenir à la définition dans les deux cas.
 \end{proof}
 
-\begin{ex}[Moulin.03]{}
+\begin{ex}[Moulin.SE.03]{}
 	Soit $\sum a_nz^n$ une série entière de rayon de convergence $R\in\R_+\st$. Montrer que le rayon de convergence de la série entière $\sum a_n^2z^n$ est $R^2$.
 \end{ex}
 \begin{proof}
 	Revenir à la définition.
 \end{proof}
 
-\begin{ex}[Moulin.04]{$\circ$}
+\begin{ex}[Moulin.SE.04]{$\circ$}
 	Quelles sons les séries entières qui convergent normalement sur $\R$ ? Qui convergent uniformément sur $\R$ ?
 \end{ex}
 
-\begin{ex}[Moulin.05]{Coefficients binomiaux centraux}
+\begin{ex}[Moulin.SE.05]{Coefficients binomiaux centraux}
 	Trouver le rayon de convergence $R$ de la série entière $\sum \binom{2n}{n}x^n$. Convergence de la série pour $x=\pm R$ ?
 \end{ex}
 \begin{proof}
 	Appliquer la règle de d'Alembert. $$\left\lvert\frac{a_{n+1}}{a_n}\right\rvert\xrightarrow[n\to+\infty]{}4$$ donc $R=1/4$. Si on n'arrive pas pour la convergence, on peut tenter d'utiliser Raabe-Duhamel.
 \end{proof}
 
-\begin{ex}[Moulin.06]{Série hypergéométrique}
+\begin{ex}[Moulin.SE.06]{Série hypergéométrique}
 	Trouver le rayon de convergence $R$ de la série hypergéométrique : $$1+\frac{ab}{c}x+\frac{a(a+1)b(b+1)}{2!c(c+1)}x^2+\frac{a(a+1)(a+2)b(b+1)(b+1)}{3!c(c+1)(c+2)}x^3+\ldots$$ où $a$, $b$ et $c$ sont des réels positifs. $\star$ Convergence de la série pour $x=\pm R$ ?
 \end{ex}
 \begin{proof}
 	Avec la règle de d'Alembert, on trouve $R=1/1=1$. Bon courage pour les convergences (A faire...)
 \end{proof}
 
-\begin{ex}[Moulin.07]{}
+\begin{ex}[Moulin.SE.07]{}
 	Soit $(u_n)$ une suite à valeurs dans $\C\st$ telle que : $$\underset{n\to+\infty}{\lim}\left\lvert\frac{u_{2n+1}}{u_{2n}}\right\rvert=a_1\in\overline{\R_+}\ \ \text{et}\ \ \underset{n\to+\infty}{\lim}\left\lvert\frac{u_{2n}}{u_{2n-1}}\right\rvert=a_2\in\overline{\R_+}$$
 	\begin{enumerate}
 		\item Quel est le rayon de convergence de $\displaystyle\sum u_nx^n$ lorsque $a_1$ et $a_2$ sont réels ?
@@ -124,14 +124,14 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.08]{}
+\begin{ex}[Moulin.SE.08]{}
 	Soit $(a_n)$ une suite de réels positifs telle que $\displaystyle\lim_{n\to+\infty}\sqrt[n]{a_n}=l$. Déterminer le rayon de convergence de la série entière $\sum a_nz^n$.
 \end{ex}
 \begin{proof}
 	On rappelle le résultat classique suivant : pour une telle série, si $l\in[0,1[$, alors la série $\sum a_n$ converge, et si $l>1$, cette série diverge. Dans notre cas $\sqrt[n]{a_nr^n}\to lr$ donc on en déduit que le rayon de convergence vaut $1/l$ (faire avec divergence grossière et convergence).
 \end{proof}
 
-\begin{ex}[Moulin.09]{Autour du sinus et de $\pi\sqrt{3}$}
+\begin{ex}[Moulin.SE.09]{Autour du sinus et de $\pi\sqrt{3}$}
 	Calculer les rayons de convergence $R$ des séries entières :
 	\begin{itemize}
 		\item $\displaystyle\sum \sin(\pi\sqrt{3}n)z^n$ ;
@@ -148,7 +148,7 @@
 
 \section{Propriétés de la somme}
 
-\begin{ex}[Moulin.10]{}
+\begin{ex}[Moulin.SE.10]{}
 	Soit $\displaystyle\sum a_nx^n$ une série entière de rayon de convergence $R>0$ et de somme $S(x)$.
 	\begin{enumerate}
 		\item Montrer que la série entière $\displaystyle\sum\frac{a_n}{n!}z^n$ a un rayon de convergence infini. On note $\varphi(z)$ sa somme.
@@ -157,7 +157,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.11]{$\Delta$ Très important !}
+\begin{ex}[Moulin.SE.11]{$\Delta$ Très important !}
 	Soit $\sum b_nx^n$ une série entière de rayon de convergence $1$. On suppose $\forall n\in\N,\ b_n\in\R_+$ et $\displaystyle\sum_{n=0}^{+\infty}b_n=+\infty$.
 	\begin{enumerate}
 		\item Soit $(a_n)$ une suite complexe vérifiant respectivement $a_n=o(b_n)$, $a_n=O(b_n)$ ou $a_n\sim b_n$. Montrer que la série entière $\sum a_nx^n$ a un rayon de convergence au moins égal à $1$ et qu'en notant, pour $\lvert x\rvert<1$ : $$A(x)=\sum_{n=0}^{+\infty}a_nx^n \ \ \text{et}\ \ B(x)=\sum_{n=0}^{+\infty}b_nx^n$$ on a respectivement 
@@ -192,7 +192,7 @@
 	Le faire avec les $\varepsilon$.
 \end{proof}
 
-\begin{ex}[Moulin.12]{}
+\begin{ex}[Moulin.SE.12]{}
 	\begin{enumerate}
 		\item Déterminer le rayon de convergence de la série entière $f(x)=\displaystyle\sum_{n=0}^{+\infty}\sqrt{n}x^n$.
 		\item En utilisant le résultat de la première question et en calculant $f(x)^2$, déterminer un équivalent de $f$ en $1$.
@@ -201,7 +201,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.13]{$\star$ Injectivité locale de la somme}
+\begin{ex}[Moulin.SE.13]{$\star$ Injectivité locale de la somme}
 	Soit $\sum a_nz^n$ une série entière de rayon de convergence $R$ non nul et telle que $a_1\ne 0$. Montrer qu'il existe un voisinage de $0$ dans $\C$ sur lequel la somme est injective.
 \end{ex}
 \begin{proof}
@@ -210,7 +210,7 @@
 
 \section{Calcul de sommes}
 
-\begin{ex}[Moulin.14]{}
+\begin{ex}[Moulin.SE.14]{}
 	Déterminer le rayon de convergence et donner une expression simple de la somme des séries entières :
 	\begin{enumerate}
 		\item $\displaystyle\sum(-1)^{n+1}nx^{2n+1}$ ;
@@ -220,22 +220,22 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.15]{$\circ$}
+\begin{ex}[Moulin.SE.15]{$\circ$}
 	Pour $k\in\N\setminus\{0,1\}$, calculer $\displaystyle\sum_{n=1}^{+\infty}\frac{n}{k^n}$.
 \end{ex}
 
-\begin{ex}[Moulin.16]{$\circ$}
+\begin{ex}[Moulin.SE.16]{$\circ$}
 	Soit $a\in\R$. Étude de la série entière $\displaystyle\sum \cosh(na)x^n$. Calculer sa somme.
 \end{ex}
 
-\begin{ex}[Moulin.17]{Avec un polynôme}
+\begin{ex}[Moulin.SE.17]{Avec un polynôme}
 	Montrer que pour tout polynôme $P\ne 0$, la série entière $\sum P(n)z^n$ a un rayon de convergence égal à $1$. Montrer que sa somme est une fonction rationnelle sur $D_O(0,1)$. Comment déterminer cette fonction rationnelle ?
 \end{ex}
 \begin{proof}
 	Avec $\alpha$ le coefficient dominant de $P$ et $k=\deg(P)$ on a $P(n)\sim\alpha n^k$ donc $R=1$. Puis s'intéresser à $$P_k=\frac{X(X-1)\cdots(X-k+1)}{k!}$$
 \end{proof}
 
-\begin{ex}[Moulin.18]{Décimales}
+\begin{ex}[Moulin.SE.18]{Décimales}
 	Rayon de convergence de la série $\displaystyle\sum_{n\geqslant 1}a_nx^n$ où $a_n$ est le $n$-ème chiffre de l'écriture décimale de $a\in[0,1[$. Donner sa somme pour $a=\frac{1}{7}$.
 \end{ex}
 \begin{proof}
@@ -247,12 +247,12 @@
 	\end{itemize}
 \end{proof}
 
-\begin{ex}[Moulin.19]{}
+\begin{ex}[Moulin.SE.19]{}
 	La suite $(a_n)$ vérifie la relation de récurrence $a_{n+2}=3a_{n+1}-2a_n$. \\ Déterminer le rayon de convergence de $\displaystyle\sum a_nz^n$ et exprimer simplement sa somme. \\
 	Généraliser aux suites solution d'une récurrence linéaire homogène à coefficients constants quelconque.
 \end{ex}
 
-\begin{ex}[Moulin.20 / X]{$\Delta$}
+\begin{ex}[Moulin.SE.20 / X]{$\Delta$}
 	\begin{enumerate}
 		\item Pour $n\in\N$, soit $a$ le nombre de façons de former un tas de $n$ kg avec des poids de $2$ kg et des poids de $3$ kg. Calculer $a_n$ pour tout entier $n$ et donner un équivalent de la suite $(a_n)$.
 		\item $\star$ Soit $(p_1,\ldots,p_N)\in(\N\st)^N$. Pour tout $n\in\N$, on note $\alpha_n$ le nombre de $N$-uplets $(k_1,\ldots,k_N)\in\N^N$ tels que $\displaystyle\sum_{i=1}^{N}k_ip_i=n$. Donner un équivalent simple de $\alpha_n$. Indication : se ramener au cas où $p_1,\ldots,p_N$ sont premiers entre eux dans leur ensemble.
@@ -262,35 +262,35 @@
 	Exercice classique. La deuxième question est difficile. Écrire la chose avec un produit de Cauchy de séries entières puis décomposer en éléments simples. Cela est très calculatoire.
 \end{proof}
 
-\begin{ex}[Moulin.21]{$\star$}
+\begin{ex}[Moulin.SE.21]{$\star$}
 	Soit $\gamma\in\R$ et $(u_n)$ la suite définie par $u_0=1$, $u_1=-\gamma$ et $$\forall n\in\N\st,\ u_{n+1}=u_n+\frac{2u_{n-1}}{n+1}$$ Quel est le rayon de convergence de $\displaystyle\sum_{n=0}^{+\infty}u_nx^n$ ? On pourra chercher une équation différentielle vérifiée par la somme. 
 \end{ex}
 
-\begin{ex}[Moulin.22]{}
+\begin{ex}[Moulin.SE.22]{}
 	Soit $(a_n)_{n\in\N}$ telle que $a_0=1$ et $\forall n\in\N,\ a_{n+1}=\displaystyle\frac{2n+3}{n+2}a_n$. \\ Déterminer le rayon de convergence de la série entière $\displaystyle\sum a_nz^n$ et exprimer sa somme sur l'intervalle ouvert de convergence.
 \end{ex}
 
-\begin{ex}[Moulin.23]{}
+\begin{ex}[Moulin.SE.23]{}
 	Calculer le terme général de la suite $(P_n)_{n\in\N\st}$ définie par : $$P_1=1\ \ \text{et}\ \ \forall n\in\N\st,\ P_{n+1}=\sum_{i+j=n+1}P_iP_j$$
 \end{ex}
 
-\begin{ex}[Moulin.24]{}
+\begin{ex}[Moulin.SE.24]{}
 	On se donne une suite $(a_i)_{i\in\N}$ d'entiers naturels strictement croissante. Pour tout $n\in\N$, on note $c_n$ le nombre de couples $(i,j)\in\N^2$ tels que $i\leqslant j$ et $a_i+a_j=n$. En étudiant les séries entières : $$f:z\mapsto\sum_{i=0}^{+\infty}z^{a_i}\ \ \text{et}\ \ g:z\mapsto\sum_{n=0}^{+\infty}c_nz^n$$ aux bornes de leurs intervalles de convergence, montrer que la suite $(c_n)_{n\in\N}$ ne peut pas être stationnaire.
 \end{ex}
 
-\begin{ex}[Moulin.25]{}
+\begin{ex}[Moulin.SE.25]{}
 	Résoudre l'équation $\displaystyle\sum_{n=0}^{+\infty}(3n+1)^2z^n=0$ d'inconnue $z\in\C$.
 \end{ex}
 
-\begin{ex}[Moulin.26]{}
+\begin{ex}[Moulin.SE.26]{}
 	Montrer que pour tout entier naturel $\alpha$, la somme $\displaystyle\sum_{n=0}^{+\infty}\frac{n^\alpha}{n!}$ est un multiple entier de $e$.
 \end{ex}
 
-\begin{ex}[Moulin.27]{}
+\begin{ex}[Moulin.SE.27]{}
 	Démontrer la convergence de $\displaystyle\sum\frac{(-1)^{\lfloor n/2\rfloor}}{2n+1}$ et donner une expression simple de sa somme.
 \end{ex}
 
-\begin{ex}[Moulin.28]{}
+\begin{ex}[Moulin.SE.28]{}
 	Pour $x\in\R$, donner une expression simple de $$\sum_{n=0}^{+\infty}\frac{x^n}{(2n!)} \ \ \text{et}\ \ \sum_{n=0}^{+\infty}\frac{x^n}{(3n!)}$$ puis généraliser la méthode.
 \end{ex}
 \begin{proof}
@@ -301,11 +301,11 @@
 	\end{cases}$$ On en déduit $$g_0(t)=\frac{1}{3}(e^{t}+e^{jt}+e^{j^2t})$$ Et par conséquent : $$f(x)=\frac{1}{3}\left(e^{\sqrt[3]{x}}+2e^{-\sqrt[3]{x}/2}\cos\left(\frac{\sqrt{2}}{2}\sqrt[3]{x}\right)\right)$$ De façon générale, on aura une matrice de Vandermonde de taille $p$ à inverser.
 \end{proof}
 
-\begin{ex}[Moulin.29]{}
+\begin{ex}[Moulin.SE.29]{}
 	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R>0$ et de somme notée $S$. Soit $p\in\N\st$ et $r\in\llbracket0,p-1\rrbracket$. Pour $z\in D_O(0,R)$, exprimer $$\sum_{n=0}^{+\infty}a_{np+r}z^{np+r}$$ à l'aide de $S$. On pourra commencer par le cas où $r=0$ et penser aux racines $p$-ièmes de l'unité.
 \end{ex}
 
-\begin{ex}[Moulin.30]{$\Delta$}
+\begin{ex}[Moulin.SE.30]{$\Delta$}
 	Soit $a$ un nombre complexe de module différent de $1$. Calculer : $$I(a)=\int_{0}^{2\pi}\frac{d\theta}{e^{i\theta}-a}$$
 \end{ex}
 \begin{proof}
@@ -314,7 +314,7 @@
 
 \section{Formule de Cauchy et applications}
 
-\begin{ex}[Moulin.31]{}
+\begin{ex}[Moulin.SE.31]{}
 	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R>0$ et $f$ sa somme.
 	\begin{enumerate}
 		\item Montrer que pour tout $n\in\N$ et pour tout $r\in]0,R[$ : $$a_n=\frac{1}{2\pi r^n}\int_{0}^{2\pi}f(re^{i\theta})e^{-in\theta}d\theta$$
@@ -349,7 +349,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.32]{$\star$ Principe du maximum}
+\begin{ex}[Moulin.SE.32]{$\star$ Principe du maximum}
 	On note $E$ l'ensemble des fonctions continues sur le disque unité fermé $\Delta$ et sommes, sur ce disque fermé, d'une série entière que l'on notera $\sum a_n(f)z^n$.
 	\begin{enumerate}
 		\item Montrer que $\displaystyle\underset{z\in\U}{\sup}\lVert f(z)\rVert=\underset{z\in\Delta}{\sup}\lVert f(z)\rVert$
@@ -357,7 +357,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.33]{$\Delta$ Fonctions nulles sur un arc de cercle}
+\begin{ex}[Moulin.SE.33]{$\Delta$ Fonctions nulles sur un arc de cercle}
 	On note $E$ l'ensemble des fonctions continues sur le disque unité fermé $\Delta$ et sommes, sur le disque ouvert, d'une série entière.
 	\begin{enumerate}
 		\item On suppose $f\in E$ nulle sur $\U$. Montrer que $f=0$.
@@ -376,7 +376,7 @@
 
 \section{Développement en série entière}
 
-\begin{ex}[Moulin.34]{}
+\begin{ex}[Moulin.SE.34]{}
 	Développement en série entière de :
 	\begin{enumerate}
 		\item $x\mapsto\displaystyle\int_{0}^{x}e^{-t^2/2}dt$ ;
@@ -386,7 +386,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.35]{}
+\begin{ex}[Moulin.SE.35]{}
 	Développer en série entière en précisant le rayon de convergence et l'intervalle de validité :
 	\begin{enumerate}
 		\item $\circ$ $x\mapsto\displaystyle\frac{1}{(1-3x)^2}$ ;
@@ -395,7 +395,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.36]{}
+\begin{ex}[Moulin.SE.36]{}
 	Développer en série entière en précisant le rayon de convergence et l'intervalle de validité :
 	\begin{enumerate}
 		\item $x\mapsto\displaystyle\int_{0}^{\pi/2}\ln(1+x\sin^2(t))dt$ ;
@@ -403,30 +403,30 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.37]{}
+\begin{ex}[Moulin.SE.37]{}
 	Développement en série entière de $x\mapsto\displaystyle e^{x^2}\int_{0}^{x}e^{-t^2}dt$.
 \end{ex}
 
-\begin{ex}[Moulin.38]{}
+\begin{ex}[Moulin.SE.38]{}
 	Montrer que $F:x\mapsto\displaystyle\frac{e^{x^2}-1}{x}$ se prolonge en un $\mathcal{C}^\infty$-difféomorphisme de $\R$ sur lui-même.
 \end{ex}
 
-\begin{ex}[Moulin.39]{$\star$}
+\begin{ex}[Moulin.SE.39]{$\star$}
 	Montrer que $F(x)=\displaystyle\int_{-\infty}^{+\infty}\frac{e^{-itx}}{\cosh(t)}dt$ est développable en série entière et préciser le rayon de convergence ainsi que l'intervalle de validité.
 \end{ex}
 
-\begin{ex}[Moulin.40]{}
+\begin{ex}[Moulin.SE.40]{}
 	Développement en série entière de $f(x)=\displaystyle\int_{0}^{+\infty}\frac{e^{-t}}{t}\sin(xt)dt$.
 \end{ex}
 
-\begin{ex}[Moulin.41]{}
+\begin{ex}[Moulin.SE.41]{}
 	Existence et calcul de $\displaystyle\int_{0}^{1}\frac{\ln(u)}{1-u}\ du$.
 \end{ex}
 \begin{proof}
 	Comme d'habitude pour l'existence. Pour le calcul, développer $1/(1-u)$ en série entière puis intervertir somme et intégrale pour faire le calcul formel, dont on fait la justification après. On trouve : $$\int_{0}^{1}\frac{\ln(u)}{1-u}\ du=-\frac{\pi^2}{6}$$ Pour justifier l'interversion, on a : $$\int_{0}^{1}\lvert u^n\ln(u)\rvert\ du=-\int_{0}^{1}u^n\ln(u)=\frac{1}{(n+1)^2}$$ qui est sommable.
 \end{proof}
 
-\begin{ex}[Moulin.42]{Une CNS pour être DSE}
+\begin{ex}[Moulin.SE.42]{Une CNS pour être DSE}
 	Soit $a>0$ et $f\in\mathcal{C}^\infty(]-a,a[,\C)$. 
 	\begin{enumerate}
 		\item On suppose qu'il existe $(M,\rho)\in\R_+\times\R_+\st$ tel que $$\forall n\in\N,\ \forall x\in]-a,a[,\ \lvert f^{(n)}(x)\rvert\leqslant M\frac{n!}{\rho^n}$$ Montrer que $f$ est développable en série entière.
@@ -441,7 +441,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.43]{$\star$ DSE de $\tan(x)$ et $\tanh(x)$}
+\begin{ex}[Moulin.SE.43]{$\star$ DSE de $\tan(x)$ et $\tanh(x)$}
 	\begin{enumerate}
 		\item Montrer que $\tan^{(n)}(x)=P_n(\tan(x))$ où $P_n$ est un polynôme à coefficients entiers naturels dont on déterminera le degré et le coefficient dominant.
 		\item Montrer que pour tout $x\in[0,\pi/2[$, la série $\displaystyle\sum P_n(0)\frac{x^n}{n!}$ est convergente. En déduire que $$S(z)=\sum_{n=0}^{+\infty}P_n(0)\frac{z^n}{n!}$$ converge absolument pour $\lvert z\rvert<\pi/2$.
@@ -450,14 +450,14 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.44]{}
+\begin{ex}[Moulin.SE.44]{}
 	\begin{enumerate}
 		\item $\circ$ Déterminer le développement en série : $$\sqrt{1-x}=\sum_{n=0}^{+\infty}a_nx^n$$
 		\item $\star$ Montrer que si $\lvert z\rvert<1$ et $1-z=re^{i\theta}$ avec $r>0$ et $\theta_in]-\pi,\pi[$, alors : $$\sum_{n=0}^{+\infty}a_nz^n=\sqrt{r}e^{i\theta/2}$$
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.45]{}
+\begin{ex}[Moulin.SE.45]{}
 	\begin{enumerate}
 		\item $\circ$ Déterminer le développement en série : $$\sqrt{1-x}=\sum_{n=0}^{+\infty}a_nx^n$$
 		\item Étudier la convergence des séries $\displaystyle\sum a_n$ et $\displaystyle\sum(-1)^na_n$.
@@ -465,7 +465,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.46]{}
+\begin{ex}[Moulin.SE.46]{}
 	\begin{enumerate}
 		\item Convergence simple et uniforme de la suite de fonctions $(f_n)$ définie par : $$f_n(t)=\prod_{k=0}^{n}(1-a^kt)$$ où $a$ est un réel tel que $\lvert a\rvert<1$.
 		\item On note $f$ sa limite. Développer $f$ en série entière et préciser le rayon de convergence de la série entière obtenue.
@@ -473,7 +473,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.47]{$\Delta$ Nombre de partitions}
+\begin{ex}[Moulin.SE.47]{$\Delta$ Nombre de partitions}
 	Pour $n\in\N$, on note $B_n$ le nombre de partitions de l'ensemble $\llbracket1,n\rrbracket$, une partition étant un ensemble de parties non vides deux à deux disjointes et recouvrant $\llbracket1,n\rrbracket$. On note $R$ le rayon de convergence de la série entière $\displaystyle\sum\frac{B_n}{n!}x^n$.
 	\begin{enumerate}
 		\item Montrer la relation $$\forall n\in\N,\ B_{n+1}=\sum_{k=0}^{n}\binom{n}{k}B_k$$
@@ -490,7 +490,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.48]{}
+\begin{ex}[Moulin.SE.48]{}
 	Pour $a\in\R$, on pose $f(a)=\displaystyle\int_{0}^{+\infty}\frac{\sin(ax)}{e^x-1}dx$.
 	\begin{enumerate}
 		\item Définition et régularité de $f$ ?
@@ -499,14 +499,14 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.49]{}
+\begin{ex}[Moulin.SE.49]{}
 	\begin{enumerate}
 		\item Trouver une suite $(a_n)_{n\in\N}$ de réels telle que $$\forall r\in]0,1[,\ \frac{1}{\pi}\int_{0}^{\pi}(\pi-t)\frac{1-r^2}{1-2r\cos(t)+r^2}dt=\sum_{n=0}^{+\infty}a_nr^n$$
 		\item En déduire la limite de cette intégrale lorsque $r$ tend vers $1^-$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.50]{}
+\begin{ex}[Moulin.SE.50]{}
 	Montrer que la fonction $\zeta$ est développable en série entière au voisinage de tout point de $\{z\in\C\ : \ \text{Re}(z)>1\}$.
 \end{ex}
 
@@ -534,7 +534,7 @@
 \end{ex}
 \begin{proof}
 	\begin{enumerate}
-		\item Pour l'analycité, se référer au cours de Moulin.
+		\item Pour l'analycité, se référer au cours de Moulin.SE.
 		\item Si un point où le maximum est atteint n'est pas sur le cercle, alors on utilise l'analycité et l'identité de Parseval pour montrer que la fonction est constante.
 		\item L'analycité de $f$ donne : $$\frac{f(z+h)-f(z)}{h}=\sum_{n=0}^{+\infty}b_{n+1}h^n\xrightarrow[h\to 0]{}b_1=\sum_{n=0}^{+\infty}na_nz^n$$
 	\end{enumerate}
@@ -555,11 +555,11 @@
 
 \section{Étude au bord du disque de convergence}
 
-\begin{ex}[Moulin.51]{}
+\begin{ex}[Moulin.SE.51]{}
 	Soit $\displaystyle\sum a_n$ une série convergente à terme général positif. Montrer que $$S:x\mapsto\sum_{n=0}^{+\infty}a_nx^n$$ est dérivable en $1$ si, et seulement si, $\displaystyle\sum na_n$ converge.
 \end{ex}
 
-\begin{ex}[Moulin.52]{}
+\begin{ex}[Moulin.SE.52]{}
 	\begin{enumerate}
 		\item Déterminer le rayon de convergence $R$ de la série entière $\sum a_nx^n$ où $$a_n=\int_{1}^{+\infty}e^{-t^n}\ dt$$
 		\item Étudier la somme au voisinage des points $R$ et $-R$.
@@ -573,14 +573,14 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.53]{}
+\begin{ex}[Moulin.SE.53]{}
 	\begin{enumerate}
 		\item $\circ$ Montrer que si une série entière converge normalement sur la frontière du disque de convergence, alors elle converge normalement sur le disque fermé.
 		\item $\star$ Montrer que si une série entière converge uniformément sur la frontière du disque de convergence, alors elle converge uniformément sur le disque fermé.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.54]{Une série entière dont la somme n'est pas continue}
+\begin{ex}[Moulin.SE.54]{Une série entière dont la somme n'est pas continue}
 	On considère la série entière $\displaystyle\sum_{n\geqslant 1}\frac{z^{n!}}{n}$. On note $f$ sa somme, $D$ son domaine de définition et $R$ son rayon de convergence.
 	\begin{enumerate}
 		\item Montrer que $R=1$.
@@ -604,7 +604,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.55]{$\star\star$ Théorème d'Abel non tangentiel}
+\begin{ex}[Moulin.SE.55]{$\star\star$ Théorème d'Abel non tangentiel}
 	Si on a la convergence de la série au bord du disque de convergence, on a non seulement la continuité radiale, mais aussi la continuité dans tout secteur angulaire non tangentiel.
 \end{ex}
 \begin{proof}
@@ -612,14 +612,14 @@
 	Effectuer une transformation d'Abel. Je n'ai ensuite pas trouvé mieux que de repasser par les $\varepsilon$. Couper en deux la série et utiliser pour le terme "reste" une majoration brutale par une suite géométrique totale. On devra utiliser la majoration : $$\frac{1}{1-\lvert z\rvert}\leqslant\frac{2}{1-\lvert z\rvert^2}$$ (vraie car $(\lvert z\rvert -1)^2\geqslant0$)
 \end{proof}
 
-\begin{ex}[Moulin.56]{$\star\star\star$ Théorème de Tauber}
+\begin{ex}[Moulin.SE.56]{$\star\star\star$ Théorème de Tauber}
 	Si $\sum a_nz^n$ est une série de rayon entière de rayon de convergence $1$, si sa somme $S$ tend vers une limite finie $l$ radialement en $1$ et si $a_n=\displaystyle o\left(\frac{1}{n}\right)$, alors $\sum a_n$ converge et on a : $$\sum_{n=0}^{+\infty} a_n=l$$
 \end{ex}
 \begin{proof}
 	Exercice très difficile. Montrer que $$\sum_{k=1}^{n}a_n-S\left(1-\frac{1}{n}\right)$$ tend vers $0$. Pour cela, écrire : $$\sum_{k=1}^{n}a_n-S\left(1-\frac{1}{n}\right)=\sum_{k=1}^{n}a_k\left(1-\left(1-\frac{1}{n}\right)^k\right)+\sum_{k=n=1}^{+\infty}a_k\left(1-\frac{1}{n}\right)^k$$ On montre que les deux termes tendent vers 0. Pour le premier, utiliser le fait que $$1-\left(1-\frac{1}{n}\right)^k\leqslant \frac{n}{k}$$ (le démontrer avec une factorisation de Bernoulli) puis utiliser le théorème de Cesàro avec $(na_n)$ qui tend vers $0$ par hypothèse. Pour le second terme, écrire artificiellement $$a_k=a_k\frac{k}{k}$$ Majorer tous les $1/k$ par $1/(n+1)$ puis majorer en module tous $a_kk$ par la borne supérieure de ces éléments pour $k\geqslant n+1$, borne supérieure qui tend vers $0$ par hypothèse. Enfin, pour le reste, majorer brutalement par la série géométrique totale pour avoir une expression simple, et majorer $1-1/n$ par $1$.
 \end{proof}
 
-\begin{ex}[Moulin.57]{$\star\star$}
+\begin{ex}[Moulin.SE.57]{$\star\star$}
 	\begin{enumerate}
 		\item $\circ$ Rayon de convergence de $\displaystyle\sum\frac{(-1)^{\lfloor\sqrt{n}\rfloor}}{n}z^n$. On note $C$ le "cercle de convergence".
 		\item Montrer qu'il y a convergence, mais pas convergence absolue, en tout point de $C$.

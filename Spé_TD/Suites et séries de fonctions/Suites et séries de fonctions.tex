@@ -65,7 +65,7 @@
 
 \section{Suites de fonctions, modes de convergence}
 
-\begin{ex}[Moulin.01]{}
+\begin{ex}[Moulin.SSF.01]{}
 	Étudier la convergence simple et la convergence uniforme, sur des ensembles à préciser, des suites de fonctions : 
 	\begin{enumerate}
 		\item $f_n:x\mapsto\sin(x)e^{-nx}$ ;
@@ -74,15 +74,15 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.02]{}
+\begin{ex}[Moulin.SSF.02]{}
 	Montrer que la suite de fonctions définie par $\displaystyle f_n(x)=\frac{x^n}{1+x^{2n}}$ converge simplement sur $\R$ vers une limite $f$. Étudier la convergence uniforme de cette suite, puis celle de la série de fonction $f_n-f$.
 \end{ex}
 
-\begin{ex}[Moulin.03]{}
+\begin{ex}[Moulin.SSF.03]{}
 	Étude (convergence simple, convergence uniforme sur $\R$, convergence uniforme sur des segments de $\R$) de la suite de fonctions définie par $f_n(x)=\displaystyle\frac{1}{1+(1+nx)^2}$ puis de la série $\sum f_n$.
 \end{ex}
 
-\begin{ex}[Moulin.04]{$\Delta$}
+\begin{ex}[Moulin.SSF.04]{$\Delta$}
 	Convergence simple et convergence uniforme sur tout segment de $\R_+$ de la suite $(f_n)$, où : $$f_n(x)=\begin{cases}
 		\displaystyle\left(1-\frac{x}{n}\right)^n&\text{si }0\leqslant x\leqslant n \\ 0&\text{sinon}
 	\end{cases}$$ Montrer la convergence uniforme sur $\R_+$.
@@ -91,25 +91,25 @@
 	Remarquer que la limite simple est $e^{-x}$. Pour la convergence uniforme sur tout segment $[0,b]$, utiliser la formule de Taylor-Lagrange comme on a obtenu la limite simple avec un équivalent. Enfin, soit $\varepsilon>0$. A partir d'un certain $A\geqslant 0$, on a : $$0\leqslant f_n(x)\leqslant e^{_x}\leqslant \varepsilon$$ Et ensuite, pour $n$ assez grand, OK sur le segment $[0,A]$ par ce qui précède.
 \end{proof}
 
-\begin{ex}[Moulin.05]{}
+\begin{ex}[Moulin.SSF.05]{}
 	Convergence simple et convergence uniforme sur tout segment de $\R$ de $$f_n(x)=\displaystyle\left(1+\frac{x^2}{n}\right)^{-n}$$Montrer la convergence uniforme sur tout $\R$. On pourra étudier la monotonie de la suite $(f_n(x))_{n\in\N}$ à $x$ fixé.
 \end{ex}
 
-\begin{ex}[Moulin.06]{}
+\begin{ex}[Moulin.SSF.06]{}
 	Soit $f\in\mathcal{C}^2(\R,\C)$. Montrer que la suite de fonctions $$f_n:x\mapsto n\left[f\left(x+\frac{1}{n}\right)-f(x)\right]$$ converge uniformément sur tout segment de $\R$.
 \end{ex}
 \begin{proof}
 	On prouve que la limite simple est $f'$. Ensuite, l'inégalité de Taylor-Lagrange permet d'obtenir : $$\lvert f_n(x)-f'(x)\rvert\leqslant\frac{1}{2n}\lVert f''\rVert_{\infty,\left[x,x+\frac{1}{n}\right]}$$ On prend alors $x\in[a,b]$ et alors $f''$ est bornée par $M$ sur $[a,b+1]$ donc $$\forall x\in[a,b],\ \lvert f_n(x)-f'(x)\rvert\leqslant\underbrace{\frac{1}{2n}\lVert f''\rVert_{\infty,\left[a,b+1\right]}}_{\text{indépendant de }x}\xrightarrow[n\to+\infty]{}0$$
 \end{proof}
 
-\begin{ex}[Moulin.07]{}
+\begin{ex}[Moulin.SSF.07]{}
 	Convergence simple et uniforme de $$u_n(x)=\prod_{k=1}^{n}(1+x^k)$$ Où ça ?
 \end{ex}
 \begin{proof}
 	En passant au $\ln$, on obtient un domaine qui vaut $[-1,1[$. En effet, si $x\in]-1,1[$, on a : $$\ln(u_n(x))=\sum_{k=1}^{n}\underbrace{\ln(1+x^k)}_{\sim x^k\text{ sommable}}$$ donc convergence. Ensuite, $$\ln(1-a^n)\leqslant\ln(1+x^n)\leqslant a^n$$ si $x\in[-a,a]$ avec $a\in[0,1[$ donc CVN sur $[-a,a]$.
 \end{proof}
 
-\begin{ex}[Moulin.08]{}
+\begin{ex}[Moulin.SSF.08]{}
 	Établir la convergence simple et uniforme sur $\R_+$ de la suite $(f_n)$ de fonctions définies par : $$f_n(t)=\frac{\sin(nt)}{n\sqrt{t}}\ \ \text{si }t>0 \ \ \text{et} \ \ f(0)=0$$
 \end{ex}
 \begin{proof}
@@ -119,15 +119,15 @@
 	\textbf{Quand il y a du $nt$, penser à utiliser cette technique !!!}
 \end{rmq}
 
-\begin{ex}[Moulin.09]{}
+\begin{ex}[Moulin.SSF.09]{}
 	Étudier, vis à vis de la convergence simple et uniforme, les suites d'applications $(f_n)_{n\in\N}$ et $(g_n)_{n\in\N}$ définies sur $[0,\pi]$ par $f_n(x)=\cos^n(x)\sin(x)$ et $g_n(x)=nf_n(x)$.
 \end{ex}
 
-\begin{ex}[Moulin.10]{$\circ$}
+\begin{ex}[Moulin.SSF.10]{$\circ$}
 	Soit $f:\R_+\to\R$ continue telle que $f(0)=\lim_{+\infty} f=0$. Étudier la convergence simple et la convergence uniforme sur $\R_+$ des suites de fonctions définies sur $\R_+$ par $f_n(t)=f(nt)$, $g_n(t)=f(t/n)$ ainsi que de $f_n/n$ et $g_n/n$.
 \end{ex}
 
-\begin{ex}[Moulin.11]{}
+\begin{ex}[Moulin.SSF.11]{}
 	Convergences simple et uniforme des suites $(f_n)$, $(g_n)$ et $h_n$ définies sur $\R$ par $f_n(x)=\displaystyle\left(\cos\left(\frac{x}{\sqrt{n}}\right)\right)^n$ et : $$g_n(x)=\begin{cases}
 		f_n(x)\ \text{si}\ \lvert x\rvert <n \\
 		0\ \text{sinon}
@@ -137,36 +137,36 @@
 	\end{cases}$$
 \end{ex}
 
-\begin{ex}[Moulin.12]{}
+\begin{ex}[Moulin.SSF.12]{}
 	Donner une condition nécessaire et suffisante sur $f\in\mathcal{C}^0([0,1])$ pour que la suite de fonctions $(x\mapsto x^nf(x))_{n\in\N}$ converge uniformément.
 \end{ex}
 
-\begin{ex}[Moulin.13]{}
+\begin{ex}[Moulin.SSF.13]{}
 	Soit $X$ et $Y$ deux parties d'espaces vectoriels normés. A quelle condition sur $\varphi:X\to Y$ la convergence simple sur $Y$ (respectivement la convergence uniforme sur $Y$, la convergence uniforme au voisinage de tout point de $Y$) d'une suite de fonctions $(f_n)_{n\in\N}$ de $Y$ dans $\C$ entraîne-t-elle la convergence simple sur $X$ (respectivement la convergence uniforme sur $X$, la convergence uniforme au voisinage de tout point de $X$) de $(f_n\circ\varphi)_{n\in\N}$ ?
 \end{ex}
 
-\begin{ex}[Moulin.14]{$\Delta$ Composition}
+\begin{ex}[Moulin.SSF.14]{$\Delta$ Composition}
 	Soit $\varphi$ une application continue de $[a,b]$ dans $\C$. Montrer que si $(f_n)$ est une suite de fonctions de $\R$ dans $[a,b]$ convergeant uniformément vers $f:\R\to\R$, alors $(\varphi\circ f_n)$ converge uniformément sur $\R$ vers $\varphi\circ f$.
 \end{ex}
 \begin{proof}
 	Revenir à la définition de la convergence uniforme avec les $\varepsilon$ et utiliser l'uniforme continuité de $\varphi$, permise par le théorème de Heine. On prend le $\eta$ qui correspond et on prend $n_0$ à partir duquel $$\lVert f-f_n\rVert_\infty\leqslant\eta$$ avant de conclure avec l'uniforme continuité de $\varphi$.
 \end{proof}
 
-\begin{ex}[Moulin.15]{$\Delta$ Limite uniforme sur $\R$ d'une suite de polynômes}
+\begin{ex}[Moulin.SSF.15]{$\Delta$ Limite uniforme sur $\R$ d'une suite de polynômes}
 	Soit $(P_n)$ une suite de polynômes de $\C[X]$ convergeant uniformément sur $\R$ vers une fonction $f:\R\to\C$. Montrer que $f$ est polynomiale.
 \end{ex}
 \begin{proof}
 	Avec l'inégalité triangulaire, on montre qu'à partir d'un certain rang $n_0$, on a : $$\lVert P_n-P_{n_0}\rVert_\infty\leqslant1$$ Or, les seuls polynômes bornés sont les polynômes constants. On prend donc $c_n\in\C$ tel que $P_n-P_{n_0}=c_n$. En particulier, $c_n=P_n(0)-P_{n_0}(0)$ Mais par convergence simple vers $f$, on a $$c_n\xrightarrow[n\to+\infty]{}f(0)-P_{n_0}(0)$$ Et avec la limite simple on a : $$f=P_{n_0}+f(0)-P_{n_0}(0)$$ donc $f$ est bien polynomiale.
 \end{proof}
 
-\begin{ex}[Moulin.16]{$\star$}
+\begin{ex}[Moulin.SSF.16]{$\star$}
 	Soit $A$ un réel strictement positif et $f:\R\to\R$ une fonction continue vérifiant $$\forall x\in\R\st,\ \lvert f(x)\rvert<\lvert x\rvert$$ Montrer que la suite $f^=f\circ \cdots\circ f$ converge uniformément vers $0$ sur tout segment $[-A,A]$.
 \end{ex}
 \begin{proof}
 	On remarque par passage à la limite que $f(0)=0$ puis on prend $\varepsilon>0$ suffisamment petit. On applique le théorème des bornes atteintes à $\displaystyle\frac{\lvert f(x)\rvert}{\lvert x\rvert}$ sur $[-A,-\varepsilon]$ et su $[\varepsilon,A]$ pour obtenir qu'elle est contractante (ou presque) sur ces ensembles. Nécessairement, les itérées rentrent dans $[-\varepsilon,\varepsilon]$ à partir d'un certain $n$ qui ne dépend que $A$ et $\varepsilon$.
 \end{proof}
 
-\begin{ex}[Moulin.17]{Une intégrale}
+\begin{ex}[Moulin.SSF.17]{Une intégrale}
 	Soit $f:[0,1]^2\to\R$ continue.
 	\begin{enumerate}
 		\item Montrer que pour tout suite convergente $(x_n)$ d'éléments de $[0,1]$, la suite de fonctions $(y\mapsto f(x_n,y))$ converge uniformément sur $[0,1]$.
@@ -181,7 +181,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.18]{$\Delta$ Lipschitzianité}
+\begin{ex}[Moulin.SSF.18]{$\Delta$ Lipschitzianité}
 	Soit $k\in\R_+\st$ et $(f_n)_{n\in\N}$ une suite de fonctions toutes $k$-lipschitziennes définies sur un segment $[a,b]$ de $\R$ et à valeurs dans $\C$. On suppose que $(f_n)_{n\in\N}$ converge simplement vers une limite $f$. Montrer que la convergence est uniforme.
 \end{ex}
 \begin{proof}
@@ -199,7 +199,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.19]{$\star$ $\star$ $\star$ Version faible du théorème d'Ascoli}
+\begin{ex}[Moulin.SSF.19]{$\star$ $\star$ $\star$ Version faible du théorème d'Ascoli}
 	\begin{enumerate}
 		\item Soit $k>0$ et $(f_n)$ une suite de fonctions de $[0,1]$ dans $[-1,1]$ toutes $k$-lipschitziennes. Montrer que l'on peut extraire de $(f_n)$ une sous-suite convergeant uniformément.
 		\item Application :montrer qu'est de dimension finie tout sous-espace vectoriel $F$ de $\mathcal{C}^1([0,1],\R)$ sur lequel $f\mapsto\mathcal{N}_\infty(f)$ et $f\mapsto\mathcal{N}_\infty(f)+\mathcal{N}_\infty(f')$ sont équivalentes.
@@ -231,7 +231,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.20]{$\star$}
+\begin{ex}[Moulin.SSF.20]{$\star$}
 	Soit $(f_n:A\to F)$ une suite de fonctions continues sur $A$ à valeurs dans un espace vectoriel $F$ de dimension finie. On suppose que $(f_n)$ converge uniformément sur une partie $B$ de $A$ dense dans $A$.
 	\begin{enumerate}
 		\item Montrer que $(f_n)$ converge simplement sur $A$ vers une certaine fonction $f$. Indication : on pourra utiliser le théorème d'interversion des limites.
@@ -239,7 +239,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.21]{}
+\begin{ex}[Moulin.SSF.21]{}
 	Soit $f:]0,1]\to\R$ une fonction uniformément continue. Pour tout $n\in\N\st$, on pose : $$\forall x\in\left]0,\frac12\right],\ f_n(x)=f\left(x+\frac{1}{2^n}\right)$$
 	\begin{enumerate}
 		\item Montrer que la suite $(f_n)_{n\in\N\st}$ converge uniformément vers la fonction $f$ sur $\displaystyle]0,1/2]$.
@@ -247,7 +247,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.22]{$\star$ Lemme de Riemann-Lebesgue généralisé}
+\begin{ex}[Moulin.SSF.22]{$\star$ Lemme de Riemann-Lebesgue généralisé}
 	On rappelle que si $f$ est continue par morceaux sur un segment $I$, alors $\displaystyle\in_If(t)e^{int}\ dt$ tend vers $0$ lorsque $n$ tend vers $+\infty$. Généraliser ce résultat à un intervalle $I$ quelconque pour une fonction $f$ intégrable sur $I$. On pourra se contenter de traiter le cas $I=\R_+$.
 \end{ex}
 \begin{proof}
@@ -256,7 +256,7 @@
 
 \section{Théorèmes de Dini}
 
-\begin{ex}[Moulin.23]{$\Delta\star$ Premier théorème de Dini}
+\begin{ex}[Moulin.SSF.23]{$\Delta\star$ Premier théorème de Dini}
 	On considère une suite décroissante de fonctions $(f_n)$ sur un compact $K$ qui converge simplement vers $0$. Alors la convergence est uniforme.
 \end{ex}
 \begin{proof}
@@ -266,7 +266,7 @@
 	On peut aussi le faire à la main mais c'est un peu bourbier. Sinon, ceux qui veulent pourront le faire avec Borel-Lebesgue mais c'est un peu overkill (et pas démontrable très vite).
 \end{rmq}
 
-\begin{ex}[Moulin.24]{$\star$ Deuxième théorème de Dini}
+\begin{ex}[Moulin.SSF.24]{$\star$ Deuxième théorème de Dini}
 	On considère une suite de fonctions $(f_n)$ définies sur $[a,b]$ à valeurs réelles qui sont toutes croissantes et qui converge simplement vers $f$ continue. Montrer que
 	la convergence est uniforme.
 \end{ex}
@@ -277,7 +277,7 @@
 	\end{cases}$$ Or, il y a un nombre fini de $c_i$ donc on peut prend $n_0$ tel que $$\forall i,\ \forall n\geqslant n_0,\ \lvert f_n(c_i)-f(c_i)\rvert\leqslant\frac{\varepsilon}{2}$$ On a donc : $$\forall x,\forall n\geqslant n_0,\ \lvert f_n(x)-f(x)\rvert\leqslant\varepsilon$$ ce qui est bien la convergence uniforme souhaitée.
 \end{proof}
 
-\begin{ex}[Moulin.25]{$\star$ Théorème de Dini pour les fonctions convexes}
+\begin{ex}[Moulin.SSF.25]{$\star$ Théorème de Dini pour les fonctions convexes}
 	Montrer que si une suite de fonctions convexes sur un intervalle ouvert $I$ converge simplement sur $I$, alors la convergence est uniforme sur tout segment de $I$.
 \end{ex}
 \begin{proof}
@@ -296,21 +296,21 @@
 
 \section{Propriétés des limites simples et uniformes}
 
-\begin{ex}[Moulin.26]{Zéros}
+\begin{ex}[Moulin.SSF.26]{Zéros}
 	Soit $(f_n)$ une suite de fonctions de $[a,b]$ dans $\R$ convergeant uniformément sur $[a,b]$ vers une fonction continue $f$. Montrer que si chacune des fonctions $f_n$ admet un zéro, il en est de même pour $f$. Donner un contre-exemple si l'on ne suppose qu'une convergence simple.
 \end{ex}
 \begin{proof}
 	Extraire une valeur d'adhérence d'une suite de zéros puis utiliser la convergence uniforme. Comme contre-exemple, considérer : $$f_n(x)=x^n-\frac{1}{2}$$ sur $[0,1]$.
 \end{proof}
 
-\begin{ex}[Moulin.27]{Uniforme continuité}
+\begin{ex}[Moulin.SSF.27]{Uniforme continuité}
 	Montrer que si $(f_n)$ converge uniformément sur $A$ vers $f$, et si pour tout $n$, la fonction $f_n$ est uniformément continue sur $A$, alors $f$ l'est également.
 \end{ex}
 \begin{proof}
 	Revenir à la définition. Écrire $$\lVert f(x)-f(y)\rVert\leqslant\lVert f(x)-f_{n_0}(x)\rVert+\lVert f_{n_0}(x)-f_{n_0}(y)\rVert+\lVert f_{n_0}(y)-f_{n_0}(y)\rVert$$ en utilisant les hypothèses de convergence uniforme avec $$\lVert f-f_{n_0}\rVert_\infty\leqslant\frac{\varepsilon}{3}$$ et avec l'hypothèse d'uniforme continuité sur $f_{n_0}$. 
 \end{proof}
 
-\begin{ex}[Moulin.28]{Intégrale et limite nulle}
+\begin{ex}[Moulin.SSF.28]{Intégrale et limite nulle}
 	Soit $f$ continue par morceaux sur $\R_+$ telle que $\lim_{+\infty}f=0$. Montrer que $$\lim_{n\to+\infty}\int_{0}^{1}f(nx)\ dx=0$$ mais qu'il n'y a convergence uniforme vers $0$ de $f_n:x\mapsto f(nx)$ que si $f$ est nulle.
 \end{ex}
 \begin{proof}
@@ -319,22 +319,22 @@
 
 \section{Séries de fonctions}
 
-\begin{ex}[Moulin.29]{$\star$}
+\begin{ex}[Moulin.SSF.29]{$\star$}
 	Étudier la convergence simple et la convergence uniforme de la suite de fonctions définies sur $\R_+\st$ par : $$f_n(x)=\frac{n!n^x}{\prod_{k=0}^{n}(x+k)}$$
 \end{ex}
 
-\begin{ex}[Moulin.30]{}
+\begin{ex}[Moulin.SSF.30]{}
 	Ensemble de définition et continuité de $f:x\mapsto\displaystyle\sum_{n=0}^{+\infty}\frac{(-1)^n}{x+n}$. Donner un équivalent de $f$ en $0$ et en $+\infty$.
 \end{ex}
 
-\begin{ex}[Moulin.31]{$\star$}
+\begin{ex}[Moulin.SSF.31]{$\star$}
 	Montrer $$\lim_{x\to 0^+}\left[\left(\sum_{n=1}^{+\infty}\frac{1}{n^{1+x}}\right)-\frac{1}{x}\right]=\gamma$$ où $\gamma$ désigne la constante d'Euler (qui apparaît dans le développement asymptotique de la série harmonique). On pourra remarquer que $$\frac{1}{x}=\lim_{N\to+\infty}\sum_{n=1}^{N}\int_{n}^{n+1}\frac{dt}{t^{1+x}}$$
 \end{ex}
 \begin{proof}
 	On pose $$u_n(x)=\frac{1}{n^{1+x}}-\int_{n}^{n+1}\frac{dt}{t^{1+x}}$$ Un calcul d'intégrale et un DL donnent $$u_n(x)\xrightarrow[x\to 0^+]{}\frac{1}{n}-\ln(n+1)+\ln(n)$$ Or, on sait que : $$\sum_{n=1}^{+\infty}\left(\frac{1}{n}-\ln(n+1)+\ln(n)\right)=\gamma$$ Il suffit alors de montrer la convergence uniforme de $\sum u_n$ au voisinage de $0$. Faire une comparaison série-intégrale pour obtenir : $$\left\lvert\sum_{k=n+1}^{+\infty}\left(\frac{1}{k^{1+x}}-\int_{k}^{k+1}\frac{dt}{t^{1+x}}\right)\right\rvert\leqslant\int_{n}^{n+1}\frac{dt}{t^{1+x}}=\frac{1}{xn^x}\left(1-e^{-x\ln\left(1+\frac{1}{n}\right)}\right)$$ or, pour $n\in\N\st$ et $x\in[0,1]$, on a : $$-x\ln\left(1+\frac{1}{n}\right)\in[-1,0]$$ Avec l'IAF, $\exp$ est $1$-lipschitzienne sur $[-1,0]$ et alors : $$\left\lvert\sum_{k=n+1}^{+\infty}\left(\frac{1}{k^{1+x}}-\int_{k}^{k+1}\frac{dt}{t^{1+x}}\right)\right\rvert\leqslant\frac{\ln\left(1+\frac{1}{n}\right)}{n^x}\leqslant\underbrace{\ln\left(1+\frac{1}{n}\right)}_{\text{indépendant de }x}\xrightarrow[n\to+\infty]{}0$$ On a donc la CVU souhaitée et le théorème d'interversion de limites fournit le résultat.
 \end{proof}
 
-\begin{ex}[Moulin.32]{$\circ$}
+\begin{ex}[Moulin.SSF.32]{$\circ$}
 	Donner un exemple de série $\sum u_n$ uniformément convergente sur $\R_+$ à terme général positif mais ne convergeant pas normalement sur $\R_+$ avec successivement :
 	\begin{enumerate}
 		\item $u_n$ continue pour tout $n$ ;
@@ -342,7 +342,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.33]{}
+\begin{ex}[Moulin.SSF.33]{}
 	Soit $(a_n)$ une suite décroissante positive et $u_n:t\mapsto a_nt^n(1-t)$.
 	\begin{enumerate}
 		\item Montrer que $\sum u_n$ converge simplement sur $[0,1]$.
@@ -359,7 +359,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.34]{}
+\begin{ex}[Moulin.SSF.34]{}
 	\begin{enumerate}
 		\item Pour tout $n\in\N\st$, on pose : $$S_n=\sum_{k=0}^{n}\left(1-\frac{k}{n}\right)^n$$ Montrer que la suite $(S_n)_{n\in\N\st}$ converge et préciser sa limite.
 		\item En déduire un équivalent simple de la suite $$S_n'=\sum_{j=0}^{n}j^n$$
@@ -373,11 +373,11 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.35]{}
+\begin{ex}[Moulin.SSF.35]{}
 	On construit une suite de fonctions $f_n:[0,1]\to\R$ par récurrence de la façon suivante : $$f_0=1\ \ \text{et}\ \ \forall n\in\N,\ \forall x\in[0,1],\ f_{n+1}(x)1+\int_{0}^{x}f_n(t-t^2)\ dt$$ Montrer que $(f_n)$ converge uniformément vers $f:[0,1]\to\R$ dérivable telle que : $$f(0)=1 \ \ \text{et}\ \ \forall x\in[0,1],\ f'(x)=f(x-x^2)$$
 \end{ex}
 
-\begin{ex}[Moulin.36]{}
+\begin{ex}[Moulin.SSF.36]{}
 	On pose $\displaystyle f=\sum_{n=0}^{+\infty}f_n$ où $f_n:t\mapsto te^{-n^2t^2}$.
 	\begin{enumerate}
 		\item Définition et continuité de $f$ ?
@@ -396,7 +396,7 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.37]{}
+\begin{ex}[Moulin.SSF.37]{}
 	\begin{enumerate}
 		\item Déterminer le domaine de convergence réel de la série de fonctions de terme général $f_n:x\mapsto\displaystyle\frac{xe^{-nx}}{\ln(n)}$. on note $\varphi(x)$ sa somme.
 		\item Montrer qu $\varphi$ est continue sur $\R_+\st$.
@@ -413,11 +413,11 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.38]{}
+\begin{ex}[Moulin.SSF.38]{}
 	Montrer que $\displaystyle\sum_{n\geqslant 1}\frac{1}{n^z}$ converge simplement sur $D=\{z\in\C\ : \ \text{Re}(z)>1\}$ et montrer que sa somme est continue sur $D$.
 \end{ex}
 
-\begin{ex}[Moulin.39]{}
+\begin{ex}[Moulin.SSF.39]{}
 	Soit $f_n:x\mapsto\displaystyle\frac{\sin(x/n)}{n}$.
 	\begin{enumerate}
 		\item Convergence simple de la série $\sum f_n$ ?
@@ -428,7 +428,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.40]{}
+\begin{ex}[Moulin.SSF.40]{}
 	\begin{enumerate}
 		\item Ensemble de définition de $\chi:s\mapsto\displaystyle\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n^s}$
 		\item Montrer que $\chi$ est de classe $\mathcal{C}^\infty$ sur son ensemble de définition.
@@ -446,11 +446,11 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.41]{}
+\begin{ex}[Moulin.SSF.41]{}
 	Soit $a:\N\to\Q\cap[0,1]$ une bijection et $f_n:t\mapsto\displaystyle\frac{\lvert t-a_n\rvert}{2^n}$. Montrer que $f:t\mapsto\displaystyle\sum_{n=0}^{+\infty}f_n(t)$ est définie sur $[0,1]$. Étudier sa continuité, sa dérivabilité et sa convexité.
 \end{ex}
 
-\begin{ex}[Moulin.42]{$\star$ Théorème de Borel}
+\begin{ex}[Moulin.SSF.42]{$\star$ Théorème de Borel}
 	Soit $(a_n)$ une suite réelle. On cherche à montrer l'existence d'une fonction $f\in\mathcal{C}^\infty(\R,\R)$ telle que $\forall n\in\N,\ f^{(n)}(0)=a_n$.
 	\begin{enumerate}
 		\item Déterminer une telle fonction $f$ lorsque $\forall n\in\N,\ a_n=1/2^n$. Construire une telle fonction $f$ lorsque $\forall n\in\N,\ a_n=1/n!$. Peut-on faire de même dans les cas suivants :
@@ -465,11 +465,11 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.43]{$\star$}
+\begin{ex}[Moulin.SSF.43]{$\star$}
 	Soit $f\in\mathcal{C}^0(\R,\R)$ telle que $\forall x\in\R,\ f(x+1)=2+f(x)$. Montrer qu'il existe $h\in\mathcal{C}^0(\R,\R)$ telle que $h\circ f=2h$ et $\forall x\in\R,\  h(x+1)=1+h(x)$.
 \end{ex}
 
-\begin{ex}[Moulin.44]{}
+\begin{ex}[Moulin.SSF.44]{}
 	Soit $f:\R_+\to\R$ continue, croissante et de limite finie $l$ en $+\infty$. On considère la série de fonctions $\sum(f(x+n)-f(n))$.
 	\begin{enumerate}
 		\item Montrer que sa somme $S$ est définie et continue sur $\R_+$.
@@ -478,11 +478,11 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.45]{}
+\begin{ex}[Moulin.SSF.45]{}
 	Soit $E$ l'espace vectoriel des fonctions continues et bornées sur $\R$. Pour $(a,b)\in\R^2$ tel que $\lvert a\rvert <1$, on définit : $$\forall f\in E,\ \forall x\in\R,\ Tf(x)=f(x)-af(bx)$$ Montrer que l'on définit ainsi un homéomorphisme $T$ de $E$ dans lui-même dont on donnera l'inverse.
 \end{ex}
 
-\begin{ex}[Moulin.46]{}
+\begin{ex}[Moulin.SSF.46]{}
 	Pour $n\in\N\st$, on définit sur $\R$ la fonction $f_n$ par : $$\forall x\in\R,\ f_n(x)=\frac{\cos(nx)}{n^2}$$
 	\begin{enumerate}
 		\item Montrer que $\sum f_n$ converge simplement sur $\R$ et que sa fonction somme $S$ est continue.
@@ -492,15 +492,15 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.47]{$\star$}
+\begin{ex}[Moulin.SSF.47]{$\star$}
 	Étudier les convergences simple, uniforme et normale de la série de fonctions $\displaystyle\sum_{n\geqslant 1}\frac{\sin(nt)\sin(n^2t)}{n}$.
 \end{ex}
 
-\begin{ex}[Moulin.48]{$\star\star$}
+\begin{ex}[Moulin.SSF.48]{$\star\star$}
 	Montrer l'existence, pour $x\in[0,\pi]$, de $f(x)=\displaystyle\sum_{n=1}^{+\infty}\frac{x\sin(nx)}{2\sqrt{n}+\cos(x)}$. La fonction $f$ est-elle continue sur $]0,\pi]$ ? sur $[0,\pi]$ ?
 \end{ex}
 
-\begin{ex}[Moulin.49]{}
+\begin{ex}[Moulin.SSF.49]{}
 	\begin{enumerate}
 		\item $\star\star$ Soit $x>0$. Montrer que $\displaystyle\sum_{n=1}^{+\infty}\frac{(-1)^n\ln(n)}{n^x}>0$.
 		\item En déduire le sens de variations de $x\mapsto\displaystyle\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n^x}$.
@@ -520,18 +520,18 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.50]{}
+\begin{ex}[Moulin.SSF.50]{}
 	Convergence simple, convergence uniforme sur $\R$ ou sur des parties de $\R$ de $f(x)=\displaystyle\sum_{n=1}^{+\infty}\frac{2x}{n^2+x^2}$. Continuité de $f$ ; limites et équivalents en $0$ et $+\infty$.
 \end{ex}
 
-\begin{ex}[Moulin.51]{}
+\begin{ex}[Moulin.SSF.51]{}
 	\begin{enumerate}
 		\item Soit $(a_i)_{i\in I}$ une famille de fonctions continues de $A$ dans $\C$, où $A$ est une partie d'un espace vectoriel de dimension finie. On suppose que la famille $(a_i)_{i\in I}$ est \textit{normalement sommable}, c'est-à-dire qu'il existe une famille $(\alpha_i)_{i\in I}$ sommable telle que : $$\forall i\in I,\ \lvert a_i\rvert\leqslant\alpha_i$$ Montrer que $S=\displaystyle\sum_{i\in I} a_i$ est continue sur $A$.
 		\item Énoncer et démontrer de même un résultat concernant la dérivabilité.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.52]{$\star$ Théorème de Mertens}
+\begin{ex}[Moulin.SSF.52]{$\star$ Théorème de Mertens}
 	Soit $\sum u_n$ et $\sum v_n$ deux séries à termes complexes convergentes. On pose $$w_n=\sum_{p+q=n}u_p v_q$$ Montrer que si $\sum u_n$ est absolument convergente, alors le produit de Cauchy $\sum w_n$ converge et vérifie : $$\sum_{n=0}^{+\infty}w_n=\left(\sum_{n=0}^{+\infty}u_n\right)\left(\sum_{n=0}^{+\infty}v_n\right)$$ On pourra écrire $$\sum_{k=0}^{n}w_k=\sum_{p=0}^{+\infty}u_pV_{n-p}$$ où $(V_n)$ est la suite des sommes partielles de $\sum v_n$ convenablement prolongée à $\Z$.
 \end{ex}
 \begin{proof}
@@ -556,11 +556,11 @@
 
 \section{Approximation uniforme}
 
-\begin{ex}[Moulin.53]{}
+\begin{ex}[Moulin.SSF.53]{}
 	Soit $f:[a,b]\to F$ continue, où $F$ est un espace vectoriel normé arbitraire. Montrer que $f$ est limite uniforme d'une suite de fonctions continues et affines par morceaux.
 \end{ex}
 
-\begin{ex}[Moulin.54]{}
+\begin{ex}[Moulin.SSF.54]{}
 	\begin{enumerate}
 		\item Montrer que toute fonction paire continue de $[-1,1]$ dans $\R$ est limite uniforme sur $[-1,1]$ d'une suite de fonctions polynomiales paires.
 		\item Existe-t-il une norme pour laquelle l'espace vectoriel des fonctions polynomiales impaires soit dense dans $\R[X]$ ?
@@ -568,11 +568,11 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.55]{}
+\begin{ex}[Moulin.SSF.55]{}
 	EN utilisant le théorème de Weierstrass, montrer que pour toute fonction $f\in\mathcal{C}^0(\R,\C)$ paire et $2\pi$-périodique, il existe une suite de polynômes $(P_n)_{n\in\N}$ telle que $(t\mapsto P_n(\cos(t)))_{n\in\N}$
 \end{ex}
 
-\begin{ex}[Moulin.56]{Approximation $\mathcal{C}^\infty$}
+\begin{ex}[Moulin.SSF.56]{Approximation $\mathcal{C}^\infty$}
 	Soit $f:[0,1]\to\R$.
 	\begin{enumerate}
 		\item Montrer que si $f$ est de classe $\mathcal{C}^p$ avec $p\in\N$, il existe une suite de polynômes $(P_n)$ telle que $(P_n^{(k)})$ converge uniformément vers $f^{(k)}$ pour tout $k\in\llbracket0,p\rrbracket$.
@@ -587,21 +587,21 @@
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.57]{$\Delta$}
+\begin{ex}[Moulin.SSF.57]{$\Delta$}
 	Soit $f:[a,b]\to\C$ continue telle que $$\forall n\in\N,\ \int_{a}^{b}t^nf(t)\ dt=0$$ Montrer que $f$ est nulle. On pourra commencer par le cas où $f$ est à valeurs réelles.
 \end{ex}
 \begin{proof}
 	Le prouver dans le cas où $f$ est réelle. Le résultat s'en déduire en passant aux parties réelle et imaginaire. utiliser le théorème de Weierstrass pour approximer $f$ par une suite de polynômes. Alors, l'hypothèse permet de montrer que l'intégrale de $f^2$ est nulle, donc $f=0$ car continue positive.
 \end{proof}
 
-\begin{ex}[Moulin.58]{Analogue au précédent}
+\begin{ex}[Moulin.SSF.58]{Analogue au précédent}
 	Montrer qu'il n'existe pas de fonction $f\in\mathcal{C}^0([0,1])$ telle que $$\int_{0}^{1}xf(x)\ dx=1 \ \ \text{et}\ \ \forall n\geqslant 2,\ \int_{a}^{b}x^nf(x)\ dx=0$$
 \end{ex}
 \begin{proof}
 	Raisonnons par l'absurde et supposons l'existence d'une telle fonction $f$. Alors, en faisant comme dans l'exercice précédent, on montre que $$\forall x\in[0,1],\ x^2f(x)=0$$ On en déduit que $$\forall x\in[0,1],\ xf(x)=0$$ et donc que $$\int_{0}^{1}xf(x)\ dx=0$$ ce qui est absurde.
 \end{proof}
 
-\begin{ex}[Moulin.59]{}
+\begin{ex}[Moulin.SSF.59]{}
 	Soit $f:[a,b]\to\R$ continue et croissante.
 	\begin{enumerate}
 		\item $\star$ Montrer que $f$ est limite uniforme d'une suite de fonctions croissantes de classe $\mathcal{C}^1$. Indication : on pourra commencer par le cas où $f$ est affine par morceaux.
@@ -610,7 +610,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.60]{}
+\begin{ex}[Moulin.SSF.60]{}
 	Soit $f:[a,b]\to\R$ convexe de classe $\mathcal{C}^2$.
 	\begin{enumerate}
 		\item Montrer que $f$ est limite uniforme d'une suite de fonctions polynomiales convexes.
@@ -618,7 +618,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.61]{$\star$}
+\begin{ex}[Moulin.SSF.61]{$\star$}
 	Soit $a\in\displaystyle\left]0,\frac{1}{2}\right[$.
 	\begin{enumerate}
 		\item Montrer que la suite de fonctions $\displaystyle\left(x\mapsto(1+(2x-1)^n/2)\right)_{n\in\N}$ converge uniformément vers $x\mapsto\displaystyle\frac12$ sur $[a,1-a]$.
@@ -627,15 +627,15 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.62]{}
+\begin{ex}[Moulin.SSF.62]{}
 	Soit $f:[0,1]\to\R$ continue et $(a_0,\ldots,a_N)$ une subdivision de $[0,1]$. Montrer qu'il existe une suite $(P_n)$ de fonctions polynomiales convergeant uniformément vers $f$ et telle que $P_n(a_k)=f(a_k)$ pour tout $k\in\llbracket 0,N\rrbracket$ et tout $n\in\N$.
 \end{ex}
 
-\begin{ex}[Moulin.63]{}
+\begin{ex}[Moulin.SSF.63]{}
 	Soit $f\in\mathcal{C}^0(\R_+,\R)$. Donner une condition nécessaire et suffisante pour que $f$ soit limite uniforme d'une suite de fonctions de la forme $$x\mapsto\sum_{k=0}^{n}\lambda_ke^{-kx}$$ avec $n\in\N$ et $(\lambda_0,\lambda_n)\in\R^{n+1}$.
 \end{ex}
 
-\begin{ex}[Moulin.64]{}
+\begin{ex}[Moulin.SSF.64]{}
 	On identifie naturellement $\R[X]$ à un sous-espace vectoriel de $E=\mathcal{C}^0([0,1],\R)$ que l'on munit de la norme infinie.
 	\begin{enumerate}
 		\item Déterminer l'adhérence de $X\R[X]$ dans $E$.

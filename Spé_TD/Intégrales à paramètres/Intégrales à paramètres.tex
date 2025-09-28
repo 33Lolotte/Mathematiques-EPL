@@ -65,21 +65,21 @@
 Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\infty}e^{-t^2}\ dt=\frac{\sqrt{\pi}}{2}$$
 
 \section{Suites et séries d'intégrales}
-\begin{ex}[Moulin.01]{$\circ$}
+\begin{ex}[Moulin.IP.01]{$\circ$}
 	Soit $f$ intégrable sur $\R$. Montrer la convergence de l'intégrale $$I_n=\int_{-\infty}^{+\infty}f(x)e^{-x^2/n^2}\ dx$$ et déterminer sa limite lorsque $n$ tend vers $+\infty$.
 \end{ex}
 \begin{proof}
 	Pour l'existence, on a de la continuité par morceaux et un $O(f)$ en $-\infty$ et en $+\infty$. La limite simple est la fonction nulle sauf en $0$ où c'est $f(0)$. On a une domination par $\lvert f\rvert$ qui est intégrable donc la limite est nulle.
 \end{proof}
 
-\begin{ex}[Moulin.02]{}
+\begin{ex}[Moulin.IP.02]{}
 	Montrer que $$I_n=\int_{1}^{+\infty}e^{-x^n}\ dx$$ tend vers $0$ et en trouver un équivalent en utilisant le changement de variable $t=x^n$.
 \end{ex}
 \begin{proof}
 	La limite simple est la fonction nulle partout sauf en $1$ où elle vaut $e^{-1}$. On a une domination par $e^{-x}$ qui intégrable donc la limite est nulle d'après le théorème de convergence dominée. Avec le changement de variable on trouve : $$I_n=\frac{1}{n}\int_{1}^{+\infty}\frac{t^{1/n}e^{-t}}{t}\ dt$$ On a cette fois encore une domination par $e^{-t}$ qui nous fournit avec le théorème de convergence dominée : $$I_n\sim\frac{1}{n}\int_{1}^{+\infty}\frac{e^{-t}}{t}\ dt$$ (cette intégrale est bien non nulle car la fonction est continue positive non identiquement nulle).
 \end{proof}
 
-\begin{ex}[Moulin.03]{Recherche de développement asymptotique}
+\begin{ex}[Moulin.IP.03]{Recherche de développement asymptotique}
 	On définit : $$I_n=\int_{0}^{1}\frac{x^n}{1+x^n}\ dt$$
 	\begin{enumerate}
 		\item Déterminer un équivalent de $(I_n)$.
@@ -94,56 +94,56 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.04]{}
+\begin{ex}[Moulin.IP.04]{}
 	On définit $$I_n=\int_{-\infty}^{+\infty}\left(1+\frac{x^2}{n}\right)^{-n}\ dx$$ Montrer que $(I_n)_{n\in\N}$ converge et admet pour limite $$\int_{-\infty}^{+\infty}e^{-x^2}\ dx$$
 \end{ex}
 \begin{proof}
 	On vérifie que la limite simple est $e^{-x^2}$ sans trop de problème. Pour la domination, cela se corse. Il faut étudier $g:t\mapsto\displaystyle e^{-t\ln\left(1+\frac{x^2}{t}\right)}$ pour $x$ fixé lorsque $t\in\R_+\st$. En la dérivant et en utilisant l'inégalité : $$1-\frac{1}{t}\leqslant\ln(t)\leqslant t-1$$ on prouver qu'elle est décroissante. On en déduit la décroissance de $(f_n(x))$ et donc une domination par $f_1(x)=\displaystyle\frac{1}{1+x^2}$ qui est intégrable. Le théorème de convergence dominée conclut.
 \end{proof}
 
-\begin{ex}[Moulin.05]{Théorème de convergence encadrée}
+\begin{ex}[Moulin.IP.05]{Théorème de convergence encadrée}
 	Soit $(f_n)_{n\in\N}$ une suite de fonctions continues par morceaux sur un intervalle $I$ et convergeant simplement vers $f$ continue par morceaux sur $I$. On suppose qu'il existe deux fonctions $\varphi$ et $\psi$ continues par morceaux sur $I$ telles que pour tout $n\in\N$, $\varphi\leqslant f_n\leqslant\psi$, et dont les intégrales sur $I$ convergent. Montrer que les intégrales des $f_n$ et de $f$ convergent sur $I$, et que l'on a : $$\int_I f=\lim_{n\to+\infty} \int_I f_n$$
 \end{ex}
 
-\begin{ex}[Moulin.06]{$\star$}
+\begin{ex}[Moulin.IP.06]{$\star$}
 	Soit $(f_n)_{n\in\N}$ une suite de fonctions positives intégrables sur un intervalle $I$ convergeant simplement vers uen fonction $f$ continue par morceaux non intégrable. Montrer : $$\lim_{n\to+\infty}\int_I f_n=+\infty$$ On pourra considérer $\inf(f_n,f)$.
 \end{ex}
 
-\begin{ex}[Moulin.07]{}
+\begin{ex}[Moulin.IP.07]{}
 	Convergence et limite lorsque $n$ tend vers $+\infty$ de $I_n=\displaystyle\int_{0}^{1}x^{-1/n}\left(1+\frac{x}{n}\right)^{-n}\ dx$
 \end{ex}
 
-\begin{ex}[Moulin.08]{}
+\begin{ex}[Moulin.IP.08]{}
 	Convergence et limite lorsque $n$ tend vers $+\infty$ de $J_n=\displaystyle\int_{0}^{n}x^{-1/n}\left(1-\frac{x}{n}\right)^{n}\ dx$
 \end{ex}
 
-\begin{ex}[Moulin.09]{}
+\begin{ex}[Moulin.IP.09]{}
 	Montrer l'égalité $$\int_{0}^{+\infty}\frac{\sin(x)}{e^x-1}\ dx=\sum_{n=1}^{+\infty}\frac{1}{1+n^2}$$
 \end{ex}
 \begin{proof}
 	Écrire $$\frac{\sin(x)}{e^x-1}=\sin(x)\frac{e^{-x}}{1-e^{-x}}=\sin(x)\sum_{n=1}^{+\infty e^{-nx}}$$ On pose $u_n(x)=\sin(x)e^{-nx}$. On montre que $\displaystyle\int_{0}^{+\infty}\lvert u_n(x)\rvert\ dx$ est sommable en découpant entre $0$ et $1$ pour utiliser la majoration classique de $\lvert\sin(x)\rvert$ par $\lvert x\rvert$ puis entre $1$ et $+\infty$ où on peut simplement calculer l'intégrale. On majore alors en valeur absolue par $$\frac{1}{n^2}(1-e^{-n})\sim\frac{1}{n^2}$$ qui est sommable (des termes se sont simplifiés). On peut donc intégrer terme à terme. Ensuite, on calcule les intégrales des $u_n$ en passant par une partie imaginaire d'une exponentielle complexe pour obtenir le résultat souhaité.
 \end{proof}
-\begin{ex}[Moulin.10]{Géométrique !}
+\begin{ex}[Moulin.IP.10]{Géométrique !}
 	Soit $p$ et $q$ deux réels strictement positifs. Montrer l'égalité $$\int_{0}^{1}\frac{x^{p-1}}{1+x^q}=\sum_{n=0}^{+\infty}\frac{(-1)^n}{nq+p}$$
 \end{ex}
 \begin{proof}
 	Si $x\in[0,1]$, on écrit : $$\frac{x^{p-1}}{1+x^q}=\sum_{n=0}^{+\infty}\underbrace{(-1)^nx^{nq+p-1}}_{:=u_n(x)}$$ Ensuite, on veut intégrer terme à terme, mais $$\int_{0}^{+\infty}u_n(x)\ dx=\frac{(-1)^n}{nq+p} \ \ \text{et}\ \ \int_{0}^{+\infty}\lvert u_n(x)\rvert\ dx=\frac{1}{nq+p}$$ donc le théorème d'intégration terme à terme ne s'applique pas. Cependant, grâce au théorème des séries alternées, on a, puisque $\lvert u_n(x)\rvert$ décroît : $$\left\lvert\int_{0}^{1}R_{n-1}(x)\ dx\right\rvert\leqslant\int_{0}^{1}\lvert R_{n-1}(x)\rvert\ dx\leqslant\int_{0}^{1}\lvert u_n(x)\rvert dx=\frac{1}{nq+p}\xrightarrow[n\to+\infty]{}0$$ donc $$\int_{0}^{1}R_{n-1}(x)\ dx\xrightarrow[n\to+\infty]{}0$$ En conséquence, on peut tout de même intervertir somme et intégrale, ce qui fournit le résultat.
 \end{proof}
-\begin{ex}[Moulin.11]{$\Delta$ Sophomore's dream}
+\begin{ex}[Moulin.IP.11]{$\Delta$ Sophomore's dream}
 	Montrer que la fonction $x\mapsto x^x$ est prolongeable en une fonction $f$ continue sur $\R_+$. Montrer que $$\int_{0}^{1}f(x)\ dx=\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n^n}$$
 \end{ex}
 \begin{proof}
 	Avec un DL, on voit que le seul prolongement convenable est le prolongement par $1$ en $0$. Ensuite, développer $f$ en série avec le développement en série de l'exponentielle puis calculer : $$\int_{0}^{1}\frac{(x\ln(x))^n}{n!}\ dx=\frac{(-1)^n}{(n+1)^{n+1}}$$ Pour cela, il est préférable de définir $I_{n,p}$ avec une puissance sur le $\ln$ et l'autre paramètre pour la factorielle puis de faire une récurrence sur le nombre de $\ln$ en intégrant par parties. Or, puisque le signe de ces termes est constant, on a $$\left\lvert \int_{0}^{1}\frac{(x\ln(x))^n}{n!}\ dx\right\rvert=\int_{0}^{1}\left\lvert\frac{(x\ln(x))^n}{n!}\right\rvert\ dx=\frac{1}{(n+1)^{n+1}}$$ qui est sommable car $O\displaystyle\left(\frac{1}{n^2}\right)$. Ensuite, intervertir somme et intégrale pour obtenir le résultat.
 \end{proof}
 
-\begin{ex}[Moulin.13]{Beurk}
+\begin{ex}[Moulin.IP.13]{Beurk}
 	Montrer que $$f:x\mapsto\sum_{n=1}^{+\infty}\frac{(-1)^{n+1}\ln(n+1)}{n(n+1)^{x+1}}$$ est intégrable sur $\R_+$ et calculer son intégrale.
 \end{ex}
 \begin{proof}
 	On montre facilement que $u_n(x)$ est intégrable. Ensuite, on considère : $$f:t\mapsto\frac{\ln(t+1)}{t(t+1)^{x+1}}$$ à $x$ fixé que l'on dérive. En utilisant l'inégalité $\ln(t)\geqslant1-\displaystyle\frac{1}{t}$, on prouve, en la dérivant, que $f$ est décroissante et donc que $(\lvert u_n(x)\rvert)$ est décroissante. On calcule : $$\int_{0}^{+\infty}\lvert u_n(x)\rvert\ dx=\frac{1}{n(n+1)}$$ et on peut alors intégrer terme à terme. On intervertit somme et intégrale et, en écrivant une somme télescopique (après avoir sorti un terme), on prouve que l'intégrale vaut $2\ln(2)-1$.
 \end{proof}
 
-\begin{ex}[Moulin.14]{}
+\begin{ex}[Moulin.IP.14]{}
 	\begin{enumerate}
 		\item Pour $x>0$, on définit : $$H(x)=\int_{0}^{+\infty}\lvert \sin(y)\rvert e^{-xy}\ dy$$ Montrer que cela a bien un sens, calculer $H(x)$ puis déterminer un équivalent en $+\infty$ de $H$.
 		\item Calculer, pour $z>0$ et $x$ réel, l'intégrale $\displaystyle\int_{0}^{+\infty}\sin(xy)e^{-zy}\ dy$
@@ -151,22 +151,22 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.15]{$\star$}
+\begin{ex}[Moulin.IP.15]{$\star$}
 	Soit $a$ un nombre réel. Déterminer un équivalent lorsque $n$ tend vers $+\infty$ de $$I_n(a)=\int_{-\infty}^{a}\frac{x^2e^{-nx^2}}{1+x^2}\ dx$$ On discutera selon le signe de $a$.
 \end{ex}
 
-\begin{ex}[Moulin.16]{$\star\star$}
+\begin{ex}[Moulin.IP.16]{$\star\star$}
 	Déterminer un équivalent de $$u_n=\displaystyle\sum_{k=n}^{+\infty}\frac{n^k}{k!}$$ On pourra utiliser la formule de Stirling pour se ramener à étudier $\displaystyle\int_{n}^{+\infty}\frac{(en)^x}{x^x\sqrt{2\pi x}}\ dx$ puis effectuer le changement de variable $x=n+u$ dans cette intégrale.
 \end{ex}
 
-\begin{ex}[Moulin.17]{Théorème de convergence monotone}
+\begin{ex}[Moulin.IP.17]{Théorème de convergence monotone}
 	Soit $(f_n)$ une suite croissante de fonctions intégrables convergeant simplement vers une fonction $f$ continue par morceaux. Montrer que $f$ est intégrable si, et seulement si, la suite $\left(\displaystyle\int_{I}f_n\right)$ est majorée et qu'alors on a : $$\int_{I}f=\lim_{n\to+\infty}\int_I f_n$$
 \end{ex}
 \begin{proof}
 	Historiquement, pour démontrer le théorème de convergence dominée, on a commencé par démontrer celui-ci. On considère $(f_{n+1}-f_n)$. Alors $\sum(f_{n+1}-f_n)$ CVS vers $f-f_0$ CPM. Alors, par croissance, tous les termes qui suivent existent dans $\overline{\R_+}$ : $$\int_I (f-f_0)=\sum_{n=0}^{+\infty}\int_I(f_{n+1}-f_n)=\sum_{n=0}^{+\infty}\left(\int_I f_{n+1}-\int_I f_n\right)=\lim_{n\to+\infty}\left(\int_I f_n\right)-\int_If_0$$ Et alors on raisonne par équivalences en remarquant que $f-f_0$ est positive donc la convergence de son intégrale équivaut à son intégrabilité.
 \end{proof}
 \section{Intégrales dépendant d'un paramètre réel}
-\begin{ex}[Moulin.18]{$\circ$}
+\begin{ex}[Moulin.IP.18]{$\circ$}
 	Définition, continuité, dérivabilité et calcul de $$f(x)=\int_{0}^{+\infty}\frac{\sin(xt)}{t}e^{-t}\ dt$$
 \end{ex}
 \begin{proof}
@@ -175,7 +175,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 \begin{rmq}
 	On peut en déduire la valeur de $$\int_{0}^{+\infty}\frac{\sin(u)}{u}\ du$$ En effet, pour $x>0$, on a $$f(x)=\int_{0}^{+\infty}\frac{\sin(u)}{u}e^{-u/x}\ du$$ Ensuite, on pose $$f_n(x)=\int_{0}^{n\pi}\frac{\sin(u)}{u}e^{-u/x}\ du$$ On vaut alors utiliser le théorème de la double limite. Pour la convergence uniforme par rapport à $x$ lorsque $n\to+\infty$, on utilise des séries alternées en découpant les intégrales. Et le théorème de convergence dominée donne $$f_n(x)\xrightarrow[x\to+\infty]{}\int_{0}^{n\pi}\frac{\sin(u)}{u}\ du$$ On en déduit avec l'expression de $f$ que $$\int_{0}^{+\infty}\frac{\sin(u)}{u}\ du=\frac{\pi}{2}$$
 \end{rmq}
-\begin{ex}[Moulin.19]{Une étude}
+\begin{ex}[Moulin.IP.19]{Une étude}
 	Domaine de définition et calcul de : $$f:x\mapsto\int_{0}^{+\infty}\frac{1-\cos(t)}{t^2}e^{-xt}\ dt$$
 \end{ex}
 \begin{proof}
@@ -184,7 +184,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 \begin{rmq}
 	Par continuité, on en déduit que $$\int_{0}^{+\infty}\frac{1-\cos(t)}{t^2}\ dt=\frac{\pi}{2}$$
 \end{rmq}
-\begin{ex}[Moulin.20]{$\Delta$ Prolongements $\mathcal{C}^\infty$}
+\begin{ex}[Moulin.IP.20]{$\Delta$ Prolongements $\mathcal{C}^\infty$}
 	\begin{enumerate}
 		\item Montrer que si $f$ est de classe $\mathcal{C}^\infty$ sur $\R$ et $f(0)=\ldots=f^{(n-1)}(0)=0$, alors il existe une fonction de classe $\mathcal{C}^\infty$ telle que $$\forall x\in\R,\ f(x)=x^ng(x)$$ On pourra utiliser une formule de Taylor.
 		\item En déduire que si $f$ est de classe $\mathcal{C}^\infty$ sur $\R$ et si $P$ est un polynôme tel que la fonction $t\mapsto f(t)/P(t)$ admette un prolongement continu, alors ce prolongement est de classe $\mathcal{C}^\infty$ sur $\R$.
@@ -197,7 +197,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.21]{}
+\begin{ex}[Moulin.IP.21]{}
 	Soit $I$ un intervalle de $\R$. Pour $f\in\mathcal{C}^0(I,\C)$ et $(a,b)\in I^2$ tel que $a\ne b$, on pose : $$I_f(a,b)=\int_{a}^{b}\frac{f(x)}{\sqrt{(x-a)(b-x)}}\ dx$$
 	\begin{enumerate}
 		\item Montrer la convergence de l'intégrale $I_f(a,b)$ et la calculer lorsque $f$ est une fonction constante.
@@ -205,19 +205,19 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.22]{}
+\begin{ex}[Moulin.IP.22]{}
 	Étudier la fonction définie par : $$F(x)=\int_{0}^{+\infty}\frac{dt}{\sqrt{1+t^2}\sqrt{x^2+t^2}}$$ (ensemble de définition, parité, relation entre $F(x)$ et $F(1/x)$, régularité, limites aux bornes, $\star$ équivalents aux bornes)
 \end{ex}
 
-\begin{ex}[Moulin.23]{}
+\begin{ex}[Moulin.IP.23]{}
 	Continuité et dérivabilité de $$F:x\mapsto\int_{0}^{+\infty}\frac{e^{-xt}}{1+t^2}\ dt$$ Est-elle dérivable en $0$ ?
 \end{ex}
 
-\begin{ex}[Moulin.24]{}
+\begin{ex}[Moulin.IP.24]{}
 	Soit $f$ une fonction continue sur $[0,1]$ et à valeurs strictement positives. En utilisant $$G(x)=\int_{0}^{1}\exp(x\ln(f(t)))\ dt$$ trouver la limite lorsque $x$ tend vers $0$ de $$F(x)=\left(\int_{0}^{1}f(t)^x\right)^{1/x}$$
 \end{ex}
 
-\begin{ex}[Moulin.25]{}
+\begin{ex}[Moulin.IP.25]{}
 	Pour tout $x\in\R$, on pose : $f(x)=\displaystyle\int_{0}^{+\infty}\frac{\sin(xt)}{(1+t^2)\sqrt{t}}\ dt$
 	\begin{enumerate}
 		\item Montrer que $f$ est de classe $\mathcal{C}^1$ sur $\R$. Calculer $f'(0)$.
@@ -226,7 +226,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.26]{}
+\begin{ex}[Moulin.IP.26]{}
 	Montrer que dans le théorème de dérivation sous le signe intégral de $\displaystyle\int_If(x,t)\ dt$, on peut remplacer l'hypothèse d'intégrabilité, pour tout $x$, de $t\mapsto f(x,t)$ par la convergence d'une intégrale $\displaystyle\int_I f(a,t)\ dt$ pour un certain $a$.
 \end{ex}
 
@@ -264,7 +264,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.27]{Intégrales de Fresnel}
+\begin{ex}[Moulin.IP.27]{Intégrales de Fresnel}
 	Pour $(x,y)\in\R_+\st\times\R$, on pose $$G(x,y)=\int_{0}^{+\infty}\frac{e^{-xt}e^{iyt}}{\sqrt{t}}\ dt$$
 	\begin{enumerate}
 		\item Montrer que $G$ est continue sur $\R_+\st\times\R$.
@@ -296,11 +296,11 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.28]{$\star$ Fonctions d'Airy}
+\begin{ex}[Moulin.IP.28]{$\star$ Fonctions d'Airy}
 	Montrer que $F:x\mapsto\displaystyle\int_{-\infty}^{+\infty}\exp\left(i(tx+t^3/3)\right)\ dt$ est de classe $\mathcal{C}^1$ sur $\R$.
 \end{ex}
 
-\begin{ex}[Moulin.29]{}
+\begin{ex}[Moulin.IP.29]{}
 	Pour tout $x>0$, on pose : $$f(x)=\int_{0}^{+\infty}\frac{t-\lfloor t\rfloor}{t(t+x)}\ dt$$
 	\begin{enumerate}
 		\item Montrer que $f$ est de classe $\mathcal{C}^1$ sur $\R_+\st$ et en déterminer un équivalent au voisinage de $0^+$.
@@ -308,7 +308,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.30]{}
+\begin{ex}[Moulin.IP.30]{}
 	Soit $f$ une fonction réelle continue bornée et intégrable sur $\R_+$.
 	\begin{enumerate}
 		\item Quels sont les nombres complexes $z$ non nuls pour lesquels l'intégrale $$F(z)=\frac{1}{\pi}\int_{0}^{+\infty}\frac{f(t)}{t+z}\ dt$$ converge ?
@@ -327,7 +327,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	On commence par utiliser le théorème de dérivation pour montrer qu'elle est $\mathcal{C}^1$, mais on ne parvient pas avec ce même théorème à montrer qu'elle est $\mathcal{C}^2$. On effectue alors une intégration par parties dans l’expression de $F'(x)$ (ou un changement de variable) et on parvient ensuite à montrer que $F'$ est $\mathcal{C}^1$, donc que $F$ est $\mathcal{C}^2$.
 \end{proof}
 \section{Intégrales dépendant d'un paramètre complexe}
-\begin{ex}[Moulin.31]{$\Delta$ Fonction $\Gamma$ de la variable complexe}
+\begin{ex}[Moulin.IP.31]{$\Delta$ Fonction $\Gamma$ de la variable complexe}
 	On note $\mathcal{P}=\{z\in\C\ : \ \text{Re}(z)>0\}$. On définit la fonction Gamma sur $\mathcal{P}$ par : $$\Gamma(z)=\int_{0}^{+\infty}t^{z-1}e^{-t}\ dt$$ Elle vérifie : 
 	\begin{itemize}
 		\item $\forall n\in\N,\ \Gamma(n+1)=n!$ ;
@@ -339,7 +339,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	Pour le premier point, effectuer des intégrations par parties successives. Pour le troisième, dominer.
 \end{proof}
 
-\begin{ex}[Moulin.32]{Prolongement de la fonction $\zeta$}
+\begin{ex}[Moulin.IP.32]{Prolongement de la fonction $\zeta$}
 	\begin{enumerate}
 		\item Montrer que la fonction $z\mapsto\displaystyle\int_{1}^{+\infty}\frac{\lfloor t\rfloor+1-t}{t^{z+1}}\ dt$ est définie et continue sur $\mathcal{P}$ (voir exercice précédent pour la définition).
 		\item En déduire que $$\zeta:z\mapsto\sum_{n=1}^{+\infty}\frac{1}{n^z}$$ admet un prolongement continu à $\mathcal{P}\setminus\{1\}$.
@@ -348,7 +348,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 
 \section{Théorèmes de Fubini}
 
-\begin{ex}[Moulin.33]{Théorème de Fubini sur les rectangles}
+\begin{ex}[Moulin.IP.33]{Théorème de Fubini sur les rectangles}
 	Soit $[a,b]$ et $[c,d]$ deux segment non triviaux de $\R$ et $f:[a,b]\times[c,d]\to\C$ une fonction continue.
 	\begin{enumerate}
 		\item Montrer l'existence des intégrales $$\int_{a}^{b}\int_{c}^{d}f(x,y)\ dy\ dx \ \ \text{et} \ \ \int_{c}^{d}\int_{a}^{c}f(x,y)\ dx\ dy$$
@@ -362,7 +362,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.34]{Théorème de Fubini sur les produits d'intervalles}
+\begin{ex}[Moulin.IP.34]{Théorème de Fubini sur les produits d'intervalles}
 	Soit $I$ et $J$ deux intervalles non triviaux de $\R$ et $f:I\times J\to\R_+$ une fonction continue à valeurs positives. On fait les hypothèses suivantes : 
 	\begin{enumerate}[label=(\roman*)]
 		\item les fonctions $x\mapsto\displaystyle\int_J f(x,y)\ dy$ et $y\mapsto\displaystyle\int_I f(x,y)\ dy$ sont définies et continues par morceaux respectivement sur $I$ et $J$ ;
@@ -376,7 +376,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 
 \section{Méthode de Laplace}
 
-\begin{ex}[Moulin.35]{$\Delta$ Méthode de Laplace}
+\begin{ex}[Moulin.IP.35]{$\Delta$ Méthode de Laplace}
 	Soit $f$ une fonction continue et à valeurs strictement positives sur $[0,a]$ avec $a>0$. on suppose qu'il existe $(\alpha,p)\in(\R_+\st)^2$ tel que $f(t)=1-\alpha t^p+o(t^p)$ au voisinage de $0$ et $\forall t\in]0,a],\ f(t)<1$. On se propose de trouver un équivalent de $$I(x)=\int_{0}^{a}f(t)^x\ dt$$ lorsque $x$ tend vers $+\infty$.
 	\begin{enumerate}
 		\item Montrer qu'il existe $\beta>0$ tel que $$\forall t\in[0,a],\ f(t)\leqslant\exp(-\beta t^p)$$
@@ -393,21 +393,21 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.36]{Application 1}
+\begin{ex}[Moulin.IP.36]{Application 1}
 	Donner un équivalent, lorsque $\lambda$ tend vers $+\infty$ de $$I(\lambda)=\int_{-\pi/4}^{\pi/4}\exp(-\lambda\sin^2(x))\ dx$$
 \end{ex}
 \begin{proof}
 	Utiliser la parité de l'intégrande pour se ramener à $[0,\pi/4]$. Ensuite, écrire : $$\exp(-\sin^2(x))=1-x^2+o(x^2)$$ et vérifier que cette fonction vérifie les hypothèses de la méthode de Laplace. On en déduit : $$I(\lambda)=\int_{-\pi/4}^{\pi/4}\exp(-\lambda\sin^2(x))\ dx\sim\frac{2}{\sqrt{\lambda}}\int_{0}^{+\infty}e^{-u^2}\ du=\sqrt{\frac{\pi}{\lambda}}$$
 \end{proof}
 
-\begin{ex}[Moulin.37]{$\star$ Application 2}
+\begin{ex}[Moulin.IP.37]{$\star$ Application 2}
 	Convergence, limite et équivalent lorsque $n$ tend vers l'infini de la suite $(I_n)$ définie par $$I_n=\int_{0}^{+\infty}\frac{dt}{(1+t^3)^n}$$
 \end{ex}
 \begin{proof}
 	La convergence de chaque $I_n$ se fait bien. la limite est nulle avec le théorème de convergence dominée (domination par le rang $n=1$).  Ensuite, découper $\R_+$ en $[0,2]$ et $[2,+\infty[$ et appliquer la méthode de Laplace sur le premier segment. Pour le deuxième intervalle, on montre aisément que l'intégrale est négligeable devant celle sur $[0,2]$. Or : $$\frac{1}{1+t^3}=1-t^3+o(t^3)$$ et vérifie les hypothèses. On en déduit finalement que $$I_n\sim\frac{1}{\sqrt[3]{n}}\int_{0}^{+\infty}e^{-u^3}\ du$$ On pourrait aussi obtenir cet équivalent avec le CDV $u=\sqrt[3]{n}t$ et un TCD, mais justifier la domination serait beaucoup plus embêtant car il faudrait étudier le signe de la dérivée de $$t\mapsto\left(1+\frac{u^3}{t}\right)^{-t}$$ à $u$ fixé et utiliser l'inégalité : $$\ln(1+t)\geqslant1-\frac{1}{1+t}$$
 \end{proof}
 
-\begin{ex}[Moulin.38]{$\star$ Application 3}
+\begin{ex}[Moulin.IP.38]{$\star$ Application 3}
 	Déterminer un équivalent de $$I_n=\int_{0}^{1}(2-\cosh(t))^n\ dt \ \ \text{et} \ \ J_n=\int_{0}^{1}(2-\sinh(t))^n\ dt$$
 \end{ex}
 \begin{proof}
@@ -420,7 +420,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 
 \section{Transformation de Laplace}
 
-\begin{ex}[Moulin.12]{Transformée de Laplace}
+\begin{ex}[Moulin.IP.12]{Transformée de Laplace}
 	Soit $f\in\mathcal{C}([0,+\infty[,\C)$ ayant une limite $l\in\C$ en $+\infty$.
 	\begin{enumerate}
 		\item Montrer que pour tout $x>0$, la fonction $t\mapsto e^{-xt}f(t)$ est intégrable sur $\R_+$.
