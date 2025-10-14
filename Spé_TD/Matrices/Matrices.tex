@@ -322,6 +322,32 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 		\item Nécessairement, en écrivant $X=PJ_rQ$ et $M=P(I_n-J_r)Q$, on obtient par hypothèse $r=0$ ou $r=n$, donc $X+0$ ou $X\in\mathcal{GL}_n(\C)$. Réciproquement, $0$ convient, mais pour les matrices inversibles c'est pkus compliqué. $I_n$ ne convient pas lorsque $n\geqslant2$ (prendre $-E_{1,1}$) et si $n\geqslant 1$, on ne peut pas dire grand-chose.
 	\end{enumerate}
 \end{proof}
+
+\begin{ex}[Châteaux]{Transvections et dilatations}
+	Soit $E$ un $\K$-espace vectoriel de dimension $n$. Soit $u$ un endomorphisme tel que $\text{rg}(u-\text{id})=1$.
+	\begin{enumerate}
+		\item Justifier l'existence d'un vecteur $a$ non nul et d'une forme linéaire $l$ non nulle tels que $\forall x\in E,\ u(x)=x+l(x)a$. Que vaut $\det(u)$ ?
+		\item On suppose $l(a)=0$. Montrer que $\im(u-\text{id})\subset\ker(u-\text{id})$. On dit que $u$ est une transvection.
+		\item On suppose $l(a)\ne 0$. Montrer que $\im(u-\text{id})$ et $\ker(u-\text{id})$ sont supplémentaires dans $E$. On dit alors que $u$ est une dilatation.
+		\item On pose, pour $i$ et $j$ distincts compris entre $1$ et $n$, et pour $\lambda\in\K$, $T_{i,j}(\lambda)=I_n+\lambda E_{i,j}$. On note $\mathcal{T}$ l'ensemble des matrices de cette forme. On pose, pour $a\ne 0$, $D_a=I_n+(a-1)E_{n,n}$.
+		\begin{enumerate}[label=\alph*.]
+			\item Calculer $T_{i,j}(\lambda)T_{k,l}(\mu)$.
+			\item Montrer que tout matrice inversible de déterminant $1$ est produit de matrices appartenant à $\mathcal{T}$.
+			\item Montrer que toute matrice inversible est produit de matrices de $\mathcal{T}$ et d'une matrice $D_a$.
+		\end{enumerate}
+		\item Montrer que le groupe spécial linéaire $SL(E)$ est engendré par les transvections, puis que le groupe linéaire $GL(E)$ est engendré par les dilatations et les transvections.
+	\end{enumerate}
+\end{ex}
+\begin{ex}[Châteaux]{Une application des transvections}
+	Soit $f:\mathcal{M}_n(\K)\to\K$ non constante telle que $\forall(A,B)\in\mathcal{M}_n(\K),\ f(AB)=f(A)f(B)$.
+	\begin{enumerate}
+		\item Montrer l'équivalence : $A\in\mathcal{GL}_n(\K)\iff f(A)\ne 0$.
+		\item Désormais, et ce pour toute la suite de l'exercice, on suppose que $f$ est polynomiale par rapport aux coefficients de la matrice. Montrer que $f(T_{i,j}(\lambda))=1$ pour tous $i$ et $j$ distincts et tout $\lambda\in\K\st$.
+		\item Montrer qu'il existe $r\in\N$ tel que $\forall a\in\K,\ f(D_a)=a^r$.
+		\item En déduire que $\forall A\in\mathcal{M}_n(\K),\ f(A)=\det(A)^r$.
+	\end{enumerate}
+\end{ex}
+
 \section{Similitude}
 
 \begin{ex}[Moulin.Mat.33]{$\circ$}
@@ -431,9 +457,25 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	Applications classiques de l'exercice précédent.
 	\begin{enumerate}
 		\item On prend la forme linéaire non nulle dont $H$ est le noyau. On représente cette forme linéaire par $M\mapsto\Tr(AM)$ avec $A$ non nulle. Par équivalence, on se ramène à chercher une matrice inversible $N$ telle que $\Tr(J_r N)=0$. On pourra considérer pour $N$ la matrice du cycle $(1\ 2\ \ldots \ n)$.
-		\item 
+		\item Regarder sur les matrices élémentaires. Ce sont les formes linéaires proportionnelles à la trace.
 	\end{enumerate}
 \end{proof}
+
+\begin{ex}[Châteaux]{Formes linéaires sur $\mathcal{M}_n(\K)$ et applications}
+	\begin{enumerate}
+		\item Soit $\varphi$ une forme linéaire sur $\mathcal{M}_n(\K)$. Montrer qu'il existe une unique matrice $A\in\mathcal{M}_n(\K)$ telle que $\forall M\in\mathcal{M}_n(\K),\ \varphi(M)=\Tr(AM)$.
+		\item Soit $\varphi$ une forme linéaire sur $\mathcal{M}_n(\K)$ telle que $\forall (A,B)\in\mathcal{M}_n(\K)^2,\ \varphi(AB)=\varphi(BA)$. montrer que $\varphi$ est proportionnelle à la trace.
+		\item Soit $\varphi$ une forme linéaire sur $\mathcal{M}_n(\K)$ telle que $\forall(A,B,C)\in\mathcal{M}_n(\K)^3,\ \varphi(ABC)=\varphi(CBA)$. On suppose $n\geqslant 2$. Prouver que $\varphi=0$.
+		\item On suppose que $\K$ est de caractéristique nulle. Soit $M\in\mathcal{M}_n(\K)$. Montrer l'équivalence : $$\Tr(M)=0\iff\exists(A,B)\in\mathcal{M}_n(\K),\ M=AB-BA$$ Pour cela : 
+		\begin{enumerate}[label=\alph*.]
+			\item Si $\Tr(M)=0$ et $M\ne 0$, montrer que $M$ est semblable à une matrice dont la première colonne est $(0\ 1\ 0\ \ldots\ 0)^T$.
+			\item En déduire que si $\Tr(M)=0$, alors $M$ est semblable à une matrice dont la diagonale est nulle.
+			\item Montrer l'implication attendue pour $M$ de diagonale nulle (en cherchant $A$ sous forme diagonale).
+			\item Conclure.
+		\end{enumerate}
+		\item Démontrer que tout hyperplan de $\mathcal{M}_n(\K)$ contient des matrices inversibles. Indication : on pourra utiliser la première question.
+	\end{enumerate}
+\end{ex}
 
 \begin{ex}[Moulin.Mat.41]{$\star\star$}
 	Existe-t-il dans $\mathcal{M}_n(\K)$ un hyperplan $H$ stable par multiplication ? Indication : lorsque $n\geqslant3$, on pourra utiliser la représentation des formes linéaires pour trouver une matrice $A$ telle que $\forall X\in H,\ AX\in\text{Vect}(A)$.
@@ -479,8 +521,11 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 \end{ex}
 
 \begin{ex}[Moulin.Mat.48]{}
-	Montrer que tout automorphisme de l'algèbre $\mathcal{M}_n(\K)$ conserve la trace.
+	Montrer que tout endomorphisme de l'algèbre $\mathcal{M}_n(\K)$ conserve la trace.
 \end{ex}
+\begin{proof}
+	Soit $u$ un endomorphisme de $\mathcal{M}_n(\K)$. On pose $\varphi=\Tr\circ u$ qui est immédiatement une forme linéaire. Alors pour tout $(A,B)\in\mathcal{M}_n(\K)^2$, on a : $$\varphi(AB)=\Tr(u(AB))=\Tr(u(A)u(B))=\Tr(u(B)u(A))=\Tr(u(BA))=\varphi(BA)$$ D'après un exercice précédent, il existe $\lambda\in\K$ tel que $\varphi=\lambda\Tr$. En évaluant en $I_n$, on obtient $\lambda=1$ si bien que $\Tr\circ u=\Tr$ donc $u$ conserve la trace.
+\end{proof}
 
 \section{Systèmes linéaires, opérations élémentaires}
 
@@ -626,6 +671,13 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 \end{ex}
 \begin{proof}
 	Pour $\Longrightarrow$, utiliser le fait que le déterminant de $M$ doit être une unité de $\Z$. Pour $\Longleftarrow$, utiliser la formule de la comatrice et le fait que le déterminant est polynomial.
+\end{proof}
+
+\begin{ex}[]{}
+	Soit $A$ et $B$ deux matrices de de $\mathcal{M}_n(\R)$ telles que : $$\forall k\in\llbracket0,2n\rrbracket,\ A+kB\in\mathcal{GL}_n(\Z)$$ Calculer $\det(A)$ et $\det(B)$.
+\end{ex}
+\begin{proof}
+	On considère $P=\det(A+XB)\in\R_n[X]$. D'après l'exercice précédent, on a : $$\forall k\in\llbracket0,2n\rrbracket,\ P(k)=\pm1$$ Mais comme $P$ est de degré $n$ et que $P$ vaut au moins $n+1$ fois $1$ ou $-1$, alors $P$ est constant, égal à $1$ ou $-1$. Donc $\det(A)$ vaut $1$ ou $-1$. Et ensuite : $$\forall x\in\R\st,\ P(x)=x^n\det\left(\frac{1}{x}A+B\right)=\text{Cte}$$ En faisant tendre $x$ vers $+\infty$, par continuité du déterminant, on a $\det(B)=0$.
 \end{proof}
 
 \begin{ex}[Moulin.Mat.64]{}
@@ -859,62 +911,12 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	Commencer par le cas où les deux matrices sont inversibles. Le résultat s'obtient alors rapidement avec la formule des comatrices en fonction des déterminants et des transposées. Pour le cas général, utiliser la densité des matrices inversibles dans les matrices (définir les matrices $A_z=A+zI_n$ et $B_z=B+zI_n$) puis définir des polynômes coefficient par coefficient pour les matrices $\text{Com}(A_z B_z)$ et $\text{Com}(A_z)Com(B_z)$ et montrer qu'ils sont égaux car ils le sont en une infinité de points. Enfin, évaluer en 0 pour conclure.
 \end{proof}
 
-\section{TD Châteaux}
-\begin{ex}{Formes linéaires sur $\mathcal{M}_n(\K)$}
-	\begin{enumerate}
-		\item Soit $\varphi$ une forme linéaire sur $\mathcal{M}_n(\K)$. Montrer qu'il existe une unique matrice $A\in\mathcal{M}_n(\K)$ telle que $\forall M\in\mathcal{M}_n(\K),\ \varphi(M)=\Tr(AM)$.
-		\item Soit $\varphi$ une forme linéaire sur $\mathcal{M}_n(\K)$ telle que $\forall (A,B)\in\mathcal{M}_n(\K)^2,\ \varphi(AB)=\varphi(BA)$. montrer que $\varphi$ est proportionnelle à la trace.
-		\item Soit $\varphi$ une forme linéaire sur $\mathcal{M}_n(\K)$ telle que $\forall(A,B,C)\in\mathcal{M}_n(\K)^3,\ \varphi(ABC)=\varphi(CBA)$. On suppose $n\geqslant 2$. Prouver que $\varphi=0$.
-		\item On suppose que $\K$ est de caractéristique nulle. Soit $M\in\mathcal{M}_n(\K)$. Montrer l'équivalence : $$\Tr(M)=0\iff\exists(A,B)\in\mathcal{M}_n(\K),\ M=AB-BA$$ Pour cela : 
-		\begin{enumerate}[label=\alph*.]
-			\item Si $\Tr(M)=0$ et $M\ne 0$, montrer que $M$ est semblable à une matrice dont la première colonne est $(0\ 1\ 0\ \ldots\ 0)^T$.
-			\item En déduire que si $\Tr(M)=0$, alors $M$ est semblable à une matrice dont la diagonale est nulle.
-			\item Montrer l'implication attendue pour $M$ de diagonale nulle (en cherchant $A$ sous forme diagonale).
-			\item Conclure.
-		\end{enumerate}
-		\item Démontrer que tout hyperplan de $\mathcal{M}_n(\K)$ contient des matrices inversibles. Indication : on pourra utiliser la première question.
-	\end{enumerate}
-\end{ex}
-\begin{ex}{Transvections et dilatations}
-	Soit $E$ un $\K$-espace vectoriel de dimension $n$. Soit $u$ un endomorphisme tel que $\text{rg}(u-\text{id})=1$.
-	\begin{enumerate}
-		\item Justifier l'existence d'un vecteur $a$ non nul et d'une forme linéaire $l$ non nulle tels que $\forall x\in E,\ u(x)=x+l(x)a$. Que vaut $\det(u)$ ?
-		\item On suppose $l(a)=0$. Montrer que $\im(u-\text{id})\subset\ker(u-\text{id})$. On dit que $u$ est une transvection.
-		\item On suppose $l(a)\ne 0$. Montrer que $\im(u-\text{id})$ et $\ker(u-\text{id})$ sont supplémentaires dans $E$. On dit alors que $u$ est une dilatation.
-		\item On pose, pour $i$ et $j$ distincts compris entre $1$ et $n$, et pour $\lambda\in\K$, $T_{i,j}(\lambda)=I_n+\lambda E_{i,j}$. On note $\mathcal{T}$ l'ensemble des matrices de cette forme. On pose, pour $a\ne 0$, $D_a=I_n+(a-1)E_{n,n}$.
-		\begin{enumerate}[label=\alph*.]
-			\item Calculer $T_{i,j}(\lambda)T_{k,l}(\mu)$.
-			\item Montrer que tout matrice inversible de déterminant $1$ est produit de matrices appartenant à $\mathcal{T}$.
-			\item Montrer que toute matrice inversible est produit de matrices de $\mathcal{T}$ et d'une matrice $D_a$.
-		\end{enumerate}
-		\item Montrer que le groupe spécial linéaire $SL(E)$ est engendré par les transvections, puis que le groupe linéaire $GL(E)$ est engendré par les dilatations et les transvections.
-	\end{enumerate}
-\end{ex}
-\begin{ex}{Une application des transvections}
-	Soit $f:\mathcal{M}_n(\K)\to\K$ non constante telle que $\forall(A,B)\in\mathcal{M}_n(\K),\ f(AB)=f(A)f(B)$.
-	\begin{enumerate}
-		\item Montrer l'équivalence : $A\in\mathcal{GL}_n(\K)\iff f(A)\ne 0$.
-		\item Désormais, et ce pour toute la suite de l'exercice, on suppose que $f$ est polynomiale par rapport aux coefficients de la matrice. Montrer que $f(T_{i,j}(\lambda))=1$ pour tous $i$ et $j$ distincts et tout $\lambda\in\K\st$.
-		\item Montrer qu'il existe $r\in\N$ tel que $\forall a\in\K,\ f(D_a)=a^r$.
-		\item En déduire que $\forall A\in\mathcal{M}_n(\K),\ f(A)=\det(A)^r$.
-	\end{enumerate}
-\end{ex}
-\begin{ex}{Théorème de Burnside}
-	On dit qu'un groupe $G$ est d'exposant fini lorsqu'il existe $d\in\N\st$ tel que pour tout $g\in G$, on ait $g^d=e$. Dans ce cas, on appelle exposant de $G$ le plus petit entier naturel non nul $d$ vérifiant cette propriété. On se propose ici de démontrer le théorème de Burnside : un sous-groupe de $\mathcal{GL}_n(\C)$ est fini si, et seulement s'il est d'exposant fini.
-	\begin{enumerate}
-		\item Soit $A\in\mathcal{M}_n(\C)$ telle que $\forall k\in\N,\ \Tr(A^k)=0$. montrer que $A$ est nilpotente.
-		\item Soit $G$ un sous-groupe de $\mathcal{GL}_n(\C)$. Soit $(M_i)_{1\leqslant i\leqslant m}$ une base de $\text{Vect}(G)$ constituée d'éléments de $G$. On définit $f$ de $G$ dans $\C^m$ par : $$f(M)=\left(\Tr(MM_i)\right)_{1\leqslant i\leqslant m}$$ Démontrer que si $f(A)=f(B)$, alors $AB\inv-I_n$ est nilpotente. 
-		\item En déduire que $f$ est injective lorsque $G$ est d'exposant fini.
-		\item Conclure.
-	\end{enumerate}
+\begin{ex}{Théorème de Bézout généralisé}
+	Soit $A$ et $B$ dans $\mathcal{M}_n(\Z)$. On suppose que $\det(A)\wedge\det(B)=1$. Montrer qu'il existe $U$ et $V$ dans $\mathcal{M}_n(\Z)$ telles que : $$UA+VB=I_n$$
 \end{ex}
 \begin{proof}
-	\begin{enumerate}
-		\item Classique : un déterminant de Vandermonde fait l'affaire.
-		\item Remarquons que $(M_i)$ existe bel et bien par le théorème de la base extraite. Supposons $f(A)=f(B)$. Alors : $$\forall i\in\llbracket1,m\rrbracket,\ \Tr((A-B)M_i)=0$$ On en déduit $$\forall M\in \text{Vect}(G),\ \Tr(AM)=\Tr(BM)$$ On pose alors $U=AB\inv-I_n$. On procède par récurrence en remarquant que $$U^{k+1}=AB\inv U^k-U^k$$ avec $B\inv U^k\in\text{Vect}(G)$ donc on en déduit que $\Tr(U^k)=0$ pour tout $k$ et donc que $U$ est nilpotente.
-		\item Il suffit de montrer que $U$ est diagonalisable, et donc il suffit de montrer que $AB\inv$ l'est. Supposons $G$ d'exposant fini. Comme $AB\inv$ est annulé par $X^d-1$ (scindé à racines simples sur $\C$) où $d$ est l'exposant de $G$, on en déduit que $AB\inv$ est diagonalisable puis que $U=0$ et donc que $f$ est injective.
-		\item Supposons toujours $G$ d'exposant fini (le sens direct est immédiat). Comme les éléments de $G$ sont tous annulés par $X^d-1$, leurs valeurs propres sont toutes des éléments de $\U_d$ donc, comme les $MM_i$ sont des éléments de $G$, $f$ prend un nombre fini de valeurs (la trace est la somme des valeurs propres). Comme $f$ est injective, on en déduit que $G$ est fini.
-	\end{enumerate}
+	D'après le théorème de Bézout, on peut fixer $(u,v)\in\Z^2$ tel que $u\det(A)+v\det(B)=1$. Ensuite, on utilise la formule de la comatrice : $$\text{Com}(A)^TA=\det(A)I_n$$
+	$$\text{Com}(B)^TB=\det(B)I_n$$ On multiplie ces égalités respectivement par $u$ et $v$ pour obtenir : $$u\text{Com}(A)^TA+v\text{Com}(B)^TB=(u\det(A)+v\det(B))I_n=I_n$$ On pose finalement $U=u\text{Com}(A)^T$ et $V=v\text{Com}(B)^T$, qui sont à coefficients entiers car $u$ et $v$ sont entiers et les comatrices sont à coefficients entiers au vu de leur définition avec les mineurs et les cofacteurs ($\Z$ est un anneau !).
 \end{proof}
 
 \end{document}

@@ -305,10 +305,20 @@
 \begin{ex}[Moulin.Euc.21]{}
 	Soit $A$ une matrice symétrique réelle $n\times n$ dont le polynôme caractéristique est scindé à racines simples. Soit $P\in\mathcal{GL}_n(\R)$. Montrer que si $P\inv AP$ est diagonale, alors il en est de même de $P^TP$.
 \end{ex}
+\begin{proof}
+	Interpolation de Lagrange ?
+\end{proof}
 
 \begin{ex}[Moulin.Euc.22]{}
 	Soit $A=(a_{i,j})\in\mathcal{S}_n(\R)$ de valeurs propres $\lambda_1,\ldots,\lambda_n$ comptées avec multiplicité. Montrer : $$\sum_{1\leqslant i,j\leqslant n}a_{i,j}^2=\sum_{k=1}^{n}\lambda_k^2$$
 \end{ex}
+\begin{proof}
+	Calculer $\Tr(A^2)$ de deux façons différentes :
+	\begin{itemize}
+		\item par le calcul direct, on obtient le membre de gauche ;
+		\item après avoir diagonalisé $A$ grâce au théorème spectral, on obtient le membre de droite.
+	\end{itemize}
+\end{proof}
 
 \begin{ex}[Moulin.Euc.23]{}
 	Soit $(a_1,\ldots,a_n)\in\R^n$ et $(b_1,\ldots,b_{n-1})\in(\R\st)^{n-1}$.
@@ -343,7 +353,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.Euc.24]{Co-orthodiagonalisation}
+\begin{ex}[Moulin.Euc.24]{Orthodiagonalisation simultanée}
 	Soit $(u_i)_{i\in I}$ une famille d'endomorphismes autoadjoints d'un espace euclidien $E$ commutant deux à deux. Montrer qu'il existe une base orthonormée de $E$ formée de vecteurs propres communs à tous les $u_i$.
 \end{ex}
 \begin{proof}
@@ -354,7 +364,7 @@
 	Soit $\mathcal{A}$ une sous-algèbre de $\mathcal{M}_n(\R)$ dont tous les éléments sont symétriques. Montrer qu'il existe $P\in\mathcal{O}_n(\R)$ telle que pour tout $A\in\mathcal{A}$, la matrice $P\inv AP$ soit diagonale.
 \end{ex}
 \begin{proof}
-	Une telle algèbre est commutative. Utiliser ensuite le résultat de co-orthodiagonalisation.
+	Une telle algèbre est commutative. Utiliser ensuite le résultat de d'orthodiagonalisation simultanée.
 \end{proof}
 
 \begin{ex}[Moulin.Euc.26]{$\star$}
@@ -504,7 +514,7 @@
 	Soit $A=\displaystyle\begin{pmatrix}
 		r&s\\
 		s&t
-	\end{pmatrix}\in\mathcal{S}_2(\R)$. Montrer que $$A\in\mathcal{S}_{2}^{++}(\R)\iff r>\ \ \text{et} \ \ rt>s^2$$
+	\end{pmatrix}\in\mathcal{S}_2(\R)$. Montrer que $$A\in\mathcal{S}_{2}^{++}(\R)\iff r+t>0\ \ \text{et} \ \ rt>s^2$$
 \end{ex}
 \begin{proof}
 	Utiliser le fait que les valeurs propres sont les racines de $$\chi_A=X^2-\Tr(A)X+\det(A)$$ et traduire le fait que $A\in\mathcal{S}_2^{++}(\R)$ sur les racines.
@@ -516,12 +526,19 @@
 		\item Montrer que l'ensemble des matrices symétriques définies positives est un ouvert connexe par arcs de $\mathcal{S}_n(\R)$. Déterminer son adhérence dans $\mathcal{S}_n(\R)$.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Le résultat de la deuxième question peut servir dans quelques exercices.
+	\begin{enumerate}
+		\item Par théorème de cours, on peut écrire cet ensemble comme l'intersection de $\mathcal{S}_n(\R)$ avec l'ensemble des images réciproques de $\R_+$ par les $u_X$, où $u_X$ est pour $X\in\R^N$ la forme linéaire qui à $A$ associe $X^TAX$. Ces applications sont linéaires en dimension finie donc continue et $\R_+$ est un fermé de $\R$.
+		\item Pour le caractère connexe par arcs, montrer qu'il est convexe. Son adhérence est $\mathcal{S}_n^+(\R)$. Pour le caractère ouvert, à la main.
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}{Matrice de Hilbert}
 	Soit $n\in\N\st$. Montrer que la matrice de Hilbert $$H_n=\left(\frac{1}{i+j-1}\right)_{1\leqslant i,j\leqslant n}$$ est symétrique définie positive.
 \end{ex}
 \begin{proof}
-	Le caractère symétrique ne pose pas de problème vu le caractère symétrique en $i$ et $j$ de la définition de $H_n$. Pour le caractère défini positif, remarquer que $$\frac{1}{i+j-1}=\int_{0}^{1}t^{i+j-2}\ dt$$ Faire ensuite le calcul de $X^TH_nX$ pour obtenir une intégrale positif et utiliser le théorème "continue-positive" pour conclure.
+	Le caractère symétrique ne pose pas de problème vu le caractère symétrique en $i$ et $j$ de la définition de $H_n$. Pour le caractère défini positif, remarquer que $$\frac{1}{i+j-1}=\int_{0}^{1}t^{i+j-2}\ dt$$ Faire ensuite le calcul de $X^TH_nX$ pour obtenir une intégrale positive et utiliser le théorème "continue-positive" pour conclure.
 \end{proof}
 
 \begin{ex}[Moulin.Euc.38]{$\star$}
@@ -640,14 +657,14 @@
 	Poser $a=\sqrt{\lambda_m\lambda_M}$ et étudier la fonction : $$x\mapsto\frac{x}{a}+\frac{a}{x}$$ sur $\R_+\st$, convexe et minorée par $2$. Conclure avec l'inégalité arithmético-géométrique en écrivant $1=a/a$ dans le membre de gauche.
 \end{proof}
 
-\begin{ex}[Châteaux]{Propriétés topologiques des matrices}
+\begin{ex}[Châteaux]{$\star$ Propriétés topologiques des matrices}
 	\begin{enumerate}
 		\item Théorème de Jacobi-Sylvester : soit $A\in\mathcal{S}_n(\R)$. On note $\Delta_k$ le déterminant de la matrice formée des $k$ premières lignes et $k$ premières colonnes de $A$. Démontrer que $$A\in\mathcal{S}_n^{++}(\R)\iff \forall i\in\llbracket1,n\rrbracket,\ \Delta_k>0$$ On pourra procéder par récurrence pour l'implication réciproque. 
 		\item En déduire que $\mathcal{S}_n^{++}(\R)$ est un ouvert de $\mathcal{S}_n(\R)$.
 		\item Montrer que l'application $\exp:\mathcal{S}_n(\R)\to\mathcal{S}_n^{++}(\R)$ est bien définie, continue et bijective. Montrer que sa bijection réciproque est continue.
 		\item Montrer que l'application $\exp:\mathcal{A}_n(\R)\to\mathcal{O}_n(\R)$ est bien définie, continue et surjective.
 		\item Justifier que $\mathcal{O}_n(\R)$ est un sous-groupe compact de $\mathcal{GL}_n(\R)$.
-		\item Soit $G$ un sous-groupe compact de $\mathcal{GL}_n(\R)$ contenant $\mathcal{O}_n(\R)$. Montrer que $G=\mathcal{O}_n(\R)$. indication : on pourra utiliser la décomposition polaire.
+		\item Soit $G$ un sous-groupe compact de $\mathcal{GL}_n(\R)$ contenant $\mathcal{O}_n(\R)$. Montrer que $G=\mathcal{O}_n(\R)$. Indication : on pourra utiliser la décomposition polaire.
 		\item Démontrer que $\mathcal{SO}_n(\R)$ est connexe par arcs. Déterminer les composantes connexes par arcs de $\mathcal{O}_n(\R)$.
 	\end{enumerate}
 \end{ex}
@@ -688,6 +705,9 @@
 \begin{ex}[Moulin.Euc.53]{}
 	Une matrice $A\in\mathcal{O}_n(\R)$ est-elle nécessairement diagonalisable sur $\C$ ?
 \end{ex}
+\begin{proof}
+	Utiliser le théorème de réduction des isométries vectorielles, puis diagonaliser dans $\C$ les blocs de matrices de rotation $2\times2$.
+\end{proof}
 
 \begin{ex}[Moulin.Euc.54]{}
 	Soit $A=(a_{i,j})\in\mathcal{O}_n(\R)$. Montrer que $$\left\lvert\sum_{1\leqslant i,j\leqslant n}a_{i,j}\right\rvert\leqslant n$$
@@ -710,6 +730,15 @@
 		\item Déterminer $\{(I-A)\inv(I+A)\ \mid\ A\in\mathcal{A}_n(\R)\}$.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Exercice classique qui revient régulièrement aux oraux.
+	\begin{enumerate}
+		\item Regarder les valeurs propres de $I-A$ qui sont toutes non nulles.
+		\item Traiter cette expression comme une fraction rationnelle est beaucoup plus clair. Déjà, observer que les deux matrices commutent.
+		\item Considérer une matrice de $\mathcal{SO}_n(\R)$ qui contient $-1$ dans son spectre.
+		\item Il s'agit de l'ensemble des matrices de $\mathcal{SO}_n(\R)$ dont $-1$ ne fait pas partie du spectre.
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}[Moulin.Euc.56]{}
 	Soit $u$ un endomorphisme d'un espace euclidien.

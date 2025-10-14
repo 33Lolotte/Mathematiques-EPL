@@ -79,6 +79,9 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 		1&0&\cdots&0
 	\end{pmatrix}$$
 \end{ex}
+\begin{proof}
+	La matrice est de rang $2$, symétrique réelle (théorème spectral !) et de trace égale à $1$. Résoudre un système linéaire et utiliser la trace pour trouver les dernières valeurs propres.
+\end{proof}
 
 \begin{ex}[Moulin.Red.03]{$\star$}
 	Déterminer les valeurs propres et les vecteurs propres de l'endomorphisme $u$ de $\mathcal{C}^0(\R,\C)$ défini par : $$u(f)(x)=\int_{0}^{2\pi}\sin(x-t)f(t)\ dt$$
@@ -93,6 +96,15 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 		\item Déterminer la matrice de $u^T$ dans la base duale d'une base $\mathcal{B}$ donnée de $E$.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Important !
+	\begin{enumerate}
+		\item Linéarité à gauche de la composition.
+		\item
+		\item 
+		\item C'est la matrice transposée de celle de $u$.
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}[Moulin.Red.05]{$\star$}
 	Pour $A\in\C_{n-1}[X]$, on définit $\Phi:\C_{n-1}[X]\to\C_{n-1}[X]$ en posant $\Phi(P)$ le reste de la division euclidienne de $AP$ par $X^n-1$. Déterminer les éléments propres de $\Phi$. \\
@@ -268,6 +280,18 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 		\item Travailler au préalable sur un seul cycle. Si la permutation est un $n$-cycle, le polynôme caractéristique est $X^n-1$ (facile). Ensuite, réduire par blocs les matrices de permutation en regroupant les vecteurs de la base par cycles, puis calculer le polynôme caractéristique par blocs.
 		\item Dans le sens direct, c'est une conséquence immédiate du morphisme de la première question. Dans le sens réciproque, on peut observer que les traces des puissances de ces matrices sont égales. Ensuite, on observe que l'égalité des traces fournit le même nombre de points fixes (\textit{ie} de $1$-cycles), ensuite, l'égalité des traces des carrés fournit l'égalité du nombre de $2$-cycles (en enlevant les $1$-cycles qui sont déjà au même nombre). Par récurrence, les deux permutations ont le même nombre de cycles de même longueur. On conclut avec le lemme classique qui dit que tous les $k$-cycles sont toujours conjugués entre eux dans $\mathcal{S}_n$.
 	\end{enumerate}
+\end{proof}
+
+\begin{ex}[Révisions]{}
+	Soit $A$ et $B$ deux éléments de $\mathcal{M}_n(\C)$. Montrer que les propositions suivantes sont équivalentes :
+	\begin{enumerate}[label=(\roman*)]
+		\item $\text{Sp}(A)\cap\text{Sp}(B)=\emptyset$
+		\item $\chi_A(B)\in\mathcal{GL}_n(\C)$
+		\item $\chi_B(A)\in\mathcal{GL}_n(\C)$
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Considérer $M\mapsto AM-MB$ et montrer qu'elle est injective si l'on suppose la deuxième ou la troisième condition en s'intéressant à des polynômes annulateurs.
 \end{proof}
 
 \section{Sous-espaces stables, commutants}
@@ -519,14 +543,23 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 \begin{ex}[Moulin.Red.35]{}
 	Montrer qu'un endomorphisme d'un espace vectoriel de dimension finie est diagonalisable si, et seulement s'il est combinaison linéaire de projecteurs $(p_i)_{0\leqslant i\leqslant k}$ tels que : $$\forall (i,j)\in\llbracket1,k\rrbracket^2,\ i\ne j\implies p_i\circ p_j=0$$ Quels sont alors son spectre et ses sous-espaces propres ?
 \end{ex}
+\begin{proof}
+	Dans le sens direct, considérer les projecteurs spectraux. Dans le sens réciproque, montrer que les sous-espaces propres sont les images des différents projecteurs et que les valeurs propres associées sont les scalaires présents dans la combinaison linéaire. Vérifier que les dimensions des sous-espaces propres correspondent à la multiplicité des valeurs propres.
+\end{proof}
 
 \begin{ex}[Moulin.Red.36]{}
 	Déterminer les $A\in\mathcal{M}_n(\C)$ telles que pour tout $P\in\mathcal{GL}_n(\C)$, la matrice $PA$ soit diagonalisable.
 \end{ex}
+\begin{proof}
+	On vérifie le lemme suivant : pour tout $r\in\llbracket1,n\rrbracket$, il existe une matrice de $\mathcal{M}_n(\C)$ de rang $r$ non diagonalisable. Ensuite, si $A$ est de rang $r$ et vérifie les hypothèses de l'énoncé, alors toute matrice de rang $r$ est diagonalisable. En effet, si on fixe $B$ une autre matrice de rang $r$, on peut écrire : $$A=PBQ$$ avec $P$ et $Q$ inversibles. Puis la matrice $Q\inv P\inv PBQ=Q\inv BQ$ est diagonalisable, donc $B$ est diagonalisable. Le lemme vérifié précédemment implique dès lors que $r=0$, donc seule la matrice $A$ peut convenir (et convient effectivement).
+\end{proof}
 
 \begin{ex}[Moulin.Red.37]{}
 	Soit $A$, $B$ et $M$ dans $\mathcal{M}_n(\C)$. On suppose $A$ et $B$ diagonalisables, et on suppose qu'il existe $r\in\N$ avec $r\geqslant 2$ tel que $A^rMB^r=0$. Montrer que $AMB=0$.
 \end{ex}
+\begin{proof}
+	On écrit $A=PDP\inv$ et $B=QD'Q\inv$. On déduit de l'hypothèse, par inversibilité de $P$ et $Q$, que : $$DP\inv MQD'=0$$ On pose $M'=P\inv MQ$, on note $m_{i,j}'$ les coefficients de $M'$, et $d_i$ et $d_i'$ les coefficients respectifs de $D$ et $D'$. Comme $DM'D'=0$, on en déduit : $$\forall (i,j)\in\llbracket1,n\rrbracket^2,\ d_i^rm_{i,j}d_j'^r$$ Comme on travaille dans un corps, on en déduit : $$\forall (i,j)\in\llbracket1,n\rrbracket^2,\ d_im_{i,j}d_j'$$ ce qui donne, en revenant au matrices, $DM'D'=0$, donc $AMB=0$.
+\end{proof}
 
 \begin{ex}[Moulin.Red.38]{$\star$}
 	Donner une condition sur $(a_1,\ldots,a_n)\in\C^n$ et $(b_1,\ldots,b_n)\in\C^n$ pour que la matrice $$A=\begin{pmatrix}
@@ -552,6 +585,21 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{pmatrix}$. La matrice $AB$ est-elle diagonalisable ?
 \end{ex}
 
+\begin{ex}[Morlot]{}
+	Soit $A\in\mathcal{GL}_n(\R)$.
+	\begin{enumerate}
+		\item Montrer que $A$ est diagonalisable sur $\R$ si, et seulement si, $A-A\inv$ est diagonalisable sur $\R$.
+		\item Montrer que $A+A\inv$ peut être diagonalisable sans que $A$ le soit.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Posé en colle tous les ans (par le même) !
+	\begin{itemize}
+		\item Le sens direct est immédiat. pour le sens réciproque, s'intéresser à un polynôme annulateur de $A-A\inv$ scindé à racines simples sur $\R$, et l'utiliser pour construire, après étude de trinômes du second degré, un polynôme annulateur de $A$ scindé à racines simples sur $\R$.
+		\item Voir en quoi le raisonnement de la question précédente échoue alors, et s'en servir pour construire un contre-exemple. 
+	\end{itemize}
+\end{proof}
+
 \begin{ex}[Châteaux]{$\star$ Une extension algébrique de $\Q$}
 	On pose $E=\Q[j,\sqrt[3]{2}]$ la plus petite $\Q$-algèbre contenant $\{j,\sqrt[3]{2}\}$.
 	\begin{enumerate}
@@ -562,14 +610,22 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Châteaux]{$\star$}
+\begin{ex}[Châteaux]{$\Delta\star$}
 	On pose $\mathcal{GL}_n(\Z)=\left\{M\in\mathcal{GL}_n(\R)\cap\mathcal{M}_n(\Z)\ :\ M\inv\in\mathcal{M}_n(\Z)\right\}$.
 	\begin{enumerate}
 		\item Montrer d'une matrice $M\in\mathcal{M}_n(\Z)$ appartient à $\mathcal{GL}_n(\Z)$ si, et seulement si, $\det(M)=\pm1$.
-		\item Soit $p$ un nombre premier supérieur ou égal à $3$. On note $\phi$ la projection canonique de $\mathcal{GL}_n(\Z)$ dans $\mathcal{GL}_n(\Z/p\Z)$. Montrer que $\phi$ est un morphisme et que sa restriction a tout sous-groupe fini de l'ensemble de départ est injective.
+		\item Soit $p$ un nombre premier supérieur ou égal à $3$. On note $\phi$ la projection canonique de $\mathcal{GL}_n(\Z)$ dans $\mathcal{GL}_n(\Z/p\Z)$. Montrer que $\phi$ est un morphisme et que sa restriction à tout sous-groupe fini de l'ensemble de départ est injective.
 		\item Peut-on en déduire une majoration sur le cardinal de tels sous-groupes finis ?
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Tombé aux écrits X-ENS.
+	\begin{enumerate}
+		\item Classique ! Utiliser la formule de la comatrice dans le sens réciproque, et le fait que le déterminant est polynomial dans l'autre (et les unités de $\Z$).
+		\item Le caractère de morphisme de groupes est clair car la projection dans $\Z/p\Z$ est un morphisme d'anneaux. \\ Soit $A$ un matrice d'un sous-groupe fini $G$ de $\mathcal{GL}_n(\Z)$. Alors $A$ est $\C$-diagonalisable et ses valeurs propres sont de module $1$ car elle est annulée par le polynôme $X^{\card(G)}-1$ scindé à racines simples sur $\C$. Supposons que $\phi(A)=I_n$. Alors $A-I_n$ a tous ses coefficients divisibles par $p$, donc $(A-I_n)/p$ est à coefficients entiers. Or, toutes ses valeurs propres complexes sont de module strictement inférieur à $1$, donc comme elle est diagonalisable, en la diagonalisant et en l'élevant à des puissances assez grandes, les puissances de $(A-I_n)/p$ tendent vers $0$. Or, cette matrice est à coefficients entiers donc ses puissances aussi. Comme toute suite d'entiers convergente est stationnaire, on en déduit que $(A-I_n)/p=0$ donc que $A=I_n$ donc $\phi$ est injective (car c'est un morphisme de groupes).
+		\item En prenant $p=3$, on en déduit par injectivité de $\phi$ que le cardinal d'un tel groupe est inférieur au cardinal de $\mathcal{GL}_n(\Z/3\Z)$, qui est (grossièrement) inférieur à $3^{n^2}$.
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}[Châteaux]{$\star$}
 	Soit $A\in\mathcal{M}_2(\Z)$. On suppose qu'il existe $n\in\N\st$ tel que $A^n=I_2$.
@@ -579,10 +635,21 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 		\item Soit $G$ un sous-groupe abélien fini de $\mathcal{GL}_2(\Z)$. Montrer que $\forall A\in G,\  A^{12}=I_2$. En déduire que $\card(G)\leqslant 12$.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Classique !
+	\begin{enumerate}
+		\item Elle est diagonalisable sur $\C$ de valeurs propres appartenant à $\U_n$ car $X^n-1$ scindé à racines simples sur $\C$ annule $A$.
+		\item La trace est la somme des valeurs propres et le déterminant est le produit des valeurs propres. Mais ces valeurs sont entières ! Avec l'inégalité triangulaire, on obtient $\Tr(A)\in\{-2,-1,0,1,2\}$ et $\det(A)\in\{-1,1\}$.
+		\item Avec la question précédente, on montre que nécessairement, ces valeurs propres sont des racines troisièmes ou quatrièmes de l'unité, si bien que $A^{12}=I_2$. Ensuite, utiliser le fait que l'exposant d'un groupe est inférieur au cardinal du groupe (ou juste le théorème de Lagrange - dans sa version du programme).
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}[Châteaux]{$\star$}
 	Soit $A$ et $B$ deux matrices diagonalisables de $\mathcal{M}_2(\C)$. Montrer l'équivalence : $$AB=BA\iff \forall t\in\C,\ A+tB\ \text{est diagonalisable}$$
 \end{ex}
+\begin{proof}
+	Commencer par déterminer une CNS sur les coefficients d'une matrice $2\times 2$ pour qu'elle soit diagonalisable (pour le sens réciproque). Pour le sens direct, co-diagonaliser.
+\end{proof}
 \begin{rmq}
 	Le résultat reste vrai dans $\mathcal{M}_n(\C)$ et constitue le difficile théorème de Motzkin.
 \end{rmq}
@@ -640,10 +707,31 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 \begin{ex}[Châteaux]{$\star$ $M$ semblable à $2M$}
 	Déterminer les $M\in\mathcal{M}_n(\C)$ qui sont semblables à $2M$.
 \end{ex}
+\begin{proof}
+	Soit $M$ une telle matrice. On déduit de l'hypothèse que pour tout $p\in\N\st$, $M^p$ et $2^pM^p$ sont semblables. Donc pour tout $p\in\N\st$, $\Tr(M^p)=0$ donc $M$ est nilpotente. \\ Réciproquement, soit $M$ une matrice nilpotente. En trigonalisant, on peut prouver à la main que $M$ et $2M$ sont semblables. Sinon, on peut prouver qu'il existe $N\in\mathcal{M}_n(\C)$ telle que $MN-NM=M$. Par récurrence, on en déduit : $$\forall k\in\N,\ MN^k=(I+N)^kM$$ En sommant, on en déduit : $$\forall a\in\C,\ M\exp(aN)=\exp(a)\exp(aN)M$$ et on peut conclure avec $a=\ln(2)$.
+\end{proof}
 
 \begin{ex}[Châteaux]{$\star$}
 	Soit $A\in\mathcal{M}_n(\R)$ telle que $A^2$ soit triangulaire supérieure, de diagonale $(1,2,\ldots,n)$. Montrer que $A$ est triangulaire supérieure.
 \end{ex}
+
+\begin{ex}[Châteaux]{Théorème de Burnside}
+	On dit qu'un groupe $G$ est d'exposant fini lorsqu'il existe $d\in\N\st$ tel que pour tout $g\in G$, on ait $g^d=e$. Dans ce cas, on appelle exposant de $G$ le plus petit entier naturel non nul $d$ vérifiant cette propriété. On se propose ici de démontrer le théorème de Burnside : un sous-groupe de $\mathcal{GL}_n(\C)$ est fini si, et seulement s'il est d'exposant fini.
+	\begin{enumerate}
+		\item Soit $A\in\mathcal{M}_n(\C)$ telle que $\forall k\in\N,\ \Tr(A^k)=0$. montrer que $A$ est nilpotente.
+		\item Soit $G$ un sous-groupe de $\mathcal{GL}_n(\C)$. Soit $(M_i)_{1\leqslant i\leqslant m}$ une base de $\text{Vect}(G)$ constituée d'éléments de $G$. On définit $f$ de $G$ dans $\C^m$ par : $$f(M)=\left(\Tr(MM_i)\right)_{1\leqslant i\leqslant m}$$ Démontrer que si $f(A)=f(B)$, alors $AB\inv-I_n$ est nilpotente. 
+		\item En déduire que $f$ est injective lorsque $G$ est d'exposant fini.
+		\item Conclure.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Classique : un déterminant de Vandermonde fait l'affaire.
+		\item Remarquons que $(M_i)$ existe bel et bien par le théorème de la base extraite. Supposons $f(A)=f(B)$. Alors : $$\forall i\in\llbracket1,m\rrbracket,\ \Tr((A-B)M_i)=0$$ On en déduit $$\forall M\in \text{Vect}(G),\ \Tr(AM)=\Tr(BM)$$ On pose alors $U=AB\inv-I_n$. On procède par récurrence en remarquant que $$U^{k+1}=AB\inv U^k-U^k$$ avec $B\inv U^k\in\text{Vect}(G)$ donc on en déduit que $\Tr(U^k)=0$ pour tout $k$ et donc que $U$ est nilpotente.
+		\item Il suffit de montrer que $U$ est diagonalisable, et donc il suffit de montrer que $AB\inv$ l'est. Supposons $G$ d'exposant fini. Comme $AB\inv$ est annulé par $X^d-1$ (scindé à racines simples sur $\C$) où $d$ est l'exposant de $G$, on en déduit que $AB\inv$ est diagonalisable puis que $U=0$ et donc que $f$ est injective.
+		\item Supposons toujours $G$ d'exposant fini (le sens direct est immédiat). Comme les éléments de $G$ sont tous annulés par $X^d-1$, leurs valeurs propres sont toutes des éléments de $\U_d$ donc, comme les $MM_i$ sont des éléments de $G$, $f$ prend un nombre fini de valeurs (la trace est la somme des valeurs propres). Comme $f$ est injective, on en déduit que $G$ est fini.
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}[Moulin.Red.44]{$\Delta$}
 	Soit $V$ un sous-espace vectoriel de $\mathcal{M}_n(\K)$ de dimension strictement supérieure à $\displaystyle\frac{n(n+1)}{2}$. Montrer que $V$ contient une matrice nilpotente non nulle.
@@ -728,7 +816,7 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 	Montrer que toute matrice de rang $r$ admet un polynôme annulateur de degré $r+1$.
 \end{ex}
 \begin{proof}
-	On note $u$ l'endomorphisme canoniquement associé à une matrice de rang $r$ et $\chi$ le polynôme annulateur de l'induit de $u$ sur son image. D'après le théorème de Cayley-Hamilton et puisque le rang de la matrice est $r$, $\chi$ est de degré $r$. Puis : $$\forall x,\ \left[\chi \times X\right](u)(x)=\chi(u(x))=0$$ car $u(x)\in\im(u)$. Donc $X\chi$, qui est de degré $r+1$, est un polynôme annulateur de $u$, et donc de la matrice.
+	On note $u$ l'endomorphisme canoniquement associé à une matrice de rang $r$ et $\chi$ le polynôme caractéristique de l'induit de $u$ sur son image. D'après le théorème de Cayley-Hamilton et puisque le rang de la matrice est $r$, $\chi$ est de degré $r$. Puis : $$\forall x,\ \left[\chi \times X\right](u)(x)=\chi(u(x))=0$$ car $u(x)\in\im(u)$. Donc $X\times\chi$, qui est de degré $r+1$, est un polynôme annulateur de $u$, et donc de la matrice.
 \end{proof}
 
 \begin{ex}[Châteaux]{$\star$ Réduction des matrices à coefficients dans $\Z/p\Z$}
@@ -811,12 +899,16 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 \end{ex}
 
 \begin{ex}[Moulin.Red.59]{}
-	Soit $u$ un endomorphisme d'un $\C$ espace vectoriel de dimension finie $n$. Montrer que les condition suivantes sont équivalentes :
+	Soit $u$ un endomorphisme d'un $\C$-espace vectoriel de dimension finie $n$. Montrer que les condition suivantes sont équivalentes :
 	\begin{enumerate}[label=(\roman*)]
 		\item Les sous-espaces propres de $u$ sont tous de dimension $1$.
 		\item Il existe un vecteur $x$ de $E$ tel que $(x,u(x),\ldots,u^{n-1}(x))$ soit une base de $E$.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Dans le sens direct, prendre $x_1,\ldots,x_n$ des vecteurs propres associés aux valeurs propres distinctes, puis considérer $x=x_1+\cdots+x_n$, en calculer les puissances puis interpoler pour montrer la liberté. \\
+	Dans le sens réciproque, écrire la matrice de $u$ dans cette base pour reconnaître une matrice compagnon.
+\end{proof}
 
 \begin{ex}[Moulin.Red.60]{$\star$ Multiplicité dans le polynôme minimal}
 	Soit $\lambda$ une valeur propre d'une matrice $A\in\mathcal{M}_n(\R)$. On note $p$ la multiplicité de $\lambda$ en tant que racine du polynôme minimal de $A$, noté $\pi_A$. Montrer que $$\R^n=\ker((A-\lambda I_n)^p)\oplus\im((A-\lambda I_n)^p)$$ 
@@ -832,6 +924,9 @@ Dans toute cette feuille, $\K$ désigne un sur-corps de $\Q$.
 		\item $\star$ Le résultat reste-t-il valable sur un autre corps $\K$ ?
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Les sous-espaces caractéristiques de $u$ sont stables par $v$ !
+\end{proof}
 
 \begin{ex}[Moulin.Red.62]{}
 	Soit $u$ un endomorphisme d'un $\C$-espace vectoriel de dimension finie. Montrer que $u$ est diagonalisable si, et seulement si : $$\forall P\in\C[X],\ \ker P(u)+\text{Im}P(u)=E$$
