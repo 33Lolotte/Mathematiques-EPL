@@ -1,0 +1,1632 @@
+\documentclass[french]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Théorème}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+\newtheorem{ex}{Exercice}
+
+\theoremstyle{remark}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{app}{Application}
+
+\newtcolorbox{PM}[1]{colback=white,colframe=cyan!50!white,title=#1,fonttitle=\bfseries,coltitle=black}
+\newtcolorbox{EX}[1]{colback=white,colframe=green!50!white,title=#1,fonttitle=\bfseries,coltitle=black}
+\newtcolorbox{AS}[1]{colback=white,colframe=yellow!70!white,title=#1,fonttitle=\bfseries,coltitle=black}
+
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	\includegraphics[width=\textwidth]{/Users/eliot/Downloads/owl-8731135.jpg}\par\vspace{1.5cm}{\huge\bfseries Les astuces de Mançois Froulin\par}\vspace{1cm}{EPL MP*1\par}{\today\par}
+\end{titlepage}
+\setcounter{tocdepth}{0}
+\tableofcontents
+\setcounter{tocdepth}{3}
+
+\chapter{Algèbre générale}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Montrer un non-isomorphisme}
+	\begin{itemize}
+		\item Pour montrer que deux groupes sont isomorphes, il suffit d'exhiber un isomorphisme entre eux.
+		\item Pour montrer qu'ils ne sont pas isomorphes, on exhibe une propriété liée à la loi de groupe qui est vraie pour l'un et pas pour l'autre (commutativité, ou ordre de certains éléments par exemple).
+	\end{itemize}
+\end{PM}
+\begin{PM}{Montrer le caractère générateur d'une partie d'un groupe}
+	Pour montrer qu'une partie de $G$ est génératrice de $G$, il suffit de montrer que l'on peut obtenir, par produit et passage à l'inverse à partir de ses éléments, tous les éléments d'une partie que l'on sait génératrice.
+\end{PM}
+\section{Astuces}
+\begin{AS}{Recettes du sous-...} Pour montrer qu’un ensemble est un sous-groupe, sous-anneau, sous-corps, sous-espace vectoriel, toujours s’assurer qu’il est non vide en justifiant qu’il contient 0 (neutre pour la loi principale !) voire 1 (pour un anneau ou un corps).
+\end{AS}
+\begin{AS}{Recette du sous-... : remarque} Pour montrer qu’un ensemble est un sous-groupe, un rapport de jury (XENS-A-2020) décrète que la méthode "montrer que $x-y\in H$" est convenable si la vérification est triviale ou découle des théorèmes généraux. Si c’est plus délicat, il vaut mieux distinguer la stabilité de la loi interne de l’existence d’un inverse.
+\end{AS}
+\begin{AS}{Condition nécessaire pour que le groupe quotient soit un groupe} Quand on a un groupe $G$ et un sous-groupe $H$, pour que $G/H$ soit un groupe, il faut que $H$ soit distingué. En quotientant ainsi, on réduit le cardinal du groupe à étudier.
+\end{AS}
+\begin{app}
+	Peut donner des informations sur le cardinal du groupe de départ car une formule lie le cardinal du groupe quotient au cardinal du groupe (généralisation du théorème de Lagrange).
+\end{app}
+\begin{AS}{Sous-groupe fini de $\mathcal{GL}_n(\K)$ et projecteur} Si $G$ est un sous-groupe fini de $\mathcal{GL}_n(\K)$, alors $$M=\frac{1}{|G|}\sum_{A\in G}A$$ est un projecteur.
+\end{AS}
+\begin{proof}
+En effet, en élevant au carré et en utilisant que pour $A\in G$ fixé l'application de $G$ dans $G$ qui à $B$ associe $AB$ est une bijection (injective et égalité de cardinaux), on obtient le résultat par changement de variables.
+
+\end{proof}
+\begin{AS}{Étude d'éléments particuliers via une fonction} En algèbre générale, quand on cherche un élément particulier, poser une application $f$ telle que ce que l’on cherche soit un antécédent par $f$ et montrer qu’il existe (par exemple montrer que $f$ est surjective, potentiellement en commençant par l’injectivité pour établir la bijectivité !).
+\end{AS}
+\begin{app}
+	Si on cherche les carrés de $\Z/p\Z$, on s'intéresse à $x\mapsto x^2$.
+\end{app}
+\begin{app}
+	Si on cherche un inverse pour tout élément non nul $a$ dans un anneau commutatif, on montre que $x\mapsto ax$ est surjective. Il en résulte que tout anneau commutatif fini et intègre est un corps.
+\end{app}
+\begin{AS}{Un lemme} Si $G$ est un groupe et si $a$ et $b$ sont deux éléments qui commutent d’ordres respectifs $p$ et $q$ avec $p\wedge q=1$, alors $ab$ est d’ordre $pq$.
+\end{AS}
+\begin{proof}
+	Notons $w(ab)$ l’ordre de $ab$. $(ab)^{pq} = a^{pq}b^{pq} = e$ car $a$ et $b$ commutent donc $w(ab)\mid pq$. De plus puisque $(ab)^{w(ab)}= e$, il vient $a^{w(ab)} = b^{-w(ab)}$ et $a^{w(ab)q} = b^{-w(ab)q} = e$ d’où $p\mid w(ab)q$ ($p$ est l’ordre de $a$). Puisque $p\wedge q=1$, il vient $p\mid w(ab)$. De même, on montre que $q\mid w(ab)$. Ainsi $pq\mid w(ab)$ puisque $p$ et $q$ sont premiers entre eux. $pq$ et $w(ab)$ étant associés et positifs, il sont égaux.
+\end{proof}
+\begin{AS}{Théorème de Cauchy} Si $G$ est un groupe fini d’ordre $n$ et si $p$ est un diviseur premier de $n$, alors $G$ possède un élément d’ordre $p$.
+\end{AS}
+\begin{proof}
+	Il y a deux démonstrations possibles : l’une, plus simple, dans le cas d’un groupe abélien, et l’autre dans le cas général, mais plus difficile.	
+\end{proof}
+\begin{AS}{Lemme des bergers généralisé} Si $E$ et $F$ sont des ensembles finis, et $f:E\to F$, alors on a la formule : $$\card(E)=\sum_{y\in F}\card\left(f\inv(\left\{y\right\})\right)$$
+\end{AS}
+\begin{proof}
+	En effet, l'unicité de l'image nous fournit l'union disjointe $$E=\bigsqcup_{y\in f(E)}f\inv(\{y\})$$ et on peut prendre $F$ tout entier car si $y$ n'est pas dans $f(E)$, son image réciproque est vide. On obtient la relation en passant aux cardinaux.
+\end{proof}
+\begin{app}
+	On retrouve le lemme de bergers. : si tout élément de $F$ possède $p$ antécédents, alors $\card(E)=p\card(F)$.
+\end{app} 
+\begin{app}
+	En particulier, si $f$ est un morphisme de groupes, on a l'égalité $$\card(E)=\card(\im(f))\times\card(\ker(f))$$
+\end{app}
+\begin{AS}{Équation aux classes (HP)} Penser à utiliser l'équation aux classes : $$A COMPLETER$$ Pour la démontrer, A COMPLETER
+\end{AS}
+\begin{AS}{Théorème de factorisation (HP)}
+	A COMPLETER
+\end{AS}
+\begin{proof}
+	A FAIRE
+\end{proof}
+\begin{AS}{Utilisation des idéaux de $\K[X]$} Pour faire un usage intéressant du théorème de structure des idéaux de $\K[X]$, ne pas oublier de vérifier que l’idéal n’est pas réduit à $\{0\}$.
+\end{AS}
+\begin{AS}{Théorème de Lagrange (HP)}
+	Si $H$ est un sous-groupe de $G$, alors $\card(H)$ divise $\card(G)$.
+\end{AS}
+\begin{proof}
+	Considérer la relation d'équivalence définie par : $$x\mathcal{R}y\iff x\inv y\in H$$ Les classes d'équivalence sont toutes de cardinal $\card(H)$. 
+\end{proof}
+\begin{AS}{Un sous-groupe fini strict est au moins deux fois moins gros} Si $H$ est un sous-groupe strict du groupe $G$ fini, alors $2\times\card(H)\leqslant\card(G)$.
+\end{AS}
+\begin{proof}
+	Cela est une conséquence immédiate du théorème de Lagrange.
+\end{proof}
+\begin{app}
+	Dans $\mathcal{S}_n$, il n'y a pas de sous-groupe strict contenant strictement $\mathcal{A}_n$, puisque celui-ci a déjà pour cardinal la moitié de celui-ci de $\mathcal{S}_n$.
+\end{app}
+\begin{AS}{Autour des corps finis contenant $\F_p$}
+On considère $\K$ un corps fini de cardinal $q$ contenant $\F_p$. Alors, il existe $n\in\N\st$ tel que $$q=p^n$$ En effet, on peut munir naturellement $\K$ d'une structure de $\F_p$-espace vectoriel. De plus, $\K$ est fini, donc admet une famille $\F_p$-génératrice finie, donc $\K$ est un espace vectoriel de dimension finie sur $\F_p$. Ainsi, $\K$ est isomorphe à un certain $\F_p^n$ et le résultat suit par égalité de cardinaux (bijectivité). Ensuite, on a : $$\forall x\in\K,\ x^q=x$$ En effet, si $x=0$, c'est immédiat. Sinon, $x\in\K\st$, qui est un groupe de cardinal $q-1$. Donc $x^{q-1}=1$ et $x^p=x$. Ensuite, l'application : $$\begin{array}{lrcl}
+	\varphi:&\K&\longrightarrow&\K\\
+	&x&\longmapsto&x^p
+\end{array}$$ est un automorphisme de $\K$. En effet, c'est un morphisme additif en utilisant le fait que $p$ divise toujours $\binom{p}{k}$ lorsque $1\leqslant k\leqslant p-1$. Puis $\K$ est commutatif (on peut prendre cela comme définition d'un corps, mais de toute façon, le théorème de Wedderburn affirme que tout corps fini est commutatif), donc $\varphi$ est un morphisme multiplicatif. Enfin, c'est un morphisme de corps, donc il est injectif puis bijectif par égalité de cardinaux. Enfin, on peut montrer que $\K\st$ est cyclique.
+\end{AS}
+\begin{AS}{Caractéristique d'un corps} Pour $\K$ un corps, on note $$\begin{array}{lrcl}
+	j:&\Z&\longrightarrow&\K \\
+	&n&\longmapsto&n.1_\K
+\end{array}$$ C'est un morphisme donc son noyau est un idéal de $\Z$ et donc il existe $n\in\N$ tel que $\ker(j)=n\Z$.
+\begin{itemize}
+	\item Si $n=0$, alors $\K$ contient un sous-corps isomorphe à $\Q$. On prolonge $j$ de manière naturelle à $\Q$. Cette définition est bien consistante (le prouver à la main). Il est clair que ce prolongement de $\Q$ dans $\K$ est injectif, ce qui fournit le résultat annoncé.
+	\item Si $n\geqslant1$, alors $n$ est un nombre premier et $\K$ contient un sous-corps isomorphe à $\Z/n\Z$. En effet, en raisonnant par l'absurde, l'intégrité de $\K$ couplée à la minimalité de $n$ impose le fait que $n$ soit premier. Si $\overline{k}=\overline{l}$ dans $\Z/n\Z$, alors $n\mid k-l$ si bien que $j(k-l)=0$ car $j(n)=0$. On "prolonge" ainsi sur $\Z/n\Z$, et le prolongement est injectif, ce qui fournit le résultat.
+\end{itemize}
+L'entier $n$ est appelé \textbf{caractéristique du corps $\K$}.
+\end{AS}
+\begin{rmq}
+	Un corps infini peut très bien être de caractéristique finie. Par exemple, $\Z/p\Z(X)$ avec $p$ premier est infini (clairement, puisqu'il contient les monômes) et pourtant, il est de caractéristique $p$ (cela s'hérite du fait que $\Z/p\Z$ est de caractéristique $p$).
+\end{rmq}
+
+
+\chapter{Arithmétique}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Invariance des propriétés de divisibilité par association}
+	En termes de divisibilité, deux éléments associés ont les mêmes propriétés.
+\end{PM}
+\begin{PM}{Factorisation par un PGCD}
+	Si $d$ est un PGCD de $a$ et $b$, on peut écrire $a=da'$ et $b=db'$, avec $a'$ et $b'$ premiers entre eux.
+\end{PM}
+\begin{PM}{Choix de la forme de la décomposition en irréductibles}
+	Dans la pratique, on écrit la décomposition en produit d'irréductibles d'un élément $a$ non nul sous l'une des formes suivantes :
+	\begin{itemize}
+		\item $a=up_1^{\alpha_1}\cdots p_k^{\alpha_k}$ où $u$ est une unité, $p_1,\ldots,p_k$ des éléments de $\mathcal{P}$ deux à deux distincts et $\alpha_1,\ldots,\alpha_k$ des entiers naturels non nuls ;
+		\item $a=up_1^{\alpha_1}\cdots p_k^{\alpha_k}$ où $u$ est une unité, $p_1,\ldots,p_k$ des éléments de $\mathcal{P}$ deux à deux distincts et $\alpha_1,\ldots,\alpha_k$ des entiers naturels éventuellement nuls.
+	\end{itemize} Avec la forme étendue, on perd l'unicité, mais on peut utiliser les mêmes irréductibles pour plusieurs éléments de $A$.
+\end{PM}
+\section{Astuces}
+\begin{AS}{Travail sur des carrés} Quand on travaille sur des carrés, penser à regarde ce qu'il se passe modulo $4$ et $8$ : cela fait très bon ménage avec les carrés. Modulo $4$, les carrés valent 0 ou 1, et modulo 9, ils valent 0, 1 ou 4.
+\end{AS}
+\begin{AS}{Travail sur des cubes} Quand on travaille sur des cubes, penser à regarde ce qu'il se passe modulo $7$ et $9$ : cela fait très bon ménage avec les cubes. Modulo $7$, les cubes valent 0, 1 ou 6, et modulo 9, ils valent 0, 1 ou 8.
+\end{AS}
+
+\begin{AS}{Somme des chiffres et modulo 9}
+	Un entier écrit en base 10 est toujours congru à la somme de ses chiffres modulo 9.
+\end{AS}
+
+\begin{app}
+	Somme des chiffres de la somme des chiffres de la somme des chiffres de $4444^{4444}$.
+\end{app}
+
+\begin{AS}{Nombres premiers entre $n+1$ et $2n$} Soit $p$ un nombre premier entre $n+1$ et $2n$. Il est facile de montrer que $p\mid\binom{2n}{n}$ et on en déduit : $$\prod_{\substack{n+1< p\leqslant 2n \\ p\text{ premier}}}p \bigg| \binom{2n}{n}$$
+\end{AS}
+\begin{app}
+	On en déduit notamment l'inégalité : $$\prod_{\substack{n+1< p\leqslant 2n \\ p\text{ premier}}}p\leqslant\binom{2n-1}{n}\leqslant\frac{1}{2}\sum_{k=0}^{2n-1}\binom{2n-1}{k}= 2^{2n-2}$$ Cela peut servir (en partie) à démontrer le théorème de Tchebychev / postulat de Bertrand : il existe toujours un nombre premier entre $n+1$ et $2n$ dès que $n\geqslant2$. Et sinon, \textit{cf} Maths A 2024...
+\end{app}
+\begin{AS}{Pseudo-réciproque d'une divisibilité} Soit $p$ premier. Si $(p^n-1)\mid(p^m-1)$, alors $n\mid m$.
+\end{AS}
+\begin{proof}
+	Il faut appliquer simultanément l'algorithme de division euclidienne à $p^m-1$ par $p^n-1$ et à $m$ par $n$.
+\end{proof}
+\begin{AS}{Décomposition d'un entier par les indicatrices d'Euler de ses diviseurs} On a la formule : $$\forall n\in\N\st,\ n=\sum_{d\mid n}\varphi(d)$$
+\end{AS}
+\begin{proof}
+	 Montrer l'égalité ensembliste suivante, et la passer aux cardinaux : $$\left\{\frac{k}{n}|1\leqslant k\leqslant n\right\}=\bigsqcup_{d\mid n}\left\{\frac{k}{d}|k\wedge d=1\right\}$$
+\end{proof}
+\begin{app}
+	Calcul du déterminant de Smith.
+\end{app}
+\begin{AS}{Congruences de suites} Quand on doit prouver des congruences sur les termes de suites, où le modulo varie, du type $$a_n\equiv b_nn\ [m_nn]$$ où $n\in\N$, il faut revenir aux entiers et faire une récurrence. De façon générale, si on travaille avec des congruences qui n’ont pas le même modulo, il faut revenir aux entiers !
+\end{AS}
+\begin{AS}{"PGCD" d'une infinité d'entiers} Pour adapter le concept de PGCD pour une infinité d'entiers $a_n$, on observe l'idéal engendré par les $a_n$, ce qui permet en général de s'en sortir.
+\end{AS}
+\begin{AS}{Équations de Pell-Fermat} Ce sont des équations de la forme $a^2-2b^2=\pm1$. Penser au conjugué algébrique et par conséquent se placer dans $$\Z[\sqrt{2}]=\left\{a+b\sqrt{2}\mid (a,b)\in\Z^2\right\}$$ On y définit le morphisme de conjugaison $$a+b\sqrt{2}\mapsto a-b\sqrt{2}$$ ainsi que le "module"  $$N:a+b\sqrt{2}\mapsto (a+b\sqrt{2})(a-b\sqrt{2})=a^2-2b^2$$ Ce "module" est multiplicatif : $N(zz')=N(z)N(z')$.  On se ramène donc à l'étude des inversibles.
+\end{AS}
+\begin{app}
+	On peut faire cela de façon plus générale avec $a^2-Kb^2$ si $K$ n'est pas un carré (cela ajoute une dimension algébrique).
+\end{app}
+\begin{AS}{Une bijection utile} Avoir en tête la bijection suivante : $$\begin{array}{lrcl}
+	\sigma :&\N^2&\longrightarrow&\N\st \\
+	&(m,n)&\longmapsto&(2m+1)2^n
+\end{array}$$
+\end{AS} \begin{proof}
+En effet, on prouve qu'il s'agit d'une bijection en utilisant la valuation 2-adique.
+\end{proof}
+\begin{app}
+	Montrer que $$\forall z\in\C,\ \sum_{k\in\N}\frac{z^{2^k}}{1-z^{2^{k+1}}}=\frac{z}{1-z}$$ On écrira le dénominateur comme la somme d'une famille, puis on appliquera le théorème sur les familles doubles. On conclura par changement d'indice avec la bijection sus-citée pour retrouver une série géométrique qui commence au rang 1.
+\end{app}
+
+\chapter{Espaces vectoriels, dualité}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Familles génératrices} Si $(x_i)_{i\in I}$ est une famille génératrice de $E$, une famille $(y_j)_{j\in J}$ de $E$ est génératrice de $E$ si, et seulement si, tous les $x_i$ sont combinaison linéaire des $y_j$.
+\end{PM}
+\begin{PM}{Décomposition d'un polynôme en $u$} Pour décomposer $v=P(u)\in\K[u]$, on détermine le reste de la division euclidienne de $P$ pa le polynôme minimale de $u$. Par exemple, pour calculer les puissances successives de $u$, on peut déterminer le reste de la divison euclidienne de $X^p$, avec $p\in\N$, par le polynôme minimal de $u$.
+\end{PM}\begin{app}
+	Calcul d'exponentielles d'endomorphismes.
+\end{app}
+\section{Astuces}
+\begin{AS}{Astuce fondamentale de François Moulin : version endomorphismes} Si on pense pouvoir faire un exercice en utilisant des endomorphismes, c'est qu'il faut utiliser des matrices carrées ! Du moins, il faut très rapidement passer du côté des matrices carrées et cela se déroule mieux en général. Évidemment, cela ne tient que pour quelque chose d'un peu abstrait.
+\end{AS}
+\begin{rmq}
+	Attention, cette astuce et sa jumelle peuvent mener à des contradictions logiques majeures si on atteint le niveau de directement penser à changer de point de vue.
+\end{rmq}
+\begin{app}
+	Montrer que $u$ est cyclique ssi $\forall \lambda,\ u-\lambda\text{id}$ est cyclique. En effet, on a alors une matrice triangulaire supérieure avec uniquement des $1$, ce qui est plutôt inversible donc on a bien une base. Remarquer qu'un sens se déduit de l'autre.
+\end{app}
+\begin{AS}{Base du sous-espace vectoriel engendré} Si $A$ est une partie de $E$, alors on peut extraire de $A$ une base de $\text{Vect}(A)$.
+\end{AS}
+\begin{AS}{Dimension 1 et homothétie} Une application linéaire dont l'espace de départ est de dimension un est nécessairement une homothétie.
+\end{AS}
+\begin{AS}{Maximum de la dimension d'un SEV}Quand on cherche la dimension maximale d’un sous-espace vectoriel V dont les vecteurs vérifient chacun une certaine propriété : on commence par majorer cette dimension, par exemple en exhibant un sous-espace A dont on connaît bien la dimension tel que $V\cap A=\left\{0\right\}$. On obtient donc $$\dim(V)\leqslant \dim(E)-\dim(A)$$ Ensuite on exhibe un sous-espace $V$ dont la dimension est précisément cette majoration, qui est donc atteinte !
+\end{AS}
+\begin{app}
+	Dimension maximale d'un SEV de $\mathcal{M}_n(\R)$ composé uniquement de matrices diagonalisables : penser au théorème spectral et s'intéresser à $A=\mathcal{A}_n(\R)$.
+\end{app}
+\begin{app}
+	Dimension maximale d'un SEV de $\mathcal{M}_n(\R)$ constitué de matrices nilpotentes ou quasi-nilpotentes : penser au fait qu'une matrice diagonalisable et nilpotente est nulle, et on peut prendre $A=\mathcal{S}_n(\R)$.
+\end{app}
+\begin{AS}{Condition suffisante de non-somme directe} Si on a deux sous-espaces vectoriels $V_1$ et $V_2$ de dimensions finies $a$ et $b$, sous-espaces d’un même espace de dimension finie $n<a+b$, alors $$V_1\cap V_2 \ne{0}$$ et
+l'intersection contient un élément non nul.
+\end{AS}
+\begin{proof}
+	On n'utilise pas la formule de Grassmann pour démontrer ceci, "la formule de Grassmann ne sert pas à ça" (François Moulin) : cette formule sert à calculer exactement la dimension d'une somme ou d'une intersection.
+\end{proof}
+\begin{AS}{Utilisation de $\Z/2\Z$} Bien penser au fait que $(\Z/2\Z)^n$ peut être vu comme un espace vectoriel de dimension $n$.
+\end{AS}
+\begin{app}
+	Un sous-groupe d'ordre pair ($\forall x,\ x^2=e$) est de cardinal $2^n$ pour un certain $n$. En effet, on peut le munir d'une structure de $\Z/2\Z$-ev, et il est alors de dimension finie car admet une famille génératrice finie. $G$ est donc isomorphe à un $(\Z/2\Z)^n$, ce qui conclut.
+\end{app}
+\begin{AS}{Image et noyau du carré} Soit $E$ un EV et $u$ un endomorphisme de $E$. alors : $$\begin{cases}
+	\text{Ker}(u)=\text{Ker}(u^2)\iff\text{Im}(u)\cap\text{Ker}(u)=\{0\}\\
+	\text{Im}(u)=\text{Im}(u^2)\iff \text{Im}(u)+\text{Ker}(u)=E
+\end{cases}$$ En dimension finie, ces deux conditions sont équivalentes à $\text{Im}(u)\oplus\text{Ker}(u)=E$.
+\end{AS}
+\begin{proof}
+	Pour le prouver, utiliser des doubles inclusions à l'ancienne...
+\end{proof}
+\begin{app}
+	Ce résultat est notamment utile pour les exercices sur les matrices
+	du type $A^2B=BA$ ou autres...
+\end{app}
+\begin{AS}{Bidual} Soit $E$ un espace vectoriel. Pour $x\in E$, on définit la forme linéaire $\hat{x}$ sur $E\st$ par $\hat{x}(\varphi)=\varphi(x)$. Alors, l'application :
+$$ \begin{array}{lrcl}
+	j:&E&\longrightarrow&(E\st)\st \\
+	&x&\longmapsto&\hat{x}
+\end{array}$$ est une application linéaire injective (l'injectivité utilise l'existence d'une base, et donc l'axiome du choix si on n'est pas en dimension finie). Par conséquent, si $E$ est de dimension finie, $j$ est un isomorphisme. Il y a donc un isomorphisme canonique entre $E$ et son bidual en dimension finie.
+\end{AS}
+\begin{app}[Base antéduale]
+	Supposons $E$ de dimension finie. Soit $\mathcal{L}$ une base de $E\st$. Posons $\mathcal{B}$ l'antécédent par $j$ de sa base duale $\mathcal{L}\st$. Alors, $\mathcal{B}\st=\mathcal{L}$, on dit que $\mathcal{B}$ est la base antéduale de $\mathcal{L}$.
+\end{app}
+\begin{AS}{Orthogonalité} On considère $E$ un espace vectoriel de dimension finie $n$.
+\begin{itemize}
+	\item Soit $A$ une partie de $E$. On appelle orthogonal de $A$ la partie de $E\st$ constituée des formes linéaires nulles sur $A$ : $$A^T=\left\{\varphi\in E\st \ : \ \forall x\in A,\ \varphi(x)=0\right\}$$
+	\item Soit $B$ une partie de $E\st$. On appelle orthogonal de $B$ l'intersection des noyaux des éléments de $B$ : $$B_T=\left\{x\in E\ : \ \forall\varphi\in B,\ \varphi(x)=0\right\}$$
+\end{itemize} Il pourrait donc y avoir une ambiguïté sur l'orthogonal d'une partie de $E\st$, car on pourrait prendre la première ou la deuxième définition. Mais ces deux se correspondent par le biais de l'isomorphisme $j$ entre $E$ et son bidual $(E\st)\st$. On a des propriétés (décroissance, SEV, égal à celui de son $\text{Vect}$) entièrement identiques à celles des orthogonaux pour les espaces euclidiens. On a aussi les complémentarités des dimensions, et, en dimension finie, si on on applique successivement les deux orthogonaux pour un SEV, on retombe sur l'ensemble de départ.
+\end{AS}
+\begin{AS}{Utilisation de la trace avec les projecteurs} Avec des projecteurs en dimension finie, penser à utiliser la trace : elle est égale au rang (donc est un entier), elle est linéaire, etc.
+\end{AS}
+\begin{AS}{Trace dans $\Z$} En dimension finie, si on parle trace dans $\Z$, c'est qu'il y a une affaire de projecteurs et de symétries cachée.
+\end{AS}
+\begin{AS}{Projecteurs et lemme des noyaux} Les projecteurs associés à la décomposition du lemme des noyaux sont des polynômes en $u$.
+\end{AS}
+
+
+\chapter{Polynômes, fractions rationnelles}
+\localtableofcontents
+\section{Points méthode}
+\section{Astuces}
+\begin{AS}{Structure de corps de $\K(X)$} Lorsque $\K$ est un corps, $\K(X)$ en est un aussi.
+\end{AS} 
+\begin{AS}{Une méthode pour montrer qu'un polynôme est scindé à racines simples}Pour montrer qu’un polynôme est scindé à racines simples, on peut considérer ses racines de multiplicité impaire et montrer que la multiplicité vaut $1$, puis montrer qu'il n'y a pas de racine de multiplicité paire.
+\end{AS}
+\begin{AS}{Différentes formes d'un polynôme de $\C[X]$}Il y a deux façons complètement différentes de voir un polynôme de $\C[X]$ :
+\begin{itemize}
+	\item son écriture développée avec des coefficients ;
+	\item sa forme factorisée avec le coefficients dominant et les racines.
+\end{itemize}
+Il faut impérativement jongler entre ces deux visions, cela permet d'avoir de nouveaux angles d'attaque.
+\end{AS}
+\begin{AS}{Calcul d'un produit fini ou plus généralement d'une somme de produits finis} Penser à utiliser les formules de Viète pour les racines d'un polynôme pour calculer des produits finis ou des sommes de produits finis. Cela n'a d'intérêt que si le polynôme en question est simple.
+\end{AS}
+\begin{app}
+	Montrer que $$\forall n\in\N\st,\ \prod_{k=1}^{n-1}\sin\left(\frac{k}{n}\pi\right)=\frac{n}{2^{n-1}}$$ Pour cela, considérer les racines du polynôme $$\frac{(X+1)^n-1}{X}$$
+\end{app}
+\begin{AS}{Coefficients inversés} L'opération pour inverser les coefficients d'un polynôme $P$ est $$X^nP\left(\frac{1}{X}\right)$$ En jouant avec le forme factorisée, on remarque qu'inverser l'ordre des coefficients du polynôme revient à inverser ses racines.
+\end{AS}
+\begin{rmq}
+	L'application : $$P\mapsto X^nP\left(\frac{1}{X}\right)$$ est une symétrie de $\K_n[X]$.
+\end{rmq}
+\begin{AS}{Méthode de travail dans $\Z/p\Z[X]$} Soit $p$ un nombre premier. Pour travailler dans $\Z/p\Z[X]$, on utilise des propriétés d’arithmétique pour montrer un résultat sur les entiers $n$ modulo $p$, et on en déduit le résultat souhaité sur les polynômes (on remplace successivement $X$ par tous les entiers modulo $p$ et on vérifie que c’est toujours vrai).
+\end{AS}
+\begin{app}
+	D'après le petit théorème de Fermat, on a : $$\forall x\in\Z/p\Z,\ x^p=x$$ On en déduit, dans $\Z/p\Z[X]$ : $$X^p-X=\overline{0}=X(X-\overline{1})\times\ldots\times(X-\overline{p-1})$$ Ainsi, $A\in\mathcal{M}_n(\Z/p\Z)$ est diagonalisable si, et seulement si, $A^p=A$ car elle est diagonalisable si, et seulement si, elle est annulée par un polynôme scindé à racines simples. (\textbf{VERIFIER CE RESULTAT})
+\end{app}
+\begin{AS}{Racines dans $\Q$ ou non} Si on veut étudier le caractère rationnel des racines de $$P=\sum_{k=0}^{n}a_kX^k\in\Q[X]$$ avec $a_n\ne0$, on suppose que $\alpha=\displaystyle\frac{p}{q}$ avec $(p,q)\in\Z\times\N\st$ et $p\wedge q=1$ est racine de $P$. On écrit alors : $$\sum_{k=0}^{n}a_k\left(\frac{p}{q}\right)^k=P(\alpha)=0$$ On multiplie alors par $q^n$ puis on utilise la divisibilité par $p$ et le lemme de Gauss. Par exemple, une telle racine rationnelle doit vérifier : $$\begin{cases}
+	p\mid a_0\\
+	q\mid a_n
+\end{cases}$$
+\end{AS}
+\begin{app}
+	Pour montrer que $\sqrt{2}$ est irrationnel, on peut montrer que $X^2-2$ est irréductible dans $\Q[X]$ en prouvant qu'il n'admet pas de racine rationnelle avec la méthode précédent. En effet, on rappelle qu'un \textbf{polynôme de degré $2$ ou $3$ est irréductible si, et seulement si, il n'admet pas de racine dans le corps de base, et ce quel que soit le corps considéré}.
+\end{app}
+\begin{app}
+	Permet de deviner que $1/2$ peut être racine de $1-X-X^2-2^3$, ce qu'il faut ensuite vérifier.
+\end{app}
+\begin{AS}{Utilisation de la forme $P'/P$} Si $P=\prod(X-\lambda)^\alpha$, alors : $$\frac{P'}{P}=\sum\frac{\alpha}{X-\lambda}$$ Cette formule peut permettre d'évaluer rapidement $P'(x)$. On peut d'ailleurs encore dériver pour obtenir une expression plus sale avec $P''$. Dans les cas où $P$ est assez simple, cette méthode aide grandement.
+\end{AS}
+\begin{app}
+	Preuve du théorème de Gauss-Lucas.
+\end{app}
+\begin{app}
+	Polynômes de Hilbert : $P=\displaystyle\binom{X}{n}=\frac{X(X-1)\ldots(X-n+1)}{n!}$
+\end{app}
+\begin{app}
+	En probabilités, sert pour calculer l'espérance et la variance à partir de la fonction génératrice.
+\end{app}
+\begin{AS}{Travail avec des fractions rationnelles} Quand on travaille avec des fractions rationnelles, essayer de se ramener le plus vite possible à des polynômes, sur lesquels on a plus de propriétés. Notamment, si on a $$F(X)=\frac{A(X)}{B(X)}$$ avec $A$ et $B$ des polynômes, il faut souvent commencer par
+écrire $A(X)=F(X)B(X)$ et éventuellement utiliser l’expression des coefficients
+d’un produit de Cauchy.
+\end{AS}
+\begin{AS}{Polynômes à coefficients dans $\Z$} Si $P\in\Z[X]$, alors : $$\forall(a,b)\in\Z,\ b-a\mid P(b)-P(a)$$
+\end{AS}
+\begin{proof}
+	Utiliser la factorisation de Bernoulli.
+\end{proof}
+
+
+\chapter{Matrices, déterminants}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Multiplication par une matrice diagonale} Multiplier une matrice $M$ à gauche par une matrice diagonale revient à multiplier les lignes de $M$ par les scalaires de la diagonale. Multiplier une matrice $M$ à droite par une matrice diagonale revient à multiplier les colonnes par les scalaires de la diagonale.
+\end{PM}
+\begin{PM}{Changement de base} En notant $P=M_\mathcal{B}(\mathcal{B}')=M_{\mathcal{B'},\mathcal{B}}(\text{id})$, on a : $$X=PX'$$ Si de plus on considère $A=M_{\mathcal{B},\mathcal{C}}(u)$, $A'=M_{\mathcal{B'},\mathcal{C'}}(u)$ et $Q=M_\mathcal{C}(\mathcal{C}')$, on a alors : $$A'=Q\inv AP$$
+\end{PM}
+\begin{PM}{Système linéaire et inverse (1)} Pour montrer qu'une matrice $A\in\mathcal{M}_n(\K)$ est inversible et calculer son inverse, on peut résoudre le système $AX=Y$ en le ramenant à un système triangulaire par l'algorithme du pivot de Gauss. L'expression de $X$ en fonction de $Y$ donne alors la matrice $A\inv$.
+\end{PM}
+\begin{PM}{Système linéaire et inverse (2)} Si, quel que soit $Y\in\K^n$, le système carré $AX=Y$ entraîne une relation du type $X=\ldots$, alors $A$ est inversible et l'expression de $X$ en fonction de $Y$ donne l'inverse de $A$.
+\end{PM}
+\begin{PM}{Multiplication par une matrice diagonale par blocs} Multiplier une matrice par une matrice diagonale par blocs $\text{Diag}(A_1,\ldots,A_n)$ :
+\begin{itemize}
+	\item à gauche revient à multiplier les lignes par les blocs diagonaux $A_i$ ;
+	\item à droite revient à multiplier les colonnes par les blocs diagonaux $A_j$.
+\end{itemize}
+\end{PM}
+\section{Astuces}
+\begin{AS}{Astuce fondamentale de François Moulin : version matrices carrées} Si on pense pouvoir faire un exercice en utilisant des matrices carrées, c'est qu'il faut utiliser des endomorphismes ! Du moins, il faut très rapidement passer du côté des endomorphismes et cela se déroule mieux en général. Évidemment, cela ne tient que pour quelque chose d'un peu abstrait.
+\end{AS}
+\begin{rmq}
+	Attention, cette astuce et sa jumelle peuvent mener à des contradictions logiques majeures si on atteint le niveau de directement penser à changer de point de vue.
+\end{rmq}
+\begin{AS}{Formules de changement de base} Bien connaître ses formules de changement de base.
+\end{AS}
+\begin{AS}{Définition du déterminant} Bien se souvenir de la définition du déterminant par les formes $n$-linéaires alternées.
+\end{AS}
+\begin{AS}{Idées pour les calculs de déterminant} Pour calculer un déterminant, on pourra : 
+\begin{enumerate}
+	\item Faire des combinaisons linéaires, même très originales ;
+	\item Se ramener à un déterminant par blocs ;
+	\item Développer par rapport aux lignes et aux colonnes ;
+	\item Utiliser la formule des signatures (uniquement pour des exercices théoriques !)
+\end{enumerate}
+\end{AS}
+\begin{AS}{Autre méthode de calcul de déterminant} Pour calculer le déterminant d'une matrice $A$ un peu compliquée, essayer de l'écrire comme un produit $B\times C$ avec $B$ et $C$ des matrices dont le déterminant se calcule plus facilement. Le déterminant de $A$ est alors le produit des deux déterminants.
+\end{AS}
+\begin{app}
+	Calcul du déterminant de Smith.
+\end{app}
+\begin{AS}{Multilinéarité} Souvent, si on repère que toutes les colonnes s'écrivent à partir d'une seule et même colonne, utiliser la multilinéarité du déterminant peut être une bonne idée.
+\end{AS} \begin{app}
+	Calculer le déterminant de la matrice : $$\begin{pmatrix}
+	a_1+b_1&b_1&\ldots&b_1&b_1 \\
+	b_2&a_2+b_2&&b_2&b_2 \\
+	\vdots&&\ddots&&\vdots \\
+	b_n&b_n&\ldots&b_n&a_n+b_n
+\end{pmatrix}$$
+\end{app}
+\begin{AS}{Résolution d'un système de Cramer par les formules de Cramer} On considère le système de Cramer $AX=B$ avec $A=(C_1|\ldots|C_n)$ une matrice inversible, $B$ un vecteur colonne et $X$ le vecteur des inconnues. L'unique solution est donnée par les formules de Cramer : $$x_i=\frac{\text{det}(C_1,\ldots,C_{i-1},B,C_{i+1},\ldots,C_n)}{\text{det}(A)}$$ En pratique, il est \textbf{obligatoire} d'utiliser cette méthode pour les système $2\times2$ (et c'est même une CNS pour utiliser cette méthode d'après François Moulin).
+\end{AS}
+\begin{AS}{Matrices de permutation} Penser aux matrices de permutations (\textit{ie} les matrices qui codent une permutation de $\mathcal{S}_n$) : on peut les introduire pour créer des exemples et des contre-exemples. Bien penser à leur interprétation en termes de permutations d'une base.
+\end{AS}
+\begin{app}
+	Fait partie de l'exercice pour montrer que tout hyperplan de $\mathcal{M}_n(\C)$ rencontre $\mathcal{GL}_n(\C)$ dès que $n\geqslant2$.
+\end{app}
+\begin{app}
+	Deux permutations sont conjuguées ssi les matrices de permutation associées sont semblables (dur).
+\end{app}
+\begin{AS}{Matrices extraites} Penser aux propriétés des déterminants extraits et des matrices extraites.
+\end{AS}
+\begin{app}
+	Exercice des $2n+1$ cailloux
+\end{app}
+\begin{AS}{Coefficients -1 0 ou 1} Pour une matrice à coefficients valant -1, 0 ou 1, il est avantageux de plonger notre matrice dans $\Z/2\Z$, cela ne change pas la parité du déterminant. Ainsi, si on prouve dans $\Z/2\Z$ que notre déterminant est non nul, il est non nul dans $\Z$ car impair et la matrice est inversible.
+\end{AS}
+\begin{app} Exercice des 2n+1 cailloux \end{app}
+\begin{AS}{Coefficients -1 ou 1} Pour une matrice à coefficients valant exclusivement -1 ou 1, penser à effectuer des transvections car $(\pm1)\pm(\pm 1)$ vaut $-2$, $0$ ou $2$. On peut ensuite factoriser des 2 dans le déterminant.
+\end{AS}
+\begin{app}
+	Si $A$ a uniquement des coefficients valant $-1$ ou $1$ et est de taille $n$, alors $2^{n-1}$ divise $\det(A)$. 
+\end{app}
+\begin{AS}{Matrices de rang $1$} Si $M$ est une matrice de rang $1$, alors $$M^2=\Tr(M)M$$ Pour cela, on montre qu'il existe deux vecteurs $X$ et $Y$ tels que $M=XY^T$ grâce à l'hypothèse de rang 1. En fait, plus généralement, il n'existe que deux types de matrices de rang $1$ (à similitude près) : celles avec un $\lambda$ en haut en $(1,1)$, ou celles avec un $1$ en $(1,2)$.
+\end{AS}
+\begin{AS}{Déterminant et trace} On se donne $\mathcal{B}=(e_1,\ldots,e_n)$ une base de $E$ de dimension $n$, ainsi que $u$ un endomorphisme de $E$. Alors, pour tous $(x_1,\ldots,x_n)$ : $$\sum_{j=1}^{n}\det_\mathcal{B}(x_1,\ldots,x_{j-1},u(x_j),x_{j+1},\ldots,x_n)=\Tr(u)\det_\mathcal{B}(x_1,\ldots,x_n)$$
+\end{AS} \begin{proof}
+Pour montrer cela, il suffit de remarquer que le membre de gauche est une forme $n$-linéaire alternée, donc il est proportionnel au déterminant dans la base $\mathcal{B}$. Ensuite, il suffit d'évaluer sur la base pour montrer que cette constante vaut la trace de $u$ (en développant les déterminants par multilinéarité après avoir décomposé les $u(x_j)$ sur la base $\mathcal{B}$).
+\end{proof}
+\begin{app}
+	Permet de montrer que le wronskien vérifie une certaine équation différentielle et d'en obtenir une formule (\textit{cf} exercices classiques d'équations différentielles).
+\end{app}
+\begin{AS}{Exercices du type} Pour des exercices du type "$\text{rg}(A)=\text{rg}(B)$ et $A^2=B^2$" ou encore "$A^2B=A$, réfléchir sur les inclusions de noyaux et d'image, passer aux applications linéaires canoniquement associées puis manipuler des bases bien choisies.
+\end{AS}
+\begin{AS}{CN d'inversibilité des matrices antisymétriques}
+	Il n'existe pas de matrice antisymétrique inversible d'ordre impair.
+\end{AS}
+\begin{proof}
+	Si $M\in\mathcal{A}_n(\K)$ avec $n$ impair, alors : $$\det(M)=\det(M^T)=\det(-M)=(-1)^n\det(M)=-\det(M)$$ donc $\det(M)=0$ et $M$ est non inversible.
+\end{proof}
+
+
+\chapter{Réduction}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Équation aux éléments propres pour un endomorphisme} Pour rechercher les éléments propres d'un endomorphisme $u$ (valeurs propres et sous-espaces propres associés), on peut résoudre l'équation $u(x)=\lambda x$, appelée équation aux éléments propres.
+\end{PM}
+\begin{PM}{Équation aux éléments propres pour une matrice} Pour rechercher les éléments propres d'une matrice $A$, on peut résoudre l'équation $AX=\lambda X$, appelée équation aux éléments propres.
+\end{PM}
+\begin{PM}{Polynôme caractéristique dans $\mathcal{M}_2(\K)$} Le polynôme caractéristique de $A\in\mathcal{M}_2(\K)$ est : $$X^2-\Tr(A)X+\det(A)$$ On utilise impérativement cette expression quand on travaille dans $\mathcal{M}_2(\K)$.
+\end{PM}
+\begin{PM}{Calcul alternatif} Parfois, il est plus intéressant de calculer $\det(A-\lambda I_n)=(-1)^n\chi_{_A}(\lambda)$ plutôt que $\det(\lambda I_n-A)=\chi_{_A}(\lambda)$ (par exemple pour une matrice compagnon).
+\end{PM}
+\begin{PM}{Importance d'un polynôme caractéristique factorisé} Puisque les racines du polynôme caractéristique sont les valeurs propres, il est important d'obtenir le polynôme caractéristique sous forme factorisée. On réalise dans les cas concret cet objectif en calculant le déterminant de $A-\lambda I_n$ par opérations élémentaires afin (suivant les cas) :
+\begin{itemize}
+	\item de faire apparaître des facteurs communs dans les lignes ou les colonnes ;
+	\item de se ramener à une matrice triangulaire, au moins en partie.
+\end{itemize} On pourra notamment utiliser des combinaisons linéaires qui traduisant des relations de liaison entre les colonnes, ou encore passer à la transposée si ces relations de liaison sont sur les lignes.
+\end{PM}
+\begin{PM}{Expression dans le cas diagonalisable} Soit $A\in\mathcal{M}_n(\K)$ diagonalisable et $(E_1,\ldots,E_n)$ une base de $\K^n$ constituée de vecteurs propres de $A$ associés aux valeurs propres $\lambda_1,\ldots,\lambda_n$. Si on pose $p$ la matrices dont les colonnes sont $E_1,\ldots,E_n$, alors : $$A=PDP\inv \text{  ou  }D=\text{Diag}(\lambda_1,\ldots,\lambda_n)$$
+\end{PM}
+\begin{PM}{CS de diagonalisabilité} Pour montrer qu'une endomorphisme d'un espace vectoriel de dimension $n$, ou une matrice de taille $n$, est diagonalisable, il suffit de montrer que la somme des dimensions de ses sous-espaces propres est supérieure ou égale à $n$.
+\end{PM}
+\begin{PM}{Savoir si un endomorphisme est diagonalisable} Pour savoir si un endomorphisme $u$ est diagonalisable, on peut calculer son polynôme caractéristique.
+\begin{itemize}
+	\item S'il n'est pas scindé, alors $u$ n'est pas diagonalisable.
+	\item Sinon, pour toute valeur propre multiple, on compare $\dim(E\lambda(u))$ et $m(\lambda)$, par exemple en calculant le rang de $u-\lambda\text{Id}_E$.
+\end{itemize}
+\end{PM}
+\begin{PM}{Processus de trigonalisation} Une base trigonalisation commençant par un vecteur propre, pour trigonaliser un endomorphisme $u$, on commence souvent par compléter un vecteur propre de $u$ en une base de $E$, dans laquelle la matrice de $u$ est donc de la forme $$\begin{pmatrix}
+	\lambda&L\\
+	0&A
+\end{pmatrix}\in\mathcal{M}_n(\K) \ \ \text{où}\ \ A\in\mathcal{M}_{n-1}(\K)\ \ \text{et} \ \ L\in\mathcal{M}_{n-1,1}(\K)$$ Il suffit alors de montrer que l'on peut prendre $A$ triangulaire supérieure pour conclure. Comme la matrice $A$ n'est pas \textit{a priori} la matrice d'un endomorphisme, on raisonne le plus souvent en trigonalisant la matrice $A$ (ou alors on fait le terroriste en composant par une projection sur un hyperplan pour se ramener à un endomorphisme).
+\end{PM}
+\section{Astuces}
+\subsection{Généralités}
+\begin{AS}{Projecteurs spectraux} Ce sont les projecteurs associés à la décomposition en sous-espaces propres $$E=\bigoplus_{i=1}^rE_{\lambda_i}(u)$$ lorsque l'endomorphisme $u$ est diagonalisable. On les note $p_1,\ldots,p_r$. On a $u=\lambda_1p_1+\ldots+\lambda_rp_r$ et on peut montrer par caractérisation par les supplémentaires que $$\forall n\in\N,\ u^n=\lambda_1^np_1+\ldots+\lambda_r^np_r$$ Par linéarité, cette relation s'étend à tous les polynômes. Cela permet efficacement de calculer les puissances d'une matrice. Les polynômes spectraux sont des polynômes en $u$ : on utilise la relation vraies sur tous les polynômes et on prend en particulier les polynômes interpolateurs de Lagrange associés aux valeurs propres distinctes.
+\end{AS}
+\begin{AS}{Polynôme annulateur et matrice inversible} Si P est un polynôme annulant une matrice carrée $A$ avec $$P=\lambda\prod_j(X-x_j)$$alors il existe un indice $j$ tel que $A-x_jI$ soit non inversible. On regarde pour cela le déterminant de $P(A)$ et on utilise l’intégrité. Si $P/\lambda$ est le polynôme minimal de $A$, c’est même vrai pour tout indice $j$ !
+\end{AS}
+\begin{AS}{Endomorphisme réel sur un espace de dimension impaire} Une matrice réelle ou un endomorphisme réel sur un espace de dimension finie impaire admet au moins une valeur propre réelle (car le polynôme caractéristique est de degré impair) donc un vecteur propre réel, et même au moins une valeur propre de multiplicité impaire.
+\end{AS}
+\begin{AS}{Utilisation des polynômes interpolateurs de Lagrange} Si on a comme hypothèse un prédicat $P$ qui vérifie une propriété du type : $$\forall k\in\N,\ P(A^k)\ \ldots$$ il peut être fort utile de s'intéresser à des polynômes interpolateurs de Lagrange et utiliser de la linéarité.
+\end{AS}
+\begin{app}
+	Une matrice carrée $A$ vérifiant $\forall k\in\N\st,\ \Tr(A^k)=0$ est nilpotente. Remarquer que cela peut aussi se faire avec un déterminant de Vandermonde.
+\end{app}
+\begin{AS}{Utilisation de la linéarité} Si on dispose d'une hypothèse en : $$\forall k\in\N,\ A^k = \text{ Truc linéaire en $A$}$$ Alors on peut en déduire que $$\forall P\in\K[X],\ P(A)=P(\text{Truc linéaire en $A$})$$ car on a la coïncidence de deux applications linéaires sur la base canonique des polynômes. En particulier, il peut être utile de considérer ensuite le polynôme minimal ou le polynôme caractéristique.
+\end{AS}
+\begin{app}
+	Si $A$ est diagonalisable (resp. trigonalisable), alors $M\mapsto AM$ est diagonalisable (resp. trigonalisable).
+\end{app}
+\begin{AS}{Le polynôme minimal est irréductible sur une algèbre intègre} Si $A$ est une algèbre intègre, le polynôme minimal d’un élément de $A$ est nécessairement
+irréductible. Sinon, l’intégrité permettrait de contredire sa minimalité.
+\end{AS}
+\begin{AS}{Application de la réduction en dimension infinie} Voici un des rares usages de la réduction en dimension infinie : on rappelle que si $f$ est un endomorphisme, une famille $(v_i)_{i\in I}$ de vecteurs propres de $f$ associés à des valeurs propres distinctes est libre. Ceci peut notamment servir pour des
+fonctions où on pense à l’endomorphisme de dérivation, éventuellement itéré !
+\end{AS}
+\begin{app}
+	La famille $(x\mapsto e^{ax})_{a\in\R}$ est libre car tous ses éléments sont des
+vecteurs propres de l’endomorphisme de dérivation de $\mathcal{C}^{\infty}$ associés à des valeurs propres distinctes.
+\end{app}
+\begin{app}
+De même, la famille $(x\mapsto \sin(ax))_{a\in\R}$ est libre, mais on utilise ici l’endomorphisme de double dérivation $f\mapsto f''$.
+\end{app}
+\begin{AS}{Cotrigonalisation} Deux endomorphismes scindés qui commutent sont trigonalisables dans une même base. On a le même résultat pour une partie de $\mathcal{L}(E)$ formée d’endomorphismes scindés qui commutent deux à deux.
+\end{AS} \begin{proof}
+	Etapes de la démonstration : 
+\begin{enumerate}
+	\item Montrer que deux endomorphismes qui commutent admettent un vecteur propre commun (les sous-espaces propres sont stables).
+	\item Procéder par récurrence forte sur la dimension de l’espace. Soit tous les endomorphismes sont des homothéties, et c’est évident, soit il y en a un, qu’on
+	note $u$, qui ne l’est pas. Il existe alors $\lambda\in\text{Sp}(u)$ tel que $$\dim(E_\lambda)<\dim(E)$$ On peut alors utiliser l'hypothèse de récurrence avec $E=H\oplus E_\lambda$. En notant $\pi$ la projection sur $H$ parallèlement à $E_\lambda$, on se ramène à l'hypothèse de récurrence en considérant les $\tilde{v}=\pi\circ v_{|H}$. 
+\end{enumerate} Sinon, on peut remarquer que le résultat est clairement équivalent à sa version matricielle et utiliser des matrices pour l'hérédité, ce qui est plus claire que les projections.
+\end{proof}
+\begin{AS}{Codiagonalisation} Deux endomorphismes diagonalisables qui commutent sont diagonalisables dans une même base. On a le même résultat pour une partie de $\mathcal{L}(E)$ formée d’endomorphismes diagonalisables qui commutent deux à deux.
+\end{AS}
+\begin{proof}
+On procède de façon similaire à la démonstration de la cotrigonalisation, mais l'hérédité est plus simple, il n'y a pas besoin de considérer une projection.
+\end{proof}
+\begin{AS}{Décomposition de Dunford (HP mais très utile)} Soit $A$ une matrice dont le polynôme caractéristique est scindé. Alors, il existe un unique couple de matrices $(D,N)$ tel que $D$ soit diagonalisable, $N$ soit nilpotente, $DN=ND$ et on ait : $$A=D+N$$ L'existence provient de la décomposition en sous-espaces caractéristiques.
+\end{AS}
+\begin{AS}{Décomposition de Jordan (fortement HP)}
+\end{AS}
+
+\subsection{Exponentielles de matrices}
+\begin{AS}{$\exp(A)$ est un polynôme en $A$} Montrons que $\exp(A)\in\K[A]$. Les sommes partielles sont dans $\K[A]$. Or, $\K[A]$ est un SEV de dimension finie de $\mathcal{M}_n(\K)$, donc il est fermé. Par conséquent, $\exp(A)\in\K[A]$. Et par suite : $$\exists P\in\K[X],\ \exp(A)=P(A)$$
+\end{AS}
+\begin{AS}{Exponentielle d'une matrice diagonale} On a la formule : $$\exp(\text{Diag}(\lambda_i))=\text{Diag}(e^{\lambda_i})$$
+\end{AS} \begin{proof}
+En effet, il suffit de passer par les sommes partielles et de passer à la limite.
+\end{proof}
+\begin{AS}{Exponentielle d'une matrice triangulaire} L'exponentielle d'une matrice triangulaire est une matrice triangulaire dont les éléments diagonaux sont les exponentielles des coefficients diagonaux de la matrice de départ.
+\end{AS}
+\begin{AS}{Exponentielle et similitude} Si $A=P\inv BP$, alors $$\exp(A)=P\inv\exp(B) P$$
+\end{AS}
+\begin{proof}
+	On repasse par la définition avec les sommes partielles en utilisant le fait que $(P\inv BP)^k=P\inv B^kP$. La continuité de l'application de conjugaison par $P$ permet de conclure.
+\end{proof}
+\begin{AS}{Déterminant d'une exponentielle de matrice} On a la formule : $$\forall A\in\mathcal{M}_n(\C),\ \det(\exp(A))=e^{\Tr(A)}$$ 
+\end{AS}
+\begin{proof}
+	En effet, cela est immédiat en trigonalisant $A$ et en utilisant les deux points précédents.
+\end{proof}
+\begin{AS}{Utilisation de la décomposition de Dunford} Quand on prend des exponentielles de matrices, notamment pour les équations différentielles, penser à utiliser la décomposition de Dunford (l’exponentielle d’une matrice diagonalisable s’exprime simplement, celle d’une matrice nilpotente est un polynôme en cette matrice).
+\end{AS}
+\begin{AS}{Décomposition de Dunford de l'exponentielle} Soit $A$ une matrice dont la décomposition de Dunford s'écrit $A=D+N$ avec $D$ diagonalisable, $N$ nilpotente d'indice $n$ et $DN=ND$. Alors, la décomposition de Dunford de $\exp(A)$ est : $$\exp(A)=\exp(D)+\exp(D)NP(N)$$ où $P=\displaystyle\sum_{k=0}^{n-2}\frac{X^k}{(k+1)!}$. En effet, on a $\exp(A)=\exp(D)\exp(N)$, on sait que $\exp(D)$ est diagonalisable, et on sait que $$\exp(N)=\sum_{k=0}^{n-1}\frac{N^k}{k!}=I+NP(N)$$ Par conséquent, comme $\exp(D)$ est un polynôme, elle commute avec $N$ et $P(N)$, donc $\exp(D)NP(N)$ est nilpotente car $N$ l'est. L'unicité de la décomposition de Dunford conclut.
+\end{AS}
+\begin{app}
+	Si $A$ une matrice complexe vérifie $\exp(2\pi A)=I$, alors $A$ est diagonalisable et $\text{Sp}(A)\subset i\Z$. En effet, avec $A=D+N$ la décomposition de Dunford de $A$, celle de $2\pi A$ est $2\pi D+2\pi N$ puis par unicité de la décomposition de Dunford de $\exp(2\pi A)$, on obtient : $$\exp(2\pi D)=I\text{  et  }\exp(2\pi D)2\pi NP(2\pi N)=0$$ La première égalité fournit que pour toute valeur propre $\lambda$ de $A$ (\textit{ie} de D), on a $e^{2\pi\lambda}=1$ donc $\lambda\in i\Z$. Et, avec la deuxième, puisque $\exp(2\pi D)$ est inversible, $NP(2\pi N)=0$. Or, $P(2\pi N)$ est aussi inversible ($I$ plus une matrice nilpotente, télescopage), donc $N=0$. Par conséquent, $A$ est diagonalisable (car $A=D$) et $\text{Sp}(A)\subset i\Z$.
+\end{app}
+\begin{AS}{Exponentielle de matrices antisymétriques} L'exponentielle d'une matrice symétrique réelle est une matrice de rotation. En particulier, si $$A=\begin{pmatrix}
+	0&-t\\
+	t&0
+\end{pmatrix}$$ alors on a : $$\exp(A)=\begin{pmatrix}
+\cos(t)&-\sin(t)\\
+\sin(t)&\cos(t)
+\end{pmatrix}$$
+\end{AS}
+\begin{proof}
+	Si $B\in\mathcal{A}_n(\R)$, alors $\det(\exp(B))=e^{\Tr(B)}=e^0=1$ et $$\exp(B)\exp(B)^T=\exp(B)\exp(B^T)=\exp(B)\exp(-B)=\exp(0)=I_n$$ si bien que $B\in\mathcal{SO}_n(\R)$. De plus, si on considère $A$ comme dans l'énoncé, on a : $$A^{2k}=(-1)^kt^{2k}I_2 \ \ \text{et} \ \ A^{2k+1}=(-1)^kt^{2k+1}A$$ donc on obtient le résultat en appliquant la définition de l'exponentielle matricielle et en reconnaissant le développement en série entière du cosinus et du sinus. 
+\end{proof}
+\begin{AS}{Utilisation de la dérivation} Quand on voit des exponentielles de matrices qui ne commutent pas, on peut introduire une fonction de la variable réelle et la dériver. En effet, puisque la dérivée de $t\mapsto e^{tA}$ est $t\mapsto Ae^{tA}=e^{tA}A$, on peut placer les matrices où on le souhaite. De façon générale, quand on dérive $t\mapsto e^{tA}$, toujours se demander où est-ce qu'il vaut mieux placer $A$.
+\end{AS}
+\begin{app}
+	Si on considère $f:t\mapsto e^{itB}e^{-itA}$, alors on a : $$f'(t)=ie^{itB}(B-A)e^{itA}$$ On peut alors intégrer, passer à la norme, utiliser des propriétés de développements asymptotiques, etc.
+\end{app}
+
+
+\chapter{Topologie des espaces vectoriels normés}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Montrer une divergence} Pour montrer qu'une suite est divergente, il suffit de montrer que la suite considérée possède au moins deux valeurs d'adhérence.
+\end{PM}
+\begin{PM}{Montrer la convergence par une série télescopique} Pour montrer la convergence d'une suite $(u_n)_{n\in\N}$, il faut penser à étudier éventuellement la convergence de la série $\displaystyle\sum_{n\geqslant1}(u_{n+1}-u_n)$.
+\end{PM}
+\begin{PM}{Montrer une non domination de normes} Dans la pratique, pour montrer que $N_1$ n'est pas dominée par $N_2$, on cherche souvent une suite qui, au choix : 
+\begin{itemize}
+	\item tend vers $0$ pour $N_2$ mais pas pour $N_1$ ;
+	\item est bornée pour $N_2$ mais qui ne l'est pas pour $N_1$.
+\end{itemize}
+\end{PM}
+\begin{PM}{Choix de la norme dans $\K^n$} Dans $\K^n$, on se demandera régulièrement quelle norme parmi la norme 1, la norme 2 et la norme infinie, est la plus adaptée à la situation.
+\end{PM}
+\begin{PM}{Comparaison de normes} Comparer des normes $N_1$ et $N_2$ signifie déterminer si $N_1$ (respectivement $N_2$) est dominée par $N_2$ (respectivement $N_1$).
+\end{PM}
+\section{Astuces}
+\begin{AS}{Matrices utiles pour la conjugaison (important !)} Pour travailler sur les classes de conjugaison de matrices, il peut être utile de conjuguer par la matrice $$Q_\varepsilon:=\begin{pmatrix}
+	1&&& \\
+	&\varepsilon&& \\
+	&&\ddots& \\
+	&&&\varepsilon^{n-1}
+\end{pmatrix}$$ On conservera cette notation pour la suite. Notamment, si notre matrice est trigonalisable, cela est très pratique.
+\end{AS} \begin{app} Une matrice est nilpotente ssi la matrice nulle adhère à sa classe de similitude \end{app}
+\begin{app} La classe de similitude d'une matrice diagonalisable est fermée.
+\end{app}
+\begin{AS}{Adhérence d'un SEV} L'adhérence d'un sev est un sev. Passer par une caractérisation séquentielle pour la partie linéarité.
+\end{AS}
+\begin{app} Un hyperplan est fermé ou dense : son adhérence est un sev donc est soit lui-même (fermé), soit égale à l'espace entier (dense).\end{app}
+\begin{AS}{Utilisation de l'équivalence des normes} Que ce soit sur les matrices, des endomorphismes d'un espace de dimension finie ou encore un $\K_n[X]$, penser à utiliser l'équivalence des normes pour choisir une norme pratique au vu de la situation.
+\end{AS}
+\begin{AS}{Norme subordonnée à la norme 1} On note $N$ la norme matricielle subordonnée à la norme $1$. Alors : $$N(M)=\max_{j\in\llbracket1,n\rrbracket}\left(\sum_{i=1}^{n}\lvert m_{i,j}\rvert\right)$$ On obtient l'inégalité assez facilement et il faut considérer un vecteur particulier pour l'égalité.
+\end{AS}
+\begin{app}
+	Cette norme est sous-multiplicative et est liée directement aux coefficients de la matrice : si tous les coefficients sont majorés par $\varepsilon$ en valeur absolue, alors la norme est majorée par $n\varepsilon$. C'est donc la norme à utiliser avec les matrices $Q_\varepsilon$.
+\end{app}
+
+
+\chapter{Topologie et continuité}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Continuité d'une fonction de plusieurs variables} La continuité d'une fonction de plusieurs variables ne se ramène \textbf{JAMAIS} uniquement à la continuité de fonctions d'une variable. On essaye alors d'utiliser les théorèmes généraux, et on effectue des majorations pour les prolongements par continuité.
+\end{PM}
+\begin{PM}{Utilisation de la lipschitzianité} Pour montrer qu'une application est continue, on commence souvent par regarder si elle est lipschitzienne car si c'est le cas, c'est en général la manière la plus rapide de justifier la continuité.
+\end{PM}
+\begin{PM}{Prouver une non continuité} Pour prouver qu'une application linéaire n'est pas continue, on peut prouver qu'elle n'est pas continue en $0$. Comme $u(0)=0$ par linéarité, il suffit d'exhiber une suite $(x_n)$ tendant vers $0$ mais telle que la suite $(u(x_n))$ ne tende pas vers $0$. Sinon, on peut chercher une suite $(x_n)$ telle que $(u(x_n))$ ne soit pas bornée.
+\end{PM}
+\begin{PM}{Calcul d'une norme subordonnée} Pour montrer que la norme subordonnée de $u$ vaut $C$, on commence généralement par montrer que $\forall x\in E,\ \lVert u(x)\rVert\leqslant C\lVert x\rVert$, puis :
+\begin{itemize}
+	\item si l'on y arrive, on exhiber un vecteur $x$ non nul vérifiant $\lVert u(x)\rVert=C\lVert x\rVert$ ;
+	\item sinon, on cherche une suite $(x_n)$ de vecteurs non nuls telle que $\displaystyle\frac{\lVert u(x_n)\rVert}{\lVert x_n\rVert}\to C$.
+\end{itemize}
+\end{PM}
+\section{Astuces}
+\begin{AS}{Exploitation de la propriété de continuité} Pour exploiter la propriété de continuité $\forall\varepsilon>0,\ \exists\delta,\ \ldots$, il peut être utile de prendre $\varepsilon=1$ (voire 12).
+\end{AS}
+\begin{AS}{Continuité du passage à l'inverse matriciel} L'application $$\begin{array}{rcl}
+	\mathcal{GL}_n(\K)&\longrightarrow&\mathcal{GL}_n(\K) \\
+	A&\longmapsto&A\inv
+\end{array}$$ est continue lorsque $\K=\R$ ou $\K=\C$.
+\end{AS}
+\begin{proof}
+	Utiliser la formule de la comatrice. La comatrice et le déterminant sont continus car polynomiaux.
+\end{proof}
+
+
+\chapter{Compacité, connexité par arcs}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Montrer une non compacité} Une méthode classique pour montrer qu'une partie (non fermée bornée) est non compacte est d'essayer d'en exhiber une suite $(u_n)$ vérifiant $\forall p\ne q,\ d(u_p,u_q)\geqslant\alpha$, où $\alpha$ est un réel strictement positif.
+\end{PM}
+\begin{PM}{Montrer une convergence dans un compact} Pour montrer qu'une suite $(u_n)$ à valeurs dans un compact converge vers $l$, on peut montrer que toute valeur d'adhérence de $(u_n)$ est égale à $l$.
+\end{PM}
+\begin{PM}{Utilisation des fonctions coordonnées} On considère $f$ à valeurs dans un espace de dimension finie égale à $n$ et $f_i$ ses fonctions coordonnées dans une base de l'espace d'arrivée.
+\begin{itemize}
+	\item $f$ admet une limite finie en $a$ adhérent à $A$ si, et seulement si, $f_i$ admet une limite finie pour tout $i\in\llbracket1,n\rrbracket$.
+	\item $f$ est continue sur $A$ si, et seulement si, toutes les fonctions $f_i$ sont continues sur $A$.
+	\item On a le même résultat en remplaçant "continue" par "uniformément continue" ou "lipschitzienne".
+\end{itemize}
+\end{PM}
+\section{Astuces}
+\begin{AS}{Montrer une connexité par arcs} On commence toujours par vérifier si l'ensemble n'est pas étoilé par rapport à un de ses points ou carrément convexe. Ensuite, on regarde s'il peut être interprété comme l'image d'un connexe par arcs par une application continue. Sinon, on revient à la définition et on improvise selon la situation (on peut utiliser des théorèmes de structure par exemple pour les matrices inversible).
+\end{AS}
+\begin{AS}{Déterminer des composantes connexes par arcs / Montrer une non connexité par arcs} On exhibe une application continue adaptée aux objets considérés (le déterminant pour les matrices inversibles, la trace pour les projecteurs et les symétries). Si l'image de l'ensemble a plus de deux composantes connexes par arcs, alors l'ensemble de départ n'est pas connexe par arcs, et il a autant de composantes connexes par arcs qu'il y a de composantes connexes par arcs dans l'image.
+\end{AS}
+\begin{AS}{Tout ouvert de $\R$ est réunion au plus dénombrable d'intervalles ouverts} Les composantes connexes par arcs de cet ouvert sont des intervalles ouverts par résultat de cours. On cale alors un rationnel par composante connexe par arcs, ce qui prouve qu'il ya un nombre au plus dénombrable de composantes connexes par arcs.
+\end{AS}
+\begin{app}
+	Cette méthode de caler un rationnel dans un sous-ensemble pour montrer qu'il y a un nombre au plus dénombrable de trucs est assez générale. Par exemple, cela permet de montrer qu'une fonction monotone admet un nombre au plus dénombrable de points de discontinuité.
+\end{app}
+\begin{AS}{Extraction double} Si on dispose de deux suites $(u_n)$ et $(v_n)$ à valeurs dans des compacts $K_1$ et $K_2$ et si on veut prendre une extraction qui converge pour les deux suites, il est plus rapide de considérer la suite $((u_n,v_n))$ à valeurs dans le compact $K_1\times K_2$ que d'extraire de l'une, puis d'extraire de nouveau.
+\end{AS}
+\begin{AS}{$\C$ privé d'une partie dénombrable} Si $D$ est une partie dénombrable de $\C$, alors $C\setminus D$ est connexe par arcs.
+\end{AS}
+\begin{proof}
+	Démonstration (faire un dessin) : on se donne $x$ et $y$ des complexes de $\C\setminus D$ et on note $\Delta $ la médiatrice de $[x,y]$. Pour tout $m$, on définit $p_m$ comme la concaténation du segment $[x,m]$ avec le segment $[m,y]$. Comme il y un un nombre indénombrable de $p_m$ et que $D$ est dénombrable, il existe un $m_0$ tel que $p_{m_0}$ soit entièrement contenu dans $\C\setminus D$. Ainsi, $\C\setminus D$ est connexe par arcs.
+\end{proof}
+\begin{AS}{Montrer une non compacité} Pour montrer qu’une partie n’est pas compacte ou créer une absurdité, on peut utiliser/créer une suite dont on ne pourra pas extraire une suite convergente : il s’agit d’une suite $(u_n)$ telle qu’il existe $\varepsilon>0$ tel que $$\forall (m,n)\in\N^2,\ m\ne n\implies d(u_m,u_n)\geqslant \varepsilon$$
+\end{AS}
+\begin{app}
+	Permet de montrer la précompacité d'un ensemble compact (tout compact est recouvert par un nombre fini de boules ouvertes de même rayon pour un rayon strictement positif quelconque) $\to$ \textit{cf} la partie exercices classiques.
+\end{app}
+
+
+\chapter{Espaces euclidiens}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Matrices orthogonalement semblables}Pour montrer que deux matrices $A$ et $B$ de $\mathcal{M}_n(\R)$ sont orthogonalement semblables, on pourra montrer qu'il existe une base orthonormée de $\R^n$ dans laquelle l'endomorphisme canoniquement associé à $A$ a pour matrice $B$.
+\end{PM}
+\section{Astuces}
+\begin{AS}{Stricte convexité de la sphère unité} Pour un EVN (donc pour un espace euclidien), la boule unité est strictement convexe (le faire par contraposée).
+\end{AS} \begin{app} Si $[u,v]\subset\mathcal{O}(E)$, alors $u=v$.\end{app}
+\begin{AS}{Un nouveau produit scalaire} Si $(\cdot|\cdot)$ est un produit scalaire sur $E$, on peut définir un produit scalaire sur $E\times\R$ par : $$\langle (x,\lambda),(y,\mu)\rangle:=(x|y)+\lambda\mu$$
+\end{AS} \begin{app} Montrer que si $(x_i|x_j)=-1$ pour $i\ne j$, alors $$\sum_{i=1}^{n}\frac{1}{1+\lVert x_i\rVert^2}\leqslant 1$$ On pourra utiliser l'inégalité de Bessel. \end{app}
+\begin{AS}{Une CS d'orthogonalité} Si $\lVert x\rVert=\lVert y\rVert$, alors $x+y\bot x-y$ (se voit bien graphiquement), le faire en développant le produit scalaire.
+\end{AS} \begin{app} Un endomorphisme qui conserve la norme est une constante fois un endomorphisme orthogonal : en effet, l'étude précédente montre dans une analyse qu'un tel endomorphisme est de norme constante sur les sphère, et on se ramène à un endomorphisme de norme $1$ sur la sphère unité par homogénéité. \end{app}
+\begin{AS}{Une façon de montrer qu'un endomorphisme est nul}
+Dans un espace préhilbertien, pour montrer qu’un endomorphisme est nul, on
+peut montrer qu’il est à la fois symétrique et antisymétrique.
+\end{AS}
+\begin{AS}{Obtenir une forme plus simple d'une forme linéaire} Pour "décomposer" une forme linéaire, on peut lui donner une nouvelle forme plus agréable, on introduit un produit scalaire et on s’assure d'être en dimension finie. On peut alors utiliser le théorème de représentation !
+\end{AS}
+\begin{AS}{Utilisation d'un autre produit scalaire} De façon générale, introduire un produit scalaire bien choisi, même si ce peut être difficile, est souvent utile car on dispose alors de plus d’outils !
+\end{AS}
+\begin{AS}{Utilisation du théorème de représentation} Si l'énoncé concerne en parallèle des formes linéaires et des espaces euclidiens, penser au théorème de représentation.
+\end{AS}
+\begin{AS}{Symétrisation d'un problème avec des matrices symétriques définies positives} Lorsqu'on travaille avec des matrices symétriques réelles définies positives, on peut écrire $A=S^2$ avec $S\in\mathcal{S}_n^{++}(\R)$ pour ensuite écrire : $$A+B=S(I+S\inv BS\inv)S$$ Cela permet notamment de passer au déterminant pour se ramener à un cas plus simple.
+\end{AS}
+\begin{AS}{Prouver un résultat sur $\mathcal{S}_n^+(\R)$ par densité} Pour prouver un résultat dans $\mathcal{S}_n^+(\R)$, on peut commencer par le prouver dans $\mathcal{S}_n^{++}(\R)$ puis l'étendre par continuité puisque $\mathcal{S}_n^{++}(\R)$ est dense dans $\mathcal{S}_n^+(\R)$.
+\end{AS}
+\begin{AS}{Le rayon spectral est une norme sur $\mathcal{S}_n(\R)$} On note $\rho$ le rayon spectral. Il est bien à valeurs dans $\R_+$. Si $\rho(A)=0$ et $A\in\mathcal{S}_n(\R)$, alors $A$ est diagonalisable et toutes ses valeurs propres sont nulles, donc $A=0$. Puisque $\text{Sp}(\lambda A)=\lambda\text{Sp}(A)$, on obtient immédiatement l'homogénéité. En utilisant la norme $2$ canonique et le fait que le rayon spectral d'une matrice symétrique est le maximum de la quantité $\lvert X^TAX\rvert$ pour $X$ de norme $1$, on obtient l'inégalité triangulaire.
+\end{AS}
+\begin{AS}{Matrices orthogonales et triangulaires} Ce sont les matrices avec uniquement des $-1$ ou des $1$ sur la diagonale et des $0$ partout ailleurs.
+\end{AS}
+\begin{AS}{Trigonalisation en base orthonormée} Si une matrice réelle est trigonalisable, alors elle est trigonalisable dans une base orthonormée, il suffit d'appliquer un processus d'orthonormalisation de Gram-Schmidt à la matrice de passage pour la trigonalisation. 
+\end{AS}\begin{app} Pour une matrice trigonalisable sur $\R$ de valeurs propres $\lambda_i$, $A\in S_n(\R)$ ssi $$Tr\left(AA^T\right)=\sum_{i}\lambda_i^2$$ Le sens direct est immédiat avec le théorème spectral. Pour le sens réciproque, trigonaliser en base orthonormée. \end{app}
+\begin{AS}{Topologie de $S_n(\R)$ $S_n^+(\R)$ et $S_n^{++}(\R)$} $S_n^+(\R)$ est un fermé relatif de $S_n(\R)$ comme l'intersection des noyaux des applications $$X\mapsto (X|MX)$$ pour $X\in\R^n$. $S_n^{++}(\R)$ est connexe par arcs car convexe. L'adhérence de $S_n^{++}(\R)$ dans $S_n(\R)$ est $S_n^+(\R)$. $S_n^{++}(\R)$ est un ouvert relatif de $S_n(\R)$ : en effet, on montre que son complémentaire dans $S_n(\R)$ est fermé par caractérisation séquentielle et avec une suite de vecteurs de norme $1$ (on utilise la compacité de la sphère unité de $R^n$).
+\end{AS}
+
+
+\chapter{Inégalités : minorations et majorations}
+\localtableofcontents
+\section{Astuces}
+\begin{AS}{Utilisation du binôme de Newton} Pour majorer ou minorer $(1+u)^n-1$, penser au binôme de Newton et écrire : $$(1+u)^n-1=\sum_{k=1}^{n}\binom{n}{k}u^k$$ Ensuite, majorer ou minorer en ne conservant que certains termes de la somme.
+\end{AS}
+\begin{AS}{Minoration d'une somme géométrique} Pour $t\geqslant0$, l'inégalité arithmético-géométrique permet d'obtenir l'inégalité : $$\sum_{k=0}^{n}t^k\geqslant(n+1)t^{n/2}$$ En général, cette inégalité est très utile et permet parfois de conclure un exercice à elle seule.
+\end{AS}
+\begin{AS}{Exponentielles négatives} Pour des exponentielles négatives, \textit{ie} de la forme $e-{ax}$ avec $a>0$, on peut obtenir des inégalités pour $x\geqslant0$ \textit{via} l'inégalité de Taylor-Lagrange puisque les dérivées $n$-èmes sont bornées.
+\end{AS}
+\begin{AS}{Une inégalité utile} Se souvenir que pour deux $f$ et $g$ des fonctions croissantes, on a toujours l'inégalité : $$\forall (x,y),\ (f(y)-f(x))(g(y)-g(x))\geqslant0$$
+\end{AS}
+\begin{app}
+	Pour $f$ et $g$ croissantes continues par morceaux sur $[0,1]$, on a : $$\int_{0}^{1}f\times \int_{0}^{1}g\leqslant \int_{0}^{1}fg$$
+	On a un résultat analogue sur les espérances (qui permet d'ailleurs de démontrer le résultat précédent sur les intégrales en passant par les sommes de Riemann).
+\end{app}
+\begin{AS}{Inégalité de Jensen pour les espérances} Si $X$ est une variable aléatoire discrète réelle d'espérance finie à valeurs dans un intervalle $I$ et si est $f$ est une fonction convexe sur $I$, alors : $$\E(f(X))\geqslant f\left(\E(X)\right)$$
+\end{AS}
+\begin{proof}
+	On sait alors que $\E[X]\in I$. Par conséquent, il existe $C\in\R$ telle que $$\forall x\in I,\ f(x)\geqslant f(\E[X])+C(x-\E[X])$$ Il suffit alors de composer par $X$ et d'utiliser la croissance de l'espérance en utilisant le fait que $X-\E[X]$ est centrée.
+\end{proof}
+\begin{AS}{Inégalité de Jensen pour les intégrales} Si $f:[a,b]\rightarrow I$ est continue par morceaux et $\varphi:I\rightarrow\R$ est convexe, alors : $$\varphi\left(\int_{a}^{b}f\right)\leqslant\int_{a}^{b}\varphi\circ f$$
+\end{AS}
+\begin{proof}
+	Passer par les sommes de Riemann et utiliser l'inégalité de Jensen dans les sommes de Riemann. Passer à la limite dans l'inégalité pour conclure.
+\end{proof}
+\begin{AS}{Cosinus hyperbolique et exponentielle} En utilisant un développement en série entière et le fait que $$\forall k\in\N,\ (2k)!\geqslant2^kk!$$ on peut montrer que $$\forall t\in\R,\ \cosh(t)\leqslant e^{t^2/2}$$
+\end{AS}
+\begin{app}
+	Cette inégalité est très utile en probabilités pour démontrer des inégalités de concentration à partir de l'inégalité de Markov.
+\end{app}
+\begin{AS}{Utilisation particulière de l'inégalité de Cauchy-Schwarz} On peut appliquer l'inégalité de Cauchy-Schwarz avec uniquement des $1$ pour obtenir : $$\left(\sum_{i=1}^{n}x_i\right)^2\leqslant n\sum_{i=1}^{n}x_i^2$$
+\end{AS}
+
+\begin{AS}{1-lipschitzianité du sinus} On a $$\forall x\in\R,\ \lvert\sin(x)\rvert\leqslant\lvert x\rvert$$ Pour le redémontrer rapidement, utiliser l'inégalité des accroissements finis.
+\end{AS}
+
+\begin{AS}{Inégalités de convexité} Pour les inégalités de convexités avec des fonctions usuelles, penser à faire un schéma pour faire apparaître les tangentes, mais aussi les cordes ! On obtient par exemple : $$\forall x\in\left[0,\frac{\pi}{2}\right],\ \frac{2x}{\pi}\leqslant \sin(x)\leqslant x$$
+$$\forall x\in[0,1],\ 1+x\leqslant e^x\leqslant1+(e-1)x$$
+\end{AS}
+
+\begin{AS}{Racines $n$-èmes de produits de sommes} Pour des inégalités faisant intervenir des racines $n$-èmes de produits de sommes, on peut utiliser le fait que la fonction $$x\mapsto\ln(1+e^x)$$ est convexe sur $\R$ (le prouver en la dérivant deux fois). Cela permet notamment d'obtenir, pour $a_i$ et $b_i$ des réels positifs, l'inégalité : $$\sqrt[n]{\prod_{i=1}^{n}a_i}+\sqrt[n]{\prod_{i=1}^{n}b_i}\leqslant\sqrt[n]{\prod_{i=1}^{n}(a_i+b_i)}$$
+\end{AS}
+
+\begin{AS}{Renormalisation} Lorsqu'on souhaite démontrer des inégalités assez complexes, penser à renormaliser pour obtenir une inégalité plus simple à démontrer.
+\end{AS}
+\begin{app}
+	Inégalités de de Hölder et de Minkowski 
+\end{app}
+
+\begin{AS}{Inégalité de Young}
+	Soit $(p,q)\in]1,+\infty[^2$ tel que $\displaystyle\frac{1}{p}+\frac{1}{q}=1$ (on dit que les exposants $p$ et $q$ sont conjugués). Alors, on dispose de l'inégalité de Young : $$\forall (x,y)\in\R_+^2,\ xy\leqslant\frac{x^p}{p}+\frac{y^q}{q}$$
+\end{AS}
+\begin{proof}
+	Si $x=0$ ou $y=0$, le résultat est trivial. Supposons $x>0$ et $y>0$. Alors : $$xy=\exp\left(\frac{p\ln(x)}{p}+\frac{q\ln(y)}{q}\right)\leqslant\frac{\exp(p\ln(x))}{p}+\frac{\exp(q\ln(y))}{q}=\frac{x^p}{p}+\frac{y^q}{q}$$ par convexité de la fonction exponentielle.
+\end{proof}
+\begin{AS}{Inégalité de Hölder}
+	Soit $(x_1,\ldots,x_n)\in\R_+^n$ et $(y_1,\ldots,y_n)\in\R_+^n$ ainsi que $p>1$ et $q>1$ tels que $\displaystyle\frac{1}{p}+\frac{1}{q}=1$. Alors, on dispose de l'inégalité de Hölder : $$\sum_{i=1}^{n}x_iy_i\leqslant\left(\sum_{i=1}^{n}x_i^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^{n}y_i^q\right)^{\frac{1}{q}}$$
+\end{AS}
+\begin{proof}
+	Commencer par supposer les sommes du membre de droite égales à un, et le faire alors en sommant l'inégalité de Young. Dans le cas général, renormaliser par ces sommes pour se ramener au cas traité précédemment (sauf si les sommes sont nulles, mais alors c'est que tous les coefficients sont nuls et le cas est trivial).
+\end{proof}
+\begin{app}
+	En particulier, on retrouve l'inégalité de Cauchy-Schwarz lorsqu'on prend $p=q=2$.
+\end{app}
+\begin{AS}{Inégalité de Minkowski}
+	Soit $(x_1,\ldots,x_n)\in\C^n$ et $(y_1,\ldots,y_n)\in\C^n$ ainsi que $p\geqslant 1$. On dispose de l'inégalité de Minkowski : $$\left(\sum_{i=1}^{n}\lvert x_i+y_i\rvert^p\right)^{\frac{1}{p}}\leqslant\left(\sum_{i=1}^{n}\lvert x_i\rvert^p\right)^{\frac{1}{p}}+\left(\sum_{i=1}^{n}\lvert y_i\rvert^p\right)^{\frac{1}{p}}$$
+\end{AS}
+\begin{proof}
+	Si $p=1$, c'est l'inégalité triangulaire usuelle. Supposons $p>1$ et remarquons alors que les exposants $p$ et $q=\displaystyle\frac{p}{p-1}$ sont conjugués. Ensuite, écrire $$\lvert x+y\rvert^p\leqslant(\lvert x\rvert+\lvert y\rvert)\times\lvert x+y\rvert^{p-1}$$ puis appliquer l'inégalité de Hölder.
+\end{proof}
+\begin{AS}{Inégalité de Young sur les intégrales}
+	Soit $f:\R_+\to\R_+$ de classe $\C^1$ bijective. Alors, on dispose de l'inégalité : $$\forall (x,y)\in\R_+^2,\ xy\leqslant\int_{0}^{x}f(t)\ dt+\int_{0}^{y}f\inv(t)\ dt$$ avec égalité si, et seulement si, $y=f(x)$.
+\end{AS}
+\begin{proof}
+	Faire la différence des deux membres en fixant $x$ (ou $y$, au choix).
+\end{proof}
+\begin{AS}{Inégalité de réordonnement}
+	Soit $a_1\leqslant\ldots\leqslant a_n$ et $b_1\leqslant\ldots\leqslant b_n$ des réels. Alors : $$\forall\sigma\in\mathcal{S}_n,\ \sum_{i=1}^{n}a_ib_{n+1-i}\leqslant\sum_{i=1}^{n}a_ib_{\sigma(i)}\leqslant\sum_{i=1}^{n}a_ib_i$$
+\end{AS}
+\begin{proof}
+	Procéder par récurrence sur $n$. Pour l'hérédité, isoler les termes d'indice $n+1$ et appliquer l'hypothèse de récurrence avec une permutation et une transposition de $\llbracket1,n\rrbracket$.
+\end{proof}
+\begin{AS}{Convexité de la norme au carré} L'application $x\mapsto \lVert x\rVert^2$ est convexe.
+\end{AS}
+\begin{proof}
+	L'inégalité triangulaire et l'homogénéité donnent l'inégalité sans les carrés, puis on utilise la convexité de la fonction $x\mapsto x^2$.
+\end{proof}
+\begin{AS}{Utilisation des coordonnées polaires pour des fonctions de deux variables} Pour une fonction de deux variables réelles, pour chercher des \textit{extrema}, des majorations ou des minoration	s sur un cercle, on peut essayer de passer en coordonnées polaires : $x = r\cos(\theta)$, $y = r\sin(\theta)$ puis faire de la trigonométrie.
+\end{AS}
+\begin{AS}{Log-convexité} Si $f$ est de classe $\mathcal{C}^2$ à valeurs dans $\R_+\st$, alors $\ln\circ f$ est convexe si, et seulement si, $$(f')^2\leqslant f\times f''$$ Cette inégalité peut parfois découler de l'inégalité de Cauchy-Schwarz, en particulier lorsque $f$ est une intégrale à paramètre. L'équivalence se prouve en dérivant deux fois $\ln\circ f$.
+\end{AS}
+\begin{app}
+	Fonction Gamma.
+\end{app}
+
+
+\chapter{Suites et séries numériques}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Utilisation d'une série télescopique}Pour étudier la convergence d'une suite $(u_n)_{n\in\N}$, il faut penser à étudier éventuellement la convergence de la série $\displaystyle\sum_{n\geqslant 1}(u_{n+1}-u_n)$.
+\end{PM}
+\begin{PM}{Règle $n^\alpha u_n$} On a les différents cas.
+\begin{itemize}
+	\item Si $\exists\alpha >1 \ : \ n^\alpha u_n\to 0$, alors $\sum u_n$ converge absolument.
+	\item Si $\exists\alpha \leqslant1 \ : \ n^\alpha u_n\to+\infty$, alors $\sum u_n$ diverge.
+	\item Si $\exists M\geqslant m>0\ : \ m\leqslant n^\alpha u_n\leqslant M$, alors $\sum u_n$ est de même nature que $\sum n^{-\alpha}$.
+\end{itemize}
+\end{PM}
+\begin{PM}{Comparaison série/intégrale} Pour une comparaison série intégrale avec monotonie, on fait un dessin !
+\end{PM}
+\begin{PM}{Équivalent d'un reste}Lorsque $u_{n+1}/u_n$ admet une limite non nulle différente de $1$, pour trouver un équivalent du reste, on peut sommer l'équivalent $u_{n+1}\sim lu_n$. Si $(u_n)$ et positive sommable et vérifie ces conditions, on peut montrer alors que $$R_n\sim\frac{u_n}{1-l}$$
+\end{PM}
+\begin{PM}{Étude d'une suite récurrente} Dans l'ordre :
+\begin{itemize}
+	\item Faire un dessin ;
+	\item Trouver un intervalle stable ;
+	\item Déterminer le signe de $f-\text{id}$, la potentielle croissance de $f$ (assure la monotonie de la suite) ou la potentielle décroissance de $f$ (assure les monotonies de $(u_{2n})$ et $(u_{2n+1})$) ;
+	\item Résoudre $f(x)=x$ et utiliser la continuité.
+\end{itemize}
+\end{PM}
+\section{Astuces}
+\begin{AS}{Fonction de décalage} Quand on travaille sur des sommes avec des suites : parfois introduire le shift, à savoir l’application $(u_n)_{\in\N}\mapsto(u_{n+1})_{n\in\N}$. Il s’agit d’un endomorphisme de $\K^\N$, et avec un peu de chance on pourra ensuite utiliser la formule du binôme de
+Newton sur les endomorphismes.
+\end{AS}
+\begin{AS}{Étude de produits infinis} Pour l’étude d’un produit infini, on veut passer au logarithme mais il faut s’assurer que tous les facteurs sont strictement positifs avant. Sinon, on peut songer à les grouper : par exemple si les facteurs de $\displaystyle\prod_{k\geqslant0}a_k$ sont tous strictement négatifs, alors on
+peut considérer $$\sum_{k\geqslant 0}\ln(a_{2k}a_{2k+1})$$
+\end{AS}
+\begin{AS}{Astuce pour ne pas s'embêter avec une somme} Quand on travaille avec $\displaystyle\sum_{k=1}^{n}a_k$, pour éviter d’avoir une discussion à faire, on peut
+décider de prendre $a_k=0$ pour $k>n$ et travailler directement sur $\displaystyle\sum_{k=1}^{+\infty}a_k=\sum_{k=1}^{n}a_k$
+\end{AS}
+\begin{AS}{Conjugué algébrique et binôme de Newton} Quand on voit la suite $((1+\sqrt{2})^n)_{n\in\N}$, il faut penser à introduire $((1-\sqrt{2})^n)_{n\in\N}$ (c'est le conjugué algébrique !). L’avantage est que le binôme de Newton assure que $(1+\sqrt{2})^n +(1-\sqrt{2})^n$ est un entier ! Il faut penser à la même chose face à $(1+\sqrt{k})^n$ en général.
+\end{AS}
+\begin{app}
+	Pour approfondir, on pourra remarquer que remplacer une suite géométrique de raison $1+\sqrt{2}$ par une suite géométrique de raison $1-\sqrt{2}$ permet de mieux contrôler : en effet, $\lvert 1-\sqrt{2}\rvert <1$ donc cette suite géométrique tend vers $0$.
+\end{app}
+\begin{AS}{Utilisation d'un $\ln$} Pour montrer l'existence d’une limite d’une suite $(u_n)$ ou d’une fonction $f$ strictement positive, on peut montrer que la suite des logarithmes converge : on peut établir la convergence de $(\ln(u_n))_n$ ou bien de $\ln(f)$.
+\end{AS}
+\begin{app}
+	Produits infinis typiquement, on ne peut pas faire autrement.
+\end{app}
+\begin{AS}{Utilisation des DL dans un cadre plus large}Si on a besoin de faire un développement limité pénible dans le cadre d’une preuve plus large, ne pas s’embêter à calculer les coefficients s’ils ne sont pas triviaux : on les note $\alpha$, $\beta$, etc. pour faire les calculs et on les détermine après si besoin.
+\end{AS}
+\begin{AS}{Utilisation des restes} Pour des séries dans lesquelles des restes (éventuellement d’autres séries !) interviennent dans le terme général, penser à utiliser le fait que $u_n = R_n-R_{n+1}$
+\end{AS}
+\begin{app}
+	Nature des séries $\displaystyle \sum\frac{u_n}{S_n^\alpha}$ lorsque $\sum u_n$ diverge en fonction de $\alpha$, et un résultat avec des restes dans l'autre cas.
+\end{app}
+\begin{AS}{Amélioration du critère de divergence} Pour montrer que $\sum u_n$ diverge, on peut montrer qu’une tranche $\displaystyle \sum_{k=a(n)}^{b(n)}u_k$ ne converge pas vers zéro (par exemple en minorant le module ou la valeur absolue) quand
+$n\to+\infty$, en choisissant bien $a$ et $b$ telles que $a(n)\to+\infty$ et $b(n)\to+\infty$ avec $(b(n)-a(n))$ bornée. On étend ainsi le critère de divergence grossière, qui ne considère qu’un unique terme, pour considérer toute une tranche.
+\end{AS}
+\begin{AS}{Pousser un développement asymptotique plus loin}Pour l’étude des suites implicites, idées pour obtenir un DL ou un DA à l’ordre suivant : par exemple pour $$u_n = \alpha + \frac{1}{n} + o\left(\frac{1}{n}\right)$$ il y a deux possibilités : on peut
+chercher un équivalent de $un -\alpha-\displaystyle\frac{1}{n}$ ou bien de $n(u_n-\alpha)-1$. Penser aux deux et utiliser le plus simple !
+\end{AS}
+\begin{AS}{Passer un équivalent au $\ln$} Si $(a_n)$ et $(b_n)$ sont à valeurs strictement positives et tendent vers $0$ ou $+\infty$, alors $$a_n\sim b_n\Longrightarrow \ln(a_n)\sim\ln(b_n)$$ En effet, la différence est un $o(\ln(a_n))$.
+\end{AS}
+\begin{AS}{Règle de Raabe-Duhamel (HP)} Soit $(u_n)$ une suite à valeurs strictement positives vérifiant : $$u_n=1-\frac{\alpha}{n}+o\left(\frac{1}{n}\right)$$ On a les résultats suivants : \begin{itemize}
+	\item si $\alpha > 1$, alors $\sum u_n$ converge ;
+	\item si $\alpha <1$, alors $\sum u_n$ diverge ;
+	\item lorsque $\alpha=1$, on ne peut pas conclure. Les séries de Bertrand couvrent tous les cas possibles.
+\end{itemize} Cela se prouve en comparant à $v_n=\displaystyle\frac{1}{n^\beta}$ pour $\beta$ entre $1$ et $\alpha$, en faisant le quotient de de deux termes consécutifs de $(v_n)$ et avec la règle de d'Alembert.
+\end{AS}
+\begin{AS}{Utilisation d'un développement asymptotique du terme général}
+\end{AS}
+\begin{AS}{Sommation par tranches}
+\end{AS}
+\begin{AS}{Transformation d'Abel}
+\end{AS}
+\begin{AS}{Utilisation d'une primitive}
+\end{AS}
+\begin{AS}{Technique de l'équation différentielle} Si notre suite est définie par récurrence, on peut essayer de trouver une équation différentielle discrète vérifiée par la suite. On intègre ensuite cette équation différentielle pour trouver la une expression approchée de ce que devrait être notre suite. On trouve ensuite un équivalent de la série télescopique associée, avant de somme les relations de comparaison. Auparavant, on aura étudié la monotonie de la suite ou sa convergence pour justifier les DL effectués plus tard. \textbf{Ainsi, pour déterminer cette équation différentielle, on doit effectuer des DL}.
+\end{AS}
+\begin{app}
+	Voici un exemple expliqué : on prend $u_0>0$ et $u_{n+1}=\ln(1+u_n)$. Cette suite est bien définie et par concavité de $\ln$ elle décroît. Elle est minorée  par $0$ donc converge d'après le théorème de la limite monotone. cette limite est nécessairement $0$, c'est le seul point fixe de $x\mapsto x-\ln(1+x)$. Ainsi : $$u_{n+1}\approx u_n-\frac{u_n^2}{2}$$ Ainsi, $(u_n)$ vérifie une quasi équation différentielle de la forme : $$u'=-\frac{u^2}{2}$$ En intégrant, on obtient qu'on devrait avoir $$\frac{1}{u}=\frac{x}{2}$$ On étudie alors la suite télescopique de $v_n=\displaystyle\frac{1}{u_{n+1}}-\frac{1}{u_n}$ En effet, on a alors : $$v_n=\frac{1}{u_n}\left(\frac{1}{1-\frac{u_n}{2}+o(u_n)}-1\right)=\frac{1}{u_n}\left(1+\frac{u_n}{2}+o(u_n)-1\right)\xrightarrow[n\to +\infty]{}\frac12$$ En somme ensuite les relations de comparaison (ou on utilise le théorème de Cesaro) pour obtenir, après passage à l'inverse : $$u_n\sim\frac{2}{n}$$
+\end{app}
+\begin{app}
+	Suite définies par $u_{n+1}=u_n+\displaystyle\frac{1}{u_n}$, $u_{n+1}=u_n+e^{-u_n}$, $u_{n+1}=u_n+\ln(u_n)$ (très difficile, pour l'équation différentielle, connaître l'équivalent du dilogarithme avec la fonction de répartition des nombres premiers et l'équivalent de cette fonction de répartition en $x/\ln(x)$).
+\end{app}
+
+
+\chapter{Intégrales généralisées}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Utilisation d'une série} Pour $N\in\N$ et $a>0$, on a d'après la relation de Chasles : $$\sum_{n=1}^{N}\int_{na}^{(n+1)a}f=\int_{a}^{(N+1)a}f$$ Par conséquent, si l'intégrale $\displaystyle\int_{a}^{+\infty} f$ converge alors la série $\displaystyle\sum \int_{na}^{(n+1)a}f$ converge. Ainsi, on peut utilise la divergence d'une série pour prouver la divergence d'une intégrale. Attention, la réciproque est fausse.
+\end{PM}
+\begin{PM}{Utilisation d'une primitive} Si $F$ est une primitive de $f$, alors l'intégrale $\displaystyle\int_{a}^{b}f$ converge si, et seulement si, $F$ admet des limites finies en $a$ et en $b$, et l'on a alors : $$\int_{a}^{b}f=\lim_{b}F-\lim_{a}F$$ quantité alors notée $[F(t)]_a^b$.
+\end{PM}
+\begin{PM}{Utilisation d'une série pour une fonction positive} Soit $a>0$ et $f\in\mathcal{CM}([a,+\infty[,\R_+)$. Puisqu'on a pour tout $N\in\N$ : $$\sum_{n=1}^{N}\int_{na}^{(n+1)a}f=\int_{a}^{(N+1)a}f$$ on obtient dans $\overline{\R_+}$, par passage à la limite et positivité : $$\sum_{n=1}^{+\infty}\int_{na}^{(n+1)a}f=\int_{a}^{+\infty}f$$ En particulier, la série $\displaystyle\sum \int_{na}^{(n+1)a}f$ et l'intégrale l'intégrale $\displaystyle\int_{a}^{+\infty} f$ ont même nature.
+\end{PM}
+\begin{PM}{Continue positive non nulle} Si $f$ est une fonction continue positive et non nulle sur $I$, alors $\displaystyle\int_I f>0$.
+\end{PM}
+\begin{PM}{Comment étudier l'intégrabilité}Pour étudier l'intégrabilité d'une fonction continue par morceaux sur un intervalle $I$, on peut s'intéresser au comportement asymptotique de $f$ au voisinage des "bornes ouvertes" de $I$, puis utiliser le théorème de comparaison. En particulier, si l'intervalle $I$ est ouvert, on étudiera séparément les deux bornes.
+\end{PM}
+\begin{PM}{Intervalles bornés} On a les différents résultats.
+\begin{itemize}
+	\item Si une fonction $f$ est bornée au voisinage d'un point $b\in\R$, alors on a $f\underset{b}{=}O(1)$. La fonction constante égale à $1$ étant intégrable sur tout intervalle borné, on en déduit que $f$ est intégrable en $b$.
+	\item En particulier, si $f\in\mathcal{CM}([a,b[,\K)$ admet une limite finie en $b\in\R$, alors $f$ est intégrable.
+\end{itemize}
+\end{PM}
+\begin{PM}{Utilisation de l'intégration par parties et d'un passage à la limite} En pratique, on peut commencer par intégrer par parties sur les primitives, puis passer à la limite. Il y a deux buts possibles :
+\begin{itemize}
+	\item justifier une convergence ;
+	\item effectuer un calcul.
+\end{itemize}
+\end{PM}
+\begin{PM}{Intégration des relations de comparaison : comparaison des restes} On peut appliquer le théorème si la fonction à laquelle on compare est de signe constant et intégrable.
+\end{PM}
+\begin{PM}{Intégration des relations de comparaison : comparaison des intégrales partielles} On peut appliquer le théorème si la fonction à laquelle on compare est de signe constant et non intégrable.
+\end{PM}
+\section{Astuces}
+\begin{AS}{Attention !} L'étude d'une intégrabilité commence par \textbf{CONTINUE PAR MORCEAUX SUR} $\ldots$ et ensuite, discussion aux bornes.
+\end{AS}
+\begin{AS}{Étude d'une intégrale semi-convergente} Pour des intégrales semi-convergentes, on effectue en général une intégration par parties pour transformer l'intégrale en faisant apparaître une intégrale absolument convergente. Sinon, on pourra effectuer un développement asymptotique de la fonction, le dernier terme écrit étant :\begin{itemize}
+	\item ou bien une fonction intégrable ;
+	\item ou bien de signe constant (dans le cas où la fonction est à valeurs réelles).
+\end{itemize}
+\end{AS}\begin{AS}{Intégration par parties itérée sur un segment} Soit $I$ un intervalle de $\R$, $ n\in\N$ ainsi que $f$ et $g$ de fonctions de classe $\mathcal{C}^n$ de $I$ dans $\R$. Alors, pour tout $(a,b)\in I^2$ : $$\int_{a}^{b}f^{(n)}g=\left[\sum_{i=0}^{n-1}(-1)^if^{(n-1-i)}(t)g^{(i)}(t)\right]_a^b+(-1)^n\int_{a}^{b}fg^{(n)}$$ Cette formule n'est pas au programme, mais elle peut souvent s'avérer utile. Pour la démontrer, faire une récurrence et des IPP (évidemment...).
+\end{AS}
+\begin{app}
+	Il est notamment pratique de connaître cette formule car dans des cas particuliers, on peut rapidement se perdre avec l'expression exacte des dérivées d'une fonction, alors que si on applique la formule directement, on peut ensuite remplacer par les dérivées que l'on connaît bien, notamment si $g$ est la fonction exponentielle.
+\end{app}
+\begin{app}
+	Preuve de l'irrationalité de $e$ : une grosse formule avec des IPP itérées traîne au milieu et on s'y perd vite...
+\end{app}
+\begin{AS}{Intégrations par parties} Dans les intégrations par parties, il faut parfois accepter de jouer avec des constantes d'intégration pour faire converger le crochet ou l'annuler.
+\end{AS}
+\begin{app}
+	Voici un exemple classique : $$\int_{0}^{+\infty}\frac{\sin(x)}{x}dx=\left[\frac{1-\cos(x)}{x}\right]_0^{+\infty}+\int_{0}^{+\infty}\frac{1-\cos(x)}{x^2}dx$$
+\end{app}
+\begin{AS}{Changements de variable usuels} On a les changements usuels suivants : 
+\begin{itemize}
+	\item $1+t^2$ : on pose $t=\tan(u)$ ;
+	\item $\sqrt{t^2-1}$ : on pose $t=\cosh(u)$ ;
+	\item $\sqrt{1+t^2}$ : on pose $t=\sinh(u)$.
+\end{itemize}
+\end{AS}\begin{AS}{Changement de variable autosimilaire} On pourra parfois utilise le changement de variable autosimilaire : $$u=\frac{1-t}{1+t}$$ Il se comporte bien avec certaines fractions rationnelles.
+\end{AS}\begin{AS}{Règles de Bioche} On considère $\displaystyle\int r(\sin(\theta),\cos(\theta),\tan(\theta))\ d\theta$ et on pose $$R(\theta)=r(\sin(\theta),\cos(\theta),\tan(\theta))\ d\theta$$ Alors, si $R$ est invariante par :
+\begin{itemize}
+	\item $\theta \to -\theta$, on pose $u=\cos(\theta)$ ;
+	\item $\theta \to \pi-\theta$, on pose $u=\sin(\theta)$ ;
+	\item $\theta \to \pi+\theta$, on pose $u=\tan(\theta)$ ;
+	\item deux des trois invariances précédentes, alors aussi par la troisième et on pose alors $u=\cos(2\theta)$ ;
+	\item sinon, tant pis, on pose $\displaystyle u=\tan\left(\frac{\theta}{2}\right)$.
+\end{itemize}
+Le quatrième est le plus rapide de très loin, puis ce sont les 3 premiers, et enfin le dernier. Il existe un exemple pour lequel le quatrième changement de variable aboutit à un dénominateur de degré 2, de degré 4 pour les 3 premiers, et de degré 8 pour le dernier. On comprend la puissance de ces règles.
+\end{AS}
+\begin{app}
+	Primitives de $1/\sin$, de $1/\cos$. Calculs d'intégrales dégueulasses de fractions rationnelles de $\sin$, $\cos$ et $\tan$ en tout genre.
+\end{app}
+\begin{app}
+	Sert  dans un exercice de séries entières où traîne une intégrale de $$\frac{1}{1+a\cos(t)}$$
+\end{app}
+\begin{AS}{Intégrale dans une intégrale} Quand on a une intégrale avec une autre intégrale dedans, du type $$\int \ldots \left(\int_0^x\ldots du\right) dx$$ on fait une intégration par partie pour dériver $x\mapsto\displaystyle\int_0^x\ldots du$ et se débarrasser de cette intégrale.
+\end{AS}\begin{AS}{Utilisation d'une équation différentielle} Pour trouver une expression plus simple d’une fonction du type $x\mapsto \displaystyle\int_0^x\ldots dt$, on peut la dériver et chercher à montrer qu’elle est solution d’une équation différentielle que l’on résout ensuite.
+\end{AS}
+
+
+\chapter{Fonctions vectorielles}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Utilisation des fonctions coordonnées} Une fois une base de $E$ de dimension finie fixée, pour établir des propriétés de l'intégrale d'une fonction $f:[a,b]\to E$, on peut souvent se ramener aux fonctions coordonnées.
+\end{PM}
+\section{Astuces}
+\begin{AS}{Morphismes continus} Un morphisme continu de $(\R,+)$ dans $(\C,\times)$ est de classe $\mathcal{C}^1$. Pour montrer cela, on intègre par rapport à une variable pour obtenir une expression en fonction d'une primitive. Attention, il faut sûrement distinguer le cas d'un morphisme constant. Cette méthode se généralise à d'autres morphismes
+\end{AS}\begin{AS}{Théorème de Rolle généralisé} On se donne $(a,b)\in\overline{\R}^2$ avec $a<b$ et on prend $f$ dérivable sur $]a,b[$. On suppose que $f$ admet des limites à droite en $a$ et à gauche en $b$ qui sont égales. Alors : $$\exists c\in[a,b],\ f'(c)=0$$
+\end{AS}
+\begin{proof}
+	$f$ ne peut pas être injective, sinon elle serait strictement monotone par continuité et on ne pourrait avoir l'égalité des limites. Par conséquent, on fixe $(a',b')\in]a,b[^2$ tel que $f(a')=f(b')$ et on applique le théorème de Rolle (cas fini) à la restriction de $f$ à $]a',b'[$.
+\end{proof}
+
+
+\chapter{Suites et séries de fonctions}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Rédaction d'une convergence uniforme} Pour montrer la convergence uniforme de $(f_n)$ vers $f$ : $$\lVert f_n(x)-f(x)\rVert\leqslant\underbrace{\text{quelque chose de petit}}_{\text{indépendant de }x}$$ En particulier, le quelque chose de petit pourra être une suite qui tend vers $0$.
+\end{PM}
+\begin{PM}{Établissement d'une convergence uniforme} Pour établir la convergence uniforme de la suite $(f_n)$, on peut :
+\begin{itemize}
+	\item commencer par déterminer une fonction $f$ vers laquelle $(f_n)$ converge simplement ;
+	\item chercher ensuite à établir une majoration $\lVert f_n(x)-f(x)\rVert\leqslant \alpha_n$, valable à partir d'un certain rang, où $(\alpha_n)$ est une suite tendant vers $0$ ;
+	\item à défaut, par retour à la définition, obtenir, pour tout $\varepsilon>0$, à partir d'un certain rang, la majoration $\lVert f_n(x)-f(x)\rVert\leqslant\varepsilon$ pour tout $x$.
+\end{itemize}
+\end{PM}
+\begin{PM}{Autre façon de montrer une convergence uniforme} Lorsque $A$ est un intervalle de $\R$ et $F=\R$, l'étude des variations de $f_n-f$ peut permettre de calculer $\alpha_n=\mathcal{N}_\infty(f_n-f)$. Suivant que $(\alpha_n)$ tend vers $0$ ou non, on peut conclure quant à la convergence uniforme de $(f_n)$ vers $f$.
+\end{PM}
+\begin{PM}{Montrer une non convergence uniforme} Pour montrer que la suite $(f_n)$ ne converge pas uniformément vers $f$, il suffit d'exhiber une suite $(x_n)\in A^\N$ telle que $(f_n(x_n)-f(x_n))$ ne tend pas vers $0$.
+\end{PM}
+\begin{PM}{Utilisation des formules de Taylor} Lorsqu'on a établi une limite simple à l'aide d'une formule de Taylor-Young (souvent via un équivalent), il est judicieux de montrer la convergence uniforme à l'aide de l'inégalité de Taylor-Lagrange correspondante.
+\end{PM}
+\begin{PM}{Établir une convergence uniforme au voisinage de tout point} Pour établir la convergence uniforme de la suite $(f_n)$ au voisinage de tout point d'un intervalle de $\R$, il suffit de montrer que la suite $(f_n)$ converge uniformément sur tout segment de cet intervalle.
+\end{PM}
+\begin{PM}{Établir une convergence normale} Pour montrer que $\sum u_n$ converge normalement, il suffit d'exhiber une série $\sum a_n$ convergente telle que $\forall n\in\N,\ \forall x\in A,\ \lVert u_n(x)\rVert\leqslant a_n$. Au niveau de la rédaction, cela donne : $$\lVert u_n(x)\rVert \leqslant \underbrace{a_n}_{\text{indépendant de }x}\text{ sommable}$$
+\end{PM}
+\begin{PM}{Convergence uniforme d'une série via la convergence normale} Pour montrer la convergence uniforme d'une série (par exemple pour montrer que sa somme est continue), on regarde d'abord s'il n'y a pas convergence normale, ce qui est plus simple puisqu'il suffit de considérer son terme général.
+\end{PM}
+\begin{PM}{Convergence uniforme d'une suite par une série} Pour montrer que la suite $(f_n)$ converge uniformément sur $A$ (et montrer ainsi, par exemple, qu'elle admet une limite continue), il est souvent pratique de montrer que la série $\sum (f_{n+1}-f_n)$ converge normalement sur $A$.
+\end{PM}
+\begin{PM}{CVU et CVN : sur des parties fermées} Pour montrer des convergences uniformes et des convergences normales, sauf rares exceptions, on se place sur des parties fermées de l'ensemble de définition.
+\end{PM}
+\begin{PM}{Classe $\mathcal{C}^\infty$} Pour montrer que la limite d'une suite de fonctions de classe $\mathcal{C}^\infty$ est de classe $\mathcal{C}^\infty$, il suffit de montrer la convergence uniforme sur tout segment de toutes les suites dérivées.
+\end{PM}
+\begin{PM}{Détermination d'un équivalent par le théorème d'interversion de limites} Pour déterminer un équivalent de la somme d'une série en une borne de son intervalle de définition, on peut deviner l'équivalent puis le démontrer à l'aide du théorème d'interversion de limites.
+\end{PM}
+\begin{PM}{Détermination d'un équivalent par comparaison série/intégrale} Pour déterminer un équivalent de la somme d'une série en une borne de son intervalle, on peut utiliser une comparaison série/intégrale.
+\end{PM}
+\section{Astuces}
+\begin{AS}{Usage des théorèmes d’approximation uniforme } On commence par montrer la propriété souhaitée pour une fonction constante (puis on étend aux fonctions en escalier), ou bien pour les fonctions polynomiales (qui sont de classe $\mathcal{C}^1$, ce qui permet de faire des intégrations par partie dans les intégrales, par exemple...) puis on généralise le résultat à une fonction quelconque en l’approchant par une fonction "simple" (en escalier, polynomiale).
+\end{AS}
+\begin{app}
+	Lemme de Riemann-Lebesgue version segment. La version générale s'en déduit par interversion de limites.
+\end{app}
+\begin{AS}{Théorème de la double limite}Le théorème de la double limite est valable pour des fonctions $f:A\to E$ avec $E$ un espace vectoriel normé de dimension finie et $A$ une partie quelconque d’un espace vectoriel normée de dimension finie. En particulier, on peut prendre $A = \N$ ou $\Z$ et appliquer ce théorème à des suites !
+\end{AS}
+\begin{AS}{Arme anti-colleur} Pour prouver une convergence uniforme, on pourra parfois interpréter notre suite de fonctions comme $$f_n(t)=\varphi(nt)g(n)$$ avec $\varphi$ bornée et $g$ qui tend vers $0$ quand $n$ tend vers $+\infty$. Cela ira beaucoup plus vite que de tout faire à la main. Souvent, c'est quand la fonction fait apparaître des $nt$.
+\end{AS}
+\begin{app}
+	Voir la partie exercices classique : $\displaystyle f_n(t)=\frac{\sin(nt)}{n\sqrt{t}}$ par exemple
+\end{app}
+\begin{AS}{Technique du maillage} Parfois, il pourra être intéressant de faire apparaître un maillage fini ou dénombrable du segment sur lequel on travaille pour pouvoir utiliser des propriétés des suites de fonctions (comme la lipschitzianité ou la croissance) ou bien extraire avec un procédé diagonal. Voir les derniers exercices de la première section d'exercices classiques (fonctions lipschitziennes et théorème d'Ascoli) et le deuxième théorème de Dini.
+\end{AS}
+
+
+\chapter{Intégrales à paramètres}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Intégrale dont la borne dépend d'un paramètre} Il faut bien noter, dans l'énoncé du théorème de convergence dominée, que l'intervalle d'intégration est fixe. Prolonger la fonction par la fonction nulle ou effecteur un changement de variable permet parfois de contourner cette difficulté lorsque l'intervalle d'intégration dépend de $n$.
+\end{PM}
+\begin{PM}{Justification d'une interversion série/intégrale}Lorsque le théorème d'intégration terme à terme ne s'applique pas, pour justifier une interversion série/intégrale, on pourra parfois, en notant $S_n$ et $R_n$ la somme partielle et le reste d'ordre $n$ de la série de fonctions $\sum u_n$ de somme $S$, vérifier que : $$\int_IR_n\xrightarrow[n\to+\infty]{}0 \text{  ou  }\int_IS_n\xrightarrow[n\to+\infty]{}\int_I S$$ Pour établir de telles limites, on utilisera en général le théorème de convergence dominée.
+\end{PM}
+\begin{PM}{Établissement de la domination sur $A$ pour le théorème de continuité} Une domination sur tout l'ensemble est toujours suffisante, c'est pourquoi on commencera toujours, dans la pratique, par chercher à établir une telle domination. Lorsque $A$ est un intervalle de $\R$, on pourra chercher une domination sur tout segment de $A$ ou sur toute famille d'intervalles adaptée à la situation, c'est-à-dire permettant d'obtenir une domination sur tout segment de $A$.
+\end{PM}
+\begin{PM}{Établissement de la domination sur $J$ pour le théorème de dérivabilité}
+Bien entendu, une domination sur tout $J$ est suffisante. Dans la pratique, on commencera par essayer d'établir une domination globale et, seulement si nécessaire, on se limitera aux segments de $J$, voire à une famille d'intervalles adaptée à la situation, c'est-à-dire permettant d'obtenir une domination sur tout segment de $J$.
+\end{PM}
+\begin{PM}{Classe $\mathcal{C}^\infty$} Pour montrer que $g$ est de classe $\mathcal{C}^\infty$, il suffit de vérifier que : \begin{itemize}
+	\item pour tout $t\in I$, la fonction $x\mapsto f(x,t)$ est de classe $\mathcal{C}^\infty$ ;
+	\item pour tout $k\in\N$, pour tout $x\in J$, la fonction $\displaystyle t\mapsto\frac{\partial^k f}{\partial x^k}(x,t)$ est continue par morceaux sur $I$ ;
+	\item chacune des dérivées partielles $\displaystyle \frac{\partial^k f}{\partial x^k}$ est dominée sur tout segment.
+\end{itemize}
+\end{PM}
+\section{Astuces}
+\begin{AS}{Une "factorisation" utile} Si $f$ est dérivable, remarquer que la fonction : $$\begin{array}{lrcl}
+	F:&(u,v)&\longmapsto&\begin{cases}
+		\displaystyle\frac{f(u)-f(v)}{u-v}\text{ si }u\ne v \\
+		f'(u)\text{ si }u=v
+	\end{cases}
+\end{array} $$ peut se réécrire sous la forme : $$F(u,v)=\int_{0}^{1}f'\big((1-t)u+tv\big)\ dt$$ Cela permet de ne plus avoir à séparer les deux cas et de par exemple appliquer les théorèmes de continuité ou de dérivation.
+\end{AS}
+\begin{app}
+	Théorème de division.
+\end{app}
+
+
+\chapter{Séries entières}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Utilisation de la sommation par paquets} On suppose que $I$ est réunion disjointe de $(I_\lambda)_{\lambda\in\Lambda}$. Soit $(a_i)_{i\in I}$ une famille d'éléments de $E$, on a lorsque la famille est sommable ou à valeurs dans $\overline{\R_+}$ : $$\sum_{i\in I}a_i=\sum_{\lambda\in\Lambda}\left(\sum_{i\in I_\lambda}a_i\right)$$
+\end{PM}
+\begin{PM}{Comment appliquer le théorème de sommation par paquets} Pour appliquer le théorème de sommation par paquets, on appliquera en général de le théorème de sommation par paquets (cas positif) pour montrer : $$\sum_{\lambda\in\Lambda}\left(\sum_{i\in I_\lambda}\lVert a_i\rVert\right)<+\infty$$ puis on l'appliquera sans les normes avec le même recouvrement disjointe $(I_\lambda)$.
+\end{PM}
+\begin{PM}{Utilisation des sommes doubles}Si $(a_{p,q})_{(p,q)\in\N^2}$ est une famille à valeurs dans $\overline{\R_+}$ ou une famille sommable, on a : $$\sum_{(p,q)\in\N^2}a_{p,q}=\sum_{p=0}^{+\infty}\left(\sum_{q=0}^{+\infty}a_{p,q}\right)=\sum_{q=0}^{+\infty}\left(\sum_{p=0}^{+\infty}a_{p,q}\right)=\sum_{n=0}^{+\infty}\left(\sum_{p+q=n}a_{p,q}\right)$$
+\end{PM}
+\begin{PM}{Sommabilité d'une famille double} Pour montrer la sommabilité d'une famille double, on montrera en général l'un des résultats suivants : $$\sum_{p=0}^{+\infty}\left(\sum_{q=0}^{+\infty}\lVert a_{p,q}\rVert\right)<+\infty \ \ \text{ou} \ \ \sum_{q=0}^{+\infty}\left(\sum_{p=0}^{+\infty}\lVert a_{p,q}\rVert\right)<+\infty \ \ \text{ou} \ \ \sum_{n=0}^{+\infty}\left(\sum_{p+q=n}\lVert a_{p,q}\rVert\right)<+\infty$$
+\end{PM}
+\begin{PM}{Une méthode de détermination du rayon de convergence} Soit $\sum a_nz^n$ une série entière de rayon de convergence $R$ et $z_0\in\C$.
+\begin{itemize}
+	\item Si $\sum a_nx_0^n$ est une série convergente, alors $R\geqslant\lvert z_0\rvert$.
+	\item Si $\sum a_nz_0^n$ est une série divergente, alors $R\leqslant\lvert z_0\rvert$.
+\end{itemize}
+En particulier, la règle de d'Alembert pour les séries permet parfois de déterminer le rayon de convergence.
+\end{PM}
+\begin{PM}{Dérivation sur l'intervalle ouvert de convergence}On peut dériver terme à terme la somme d'une série entière de la variable réelle sur son intervalle \textbf{ouvert} de convergence.
+\end{PM}
+\begin{PM}{Primitivation et intégration terme à terme}On peut primitiver terme à terme la somme d'une série entière sur l'intervalle ouvert de convergence. On peut intégrer terme à terme la somme d'une série entière sur tout segment inclus dans l'intervalle ouvert de convergence.
+\end{PM}
+\begin{PM}{Structure des fonctions développables en série entière}On a les résultats suivants.
+\begin{itemize}
+	\item Si $f$ et $g$ sont des fonctions développables en série entière sur $D_O(0,r)$, alors $f+g$, $\lambda f$ et $fg$ sont développables en série entière sur $D_O(0,r)$.
+	\item Si $f$ et $g$ sont développables en série entière, alors $f+g$, $\lambda f$ et $fg$ sont développables en série entière.
+	\item Si $f$ est développable en série entière sur $]-r,r[$, alors toutes les dérivées et les primitives de $f$ sont développables en série entière sur $]-r,[$.
+\end{itemize}
+\end{PM}
+\begin{PM}{Méthode de l'équation différentielle} Voici comment utiliser une équation différentielle.
+\begin{itemize}
+	\item Si on sait que $f$ est développable en série entière, on cherche une relation de récurrence entre les coefficients de ce développement (par unicité du développement en série entière) pour déterminer ces derniers.
+	\item Si on cherche à montrer que $f$ est développable en série entière, on cherche une série entière de rayon de convergence strictement positif satisfaisant à la même équation différentielle et l'on utilise un résultat d'unicité des solutions d'une telle équation différentielle.
+\end{itemize}
+\end{PM}
+\section{Astuces}
+\begin{AS}{Détermination d'un RCV} Pour déterminer le rayon de convergence de $\sum a_z^n$, on peut encadrer $(a_n)$ par deux suites plus simples dont les séries entières correspondantes ont des rayons plus faciles à déterminer. On en déduit un encadrement du rayon de convergence de $\sum a_nz^n$.
+\end{AS}
+\begin{AS}{Utilisation de la dérivation et de l'intégration pour obtenir un DSE}Pour trouver le DSE d’une fonction pénible, on dérive (on essaie de se ramener à quelque chose de facile à DSE, une fraction rationnelle par exemple) et on intègre ensuite le DSE pour obtenir celui de l’expression initiale.
+\end{AS}
+\begin{AS}{Formule de Cauchy (HP)} Si $f(z)=\displaystyle\sum_{n=0}^{+\infty}$ admet pour RCV $R>0$, alors on a la formule de Cauchy : $$\forall n\in\N,\ \forall r\in[0,R[,\ a_n=\frac{1}{2\pi r^n}\int_{0}^{2\pi}f(re^{i\theta})e^{-in\theta}\ d\theta$$ Cette formule est particulièrement utile lorsqu'on s'intéresse à des problèmes à rayon constant.
+\end{AS}
+\begin{proof}
+	Il suffit d'écrire $f(re^{i\theta})$, de multiplier par l'exponentielle complexe, d'intégrer et de justifier l'interversion série-intégrale.
+\end{proof}
+\begin{app}
+	Une fonction DSE bornée sur $\C$ est constante.
+\end{app}
+\begin{app}
+	Une fonction DSE sur un disque ouvert, continue sur le disque fermé et nulle sur le cercle est nulle partout. On utilise la formule et le théorème de continuité d'une intégrale à paramètre. Prolongement : une telle fonction uniquement nulle sur un arc de cercle de longueur non nulle est nulle partout. Pour cela, on remarque que l'anneau des fonctions DSE sur le disque ouvert et continues sur le disque fermé est intègre (prendre deux fonctions non nulles, les plus petits coefficients non nuls, et le coefficient du produit de Cauchy correspondant à la somme des indices), puis on crée une fonction à partir de composées de $f$ par des rotations (en tournant d'assez pour que notre nouvelle fonction sur le cercle passe toujours par l'arc où $f$ est nulle). Cette fonction est nulle par le premier cas, et par intégrité, une composée de $f$ par une rotation est nulle, donc $f$ est nulle.
+\end{app}
+\begin{AS}{Utilisation de l'unicité du DSE}Pour extraire un terme particulier d’une somme infinie, penser à utiliser l’unicité des coefficients d’une série entière.
+\end{AS}
+\begin{AS}{Utilisation avec les matrices} Penser aux analogies avec les séries entières, même quand on travaille avec des matrices, mais il vaut alors mieux travailler avec des matrices nilpotentes de sorte que la série soit finie.
+\end{AS}
+\begin{app}
+	Si $N$ est nilpotente, on pose : $$M=\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n}N^n$$ et on devrait tomber sur quelque chose du style $\exp(M)=I+N$.
+\end{app}
+\begin{AS}{Utilisation d'une relation de récurrence linéaire} Si $f(x)=\displaystyle\sum_{n=0}^{+\infty}a_nx^n$ où $(a_n)$ vérifie la relation de récurrence linéaire : $$a_n=\sum_{k=1}^{p}\lambda_ka_{p-k}$$ on peut alors écrire $$f(x)=\sum_{k=1}^{p}\lambda_k x^kf(x)+\text{premiers termes}$$ Cela permet d'isoler $f$ et de montrer que $f$ est une fraction rationnelle.
+\end{AS}
+\begin{AS}{Équivalent au bord de l'intervalle de convergence} Pour $(a_n)$ et $(b_n)$ des suites de réels strictement positifs telles que $a_n\sim b_n$, alors si $\sum a_nz^n$ et $\sum b_n z^n$ sont de RCV égal à 1 et si $\sum a_n$ diverge, alors on a pour $x$ réel : $$\sum_{n=0}^{+\infty}a_nx^n\underset{x\to 1}{\sim} \sum_{n=0}^{+\infty}b_nx^n$$
+\end{AS}
+\begin{proof}
+	Faire la différence entre les deux expressions et utiliser les $\varepsilon$.
+\end{proof}
+
+\begin{AS}{Principe des zéros isolés} Si $f$ est la somme d'une série entière et $z_0\in\C$ est dans le disque ouvert de convergence et vérifie $f(z_0)=0$, alors : $$\exists\delta>0,\ \forall z\in D(z_0,\delta)\setminus\left\{z_0\right\},\ f(z)\ne 0$$ On commence par le prouver dans le cas où $z_0=0$. En notant $n_0$ le plus petit indice tel que $a_n$ soit non nul, on a dans le disque ouvert de convergence : $$f(z)=z^{n_0}\sum_{k=0}^{+\infty}a_{n_0+k}z^k$$ où le second facteur est une fonction continue (car DSE) qui tend vers $a_{n_0}$ non nul en $0$, donc ne s'annule pas dans un voisinage de $0$. Ainsi, $f$ est bien non nulle dans un voisinage épointé de $0$. Pour $z_0$ quelconque dans le disque ouvert de convergence, on utilise l'analycité de $f$, \textit{ie} on étudie la fonction composée par une translation, $z\mapsto f(z-z_0)$ qui est aussi DSE et vérifie les hypothèses du cas précédent.
+\end{AS}
+\begin{app}
+	Par contraposée, s'il existe une suite de complexes différents de $z'$ et qui tend vers $z_0$ telle qu'on ait toujours $f(z_k)=0$, alors si f est DSE, $f$ est nulle. Prolongement : on peut étendre ce résultat si on travaille sur une partie connexe.
+\end{app}
+\begin{AS}{Limite au bord dans le cas des coefficients positifs} Si $(a_n)$ est une suite positive et $f(z)=\displaystyle\sum_{n=0}^{+\infty}a_nx^n$ est de RCV $R>0$, alors on a : $$f(x)\xrightarrow[x\to R]{}\sum_{n=0}^{+\infty}a_nR^n$$ En effet, si la série converge, c'est simplement le théorème d'Abel radial. Sinon, en repassant par les sommes partielles, on peut  prouver que la série entière tend vers $+\infty$.
+\end{AS}\begin{AS}{Calcul de sommes de séries} Pour calculer des sommes de séries comme : $$\sum_{n=1}^{+\infty}\frac{(-1)^n}{2n+1}$$ On interprète cette série comme une série entière au bord de son disque de convergence. On calcul la série entière associée par les théorèmes de cours et les méthodes habituelles sur les séries entières, et on conclut avec le théorème d'Abel radial.
+\end{AS}\begin{AS}{Formules de coefficients binomiaux} Voici une formule utile qui s'obtient en dérivant le DSE de $1/(1-x)$ : $$\forall x\in]-1,1[,\ \sum_{n=0}^{+\infty}\binom{n+p}{p}x^n=\frac{1}{(1-x)^{p+1}}$$ En particulier, la formule pour $p=2$ peut servir (le cas $p=1$ est du cours) : $$\sum_{n=0}^{+\infty}(n+1)x^n=\frac{1}{(1-x)^2}$$
+\end{AS}\begin{AS}{Erreur classique} Un fonction de classe $\mathcal{C}^{\infty}$ n'est pas nécessairement DSE. Exemple : $$x\mapsto\begin{cases} e^{-1/x^2}\text{ si } x>0 \\ 0 \text{ sinon}\end{cases}$$ En effet, cette fonction serait nulle si c'était le cas. En revanche, si une fonction est DSE, elle est de classe $\mathcal{C}^{\infty}$ sur son intervalle ouvert de converge, égale à sa série de Taylor.
+\end{AS}\begin{AS}{Utilisation pour les intégrales} Dans certains d'utilisation des séries entières, notamment le calcul d'intégrales, il faut parfois se ramener sur un intervalle où la fonction est DSE. Cela peut nécessiter l'usage de la relation de Chasles et des changements de variable.
+\end{AS}
+\begin{app}
+	Étude de $$\int_{0}^{+\infty}\frac{t^{x-1}}{1+t}\ dt$$ pour $0<x<1$. Couper en $1$. A la fin, il faut repasser par les sommes partielles et utiliser le théorème de convergence dominée.
+\end{app}
+
+
+\chapter{Équations différentielles}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Détermination d'une solution particulière pour une EDL d'ordre $1$} Pour déterminer une solution particulière de l'équation avec second membre :
+\begin{itemize}
+	\item on commence par chercher une solution particulière "évidente" (éventuellement en se guidant sur le problème, physique, géométrique ou autre, d'où est issu cette équation différentielle) ;
+	\item si l'on n'en trouve pas, on peut utiliser la méthode de variation de la constante car une solution non nulle de l'équation homogène associée ne s'annule pas.
+\end{itemize}
+\end{PM}
+\begin{PM}{Résolution d'une EDL d'ordre $1$} Résolution d'une équation différentielle de la forme $a(t)y'+b(t)y=c(t)$ sur un intervalle sur lequel $a$ ne s'annule :
+\begin{itemize}
+	\item On commence par résoudre l'équation sur tout intervalle sur lequel $a$ ne s'annule pas (on sait que l'ensemble des solutions est une droite affine).
+	\item On procède ensuite par analyse/synthèse puisque l'on n'a aucune théorème ni d'existence ni d'unicité.
+\end{itemize}
+\end{PM}
+\begin{PM}{Structure des solutions}Pour résoudre une équation différentielle linéaire, on ajoute une solution particulière à la solution générale de l'équation homogène associée.
+\end{PM}
+\begin{PM}{Base des solutions de l'équation homogène}Si l'on dispose de $n$ fonctions $\varphi_1,\ldots,\varphi_n$ de $I$ dans $E$ de dimension $n$, alors, pour prouver que la famille $(\varphi_1,\ldots,\varphi_n)$ est une base de $\mathcal{S}_0$, il suffit de démontrer au choix :
+\begin{itemize}
+	\item que $\varphi_1,\ldots,\varphi_n$ appartiennent à $\mathcal{S}_0$ et forment une famille libre ;
+	\item que $\mathcal{S}_0\subset\text{Vect}(\varphi_1,\ldots,\varphi_n)$. On a alors $\mathcal{S}_0=\text{Vect}(\varphi_1,\ldots,\varphi_n)$ pour des raisons de dimension, et la famille $(\varphi_1,\ldots,\varphi_n)$ est génératrice, donc une base de $\mathcal{S}_0$. Il n'est pas nécessaire de démontrer préalablement que les fonctions $\varphi_k$ appartiennent à $\mathcal{S}_0$.
+\end{itemize}
+\end{PM}
+\begin{PM}{Cas où $A$ est diagonalisable} Si la matrice $A$ est diagonalisable, alors en notant $(V_1,\ldots,V_n)$ une base de vecteurs propres et $(\lambda_1,\ldots,\lambda_n)$ la liste des valeurs propres associées, on obtient une base $(\varphi_1,\ldots,\varphi_n)$ de l'espace $\mathcal{S}_0$ des solutions de $(E_0)$ en prenant, pour tout $k\in\llbracket1,n\rrbracket$ : $$\begin{array}{lrcl}
+	\varphi_k:&\R&\longrightarrow&\K \\
+	&t&\longmapsto&e^{\lambda_k t}V_k
+\end{array}$$
+\end{PM}
+\begin{PM}{Cas où $A$ est diagonalisable uniquement sur $\C$} Si $A\in\mathcal{M}_n(\R)$ est diagonalisable dans $\C$ mais pas dans $\R$, on peut déterminer l'ensemble $\mathcal{S}_\R$ des solutions de $(E_0)$ à partir de la diagonalisation de $A$ :
+\begin{enumerate}
+	\item On forme une base de vecteurs propres complexes de $A$ telle que :
+	\begin{itemize}
+		\item les vecteurs propres associées à des valeurs propres réelles appartiennent à $\R^n$ ;
+		\item vis-à-vis des des valeurs propres non réelles, on forme des couples de vecteurs propres conjugués (\textit{ie} de la forme $(V,\overline{V})$).
+	\end{itemize}
+	\item Dans la base $(\varphi_1,\ldots,\varphi_n)$ de $\mathcal{S}_\C$ évoquée dans le point méthode qui précède, on voit alors apparaître :
+	\begin{itemize}
+		\item pour les valeurs propres réelles, des applications de la forme $t\mapsto e^{\lambda t}V$, qui sont à valeurs dans $\R^n$ ;
+		\item pour les valeurs propres non réelles, des couples de la forme $(t\mapsto e^{\lambda t}V,\ t\mapsto e^{\overline{\lambda} t}\overline{V})$, c'est-à-dire des couples de la forme $(\varphi,\overline{\varphi})$.
+	\end{itemize}
+	\item On change les couples de la forme $(\varphi,\overline{\varphi})$ en $(\text{Re}(\varphi),\text{Im}(\varphi))$, qui est encore une base de $\mathcal{S}_\C$. Or, cette base n'est formée que d'applications à valeurs dans $\R^n$, donc c'est une base de $\mathcal{S}_\R$.
+\end{enumerate}
+\end{PM}
+\begin{PM}{Cas où $A$ est non diagonalisable sur $\C$} Si $A$ est non diagonalisable sur $\C$ :
+\begin{enumerate}
+	\item On trigonalise, c'est-à-dire qu'on écrit $A=PTP\inv$ avec $T$ triangulaire supérieure.
+	\item En posant $Y=P\inv X$ et en traduisant sur $Y$ le système différentiel, $X'=AX$, on obtient le système différentiel $Y'=TY$ : ce système différentiel est triangulaire et on peut donc le résoudre ligne par ligne, du bas vers le haut.
+	\item On trouve les solutions recherchées à l'aide de la relation $X=PY$.
+\end{enumerate}
+Remarquer qu'il n'est donc pas nécessaire de calculer $P\inv$. Et lorsqu'on trigonalise $A$, on cherchera à obtenir la matrice triangulaire la plus simple possible afin d'obtenir le système différentiel le plus simple possible.
+\end{PM}
+\begin{rmq}[Utilisation calculatoire de la décomposition de Dunford]
+	Si jamais on dispose facilement de la décomposition de Dunford de la matrice, on pourra l'utiliser pour calculer directement $\exp(tA)$ et s'éviter des tonnes de calcul. En particulier, cela peut énormément servir si la matrice n'est pas diagonalisable et ne possède qu'une seule valeur propre : en effet, la matrice diagonalisable dans la décomposition de Dunford n'est alors autre qu'une matrice scalaire associée à l'unique valeur propre, et la matrice nilpotente s'en déduit en soustrayant cette matrice scalaire à la matrice de départ.
+\end{rmq}
+\begin{PM}{Recherche d'une solution particulière} Pour trouver une solution particulière de $y'=a(t)\cdot t+b(t)$ :
+\begin{itemize}
+	\item on commencera par chercher une solution évidente ;
+	\item dans le cas où il n'y en a pas d'évidente, on pourra utiliser la méthode de variation de la constante en cherchant $y$ sous la forme $t\mapsto\exp(ta)\cdot\Lambda(t)$, avec $\Lambda:I\mapsto E$ dérivable ;
+	\item pour une équation différentielle $Y'=AY+B(t)$ avec $A\in\mathcal{M}_n(\K)$ et $B\in\mathcal{C}^1(I,\K^n)$, si l'on réduit $A$ sous la forme $A=PDP\inv$ avec $D$ diagonale ou triangulaire, en posant $Z=P\inv Y$, on est ramené à résoudre $Z'=DZ+P\inv B(t)$, et on récupère ensuite $Y=PZ$
+\end{itemize}
+\end{PM}
+\begin{PM}{Méthode de variations des constantes à l'ordre $2$} Si on connaît une base $(\varphi_1,\varphi_2)$ de l'espace des solutions de $(E_0)$, alors on peut chercher une solution particulière de $(E)$ : $x''+a_1(t)x'+a_0(t)x=b(t)$ sous la forme : $$\varphi =\lambda_1\varphi_1+\lambda_2\varphi_2\ \ \text{avec}\ \ \lambda_1\ \ \text{et}\ \ \lambda_2\ \ \text{dérivables sur} \ \ I$$ Une telle fonction $\varphi$ est solution de $(E)$ si : $$\begin{cases}
+	\lambda_1'\varphi_1+\lambda_2\varphi_2=0 \\
+	\lambda_1'\varphi_1'+\lambda_2'\varphi_2'=b
+\end{cases}$$ On peut alors déterminer $\lambda_1'$ et $\lambda_2'$, puis $\lambda_1$ et $\lambda_2$ par calcul de primitives.
+\end{PM}
+\begin{PM}{Étude d'une équation non normalisée} Pour résoudre une équation différentielle linéaire de la forme $$a_n(t)x^{(n)}+\ldots+a_0(t)x=b(t)$$ lorsque la fonction $a_n$ possède des points d'annulation :
+\begin{itemize}
+	\item on commence par résoudre l'équation sur tout intervalle sur lequel $a_n$ ne s'annule pas ;
+	\item on cherche ensuite, par analyse/synthèse, les solutions sur l'intervalle entier en exploitant les conditions de dérivabilité et de continuité pour obtenir les constantes.
+\end{itemize}
+\end{PM}
+\section{Astuces}
+\begin{AS}{Annulation du wronskien} Pour une équation différentielle de degré 2 à coefficients constants, si le Wronskien est nul en un point, il est nul partout, puisqu’il est solution d’une équation $$y'=ay$$ Le théorème de Cauchy linéaire permet de conclure.
+\end{AS}
+\begin{AS}{Existence d'autres solutions} Si on étudie des solutions particulières d’équations différentielles linéaires, bien penser qu’il existe probablement plein d’autres solutions (le théorème de Cauchy linéaire peut en assurer l’existence).
+\end{AS}
+\begin{AS}{Utilisation pour le calcul d'intégrales à paramètres} Si $F$ est une intégrale à paramètre qu’on cherche à exprimer autrement, on peut avoir envie de trouver une équation différentielle vérifiée par $F$. Pour cela, on fait parfois une intégration par parties sur l’intégrale après l'avoir dérivée.
+\end{AS}
+\begin{AS}{Équations d'Euler} Pour les équations d’Euler : $$x^2y''(x)+axy'(x)+by(x)=0$$ avec $(a,b)\in\C^2$, le changement de variables $x=e^t$ fonctionne sur $\R_+\st$, et sur $\R_-\st$, on utilise $x=-e^t$. En d’autres termes, cela revient à chercher des solutions en $x\mapsto x^r$.
+\end{AS}
+\begin{AS}{Fausses équations différentielles faisant intervenir $f(1/t)$} Si on a affaire à des équations faisant intervenir $f(1/t)$ pour $t\in\R_+\st$, on peut faire un changement de variable $t=e^u$, ce qui va permettre de se ramener à des équations différentielles usuelles (à mettre en regard de la méthode pour les équations d'Euler).
+\end{AS}
+\begin{app}
+	Trouver les $f$ dérivables sur $\R_+\st$ telles que $$\forall t>0,\ f'(t)=f\left(\frac{1}{t}\right)$$
+\end{app}
+\begin{AS}{Utilisation d'une autre équation différentielle et lemme de Gronwall} Pour étudier une solution $f$ d’une équation différentielle : $$y''(x) + y'(x) + q(x)y(x) = 0$$ (ou quelque chose qui y ressemble), connaissant des hypothèses sur $f$ ou $q$, on peut essayer de résoudre l’équation $z''+z=g$ avec $g(x)=-q(x)f(x)$. Cela donne une nouvelle expression de $f$ avec laquelle on peut parfois utiliser le lemme de Gronwall. Cette méthode qui consiste à obtenir une nouvelle expression d’une fonction en résolvant une autre équation différentielle est intéressante (\textit{cf} le DM sur le théorème de décomposition asymptotique).
+\end{AS}
+\begin{AS}{Principe des zéros isolés} Si $f$ est solution non nulle de l’équation homogène du second ordre $$y''(t)+a(t)y'(t)+b(t)y(t)=0$$ avec $a$ et $b$ continues, alors tout zéro de $f$ est isolé (\textit{ie} $f$ est non nulle dans un voisinage épointé de $x_0$). En effet, soit $x_0$ tel que $f(x_0)=0$. Alors $f'(x_0)\ne0$ car sinon elle serait solution d'un problème de Cauchy dont la fonction nulle est solution, et serait alors nulle. Comme $$\frac{f(x)}{x-x_0}\xrightarrow[x\to x_0]{}f'(x_0)\ne 0$$ $f$ est non nulle dans un voisinage de $x_0$.
+\end{AS}
+\begin{AS}{Inversibilité d'une solution} Soit $u:I\to\mathcal{L}(E)$ une solution de l'équation différentielle homogène $u'=a(t)\circ u$. Montrer que s'il existe $t_0\in I$ tel que $u(t_0)$ soit inversible, alors $u(t)$ est inversible pour tout $t$.
+\end{AS}
+\begin{proof}
+	On peut prouver l'injectivité ou la surjectivité via le théorème de Cauchy linéaire. L'injectivité est plus simple. Soit $t\in I$ et $x\in\ker(u(t))$. On pose $y(s)=u(s)\cdot x$. Alors $y$ est solution de $$\begin{cases}
+		y'=a\cdot y\\
+		y(t)=0
+	\end{cases}$$ donc $y=0$. En particulier, $u(t_0)\cdot x=0$. Donc par injectivité de $u(t_0)$, $x=0$, si bien que $u(t)$ est injective, donc inversible.
+\end{proof}
+
+
+\chapter{Calcul différentiel}
+\localtableofcontents
+\section{Points méthode}
+
+\begin{PM}{Montrer une différentiabilité}
+	Pour montrer que $f$ est différentiable en $a$, on peut chercher une application linéaire $u$ telle que $$f(a+h)-f(a)-u(h)=o(h)$$
+\end{PM}
+
+\begin{PM}{Montrer une non-différentiabilité}
+	Une application $f:\Omega\to F$ n'est \textbf{pas différentiable} en $a$ :
+	\begin{itemize}
+		\item si elle n'admet pas de dérivée selon tout vecteur en $a$ ;
+		\item si elle en admet, mais que l'application $u:h\mapsto D_hf(a)$ n'est pas linéaire ou ne vérifie pas $f(a+h)-f(a)-u(h)=o(h)$.
+	\end{itemize}
+\end{PM}
+
+\begin{PM}{Étudier une différentiabilité}
+	Pour étudier si une fonction $f:\Omega\to F$ est différentiable en $a$, on peut vérifier l'existence de toutes ses dérivées partielles en $a$, puis voir si l'application linéaire : $$u:h\mapsto\sum_{j=1}^{p}h_j\partial_jf(a)$$ vérifie $f(a+h)-f(a)-u(h)=o(h)$.
+\end{PM}
+
+\begin{PM}{Montrer une classe $\mathcal{C}^1$}
+	Pour démontrer qu'une fonction $f:\Omega\to F$ est de classe $\mathcal{C}^1$ :
+	\begin{itemize}
+		\item on cherche d'abord à utiliser les théorèmes généraux de manipulation des fonctions de classe $\mathcal{C}^1$ ;
+		\item si ceux-ci ne s'appliquent pas, on peut chercher à montrer que dans une base donnée, toutes les dérivées partielles de $f$ sont définies et continues sur $\Omega$.
+	\end{itemize}
+\end{PM}
+
+\begin{PM}{Montrer une classe $\mathcal{C}^k$}
+	Pour montrer qu'une fonction est de classe $\mathcal{C}^k$, on essaie tout d'abord d'utiliser les théorème généraux ou de s'y ramener.
+\end{PM}
+\begin{PM}{Montre une classe $\mathcal{C}^\infty$ dans des cas compliqués}
+	Dans les cas plus compliqués, pour montrer que $f$ est de classe $\mathcal{C}^\infty$, on trouve une classe $\mathcal{S}$ de fonctions telle que :
+	\begin{itemize}
+		\item $f\in \mathcal{S}$ ;
+		\item tout élément de $\mathcal{S}$ est élément continu ;
+		\item $\mathcal{S}$ est stable par dérivation partielle.
+	\end{itemize}
+\end{PM}
+
+\begin{PM}{Recherche d'\textit{extrema}}
+	Pour démontrer qu'une fonction $f:A\to\R$ admet un extremum en $a$, on peut étudier le signe de $g:h\mapsto f(a+h)-f(a)$.
+	\begin{itemize}
+		\item Si $g$ est de signe fixe au voisinage de $0$, alors $f$ admet un \textit{extremum} local en $a$.
+		\item Si $g$ est de signe fixe sur tout son domaine de définition, alors $f$ admet un \textit{extremum} global en $a$.
+	\end{itemize}
+\end{PM}
+
+\begin{PM}{Montrer qu'un point n'est pas un extremum local}
+	En reprenant les notations du point méthode précédent, si l'on montre que, sur tout voisinage de $0$, la fonction $g$ prend des valeurs strictement positives et des valeurs strictement négatives, alors $f$ n'admet pas d'\textit{extremum} local en $a$. En pratique, cela pourra se faire en étudiant le signe de $t\mapsto g(th)$ pour des vecteurs $h$ bien choisis.
+\end{PM}
+
+\begin{PM}{Lieux de recherche des \textit{extrema} locaux}
+	Les \textit{extrema} locaux de $f:\to\R$ sont à chercher parmi :
+	\begin{itemize}
+		\item les points critiques de $f$ ;
+		\item les points de $\mathring{A}$ où $f$ n'est pas différentiable ;
+		\item les points de $A\setminus\mathring{A}$.
+	\end{itemize}
+\end{PM}
+
+\begin{PM}{Nature des \textit{extrema} dans le cas $\mathcal{C}^2$ euclidien}
+	Soit $f:\Omega\to\R$ une fonction de classe $\mathcal{C}^2$, où $\Omega$ est un ouvert de $\R^2$ et $a$ un point critique de $f$, ainsi que $H_f(a)$ sa matrice hessienne en $a$.
+	\begin{itemize}
+		\item Si $\det(H_f(a))>0$ et $\Tr(H_f(a))>0$, alors $f$ admet un minimum local strict en $a$.
+		\item Si $\det(H_f(a))>0$ et $\Tr(H_f(a))><0$, alors $f$ admet un maximum local strict en $a$.
+		\item Si $\det(H_f(a))<0$, alors $f$ n'admet pas d'\textit{extremum} local strict en $a$.
+	\end{itemize}
+	Attention : dans le cas où $\det(H_f(a))=0$, on ne peut rien conclure sans une étude approfondie.
+\end{PM}
+
+\section{Astuces}
+
+\begin{AS}{Différentielle du déterminant}
+\end{AS}
+\begin{AS}{Théorème d'inversion locale}
+\end{AS}
+\begin{AS}{Théorème d'inversion globale}
+\end{AS}
+
+\begin{AS}{Utilisation de la hessienne}
+	Si $f$ est de classe $C^2$, pour $a$ et $h$ deux vecteurs de $\Omega$, on définit : $$g:t\mapsto f(a+th)$$ $g$ est définie dans un voisinage de $0$, et deux fois dérivable. On a alors : $$f'(t)=\sum_{i=1}^{n}h_i\frac{\partial f}{\partial x_i}(a+th)$$ et à l'ordre $2$ : $$f''(t)=\sum_{1\leqslant i,j\leqslant n}h_i\frac{\partial^2f}{\partial x_i\partial x_j}(th)h_j=h^TH_f(a+th)h$$
+\end{AS}
+
+
+\chapter{Dénombrabilité et dénombrements}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Montrer qu'un ensemble infini est dénombrable}
+Pour montrer qu'un ensemble infini est dénombrable, on peut :
+\begin{itemize}
+	\item exhiber une bijection de $\N$ sur $A$, ce qui revient à numéroter les éléments de $A$ en suite $(a_n)$ ;
+	\item exhiber une injection de $A$ dans $\N$ (ou dans un ensemble dénombrable) ;
+	\item exhiber une surjection de $\N$ (ou d'un ensemble dénombrable) dans $A$
+\end{itemize}
+\end{PM}
+\section{Astuces}
+\begin{AS}{Vocabulaire} Lorsqu'un ensemble est dénombrable, c'est qu'il est au plus dénombrable et infini. Sinon, on dit seulement au plus dénombrable pour un ensemble en bijection avec une partie de $\N$.
+\end{AS}
+\begin{AS}{Une manière de dénombrer}
+	Se donner $k$ entiers positifs de somme $p$ revient à se donner $k$ entiers strictement positifs de somme $p+k$.
+\end{AS}
+\begin{AS}{Lemme des bergers}
+	Soit $X$ un ensemble fini et $Y$ un ensemble quelconque. Soit $f:X\to Y$. Alors : $$\card(X)=\sum_{y\in f(X)}\card(f\inv({y}))$$ En particulier, si chaque image possède exactement $p$ antécédents, on a alors : $$\card(X)=p\times\card(f(X))$$
+\end{AS}
+\begin{AS}{Coefficients multinomiaux}
+	Soit $E$ un ensemble fini de cardinal $n$. On notera $\displaystyle\binom{n}{i_1,\ldots,i_k}$ le nombre de partitions $A_1,\ldots,A_k$ de $E$ telles que $\forall j,\ \card(A_j)=i_j$. Ces coefficients vérifient : $$\binom{n}{i_1,\ldots,i_k}=\frac{n!}{(i_1!)\times\cdots\times(i_k!)}$$
+\end{AS}
+\begin{rmq}
+	Ces coefficients généralisent les coefficients binomiaux. Ils apparaissent naturellement dans la formule de multinôme de Newton, qui généralise celle du binôme de newton en donnant une forme développée de $(x_1+\cdots+x_p)^n$.
+\end{rmq}
+
+\section{Exercices classiques}
+\subsection{Dénombrabilité}
+\begin{EX}{Disques ouverts}
+	On appelle disque ouvert de $\C$ tout ensemble de la forme $\left\{z \in \C : |z-p| < \rho\right\}$ pour $p\in\C$ et $\rho \in \R_+\st$ fixés. Soit $(D_i)_{i \in I}$ une famille de disques ouverts deux à deux disjoints. Montrer que $I$ est au plus dénombrable.
+\end{EX}
+\begin{proof}
+	Utiliser la densité de $\Q$ dans $\R$ pour les parties réelles et imaginaires pour montrer qu'un point de coordonnées rationnelles appartient à chacun des disques fermés. Ensuite, utiliser la dénombrabilité de $\Q^2$ pour conclure.
+\end{proof}
+\begin{EX}{$\Delta$ Points de discontinuité d'une fonction monotone}
+	Montrer que l'ensemble des points de discontinuité d'une fonction monotone est au plus dénombrable.
+\end{EX}
+\begin{proof}
+	SPG, on peut suppose la fonction $f$ croissante. Par croissance, elle admet des limites à gauche et à droite en tout point. un point de discontinuité est caractérisé par des limites à gauche et à droite différentes en ce point. Caler alors un rationnel entre ces deux limites. On obtient ainsi une injection de l'ensemble des points de discontinuité dans $\Q$, qui est au plus dénombrable, donc l'ensemble des points de discontinuité est au plus dénombrable.
+\end{proof}
+\begin{EX}{\textit{Maxima} locaux}
+	Soit $f:\R\to\R$. On note $A$ l'ensemble des points $a\in\R$ où $f$ admet un maximum local. Montrer que $A$ est au plus dénombrable.
+\end{EX}
+\begin{proof}
+	Utiliser le fait que $\R$ est séparé pour distinguer clairement les voisinages correspondant à $a\in A$ et $a'\in A$ distincts. De la sorte, on peut caler un rationnel dans un voisinage de chacun des $a\in A$ de façon injective et conclure comme dans l'exercice précédent.
+\end{proof}
+\begin{EX}{$\Delta$ Nombres algébriques}
+	Montrer que l'ensemble des nombres algébriques est au plus dénombrable. En déduire qu'il existe une infinité indénombrable de nombres transcendants.
+\end{EX}
+\begin{proof}
+	On note $A$ l'ensemble des nombres algébriques et $A_n$ l'ensemble des nombres complexes racines d'un polynôme non nul à coefficients rationnels de degré au plus $n$. Alors, chaque $A_n$ est au plus dénombrable car un polynôme non nul possède un nombre fini de racines et $\Q_n[X]$ est dénombrable. On en déduit que $$A=\bigcup_{n\in\N}A_n$$ est au plus dénombrable. Par passage au complémentaire, l'ensemble des nombres transcendants est donc indénombrable, donc en particulier non vide.
+\end{proof}
+\subsection{Dénombrements}
+\begin{EX}{Somme fixée}
+	Soit $k\in\N$. Combien y a-t-il de $n$-uplets d'entiers naturels dont la somme vaut $k$ ?
+\end{EX}
+\begin{proof}
+	Une méthode élégante est celle du \textit{stars and bars} : on regroupe les entiers ayant la même valeur, et on sépare les différentes valeurs possibles par des barres. On obtient comme résultat : $$\binom{n+k-1}{k}$$
+\end{proof}
+\subsection{Nombres divers et variés}
+\begin{EX}{Nombres de Bell}
+	On note $B_n$ le nombre de partitions d'un ensemble un $n$ éléments.
+	\begin{enumerate}
+		\item Montrer la relation de récurrence : $\displaystyle\forall n\in\N,\ B_{n+1}=\sum_{k=0}^{n-1}\binom{n-1}{k}B_k$
+		\item Démontrer la formule : $$\forall n\in\N,\ B_n=\frac{1}{e}\sum_{k=0}^{+\infty}\frac{k^n}{k!}$$
+	\end{enumerate}
+\end{EX}
+\begin{proof}
+	\begin{enumerate}
+	\item Faire un dénombrement.
+	\item Utiliser des séries entières. Montrer que le rayon de convergence est non nul, puis dériver la série entière et utiliser la première question pour faire apparaître un produit de Cauchy avec le DSE de l'exponentielle. On obtient une équation différentielle qui se résout pour donner le résultat souhaité.
+\end{enumerate}
+\end{proof}
+\begin{EX}{Nombres de Catalan}
+	On note $C_n$ le nombre de triangulations d'un polygone régulier à $n+2$ côtés.
+	\begin{enumerate}
+		\item Montrer la formule de Segner : $\displaystyle\forall n\in\N,\ C_{n+1}=\sum_{k=0}^{n}C_kC_{n-k}$
+		\item Montrer : $\displaystyle\forall n\in\N,\ C_n=\frac{1}{n+1}\binom{2n}{n}$
+		\item Montrer qu'il s'agit aussi du nombre de chemins monotones le long des arêtes d'une grille $n\times n$ qui restent sous la diagonale (au sens large).
+		\item Montrer qu'il s'agit aussi du nombre de parenthésages d'une expression à $n+1$ facteurs. 
+	\end{enumerate}
+\end{EX}
+\begin{proof}
+	Dénombrer dans tous les sens. Pour la deuxième question, on peut tenter une récurrence forte en utilisant la question $1$ (pas sûr que cela fonctionne).
+\end{proof}
+\subsection{Graphes}
+\begin{EX}{Somme des degrés sur un graphe}
+	Soit $(V,E)$ un graphe. Alors : $$\sum_{v\in V}\deg(v)=2\card(E)$$	
+\end{EX}
+\begin{EX}{Lemme de Sperner}
+	Soit $T$ un triangle triangulé et colorié selon les règles suivantes : 
+	\begin{enumerate}
+		\item les sommets sont coloriés de trois couleurs différentes $c_1$, $c_2$ et $c_3$ ; 
+		\item sur une arête $[c_i,c_j]$ donnée, les points de la triangulation sont coloriés en $c_i$ ou en $c_j$.
+	\end{enumerate}
+	Montrer alors que quel que soit le coloriage des points à l'intérieur du triangle, il existe un petit triangle colorié $c_1$, $c_2$, $c_3$.
+\end{EX}
+\begin{proof}
+	On associe un graphe au triangle : les petits triangles ainsi que l'extérieur sont des sommets du graphe, et il existe une arête entre deux sommets si, et seulement si, les deux triangles associés partagent une arête colorée $c_1$, $c_2$. On remarque que sur l'arête $[c_1,c_2]$ de $T$, il y a nécessairement un nombre impair de changements de couleur donc l'extérieur est de degré impair. Or, la somme des degrés est paire (\textit{cf} l'exercice précédent), donc la somme des degrés des petits triangles est impaire, et il y a alors un nombre impair de triangles de degré impair. Mais un triangle est nécessairement de degré $0$, $1$ ou $2$. Il y a donc un nombre impair de petits triangles de degré $1$, c'est-à-dire coloriés $c_1$, $c_2$, $c_3$.
+\end{proof}
+\begin{EX}{Théorème de Turan}
+	Soit $p\geqslant2$ et $G$ un graphe simple d'ordre $n$ ne contenant pas de $p$-cycle. Si $m$ est le nombre d'arêtes de $G$, alors : $$m\leqslant\left(1-\frac{1}{p-1}\right)\frac{n^2}{2}$$
+\end{EX}
+
+
+\chapter{Probabilités}
+\localtableofcontents
+\section{Points méthode}
+\begin{PM}{Loi conjointe et lois marginales} Soit $(X,Y)$ un couple de variables aléatoires discrètes.
+\begin{itemize}
+	\item Pour tout $x\in X(\Omega)$, on a : $$\P(X=x)=\sum_{y\in Y(\Omega)}\P(X=x,Y=y)$$
+	\item Pour calculer $\P(X=x,Y=y)$, il suffit de se limiter au cas où $\P(Y=y)\ne 0$ et alors : $$\P(X=x,Y=y)=\P(Y=y)\P(X=x\mid Y=y)$$
+\end{itemize}
+\end{PM} 
+\begin{PM}{Loi d'une fonction de deux variables aléatoires discrètes indépendantes}Connaissant la loi de deux variables aléatoires indépendantes $X$ et $Y$, on peut en déduire la loi de tout variable aléatoire $Z$ fonction de $X$ et $Y$. Pour tout $z\in Z(\Omega)$, on écrit $\left\{Z=z\right\}$ comme réunion d'événements de la forme $\left\{X=x\right\}\cap\left\{Y=y\right\}$.
+\end{PM}
+\begin{PM}{Détermination d'une espérance sans connaître la loi}Pour déterminer la loi d'une variable aléatoire discrète dont on ne connaît pas la loi, on peut chercher à la décomposer en somme de variables aléatoires discrètes d'espérance connue. Par exemple, on pourra décomposer la variable aléatoire sous forme de somme d'indicatrices, et utiliser le fait que l'espérance de l'indicatrice d'un événement est la probabilité de cet événement.
+\end{PM}
+\section{Astuces}
+
+\begin{AS}{Possibilités à toujours envisager} Toujours envisager : la combinatoire, l'utilisation d'indicatrices ou les fonctions génératrices.
+\end{AS}
+
+\begin{AS}{Formule du crible de Poincaré} Elle s'énonce : $$\P\left(\bigcup_{i=1}^{n}A_i\right)=\sum_{k=1}^{n}(-1)^k\sum_{1\leqslant i_1<\ldots<i_k\leqslant n}\P\left(\bigcap_{j=1}^{k}A_{i_j}\right)$$ On peut la démontrer en développant $1-\mathbf{1}_{\cup A_i}$ avec les complémentaires, de la distributivité généralisée et les produits d'indicatrices. On conclut en passant par linéarité de l'espérance avec la formule : $$\E(\mathbf{1}_A)=\P(A)$$
+\end{AS}
+\begin{app} Cela peut permettre de calculer la probabilité d'avoir un dérangement en tirant au hasard un élément de $S_n$
+\end{app}
+
+\begin{AS}{Variables aléatoires ne prenant que deux valeurs} Quand on a des variables aléatoires ne prenant que deux valeurs, se ramener `a des
+variables suivant une loi de Bernoulli via une transformation affine (peut servir
+à faire apparaître des lois binomiales cachées !) C’est notamment le cas quand on
+somme des variables de Rademacher (exemple d’une marche aléatoire...)
+\end{AS}
+
+\begin{AS}{Fonction caractéristique} Pour $X$ une variable aléatoire à valeurs dans $\Z$, sa fonction caractéristique $F_X:t\mapsto\E(e^{itX})$ caractérise sa loi et on a : $$\forall n\in\Z,\ \P(X=n)=\frac{1}{2\pi}\int_{0}^{2\pi}F_X(t)e^{-int}\ dt$$ Le transfert d'indépendance permet de montrer que pour des variables aléatoires mutuellement indépendantes $X_1,\ldots,X_n$, on a, comme pour les fonctions génératrices : $$F_{X_1+\ldots+X_n}=\prod_{i=1}^{n}F_{X_i}$$ (pas besoin que les variables aléatoires soient à valeurs dans $\Z$ pour cela).
+\end{AS}
+\begin{app}
+	Permet de retrouver les stabilités de la loi de Poisson et de la loi binomiale
+\end{app}
+
+\begin{AS}{Une majoration}
+	Soit $A$ et $B$ deux événements. on a : $$\lvert\P(A\cap B)-\P(A)\P(B)\rvert\leqslant\frac{1}{4}$$
+\end{AS}
+
+\begin{AS}{Inégalité de Paley-Zygmund}
+	Soit $X$ une v.a.d. réelle à valeurs strictement positives qui admet un moment d'ordre $2$. Alors : $$\forall \lambda\in]0,1[,\ \P(X\geqslant\lambda\E(X))\geqslant\frac{(1-\lambda)^2\E(X)^2}{\E(X^2)}$$
+\end{AS}
+\begin{proof}
+	Appliquer l'inégalité de Cauchy-Schwarz à $$X\mathbf{1}_{X\geqslant\lambda\E(X)}$$ et écrire par ailleurs que $$\E(X\mathbf{1}_{X\geqslant\lambda\E(X)})=\E(X)-\E(X\mathbf{1}_{X<\lambda\E(X)})$$
+\end{proof}
+
+\begin{AS}{Inégalité de Bhatia-Davis}
+	Si $X$ est un variable aléatoire discrète à valeurs dans le segment réel $[a,b]$, alors on a : $$\V(X)\leqslant (b-\E(X))(\E(X)-a)$$
+\end{AS}
+\begin{proof}
+	Partir de l'inégalité $(b-X)(X-a)\geqslant0$, développer, utiliser la croissance de l'espérance, changer quelques termes de côté dans l'inégalité et enfin ajouter le terme qui manque pour obtenir le résultat.
+\end{proof}
+
+\begin{AS}{Inégalité de Popoviciu}
+	Sous les mêmes hypothèses que l'inégalité de Bhatia-Davis, on a : $$\V(X)\leqslant\frac{(b-a)^2}{4}$$
+\end{AS}
+\begin{proof}
+	Partir de l'inégalité de Bhatia-Davis et constater que $y\mapsto (b-y)(y-a)$ admet pour maximum $(b-a)^2/4$, atteint en $(a+b)/2$.
+\end{proof}
+
+\begin{AS}{Inégalité de Cantelli}
+	Soit $X$ une v.a.d. et $a>0$.
+	\begin{enumerate}
+		\item $\forall t\geqslant0,\ \P(X-\E(X)\geqslant a)\leqslant\displaystyle\frac{t^2+\V(X)}{(t+a)^2}$
+		\item $\P(\lvert X-\E(X)\rvert\geqslant a)\leqslant\displaystyle\frac{2\V(X)}{a^2+\V(X)}$
+	\end{enumerate}
+\end{AS}
+\begin{proof}
+	\begin{enumerate}
+		\item Calculer $\E((X-\E(X)+a)^2)$ pour $a\in\R$.
+		\item Utiliser le premier point et symétriser.
+	\end{enumerate}
+\end{proof}
+
+\begin{AS}{Inégalité de Jensen}
+	Pour $f$ concave, en supposant que $X$ et $f(X)$ sont d'espérance finie, on a : $$\E(f(X))\leqslant f(\E(X))$$
+\end{AS}
+\begin{proof}
+	Dans le cas fini, c'est simplement l'inégalité de Jensen habituelle. Dans le cas général, on peut le faire par densité en partant du cas fini ou utiliser des minorants de la courbe. 
+\end{proof}
+
+\begin{AS}{Fonction génératrice} Pour montrer qu'une fonction $f$ est la série génératrice d'une variable aléatoire, il faut montrer :
+\begin{enumerate}
+	\item qu'elle est DSE, de RCV$\geqslant1$ ;
+	\item que les coefficients du développement sont positifs ;
+	\item que la somme des coefficients vaut $1$, ou encore que $f(1)=1$ (existera si $f$ est effectivement une série génératrice).
+\end{enumerate}
+\end{AS}
+
+\begin{AS}{Limite supérieure et limite inférieure ; lemmes de Borel-Cantelli} Pour une suite $(A_n)$ d'événements, on définit la limite supérieure par : $$\overline{\text{lim}}A_n=\bigcap_{n\in\N}\bigcup_{p\geqslant n}A_p$$ et la limite inférieure par : $$\underline{\text{lim}}A_n=\bigcup_{n\in\N}\bigcap_{p\geqslant n}A_p$$ On dispose alors du premier lemme de Borel-Cantelli : $$\text{si }\sum_{n=0}^{+\infty}\P(A_n)<+\infty\text{ alors }\P(\overline{\text{lim}}A_n)=0$$ On dispose aussi du second lemme de Borel-Cantelli : lorsque les $A_n$ sont mutuellement indépendants, on a : $$\text{si }\sum_{n=0}^{+\infty}\P(A_n)=+\infty\text{ alors }\P(\overline{\text{lim}}A_n)=1$$
+\end{AS}
+
+\begin{AS}{Maximum et minimum de variables aléatoires} Quand voit un maximum ou un minimum de variables aléatoires, s’intéresser
+aux événements $\max(\ldots)\geqslant\varepsilon$ ou $\min(\ldots)\leqslant\varepsilon$ car on peut les écrire comme des
+intersections ou des unions d’événements de la forme $\{X \geqslant \varepsilon\}$ ou $\{X \leqslant \varepsilon\}$.
+\end{AS}
+
+\begin{AS}{Découpage par les indicatrices} On pourra penser à "conditionner" avec des indicatrices, notamment en découpant des variables aléatoires comme $$X=\textbf{1}_{\{X\leqslant a\}}X+\textbf{1}_{\{X> a\}}X$$ Cela peut permettre d'utiliser le fait que $\E(1_A)=\P(A)$, de faire jouer des inégalités sur l'espérance, et d'utiliser d'autres sortes d'outils.
+\end{AS}
+
+\begin{AS}{Découpage adapté à des fonctions convexes} On pourra penser à écrire, si $X$ est à valeurs dans $[a,b]$ , que $$X=\frac{b-X}{b-a}a+\frac{X-a}{b-a}b$$ Cela permet d'obtenir une inégalité en appliquant une fonction convexe ou concave. En particulier, cela est très utile si la variable aléatoire est centrée. En général, des exercices sur des inégalités de concentration peuvent commencer comme cela.
+\end{AS}
+
+\begin{AS}{Numérotation et ordonnement dans le cas fini} Quand on travaille sur des espaces probabilisés finis, pour se simplifier la vie, ne pas hésiter à
+numéroter, voire à ordonner, les éléments de l'univers.
+\end{AS}
+
+\begin{AS}{Résultat de convergence en probabilité} Soit $(X_n)$ une suite de variables aléatoires admettant des moments d'ordre $2$ telle que $$\E(X_n)\xrightarrow[n\to+\infty]{}m\text{  et  }\V(X_n)\xrightarrow[n\to+\infty]{}0$$ Alors, on a : $$\forall \varepsilon>0,\ \P(\lvert X_n-m\rvert\geqslant\varepsilon)\xrightarrow[n\to+\infty]{}0$$
+\end{AS}
+\begin{proof}Soit $\varepsilon>0$. Si $\lvert X_n-m\rvert\geqslant\varepsilon$, alors $\lvert X_n-\E(X_n)\rvert+\lvert\E(X_n)-m\rvert\geqslant\varepsilon$. On obtient donc à partir d'un certain rang, par croissance de la probabilité : $$\P(\lvert X_n-m\rvert\geqslant\varepsilon)\leqslant\P(\lvert X_n-\E(X_n)\geqslant\varepsilon -\lvert\E(X_n)-m\rvert)$$ L'inégalité de Bienaymé-Tchebychev permet de conclure avec l'hypothèse $\V(X_n)\xrightarrow[n\to+\infty]{}0$. \\ Remarque : Cette méthode fonctionne la plupart du temps pour établir une convergence en probabilité.
+\end{proof}
+
+
+\chapter{Astuces en vrac}
+
+\begin{AS}{Théorème de Cantor-Bernstein}
+	S'il existe une injection de $E$ dans $F$ et une injection de $F$ dans $E$, alors $E$ et $F$ sont équipotents.
+\end{AS}
+
+\begin{AS}{Montrer une égalité} Quand on doit montrer une égalité entre deux expressions, bien choisir celle de laquelle on part.
+\end{AS}
+
+\begin{AS}{Degré de liberté} Parfois, il faut essayer de se créer un degré de liberté.
+\end{AS}
+
+\begin{AS}{Une identité à connaître} $$(a^2+b^2)\times(c^2+d^2)=(ac-bd)^2+(ad+bc)^2$$
+\end{AS}
+
+\begin{proof}
+	Pour le prouver et y penser, utiliser : $$\lvert a+ib\rvert^2\times\lvert c+id\rvert^2=\lvert (ac-bd)+i(ad+bc)\rvert^2$$
+\end{proof}
+
+\begin{app}
+	Permet de prouver que le produit de deux sommes de deux carrés est une somme de deux carrés.
+\end{app}
+
+\begin{app}
+	On dispose également d'une identité semblable pour des sommes de quatre carrés (le produit de deux sommes de quatre carrés est une somme de quatre carrés) : elle se prouve avec les quaternions. Cette dernière permet de montrer que tout entier est la somme de quatre carrés.
+\end{app}
+
+\begin{AS}{Entier le plus proche} L'entier le plus proche d'un réel $x$ est $$n=\left\lfloor x+\frac{1}{2}\right\rfloor$$ Si $x$ est exactement entre deux entiers, ceci donne le plus petit des deux.
+\end{AS}
+
+\begin{AS}{Dérivées successives des cosinus et sinus} On a : $$\forall n\in\N, \forall x\in\R,\ \begin{cases}
+	\cos^{(n)}(x)=\cos\left(x+\frac{n\pi}{2}\right) \\
+	\sin^{(n)}(x)=\sin\left(x+\frac{n\pi}{2}\right)
+\end{cases}$$
+\end{AS}
+
+\begin{AS}{Théorème d'Al-Kashi}
+\end{AS}
+
+\begin{AS}{Loi des sinus}
+\end{AS}
+
+\begin{AS}{Fonctions homographiques} L'application $x\mapsto\displaystyle\frac{ax+b}{cx+d}$ avec $c\ne0$ est constante si, et seulement si, $ad-bc=0$. En effet, on a : $$\frac{ax+b}{cx+d}=\frac{a}{c}+\frac{bc-ad}{cx+d}$$ Une fonction homographique est strictement monotone sur ses intervalles où elle est continue.
+\end{AS}
+\begin{AS}{Montrer une bijectivité} Parfois, pour montrer une bijectivité, on peut exhiber la fonction réciproque.
+\end{AS}
+\begin{app}
+	Pour les fonctions qui modélisent un processus qui va dans un sens, prendre la fonction qui modélise le processus inverse.
+\end{app}
+\begin{AS}{Une identité factorielle} Si $i\in\llbracket0,n\rrbracket$, alors : $$\prod_{\substack{j=0\\ j\ne i}}^{n}(i-j)=(-1)^i(n-i)i!$$
+\end{AS}
+
+
+
+\end{document}

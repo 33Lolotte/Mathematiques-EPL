@@ -1,0 +1,567 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+
+
+\newtcolorbox[auto counter]{lem}[2][]{colback=white, fonttitle=\sc, title=Lemme~\thetcbcounter~: #2}
+
+\theoremstyle{theorem}
+%\newtheorem{lem}{Lemme}
+
+\theoremstyle{definition}
+\newtheorem*{app}{Application}
+
+\title{Les lemmes de Mançois Froulin}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Théorie des ensembles, axiomatique}
+
+\section{Dénombrements}
+
+\section{Arithmétique}
+
+\section{Groupes}
+
+\begin{lem}{Théorème de Lagrange}
+	
+\end{lem}
+
+\begin{lem}{Sous-groupes d'un groupe cyclique}
+	
+\end{lem}
+
+\begin{lem}{Cyclicité des sous-groupes de $\K\st$}
+	
+\end{lem}
+
+\begin{lem}{Équation aux classes}
+	
+\end{lem}
+
+\begin{lem}{Action de translation d'un groupe sur lui-même}
+	
+\end{lem}
+
+\begin{lem}{Théorème de Cayley}
+	
+\end{lem}
+
+\begin{lem}{Principe des bergers pour un groupe}
+	
+\end{lem}
+
+\begin{lem}{Théorème de Cauchy}
+	
+\end{lem}
+
+\begin{lem}{Automorphismes intérieurs}
+	
+\end{lem}
+
+\section{Groupe symétrique}
+
+\section{Anneaux}
+
+\section{Corps}
+
+\section{Topologie des espaces métriques}
+
+\begin{lem}{Un compact à partir d'une suite convergente}
+	Soit $(x_n)_{n\in\N}$ une suite convergente de limite $l$ dans un espace métrique. Alors, l'ensemble $$\{x_n\ \mid\ n\in\N\}\cup\{l\}$$ est un compact.
+\end{lem}
+\begin{proof}
+	Considérer une suite à valeurs dans cet ensemble et distinguer si $l$ en est une valeur d'adhérence ou non (auquel cas la suite prend un nombre fini valeurs).
+\end{proof}
+\begin{app}
+	Permet de montrer qu'une fonction est continue sur un métrique si, et seulement si, sa restriction à tout compact est continue.
+\end{app}
+
+\begin{lem}
+	Soit $(x_n)_{n\in\N}$ une suite à valeurs dans un espace métrique. Alors, l'ensemble de ses valeurs d'adhérence est : $$\bigcap_{n\in\N}\overline{\{x_p\ \mid\ p\geqslant n\}}$$ Par conséquent, cet ensemble est un fermé.
+\end{lem}
+\begin{proof}
+	Revenir à la définition.
+\end{proof}
+
+\begin{lem}{Tout fermé est intersection dénombrable d'ouverts}
+	Soit $X$ une partie d'un espace métrique et $F$ un fermé de $X$. Alors : $$F=\bigcap_{n\in\N}\left\{x\in X\ : \ d(x,F)<\frac{1}{2^n}\right\}$$ En conséquence, tout fermé est intersection dénombrable d'ouverts et tout ouvert est réunion dénombrable de fermés.
+\end{lem}
+\begin{proof}
+	Vérifier l'égalité ensembliste à la main en utilisant le fait que $F$ est un fermé. La distance à $F$ est lipschitzienne donc continue donc ces ensemble sont des ouverts relatifs comme image réciproque d'ouverts. Passer au complémentaire pour le case des ouverts.
+\end{proof}
+
+\begin{lem}{Recouvrement de fermés disjoints par des ouverts disjoints}
+	Soit $X$ un espace métrique ainsi que $F_1$ et $F_2$ deux fermés non vides de $X$. Alors, il existe deux ouverts disjoints $O_1$ et $O_2$ tels que $F_1\subset O_1$ et $F_2\subset O_2$.
+\end{lem}
+\begin{proof}
+	Considérer $x\mapsto d(x,F_1)-d(x,F_2)$. Cette fonction est continue. Elle est strictement positive sur $F_2$ et strictement négative sur $F_1$. Prendre pour $O_1$ l'image réciproque de $\R_-\st$ et pour $O_2$ l'image réciproque de $\R_+\st$.
+\end{proof}
+
+\begin{lem}{Les compacts emboités}
+	
+\end{lem}
+
+\begin{lem}{Les fermés emboités}
+	
+\end{lem}
+
+\begin{lem}{Théorème de Baire}
+	
+\end{lem}
+
+\begin{lem}{Précompacité}
+	
+\end{lem}
+
+\begin{lem}{Théorème de Borel-Lebesgue}
+	
+\end{lem}
+
+\section{Topologie des EVN}
+
+\begin{lem}{Lemme de Riesz}
+	
+\end{lem}
+
+\begin{lem}{Théorème de Riesz}
+	
+\end{lem}
+
+\begin{lem}{Théorème de Carathéodory}
+	
+\end{lem}
+
+\section{Matrices}
+
+\begin{lem}{Complément de Schur}
+	Soit $M=\displaystyle\begin{pmatrix}
+		A&B\\ C&D
+	\end{pmatrix}$ une matrice par blocs avec $A$ et $D$ carrées. Si $A$ est inversible, alors on peut factoriser $M$ en : $$\begin{pmatrix}
+	A&B\\ C&D
+	\end{pmatrix}=\begin{pmatrix}
+	A&0\\
+	C&I
+	\end{pmatrix}\times\begin{pmatrix}
+	I&A\inv B\\
+	0&D-CA\inv B
+	\end{pmatrix}$$
+\end{lem}
+\begin{proof}
+	Vérifier ce calcul par blocs.
+\end{proof}
+\begin{app}
+	Permet d'obtenir une formule explicite du déterminant de $M$.
+\end{app}
+
+\begin{lem}{Crochet de Lie de $A$ et $B^k$}
+	Soit $A$ et $B$ deux matrices carrées de même taille. Alors : $$\forall \in\N\st,\ [A,B^k]=AB^k-B^kA=kB^{k-1}[A,B]$$
+\end{lem}
+\begin{proof}
+	Procéder par récurrence. Pour l'hérédité, on remarquera que : $$AB^{k+1}-B^{k+1}A=[A,B^k]B+B^k[A,B]$$
+\end{proof}
+\begin{app}
+	Utile pour les valeurs propres de l'application $h\mapsto fh-hf$ si on suppose $fg-gf=\text{Id}$ par exemple. 
+\end{app}
+
+\begin{lem}{Puissance d'un crochet avec hypothèse de commutation}
+	Soit $A$ et $B$ deux matrices carrées de même taille telles que $[A,B]$ commute avec $A$ et avec $B$. Alors : $$\forall k\in\N\st,\ [A,B]^k=\left[A,B[A,B]^{k-1}\right]$$ En particulier, cette matrice est de trace nulle.
+\end{lem}
+\begin{proof}
+	Remarquer que $$[A,B]^k=[A,B]^{k-1}(AB-BA)=A(B[A,B]^{k-1})-(B[A,B]^{k-1})A$$
+\end{proof}
+\begin{app}
+	Si on travaille sur $\C$, on en déduit que $[A,B]$ est nilpotente car toutes les traces de ses puissances nulles. 
+\end{app}
+
+\section{Espaces euclidiens}
+
+\begin{lem}{Compacité de $\mathcal{O}_n(\R)$}
+	$\mathcal{O}_n(\R)$ est compact.
+\end{lem}
+\begin{proof}
+	Il est fermé (caractérisation séquentielle, ou image réciproque d'un fermé par une application continue) et borné (pour la norme subordonnée à la norme deux, cela passe bien) en dimension finie, donc compact.
+\end{proof}
+\begin{app}
+	Prolongement de décompositions matricielles à des espaces plus larges ; recherche d'\textit{extrema} en calcul différentiel.
+\end{app}
+
+\begin{lem}{Lemme de Schur}
+	Tout endomorphisme trigonalisable d'un espace euclidien est trigonalisable en base orthonormée.
+\end{lem}
+\begin{proof}
+	Appliquer l'algorithme de Gram-Schmidt à une base de trigonalisation. Comme les deux bases définissent le même drapeau, la base obtenue par l'algorithme est aussi une base de trigonalisation.
+\end{proof}
+
+\begin{lem}{Décomposition OT}
+	Soit $A\in\mathcal{GL}_n(\R)$. Alors, il existe une unique matrice $O\in\mathcal{O}_n(\R)$ et une unique matrice $T$ triangulaire supérieure à coefficients diagonaux strictement positifs telles que $A=OT$. Si $A\in\mathcal{M}_n(\R)$, on a simplement une existence, et $T$ n'est plus nécessairement à coefficients diagonaux non nuls.
+\end{lem}
+\begin{proof}
+	Pour l'existence, appliquer l'algorithme de Gram-Schmidt à la base formée par les colonnes de $A$ puis effectuer un changement de base. Pour l'unicité, se donner deux telles décompositions et utiliser le fait que la seule matrice orthogonale et diagonale à coefficients positifs est l'identité. Pour l'existence dans le cas général, utiliser la densité de $\mathcal{GL}_n(\R)$ et la compacité de $\mathcal{O}_n(\R)$.
+\end{proof}
+\begin{app}
+	Inégalité de Hadamard.
+\end{app}
+
+\begin{lem}{Inégalité de Hadamard}
+	Soit $M\in\mathcal{M}_n(\R)$. Alors : $$\lvert\det(M)\rvert\leqslant\prod_{j=1}^{n}\lVert C_j\rVert$$ avec les $C_j$ les colonnes de la matrice $M$, avec égalité si, et seulement si, les colonnes de $M$ sont deux à deux orthogonales pour le produit scalaire canonique sur $\R^n$.
+\end{lem}
+\begin{proof}
+	Pour cela, reprendre la démonstration de la décomposition OT avec le processus de Gram-Schmidt (pour avoir l'expression des coefficients diagonaux de $T$) et utiliser l'inégalité de Cauchy-Schwarz.
+\end{proof}
+
+\begin{lem}{Racine carrée d'un endomorphisme symétrique positif}
+	Soit $E$ un espace euclidien et $u\in\mathcal{S}^+(E)$. Alors, il existe un unique $v\in\mathcal{S}^+(E)$ tel que $u=v^2$.
+\end{lem}
+\begin{proof}
+	Pour l'existence, utiliser le théorème spectral. Pour l'unicité, considérer les induits de $v$ sur les sous-espaces propres de $u$ pour montrer qu'ils sont définis de manière unique.
+\end{proof}
+\begin{app}
+	Symétrisation d'un problème, avec par exemple l'inégalité $\det(A+B)\geqslant\det(A)+\det(B)$ pour $A,B\in\mathcal{S}_n^+(\R)$ ; décomposition polaire.
+\end{app}
+
+\begin{lem}{Décomposition polaire}
+	Soit $A\in\mathcal{GL}_n(\R)$. Alors, il existe $O\in\mathcal{O}_n(\R)$ et $S\in\mathcal{S}_n^{++}(\R)$ telles que $A=OS$. Si $A\in\mathcal{M}_n(\R)$, on conserve l'existence mais on perd l'unicité.
+\end{lem}
+\begin{proof}
+	Considérer une racine carrée de $A^TA$ pour l'existence. Pour l'unicité, constater que la seule matrice diagonale, orthogonale et à coefficients positifs est l'identité. Pour l'existence de la décomposition dans le cas non inversible, utiliser le fait que $\mathcal{GL}_n(\R)$ est dense dans $\R$ et utiliser la compacité de $\mathcal{O}_n(\R)$.
+\end{proof}
+\begin{app}
+	Caractérisation des sous-groupes compacts de $\mathcal{GL}_n(\R)$ contenant $\mathcal{O}_n(\R)$ ; fait que toute matrice de $\mathcal{M}_n(\R)$ soit combinaison linéaire de 4 matrices orthogonales.
+\end{app}
+
+\begin{lem}{Décomposition de Cholesky}
+	Soit $A\in\mathcal{S}_n^{++}(\R)$. Alors, il existe une matrice triangulaire $T$ telle que $A=T^TT$. On a de plus unicité de $T$ si on lui impose d'avoir des coefficients strictement positifs. 
+\end{lem}
+\begin{proof}
+	$A$ représente un produit scalaire sur $\R^n$. On prend une base de $\R^n$ orthogonale pour ce produit scalaire obtenue à partir de la base canonique de $\R^n$ et avec l'algorithme de Gram-Schmidt, puis on effectue un changement de base. Les matrices de passages sont triangulaires car les bases obtenues définissent le même drapeau. L'unicité dans le cas des coefficients strictement positifs découle de l'unicité dans Gram-Schmidt avec les produits scalaires strictement positifs.
+\end{proof}
+
+\begin{lem}{Modulo le groupe orthogonal}
+	Soit $E$ un espace euclidien de dimension $n$. Soit $(u,v)\in\mathcal{L}(E)^2$ tel que $\forall x\in E,\ \lVert u(x)\rVert=\lVert v(x)\rVert$. Alors, il existe $w\in\mathcal{O}(E)$ tel que $u=w\circ v$.
+\end{lem}
+\begin{proof}
+	Définir $w$ sur des supplémentaires. Sur l'orthogonal de $\ker(u)=\ker(v)$, on pose $w=u\circ v\inv$ puisque $u$ et $v$ induisent des isomorphismes de cet espace vers leurs images (théorème du rang). Sur $\ker(u)$, définir $w$ en envoyant une base orthonormée de $\ker(u)$ sur une base orthonormée de l'orthogonal de l'image de $v$.
+\end{proof}
+
+\begin{lem}{Décomposition en valeurs singulières (SVD)}
+	Soit $A\in\mathcal{M}_n(\R)$. Il existe $D$ une matrice diagonale à coefficients positifs, ainsi que $P$ et $Q$ deux matrices orthogonales telles que $A=PDQ$.
+\end{lem}
+\begin{proof}
+	$A^TA$ est symétrique positive donc possède une racine carrée symétrique positive $S$. Avec le théorème spectral, on écrit $S=Q^TDQ$ avec $D$ diagonale à coefficients positifs et $Q$ orthogonale. On a donc : $$A^TA=S^2=(DQ)^T(DQ)$$ D'après le lemme "Modulo le groupe orthogonal", on sait qu'il existe $P$ une matrice orthogonale telle que $A=P(DQ)=PDQ$, ce qui conclut.
+\end{proof}
+
+\begin{lem}{Théorème de Cartan-Dieudonné}
+	Soit $E$ un espace euclidien.
+	\begin{enumerate}
+		\item $\mathcal{O}(E)$ est engendré par les réflexions.
+		\item Lorsque $\dim(E)\geqslant 3$, $\mathcal{SO}(E)$ est engendré par les retournements.
+	\end{enumerate}
+\end{lem}
+\begin{proof}
+	Faire une récurrence sur le $r$ le rang de $u-\text{Id}$ : tant que $u$ n'est pas l'identité, on considère $x$ tel que $y=u(x)-x$ soit non nul puis $s$ la symétrie orthogonale par rapport à $\R y$. On considère ensuite $u\circ s$.
+\end{proof}
+\begin{app}
+	Densité de $\mathcal{SO}_3(\Q)$ dans $\mathcal{SO}_3(\R)$ (je crois).
+\end{app}
+
+\begin{lem}{Égalités de Courant-Fischer}
+	On considère $u\in S(E)$ avec $E$ euclidien de dimension $n$. On note $\lambda_1\leqslant\ldots\leqslant\lambda_n$ ses valeurs propres. On note $\mathcal{F}_k$ l'ensemble des sous-espaces vectoriels de $E$ de dimension $k$ et $S$ la sphère unité de $E$. On dispose des résultats suivants : $$\lambda_k=\inf_{F\in\mathcal{F}_k}\sup_{x\in S\cap F}(x|u(x))$$ $$\lambda_{n+1-k}=\sup_{F\in\mathcal{F}_k}\inf_{x\in S\cap F}(x|u(x))$$
+\end{lem}
+\begin{proof}
+	Pour cela, prendre une BON de diagonalisation de $u$ et montrer que $S\cap F$ a une intersection avec $\text{Vect}(e_k,\ldots,e_n)$ non nulle (Grassmann) puis prendre un vecteur de norme $1$ dedans, ce qui montre que tous les sup sont atteints. Pour le sens réciproque, s'intéresser à $\text{Vect}(e_1,\ldots,e_k)$ et faire le produit scalaire (comme dans le cours). Pour montrer la deuxième égalité : $$\lambda_{n+1-k}=\sup_{F\in \mathcal{F}_k}\inf_{x\in S\cap F}(x|u(x))$$ on peut appliquer la première égalité à $-u$, ce qui échange essentiellement les $\sup$ et les $\inf$.
+\end{proof}
+\begin{app}
+	Entrelacement des valeurs propres (dont une application peut être le critère de Sylvester) ; inégalités de Weyl.
+\end{app}
+
+\begin{lem}{Spectre des matrices antisymétriques réelles}
+	Soit $A\in\mathcal{A}_n(\R)$. Alors $\text{Sp}_\C(A)\subset i\R$.
+\end{lem}
+\begin{proof}
+	Considérer $X\in\C^n$ et $\lambda\in\C$ tels que $AX=\lambda X$. On a donc $\overline{X}^TAX=\lambda\lVert X\rVert^2$. Mais d'autre part, on a : $\overline{X}^TA^T=\overline{\lambda}\overline{X}^T$. En multipliant ceci par $X$ à droite, en ajoutant ce que l'on obtient à l'égalité précédente et en utilisant le fait que $A$ est antisymétrique, on obtient : $$0=(\lambda+\overline{\lambda})\lVert X\rVert^2$$ donc $\lambda\in i\R$.
+\end{proof}
+
+\begin{lem}{Projecteurs orthogonaux}
+	Soit $p$ un projecteur d'un espace euclidien $E$. Les assertions suivantes sont équivalentes :
+	\begin{enumerate}[label=(\roman*)]
+		\item $p$ est un projecteur orthogonal ;
+		\item $\forall x\in E,\ \lVert p(x)\rVert\leqslant\lVert x\rVert$ ;
+		\item $p$ est symétrique.
+	\end{enumerate}
+\end{lem}
+\begin{proof}
+	Pour la première c'est du cours. Pour le sens $(iii)\implies (i)$, si $x\in\ker(p)$ et $y\in\text{Im}(p)$, considérer la fonction qui à $t$ associe $\lVert tx+y\rVert^2$ dont on peut montrer qu'elle est minorée et atteint son minimum en $0$. Utiliser alors la dérivée de cette fonction en $0$ pour conclure.
+\end{proof}
+\begin{app}
+	La composée de deux projecteurs orthogonaux est un projecteur si, et seulement si, c'est un projecteur orthogonal ; caractère orthogonal de la somme $E=\text{Im}(u-\text{Id})\oplus\ker(u-\text{Id})$ lorsque la norme d'opérateur de l'endomorphisme $u$ est inférieure à $1$ (en dimension finie).
+\end{app}
+
+\section{Inégalités}
+
+\begin{lem}{Utilisation du binôme de Newton} Pour majorer ou minorer $(1+u)^n-1$, penser au binôme de Newton et écrire : $$(1+u)^n-1=\sum_{k=1}^{n}\binom{n}{k}u^k$$ Ensuite, majorer ou minorer en ne conservant que certains termes de la somme.
+\end{lem}
+
+\begin{lem}{Minoration d'une somme géométrique} Pour $t\geqslant0$, l'inégalité arithmético-géométrique permet d'obtenir l'inégalité : $$\sum_{k=0}^{n}t^k\geqslant(n+1)t^{n/2}$$ En général, cette inégalité est très utile et permet parfois de conclure un exercice à elle seule.
+\end{lem}
+
+\begin{lem}{Exponentielles négatives} Pour des exponentielles négatives, \textit{ie} de la forme $e^{-ax}$ avec $a>0$, on peut obtenir des inégalités pour $x\geqslant0$ \textit{via} l'inégalité de Taylor-Lagrange puisque les dérivées $n$-èmes sont bornées.
+\end{lem}
+
+\begin{lem}{Une inégalité utile} Se souvenir que pour deux $f$ et $g$ des fonctions croissantes, on a toujours l'inégalité : $$\forall (x,y),\ (f(y)-f(x))(g(y)-g(x))\geqslant0$$
+\end{lem}
+\begin{app}
+	Pour $f$ et $g$ croissantes continues par morceaux sur $[0,1]$, on a : $$\int_{0}^{1}f\times \int_{0}^{1}g\leqslant \int_{0}^{1}fg$$
+	On a un résultat analogue sur les espérances (qui permet d'ailleurs de démontrer le résultat précédent sur les intégrales en passant par les sommes de Riemann).
+\end{app}
+
+\begin{lem}{Inégalité de Jensen pour les intégrales} Si $f:[a,b]\rightarrow I$ est continue par morceaux et $\varphi:I\rightarrow\R$ est convexe, alors : $$\varphi\left(\int_{a}^{b}f\right)\leqslant\int_{a}^{b}\varphi\circ f$$
+\end{lem}
+\begin{proof}
+	Passer par les sommes de Riemann et utiliser l'inégalité de Jensen dans les sommes de Riemann. Passer à la limite dans l'inégalité pour conclure.
+\end{proof}
+\begin{lem}{Cosinus hyperbolique et exponentielle} En utilisant un développement en série entière et le fait que $$\forall k\in\N,\ (2k)!\geqslant2^kk!$$ on peut montrer que $$\forall t\in\R,\ \cosh(t)\leqslant e^{t^2/2}$$
+\end{lem}
+\begin{app}
+	Cette inégalité est très utile en probabilités pour démontrer des inégalités de concentration à partir de l'inégalité de Markov.
+\end{app}
+\begin{lem}{Utilisation particulière de l'inégalité de Cauchy-Schwarz} On peut appliquer l'inégalité de Cauchy-Schwarz avec uniquement des $1$ pour obtenir : $$\left(\sum_{i=1}^{n}x_i\right)^2\leqslant n\sum_{i=1}^{n}x_i^2$$
+\end{lem}
+
+\begin{lem}{Inégalités de convexité} Pour les inégalités de convexités avec des fonctions usuelles, penser à faire un schéma pour faire apparaître les tangentes, mais aussi les cordes ! On obtient par exemple : $$\forall x\in\left[0,\frac{\pi}{2}\right],\ \frac{2x}{\pi}\leqslant \sin(x)\leqslant x$$
+	$$\forall x\in[0,1],\ 1+x\leqslant e^x\leqslant1+(e-1)x$$
+\end{lem}
+
+\begin{lem}{Racines $n$-èmes de produits de sommes} Pour des inégalités faisant intervenir des racines $n$-èmes de produits de sommes, on peut utiliser le fait que la fonction $$x\mapsto\ln(1+e^x)$$ est convexe sur $\R$ (le prouver en la dérivant deux fois). Cela permet notamment d'obtenir, pour $a_i$ et $b_i$ des réels positifs, l'inégalité : $$\sqrt[n]{\prod_{i=1}^{n}a_i}+\sqrt[n]{\prod_{i=1}^{n}b_i}\leqslant\sqrt[n]{\prod_{i=1}^{n}(a_i+b_i)}$$
+\end{lem}
+
+\begin{lem}{Inégalité de Young}
+	Soit $(p,q)\in]1,+\infty[^2$ tel que $\displaystyle\frac{1}{p}+\frac{1}{q}=1$ (on dit que les exposants $p$ et $q$ sont conjugués). Alors, on dispose de l'inégalité de Young : $$\forall (x,y)\in\R_+^2,\ xy\leqslant\frac{x^p}{p}+\frac{y^q}{q}$$
+\end{lem}
+\begin{proof}
+	Si $x=0$ ou $y=0$, le résultat est trivial. Supposons $x>0$ et $y>0$. Alors : $$xy=\exp\left(\frac{p\ln(x)}{p}+\frac{q\ln(y)}{q}\right)\leqslant\frac{\exp(p\ln(x))}{p}+\frac{\exp(q\ln(y))}{q}=\frac{x^p}{p}+\frac{y^q}{q}$$ par convexité de la fonction exponentielle.
+\end{proof}
+\begin{lem}{Inégalité de Hölder}
+	Soit $(x_1,\ldots,x_n)\in\R_+^n$ et $(y_1,\ldots,y_n)\in\R_+^n$ ainsi que $p>1$ et $q>1$ tels que $\displaystyle\frac{1}{p}+\frac{1}{q}=1$. Alors, on dispose de l'inégalité de Hölder : $$\sum_{i=1}^{n}x_iy_i\leqslant\left(\sum_{i=1}^{n}x_i^p\right)^{\frac{1}{p}}\left(\sum_{i=1}^{n}y_i^q\right)^{\frac{1}{q}}$$
+\end{lem}
+\begin{proof}
+	Commencer par supposer les sommes du membre de droite égales à un, et le faire alors en sommant l'inégalité de Young. Dans le cas général, renormaliser par ces sommes pour se ramener au cas traité précédemment (sauf si les sommes sont nulles, mais alors c'est que tous les coefficients sont nuls et le cas est trivial).
+\end{proof}
+\begin{app}
+	En particulier, on retrouve l'inégalité de Cauchy-Schwarz lorsqu'on prend $p=q=2$.
+\end{app}
+\begin{lem}{Inégalité de Minkowski}
+	Soit $(x_1,\ldots,x_n)\in\C^n$ et $(y_1,\ldots,y_n)\in\C^n$ ainsi que $p\geqslant 1$. On dispose de l'inégalité de Minkowski : $$\left(\sum_{i=1}^{n}\lvert x_i+y_i\rvert^p\right)^{\frac{1}{p}}\leqslant\left(\sum_{i=1}^{n}\lvert x_i\rvert^p\right)^{\frac{1}{p}}+\left(\sum_{i=1}^{n}\lvert y_i\rvert^p\right)^{\frac{1}{p}}$$
+\end{lem}
+\begin{proof}
+	Si $p=1$, c'est l'inégalité triangulaire usuelle. Supposons $p>1$ et remarquons alors que les exposants $p$ et $q=\displaystyle\frac{p}{p-1}$ sont conjugués. Ensuite, écrire $$\lvert x+y\rvert^p\leqslant(\lvert x\rvert+\lvert y\rvert)\times\lvert x+y\rvert^{p-1}$$ puis appliquer l'inégalité de Hölder.
+\end{proof}
+\begin{lem}{Inégalité de Young sur les intégrales}
+	Soit $f:\R_+\to\R_+$ de classe $\C^1$ bijective. Alors, on dispose de l'inégalité : $$\forall (x,y)\in\R_+^2,\ xy\leqslant\int_{0}^{x}f(t)\ dt+\int_{0}^{y}f\inv(t)\ dt$$ avec égalité si, et seulement si, $y=f(x)$.
+\end{lem}
+\begin{proof}
+	Faire la différence des deux membres en fixant $x$ (ou $y$, au choix).
+\end{proof}
+\begin{lem}{Inégalité de réordonnement}
+	Soit $a_1\leqslant\ldots\leqslant a_n$ et $b_1\leqslant\ldots\leqslant b_n$ des réels. Alors : $$\forall\sigma\in\mathcal{S}_n,\ \sum_{i=1}^{n}a_ib_{n+1-i}\leqslant\sum_{i=1}^{n}a_ib_{\sigma(i)}\leqslant\sum_{i=1}^{n}a_ib_i$$
+\end{lem}
+\begin{proof}
+	Procéder par récurrence sur $n$. Pour l'hérédité, isoler les termes d'indice $n+1$ et appliquer l'hypothèse de récurrence avec une permutation et une transposition de $\llbracket1,n\rrbracket$.
+\end{proof}
+
+\section{Suites numériques}
+
+\section{Séries numériques}
+
+\section{Intégration}
+
+\section{Intégrales à paramètres}
+
+\section{Séries entières}
+
+\section{Équations différentielles}
+
+\section{Calcul différentiel}
+
+\begin{lem}{Différentielle du déterminant}
+\end{lem}
+
+\begin{lem}{Théorème d'inversion locale}
+\end{lem}
+
+\begin{lem}{Théorème d'inversion globale}
+\end{lem}
+
+\section{Dénombrements}
+
+\section{Probabilités}
+
+\begin{lem}{Formule du crible de Poincaré} Elle s'énonce : $$\P\left(\bigcup_{i=1}^{n}A_i\right)=\sum_{k=1}^{n}(-1)^k\sum_{1\leqslant i_1<\ldots<i_k\leqslant n}\P\left(\bigcap_{j=1}^{k}A_{i_j}\right)$$
+\end{lem}
+\begin{proof}
+	On peut la démontrer en développant $1-\mathbf{1}_{\cup A_i}$ avec les complémentaires, de la distributivité généralisée et les produits d'indicatrices. On conclut en passant par linéarité de l'espérance avec la formule : $$\E(\mathbf{1}_A)=\P(A)$$
+\end{proof}
+\begin{app} Cela peut permettre de calculer la probabilité d'avoir un dérangement en tirant au hasard un élément de $S_n$
+\end{app}
+
+\begin{lem}{Fonction caractéristique} Pour $X$ une variable aléatoire à valeurs dans $\Z$, sa fonction caractéristique $F_X:t\mapsto\E(e^{itX})$ caractérise sa loi et on a : $$\forall n\in\Z,\ \P(X=n)=\frac{1}{2\pi}\int_{0}^{2\pi}F_X(t)e^{-int}\ dt$$ Le transfert d'indépendance permet de montrer que pour des variables aléatoires mutuellement indépendantes $X_1,\ldots,X_n$, on a, comme pour les fonctions génératrices : $$F_{X_1+\ldots+X_n}=\prod_{i=1}^{n}F_{X_i}$$ (pas besoin que les variables aléatoires soient à valeurs dans $\Z$ pour cela).
+\end{lem}
+\begin{app}
+	Permet de retrouver les stabilités de la loi de Poisson et de la loi binomiale
+\end{app}
+
+\begin{lem}{Une majoration}
+	Soit $A$ et $B$ deux événements. on a : $$\lvert\P(A\cap B)-\P(A)\P(B)\rvert\leqslant\frac{1}{4}$$
+\end{lem}
+
+\begin{lem}{Inégalité de Paley-Zygmund}
+	Soit $X$ une v.a.d. réelle à valeurs strictement positives qui admet un moment d'ordre $2$. Alors : $$\forall \lambda\in]0,1[,\ \P(X\geqslant\lambda\E(X))\geqslant\frac{(1-\lambda)^2\E(X)^2}{\E(X^2)}$$
+\end{lem}
+\begin{proof}
+	Appliquer l'inégalité de Cauchy-Schwarz à $$X\mathbf{1}_{X\geqslant\lambda\E(X)}$$ et écrire par ailleurs que $$\E(X\mathbf{1}_{X\geqslant\lambda\E(X)})=\E(X)-\E(X\mathbf{1}_{X<\lambda\E(X)})$$
+\end{proof}
+
+\begin{lem}{Inégalité de Bhatia-Davis}
+	Si $X$ est un variable aléatoire discrète à valeurs dans le segment réel $[a,b]$, alors on a : $$\V(X)\leqslant (b-\E(X))(\E(X)-a)$$
+\end{lem}
+\begin{proof}
+	Partir de l'inégalité $(b-X)(X-a)\geqslant0$, développer, utiliser la croissance de l'espérance, changer quelques termes de côté dans l'inégalité et enfin ajouter le terme qui manque pour obtenir le résultat.
+\end{proof}
+
+\begin{lem}{Inégalité de Popoviciu}
+	Sous les mêmes hypothèses que l'inégalité de Bhatia-Davis, on a : $$\V(X)\leqslant\frac{(b-a)^2}{4}$$
+\end{lem}
+\begin{proof}
+	Partir de l'inégalité de Bhatia-Davis et constater que $y\mapsto (b-y)(y-a)$ admet pour maximum $(b-a)^2/4$, atteint en $(a+b)/2$.
+\end{proof}
+
+\begin{lem}{Inégalité de Cantelli}
+	Soit $X$ une v.a.d. et $a>0$.
+	\begin{enumerate}
+		\item $\forall t\geqslant0,\ \P(X-\E(X)\geqslant a)\leqslant\displaystyle\frac{t^2+\V(X)}{(t+a)^2}$
+		\item $\P(\lvert X-\E(X)\rvert\geqslant a)\leqslant\displaystyle\frac{2\V(X)}{a^2+\V(X)}$
+	\end{enumerate}
+\end{lem}
+\begin{proof}
+	\begin{enumerate}
+		\item Calculer $\E((X-\E(X)+a)^2)$ pour $a\in\R$.
+		\item Utiliser le premier point et symétriser.
+	\end{enumerate}
+\end{proof}
+
+\begin{lem}{Inégalité de Jensen}
+	Pour $f$ concave, en supposant que $X$ et $f(X)$ sont d'espérance finie, on a : $$\E(f(X))\leqslant f(\E(X))$$
+\end{lem}
+\begin{proof}
+	Dans le cas fini, c'est simplement l'inégalité de Jensen habituelle. Dans le cas général, on peut le faire par densité en partant du cas fini ou utiliser des minorants de la courbe. 
+\end{proof}
+
+\begin{lem}{Inégalité des \textit{maxima} de Kolmogorov}
+	Soit $X_1,\ldots,X_n$ une suite finie de variables aléatoires réelles indépendantes centrées et dans $L^2$. Pour $k\in\llbracket1,n\rrbracket$, on pose $$S_k=\sum_{i=1}^{k}X_i$$ Soit $\alpha>0$. On a alors : $$\P\left(\underset{1\leqslant k\leqslant n}{\max}\lvert S_k\rvert\geqslant\alpha\right)\leqslant\frac{\V(S_n)}{\alpha^2}$$
+\end{lem}
+\begin{proof}
+	Introduire les événements $$A_k=\left\{\lvert S_1\rvert <\alpha,\ldots,\lvert S_{k-1}\rvert<\alpha,\lvert S_k\rvert\geqslant\alpha\right\}$$ et utiliser l'inégalité $$\lvert S_n\rvert^2\geqslant\sum_{k=1}^{n}\lvert S_n\rvert^2\mathbf{1}_{A_k}$$
+\end{proof}
+\begin{app}
+	Séries de Riemann aléatoires...
+\end{app}
+
+\begin{lem}{}
+	Soit $X$ et $Y$ deux variables aléatoires discrètes indépendantes telles que $X+Y$ soit d'espérance finie. Alors $X$ et $Y$ sont d'espérance finie.
+\end{lem}
+\begin{proof}
+	Écrire $\P(X+Y=z)=\displaystyle\sum_{x+y=z}\P(X=x)\P(Y=y)$ par indépendance puis travailler avec des familles sommables.
+\end{proof}
+
+\begin{lem}{Interpolation de Lagrange sur les indicatrices}
+	Soit $X$ une variable aléatoire sur un espace probabilisé $(\Omega,\mathcal{T},\P)$ telle que $X(\Omega)$ soit fini. On note $X(\Omega)=\{x_1,\ldots,x_n\}$ sans répétition. Alors, on dispose de la relation : $$\forall k\in\llbracket1,n\rrbracket,\ \mathbf{1}_{X=x_k}=\prod_{\substack{i=1\\}}^{max}$$
+\end{lem}
+
+\begin{lem}{Relation de Wald}
+	Soit $(X_i)_{i\in\N\st}$ une suite de variables aléatoires réelles discrètes, de même loi et d'espérance finie, ainsi que $N$ une variable aléatoire à valeurs dans $\N$, indépendante des $X_i$ et d'espérance finie. On définit : $$S=\sum_{i=1}^{N}X_i$$ Alors $S$ est d'espérance finie, on et on dispose de la relation de Wald : $$\E(S)=\E(N)\E(X_1)$$
+\end{lem}
+
+\begin{lem}{Théorème des trois séries de Kolmogorov}
+	Soit $(\Omega,\mathcal{A},\P)$ un espace probabilisé ainsi que $(X_n)_{n\in\N}$ une suite de variables aléatoires discrètes réelles mutuellement indépendantes. Alors, la série de variables aléatoires $\sum X_n$ converge presque sûrement si, et seulement si, les trois séries $\sum \P(X_n >1)$, $\sum \E(X_n\mathbf{1}_{\lvert X_n\rvert\leqslant 1})$ et $\sum \V(X_n\mathbf{1}_{\lvert X_n\rvert\leqslant 1})$ convergent.
+\end{lem}
+
+\begin{lem}{Limite supérieure et limite inférieure ; lemmes de Borel-Cantelli} Pour une suite $(A_n)$ d'événements, on définit la limite supérieure par : $$\overline{\text{lim}}A_n=\bigcap_{n\in\N}\bigcup_{p\geqslant n}A_p$$ et la limite inférieure par : $$\underline{\text{lim}}A_n=\bigcup_{n\in\N}\bigcap_{p\geqslant n}A_p$$ On dispose alors du premier lemme de Borel-Cantelli : $$\text{si }\sum_{n=0}^{+\infty}\P(A_n)<+\infty\text{ alors }\P(\overline{\text{lim}}A_n)=0$$ On dispose aussi du second lemme de Borel-Cantelli : lorsque les $A_n$ sont mutuellement indépendants, on a : $$\text{si }\sum_{n=0}^{+\infty}\P(A_n)=+\infty\text{ alors }\P(\overline{\text{lim}}A_n)=1$$
+\end{lem}
+
+\begin{lem}{Résultat de convergence en probabilité} Soit $(X_n)$ une suite de variables aléatoires admettant des moments d'ordre $2$ telle que $$\E(X_n)\xrightarrow[n\to+\infty]{}m\text{  et  }\V(X_n)\xrightarrow[n\to+\infty]{}0$$ Alors, on a : $$\forall \varepsilon>0,\ \P(\lvert X_n-m\rvert\geqslant\varepsilon)\xrightarrow[n\to+\infty]{}0$$
+\end{lem}
+\begin{proof}Soit $\varepsilon>0$. Si $\lvert X_n-m\rvert\geqslant\varepsilon$, alors $\lvert X_n-\E(X_n)\rvert+\lvert\E(X_n)-m\rvert\geqslant\varepsilon$. On obtient donc à partir d'un certain rang, par croissance de la probabilité : $$\P(\lvert X_n-m\rvert\geqslant\varepsilon)\leqslant\P(\lvert X_n-\E(X_n)\geqslant\varepsilon -\lvert\E(X_n)-m\rvert)$$ L'inégalité de Bienaymé-Tchebychev permet de conclure avec l'hypothèse $\V(X_n)\xrightarrow[n\to+\infty]{}0$. \\ Remarque : Cette méthode fonctionne la plupart du temps pour établir une convergence en probabilité.
+\end{proof}
+
+
+\section{Géométrie}
+
+\begin{lem}{Formule de Héron}
+	Soit un triangle dont les longueurs des côtés sont notées $a$, $b$ et $c$. On pose $p=\displaystyle\frac{a+b+c}{2}$ le demi-périmètre de ce triangle. Alors, l'aire $\mathcal{A}$ de ce triangle vérifie : $$\mathcal{A}=\sqrt{p(p-a)(p-b)(p-c)}$$
+\end{lem}
+
+\begin{lem}{Équations de coniques en dimension 2}
+	\begin{enumerate}
+		\item Parabole : $y=ax^2+bx+c$ avec $a\ne 0$ ;
+		\item Hyperbole : $\displaystyle\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$ ;
+		\item Ellipse : $\displaystyle\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$
+	\end{enumerate}
+\end{lem}
+
+\begin{lem}{Équations de coniques en dimension 3}
+	\begin{enumerate}
+		\item Paraboloïde elliptique : $\displaystyle\frac{x^2}{a^2}+\frac{y^2}{b^2}-z=1$ ;
+		\item Paraboloïde hyperbolique : $\displaystyle\frac{x^2}{a^2}-\frac{y^2}{b^2}-z=1$ ;
+		\item Hyperboloïde à une nappe : $\displaystyle\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}-1=0$ ;
+		\item Hyperboloïde à deux nappes : $\displaystyle\frac{x^2}{a^2}+\frac{y^2}{b^2}-\frac{z^2}{c^2}+1=0$ ;
+		\item Ellipsoïde : $\displaystyle\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2}=1$
+	\end{enumerate}
+\end{lem}
+
+
+\end{document}
