@@ -75,7 +75,7 @@
 \end{ex}
 
 \begin{ex}[Moulin.SSF.02]{}
-	Montrer que la suite de fonctions définie par $\displaystyle f_n(x)=\frac{x^n}{1+x^{2n}}$ converge simplement sur $\R$ vers une limite $f$. Étudier la convergence uniforme de cette suite, puis celle de la série de fonction $f_n-f$.
+	Montrer que la suite de fonctions définie par $\displaystyle f_n(x)=\frac{x^n}{1+x^{2n}}$ converge simplement sur $\R$ vers une limite $f$. Étudier la convergence uniforme de cette suite, puis celle de la série de fonctions $f_n-f$.
 \end{ex}
 
 \begin{ex}[Moulin.SSF.03]{}
@@ -94,6 +94,10 @@
 \begin{ex}[Moulin.SSF.05]{}
 	Convergence simple et convergence uniforme sur tout segment de $\R$ de $$f_n(x)=\displaystyle\left(1+\frac{x^2}{n}\right)^{-n}$$Montrer la convergence uniforme sur tout $\R$. On pourra étudier la monotonie de la suite $(f_n(x))_{n\in\N}$ à $x$ fixé.
 \end{ex}
+\begin{proof}
+	Pour la convergence simple, écrire : $$f_n(x)=\exp\left(-n\ln\left(1+\frac{x^2}{n}\right)\right)$$ et utiliser de l'analyse asymptotique pour montrer la convergence simple vers $\exp(-x^2)$. \\ Utiliser l'inégalité $$\forall t\in]-1,+\infty[,\ \frac{t}{1+t}\leqslant\ln(1+t)\leqslant t$$(qui s'obtient, pour le membre de gauche, en utilisant le membre de droite avec $-1/(1+t)$) pour montrer que la convergence est uniforme sur tous les $[-a,a]$ pour $a>0$. \\
+	Pour la dernière partie, montrer que $(f_n(x))_{n\in\N}$ est croissante pour $n$ fixé. On peut alors se débrouiller en observant les limites en $\pm\infty$ et en découpant $\R$ en un compact où la convergence est uniforme, et en une zone où la convergence sera uniforme de façon forcée grâce aux limites.
+\end{proof}
 
 \begin{ex}[Moulin.SSF.06]{}
 	Soit $f\in\mathcal{C}^2(\R,\C)$. Montrer que la suite de fonctions $$f_n:x\mapsto n\left[f\left(x+\frac{1}{n}\right)-f(x)\right]$$ converge uniformément sur tout segment de $\R$.
@@ -113,7 +117,7 @@
 	Établir la convergence simple et uniforme sur $\R_+$ de la suite $(f_n)$ de fonctions définies par : $$f_n(t)=\frac{\sin(nt)}{n\sqrt{t}}\ \ \text{si }t>0 \ \ \text{et} \ \ f(0)=0$$
 \end{ex}
 \begin{proof}
-	La limite simple est la fonction nulle. Ensuite, on utilise l'\textbf{arme anti-colleur} (merci pour la dénomination François). On considère $$\varphi(u)=\frac{\sin(u)}{\sqrt{u}}$$ Alors $\varphi$ est bornée sur $\R_+$ (après prolongement par continuité en $0$). Et ensuite : $$\lvert f_n(t)\rvert\leqslant \frac{\mathcal{N}_\infty(\varphi)}{\sqrt{n}}$$ donc on a une convergence normale.
+	La limite simple est la fonction nulle. Ensuite, on utilise l'\textbf{arme anti-colleur} (merci pour la dénomination François). On considère $$\varphi(u)=\frac{\sin(u)}{\sqrt{u}}$$ Alors $\varphi$ est bornée sur $\R_+$ (après prolongement par continuité en $0$). Et ensuite : $$\lvert f_n(t)\rvert\leqslant \frac{\mathcal{N}_\infty(\varphi)}{\sqrt{n}}$$ donc on a une convergence uniforme.
 \end{proof}
 \begin{rmq}
 	\textbf{Quand il y a du $nt$, penser à utiliser cette technique !!!}
@@ -144,6 +148,9 @@
 \begin{ex}[Moulin.SSF.13]{}
 	Soit $X$ et $Y$ deux parties d'espaces vectoriels normés. A quelle condition sur $\varphi:X\to Y$ la convergence simple sur $Y$ (respectivement la convergence uniforme sur $Y$, la convergence uniforme au voisinage de tout point de $Y$) d'une suite de fonctions $(f_n)_{n\in\N}$ de $Y$ dans $\C$ entraîne-t-elle la convergence simple sur $X$ (respectivement la convergence uniforme sur $X$, la convergence uniforme au voisinage de tout point de $X$) de $(f_n\circ\varphi)_{n\in\N}$ ?
 \end{ex}
+\begin{proof}
+	Continuité pour la convergence simple, uniforme continuité pour la convergence uniforme. Le vérifier est facile. Pour prouver que cela est nécessaire, considérer des suites de fonctions $(f_n)$ bien choisies (si c'est effectivement nécessaire, je n'ai pas vérifié...).
+\end{proof}
 
 \begin{ex}[Moulin.SSF.14]{$\Delta$ Composition}
 	Soit $\varphi$ une application continue de $[a,b]$ dans $\C$. Montrer que si $(f_n)$ est une suite de fonctions de $\R$ dans $[a,b]$ convergeant uniformément vers $f:\R\to\R$, alors $(\varphi\circ f_n)$ converge uniformément sur $\R$ vers $\varphi\circ f$.
@@ -163,10 +170,10 @@
 	Soit $A$ un réel strictement positif et $f:\R\to\R$ une fonction continue vérifiant $$\forall x\in\R\st,\ \lvert f(x)\rvert<\lvert x\rvert$$ Montrer que la suite $f^=f\circ \cdots\circ f$ converge uniformément vers $0$ sur tout segment $[-A,A]$.
 \end{ex}
 \begin{proof}
-	On remarque par passage à la limite que $f(0)=0$ puis on prend $\varepsilon>0$ suffisamment petit. On applique le théorème des bornes atteintes à $\displaystyle\frac{\lvert f(x)\rvert}{\lvert x\rvert}$ sur $[-A,-\varepsilon]$ et su $[\varepsilon,A]$ pour obtenir qu'elle est contractante (ou presque) sur ces ensembles. Nécessairement, les itérées rentrent dans $[-\varepsilon,\varepsilon]$ à partir d'un certain $n$ qui ne dépend que $A$ et $\varepsilon$.
+	On remarque par passage à la limite que $f(0)=0$ puis on prend $\varepsilon>0$ suffisamment petit. On applique le théorème des bornes atteintes à $\displaystyle\frac{\lvert f(x)\rvert}{\lvert x\rvert}$ sur $[-A,-\varepsilon]$ et sur $[\varepsilon,A]$ pour obtenir qu'elle est contractante (ou presque) sur ces ensembles. Nécessairement, les itérées rentrent dans $[-\varepsilon,\varepsilon]$ à partir d'un certain $n$ qui ne dépend que $A$ et $\varepsilon$.
 \end{proof}
 
-\begin{ex}[Moulin.SSF.17]{Une intégrale}
+\begin{ex}[Moulin.SSF.17]{}
 	Soit $f:[0,1]^2\to\R$ continue.
 	\begin{enumerate}
 		\item Montrer que pour tout suite convergente $(x_n)$ d'éléments de $[0,1]$, la suite de fonctions $(y\mapsto f(x_n,y))$ converge uniformément sur $[0,1]$.
@@ -198,11 +205,14 @@
 		\item Soit $(f_n)$ une suite de fonctions convexes qui converge simplement vers $f$ sur un intervalle $I$. Démontrer que la convergence est uniforme sur tout segment inclus dans l'intérieur de $I$. 
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Pour la question $1$, c'est l'exercice précédent. Pour la question $3$, c'est un des exercices suivants (le théorème de Dini pour les fonctions convexes). La question $2$ est un exemple de cours en MP*1 : faire tout ce qui est de demandé, cela ne pose pas trop de problème. Classiquement, la racine carrée n'est pas lipschitzienne car il y a un problème en $0$ : si elle était lipschitzienne, elle rentrait toujours dans un même cône, ce qui est compliqué au voisinage de $0$ car la pente de la tangente explose quand on s'approche trop près de $0$.
+\end{proof}
 
 \begin{ex}[Moulin.SSF.19]{$\star$ $\star$ $\star$ Version faible du théorème d'Ascoli}
 	\begin{enumerate}
 		\item Soit $k>0$ et $(f_n)$ une suite de fonctions de $[0,1]$ dans $[-1,1]$ toutes $k$-lipschitziennes. Montrer que l'on peut extraire de $(f_n)$ une sous-suite convergeant uniformément.
-		\item Application :montrer qu'est de dimension finie tout sous-espace vectoriel $F$ de $\mathcal{C}^1([0,1],\R)$ sur lequel $f\mapsto\mathcal{N}_\infty(f)$ et $f\mapsto\mathcal{N}_\infty(f)+\mathcal{N}_\infty(f')$ sont équivalentes.
+		\item Application : montrer qu'est de dimension finie tout sous-espace vectoriel $F$ de $\mathcal{C}^1([0,1],\R)$ sur lequel $f\mapsto\mathcal{N}_\infty(f)$ et $f\mapsto\mathcal{N}_\infty(f)+\mathcal{N}_\infty(f')$ sont équivalentes.
 		\item Application 2 : soit $(f_n)$ une suite de fonctions convexes bornées sur un intervalle $I$ ouvert (donc continues) : montrer que si la suite $(f_n)$ est bornée pour $\mathcal{N}_\infty$, elle admet une sous-suite convergeant uniformément sur tout segment de $I$.
 	\end{enumerate}
 \end{ex}
@@ -210,7 +220,7 @@
 	Exercice \textbf{très} difficile !
 	\begin{enumerate}
 		\item Mettre en place une extraction diagonale après avoir pris des limites simples en tout point de $[0,1]\cap \Q$ qui est dénombrable, puis utiliser la lipschitzianité un peu comme dans l'exercice précédent. Pour plus de détail, se référer au DM qui concerne ce théorème.
-		\item Utilise l'équivalence de ces normées pour essayer de se ramener à des fonctions lipschitziennes
+		\item Utiliser l'équivalence de ces normes pour essayer de se ramener à des fonctions lipschitziennes et donc à la question $1$. Essayer d'utiliser le théorème de Riesz : il suffit que la boule unité soit compacte pour que $F$ soit de dimension finie.
 		\item Écrire une inégalité des pentes et ce que signifie le fait d'être bornée.
 	\end{enumerate}
 \end{proof}
@@ -322,10 +332,16 @@
 \begin{ex}[Moulin.SSF.29]{$\star$}
 	Étudier la convergence simple et la convergence uniforme de la suite de fonctions définies sur $\R_+\st$ par : $$f_n(x)=\frac{n!n^x}{\prod_{k=0}^{n}(x+k)}$$
 \end{ex}
+\begin{proof}
+	C'est Gamma ! Considérer la série télescopique associée à $\ln(f_n(x))$ pour la convergence simple : on montre que cette série est convergente en remarquant que son terme général est un $\displaystyle O\left(\frac{1}{n^2}\right)$ et donc par le lien suites-séries, on en déduit la convergence simple de $(\ln(f_n(x)))_{n\in\N}$ donc de $\ln(f_n(x))_{n\in\N}$ en passant à l'exponentielle. \\ Pour la convergence uniforme, je pense qu'en reprenant plus finement l'étude précédente, on doit pouvoir prouver une convergence uniforme sur tout segment en précisant le comportement de la série télescopique et en utilisant le théorème des accroissements finis avec l'exponentielle, mais je pense que la convergence uniforme sur l'espace tout entier n'a pas lieu. A vérifier.
+\end{proof}
 
 \begin{ex}[Moulin.SSF.30]{}
 	Ensemble de définition et continuité de $f:x\mapsto\displaystyle\sum_{n=0}^{+\infty}\frac{(-1)^n}{x+n}$. Donner un équivalent de $f$ en $0$ et en $+\infty$.
 \end{ex}
+\begin{proof}
+	Avec le théorème des séries alternées, $f$ est définie en tout point de $\R\setminus\Z_-$. Pour la continuité, montrer soigneusement des convergences uniformes sur des segments. Pour les équivalents, utiliser les techniques du cours : double limite ou comparaison série-intégrale.
+\end{proof}
 
 \begin{ex}[Moulin.SSF.31]{$\star$}
 	Montrer $$\lim_{x\to 0^+}\left[\left(\sum_{n=1}^{+\infty}\frac{1}{n^{1+x}}\right)-\frac{1}{x}\right]=\gamma$$ où $\gamma$ désigne la constante d'Euler (qui apparaît dans le développement asymptotique de la série harmonique). On pourra remarquer que $$\frac{1}{x}=\lim_{N\to+\infty}\sum_{n=1}^{N}\int_{n}^{n+1}\frac{dt}{t^{1+x}}$$
@@ -374,8 +390,11 @@
 \end{proof}
 
 \begin{ex}[Moulin.SSF.35]{}
-	On construit une suite de fonctions $f_n:[0,1]\to\R$ par récurrence de la façon suivante : $$f_0=1\ \ \text{et}\ \ \forall n\in\N,\ \forall x\in[0,1],\ f_{n+1}(x)1+\int_{0}^{x}f_n(t-t^2)\ dt$$ Montrer que $(f_n)$ converge uniformément vers $f:[0,1]\to\R$ dérivable telle que : $$f(0)=1 \ \ \text{et}\ \ \forall x\in[0,1],\ f'(x)=f(x-x^2)$$
+	On construit une suite de fonctions $f_n:[0,1]\to\R$ par récurrence de la façon suivante : $$f_0=1\ \ \text{et}\ \ \forall n\in\N,\ \forall x\in[0,1],\ f_{n+1}(x)=1+\int_{0}^{x}f_n(t-t^2)\ dt$$ Montrer que $(f_n)$ converge uniformément vers $f:[0,1]\to\R$ dérivable telle que : $$f(0)=1 \ \ \text{et}\ \ \forall x\in[0,1],\ f'(x)=f(x-x^2)$$
 \end{ex}
+\begin{proof}
+	La dérivabilité découle de la convergence uniforme car on peut passer à la limite dans l'égalité avec les intégrales (et $f(0)$ est trivial). Le plus dur est la convergence uniforme. On écrit : $$f_{n+1}(x)-f_n(x)=\int_{0}^{x}f_{n}(t-t^2)-f_{n-1}(t-t^2)dt$$ puis on utilise l'inégalité triangulaire pour majorer ceci par récurrence. Par récurrence, il serait bien d'avoir un majorant en : $$A\times\frac{B^n}{n!}x^n$$ Pour trouver les constantes adéquates, on calcule donc : $$\int_{0}^{x}(t-t^2)^ndt$$ Travailler à grands coups de binôme de Newton et de formule du capitaine, on devrait aboutir à une chose pas trop moche.
+\end{proof}
 
 \begin{ex}[Moulin.SSF.36]{}
 	On pose $\displaystyle f=\sum_{n=0}^{+\infty}f_n$ où $f_n:t\mapsto te^{-n^2t^2}$.
@@ -416,6 +435,9 @@
 \begin{ex}[Moulin.SSF.38]{}
 	Montrer que $\displaystyle\sum_{n\geqslant 1}\frac{1}{n^z}$ converge simplement sur $D=\{z\in\C\ : \ \text{Re}(z)>1\}$ et montrer que sa somme est continue sur $D$.
 \end{ex}
+\begin{proof}
+	Il y a convergence normale sur tous les demi-plans de la forme : $$\{z\in\C\ : \ \text{Re}(z)\geqslant a\}$$ pour $a>1$ grâce au critère sur les séries de Riemann.
+\end{proof}
 
 \begin{ex}[Moulin.SSF.39]{}
 	Soit $f_n:x\mapsto\displaystyle\frac{\sin(x/n)}{n}$.
@@ -499,6 +521,9 @@
 \begin{ex}[Moulin.SSF.48]{$\star\star$}
 	Montrer l'existence, pour $x\in[0,\pi]$, de $f(x)=\displaystyle\sum_{n=1}^{+\infty}\frac{x\sin(nx)}{2\sqrt{n}+\cos(x)}$. La fonction $f$ est-elle continue sur $]0,\pi]$ ? sur $[0,\pi]$ ?
 \end{ex}
+\begin{proof}
+	Effectuer une transformation d'Abel (indication d'Aziz qui a vu Aymeric Sabrié le faire en 3/2).
+\end{proof}
 
 \begin{ex}[Moulin.SSF.49]{}
 	\begin{enumerate}
@@ -567,10 +592,35 @@
 		\item Expliciter sur $\R[X]$ deux normes $N_1$ et $N_2$ et une suite qui converge vers deux limites distinctes pour $N_1$ et $N_2$.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	\begin{enumerate}
+		\item Utiliser le théorème de Weierstrass et utiliser les parties paire et impaire de chacun des polynômes.
+		\item 
+		\item cf. un chapitre de topologie, mais il y a sûrement un lien avec l'exercice que je ne vois pas.
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}[Moulin.SSF.55]{}
-	EN utilisant le théorème de Weierstrass, montrer que pour toute fonction $f\in\mathcal{C}^0(\R,\C)$ paire et $2\pi$-périodique, il existe une suite de polynômes $(P_n)_{n\in\N}$ telle que $(t\mapsto P_n(\cos(t)))_{n\in\N}$
+	En utilisant le théorème de Weierstrass, montrer que pour toute fonction $f\in\mathcal{C}^0(\R,\C)$ paire et $2\pi$-périodique, il existe une suite de polynômes $(P_n)_{n\in\N}$ telle que la suite de fonctions $(t\mapsto P_n(\cos(t)))_{n\in\N}$ converge uniformément vers $f$.
 \end{ex}
+\begin{proof}
+	On considère $g=f\circ\arccos$ définie sur $[-,1,1]$ et on lui applique le théorème de Weierstrass pour obtenir $(P_n)$. Pour montrer que la convergence est alors uniforme sur $\R$, utiliser la parité et la $2\pi$-périodicité de $f$ et de $\cos$.
+\end{proof}
+
+\begin{ex}[]{$\star$ Théorème de Weierstrass trigonométrique}
+	Soit $f$ une fonction continue de $\R$ dans $\C$ $2\pi$-périodique.
+	\begin{enumerate}
+		\item En utilisant l'exercice précédent, montrer qu'il existe une suite de polynômes trigonométriques qui converge uniformément sur $\R$ vers $f\times\sin^2$.
+		\item En déduire qu'il existe une suite de polynômes trigonométriques qui converge uniformément vers $f$ sur $\R$.
+	\end{enumerate}
+\end{ex}
+\begin{proof}
+	Joli exercice ! (En vrai ce théorème peut se démontrer directement avec le théorème de Stone-Weierstrass, plutôt que de le déduire du théorème de Weierstrass - je dis ça je dis rien...)
+	\begin{enumerate}
+		\item Utiliser le fait que $f$ s'écrit sous la forme $p+i$ avec $p$ paire et $i$ impaire (où $p$ et $i$ sont alors nécessairement $2\pi$-périodiques car elle s'expriment naturellement à partir de $f$). On remarque alors que : $$f\times\sin^2=p\times\sin^2+\sin\times(i\times\sin)$$ où $p\times\sin^2$ et $i\times\sin$ sont paires et $2\pi$ périodiques. On les approche alors par des polynômes trigonométriques $(P_n\circ\cos)$ et $(Q_n\circ\cos)$ grâce à l'exercice précédent, puis on montre ensuite que $(P_n\circ\cos+\sin\times Q_n\circ\cos)$ est une suite de polynômes trigonométriques qui approche uniformément $f\times\sin^2$.
+		\item En considérant les transformations $x\mapsto x+\displaystyle\frac{\pi}{2}$ et $x\mapsto x-\displaystyle\frac{\pi}{2}$ (en appliquer une à $f$), on se ramène à la question précédente pour montrer que $f\times\cos^2$ peut être approchée uniformément par une suite de polynômes trigonométriques. On conclut alors avec $\cos^2+\sin^2=1$.
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}[Moulin.SSF.56]{Approximation $\mathcal{C}^\infty$}
 	Soit $f:[0,1]\to\R$.
@@ -617,22 +667,37 @@
 		\item Montrer que le résultat précédent reste vrai si l'on suppose seulement $f$ convexe et continue.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Exercice difficile (d'après M. Nougayrède).
+	\begin{enumerate}
+		\item Appliquer le théorème de Weierstrass à $\sqrt{f''}$ puis passer au carré et primitiver.
+		\item 
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}[Moulin.SSF.61]{$\star$}
 	Soit $a\in\displaystyle\left]0,\frac{1}{2}\right[$.
 	\begin{enumerate}
-		\item Montrer que la suite de fonctions $\displaystyle\left(x\mapsto(1+(2x-1)^n/2)\right)_{n\in\N}$ converge uniformément vers $x\mapsto\displaystyle\frac12$ sur $[a,1-a]$.
+		\item Montrer que la suite de fonctions $\displaystyle\left(x\mapsto(1+(2x-1)^n)/2\right)_{n\in\N}$ converge uniformément vers $x\mapsto\displaystyle\frac12$ sur $[a,1-a]$.
 		\item En déduire que toute fonction continue de $[a,1-a]$ dans $\R$ est limite uniforme d'une suite de fonction polynomiales à coefficients entiers.
 		\item Toute fonction continue de $[0,1]$ dans $\R$ est-elle limite uniforme d'une suite de fonctions polynomiales à coefficients entiers ?
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Exercice tombé en 2025 aux ENS ! (Julien Gietzendanner, ENS Lyon si je ne me trompe pas)
+	\begin{enumerate}
+		\item La limite simple est rapide avec une suite géométrique. Pour la convergence uniforme, majorer la raison en module par $0<1-2a<1$ pour l'uniformité.
+		\item Vérifier que la suite de fonctions précédente est polynomiale à coefficients entiers (avec un binôme de Newton cela se fait bien). \\ Ainsi, $1/2$ est limite uniforme d'une suite de fonctions polynomiales à coefficients entiers. \\ Par produit $p$ fois, on en déduit que tous les $1/2^p$ sont limite uniforme d'une suite de fonctions polynomiales à coefficients entiers. \\  Avec les dyadiques et par somme, on en déduit que toute fonction constante est limite uniforme de fonctions polynomiales à coefficients entiers. \\ On en déduit, par produit, avec des puissances de $x$, que toute fonction polynomiale sur $[-a,1-a]$ est limite uniforme de fonctions à coefficients entiers. \\ Puis on conclut avec Weierstrass et le fait que la limite uniforme possède une sorte d'associativité.
+		\item Au vu de la question, je dirais non. Il doit y avoir un problème lorsque l'on s'approche de $0$ et $1$ au vu de la construction qui précède. \\  Après réflexion, prendre une fonction qui vaut $1/2$ en $0$. Comme $\Z$ est fermé dans $\R$, il va y avoir un problème avec la convergence uniforme qui entrainerait le fait qu'une suite d'entiers pourrait converger vers $1/2$.
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}[Moulin.SSF.62]{}
 	Soit $f:[0,1]\to\R$ continue et $(a_0,\ldots,a_N)$ une subdivision de $[0,1]$. Montrer qu'il existe une suite $(P_n)$ de fonctions polynomiales convergeant uniformément vers $f$ et telle que $P_n(a_k)=f(a_k)$ pour tout $k\in\llbracket 0,N\rrbracket$ et tout $n\in\N$.
 \end{ex}
 
 \begin{ex}[Moulin.SSF.63]{}
-	Soit $f\in\mathcal{C}^0(\R_+,\R)$. Donner une condition nécessaire et suffisante pour que $f$ soit limite uniforme d'une suite de fonctions de la forme $$x\mapsto\sum_{k=0}^{n}\lambda_ke^{-kx}$$ avec $n\in\N$ et $(\lambda_0,\lambda_n)\in\R^{n+1}$.
+	Soit $f\in\mathcal{C}^0(\R_+,\R)$. Donner une condition nécessaire et suffisante pour que $f$ soit limite uniforme d'une suite de fonctions de la forme $$x\mapsto\sum_{k=0}^{n}\lambda_ke^{-kx}$$ avec $n\in\N$ et $(\lambda_0,\ldots,\lambda_n)\in\R^{n+1}$.
 \end{ex}
 
 \begin{ex}[Moulin.SSF.64]{}

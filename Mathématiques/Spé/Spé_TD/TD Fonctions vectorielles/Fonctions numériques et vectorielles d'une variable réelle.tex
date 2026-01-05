@@ -70,7 +70,7 @@ Dans tous les exercices, $E$ désigne un espace vectoriel normé de dimension fi
 	Montrer que la dérivée d'une fonction réelle dérivable sur un intervalle possède la propriété des valeurs intermédiaires :
 	\begin{itemize}
 		\item elle ne peut changer de signe sans s'annuler ;
-		\item l'image direct de n'importe quel sous-intervalle de l'intervalle de départ est un intervalle.
+		\item l'image directe de n'importe quel sous-intervalle de l'intervalle de départ est un intervalle.
 	\end{itemize}
 \end{ex}
 \begin{proof}
@@ -108,14 +108,17 @@ Dans tous les exercices, $E$ désigne un espace vectoriel normé de dimension fi
 \end{ex}
 
 \begin{ex}[Moulin.FV.06]{}
-	Soit $f$ une application de $\R$ dans $\R_+$ de classe $\mathcal{C}^1$. Montrer qu'il existe une suite $(x_n)_{n\in\N}$ de réels telle que la suite $(f'(x_n))_{n\in\N}$ converge vers $0$.
+	Soit $f$ une application de $\R$ dans $\R_+$ de classe $\mathcal{C}^1$ admettant une limite nulle en $+\infty$. Montrer qu'il existe une suite $(x_n)_{n\in\N}$ de réels telle que la suite $(f'(x_n))_{n\in\N}$ converge vers $0$.
 \end{ex}
+\begin{proof}
+	Construire par récurrence une telle suite en utilisant le théorème des accroissements finis.
+\end{proof}
 
 \begin{ex}[?]{Une étrange équation}
 	Résoudre l'équation $5^x+2^x=4^x+3^x$ d'inconnue $x\in\R$.
 \end{ex}
 \begin{proof}
-	Considérer $f:t\mapsto t^x$ sur $\R_+\st$ qui est dérivable de dérive $f':t\mapsto xt^{x-1}$. L'équation se réécrit $f(5)-f(4)=f(3)-f(2)$. Par le théorème des accroissements finis, cela se réécrit $$f'(t_1)(5-4)=f'(t_2)(3-2)$$ pour un certain $2<t_2<3$ et un certain $4<t-1<5$. Cela se réécrit donc $xt_1^{x-1}=xt_2^{x-1}$ donc nécessairement $x=1$ car $t_1\ne t_2$. Et réciproquement, $x=1$ est bien solution.
+	Considérer $f:t\mapsto t^x$ sur $\R_+\st$ qui est dérivable de dérive $f':t\mapsto xt^{x-1}$. L'équation se réécrit $f(5)-f(4)=f(3)-f(2)$. Par le théorème des accroissements finis, cela se réécrit $$f'(t_1)(5-4)=f'(t_2)(3-2)$$ pour un certain $2<t_2<3$ et un certain $4<t_1<5$. Cela se réécrit donc $xt_1^{x-1}=xt_2^{x-1}$ donc nécessairement $x=1$ car $t_1\ne t_2$. Et réciproquement, $x=1$ est bien solution.
 \end{proof}
 
 \section{Dérivation}
@@ -142,7 +145,7 @@ Dans tous les exercices, $E$ désigne un espace vectoriel normé de dimension fi
 	Attention aux idées reçues !
 	\begin{enumerate}
 		\item \textit{A priori}, ce n'est pas $pA'A^{p-1}$ car on ne sait pas si $A$ commute avec $A'$. Le théorème de dérivation d'une application multilinéaire assure qu'il s'agit plutôt de : $$\sum_{k=1}^pA^{k-1}A'A^{p-k}$$
-		\item Écrire $AA\inv=I_n$ et dériver cette relation. On obtient : $$(A\inv)'=-A\inv A' A\inv$$ Pour les puissances, utiliser la question $1$.
+		\item Écrire $AA\inv=I_n$ et dériver cette relation. On obtient : $$(A\inv)'=-A\inv A' A\inv$$ Pour les puissances négatives, utiliser la question $1$ et combiner avec le résultat précédent.
 	\end{enumerate}
 \end{proof}
 
@@ -179,8 +182,8 @@ Dans tous les exercices, $E$ désigne un espace vectoriel normé de dimension fi
 \end{ex}
 \begin{proof}
 	\begin{enumerate}
-		\item Faire des développements astucieux.
-		\item Il correspond au coefficient constant de $\chi_A'$.
+		\item Utiliser la règle de dérivation d'une forme multilinéaire et reconnaître l'apparition des déterminants des matrices $A_i$. On trouve : $$\chi_A'=\sum_{k=1}^{n}\chi_{A_k}$$
+		\item Il correspond au coefficient constant de $\chi_A'$. C'est donc : $$(-1)^{n-1}\sum_{k=1}^{n}\det(A_k)$$
 	\end{enumerate}
 \end{proof}
 
@@ -200,7 +203,7 @@ Dans tous les exercices, $E$ désigne un espace vectoriel normé de dimension fi
 	\begin{enumerate}
 		\item Écrire $fg=1$ puis dériver cette relation pour obtenir $g'=-gf'g$.
 		\item Utiliser la formule de la comatrice (tout ce qui la compose est $\mathcal{C}^1$).
-		\item A faire... Il semblerait que $\varphi$ puisse nous permettre de nous ramener à la question 2.
+		\item Il semblerait que $\varphi$ puisse nous permettre de nous ramener à la question 2.
 	\end{enumerate}
 \end{proof}
 
@@ -222,7 +225,7 @@ Dans tous les exercices, $E$ désigne un espace vectoriel normé de dimension fi
 	On a ici l'exemple d'une fonction de classe $\mathcal{C}^\infty$ sur $\R$ qui n'est pas pour autant développable en série entière : en effet, si cette fonction était développable en série entière, comme elle est nulle sur $]-1,0]$, elle serait nulle partout.
 \end{rmq}
 
-\begin{ex}[Moulin.FV.15]{Utilisation des fonctions de décollage en douceur}
+\begin{ex}[Moulin.FV.15]{}
 	Soit $a<b$.
 	\begin{enumerate}
 		\item Trouver une fonction $f$ positive de classe $\mathcal{C}^\infty$ sur $\R$ telle que : $$\forall x\in\R,\ f(x)=0\iff x\notin]a,b[$$
@@ -279,7 +282,7 @@ Dans tous les exercices, $E$ désigne un espace vectoriel normé de dimension fi
 	\end{enumerate}
 \end{proof}
 
-\begin{ex}[Moulin.FV.20]{Construction d'une suite strictement croissante de zéros des dérivées successives}
+\begin{ex}[Moulin.FV.20]{}
 	Soit $f\in\mathcal{C}^{\infty}([0,+\infty[,\R)$ telle que $f(0)f'(0)>0$ et $\lim_{+\infty}f=0$. Montrer qu'il existe une suite strictement croissante $(x_n)_{n\in\N\st}$ telle que $\forall n\in\N\st,\ f^{(n)}(x_n)=0$.
 \end{ex}
 

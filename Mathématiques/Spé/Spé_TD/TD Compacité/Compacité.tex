@@ -81,10 +81,18 @@
 	Cela revient à montrer qu'elle ne possède qu'une seule valeur d'adhérence. Par l'absurde, on suppose que la suite possède plus de deux valeurs d'adhérence. Alors, avec le fait qu'elle ralentit, on construit une nouvelle valeur d'adhérence entre les anciennes. Donc elle possède plus de valeurs d'adhérence que ce qu'elle n'en possède, c'est absurde. Donc la suite possède au plus une valeur d'adhérence. Mais elle est bornée en dimension finie, donc elle en possède au moins une. Donc elle en possède exactement une et converge.
 \end{proof}
 
-\begin{ex}{$\Delta\star$ Théorème de Riesz} Un espace vectoriel normé est de dimension finie si, et seulement si, sa sphère unité est compacte.
+\begin{ex}{$\Delta\star$ Lemme de Riesz}
+	Soit $(E,\lVert\cdot\rVert)$ une espace vectoriel normé et $F$ un sous-espace vectoriel strict de $E$ fermé dans $E$. Montrer que pour tout $\varepsilon\in]0,1[$, il existe $x\in F$ tel que : $$\lVert x\rVert=1\ \ \text{et}\ \ d(x,F)\geqslant1-\varepsilon$$
 \end{ex}
 \begin{proof}
-	A COMPLETER (cf le cours) Il y a des lemmes à démontrer.
+	Soit $\varepsilon\in]0,1[$. Fixons $a\in E$ tel que $a\notin F$ (possible car $E$ contient strictement $F$). Puisque $F$ est fermé, $a\notin\overline{F}$ donc $\alpha:=d(a,F)>0$. Par définition de la borne inférieure, puisque $$\alpha<\frac{\alpha}{1-\varepsilon}$$ on peut fixer $b\in F$ tel que $$0<\alpha<\lVert a-b\rVert\leqslant\frac{\alpha}{1-\varepsilon}$$ On définit alors : $$x=\frac{a-b}{\lVert a-b\rVert}\in S(0,1)$$ Soit $y\in F$. On a : $$\lVert x-y\rVert=\frac{\lVert a-(b+\lVert a-b\rVert y)\rVert}{\lVert a-b\rVert}\geqslant\frac{\alpha}{\lVert a-b\rVert}\geqslant 1-\varepsilon$$ car $b+\lVert a-b\rVert y\in F$ et on utilise ensuite l'inégalité sur $\alpha$. Donc $x$ convient.
+\end{proof}
+
+\begin{ex}{$\Delta$ Théorème de Riesz} Montrer qu'un espace vectoriel normé est de dimension finie si, et seulement si, sa sphère unité est compacte.
+\end{ex}
+\begin{proof}
+	Le sens direct est une conséquence immédiate d'un résultat de cours. Réciproquement, on procède par contraposée et on suppose $E$ de dimension infinie. On fixe $e_0\in S(0,1)$ et on considère $F_0=\K e_0$. On suppose construite une suite finie de vecteurs $(e_0,\ldots,e_n)\in S(0,1)^{n+1}$ telle que : $$\forall (i,j)\in\llbracket0,n\rrbracket^2,\ i\ne j\implies \lVert e_i-e_j\rVert\geqslant1/2$$ On considère $F_n=\text{Vect}(e_0,\ldots,e_n)$. $F_n$ est un sous-espace vectoriel de dimension finie de $E$, donc est fermé et est strictement inclus dans $E$ car $E$ est de dimension infinie. D'après le lemme de Riesz, on peut donc fixer $e_{n+1}\in S(0,1)$ à une distance supérieure à $1/2$ de $F$, ce qui achève la construction d'une telle suite par récurrence. \\
+	Une telle suite ne peut alors admettre de valeur d'adhérence, si bien que $S(0,1)$ n'est pas compacte, ce qui conclut la preuve.
 \end{proof}
 
 \begin{ex}[Moulin.Comp.02]{$\star$}
@@ -129,7 +137,7 @@
 
 \begin{ex}[Moulin.Comp.07]{}
 	\begin{enumerate}
-		\item Soit $E$ un espace vectoriel normé de dimension finie, $C$ un convexe fermé non borné de $E$ et $a\in C$. montrer que $C$ contient une demi-droite d'origine $a$.
+		\item Soit $E$ un espace vectoriel normé de dimension finie, $C$ un convexe fermé non borné de $E$ et $a\in C$. Montrer que $C$ contient une demi-droite d'origine $a$.
 		\item Et si $C$ n'est plus supposé fermé ?
 		\item $\star$ Et sans l'hypothèse de dimension finie ?
 	\end{enumerate}
@@ -140,7 +148,7 @@
 	\begin{enumerate}
 		\item Montrer que $\text{Conv}(A)$ est la plus petite partie convexe contenant $A$.
 		\item Soit $(p_0,\ldots,p_k)\in E^{k+1}$. On suppose qu'il existe une relation de liaison non triviale $\displaystyle\sum_{i=0}^{k}\mu_ip_i=0$ telle que $\displaystyle\sum_{i=0}^{k}\mu_i=0$. Montrer alors que $$H(p_0,\ldots,p_k)=\bigcup_{i=0}^{k}H(p_0,\ldots,p_{i-1},p_{i+1},\ldots,p_k)$$
-		\item En déduire le \textbf{théorème de Carathéodory} : si $A$ est une partie d'un $\R$-espace vectoriel de dimension $n$, alors : $$\text{Conv}(A)=\bigcup_{(p_0,\ldots,p_k)\in A^{k+1}}H(p_0,\ldots,p_k)$$
+		\item En déduire le \textbf{théorème de Carathéodory} : si $A$ est une partie d'un $\R$-espace vectoriel de dimension $n$, alors : $$\text{Conv}(A)=\bigcup_{(p_0,\ldots,p_n)\in A^{n+1}}H(p_0,\ldots,p_n)$$
 		\item En deduire que si $A$ est une partie compacte d'un $\R$-espace vectoriel de dimension finie, alors $\text{Conv}(A)$ est également compacte.
 	\end{enumerate}
 \end{ex}
@@ -148,8 +156,8 @@
 	Faire les questions 2 et 3 plus proprement...
 	\begin{enumerate}
 		\item Comme d'habitude dans les propriétés de cours.
-		\item L'inclusion réciproque est immédiate. Pour l'inclusion directe, utiliser les hypothèse pour éliminer $p_i$ si $\mu_i\ne 0$.
-		\item On a clairement $H(p_0)\subset H(p_0,p_1)$, etc. Et si $k\geqslant n+1$, on peut redescendre d'un étage car toute famille de plus de $n+1$ vecteurs est liée en dimension $n$. il faut alors bien utiliser la deuxième question.
+		\item L'inclusion réciproque est immédiate. Pour l'inclusion directe, utiliser les hypothèses pour éliminer $p_i$ si $\mu_i\ne 0$.
+		\item On a clairement $H(p_0)\subset H(p_0,p_1)$, etc. Et si $k\geqslant n+1$, on peut redescendre d'un étage car toute famille de plus de $n+1$ vecteurs est liée en dimension $n$. Il faut alors bien utiliser la deuxième question.
 		\item Le théorème de Carathéodory permet d'écrire $\text{Conv}(A)$ comme l'image directe de $A^{n+1}\times\Delta_n$ qui est compact comme produit de compacts ($\Delta_n$ est un fermé dans un compact). L'application en question est multilinéaire donc continue en dimension finie puis on a l'image d'un compact par une application continue.
 	\end{enumerate}
 \end{proof}
@@ -173,9 +181,16 @@
 	Soit $K$ une partie bornée non vide d'un espace vectoriel normé de dimension finie. Montrer qu'il existe une boule fermée de rayon minimal incluant $K$. Y a-t-il unicité ? Montrer qu'il y a unicité dans le cas où la norme est euclidienne. Montrer alors que toute isométrie qui laisse invariante une partie bornée non vide admet un point fixe.
 \end{ex}
 
-\begin{ex}[Moulin.Comp.11]{}
+\begin{ex}[Moulin.Comp.11]{Ensembles de Julia}
 	Soit $P$ un polynôme complexe de degré supérieur ou égal à $2$. Pour tout $z$ dans $\C$, on définit la suite $(u_n(z))$ par la condition $u_0(z)=z$ et la relation de récurrence $u_{n+1}(z)=P(u_n(z))$. On note $K$ l'ensemble des $z$ pour lesquels cette suite est bornée. Montrer que $K$ est compact.
 \end{ex}
+\begin{proof}
+	On va montrer que c'est un fermé borné de $\C$ qui est de dimension finie.
+	\begin{itemize}
+		\item Comme $P(z)/z\xrightarrow[\lvert z\rvert\to+\infty]{}+\infty$, il existe un rayon $R>0$ tel que lorsque $\lvert z\rvert>R$, on a $\lvert P(z)\rvert>2\lvert z\rvert$. Dès lors, $K$ est inclus dans la boule fermée de rayon $R$ centrée en $0$, donc $K$ est borné.
+		\item Soit $a\notin K$. $(u_n(a))$ est non bornée donc à partir d'un certain rang $N$, $\lvert u_n(a)\rvert>R$ (le $R$ de la question précédente). On pose alors $$\varepsilon=\frac{\lvert u_N(a)\rvert -R}{2}$$ La continuité de $P\circ\cdots\circ P$ ($N$ fois) assure l'existence d'une boule centrée en $a$ qui s'envoie dans la boule centrée en $u_N(a)$ et de rayon $\varepsilon$. Tous les éléments de cette boule centrée en $a$ sont dans $\C\setminus K$, donc $\C\setminus K$ est ouvert et donc $K$ est fermé.
+	\end{itemize}
+\end{proof}
 
 \begin{ex}[Moulin.Comp.12]{$\Delta\star$ Théorème de Baire}
 	Soit $A$ une partie localement compacte d'un espace vectoriel normé (\textit{ie} dans laquelle tout point possède un voisinage compact).
@@ -207,7 +222,7 @@
 \section{Compacité et fonctions}
 
 \begin{ex}[Moulin.Comp.14]{$\circ$}
-	Soit $K$ un compact. montrer que l'inverse d'une fonction lipschitzienne de $K$ dans $\C\st$ est lipschitzienne. Et sans l'hypothèse de compacité ?
+	Soit $K$ un compact. Montrer que l'inverse d'une fonction lipschitzienne de $K$ dans $\C\st$ est lipschitzienne. Et sans l'hypothèse de compacité ?
 \end{ex}
 
 \begin{ex}[Moulin.Comp.15]{$\circ$}
@@ -226,7 +241,7 @@
 \end{ex}
 
 \begin{ex}[Moulin.Comp.17]{}
-	Vrai ou faux ? Si $K$ est un compact et si $f:\K\to\K$ vérifie : $$\forall (x,y)\in K^2,\ x\ne y\implies d(f(x),f(y))<d(x,y)$$ alors $f$ est contractante sur $K$, c'est-à-dire $k$-lipschitzienne pour un certain $k<1$.
+	Vrai ou faux ? Si $K$ est un compact et si $f:K\to K$ vérifie : $$\forall (x,y)\in K^2,\ x\ne y\implies d(f(x),f(y))<d(x,y)$$ alors $f$ est contractante sur $K$, c'est-à-dire $k$-lipschitzienne pour un certain $k<1$.
 \end{ex}
 
 \begin{ex}[Moulin.Comp.18]{}
@@ -238,13 +253,13 @@
 \begin{proof}
 	La première question est classique, la deuxième est beaucoup plus difficile.
 	\begin{enumerate}
-		\item Pour la première, utiliser la définition de la limite pour pouvoir appliquer le théorème des bornes atteintes sur une un compact( en l'occurrence une boule fermée centrée en $0$ par exemple).
+		\item Pour la première, utiliser la définition de la limite pour pouvoir appliquer le théorème des bornes atteintes sur une un compact (en l'occurrence une boule fermée centrée en $0$ par exemple).
 		\item Ensuite, suivre l'indication puis raisonner par l'absurde pour montrer que ce minimum vaut $0$.
 	\end{enumerate}
 \end{proof}
 
 \begin{ex}[Moulin.Comp.19]{$\star$}
-	Montrer qu'une application est continue si, et seulement si, sa restriction à tout compact est continue.
+	Montrer qu'une application est continue (d'un espace métrique dans un autre) si, et seulement si, sa restriction à tout compact est continue.
 \end{ex}
 \begin{proof}
 	Le sens direct est immédiat. Pour le sens réciproque, passer par une caractérisation séquentielle de la continuité. On utiliser ensuite le fait que si $x_n\to l$, alors l'ensemble $$\left\{x_n\mid n\in\N\right\}\cup\{l\}$$ est compact puis le tour est joué.
@@ -261,6 +276,9 @@
 \begin{ex}[Moulin.Comp.22]{}
 	Soit $f$ une application continue d'un compact non vide $K$ dans lui-même. Montrer qu'il existe une partie non vide de $K$ telle que $f(X)=X$.
 \end{ex}
+\begin{proof}
+	Considérer $$X=\bigcap_{n\in\N}f^n(K)$$ qui est non vide comme suite décroissante de compacts non vides.
+\end{proof}
 
 \begin{ex}[Moulin.Comp.23]{}
 	Soit $E$ un espace vectoriel normé.
@@ -280,7 +298,7 @@
 	Soit $X$ une partie fermée non vide d'un espace vectoriel de dimension finie, $k\in[0,1[$ et $f:X\to X$ une application $k$-lipschitzienne. Montrer que $f$ possède un unique point fixe. Indication : on pourra, étant donné $x\in X$, considérer la série $$\sum (f^{n+1}(x)-f^n(x))$$
 \end{ex}
 \begin{proof}
-	Pour l'existence, cette série est absolument convergente ($O(k)$) donc convergente en dimension finie. Donc $f^{n}(x)\to l$. Mais par continuité, $f(l)=l$. Et comme $x$ est fermé, $l\in X$. Pour l'unicité, deux candidats sont nécessairement égaux car l'application est contractante.
+	Pour l'existence, cette série est absolument convergente ($O(k^n)$) donc convergente en dimension finie. Donc $f^{n}(x)\to l$. Mais par continuité, $f(l)=l$. Et comme $x$ est fermé, $l\in X$. Pour l'unicité, deux candidats sont nécessairement égaux car l'application est contractante.
 \end{proof}
 
 \begin{ex}[Moulin.Comp.26]{$\Delta\star$ Théorème de Kakutani} Pour un compact convexe non vide $K$, une application linéaire continue qui stabilise $K$ admet un point fixe.
@@ -318,7 +336,7 @@
 \end{proof}
 
 \begin{ex}[Moulin.Comp.29]{$\star$}
-	Soit $f:[0,1]\to[0,1]$ une fonction continue et $(x_n)_{n\in\N}$ une suite d'éléments de $[0,1]$ vérifiant $\forall n\in\N,\ x_{n+1}=f(x_n)$. On suppose que tout valeur d'adhérence de $(x_n)_{n\in\N}$ est un point fixe de $f$.
+	Soit $f:[0,1]\to[0,1]$ une fonction continue et $(x_n)_{n\in\N}$ une suite d'éléments de $[0,1]$ vérifiant $\forall n\in\N,\ x_{n+1}=f(x_n)$. On suppose que toute valeur d'adhérence de $(x_n)_{n\in\N}$ est un point fixe de $f$.
 	\begin{enumerate}
 		\item Montrer que $(x_{n+1}-x_n)_{n\in\N}$ converge vers $0$.
 		\item Montrer que $(x_n)_{n\in\N}$ est convergente.
@@ -345,7 +363,7 @@
 	Preuve du théorème de Borel-Lebesgue ; permet de faire des extractions diagonales.
 \end{app}
 
-\begin{ex}[Moulin.Comp.32]{$\Delta$Théorème de Borel-Lebesgue} Une partie $A$ est compacte si, et seulement si, de tout recouvrement de $A$ par des ouverts, on peut extraire un sous-recouvrement fini ouvert de $A$. On se propose de montrer en deux questions le sens direct, puis de montrer le sens réciproque. Soit $A$ une partie compacte.
+\begin{ex}[Moulin.Comp.32]{$\Delta$ Théorème de Borel-Lebesgue} Une partie $A$ est compacte si, et seulement si, de tout recouvrement de $A$ par des ouverts, on peut extraire un sous-recouvrement fini ouvert de $A$. On se propose de montrer en deux questions le sens direct, puis de montrer le sens réciproque. Soit $A$ une partie compacte.
 	\begin{enumerate}
 		\item Soit $(O_i)_{i\in I}$ une famille d'ouverts de $A$ recouvrant $A$. Montrer qu'il existe $\varepsilon>0$ tel que $$\forall x\in A,\ \exists i\in I\ : \ B_o(x,\varepsilon)\subset O_i$$
 		\item Montrer que pour toute famille $(O_i)_{i\in I}$ d'ouverts de $A$ recouvrant $A$, il existe une partie finie $J$ de $I$ telle que $(O_j)_{j\in J}$ recouvre $A$. On pourra utiliser la précompacité de $A$ (exercice précédent).
@@ -416,7 +434,7 @@
 	La réponse est non. Raisonner par l'absurde et considérer $f:\R^2\to\R$ un homéomorphisme. Remarquer qu'en enlevant un point à $\R^2$, celui reste connexe par arcs alors que $\R$ ne le reste pas. Il y a alors un problème car l'image d'un connexe par arcs est un connexe par arcs, donc la restriction de $f$ à $\R^2\setminus\{(0,0)\}$ ne peut pas atteindre la moitié des réels, ce qui est absurde par surjectivité de $f$.
 \end{proof}
 \begin{rmq}
-	Il est possible de prouver que $\R^m$ et $\R^n$ ne sont pas homéomorphes dès que $m\ne n$. En revanche, nous ne disposons pas des bons outils pour le faire. Le bon outil est la notion de \textbf{simple connexité} et la théorie des l'homologie (lacets, groupes d'homotopie) qui permet de correctement formaliser les choses et de prouver ce résultat difficile. Pour plus de détail, aller dans une école où on "fait vraiment des maths" et "avec strictement plus d'une lettre". Merci François.
+	Il est possible de prouver que $\R^m$ et $\R^n$ ne sont pas homéomorphes dès que $m\ne n$. En revanche, nous ne disposons pas des bons outils pour le faire. Le bon outil est la notion de \textbf{simple connexité} et la théorie de l'homologie (lacets, groupes d'homotopie) qui permet de correctement formaliser les choses et de prouver ce résultat difficile. Pour plus de détail, aller dans une école où on "fait vraiment des maths" et "avec strictement plus d'une lettre". Merci François.
 \end{rmq}
 
 \begin{ex}[Moulin.Comp.38]{}
@@ -461,7 +479,7 @@
 	La réponse est oui. Prendre pour l'un des plans d'abscisses dans $\Q$ et l'autre des plans d'abscisses dans $\R\setminus\Q$ puis percer toutes ces plans par deux droites orthogonales pour les rendre connexes par arcs.
 \end{proof}
 \begin{rmq}
-	On peut faire des même dans $\R^2$ en considérant des cercles concentriques de rayons rationnels et irrationnels percé par des demi-droites partant de l'origine.
+	On peut faire de même dans $\R^2$ en considérant des cercles concentriques de rayons rationnels et irrationnels percé par des demi-droites partant de l'origine.
 \end{rmq}
 
 \begin{ex}[Moulin.Comp.44]{$\star$}
@@ -602,23 +620,26 @@ Dans cette section, $\K$ désigne $\R$ ou $\C$.
 		\item Soit $C\in\C^n$. On note $$\begin{array}{lrcl}
 			\det_X:&\mathcal{M}_n(\C)&\longrightarrow&\C\\
 			&M&\longmapsto&\det(X\mid MX\mid\ldots\mid M^{n-1}X)
-		\end{array}$$ qui est continue par multilinéarité en dimension finie. Alors l'ensemble des matrices cycliques est $$\bigcup_{X\in\C^n}\det_X\inv(\C\st)$$ C'est donc un ouvert comme union d'ouverts.
+		\end{array}$$ qui est continue par multilinéarité en dimension finie. Alors l'ensemble des matrices cycliques est $$\bigcup_{X\in\C^n}\text{det}_X\inv(\C\st)$$ C'est donc un ouvert comme union d'ouverts.
 		\item On considère $M$ cyclique, $X$ un vecteur cyclique associé et $\mathcal{B}=(X,MX,\ldots,M^{n-1}X)$. On note $u$ l'endomorphisme canoniquement associé à $M$. Alors : $$M_\mathcal{B}(u)=\begin{pmatrix}
 			0&&&a_1\\
 			1&\ddots&&\vdots\\
 			&\ddots&\ddots&\vdots\\
 			&&1&a_n
-		\end{pmatrix}=A(a_1,\ldots,a_n)$$ Or, toute matrice $A(x_1,\ldots,x_n)$ est cyclique. on considère alors : $$\varphi(t)=A(ta_1,\ldots,ta_n)$$ qui est continue et relie $A(a_1,\ldots,a_n)$ à $A(0,\ldots,0)$. On fait de même avec $B$ cyclique et $\tilde{B}$. Puis on utilise la connexité par arcs de $\mathcal{GL}_n(\C)$ et la continuité du produit (bilinéaire en dimension finie). C'est donc un chemin "en 3 temps".
+		\end{pmatrix}=A(a_1,\ldots,a_n)$$ Or, toute matrice $A(x_1,\ldots,x_n)$ est cyclique. On considère alors : $$\varphi(t)=A(ta_1,\ldots,ta_n)$$ qui est continue et relie $A(a_1,\ldots,a_n)$ à $A(0,\ldots,0)$. On fait de même avec $B$ cyclique et $\tilde{B}$. Puis on utilise la connexité par arcs de $\mathcal{GL}_n(\C)$ et la continuité du produit (bilinéaire en dimension finie). C'est donc un chemin "en 3 temps".
 	\end{enumerate}
 \end{proof}
 
 \begin{ex}[Moulin.Comp.54]{$\star\star$}
-	Soit $f:[0,1]\to\mathcal{M}_n(\R)$ continue et $p\in\llbracket0,n\rrbracket$ tels que $$\forall t\in[0,1],\ \text{rg}(M(t))=n-p$$
+	Soit $M:[0,1]\to\mathcal{M}_n(\R)$ continue et $p\in\llbracket0,n\rrbracket$ tels que $$\forall t\in[0,1],\ \text{rg}(M(t))=n-p$$
 	\begin{enumerate}
 		\item Montrer que pour tout $t_0\in[0,1]$, il existe des applications continues $f_1,\ldots,f_p$ définies dans un voisinage $V$ de $t_0$ dans $[0,1]$, à valeurs dans $\R^n$, telles que $\forall t\in V,\ \ker(M(t))=\text{Vect}(f_1(t),\ldots,f_p(t))$.
 		\item Montrer que l'on peut trouver $f_1,\ldots,f_p$ continues de $[0,1]$ dans $\R^n$ telles que $\forall t\in [0,1],\ \ker(M(t))=\text{Vect}(f_1(t),\ldots,f_p(t))$.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Un argument de connexité me paraît intéressant pour la deuxième question (à tester). La première est logique mais doit sûrement être atroce à rédiger.
+\end{proof}
 
 \section{Topologie et réduction}
 
@@ -652,13 +673,18 @@ Dans cette section, $\K$ désigne $\R$ ou $\C$.
 \begin{ex}[Moulin.Comp.57]{$\star$ Dimension du commutant}
 	Le commutant de $A\in\mathcal{M}_n(\K)$ et $\mathcal{C}_\K(A)=\left\{M\in\mathcal{M}_n(\K)\mid AM=MA\right\}$.
 	\begin{enumerate}
-		\item Soit $A\in\mathcal{M}_n(\C)$ diagonalisable à $n$ valeurs propres distinctes. montrer que son commutant $\mathcal{C}_\C(A)$ est de dimension $n$.
-		\item En déduire que $\dim_\C\mathcal{C}_\C(A)\geqslant n$ pour tout $A\in\mathcal{M}_n(\C)$. on pourra utiliser la densité des matrices diagonalisables à $n$ valeurs propres distinctes.
+		\item Soit $A\in\mathcal{M}_n(\C)$ diagonalisable à $n$ valeurs propres distinctes. Montrer que son commutant $\mathcal{C}_\C(A)$ est de dimension $n$.
+		\item En déduire que $\dim_\C\mathcal{C}_\C(A)\geqslant n$ pour tout $A\in\mathcal{M}_n(\C)$. On pourra utiliser la densité des matrices diagonalisables à $n$ valeurs propres distinctes.
 		\item En déduire que $\dim_\R\mathcal{C}_\R(A)\geqslant n$ pour tout $A\in\mathcal{M}_n(\R)$.
 	\end{enumerate}
 \end{ex}
 \begin{proof}
-	A faire...
+	Il y a probablement une autre façon de faire la première question.
+	\begin{enumerate}
+		\item La dimension du commutant d'une matrice diagonalisable est la somme des carrés des dimensions des sous-espaces propres de cette matrice (cela se démontre en remarquant qu'il est équivalent de commuter partout que de commuter sur les sous-espaces propres). Ici, comme on a $n$ sous-espaces propres distincts (donc de dimension $1$), la dimension du commutant vaut $n$.
+		\item Utiliser la densité indiquée et la question précédente.
+		\item Montrer que pour une matrice réelle, la dimension sur $\C$ du commutant complexe est égale à la dimension sur $\R$ du commutant réel (en passant par des parties réelles et imaginaires).
+	\end{enumerate}
 \end{proof}
 
 \begin{ex}[Moulin.Comp.58]{$\Delta$ Racines de l'unité}

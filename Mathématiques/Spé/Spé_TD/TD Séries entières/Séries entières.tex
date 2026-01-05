@@ -70,7 +70,7 @@
 	\begin{enumerate}
 		\item $\displaystyle\sum n^{(-1)^n}x^n$ ;
 		\item $\displaystyle\sum (1+\sqrt{n})^{-n}x^n$ ;
-		\item $\displaystyle\sum 2nnx^{n^2}$ ;
+		\item $\displaystyle\sum 2nx^{n^2}$ ;
 		\item $\displaystyle\sum nx^{2^n}$ ;
 		\item $\displaystyle\sum_{n\geqslant 2} \frac{x^n}{\ln(n!)}$ ;
 		\item $\displaystyle\sum_{n\geqslant 1} \arccos\left(\frac{n-1}{n}\right)x^n$ ;
@@ -285,20 +285,23 @@
 \begin{ex}[Moulin.SE.26]{}
 	Montrer que pour tout entier naturel $\alpha$, la somme $\displaystyle\sum_{n=0}^{+\infty}\frac{n^\alpha}{n!}$ est un multiple entier de $e$.
 \end{ex}
+\begin{proof}
+	Montrer que $n^\alpha$ peut s'écrire comme $\Z$-combinaison linéaire de $n(n-1)\cdots(n-\alpha+1)$, $n(n-1)\cdots(n-\alpha+2)$, $\ldots$, $n(n-1)$ et $n$ puis montrer le résultat pour ces "coefficients binomiaux" en éliminant des termes et en effectuant un changement d'indice.
+\end{proof}
 
 \begin{ex}[Moulin.SE.27]{}
 	Démontrer la convergence de $\displaystyle\sum\frac{(-1)^{\lfloor n/2\rfloor}}{2n+1}$ et donner une expression simple de sa somme.
 \end{ex}
 
 \begin{ex}[Moulin.SE.28]{}
-	Pour $x\in\R$, donner une expression simple de $$\sum_{n=0}^{+\infty}\frac{x^n}{(2n!)} \ \ \text{et}\ \ \sum_{n=0}^{+\infty}\frac{x^n}{(3n!)}$$ puis généraliser la méthode.
+	Pour $x\in\R$, donner une expression simple de $$\sum_{n=0}^{+\infty}\frac{x^n}{(2n)!} \ \ \text{et}\ \ \sum_{n=0}^{+\infty}\frac{x^n}{(3n)!}$$ puis généraliser la méthode.
 \end{ex}
 \begin{proof}
 	Pour la première, lorsque $x\geqslant0$, écrire $x=t^2$ et écrire $x=-t^2$ lorsque $x<0$. On trouve $\cos(\sqrt{-x})$ si $x\leqslant0$ et $\cosh(\sqrt{x})$ si $x\geqslant0$. Pour la deuxième somme, qu'on note comme $f(x)$, on pose $g_0(t)=f(t^3)$. On pose ensuite : $$g_1(t)=\sum_{n=0}^{+\infty}\frac{t^{3n+1}}{(3n+1)!} \ \ \text{et} \ \ g_2(t)=\sum_{n=0}^{+\infty}\frac{t^{3n+2}}{(3n+2)!}$$ On remarque alors que : $$\begin{cases}
 		g_0(t)+g_1(t)+g_2(t)=e^t \\
 		g_0(t)+jg_1(t)+j^2g_2(t)=e^{jt} \\
 		g_0(t)+j^2g_1(t)+jg_2(t)=e^{j^2t}
-	\end{cases}$$ On en déduit $$g_0(t)=\frac{1}{3}(e^{t}+e^{jt}+e^{j^2t})$$ Et par conséquent : $$f(x)=\frac{1}{3}\left(e^{\sqrt[3]{x}}+2e^{-\sqrt[3]{x}/2}\cos\left(\frac{\sqrt{2}}{2}\sqrt[3]{x}\right)\right)$$ De façon générale, on aura une matrice de Vandermonde de taille $p$ à inverser.
+	\end{cases}$$ On en déduit $$g_0(t)=\frac{1}{3}(e^{t}+e^{jt}+e^{j^2t})$$ Et par conséquent : $$f(x)=\frac{1}{3}\left(e^{\sqrt[3]{x}}+2e^{-\sqrt[3]{x}/2}\cos\left(\frac{\sqrt{3}}{2}\sqrt[3]{x}\right)\right)$$ De façon générale, on aura une matrice de Vandermonde de taille $p$ à inverser.
 \end{proof}
 
 \begin{ex}[Moulin.SE.29]{}
@@ -445,7 +448,7 @@
 	\begin{enumerate}
 		\item Montrer que $\tan^{(n)}(x)=P_n(\tan(x))$ où $P_n$ est un polynôme à coefficients entiers naturels dont on déterminera le degré et le coefficient dominant.
 		\item Montrer que pour tout $x\in[0,\pi/2[$, la série $\displaystyle\sum P_n(0)\frac{x^n}{n!}$ est convergente. En déduire que $$S(z)=\sum_{n=0}^{+\infty}P_n(0)\frac{z^n}{n!}$$ converge absolument pour $\lvert z\rvert<\pi/2$.
-		\item Montrer : $\forall z\in\C,\ z\rvert<\pi/2\implies S(z)\cos(z)=\sin(z)$.
+		\item Montrer : $\forall z\in\C,\ \lvert z\rvert<\pi/2\implies S(z)\cos(z)=\sin(z)$.
 		\item En déduire que les fonctions $\tan$ et $\tanh$ sont développables en série entière. Quels sont les rayons de convergence de ces deux séries ?
 	\end{enumerate}
 \end{ex}
@@ -453,7 +456,7 @@
 \begin{ex}[Moulin.SE.44]{}
 	\begin{enumerate}
 		\item $\circ$ Déterminer le développement en série : $$\sqrt{1-x}=\sum_{n=0}^{+\infty}a_nx^n$$
-		\item $\star$ Montrer que si $\lvert z\rvert<1$ et $1-z=re^{i\theta}$ avec $r>0$ et $\theta_in]-\pi,\pi[$, alors : $$\sum_{n=0}^{+\infty}a_nz^n=\sqrt{r}e^{i\theta/2}$$
+		\item $\star$ Montrer que si $\lvert z\rvert<1$ et $1-z=re^{i\theta}$ avec $r>0$ et $\theta\in]-\pi,\pi[$, alors : $$\sum_{n=0}^{+\infty}a_nz^n=\sqrt{r}e^{i\theta/2}$$
 	\end{enumerate}
 \end{ex}
 
@@ -506,7 +509,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[Moulin.SE.50]{}
+\begin{ex}[Moulin.SE.50]{Analycité de $\zeta$}
 	Montrer que la fonction $\zeta$ est développable en série entière au voisinage de tout point de $\{z\in\C\ : \ \text{Re}(z)>1\}$.
 \end{ex}
 
@@ -599,7 +602,7 @@
 		\item Se rapprocher de $e$ avec des rationnels et utiliser la deuxième question.
 		\item \begin{itemize}
 			\item Pour $\U\setminus D$ : par la deuxième question, $\{e^{i\pi x}\mid x\in\Q\}\subset\U\setminus D$ et comme $\Q$ est dense dans $\R$, on en déduit que $\U\setminus D$ est dense dans $\U$.
-			\item Pour $D$ : on pose $z=z_{0}e^{i\pi x}$ avec $x\in\Q$. A partir d'un certain rang, $z^{n!}=z_0^n$ si bien que $z\in D\cap \U$. Comme $e+\Q$ est dense dans $\R$, on a de même le fait que $D\cap\U$ est dense dans $\U$.
+			\item Pour $D$ : on pose $z=z_{0}e^{i\pi x}$ avec $x\in\Q$. A partir d'un certain rang, $z^{n!}=z_0^{n!}$ si bien que $z\in D\cap \U$. Comme $e+\Q$ est dense dans $\R$, on a de même le fait que $D\cap\U$ est dense dans $\U$.
 		\end{itemize}
 	\end{enumerate}
 \end{proof}
@@ -613,7 +616,7 @@
 \end{proof}
 
 \begin{ex}[Moulin.SE.56]{$\star\star\star$ Théorème de Tauber}
-	Si $\sum a_nz^n$ est une série de rayon entière de rayon de convergence $1$, si sa somme $S$ tend vers une limite finie $l$ radialement en $1$ et si $a_n=\displaystyle o\left(\frac{1}{n}\right)$, alors $\sum a_n$ converge et on a : $$\sum_{n=0}^{+\infty} a_n=l$$
+	Soit $\sum a_nz^n$ est une série de rayon entière de rayon de convergence $1$. Montrer que si sa somme $S$ tend vers une limite finie $l$ radialement en $1$ et si $a_n=\displaystyle o\left(\frac{1}{n}\right)$, alors $\sum a_n$ converge et on a : $$\sum_{n=0}^{+\infty} a_n=l$$
 \end{ex}
 \begin{proof}
 	Exercice très difficile. Montrer que $$\sum_{k=1}^{n}a_n-S\left(1-\frac{1}{n}\right)$$ tend vers $0$. Pour cela, écrire : $$\sum_{k=1}^{n}a_n-S\left(1-\frac{1}{n}\right)=\sum_{k=1}^{n}a_k\left(1-\left(1-\frac{1}{n}\right)^k\right)+\sum_{k=n=1}^{+\infty}a_k\left(1-\frac{1}{n}\right)^k$$ On montre que les deux termes tendent vers 0. Pour le premier, utiliser le fait que $$1-\left(1-\frac{1}{n}\right)^k\leqslant \frac{n}{k}$$ (le démontrer avec une factorisation de Bernoulli) puis utiliser le théorème de Cesàro avec $(na_n)$ qui tend vers $0$ par hypothèse. Pour le second terme, écrire artificiellement $$a_k=a_k\frac{k}{k}$$ Majorer tous les $1/k$ par $1/(n+1)$ puis majorer en module tous $a_kk$ par la borne supérieure de ces éléments pour $k\geqslant n+1$, borne supérieure qui tend vers $0$ par hypothèse. Enfin, pour le reste, majorer brutalement par la série géométrique totale pour avoir une expression simple, et majorer $1-1/n$ par $1$.

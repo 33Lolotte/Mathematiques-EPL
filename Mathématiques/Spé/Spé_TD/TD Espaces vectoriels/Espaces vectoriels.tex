@@ -211,7 +211,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}[$\star$ Existence d'une base pour un espace vectoriel quelconque]
+\begin{ex}{$\star$ Existence d'une base pour un espace vectoriel quelconque}
 	En admettant le lemme de Zorn, montrer que tout espace vectoriel admet une base.
 \end{ex}
 
@@ -362,7 +362,7 @@
 	Soit $F$ et $G$ deux sous-espaces vectoriels d'un espace vectoriel $E$ de dimension finie. Donner une condition nécessaire et suffisante pour qu'il existe $u\in\mathcal{L}(E)$ tel que $\ker(u)=F$ et $\text{Im}(u)=G$.
 \end{ex}
 
-\begin{ex}[]{}
+\begin{ex}[Morlot]{}
 	Soit $E$ un $\K$-espace vectoriel et $f\in\mathcal{L}(E)$ tel que $$(f-id)^2=0$$ 
 	\begin{enumerate}
 		\item Montrer que $f$ est inversible et donner son inverse.
@@ -370,7 +370,7 @@
 	\end{enumerate}
 \end{ex}
 
-\begin{ex}{Intégrité affaiblie sur les formes linéaires}
+\begin{ex}[Morlot]{Intégrité affaiblie sur les formes linéaires}
 	Soit $E$ un $\K$-espace vectoriel et $(f,g) \in (E\st)^2$ telles que $$\forall x \in E, \ f(x)g(x)=0$$ Montrer que $f=0$ ou $g=0$.
 \end{ex}
 \begin{proof}
@@ -445,6 +445,11 @@
 \begin{ex}[Moulin.EV.38]{}
 	Soit $E$ un espace vectoriel de dimension finie et $f\in\mathcal{L}(E)$. Montrer que $\ker(f)=\text{Im}(f)$ si, et seulement si : $$f\circ f=0\ \ \text{et}\ \ \exists h\in\mathcal{L}(E),\ f\circ h+h\circ f=\text{id}_E$$
 \end{ex}
+\begin{proof}
+	Sens réciproque : fixons un tel $h$. L'hypothèse $f^2=0$ nous donne $\text{Im}(f)\subset\ker(f)$, et si on prend $x\in\ker(f)$, en utilisant la relation fonctionnelle, on trouve : $$x=f(h(x))+h(f(x))=f(h(x))+h(0)=f(h(x))$$ si bien que $x\in\text{Im}(f)$.\\ \\
+	Sens direct : supposons $\ker(f)=\text{Im}(f)$. De l'inclusion $\text{Im}(f)\subset\ker(f)$ on obtient immédiatement $f^2=0$. Soit $(e_1,\ldots,e_n)$ une base de $\ker(f)=\text{Im}(f)$. Fixons $(x_1,\ldots,x_n)$ telle que $\forall i,\ f(x_i)=e_i$. On pose définit alors une application linéaire $u$ sur $\ker(f)$ en posant $u(e_i)=x_i$. Fixons $F$ un supplémentaire de $\ker(f)=\text{Im}(f)$ dont on note une base $(f_1,\ldots,f_n)$. Soit $i\in\llbracket1,n\rrbracket$. On sait que l'on peut écrire de manière unique : $$f(f_i)=\sum_{j=1}^{n}\lambda_{i,j}e_j$$ si bien que par définition de $u$, on a pour l'instant : $$u(f(f_i))=\sum_{j=1}^{n}\lambda_{i,j}x_j$$
+	Or : $$f\left(f_i-\sum_{j=1}^{n}\lambda_{i,j}x_j\right)=0$$ par construction donc $$f_i-\sum_{j=1}^{n}\lambda_{i,j}x_j\in\ker(f)=\text{Im(f)}$$ On peut fixer alors $y_i$ tel que $$f(y_i)=f_i-\sum_{j=1}^{n}\lambda_{i,j}x_j$$ puis on définit l'application linéaire $v$ sur $f$ par $\forall i,\ v(f_i)=y_i$. On considère alors l'application linéaire $h$ définie sur $E$ par le fait que sa restriction à $\ker(f)$ vaille $u$ et celle à $F$ vaille $v$. Cette application linéaire vérifie bien l'égalité recherchée.
+\end{proof}
 
 \begin{ex}[Moulin.EV.39]{}
 	Soit $E$ et $F$ deux $\K$-espaces vectoriels de dimension finie et $f\in\mathcal{L}(E,F)$. On choisit $E'$ et $F'$ tels que : $$E=E'\oplus\ker(f)\ \ \text{et}\ \ F=F'\oplus\text{Im}(f)$$ Montrer qu'il existe un unique $g\in\mathcal{L}(F,E)$ tel que : $$\ker(g)=F'\ \ \text{Im}(g)=E'\ \ f\circ g\circ f=f\ \ \text{et}\ \ g\circ f\circ g=g$$
@@ -494,13 +499,29 @@
 		\item dans le cas général ?
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Par bilinéarité dans la $\K$-algèbre $\mathcal{L}(E)$, on a : $$(u-b\text{id}_E)\circ(v-a\text{id}_E)=u\circ v-au-bv+ab\text{id}_E=\text{id}_E$$ par hypothèse.
+	\begin{enumerate}
+		\item En dimension finie, on en déduit que $u-b\text{id}_E$ et $\circ(v-a\text{id}_E$ sont inversibles et que : $$(v-a\text{id}E)\circ(u-b\text{id}_E)=\text{id}_E$$ Autrement dit, en effectuant le calcul, on trouve : $$v\circ u-au-bv+\text{id}_E=\text{id}_E$$ En égalisant avec le premier calcul et en éliminant les termes redondants, on trouve : $$u\circ v=v\circ u$$ si bien que $u$ et $v$ commutent.
+		\item L'argument de l'inversibilité ne fonctionne plus nécessairement, le calcul initial nous dit désormais seulement que $u-b\text{id}_E$ est surjectif et que $v-a\text{id}_E$ est injectif. Pour chercher un contre-exemple, il faut aller en dimension infinie.\\
+		Considérons le contre exemple suivant : on prend $f$ l'endomorphisme de $\K[X]$ qui à $P$ associe $XP$, et $g$ l'endomorphisme de $\K[X]$ qui à $P$ associe $(P(X)-P(0))/X$. On vérifie aisément que $g\circ f=\text{id}$ mais que $f\circ g\ne\text{id}$ en observant l'image de $P=1$. En considérant $u=\text{id}-f$ et $v=\text{id}-g$, on a donc bien : $$v\circ u=u+v$$ avec pour autant $u\circ v\ne v\circ u$.
+	\end{enumerate}
+\end{proof}
 
-\begin{ex}[Moulin.EV.44]{}
+\begin{ex}[Moulin.EV.44]{Interpolation de Lagrange généralisée}
 	\begin{enumerate}
 		\item Soit $x_1,\ldots,x_n$ des réels distincts deux à deux. Montrer que pour tout $(\lambda_1,\ldots,\lambda_n)\in\R^n$ et tout $(\mu_1,\ldots,\mu_n)\in\R^n$, il existe un unique $P\in\R_{2n-1}[X]$ tel que pour tout $i\in\llbracket1,n\rrbracket$ : $$P(x_i)=\lambda_i\ \ \text{et}\ \ P'(x_i)=\mu_i$$
 		\item Généraliser. 
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Maths B 2025 commence par ce genre d'interpolations.
+	\begin{enumerate}
+		\item Considérer l'application qui à un polynôme $P$ de $\R_{2n-1}[X]$ associe le $2n$-uplet $$(P(x_1),\ldots,P(x_n),P'(x_1),\ldots,P'(x_n))$$ On souhaite montrer qu'elle est bijective. Par linéarité et égalité de dimensions, il suffit de montrer qu'elle est injective. \\
+		Soit $P$ tel que ce $2n$-uplet soit nul. Alors, par théorème de cours, les $x_i$ sont des racines de $P$ de multiplicité supérieure à $2$, et il y en a $n$ distinctes, donc $P$ possède au moins $2n$ racines comptées avec multiplicité. Or, $P$ est de degré au plus $2n-1$, donc $P$ est nul, ce qui conclut.
+		\item De même considérer l'application linéaire de $\R_{pn-1}[X]$ dans $\R^{pn}$ qui à $P$ associe le $pn$-uplet : $$(P(x_1),\ldots,P(x_n),P'(x_1),\ldots,P'(x_n),\ldots,P^{p-1}(x_1),\ldots,P^{(p-1)}(x_n))$$ De la même manière, en remarquant que pour un polynôme $P$ dont l'image par cette application est nulle, on remarque que les $x_i$ sont de racines de multiplicité supérieure à $p$, et donc, par degré, que $P$ est nul. Si bien que cette application linéaire est injective, donc bijective par égalité de dimensions, ce qui permet de conclure.
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}[Moulin.EV.45]{$\star$}
 	Soit $(A,B)\in\K[X]^2$. Calculer la dimension de : $$\{AU+BV\ \mid\ (U,V)\in\K_n[X]\times\K_m[X]\}$$
@@ -511,9 +532,17 @@
 	\begin{enumerate}
 		\item $\Delta$ Quels sont les endomorphismes de $E$ qui laissent stables toutes les droites vectorielles ?
 		\item On suppose désormais $E$ de dimension finie $n$ jusqu'à la fin de l'exercice. Quels sont les endomorphismes de $E$ qui laissent stables tous les hyperplans ?
-		\item Soit $p\in\llbracket1,\llbracket n-1$. Quels sont les endomorphismes de $E$ qui laissent stables tous les sous-espaces vectoriels de dimension $p$ ?
+		\item Soit $p\in\llbracket1,n-1\rrbracket$. Quels sont les endomorphismes de $E$ qui laissent stables tous les sous-espaces vectoriels de dimension $p$ ?
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Exercice qui peut être utile dans d'autres exercices (notamment sur les matrices).
+	\begin{enumerate}
+		\item Cela revient à dire que pour tout $x$, la famille $(x,u(x))$ est liée. Classiquement, en considérant les $\lambda_x$, $\lambda_y$ et $\lambda_{x+y}$ de liaison, on montre que ces "rapports de liaison" sont les mêmes quels que soient $x$ et $y$ (disjonction de cas selon que $(x,y)$ est liée ou non), si bien que $u$ est une homothétie.
+		\item On est en dimension finie, donc une droite est l'intersection de $n-1$ hyperplans. Ainsi, toutes les droites vectorielles sont stables par de tels endomorphismes, si bien que l'on se ramène à la question $1$.
+		\item On montre que tous les hyperplans sont stables pour se ramener à la question $2$. Si on écrit un hyperplan comme $$\text{Vect}(e_1,\ldots,e_n)$$ on découpe la base en paquets de $p$ vecteurs ou moins, et l'hypothèse de stabilité permet de montrer que chacun des sous-espaces vectoriels engendrés par ces groupes de $p$ ou moins vecteurs est stable. Par linéarité, on en déduit que l'hyperplan est stable. On s'est donc ramené à la question $2$.
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}[Moulin.EV.47]{$\star\star$}
 	Montrer que l'endomorphisme $P\mapsto XP$ de $\K[X]$ est la somme de deux automorphismes de $\K[X]$.
@@ -572,7 +601,7 @@
 	En réalité, il s'agit là de résultats de réduction. Le sens direct est immédiat (c'est même du cours en réduction). Réciproquement, décomposer $x\in E$ sur $\ker(p)\oplus\im(p)$ en $x=a+b$ et calculer $u(p(x))$ et $p(u(x))$. On obtient dans les deux cas $u(b)$.
 \end{proof}
 
-\begin{ex}[Moulin.EV.54]
+\begin{ex}[Moulin.EV.54]{}
 	Soit $E$ un espace vectoriel de dimension $n$, $F$ un espace vectoriel ainsi que $u\in\mathcal{L}(E,F)$ et $v\in\mathcal{L}(F,E)$. On suppose que $u\circ v$ est un projecteur de rang $n$. Montrer que $v\circ u=\text{id}_E$. Réciproque ?
 \end{ex}
 

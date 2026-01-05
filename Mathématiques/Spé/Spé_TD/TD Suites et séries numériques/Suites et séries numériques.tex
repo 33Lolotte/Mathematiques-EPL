@@ -270,6 +270,13 @@
 	Cette série est divergente. On peut utiliser une inégalité de réordonnement pour minorer par le cas où $f$ est l'identité. Sinon, utiliser un principe des tiroirs pour minorer $f$ à partir d'un certain rang. 
 \end{proof}
 
+\begin{ex}[X]{$\star$}
+	Soit $(a_n)_{n\in\N\st}$ une suite d'entiers naturels strictement positifs, qu'on suppose strictement croissante. Déterminer la nature de la série : $$\sum_{n\geq 1}\frac{1}{\text{ppcm}(a_1,\ldots,a_n)}$$
+\end{ex}
+\begin{proof}
+	La série est convergente. On peut le faire bourrinement en majorant le terme général de façon pas trop large, mais sinon, on peut le faire plus élégamment. On remarque que pour $n\geqslant 2$ : $$\text{ppcm}(a_1,\ldots,a_n)\geqslant\text{ppcm}(a_{n-1},a_n)=\frac{a_{n-1}a_n}{\text{pgcd}(a_{n-1},a_n)}$$ donc $$\frac{1}{\text{ppcm}(a_1,\ldots,a_n)}\leqslant\frac{\text{pgcd}(a_{n-1},a_n)}{a_{n-1}a_n}$$ Or, comme la suite est strictement croissante, on a $a_{n}-a_{n-1}>0$, donc comme $\text{pgcd}(a_{n-1},a_n)\mid a_n-a_{n-1}$, on en déduit que $\text{pgcd}(a_{n-1},a_n)\leqslant a_n-a_{n-1}$. On en déduit : $$\frac{1}{\text{ppcm}(a_1,\ldots,a_n)}\leqslant\frac{1}{a_{n-1}}-\frac{1}{a_n}$$ et on vient de majorer par le terme général d'une série à termes positifs convergente (et la série est à termes positifs).
+\end{proof}
+
 \section{Séries à termes généraux quelconques}
 
 \begin{ex}{Produit de Cauchy et Cesàro}

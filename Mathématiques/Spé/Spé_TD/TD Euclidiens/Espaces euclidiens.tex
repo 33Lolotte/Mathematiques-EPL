@@ -238,8 +238,8 @@
 \end{ex}
 \begin{proof}
 	\begin{enumerate}
-		\item Théorème de représentation de Riesz. Vérifier pour le degré.
-		\item Utiliser la question précédente pour conclure à une absurdité par restriction.
+		\item Théorème de représentation de Riesz pour l'existence et l'unicité. Par l'absurde, si $A_n$ est de degré strictement inférieur à $n$, prendre $P=XA_n$ et utiliser la définition de $A_n$. on en déduit alors que $A_n$ est le polynôme nul. Prendre ensuite $P=1$ pour conclure à une absurdité.
+		\item Non : utiliser la question précédente pour conclure à une absurdité par restriction ($P$ serait à la fois de degré $1$ et de degré $2$ par unicité dans la question 1).
 	\end{enumerate}
 \end{proof}
 
@@ -254,7 +254,7 @@
 	Soit $u\in\mathcal{L}(E)$. Montrer que l'on a l'égalité $\text{Ker}(u)=\text{Ker}(u\st\circ u)$. En déduire, en dimension finie, l'égalité $\im(u\st\circ u)=\im(u\st)$.
 \end{ex}
 \begin{proof}
-	L'inclusion directe est immédiate, et l'inclusion réciproque s'obtient en calculant $\lVert x\rVert^2$ avec la définition de l'adjoint. On en déduit l'égalité $$\text{Im}(u\st)=\text{Im}(u\st\circ u)$$ avec l'inclusion réciproque immédiate et le théorème du rang (en dimension finie donc).
+	L'inclusion directe est immédiate, et l'inclusion réciproque s'obtient en calculant $\lVert u(x)\rVert^2$ avec la définition de l'adjoint. On en déduit l'égalité $$\text{Im}(u\st)=\text{Im}(u\st\circ u)$$ avec l'inclusion réciproque immédiate et le théorème du rang (en dimension finie donc).
 \end{proof}
 
 \begin{ex}[Moulin.Euc.16]{}
@@ -568,7 +568,7 @@
 	Soit $(A,B)\in\mathcal{S}_n(\R)^2$. on note $A\leqslant B$ pour signifier que $B-A$ est positive.
 	\begin{enumerate}
 		\item On suppose $B$ définie positive. Montrer que $A\leqslant B$ si, et seulement si, le spectre de $B\in A$ est majoré par $1$.
-		\item On suppose $A$ et $B$ définies positives. montrer que $A\leqslant B\implies B\inv\leqslant A\inv$.
+		\item On suppose $A$ et $B$ définies positives. Montrer que $A\leqslant B\implies B\inv\leqslant A\inv$.
 		\item On suppose $A$ et $B$ définies positives. Montrer que $A\leqslant B\implies A^{1/2}\leqslant B^{1/2}$.
 	\end{enumerate}
 \end{ex}
@@ -650,7 +650,7 @@
 	On pourra utiliser les égalités de Courant-Fischer.
 \end{ex}
 
-\begin{ex}[cas]{Inégalité de Kantorovitch}
+\begin{ex}[X]{Inégalité de Kantorovitch}
 	Soit $A\in\mathcal{S}_n^{++}(\R)$, dont on note $\lambda_m$ la plus petite valeur propre et $\lambda_M$ la plus grande valeur propre. Montrer l'inégalité de Kantorovitch : $$\forall X\in\R^n,\ (X^TAX)(X^TA\inv X)\leqslant\frac{1}{4}\left(\sqrt{\frac{\lambda_M}{\lambda_m}}+\sqrt{\frac{\lambda_m}{\lambda_M}}\right)^2(X^TX)^2$$
 \end{ex}
 \begin{proof}
@@ -783,14 +783,14 @@
 \end{proof}
 
 \begin{ex}[Moulin.Euc.59]{}
-	Soit $E$ un espace euclidien de dimension $3$. Montrer que deux rotations de $E$ commutent si, et seulement si, elles ont un vecteur fixe commun non nul ou s'il s'agit de symétrie orthogonales par rapport à des droites orthogonales.
+	Soit $E$ un espace euclidien de dimension $3$. Montrer que deux rotations de $E$ commutent si, et seulement si, elles ont un vecteur fixe commun non nul ou s'il s'agit de symétries orthogonales par rapport à des droites orthogonales.
 \end{ex}
 
 \begin{ex}[Moulin.Euc.60]{}
 	Soit $u$ une isométrie vectorielle d'un espace euclidien $E$ et $s$ une réflexion de $E$. Montrer que si $1$ n'est pas valeur propre de $u$, alors $1$ est valeur propre de $s\circ u$.
 \end{ex}
 
-\begin{ex}[Moulin.Euc.61]{$\star$ Sous-groupes compacts de $\mathcal{GL}_n(\R)$ contenant $\mathcal{O}_n(\R)$}
+\begin{ex}[Moulin.Euc.61]{}
 	Soit $G$ un sous-groupe compact de $\mathcal{GL}_n(\R)$ qui contient $\mathcal{O}_n(\R)$. Montrer que $G=\mathcal{O}_n(\R)$. On pourra utiliser la décomposition polaire.
 \end{ex}
 \begin{proof}
@@ -800,5 +800,8 @@
 \begin{ex}[Moulin.Euc.62]{}
 	Soit $E$ un espace euclidien. Montrer que le groupe $\mathcal{O}(E)$ des isométries vectorielles est engendré par l'ensemble des réflexions.
 \end{ex}
+\begin{proof}
+	Récurrence sur la dimension de $E$. Pour l'hérédité, distinguer selon deux cas : si l'isométrie possède un point fixe non nul $x_0$, appliquer l'hypothèse de récurrence sur $H=\{x_0\}^\bot$ ; sinon, prendre un vecteur $x_0$ non nul et appliquer l'hypothèse de récurrence sur $H=\{x_0-f(x_0)\}^\bot$. Finir avec une caractérisation par les supplémentaires.
+\end{proof}
 
 \end{document}

@@ -90,7 +90,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	On fait comme dans l'exercice précédent.
 	\begin{enumerate}
 		\item Le changement de variable $u=x^n$ donne : $$I_n=\frac{1}{n}\int_{0}^{1}\frac{u^{1/n}}{1+u}\ du$$ Le théorème de convergence dominée, avec une domination par $\displaystyle\frac{1}{1+u}$ donne alors : $$I_n\sim\frac{1}{n}\int_{0}^{1}\frac{du}{1+u}=\frac{\ln(2)}{n}$$
-		\item Puis : $$I_n-\frac{\ln(2)}{n}=\frac{1}{n}\int_{0}^{1}\frac{u^{1/n}-1}{1+u}\ du=\frac{1}{n^2}\int_{0}^{1}\frac{n(u^{1/n}-1)}{1+u}\ du$$ On a pour cette nouvelle intégrale une convergence simple vers $\displaystyle\frac{\ln(u)}{1+u}$ et une domination par $\displaystyle\frac{-\ln(u)}{1+u}$ qui est intégrable. Par convergence dominée, on a : $$\int_{0}^{1}\frac{n(u^{1/n}-1)}{1+u}\ du\xrightarrow[n\to+\infty]{}\int_{0}^{1}\frac{\ln(u)}{1+u}\ du=\sum_{n=1}^{+\infty}\frac{(-1)^n}{n^2}=-\frac{\pi^2}{12}$$ (l'avant-dernière égalité se prouver par intégration terme à terme, puis on prouve la dernière en sortant les termes pairs). On a donc le développement asymptotique : $$I_n=\frac{\ln(2)}{n}-\frac{\pi^2}{12n^2}$$
+		\item Puis : $$I_n-\frac{\ln(2)}{n}=\frac{1}{n}\int_{0}^{1}\frac{u^{1/n}-1}{1+u}\ du=\frac{1}{n^2}\int_{0}^{1}\frac{n(u^{1/n}-1)}{1+u}\ du$$ On a pour cette nouvelle intégrale une convergence simple vers $\displaystyle\frac{\ln(u)}{1+u}$ et une domination par $\displaystyle\frac{-\ln(u)}{1+u}$ qui est intégrable. Par convergence dominée, on a : $$\int_{0}^{1}\frac{n(u^{1/n}-1)}{1+u}\ du\xrightarrow[n\to+\infty]{}\int_{0}^{1}\frac{\ln(u)}{1+u}\ du=\sum_{n=1}^{+\infty}\frac{(-1)^n}{n^2}=-\frac{\pi^2}{12}$$ (l'avant-dernière égalité se prouver par intégration terme à terme, puis on prouve la dernière en sortant les termes pairs). On a donc le développement asymptotique : $$I_n=\frac{\ln(2)}{n}-\frac{\pi^2}{12n^2}+o\left(\frac{1}{n^2}\right)$$
 	\end{enumerate}
 \end{proof}
 
@@ -170,7 +170,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	Définition, continuité, dérivabilité et calcul de $$f(x)=\int_{0}^{+\infty}\frac{\sin(xt)}{t}e^{-t}\ dt$$
 \end{ex}
 \begin{proof}
-	$O(e^{-t})$ pour la définition. pour la continuité, une domination par $ae^{-t}$ sur tout $[-a,a]$ pour $a>à$ donne la continuité sur $\R$. Pour la dérivabilité, on domine $$\left\lvert\frac{\partial g}{\partial x}(x,t)=\lvert \cos(xt)e^{-t}\right\rvert\leqslant e^{-t}$$ En calculant, on trouve ensuite que $$f'(x)=\frac{1}{1+x^2}$$ (passer par des exponentielles complexes). Or, on voit immédiatement que $f(0)=0$ et alors $f(x)=\arctan(x)$.
+	$O(e^{-t})$ pour la définition. pour la continuité, une domination par $ae^{-t}$ sur tout $[-a,a]$ pour $a>0$ donne la continuité sur $\R$. Pour la dérivabilité, on domine $$\left\lvert\frac{\partial g}{\partial x}(x,t)\right\rvert=\lvert \cos(xt)\rvert e^{-t}\leqslant e^{-t}$$ En calculant, on trouve ensuite que $$f'(x)=\frac{1}{1+x^2}$$ (passer par des exponentielles complexes). Or, on voit immédiatement que $f(0)=0$ et alors $f(x)=\arctan(x)$.
 \end{proof}
 \begin{rmq}
 	On peut en déduire la valeur de $$\int_{0}^{+\infty}\frac{\sin(u)}{u}\ du$$ En effet, pour $x>0$, on a $$f(x)=\int_{0}^{+\infty}\frac{\sin(u)}{u}e^{-u/x}\ du$$ Ensuite, on pose $$f_n(x)=\int_{0}^{n\pi}\frac{\sin(u)}{u}e^{-u/x}\ du$$ On vaut alors utiliser le théorème de la double limite. Pour la convergence uniforme par rapport à $x$ lorsque $n\to+\infty$, on utilise des séries alternées en découpant les intégrales. Et le théorème de convergence dominée donne $$f_n(x)\xrightarrow[x\to+\infty]{}\int_{0}^{n\pi}\frac{\sin(u)}{u}\ du$$ On en déduit avec l'expression de $f$ que $$\int_{0}^{+\infty}\frac{\sin(u)}{u}\ du=\frac{\pi}{2}$$
@@ -212,6 +212,9 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 \begin{ex}[Moulin.IP.23]{}
 	Continuité et dérivabilité de $$F:x\mapsto\int_{0}^{+\infty}\frac{e^{-xt}}{1+t^2}\ dt$$ Est-elle dérivable en $0$ ?
 \end{ex}
+\begin{proof}
+	$F$ est définie sur $\R_+$. $F$ est continue sur $\R_+$ en dominant par : $$t\mapsto\frac{1}{1+t^2}$$ $F$ est continue sur $\R_+\st$ en dominant $t\mapsto\displaystyle\frac{-te^{-xt}}{1+t^2}$ par $$t\mapsto\frac{te^{-at}}{1+t^2}$$ pour $x\in[a,+\infty[$. Le théorème de dérivabilité ne permet pas de conclure sur la dérivabilité ou non en $0$. On calcule : $$\frac{F(x)-F(0)}{x}=\int_{0}^{+\infty}\frac{e^{-xt}-1}{x(1+t^2)}dt=\int_{0}^{+\infty}\frac{e^{-u}-1}{x^2\left(1+\frac{u^2}{x^2}\right)}du=\int_{0}^{+\infty}\frac{e^{-u}-1}{x^2+u^2}du$$ Il semblerait alors que $F$ ne soit pas dérivable en $0$ car cette intégrale semble diverger vers $-\infty$ quand $x$ tend vers $0$ (à vérifier).
+\end{proof}
 
 \begin{ex}[Moulin.IP.24]{}
 	Soit $f$ une fonction continue sur $[0,1]$ et à valeurs strictement positives. En utilisant $$G(x)=\int_{0}^{1}\exp(x\ln(f(t)))\ dt$$ trouver la limite lorsque $x$ tend vers $0$ de $$F(x)=\left(\int_{0}^{1}f(t)^x\right)^{1/x}$$
@@ -284,7 +287,7 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 		\item Le changement de variable $u=xt$ fournit : $$G(x,y)=\frac{1}{\sqrt{x}}G\left(1,\frac{y}{x}\right)$$
 		\item Dériver avec le théorème. La domination ne pose pas de problème. Faire ensuite une IPP sur l'intégrale dérivée pour obtenir le résultat.
 		\item Résoudre \textbf{proprement} (pas de $\ln$ complexe !) cette équation différentielle pour obtenir : $$\forall z\in\R,\ H(z)=\sqrt{\pi}\frac{1}{\left(1+z^2\right)^{1/4}}e^{\frac{i}{2}\arctan(z)}$$
-		Avec le résultat de la question 3, on en déduit que : $$G(x,y)=\sqrt{\frac{\pi}{x}}{\left(1+\left(\frac{y}{x}\right)^2\right)^{1/4}}e^{\frac{i}{2}\arctan\left(\frac{y}{x}\right)}$$
+		Avec le résultat de la question 3, on en déduit que : $$G(x,y)=\sqrt{\frac{\pi}{x}}{\left(1+\left(\frac{y}{x}\right)^2\right)^{-1/4}}e^{\frac{i}{2}\arctan\left(\frac{y}{x}\right)}$$
 		\item On l'intégrabilité en $0$. La convergence en $+\infty$ s'établit par une IPP.
 		\item Écrire
 		\begin{align*}
@@ -326,6 +329,14 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 \begin{proof}
 	On commence par utiliser le théorème de dérivation pour montrer qu'elle est $\mathcal{C}^1$, mais on ne parvient pas avec ce même théorème à montrer qu'elle est $\mathcal{C}^2$. On effectue alors une intégration par parties dans l’expression de $F'(x)$ (ou un changement de variable) et on parvient ensuite à montrer que $F'$ est $\mathcal{C}^1$, donc que $F$ est $\mathcal{C}^2$.
 \end{proof}
+
+\begin{ex}[Lafitte]{}
+	Soit $a$ et $b$ deux réels strictement supérieurs à $1$. Calculer : $$\int_{0}^{\pi}\ln\left(\frac{b-\cos(x)}{a-\cos(x)}\right)dx$$
+\end{ex}
+\begin{proof}
+	Écrire cette intégrale comme $I(b)-I(a)$ puis dériver la fonction $I$, calculer la valeur de cette dérivée à l'aide des règles de Bioche, puis intégrer pour obtenir la fonction $I$ à constante près. La détermination de cette constante est inutile puisqu'ensuite on s'intéresse à $I(b)-I(a)$.
+\end{proof}
+
 \section{Intégrales dépendant d'un paramètre complexe}
 \begin{ex}[Moulin.IP.31]{$\Delta$ Fonction $\Gamma$ de la variable complexe}
 	On note $\mathcal{P}=\{z\in\C\ : \ \text{Re}(z)>0\}$. On définit la fonction Gamma sur $\mathcal{P}$ par : $$\Gamma(z)=\int_{0}^{+\infty}t^{z-1}e^{-t}\ dt$$ Elle vérifie : 
@@ -343,6 +354,14 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 	\begin{enumerate}
 		\item Montrer que la fonction $z\mapsto\displaystyle\int_{1}^{+\infty}\frac{\lfloor t\rfloor+1-t}{t^{z+1}}\ dt$ est définie et continue sur $\mathcal{P}$ (voir exercice précédent pour la définition).
 		\item En déduire que $$\zeta:z\mapsto\sum_{n=1}^{+\infty}\frac{1}{n^z}$$ admet un prolongement continu à $\mathcal{P}\setminus\{1\}$.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Guindy]{Une démonstration du théorème de D'Alembert-Gauss}
+	\begin{enumerate}
+		\item Soit $f$ une fonction de $\R$ dans $\C\st$, $2\pi$-périodique de classe $\mathcal{C}^1$. Montrer : $$\frac{1}{2i\pi}\int_{0}^{2\pi}\frac{f'(t)}{f(t)}dt\in\Z$$
+		\item En déduire le théorème de D'Alembert-Gauss.
+		\item Calculer la valeur de cette intégrale pour $P\in\C[X]$.
 	\end{enumerate}
 \end{ex}
 
@@ -525,10 +544,10 @@ Dans plusieurs exercices, on aura besoin du résultat suivant : $$\int_{0}^{+\in
 \end{ex}
 
 \begin{ex}[Châteaux]{Application de la convolution à l'approximation}
-	Pour $n\in\N$, on pose $\displaystyle g_n(x)=\frac{1}{c_n}(1-x^2)^n$ si $x\in[-1,1]$ avec $c_n=\displaystyle\int_{-1}^{1}(1-t^2)^n\ dt$. Soif $f:[-1,1]\to\R$ nulle en dehors de $\displaystyle\left[-\frac{1}{2},\frac{1}{2}\right]$. 
+	Pour $n\in\N$, on pose $\displaystyle g_n(x)=\frac{1}{c_n}(1-x^2)^n$ si $x\in[-1,1]$ avec $c_n=\displaystyle\int_{-1}^{1}(1-t^2)^n\ dt$. Soit $f:[-1,1]\to\R$ nulle en dehors de $\displaystyle\left[-\frac{1}{2},\frac{1}{2}\right]$.
 	\begin{enumerate}
 		\item Montrer que la restriction de $f\star g_n$ à $\displaystyle\left[-\frac{1}{4},\frac{1}{4}\right]$ est polynomiale.
-		\item Montrer que la suite de fonction $(f\star g_n)$ converge uniformément vers $f$ sur $\displaystyle\left[-\frac{1}{4},\frac{1}{4}\right]$.
+		\item Montrer que la suite de fonctions $(f\star g_n)$ converge uniformément vers $f$ sur $\displaystyle\left[-\frac{1}{4},\frac{1}{4}\right]$.
 		\item En déduire une preuve du théorème de Weierstrass.
 	\end{enumerate}
 \end{ex}

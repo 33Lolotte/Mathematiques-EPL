@@ -244,7 +244,14 @@
 	Soit $H$ un hyperplan d'un espace vectoriel normé $E$. Montrer que $H$ est fermé dans $E$ ou dense dans $E$.
 \end{ex}
 \begin{proof}
-	Utiliser l fait que l'adhérence d'un SEV est un SEV. Par croissance de l'adhérence, $\overline{H}$ est un SEV coincé entre $H$ et $E$, donc c'est soit $H$, soit $E$, donc $H$ est soit fermé dans $E$, soit dense dans $E$.
+	Utiliser le fait que l'adhérence d'un SEV est un SEV. Par croissance de l'adhérence, $\overline{H}$ est un SEV coincé entre $H$ et $E$, donc c'est soit $H$, soit $E$, donc $H$ est soit fermé dans $E$, soit dense dans $E$.
+\end{proof}
+
+\begin{ex}[Guindy]{}
+	Soit $A$ une partie non vide de $\R_+\st$ stable par moyenne géométrique. Montrer que $A\cap(\R\setminus\Q)$ est dense dans $]\inf(A),\sup(A)[$.
+\end{ex}
+\begin{proof}
+	Passer au $\ln$ et considérer les combinaisons convexes à paramètres dyadiques.
 \end{proof}
 
 \begin{ex}[Moulin.Top.22]{}
@@ -275,6 +282,13 @@
 	\end{itemize}
 \end{proof}
 
+\begin{ex}[Guindy]{Infinité de nombres premiers par Furstenberg}
+	En munissant $\Z$ d'une topologie bien choisie, montrer qu'il existe une infinité de nombres premiers.
+\end{ex}
+\begin{proof}
+	Prendre pour base d'ouverts les progressions arithmétiques : $$S(a,b)=\{an+b\ \mid\ n\in\Z\}$$ avec $a\in\Z\st$ et $b\in\Z$ et considérer la topologie qu'ils engendrent. \\ Puisque tout ouvert contient une suite injective, aucune partie finie non vide de $\Z$ n'est ouverte donc aucun complémentaire d'un ensemble fini non vide n'est fermé. De plus, les $S(a,b)$ sont à la fois ouverts et fermés (ouverts par définition, et en enlevant les bons termes modulo $a$, ils sont fermés). \\ Or, on peut écrire : $$\Z\setminus\{-1,1\}=\bigcup_{p\text{ premier}}S(p,0)$$ Cet ensemble n'est donc pas fermé en vertu de la première remarque. Or, une union finie de fermés est fermée, donc la deuxième remarque permet d'affirmer que l'ensemble des nombres premiers est infini.
+\end{proof}
+
 \begin{ex}[Moulin.Top.25]{}
 	Soit $A$ (respectivement $B$) une partie d'un espace métrique $E$ (respectivement $F$). Quels sont les intérieur, adhérence et frontière de $A\times B$ dans $E\times F$ ?
 \end{ex}
@@ -297,6 +311,10 @@
 		\item $\circ$ Soit $E$ un espace vectoriel normé non trivial. Le complémentaire d'une partie discrète de $E$ (c'est-à-dire une partie $A$ de $E$ telle qu'aucun point $a\in A$ ne soit adhérent à $A\setminus\{a\}$) est-il dense dans $E$ ?
 		\item Et dans un espace métrique quelconque ?
 	\end{enumerate}
+\end{ex}
+
+\begin{ex}[Guindy]{}
+	Soit $E$ un espace vectoriel normé, $F$ un sous-espace vectoriel de $E$ fermé, et $G$ un sous-espace vectoriel de $E$ de dimension finie. Montrer que $F+G$ est fermé.
 \end{ex}
 
 \begin{ex}[Moulin.Top.28]{}
@@ -351,12 +369,20 @@
 	Voir la preuve dans les exercices classique du chapitre d'algèbre générale.
 \end{proof}
 
-\begin{ex}[Moulin.Top.35]{$\star$}
-	Soit $A$ et $B$ deux parties d'un espace vectoriel normé $E$ telles que $A\cap\overline{B}=\overline{A}\cap B=\emptyset$. montrer qu'il existe deux ouverts disjoints $U$ et $V$ de $E$ tels que $A\subset U$ et $B\subset V$.
+\begin{ex}[Moulin.Top.35]{$\star$ Axiome de séparation T5}
+	Soit $A$ et $B$ deux parties d'un espace vectoriel normé $E$ telles que $A\cap\overline{B}=\overline{A}\cap B=\emptyset$. Montrer qu'il existe deux ouverts disjoints $U$ et $V$ de $E$ tels que $A\subset U$ et $B\subset V$.
 \end{ex}
+\begin{proof}
+	On pose $X=E\setminus(\overline{A}\cap\overline{B})$ qui est ouvert dans $E$. Alors, $A\subset \overline{A}\cap X=\tilde{A}$ et $B\subset\overline{B}\cap X=\tilde{B}$ par hypothèse. Ainsi, $\tilde{A}$ et $\tilde{B}$ sont des fermés disjoints de $X$. Il suffit donc de montrer que pour tout ouvert $U$ de $E$, deux fermés disjoints de $U$ peuvent être recouverts par des ouverts disjoints de $U$. \\
+	Soit $U$ un tel ouvert, ainsi que $F$ et $G$ deux fermés disjoints de $U$. Alors, dans $U$, la fonction qui à $x$ associe $$\frac{d(x,F)}{d(x,F)+d(x,G)}$$ est continue, vaut $0$ sur $F$ et $1$ sur $G$ donc en prenant les images réciproques de $]-\infty,1/3[$ et de $]2/3,+\infty[$, $F$ et $G$ sont contenus dans des ouverts disjoints.
+\end{proof}
 
 \begin{ex}[Moulin.Top.36]{}
 	Soit $I$ (respectivement $S$, $B$) l'ensemble des fonctions $f:[0,1]\to[0,1]$ injectives (respectivement surjectives, bijectives). Vus comme des parties de l'espace vectoriel normé $(\mathcal{C}^0([0,1],[0,1]),\lVert\cdot\rVert_\infty)$, ces ensembles sont-ils ouverts ? Fermés ?
+\end{ex}
+
+\begin{ex}[Guindy]{Diamètre de la frontière}
+	Soit $A$ une partie d'un espace métrique. Montrer : $$\text{diam}(A)=\text{diam}(\text{Adh}(A))=\text{diam}(\text{Fr}(A))$$
 \end{ex}
 
 \section{Suites, séries vectorielles}
@@ -364,7 +390,7 @@
 \begin{ex}[Moulin.Top.37]{$\Delta$} 
 	\begin{enumerate}
 		\item Trouver une norme sur $E=\R[X]$ pour laquelle $(X^n)$ converge vers $0$. Généraliser à une base quelconque de $E$.
-		\item Donner un exemple de sous-espace vectoriel de $E$ no fermé pour cette norme.
+		\item Donner un exemple de sous-espace vectoriel de $E$ non fermé pour cette norme.
 		\item $\star$ Montrer que si $P$ est un polynôme quelconque de $E$, alors il existe une norme sur $E$ pour laquelle la suite $(X^n)$ converge vers $P$. Ce résultat n'est-il pas contradictoire avec l'unicité de la limite ?
 	\end{enumerate}
 \end{ex}

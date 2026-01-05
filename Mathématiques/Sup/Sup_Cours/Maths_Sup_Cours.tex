@@ -209,7 +209,7 @@ Voici la méthode de résolution.
 	$$\begin{tabular}{|c|c|c|}\hline $p$&$q$&$p\implies q$ \\ \hline V&V&V \\ V&F&F \\ F&V&V \\F&F&V \\ \hline\end{tabular}$$ Dans un énoncé, cela correspond à un raisonnement du type "\textbf{si $p$, alors $q$}".
 \end{dfn}
 \begin{prop}
-	Soit $p$ et $q$ deux propositions. On a $p\implies q\equiv (\lnot p)\lor q$.
+	Soit $p$ et $q$ deux propositions. On a $(p\implies q)\equiv (\lnot p)\lor q$.
 \end{prop}
 \begin{proof}
 	Il suffit de comparer les tables de vérité.
@@ -218,7 +218,7 @@ Voici la méthode de résolution.
 	Attention au fait que lorsque $p$ est fausse, $p\implies q$ est vraie. On a coutume de dire que \textbf{le faux implique n'importe quoi}. Cela dit, ce problème est relativement marginal. Il peut cependant survenir dans des initialisations de récurrences.
 \end{rmq}
 \begin{rmq}["Donc" $\ne \implies$]
-	On ne peut pas utiliser $\implies$ comme une abréviation de "donc", ce sont deux choses différentes ! En effet, un "$p$ donc $q$" correspond à $\left[p\land \left(p \implies q\right)\right] $, qui a même valeur de vérité que $p\land q$. Un "donc" par de quelque chose de vrai pour arriver à quelque chose de vrai, alors que $p\implies q$ ne suppose pas la véracité de $p$. \par En somme, \textbf{le symbole $\implies$ est exclu dans une démonstration rédigée. Son usage n'est autorisé que dans une phrase quantifiée ou dans la résolution formelle d'une équation}.
+	On ne peut pas utiliser $\implies$ comme une abréviation de "donc", ce sont deux choses différentes ! En effet, un "$p$ donc $q$" correspond à $\left[p\land \left(p \implies q\right)\right] $, qui a même valeur de vérité que $p\land q$. Un "donc" part de quelque chose de vrai pour arriver à quelque chose de vrai, alors que $p\implies q$ ne suppose pas la véracité de $p$. \par En somme, \textbf{le symbole $\implies$ est exclu dans une démonstration rédigée. Son usage n'est autorisé que dans une phrase quantifiée ou dans la résolution formelle d'une équation}.
 \end{rmq}
 \begin{cor}
 	Soit $p$ et $q$ deux propositions logiques. On a : $$\lnot(p\implies q)\equiv p\land (\lnot q)$$
@@ -244,7 +244,7 @@ Voici la méthode de résolution.
 	\end{itemize}
 \end{thm}
 \begin{proof}
-	Pour le premier point, il est inutile de considérer le cas où $p$ est fausse, puisque le faux implique n'importe quoi. Il suffit donc de prouver que si $p$ est vraie alors $q$ est vraie. Pour la contraposée, on utilise la propriété précédente. Ppur le raisonnement par l'absurde, on montre que $p\land (\lnot q)$ est fausse. C'est donc que sa négation, $(\lnot p)\lor q$ est vraie, soit encore que $p\implies q$ est vraie.
+	Pour le premier point, il est inutile de considérer le cas où $p$ est fausse, puisque le faux implique n'importe quoi. Il suffit donc de prouver que si $p$ est vraie alors $q$ est vraie. Pour la contraposée, on utilise la propriété précédente. Pour le raisonnement par l'absurde, on montre que $p\land (\lnot q)$ est fausse. C'est donc que sa négation, $(\lnot p)\lor q$ est vraie, soit encore que $p\implies q$ est vraie.
 \end{proof}
 \begin{dfn}[Équivalence]
 	Soit $p$ et $q$ deux propositions logiques. Une \textbf{équivalence} entre $p$ et $q$, notée $p\iff q$, est définie par la table ci-contre : 
@@ -413,7 +413,7 @@ Une assertion du type $\forall x\in X,\ p(x)$ est en fait une abréviation de l'
 	De même, on ne se préoccupera pas des fondements de l'existence de l'ensemble vide.
 \end{rmq}
 \begin{dfn}[Inclusion]
-	Soit $E$ et $F$ deux ensembles. $E$ est dit \textbf{inclus} dans $F$ lorsque $$\forall x\in E,\ x\in F$$ On note alors $E\subset F$ ou encore $E\subseteq F$.
+	Soit $E$ et $F$ deux ensembles. $E$ est dit \textbf{inclus} dans $F$ lorsque $$\forall x\in E,\ x\in F$$ On note alors $E\subset F$ ou encore $E\subseteq F$. On dit aussi que $F$ est un \textbf{sous-ensemble} de $E$.
 \end{dfn}
 \begin{exa}
 	On a toujours $\emptyset\subset F$.
@@ -422,7 +422,7 @@ Une assertion du type $\forall x\in X,\ p(x)$ est en fait une abréviation de l'
 	On a toujours $E\subset E$.
 \end{exa}
 \begin{dfn}[Égalité ensembliste]
-	Soit $E$ et $F$ deux ensembles. $E$ est dit \textbf{égal} à $F$ lorsque $$\forall x,\ x\in E\iff x\in F$$ On note alors $E=F$. On dit aussi que $E$ est un \textbf{sous-ensemble} de $F$.
+	Soit $E$ et $F$ deux ensembles. $E$ est dit \textbf{égal} à $F$ lorsque $$\forall x,\ x\in E\iff x\in F$$ On note alors $E=F$. 
 \end{dfn}
 \begin{prop}
 	Soit $E$ et $F$ deux ensembles. On a : $$E=F\iff (E\subset F)\land (F\subset E)$$
@@ -435,7 +435,7 @@ Une assertion du type $\forall x\in X,\ p(x)$ est en fait une abréviation de l'
 	\end{itemize}
 \end{met}
 \begin{rmq}[Insensibilité à la permutation et à la répétition]
-	En vertu du principe de double-inclusion, l'ordre et la répétition 'ont pas d'importance dans la définition d'un ensemble. Par exemple, on a $\left\{1,2,3\right\}=\left\{1,3,2\right\}$ et $\left\{1,2,3\right\}=\left\{1,1,2,3\right\}$.
+	En vertu du principe de double-inclusion, l'ordre et la répétition n'ont pas d'importance dans la définition d'un ensemble. Par exemple, on a $\left\{1,2,3\right\}=\left\{1,3,2\right\}$ et $\left\{1,2,3\right\}=\left\{1,1,2,3\right\}$.
 \end{rmq}
 \begin{prop}[Unicité de l'ensemble vide, HP]
 	L'ensemble vide est unique.
@@ -468,14 +468,14 @@ Une assertion du type $\forall x\in X,\ p(x)$ est en fait une abréviation de l'
 	Voici une deuxième façon de montrer que $A=B$. Elle ne fonctionne que si $A$ et $B$ sont inclus dans un même sur-ensemble de référence $E$. Il suffit alors de montrer que $\forall x\in E,\ x\in A\iff x\in B$ Bien noter la différence avec la définition, on se restreint ici à un sur-ensemble et non pas à l'ensemble des éléments des mathématiques.
 \end{met}
 \subsection{Opérations ensemblistes}
-Jusqu'à ce qu'on l'écrase on fixe $E$ un ensemble de référence et on s'intéresse à ses parties.
+Jusqu'à ce qu'on l'écrase, on fixe $E$ un ensemble de référence et on s'intéresse à ses parties.
 \begin{dfn}[Union]
-	Soit $A$ et $B$ deux sous-ensembles de $E$. L'\textbf{union de $A$ et $B$} ou \textbf{réunion}, notée $A\cup B$ est définie par compréhension comme : $$A\cup B :=\left\{x\in E\ | \ x\in A\lor x\in B\right\}$$
+	Soit $A$ et $B$ deux sous-ensembles de $E$. L'\textbf{union de $A$ et $B$} ou \textbf{réunion}, notée $A\cup B$ est définie par compréhension comme : $$A\cup B :=\left\{x\in E\ | \ (x\in A)\lor (x\in B)\right\}$$
 \end{dfn}
 \begin{dfn}[Intersection]
-	Soit $A$ et $B$ deux sous-ensembles de $E$. L'\textbf{intersection de $A$ et $B$}, notée $A\cap B$ est définie par compréhension comme : $$A\cap B :=\left\{x\in E\ | \ x\in A\land x\in B\right\}$$
+	Soit $A$ et $B$ deux sous-ensembles de $E$. L'\textbf{intersection de $A$ et $B$}, notée $A\cap B$ est définie par compréhension comme : $$A\cap B :=\left\{x\in E\ | \ (x\in A)\land (x\in B)\right\}$$
 \end{dfn}
-\begin{dfn}[Ensemble disjoints]
+\begin{dfn}[Ensembles disjoints]
 	Soit $A$ et $B$ deux sous-ensembles de $E$. On dit que $A$ et $B$ sont \textbf{disjoints} lorsque $A\cap B=\emptyset$.
 \end{dfn}
 \begin{exa}
@@ -634,7 +634,7 @@ Le programme ne fait pas de distinction entre les mots "application" et "fonctio
 \subsection{Injectivité, surjectivité, bijectivité}
 Dans toute cette partie, on fixe $E$ et $F$ deux ensembles ainsi que $f:E\rightarrow F$ une fonction.
 \begin{dfn}[Injectivité]
-	$f$ est dite \textbf{injective} lorsque $$\forall(x,x'\in E^2),\ f(x)=f(x')\implies x=x'$$ ou de manière équivalente lorsque $$\forall (x,x')\in E^2,\ x\ne x'\implies f(x)\ne f(x')$$ En rédaction automatique, pour montrer que $f$ est injective, on écrira "Soit $(x,x')\in E^2$ tel que $f(x)=f(x')$" puis on montrera que $x=x'$ (ou alors on utilisera l'autre définition équivalente).
+	$f$ est dite \textbf{injective} lorsque $$\forall(x,x')\in E^2,\ f(x)=f(x')\implies x=x'$$ ou de manière équivalente lorsque $$\forall (x,x')\in E^2,\ x\ne x'\implies f(x)\ne f(x')$$ En rédaction automatique, pour montrer que $f$ est injective, on écrira "Soit $(x,x')\in E^2$ tel que $f(x)=f(x')$" puis on montrera que $x=x'$ (ou alors on utilisera l'autre définition équivalente).
 \end{dfn}
 \begin{rmq}
 	La non injectivité s'écrit donc : $\exists(x,x')\in E^2,\ (x\ne x')\land(f(x)=f(x'))$.
@@ -751,7 +751,7 @@ Injectivité et surjectivité ne sont pas incompatibles. C'est ce qui fait l'obj
 \begin{met}[Bonne définition d'une fonction]
 	Soit $E$ et $F$ des ensembles. Voici comment montrer que $\begin{array}{ccccc}f&:&E&\rightarrow&F\\&&x&\mapsto&f(x)\end{array}$ est bien définie. Il y a trois points de vigilance, à vérifier dans l'ordre dans lequel ils sont énoncés :
 	\begin{itemize}
-		\item Est-ce que $x$ est un objet primaire ? Vérifier qu'il ne s'agit pas 'une formule d'un autre objet plus simple. Dans le cas où $x$ n'est pas un objet primaire et possède plusieurs représentants (rationnels, éléments d'ensembles quotients par exemple), il faut montrer que la valeur de $f(x)$ ne dépend pas du représentant choisi.
+		\item Est-ce que $x$ est un objet primaire ? Vérifier qu'il ne s'agit pas d'une formule d'un autre objet plus simple. Dans le cas où $x$ n'est pas un objet primaire et possède plusieurs représentants (rationnels, éléments d'ensembles quotients par exemple), il faut montrer que la valeur de $f(x)$ ne dépend pas du représentant choisi.
 		\item Calculabilité ? Soit $x\in E$. Montrer que $f(x)$ existe.
 		\item Bon ensemble d'arrivée ? Soit $x\in E$. Montrer que $f(x)\in F$.
 	\end{itemize}
@@ -777,7 +777,7 @@ Injectivité et surjectivité ne sont pas incompatibles. C'est ce qui fait l'obj
 \end{thm}
 \subsection{Image directe, image réciproque}
 \begin{dfn}[Image directe]
-	Soit $E$ et $F$ des ensembles et $f:E\rightarrow F$. Soit $A$ un sous-ensemble de $E$. L'\textbf{image directe de $A$ par $f$} est l'ensemble défini par : $$f(A):=\left\{y\in F\ | \ \exists x\in E,\ y=f(x)\right\}$$
+	Soit $E$ et $F$ des ensembles et $f:E\rightarrow F$. Soit $A$ un sous-ensemble de $E$. L'\textbf{image directe de $A$ par $f$} est l'ensemble défini par : $$f(A):=\left\{y\in F\ | \ \exists x\in A,\ y=f(x)\right\}$$
 \end{dfn}
 \begin{dfn}[Image réciproque]
 	Soit $E$ et $F$ des ensembles et $f:E\rightarrow F$. Soit $B$ un sous-ensemble de $F$. L'\textbf{image réciproque de $B$ par $f$} est l'ensemble défini par : $$f\inv(B):=\left\{x\in E\ | \ f(x)\in B\right\}$$
@@ -791,8 +791,8 @@ Injectivité et surjectivité ne sont pas incompatibles. C'est ce qui fait l'obj
 \begin{exa}
 	Soit $E$ et $F$ deux ensembles et $f:E\rightarrow F$. On a :
 	\begin{itemize}
-		\item $f(\emptyset)=\left\{y\in F\ | \ \exists x\in\emptyset, \ f(x)=y\right\}\emptyset$
-		\item $f\in(\emptyset)=\left\{x\in E \ | \ f(x)\in\emptyset\right\}=\emptyset$
+		\item $f(\emptyset)=\left\{y\in F\ | \ \exists x\in\emptyset, \ f(x)=y\right\}=\emptyset$
+		\item $f\inv(\emptyset)=\left\{x\in E \ | \ f(x)\in\emptyset\right\}=\emptyset$
 		\item $f(E)=\left\{y\in F\ | \ \exists x\in E, f(x)=y\right\}=:\im(f)$
 		\item $f\inv(F)=\left\{x \in E\ | \ f(x)\in F\right\}=E$
 		\item Soit $x_0\in E$. $f(\left\{x_0\right\})=\left\{y\in F\ | \ \exists\left\{x_0\right\},\ y=f(x)\right\}=\left\{f(x_0)\right\}$
@@ -825,8 +825,8 @@ Injectivité et surjectivité ne sont pas incompatibles. C'est ce qui fait l'obj
 \begin{prop}
 	Soit $E$ et $F$ deux ensembles et $f:E\rightarrow F$. On a :
 	\begin{itemize}
-		\item $\forall B_1,B_2\subset F,\ f\inv(B_1\cup B_2)=f\inv(B_1)\cup f\in(B_2)$
-		\item $\forall B_1,B_2\subset F,\ f\inv(B_1\cap B_2)=f\inv(B_1)\cap f\in(B_2)$
+		\item $\forall B_1,B_2\subset F,\ f\inv(B_1\cup B_2)=f\inv(B_1)\cup f\inv(B_2)$
+		\item $\forall B_1,B_2\subset F,\ f\inv(B_1\cap B_2)=f\inv(B_1)\cap f\inv(B_2)$
 		\item $\forall B\subset F,\ f\inv(\overline{B})=\overline{f\inv(B)}$
 		\item $\forall A_1,A_2\subset E, \ f(A_1\cup A_2)=f(A_1)\cup f(A_2)$
 	\end{itemize}
@@ -845,7 +845,7 @@ Injectivité et surjectivité ne sont pas incompatibles. C'est ce qui fait l'obj
 	Soit $I$ et $E$ des ensembles. Soit $(x_i)_{i\in I}\in E^I$ et $J\subset I$. Une \textbf{sous-famille} de la famille $(x_i)_{i\in I}$ est une famille du type $(x_i)_{i\in J}$.
 \end{dfn}
 \begin{rmq}[Retour sur la construction des $n$-uplets, HP]
-	Soit $n\in\N\st$. Une façon de construire le $n$-uplet $(x_1,\ldots,x_n)$ à valeurs dans $E$ est de considérer la famille $(x_i)_{i\in\llbracket1,n}\rrbracket\in E^{\llbracket1,n\rrbracket}$ On dispos alors de la propriété fondamentale des $n$-uplets. En quelque sorte, on construit $E^n$ sous la forme $E^{\llbracket1,n\rrbracket}$. Notons que cela nécessitait avant de construire les triplets comme couples de couple, puisque les fonctions qui nous servent ici à définir les $n$-uplets sont elles-mêmes des triplets.
+	Soit $n\in\N\st$. Une façon de construire le $n$-uplet $(x_1,\ldots,x_n)$ à valeurs dans $E$ est de considérer la famille $(x_i)_{i\in\llbracket1,n\rrbracket}\in E^{\llbracket1,n\rrbracket}$ On dispos alors de la propriété fondamentale des $n$-uplets. En quelque sorte, on construit $E^n$ sous la forme $E^{\llbracket1,n\rrbracket}$. Notons que cela nécessitait avant de construire les triplets comme couples de couple, puisque les fonctions qui nous servent ici à définir les $n$-uplets sont elles-mêmes des triplets.
 \end{rmq}
 \begin{dfn}[Union et intersection d'une famille de parties]
 	Soit $I$ et $E$ des ensembles. Soit $(A_i)_{i\in I}\in\mathcal{P}(E)^I$. On pose : $$\bigcup_{i\in I}A_i:=\left\{x\in E \ | \ \exists i\in I,\ x\in A_i\right\}$$ $$\bigcap_{i\in I}A_i:=\left\{x\in E \ | \ \forall i\in I,\ x\in A_i\right\}$$  
@@ -880,7 +880,7 @@ Dans un ensemble, la plupart des résultat vus avec deux parties restent vraies 
 	Soit $I$, $E$ et $F$ des ensembles. Soit $f:E\rightarrow F$, $(A_i)_{i\in I}\in\mathcal{P}(E)^I$ et $(B_i)_{i\in I}\in\mathcal{P}(F)^I$. On a : \begin{itemize}
 		\item $\displaystyle f\inv\left(\bigcup_{i\in I}B_i\right)=\bigcup_{i\in I}f\inv(B_i)$
 		\item $\displaystyle f\inv\left(\bigcap_{i\in I}B_i\right)=\bigcap_{i\in I}f\inv(B_i)$
-		\item $\displaystyle f\left(\bigcup_{i\in I}A_i\right)=\bigcup_{i\in I}f\inv(A_i)$
+		\item $\displaystyle f\left(\bigcup_{i\in I}A_i\right)=\bigcup_{i\in I}f(A_i)$
 	\end{itemize}
 \end{prop}
 \begin{prop}[Cas des unions disjointes]
@@ -966,7 +966,7 @@ Nous proposons ici une démonstration du théorème de Cantor-Bernstein.
 	S'il existe une injection de $E$ dans $F$ et et une injection de $F$ dans $E$, alors il existe une bijection de $E$ dans $F$.
 \end{thm}
 \begin{proof}
-	Soit $f$ une injection de $E$ dans $F$ et $g$ une injection de $F$ dans $E$. Pour chaque élément $x\in E$, on regarde la liste de ses "ancêtres" successifs : on cherch s'il possède un antécédent $y$ par $g$. Si c'est le cas, on cherche si cet antécédent possède un antécédent par $g$ dans $F$, et ainsi de suite. Formellement :
+	Soit $f$ une injection de $E$ dans $F$ et $g$ une injection de $F$ dans $E$. Pour chaque élément $x\in E$, on regarde la liste de ses "ancêtres" successifs : on cherche s'il possède un antécédent $y$ par $g$. Si c'est le cas, on cherche si cet antécédent possède un antécédent par $g$ dans $F$, et ainsi de suite. Formellement :
 	\begin{itemize}
 		\item On définit $E_0:=\left\{x\in E\ | \ \forall y\in F,\ g(y)\ne x\right\}$ l'ensemble des $x\in E$ sans ancêtre.
 		\item De même, on définit $F_0:=\left\{y\in F\ | \ \forall x\in E,\ f(x)\ne y\right\}$ l'ensemble des $y\in F$ sans ancêtre.
@@ -980,7 +980,7 @@ Nous proposons ici une démonstration du théorème de Cantor-Bernstein.
 		\item Si $x\in E_i$, $x$ possède un antécédent $y\in F$ puisqu'il a un nombre impair d'ancêtres (et que tout nombre naturel impair est supérieur ou égal à $1$). De plus, cet antécédent $y$ est unique car $g$ est injective. On pose alors $\varphi(x):=y$. $y$ possède un antécédent de moins que $x$ (car c'est son "père"), donc $y\in F_p$.
 		\item Si $x\in E_{\infty}$, on pose $\varphi(x):=f(x)$. $x$ possède une infinité d'ancêtres, donc $\varphi(x)$ aussi car c'est son "fils".
 	\end{itemize}
-	On vient de montrer que $\varphi$ envoyait $E_p$ sur $F_i$, $E_i$ sur $F_p$ et $E_\infty$ sur $F_\infty$. Comme ces ensembles sont disjoints, il suffit de montrer que $\varphi$ est bijectives \textit{séparément} de $E_p$ dans $F_i$, de $E_i$ dans $F_p$ et de $E_\infty$ dans $E_\infty$.
+	On vient de montrer que $\varphi$ envoyait $E_p$ sur $F_i$, $E_i$ sur $F_p$ et $E_\infty$ sur $F_\infty$. Comme ces ensembles sont disjoints, il suffit de montrer que $\varphi$ est bijectives \textit{séparément} de $E_p$ dans $F_i$, de $E_i$ dans $F_p$ et de $E_\infty$ dans $F_\infty$.
 	\begin{itemize}
 		\item Par construction, $\varphi$ est injective sur $E_p$ et $E_\infty$.
 		\item Sur $E_i$, si on a $\varphi(x)=\varphi(x')$ alors $x$ et $x'$ ont le même antécédent par $g$, donc comme une application ne peut avoir qu'une seule image, on a $x=x'$.
@@ -1018,9 +1018,9 @@ Plusieurs variantes du théorème de Cantor-Bernstein existent. Avant toute chos
 	Il suffit d'utiliser à chaque fois le lemme précédent et le théorème de Cantor-Bernstein.
 \end{proof}
 \subsection{Axiomes de Zermelo-Fraenkel}
-\textit{Cette partie est excessivement ardue et abstraite. Aussi est-il formellement déconseillé de s'y aventurer si l'on n'est pas parfaitement à l'aise avec le reste du programme.} \\ \par Peu à peu, les mathématiciens se sont rendus compte qu'ils ne pouvaient plus se contenter des définitions intuitives que nous avons données dans ce chapitre. Il leur fallait une théorie beaucoup plus rigoureuse. Il s'agit d'un travail de longue haleine initié par Cantor à la fin su XIX$^e$ siècle et continué par ses successeurs au XX$^e$. Parmi eux, Zermelo et Fraenkel ont laissé leur nom au système axiomatique le plus usuel aujourd'hui. Il est constitué de plusieurs axiomes, mais tous ne nous seront pas utiles. Nous présentons donc ici seulement ceux dont nous avons absolument besoin.\\ \par Cette théorie part d'un modèle appelé \textbf{univers}, dans lequel tous les objets sont des ensembles (on suppose qu'il en existe au moins un). On peut voir l'univers comme un nuage de points, chaque point désignant un ensemble. Entre certains ensembles de notre univers existent des flèches qui les relient. Elles symbolisent \textbf{l'appartenance}. L'écriture $a\in b$ signifie que "l'ensemble $a$ appartient à l'ensemble $b$". On dit aussi que $a$ est un \textbf{élément} de $b$. Aussi étrange que cela puisse paraître au premier abord, répétons qu'absolument \textit{tous} les objets de notre univers sont des ensembles. Ainsi, les éléments d'un ensemble ne peuvent être que des ensemble à leur tour.\\ \par Pourtant, lorsqu'on considère un ensemble comme $\left\{1,2,3\right\}$ par exemple, on n'a guère envie de considérer ses trois éléments comme des ensembles. Mais ce serait oublier comment les entiers naturels sont obtenus. Nous verrons plus loin dans l'année (cf. compléments du chapitre "Réels et suites") qu'ils peuvent être vus eux-mêmes comme des ensembles. C'est d'ailleurs ce qui a fait naître le slogan : "Dieu créa l'ensemble vide, les hommes firent le reste".\\ \par Enfin, notons que l'usage de $\forall$ dans les phrases quantifiées sera légèrement différent : d'habitude, un tel quantificateur est toujours suivi du symbole $\in$ (par exemple : $\forall x\in\R$, $\forall n\in\Z$, etc.). Ici, ce n'est pas la peine, puisque tous les ensembles appartiennent à un même univers (inutile donc le préciser).
+\textit{Cette partie est excessivement ardue et abstraite. Aussi est-il formellement déconseillé de s'y aventurer si l'on n'est pas parfaitement à l'aise avec le reste du programme.} \\ \par Peu à peu, les mathématiciens se sont rendus compte qu'ils ne pouvaient plus se contenter des définitions intuitives que nous avons données dans ce chapitre. Il leur fallait une théorie beaucoup plus rigoureuse. Il s'agit d'un travail de longue haleine initié par Cantor à la fin du XIX$^e$ siècle et continué par ses successeurs au XX$^e$. Parmi eux, Zermelo et Fraenkel ont laissé leur nom au système axiomatique le plus usuel aujourd'hui. Il est constitué de plusieurs axiomes, mais tous ne nous seront pas utiles. Nous présentons donc ici seulement ceux dont nous avons absolument besoin.\\ \par Cette théorie part d'un modèle appelé \textbf{univers}, dans lequel tous les objets sont des ensembles (on suppose qu'il en existe au moins un). On peut voir l'univers comme un nuage de points, chaque point désignant un ensemble. Entre certains ensembles de notre univers existent des flèches qui les relient. Elles symbolisent \textbf{l'appartenance}. L'écriture $a\in b$ signifie que "l'ensemble $a$ appartient à l'ensemble $b$". On dit aussi que $a$ est un \textbf{élément} de $b$. Aussi étrange que cela puisse paraître au premier abord, répétons qu'absolument \textit{tous} les objets de notre univers sont des ensembles. Ainsi, les éléments d'un ensemble ne peuvent être que des ensemble à leur tour.\\ \par Pourtant, lorsqu'on considère un ensemble comme $\left\{1,2,3\right\}$ par exemple, on n'a guère envie de considérer ses trois éléments comme des ensembles. Mais ce serait oublier comment les entiers naturels sont obtenus. Nous verrons plus loin dans l'année (cf. compléments du chapitre "Réels et suites") qu'ils peuvent être vus eux-mêmes comme des ensembles. C'est d'ailleurs ce qui a fait naître le slogan : "Dieu créa l'ensemble vide, les hommes firent le reste".\\ \par Enfin, notons que l'usage de $\forall$ dans les phrases quantifiées sera légèrement différent : d'habitude, un tel quantificateur est toujours suivi du symbole $\in$ (par exemple : $\forall x\in\R$, $\forall n\in\Z$, etc.). Ici, ce n'est pas la peine, puisque tous les ensembles appartiennent à un même univers (inutile donc le préciser).
 \begin{dfn}[Inclusion]
-	L'\textbf{inclusion} de deux ensembles est définie par : $$\forall a,\ \forall b,\ a\subset b \iff \left(\forall c\,\ c\in a\implies c\in b\right)$$
+	L'\textbf{inclusion} de deux ensembles est définie par : $$\forall a,\ \forall b,\ a\subset b \iff \left(\forall c,\ c\in a\implies c\in b\right)$$
 \end{dfn}
 \begin{ax}[Axiome d'extensionnalité]
 	Si deux ensembles ont les mêmes éléments, alors ils sont égaux : $$\forall a,\ \forall b,\ \left(\forall x,\ x\in a\iff x\in b\right)\implies a=b$$
@@ -1065,7 +1065,7 @@ Plusieurs variantes du théorème de Cantor-Bernstein existent. Avant toute chos
 	Ainsi, la preuve est achevée.
 \end{proof}
 \begin{ax}[Axiome de la réunion]
-	Si on se donne un ensemble $a$, il existe un ensemble qui est la réunion des élément de $a$ (rappelons que les éléments de $a$ sont aussi des ensembles) : $$\forall a,\ \exists b,\ \forall x,\ \left(x\in b\iff \exists c\in a\left(a\in a \ \ \text{et}\ \ x\in c\right)\right)$$ On le notera $\displaystyle\bigcup a$. Il est unique d'après l'axiome d'extensionnalité.
+	Si on se donne un ensemble $a$, il existe un ensemble qui est la réunion des éléments de $a$ (rappelons que les éléments de $a$ sont aussi des ensembles) : $$\forall a,\ \exists b,\ \forall x,\ \left(x\in b\iff \exists c\in a,\ \left(c\in a \ \ \text{et}\ \ x\in c\right)\right)$$ On le notera $\displaystyle\bigcup a$. Il est unique d'après l'axiome d'extensionnalité.
 \end{ax}
 \begin{dfn}
 	Si $a$ et $b$ sont deux ensembles, on pose $a\cup b:=\displaystyle\bigcup \left\{a,b\right\}$.
@@ -1074,7 +1074,7 @@ Plusieurs variantes du théorème de Cantor-Bernstein existent. Avant toute chos
 	Si $n\geqslant3$, la notation $\left\{a_1,\ldots,a_n\right\}$ désigne en fait $\left\{a_1,\ldots,a_{n-1}\right\}\cup\left\{a_n\right\}$ (il s'agit donc là d'une définition par récurrence).
 \end{dfn}
 \begin{ax}[Axiome de l'ensemble des parties]
-	Pour tout ensemble $a$, il existe un ensemble constitué des parties de $a$ : $$\forall a,\ \exists b,\ \forall x,\ \left(x\in b\iff x\subset c\right)$$ On le notera $\mathcal{P}(a)$. il est unique d'après l'axiome d'extensionnalité.
+	Pour tout ensemble $a$, il existe un ensemble constitué des parties de $a$ : $$\forall a,\ \exists b,\ \forall x,\ \left(x\in b\iff x\subset a\right)$$ On le notera $\mathcal{P}(a)$. il est unique d'après l'axiome d'extensionnalité.
 \end{ax}
 \begin{ax}[Axiome de compréhension]
 	Nous en donnons une version édulcorée, mais suffisante pour notre usage. Soit $P$ une proposition logique ne faisant pas intervenir le symbole $b$. Si on se donne un ensemble $a$, alors il existe un sous-ensemble de $a$ constitué des éléments qui vérifient la proposition $P$ : $$\forall a,\ \exists b,\ \forall x,\ \left(x\in b\iff \left(x\in a \ \ \text{et}\ \ P\right)\right)$$ Encore une fois, $b$ est unique par l'axiome d'extensionnalité. On le notera $\left\{x\in a\ | \ P\right\}$. Pour être tout à fait exact, il n'y a pas \textit{un} mais \textit{des} axiomes de compréhension (un par proposition $P$, ce qui fait beaucoup !). On parlera donc de plutôt de \textbf{schéma d'axiomes de compréhension}.
@@ -1163,7 +1163,7 @@ Comme conséquence, on note qu'aucun ensemble ne peut appartenir à lui-même (s
 	Le maximum et le minimum sont associatifs au sens suivant : $$\max\left(\max(x_1,\ldots,x_n), x_{n+1}\right)=\max(x_1,\ldots,x_{n+1})$$
 	$$\min\left(\min(x_1,\ldots,x_n), x_{n+1}\right)=\min(x_1,\ldots,x_{n+1})$$
 \end{prop}
-\begin{dfn}[Élément maximal, élément minimal]
+\begin{dfn}[Élément maximal, élément minimal - HP]
 	Supposons désormais que $(E,\leqslant)$ n'est pas nécessairement totalement ordonné. On dit qu'un élément $M$ est \textbf{maximal} lorsque pour tout $x\in E$, si $x$ et $M$ sont comparables, alors $x\leqslant M$. De manière équivalente, on peut écrire : $$\forall x\in E,\ x\geqslant M \implies x=M$$ ou même $$\forall x\in E,\ x\geqslant M \implies x\leqslant M$$ Encore autrement dit, on n'a jamais $x>M$. Tout maximum est un élément maximal, mais la réciproque est fausse. De plus, un élément maximal n'est pas nécessairement unique. De même, on dit que $m$ est \textbf{minimal} lorsque : $$\forall x\in E,\ x\leqslant m\implies x=m$$
 \end{dfn}
 \begin{dfn}[Relation d'équivalence]
@@ -1178,7 +1178,7 @@ Comme conséquence, on note qu'aucun ensemble ne peut appartenir à lui-même (s
 \begin{prop}
 	Une classe d'équivalence peut être considérée comme la classe d'équivalence de n'importe lequel de ses éléments.
 \end{prop}
-\begin{dfn}[Ensemble-quotient, surjection canonique]
+\begin{dfn}[Ensemble-quotient, surjection canonique - HP]
 	Si $\mathcal{R}$ est une relation d'équivalence sur $E$, l'ensemble des classes d'équivalences de $E$ est appelé l'\textbf{ensemble-quotient} de $E$ par $\mathcal{R}$. On le note souvent $E/\mathcal{R}$. L'application $x\mapsto\overline{x}$ est automatiquement surjective, on l'appelle la \textbf{surjection canonique} de $E$ dans $E/\mathcal{R}$.
 \end{dfn}
 \begin{dfn}[Partition]
@@ -1444,7 +1444,7 @@ Dans toute cette partie, on fixe une structure algébrique $(E,*)$ associative, 
 \begin{rmq}
 	Plus généralement, on définira par récurrence toute expression du type $$\prod_{k=1}^{n}x_k=x_1*\ldots*x_n$$
 	\begin{itemize}
-		\item En théorie, il s'agit donc de $$\left(\left(\left(x_1*x_2\right)*x_3\right)*\ldots*x_{n-1}\right)*x_n$$ Mais en fait, puisque $*$ est associative, on peut placer les parenthèses "où l'on veut ! $$x_1*\ldots*x_n=x_1*\ldots*x_k*(x_{k+1}*\ldots*x_m)*x_{m+1}*\ldots*x_n$$ Cela se démontre rigoureusement par récurrence.
+		\item En théorie, il s'agit donc de $$\left(\left(\left(x_1*x_2\right)*x_3\right)*\ldots*x_{n-1}\right)*x_n$$ Mais en fait, puisque $*$ est associative, on peut placer les parenthèses "où l'on veut" ! $$x_1*\ldots*x_n=x_1*\ldots*x_k*(x_{k+1}*\ldots*x_m)*x_{m+1}*\ldots*x_n$$ Cela se démontre rigoureusement par récurrence.
 		\item Autre exemple : donnons-nous $A_1,\ldots,A_n\subset E$. On peut alors considérer $$A_1*\ldots*A_n$$ au sens de la structure algébrique $(\mathcal{P}(E),*)$. Une récurrence immédiate montre que $$A_1*\ldots*A_n=\left\{x_1*\ldots*x_n\ | \ (x_1,\ldots,x_n)\in A_1\times\ldots\times A_n \right\}$$
 	\end{itemize}
 \end{rmq}
@@ -1499,7 +1499,7 @@ On généralise désormais l'inverse d'un produit d'éléments inversibles.
 	$2014$ s'écrit $\overline{11111011110}^2$ en base $2$, aussi appelée \textbf{numération binaire}.
 \end{exa}
 \begin{exa}
-	Très provisoirement, notons à nouveau $9^+$ le successeur de $9$. En base $9^+$, on a donc $$\overline{10}^{9^+}=1\times9^++0\times 1 = 9^+$$ Sauf mention expresse du contraire, tous les nombre seront écrits en base $9^+$. on pourra donc omettre la barre horizontale au-dessus de $\overline{10}$, et écrire $9^+=10$ (ce qui ne serait pas nécessairement vrai dans une autre base : examiner le cas d'une base strictement supérieure à $10$ par exemple). On parlera de \textbf{base 10} ou de \textbf{base décimale}.	
+	Très provisoirement, notons à nouveau $9^+$ le successeur de $9$. En base $9^+$, on a donc $$\overline{10}^{9^+}=1\times9^++0\times 1 = 9^+$$ Sauf mention expresse du contraire, tous les nombre seront écrits en base $9^+$. On pourra donc omettre la barre horizontale au-dessus de $\overline{10}$, et écrire $9^+=10$ (ce qui ne serait pas nécessairement vrai dans une autre base : examiner le cas d'une base strictement supérieure à $10$ par exemple). On parlera de \textbf{base 10} ou de \textbf{base décimale}.	
 \end{exa}
 \section{Compléments, HP}
 \subsection{Démonstration du théorème d'existence / unicité des suites définies par récurrence avec une fonction}
@@ -1713,15 +1713,15 @@ Ainsi, à partir de maintenant, il sera permis de simplifier par un terme \textb
 \end{proof}
 Il nous reste à montrer les propriétés élémentaires sur les puissances.
 \begin{prop}
-	On a $m^{k}n^{k}=(mn)^{k} m^{k}m^{l}=m^{k+l}$
+	On a $m^{k}n^{k}=(mn)^{k}$ et $m^{k}m^{l}=m^{k+l}$.
 \end{prop}
 \begin{proof}
-	On montre par récurrence sur k que $m^{k}n^{k}=(mn)^{k}$.
+	On montre par récurrence sur $k$ que $m^{k}n^{k}=(mn)^{k}$.
 \begin{itemize}
 	\item Initialisation : $m^{0}n^{0}=1\cdot1=1=(mn)^{0}$
 	\item Hérédité : $m^{k+1}n^{k+1}=(m^{k}m)(n^{k}n)=(mn)^{k}(mn)=(mn)^{k+1}$
 \end{itemize}
-On montre maintenant par récurrence sur l que \(m^{k}m^{l}=m^{k+l}.\)
+On montre maintenant par récurrence sur $l$ que \(m^{k}m^{l}=m^{k+l}.\)
 \begin{itemize}
 	\item Initialisation: $m^{k}m^{0}=m^{k}\cdot1=m^{k}=m^{k+0}$
 	\item Hérédité: $m^{k}m^{l+1}=(m^{k}m^{l})m=m^{k+l}m=m^{k+l+1}$
@@ -1743,7 +1743,7 @@ $$(a,b) \sim (a',b') \Leftrightarrow a + b' = b + a'$$
 \begin{itemize}
 	\item Réflexivité : comme l'addition sur $\N$ est commutative, on a $a + b = b + a$, soit $(a,b)\sim(a,b)$.
 	\item Symétrie : si $a + b' = b + a'$, alors $a' + b = b' + a$ (par commutativité).
-	\item Transitivité : supposons qu'on a $a + b' = b + a'$ et $a' + b'' = b' + a''$. Si on avait le droit d'utiliser des soustractions, on écrirait tout simplement
+	\item Transitivité : supposons qu'on ait $a + b' = b + a'$ et $a' + b'' = b' + a''$. Si on avait le droit d'utiliser des soustractions, on écrirait tout simplement
 	$$a - b = a' - b' = a'' - b''$$
 	Mais encore une fois, nous n'avons le droit d'utiliser que l'addition. L'astuce consiste à ajouter un terme "fantôme" qui sert d'intermédiaire et que l'on simplifie à la fin. Ici, en l'occurrence il s'agit de $b$. Rappelons qu'on veut montrer $a + b'' = b + a''$. Si on ajoute $b$ de part et d'autre, en utilisant l'associativité et la commutativité de l'addition on a $$(a + b'') + b' = (a + b') + b'' = (b + a') + b'' = b + (a' + b'') = b + (b' + a'') = (b + a'') + b'$$ Il ne reste plus qu'à simplifier par b'.
 \end{itemize}
@@ -2396,7 +2396,7 @@ La grande nouveauté de $\Q$ par rapport à $\Z$ réside dans l'inversibilité p
 	Tout rationnel non nul est inversible pour la multiplication.
 \end{thm}
 \begin{thm}
-	On peut prolonger $\leqslant$ à $\Q$ tout entier. Le relation d'ordre obtenue reste total, et compatible avec l'addition et la multiplication au même sens que dans $\Z$.
+	On peut prolonger $\leqslant$ à $\Q$ tout entier. Le relation d'ordre obtenue reste totale, et compatible avec l'addition et la multiplication au même sens que dans $\Z$.
 \end{thm}
 \begin{proof}
 	Ce théorème est démontré dans les compléments.
@@ -2511,7 +2511,7 @@ Pour commencer, voici la démonstration du théorème de Lagrange.
 \subsection{Retour sur la construction de $\Q$}
 Nous souhaitons maintenant prolonger $\leqslant_\Z$ à $\Q$. Pour cela, on sait bien intuitivement "quand une fraction est négative" : c'est que son numérateur et son dénominateur n'ont pas le même signe. Autrement dit, c'est quand le produit du numérateur est strictement négatif. De même, on sait "quand une fraction est plus petite qu'une autre : c'est que leur différence est négative ou nulle.
 \begin{prop}
-	On choisit de définir $\displaystyle \frac{p}{q}\leqslant\frac{r}{s}$ par $(ps-qr)qs\leqslant_\Z$. cette définition est consistante, et $\leqslant$ est une relation d'ordre totale qui prolonge $\leqslant$ sur $\Z$. Enfin, on garde les mêmes compatibilités avec l'addition et la multiplication.
+	On choisit de définir $\displaystyle \frac{p}{q}\leqslant\frac{r}{s}$ par $(ps-qr)qs\leqslant_\Z 0$. Cette définition est consistante, et $\leqslant$ est une relation d'ordre totale qui prolonge $\leqslant$ sur $\Z$. Enfin, on garde les mêmes compatibilités avec l'addition et la multiplication.
 \end{prop}
 \begin{proof}
 	Prouvons les résultats dans l'ordre de l'énoncé.
@@ -2580,7 +2580,7 @@ L'arithmétique, ou science des nombres entiers, trouve ses origines chez les Ba
 	Soit $(a,d)\in\Z^2$. Lorsqu'il existe $k\in\Z$ tel que $a=kd$, on dit que $a$ est un \textbf{multiple} de $d$ et que $d$ \textbf{divise} $a$. On écrit $d\mid a$.
 \end{dfn}
 \begin{exa}
-	les diviseurs de $1$ sont $1$ et $-1$.
+	Les diviseurs de $1$ sont $1$ et $-1$.
 \end{exa}
 \begin{exa}
 	Soit $a,d,\lambda\in\Z$. Si $d\mid a$, alors $\lambda d\mid\lambda a$. Si $\lambda\ne0$, la réciproque est également vraie.
@@ -2732,7 +2732,7 @@ En tant qu'éléments inversibles, $1$ et $-1$ divisent trivialement tout entier
 	Si les $(a_i)_{1\leqslant i\leqslant n}$ divisent tous $b$ et sont deux à deux premiers entre eux, alors leur produit divise $b$.
 \end{cor}
 \begin{exe}
-	Montrer que si les $a_i$ sont dans $\N$ en étant deux à deux premiers, alors $$a_1\vee\ldots\vee a_n=a_1\times\ldots\times a_n$$
+	Montrer que si les $a_i$ sont dans $\N$ en étant deux à deux premiers entre eux, alors $$a_1\vee\ldots\vee a_n=a_1\times\ldots\times a_n$$
 \end{exe}
 \begin{dfn}[Forme irréductible d'un rationnel]
 	Tout rationnel non nul s'écrit d'une unique façon sous la forme $\displaystyle\frac{p}{q}$ avec $(p,q)\in\Z\times\N\st$ et $p\wedge q=1$. Dans ce cas, on dit que le rationnel est écrit sous \textbf{forme irréductible}.
@@ -2909,7 +2909,7 @@ Cela justifie la
 	Si $\overline{a}$ est inversible, on peut écrire $\overline{a}\overline{b}=\overline{1}$ puis $n\mid ab-1$, donc d'après le théorème de Bézout, $a$ et $n$ sont premiers entre eux. Réciproquement, utilisons à nouveau le théorème de Bézout. Si $a\wedge n=1$, on écrit $au+nv=1$, puis en passant dans $\Z/n\Z$, on obtient $\overline{a}\overline{u}=\overline{1}$.
 \end{proof}
 \begin{thm}
-	Soit $n\in\N\st$. les trois assertion suivantes sont équivalentes :
+	Soit $n\in\N\st$. Les trois assertions suivantes sont équivalentes :
 	\begin{enumerate}
 		\item $n$ est premier
 		\item $\Z/n\Z$ est un corps
@@ -2949,7 +2949,7 @@ Plus généralement, on peut alors démontrer le :
 	Si $a\wedge n=1$, alors $a^{\varphi(n)} \equiv 1 \ [n]$.
 \end{thm}
 \begin{proof}
-	Si $a$ est premier avec $n$, alors $\overline{a}$ appartient au groupes des unités $\mathcal{U}\left(\Z/n\Z\right)$, qui est de cardinal $\varphi(n)$. il suffit alors d'appliquer le "théorème de Fermat" vu sur les groupes.
+	Si $a$ est premier avec $n$, alors $\overline{a}$ appartient au groupes des unités $\mathcal{U}\left(\Z/n\Z\right)$, qui est de cardinal $\varphi(n)$. Il suffit alors d'appliquer le "théorème de Fermat" vu sur les groupes.
 \end{proof}
 \begin{thm}[Théorème des restes chinois]
 	Si $a\wedge b=1$, alors l'application $$
@@ -3044,10 +3044,10 @@ Dans toute cette partie, l'anneau $A$ est supposé commutatif.
 	Un \textbf{idéal} $I$ de $A$ est un sous-groupe additif de $A$ absorbant pour la multiplication : $$\forall(a,i)\in A\times I,\ ai\in I$$
 \end{dfn}
 \begin{exa}[Noyau d'un morphisme d'anneaux commutatifs]
-	Le noyau d'un morphisme d'anneaux commutatifs est toujours un idéal. il s'agit évidemment d'un sous-groupe de $A$, et il est absorbant par absorbance de $0$ dans l'anneau et par propriété de morphisme d'anneau pour le produit.
+	Le noyau d'un morphisme d'anneaux commutatifs est toujours un idéal. Il s'agit évidemment d'un sous-groupe de $A$, et il est absorbant par absorbance de $0$ dans l'anneau et par propriété de morphisme d'anneau pour le produit.
 \end{exa}
 \begin{prop}[Idéal engendré par un élément]
-	Soit $x\in A$. Alors $xA$ est un idéal de $A$, appelé \textbf{idéal engendré par $x$}. on le note souvent $(x)$.
+	Soit $x\in A$. Alors $xA$ est un idéal de $A$, appelé \textbf{idéal engendré par $x$}. On le note souvent $(x)$.
 \end{prop}
 \begin{proof}
 	Montrons déjà que $xA$ est un sous-groupe additif. Déjà, $0=x\times 0\in xA$. Ensuite, soit $xa,xa'\in xA$. Alors $xa-xa'=x(a-a')\in xA$. Pour l'absorbance, la commutativité est essentielle. Soit $xa\in A$ et $b\in A$. Alors $b(xa)=x(ba)\in xA$.
@@ -3095,7 +3095,7 @@ On peut se demander si la réciproque est vraie. C'est ce qui fait l'objet de la
 	En revanche, la définition d'un pgcd et d'un ppcm étant plus délicate, nous ne nous attarderons pas sur ce point ici. Nous reviendrons dessus plus en détail dans les compléments sur les anneaux commutatifs et en verrons un exemple dans le chapitre des polynômes.
 \end{rmq}
 \chapter{Compléments sur les anneaux commutatifs, HP}
-Avant de commencer ce chapitre \textit{Way too HP} (comme dirait l'autre...), je tiens à remercier le taupin inconnu qui a un jour déposé ce polycopié de compléments sur les anneaux commutatifs de M. Lafitte, duquel toute cette partie (ou presque) est tirée, sur mon bureau à ND3. Si tu lis ceci un jour, je te suis très reconnaissant (et je sais que ce n'est pas mon co Nicolas, que j'embrasse au passage). \\ \par Dans tous ces compléments, les anneaux considérés seront commutatifs. Pour $A$ un anneau commutatif, on notera $0$ pour $0_A$ et $1$ pour $1_A$.
+Avant de commencer ce chapitre bien éloigné du programme, je tiens à remercier mon co taupin Nicolas qui a un jour déposé ce polycopié de compléments sur les anneaux commutatifs de M. Lafitte, duquel toute cette partie (ou presque) est tirée, sur mon bureau à ND3. Et en plus il ne m'avait même pas dit que c'était lui. Bisous mon loulou ! <3 \\ \par Dans tous ces compléments, les anneaux considérés seront commutatifs. Pour $A$ un anneau commutatif, on notera $0$ pour $0_A$ et $1$ pour $1_A$.
 \section{Idéal d'un anneau commutatif}
 \subsection{Diviseurs de zéro}
 Certains éléments d'un anneau ont des propriétés particulières par rapport à la multiplication, ce qui justifie quelques définitions.
@@ -3121,7 +3121,7 @@ Certains éléments d'un anneau ont des propriétés particulières par rapport 
 	L'ensemble des associés à $1$ est exactement égal au groupe des unités de $A$.
 \end{exa}
 \begin{prop}
-	Un morphisme d'anneaux $f:A\rightarrow B$ (non nécessairement commutatifs)induit par restriction et corestriction un morphisme de groupes de $A^\times$ dans $B^\times$.
+	Un morphisme d'anneaux $f:A\rightarrow B$ (non nécessairement commutatifs) induit par restriction et corestriction un morphisme de groupes de $A^\times$ dans $B^\times$.
 \end{prop}
 \begin{proof}
 	Soit $f:A\rightarrow B$ un morphisme d'anneaux. Soit $a\in A^\times$ et $b$ l'inverse de $a$. Comme $ab=ba=1$, on a $1=f(1)=f(a)f(b)=f(b)f(a)$. par suite, $f(a)$ est inversible, d'inverse $f(b)$. On peut donc définir la restriction de $f$ à $A^\times$ et corestreinte à $B^\times$. C'est clairement un morphisme de groupes par héritage du morphisme d'anneaux.
@@ -3240,7 +3240,7 @@ On dispose d'un certain nombre d'opérations intéressantes sur les idéaux.
 	Soit $I$ et $J$ deux idéaux d'un anneau commutatif $A$. On a $I.J\subset I\cap J$.
 \end{prop}
 \begin{proof}
-	Il suffit de remarquer que $IJ\subset I\cap J$ par absorbance (avec $IJ$ l'ensemble des produits $xy$ pour $x\in I$ et $y\in J$). Puis $I.J$ contieznt $IJ$ par définition donc $I.J\subset I\cap J$.
+	Il suffit de remarquer que $IJ\subset I\cap J$ par absorbance (avec $IJ$ l'ensemble des produits $xy$ pour $x\in I$ et $y\in J$). Puis $I.J$ est le plus petit idéal contenant $IJ$ par définition, donc $I.J\subset I\cap J$.
 \end{proof}
 \begin{prop}
 	Soit $I$ et $J$ deux idéaux d'un anneau commutatif $A$. On a : $$(I+J).(I\cap J)\subset I.J$$
@@ -3249,7 +3249,7 @@ On dispose d'un certain nombre d'opérations intéressantes sur les idéaux.
 	Soit $a=i+j\in I+J$ et $b\in I\cap J$. Alors $ab=ib+jb\in I.J$ car $b\in J$ et $b\in I$. Puisque $(I+J).(I\cap J)$ est l'ensemble des sommes finies d'éléments de ce type et $I.J$ est un idéal, on a bien $(I+J).(I\cap J)\subset I.J$.
 \end{proof}
 \begin{prop}
-	Soit $I$ et $J$ deux idéaux d'un anneau commutatif $A$. Si $I$ et $J$ sont comaximaux (\textit{ie} $I+J=A$, cf. le parargraphe $2$), alors $I.J=I\cap J$.
+	Soit $I$ et $J$ deux idéaux d'un anneau commutatif $A$. Si $I$ et $J$ sont comaximaux (\textit{ie} $I+J=A$, cf. le paragraphe $2$), alors $I.J=I\cap J$.
 \end{prop}
 \begin{proof}
 	En vertu d'une proposition précédente, il suffit de prouver que $I\cap J\subset I.J$. Or, d'après la proposition précédente et l'hypothèse, on a $A.(I\cap J)\subset I.J$. Puis, si on se donne $x\in I\cap J$, alors $1x\in A.(I\cap J)$ donc $x\in I\cap J$. On a alors $I.J=I\cap J$.
@@ -3326,10 +3326,10 @@ On dispose d'un certain nombre d'opérations intéressantes sur les idéaux.
 \subsection{Construction}
 Rappelons qu'une relation $\mathcal{R}$ sur un ensemble $X$ est dite relation d'équivalence si elle est réflexive, symétrique et transitive. L'ensemble des classes d'équivalence de $X$ pour la relation $\mathcal{R}$ est noté $X/\mathcal{R}$. \\ \par Soit maintenant un anneau $A$. On peut alors chercher les relations d'équivalence sur $A$ qui sont \textbf{compatibles} avec la structure d'anneau. Autrement dit, on veut que soit vérifiée la propriété suivante : $$\forall (x,y,x',y')\in A^4,\ (x\mathcal{R}y \land x'\mathcal{R}y')\implies((x+x')\mathcal{R}(y+y')\land(xx')\mathcal{R}(yy'))$$
 \begin{prop}[Analyse]
-	Une relation d'équivalence compatible avec la structure d'anneau est nécessairement de la forme $\mathcal{R}_I$ avec $I$ un idéal et $$\forall (x,y)\in A^2,\ x\mathcal{R}y\iff x-y\in I$$
+	Une relation d'équivalence compatible avec la structure d'anneau est nécessairement de la forme $\mathcal{R}_I$ avec $I$ un idéal et $$\forall (x,y)\in A^2,\ x\mathcal{R}_Iy\iff x-y\in I$$
 \end{prop}
 \begin{proof}
-	Notons $I$ la classe de $0$. Si $x\mathcal{R}y$, comme $(-y)\mathcal{(-y)}$, alors $x-y\mathcal{R}0$, soit $x-y\in I$. Réciproquement, si $x-y\in I$, on a $(x-y)\mathcal{R}0$ et, puisque $y\mathcal{R}y$, il vient $x\mathcal{R}y$. Ce petit calcul montre que la relation $\mathcal{R}$ est définie par $x\mathcal{R}y$ si, et seulement si, $x-y\in I$. \\ \par Montrons par ailleurs que $I$ est un idéal de $A$. On a déjà $0\in I$. De plus, si $x\in I$ et $y\in I$, il vient $x\mathcal{R}0$ et $y\mathcal{R}0$ donc $(x+y)\mathcal{R}0$ ce qui prouve que $x+y\in I$. Enfin, si $x\in I$ et $a\in A$, on a $x\mathcal{R}0$ et $a\mathcal{R}a$ donc $(ax)\mathcal{R}(a\times 0)$ ce qui montre que $ax\in I$. Donc $I$ est bien un idéal.
+	Notons $I$ la classe de $0$. Si $x\mathcal{R}y$, comme $(-y)\mathcal{R}(-y)$, alors $x-y\mathcal{R}0$ par compatibilité avec l'addition, soit $x-y\in I$. Réciproquement, si $x-y\in I$, on a $(x-y)\mathcal{R}0$ et, puisque $y\mathcal{R}y$, il vient $x\mathcal{R}y$. Ce petit calcul montre que la relation $\mathcal{R}$ est définie par $x\mathcal{R}y$ si, et seulement si, $x-y\in I$. \\ \par Montrons par ailleurs que $I$ est un idéal de $A$. On a déjà $0\in I$. De plus, si $x\in I$ et $y\in I$, il vient $x\mathcal{R}0$ et $y\mathcal{R}0$ donc $(x+y)\mathcal{R}0$ ce qui prouve que $x+y\in I$. Enfin, si $x\in I$ et $a\in A$, on a $x\mathcal{R}0$ et $a\mathcal{R}a$ donc $(ax)\mathcal{R}(a\times 0)$ ce qui montre que $ax\in I$. Donc $I$ est bien un idéal.
 \end{proof}
 \begin{prop}[Synthèse]
 	Soit $A$ un anneau commutatif et $I$ un idéal de $A$. La relation $\mathcal{R}$ définie sur $A$ par $$\forall (x,y)\in A^2,\ x\mathcal{R}y\iff x-y\in I$$ est une relation d'équivalence compatible avec la structure d'anneau. l'ensemble quotient $A/\mathcal{R}$ possède alors une structure canonique d'anneau. \\ \par De plus, la surjection canonique $\pi:A\rightarrow A/\mathcal{R}$ est un morphisme d'anneaux surjectif de noyau $I$. \\ \par L'anneau quotient $A/\mathcal{R}$ est noté $A/I$ et, pour $a\in A$, on note $\overline{a}$ la classe d'équivalence de $a$ modulo $I$ s'il n'y a pas d'ambiguïté.
@@ -3345,7 +3345,7 @@ Rappelons qu'une relation $\mathcal{R}$ sur un ensemble $X$ est dite relation d'
 	On considère un anneau $A$ ainsi que deux idéaux $I$ et $J$ de $A$ comaximaux. Dans ce cas, le morphisme $$\begin{array}{ccccc}f&:&A&\rightarrow&(A/I)\times(A/J)\\ &&a&\mapsto&(Cl_I(a),Cl_J(a))\end{array}$$ est surjectif et son noyau est l'idéal $I\cap J$. Il en résulte, par passage au quotient, un isomorphisme d'anneaux : $$\begin{array}{ccccc}\tilde{f}&:&A/(I\cap J)&\rightarrow&(A/I)\times(A/J)\\ &&Cl_{I\cap J}(a)&\mapsto&(Cl_I(a),Cl_J(a))\end{array}$$
 \end{prop}
 \begin{proof}
-	Déjà, $f$ est clairement un morphisme d'anneaux pour la structure d'anneau produit puisque la surjection canonique est morphisme d'anneaux. Ensuite, si on se donne $Cl_I(x)\in A/I$ et $Cl_J(y)\in A/J$, alors on peut fixer $i\in I$ et $j\in J$ tel que $x-y=i+j$ puisque $I$ et $J$ sont comaximaux. On pose alors $a:=x-i=y+j$. Puisque $a-x=-i\in I$ et $a-y=j\in J$, on a bien $$f(a)=(Cl_I(x),Cl_J(y))$$ donc $f$ est surjectif. Ensuite, soit $a\in A$. $a$ appartient à $\ker(f)$ si, et seulement si, $Cl_I(a)=I$ et $Cl_J(a)=J$, donc $a$ appartient à $\ker(f)$ si, et seulement si, $a\in I\cap J$. Donc on a bien $\ker(f)=I\cap J$. \\ \par Pour $\tilde{f}$, déjà cette fonction est bien définie car deux éléments de la même classe pour $I\cap J$ ont $a$ $fortior$ même classe pour $I$ et pour $J$. Ensuite, es propriétés de morphisme et la surjectivité s'héritent de $f$. Enfin, $\tilde{f}$ est injective car son noyau est réduit à la classe de $I\cap J$, le neutre pour $+$ de l'anneau quotient $A/(I\cap J)$.
+	Déjà, $f$ est clairement un morphisme d'anneaux pour la structure d'anneau produit puisque la surjection canonique est morphisme d'anneaux. Ensuite, si on se donne $Cl_I(x)\in A/I$ et $Cl_J(y)\in A/J$, alors on peut fixer $i\in I$ et $j\in J$ tel que $x-y=i+j$ puisque $I$ et $J$ sont comaximaux. On pose alors $a:=x-i=y+j$. Puisque $a-x=-i\in I$ et $a-y=j\in J$, on a bien $$f(a)=(Cl_I(x),Cl_J(y))$$ donc $f$ est surjectif. Ensuite, soit $a\in A$. $a$ appartient à $\ker(f)$ si, et seulement si, $Cl_I(a)=I$ et $Cl_J(a)=J$, donc $a$ appartient à $\ker(f)$ si, et seulement si, $a\in I\cap J$. Donc on a bien $\ker(f)=I\cap J$. \\ \par Pour $\tilde{f}$, déjà cette fonction est bien définie car deux éléments de la même classe pour $I\cap J$ ont \textit{a fortiori} même classe pour $I$ et pour $J$. Ensuite, es propriétés de morphisme et la surjectivité s'héritent de $f$. Enfin, $\tilde{f}$ est injective car son noyau est réduit à la classe de $I\cap J$, le neutre pour $+$ de l'anneau quotient $A/(I\cap J)$.
 \end{proof}
 \begin{cor}
 	Soit $I$ et $J$ deux idéaux comaximaux d'un anneau $A$. Pour tout couple $(x,y)\in A^2$, il existe $a\in A$ tel que $a\in x+I$ et $a\in y+J$.
@@ -3405,7 +3405,7 @@ Rappelons qu'une relation $\mathcal{R}$ sur un ensemble $X$ est dite relation d'
 \begin{rmq}
 	De façon générale, il existe un unique morphisme d'anneaux $f$ de $\Z$ dans un anneau $A$. En effet, $\Z$ est engendré par $1$, comme $f(1)=1$, cette égalité permet de définir sans ambiguïté $f$.
 \end{rmq}
-\begin{prop}[Inversible de $\Z/n\Z$]
+\begin{prop}[Inversibles de $\Z/n\Z$]
 	L'ensemble des éléments inversibles de $\Z/n\Z$ est $$(\Z/n\Z)^\times=\left\{\overline{k}\ | \ k\in\llbracket0,n-1\rrbracket,\ k\wedge n=1\right\}$$
 \end{prop}
 \begin{proof}
@@ -3620,7 +3620,7 @@ Dans un anneau principal quelconque, le calcul du PGCD n'est pas aisé. On s'int
 	Soit $(A,\nu)$ un anneau euclidien. Soit $I$ un idéal de $A$ non réduit à $\left\{0\right\}$. Considérons l'ensemble $$S:=\left\{\nu(a)\ | \ a\in I\setminus\left\{0\right\}\right\}$$ Par hypothèse, puisque $I\setminus\left\{0\right\}$ est non vide, $S$ est non vide. C'est aussi une partie de $\N$, donc elle admet un plus petit élément et il existe $a_0\in I\setminus\left\{0\right\}$ tel que $\nu(a_0)=\min(S)$. Montrons alors que $I=(a_0)$. Par absorbance de $I$, on a immédiatement $(a_0)\subset I$. Réciproquement, soit $a\in I$. Effectuons la division euclidienne de $a$ par $a_0$ : il existe $(q,r)\in A^2$ tel que $a=a_0q+r$ et $r=0$ ou $\nu(r)<\nu(a_0)$. Or, $r=a-a_0q\in I$ car $a_0q\in I$ d'après la première inclusion. Mais par minimalité de $\nu(a_0)$, on ne peut avoir $\nu(r)<\nu(a_0)$, donc nécessairement $r=0$ puis $a=a_0q\in(a_0)$. On a bien $I=(a_0)$ donc $I$ est un idéal principal. Comme l'idéal nul est évidemment principal, l'anneau $A$ est alors principal.
 \end{proof}
 \begin{met}[Algorithme d'Euclide]
-	Soit $(A,\nu)$ un anneau euclidien. Puisque $A$ est principal, pour $q\in A$, on a, à multiplication par un élément inversible près, $a\wedge b=b\wedge(a-bq)$. On utilise cette propriété avec $q$ un quotient de $a$ par $b$ quand $b\ne0$ et il vient avec les notations habituelles : $$a\wedge b=b\wedge r$$ En itérant cette propriété, on construit une suite $(r_k)$ d'éléments de $A$ tels que $\nu(r_{k+1})<\nu(r_k)$ tant que $r_{k+1}\ne0$ en effectuant la division euclidienne de $r_{k-1}$ par $r_k$ après avoir posé $r_0=a$ et $r_1=b$. Comme il n'existe pas de suite strictement décroissante d'entiers naturels, cet algorithme se termine et le pgcd est un le dernier reste non nul.
+	Soit $(A,\nu)$ un anneau euclidien. Puisque $A$ est principal, pour $q\in A$, on a, à multiplication par un élément inversible près, $a\wedge b=b\wedge(a-bq)$. On utilise cette propriété avec $q$ un quotient de $a$ par $b$ quand $b\ne0$ et il vient avec les notations habituelles : $$a\wedge b=b\wedge r$$ En itérant cette propriété, on construit une suite $(r_k)$ d'éléments de $A$ tels que $\nu(r_{k+1})<\nu(r_k)$ tant que $r_{k+1}\ne0$ en effectuant la division euclidienne de $r_{k-1}$ par $r_k$ après avoir posé $r_0=a$ et $r_1=b$. Comme il n'existe pas de suite strictement décroissante d'entiers naturels, cet algorithme se termine et le pgcd est le dernier reste non nul.
 \end{met}
 \subsection{PPCM dans un anneau principal}
 \begin{dfn}[PPCM]
@@ -11003,7 +11003,7 @@ Le seul cas au programme pour les EDL d'ordre 2 est celui avec les coefficients 
 \end{thm}
 Concrètement, les seuls cas au programme pour $f$ sont les fonctions polynomiales et les exponentielles, ainsi que tout ce qui s'en déduit par superposition ou par passage aux parties réelle et imaginaire.
 \begin{thm}[Cas polynomial]
-	On garde l'équation $y''+ay'+b=f(t)$ et on suppose que $f(t)$ est de la forme $Q(t)$ où $Q\in\K[X]$ est de degré $n_in\N$. On cherche une solution polynomiale. On distingue alors différent cas :
+	On garde l'équation $y''+ay'+by=f(t)$ et on suppose que $f(t)$ est de la forme $Q(t)$ où $Q\in\K[X]$ est de degré $n_in\N$. On cherche une solution polynomiale. On distingue alors différent cas :
 	\begin{enumerate}
 		\item Supposons que $b\ne 0$. Alors on cherche la solution sous la forme d'un polynôme de $\K_n[X]$ et on réinjecte dans l'équation pour obtenir un système linéaire.
 		\item Supposons que $b=0$ et $a\ne 0$ On cherche la solution sous la forme d'un polynôme de $\K_{n+1}[X]$ et on réinjecte dans l'équation pour obtenir un système linéaire.
@@ -11020,7 +11020,7 @@ Concrètement, les seuls cas au programme pour $f$ sont les fonctions polynomial
 	$$ pour $p\in\left\{n,n+1,n+2\right\}$ dans nos différents cas (dans le même ordre). A chaque fois, on détermine le noyau par des considérations de degré. Puis par le théorème du rang ces application sont surjectives. On a alors l'existence d'une solution, puis on la cherche en réinjectant. Cela fonctionne de même avec des applications légèrement plus complexes pour des seconds membres de la forme $Q(t)\exp(rt)$.
 \end{proof}
 \begin{thm}
-	On garde l'équation $y''+ay'+b=f(t)$ et on suppose que $f(t)$ est de la forme $\exp(rt)$ pour $r\in\K$. On note toujours $P=X^2+aX+b$ le polynôme caractéristique. Voici comment trouver une solution particulière. On distingue différents cas selon la multiplicité de $r$ en tant que racine de $P$ :
+	On garde l'équation $y''+ay'+by=f(t)$ et on suppose que $f(t)$ est de la forme $\exp(rt)$ pour $r\in\K$. On note toujours $P=X^2+aX+b$ le polynôme caractéristique. Voici comment trouver une solution particulière. On distingue différents cas selon la multiplicité de $r$ en tant que racine de $P$ :
 	\begin{enumerate}
 		\item Supposons que $r$ n'est \textbf{pas racine} de $P$. Alors $$t\mapsto\frac{1}{P(r)}\exp(rt)$$ est une solution particulière.
 		\item Supposons que $r$ est racine \textbf{simple} de $P$. Alors $$t\mapsto\frac{t}{P'(r)}\exp(rt)$$ est une solution particulière.

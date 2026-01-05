@@ -295,7 +295,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 			\item $\forall i\in\llbracket1,n\rrbracket,\ m_{i,i}\geqslant r$ ;
 			\item $\card\{i\in\llbracket1,n\rrbracket\ : \ m_{i,i}=r\}\leqslant 1$.
 		\end{itemize} Montrer que $M$ est inversible.
-		\item Soit $m$, $n$ et $r$ trois entiers strictement positifs, $E=\{a_1,\ldots,a_n\}$ un ensemble à $m$ éléments et $(A_j)_{1\leqslant j\leqslant n}$ une famille de $n$ parties de $E$ deux à deux distinctes. Écrire la matrice $M=(\card(A_i\cap A_j))\in\mathcal{M}_n(\R)$ sous la forme $B^TB$ où $B$ est une matrice de $\mathcal{M}_{m,n}(\R)$ à préciser.
+		\item Soit $m$, $n$ et $r$ trois entiers strictement positifs, $E=\{a_1,\ldots,a_m\}$ un ensemble à $m$ éléments et $(A_j)_{1\leqslant j\leqslant n}$ une famille de $n$ parties de $E$ deux à deux distinctes. Écrire la matrice $M=(\card(A_i\cap A_j))\in\mathcal{M}_n(\R)$ sous la forme $B^TB$ où $B$ est une matrice de $\mathcal{M}_{m,n}(\R)$ à préciser.
 		\item En déduire que si : $$\forall (i,j)\in\llbracket1,n\rrbracket^2,\ i\ne j\implies \card(A_i\cap A_j)=r$$ alors $n\leqslant m$.
 	\end{enumerate}
 \end{ex}
@@ -377,12 +377,15 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 \end{proof}
 
 \begin{ex}[Moulin.Mat.35]{$\circ$}
-	Soit $u$ un endomorphisme d'un espace vectoriel $E$ de dimension $3$. montrer que si $u\ne 0$ et $u^2=0$, il existe une base de $E$ dans laquelle la matrice de $u$ est $$\begin{pmatrix}
+	Soit $u$ un endomorphisme d'un espace vectoriel $E$ de dimension $3$. Montrer que si $u\ne 0$ et $u^2=0$, il existe une base de $E$ dans laquelle la matrice de $u$ est $$\begin{pmatrix}
 		0&1&0\\
 		0&0&0\\
 		0&0&0
 	\end{pmatrix}$$
 \end{ex}
+\begin{proof}
+	Prendre $e_1$ un vecteur non nul de l'image. Fixer $e_2$ un antécédent de $e_1$, puis prendre $e_3$ dans le noyau de $u$ non colinéaire à $e_2$. Montrer que l'ensemble de ces $3$ vecteurs forme une base en utilisant l'hypothèse $u^2=0$, et vérifier que la matrice de $u$ dans cette base est bien de la forme souhaitée.
+\end{proof}
 
 \begin{ex}[Moulin.Mat.36]{}
 	Soit $E$ un $\K$-espace vectoriel de dimension finie $n\geqslant 1$. Soit $u\in\mathcal{L}(E)$ non nul tel que $u^2=0$.
@@ -417,7 +420,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 		A&0\\
 		0&B
 		\end{pmatrix},$$
-		$$\varphi_0:M\in\mathcal{M}_{n+p}(\K)\mapsto \begin{pmatrix}
+		$$\varphi_1:M\in\mathcal{M}_{n+p}(\K)\mapsto \begin{pmatrix}
 			A&C\\
 			0&B
 		\end{pmatrix}M-M\begin{pmatrix}
@@ -433,7 +436,7 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 	Soit $A\in\mathcal{M}_{n,p}(\K)$ et $B\in\mathcal{M}_{p,n}(\K)$. Montrer que $(AB)^k$ et $(BA)^k$ ont même trace ($k\in$ ?).
 \end{ex}
 
-\begin{ex}[Moulin.Mat.39]{$\Delta$ Représentation des formes linéaires sur $\mathcal{M}_n(\K)$}
+\begin{ex}[Moulin.Mat.39]{$\Delta$ Formes linéaires sur $\mathcal{M}_n(\K)$}
 	Soit $\psi$ une forme linéaire sur $\mathcal{M}_n(\K)$. Montrer qu'il existe une unique matrice $A\in\mathcal{M}_n(\K)$ telle que $$\forall M\in\mathcal{M}_n(\K),\ \psi(M)=\text{Tr(AM)}$$
 \end{ex}
 \begin{proof}
@@ -498,8 +501,16 @@ Vérifier que le carré est bien sur $A$ et non pas sur son rang.
 \end{ex}
 
 \begin{ex}[Moulin.Mat.45]{$\star\star$}
-	Montrer que pour tout $(a_1,\ldots,a_n)\in\K^n$ tel que $\Tr(A)=a_1+\cdots+a_n$, il existe une matrice semblable à $A$ dont les coefficients diagonaux sont $a_1,\ldots,a_n$.
+	Soit $A\in\mathcal{M}_n(\K)$ non scalaire. Montrer que pour tout $(a_1,\ldots,a_n)\in\K^n$ tel que $\Tr(A)=a_1+\cdots+a_n$, il existe une matrice semblable à $A$ dont les coefficients diagonaux sont $a_1,\ldots,a_n$.
 \end{ex}
+\begin{proof}
+	Récurrence sur $n\in\N\st$. L'initialisation est immédiate car $\forall x\in\emptyset$. On suppose la propriété vraie pour tout matrice de taille $n-1$. On considère alors $A'=A-a_1I_n$ qui n'est pas scalaire car $A$ n'est pas scalaire. On peut donc fixer $x$ non nul tel que la famille $(x,A'x)$ soit libre. On complète cette famille en une base $(x,A'x,e_3,\ldots,e_n)$ dans laquelle l'application linéaire canoniquement associée à $A$ a pour matrice : $$\begin{pmatrix}
+		a_1&*&\ldots&*\\
+		1&&&\\
+		0&&A''&\\
+		\vdots&&&
+	\end{pmatrix}$$ où nécessairement $\Tr(A'')=a_2+\cdots+a_n$. Si $A''$ n'est pas scalaire, on conclut par hypothèse de récurrence. Si $A''$ est scalaire, on change $e_3$ en $e_3+x$ et cela ajoute alors un $1$ sur la première ligne et la deuxième colonne de $A''$, et on conclut alors par hypothèse de récurrence.
+\end{proof}
 
 \begin{ex}[Moulin.Mat.46]{Sommes de symétries dans $\mathcal{M}_n(\C)$}
 	\begin{enumerate}
