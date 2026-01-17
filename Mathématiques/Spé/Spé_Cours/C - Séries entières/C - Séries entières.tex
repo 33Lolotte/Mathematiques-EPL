@@ -1,0 +1,1015 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Vect}{\text{Vect}}
+\newcommand{\rg}{\text{rg}}
+
+\theoremstyle{plain}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+
+\newtheorem*{ex}{Exemple}
+\newtheorem*{met}{Point méthode}
+\newtheorem{exo}{Exercice}
+\newtheorem*{rmq}{Remarque}
+
+\theoremstyle{remark}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{dfn}{
+	enhanced,
+	breakable,
+	colback=white,
+	fonttitle=\sc,
+	title={Définition \thetcbcounter}
+}
+
+\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+
+\title{Séries entières}
+\date{}
+
+\begin{document}
+\tableofcontents
+
+\newpage
+\maketitle
+
+Dans la suite du chapitre, $\K$ désigne soit le corps $\R$, soit le corps $\C$.
+
+\section{Compléments (HP) sur les familles sommables}
+
+On considère ici un espace vectoriel de dimension finie sur $\K$.
+
+\subsection{Définitions et propriétés immédiates}
+
+\begin{dfn}
+	Une famille $(a_i)_{i\in I}$ d'éléments de $E$ est \textbf{sommable} si la famille de réels positifs $(\lVert a_i\rVert)_{i\in I}$ est sommable.
+\end{dfn}
+
+\begin{dfn}
+	Soit $(a_i)_{i\in I}$ une famille sommable d'éléments de $E$. Il existe un unique élément de $E$, noté $\displaystyle\sum_{i\in I}a_i$, vérifiant : $$\forall\varphi\in E\st,\ \varphi\left(\sum_{i\in I}a_i\right)=\sum_{i\in I}\varphi(a_i)$$
+\end{dfn}
+%En utilisant le bidual
+
+\begin{rmq}
+	Lorsque $E$ est euclidien, l'existence et l'unicité proviennent immédiatement du théorème de représentation de Riesz.
+\end{rmq}
+
+Avec ces définitions, on obtient facilement que l'ensemble $\l^1(I,E)$ des familles sommables d'éléments de $E$ indexés par $I$ est un $\K$-espace vectoriel et que l'application "somme" est linéaire.
+
+\begin{thm}{}%prop
+	Soit $L$ une application linéaire de $E$ dans un espace vectoriel $F$ de dimension finie. Pour tout famille $(a_i)_{i\in I}\in\l^1(I,E)$, la famille $(La_i)_{i\in I}$ est sommable avec : $$\sum_{i\in I}La_i=L\left(\sum_{i\in I}a_i\right)$$
+\end{thm}
+
+\begin{thm}{}%cor
+	Soit $\mathcal{B}=(e_k)$ une base de $E$. une famille $(a_i)_{i\in I}$ d'éléments de $E$ est sommable si, et seulement si, toutes ses familles composantes $(a_i^{(k)})_{i\in I}$ dans $\mathcal{B}$ sont sommables, et dans ce cas : $$\sum_{i\in I}a_i=\sum_k\left(\sum_{i\in I}a_i^{(k)}\right)e_k$$
+\end{thm}
+
+\subsection{Propriétés}
+
+En utilisant les coordonnées dans une base de $E$, on obtient les résultats suivantes.
+
+\begin{thm}{}%prop
+	Soit $(a_n)_{n\in\N}$ une suite d'éléments de $E$. La famille $(a_n)_{n\in\N}$ est sommable si, et seulement si, la série $\displaystyle\sum a_n$ converge absolument, et l'on a alors : $$\sum_{n\in\N}a_n=\sum_{n=0}^{+\infty}a_n$$
+\end{thm}
+
+\begin{thm}{Changement d'indice}%prop
+	Étant donnée une bijection $\sigma$ d'un ensemble $J$ sur $I$, et une famille sommable $(a_i)_{i\in I}$ d'éléments de $E$, la famille $(a_{\sigma(j)})_{j\in J}$ est sommable et l'on a : $$\sum_{i\in I}a_i=\sum_{j\in J}a_{\sigma(j)}$$
+\end{thm}
+
+\begin{thm}{Commutativité}%prop
+	Étant donnée une permutation $\sigma$ de $I$, et une famille sommable $(a_i)_{i\in I}$ d'éléments de $E$, la famille $(a_{\sigma(i)})_{i\in I}$ est sommable et l'on a : $$\sum_{i\in I}a_i=\sum_{i\in I}a_{\sigma(i)}$$
+\end{thm}
+
+\paragraph{Rappel} Ces deux résultats restent vrais sans hypothèse de sommabilité pour des familles de réels positifs.
+
+\begin{thm}
+	Si $(a_i)_{i\in I}$ est une famille sommable d'éléments de $E$, alors on a : $$\left\lVert\sum_{i\in I}a_i\right\rVert\leqslant\sum_{i\in I}\lVert a_i\rVert$$
+\end{thm}
+\begin{proof}
+	Lorsque $I$ est dénombrable, on utilise une bijection de $\N$ sur $I$ et le lien famille/série. Dans le cas général, on utilise le fait que le support d'une famille sommable est au plus dénombrable.
+\end{proof}
+
+\begin{exo}
+	\begin{enumerate}
+		\item Dans le cas où $E=\C$, retrouver ce résultat en utilisant $u\in\U$ tel que $\lvert S\rvert=uS$, où $S$ est la somme de la famille.
+		\item Adapter dans le cas d'un espace euclidien.
+	\end{enumerate}
+\end{exo}
+
+\begin{thm}{Sommation par paquets}%thm
+	On suppose que $I$ est réunion disjointe de $(I_\lambda)_{\lambda\in\Lambda}$. Etant donnée une famille sommable $(a_i)_{i\in I}$ d'éléments de $E$ : 
+	\begin{itemize}
+		\item pour tout $\lambda\in\Lambda$, la famille $(a_i)_{i\in I_\lambda}$ est sommable, de somme notée $\sigma_\lambda$ ;
+		\item la famille $(\sigma_\lambda)_{\lambda\in\Lambda}$ est sommable ;
+		\item on a l'égalité $\displaystyle\sum_{i\in I}a_i=\sum_{\lambda\in\Lambda}\sigma_\lambda=\displaystyle\sum_{\lambda\in\Lambda}\left(\sum_{i\in I_\lambda}a_i\right)$.
+	\end{itemize}
+\end{thm}
+
+\begin{met}
+	On suppose que $I$ est réunion disjointe de $(I_\lambda)_{\lambda\in\Lambda}$. Soit $(a_i)_{i\in I}$ une famille d'éléments de $E$, on a lorsque la famille est sommable ou à valeurs dans $\overline{\R_+}$ : $$\sum_{i\in I}a_i=\sum_{\lambda\in\Lambda}\left(\sum_{i\in I_\lambda}a_i\right)$$
+\end{met}
+
+\begin{met}
+	Pour appliquer le théorème de sommation par paquets, on appliquera en général de le théorème de sommation par paquets (cas positif) pour montrer : $$\sum_{\lambda\in\Lambda}\left(\sum_{i\in I_\lambda}\lVert a_i\rVert\right)<+\infty$$ puis on l'appliquera sans les normes avec le même recouvrement disjointe $(I_\lambda)$.
+\end{met}
+
+\subsection{Sommes doubles}
+
+\begin{thm}
+	Une suite double $(a_{p,q})_{(p,q)\in\N^2}$ est sommable si, et seulement si, l'une des propriétés équivalentes suivantes est vérifiée :
+	\begin{enumerate}[label=(\roman*)]
+		\item pour tout $p\in\N$, la série $\displaystyle\sum_q\lVert a_{p,q}\rVert$ et la série de terme général $\alpha_p=\displaystyle\sum_{q=0}^{+\infty}\lVert a_{p,q}\rVert$ est convergente ;
+		\item pour tout $q\in\N$, la série $\displaystyle\sum_p\lVert a_{p,q}\rVert$ et la série de terme général $\beta_q=\displaystyle\sum_{p=0}^{+\infty}\lVert a_{p,q}\rVert$ est convergente ;
+		\item la série de terme général $\sigma_n=\displaystyle\sum_{p+q=n}\lVert a_{p,q}\rVert$ est convergente.
+	\end{enumerate}
+	Dans ce cas, on a : $$\sum_{(p,q)\in\N^2}a_{p,q}=\sum_{p=0}^{+\infty}\left(\sum_{q=0}^{+\infty}a_{p,q}\right)=\sum_{q=0}^{+\infty}\left(\sum_{p=0}^{+\infty}a_{p,q}\right)=\sum_{n=0}^{+\infty}\sum_{p+q=n}a_{p,q}$$
+\end{thm}
+
+\begin{rmq}
+	Plus rarement, notamment pour l'étude du produit de Dirichlet, on peut aussi utiliser la forme : $$\sum_{n=1}^{+\infty}\sum_{pq=n}a_{p,q}$$
+\end{rmq}
+
+\begin{met}
+	Si $(a_{p,q})_{(p,q)\in\N^2}$ est une famille à valeurs dans $\overline{\R_+}$ ou une famille sommable, on a : $$\sum_{(p,q)\in\N^2}a_{p,q}=\sum_{p=0}^{+\infty}\left(\sum_{q=0}^{+\infty}a_{p,q}\right)=\sum_{q=0}^{+\infty}\left(\sum_{p=0}^{+\infty}a_{p,q}\right)=\sum_{n=0}^{+\infty}\left(\sum_{p+q=n}a_{p,q}\right)$$
+\end{met}
+\begin{met}
+	Pour montrer la sommabilité d'une famille double, on montrera en général l'un des résultats suivants : $$\sum_{p=0}^{+\infty}\left(\sum_{q=0}^{+\infty}\lVert a_{p,q}\rVert\right)<+\infty \ \ \text{ou} \ \ \sum_{q=0}^{+\infty}\left(\sum_{p=0}^{+\infty}\lVert a_{p,q}\rVert\right)<+\infty \ \ \text{ou} \ \ \sum_{n=0}^{+\infty}\left(\sum_{p+q=n}\lVert a_{p,q}\rVert\right)<+\infty$$
+\end{met}
+\subsection{Produit de Cauchy}
+
+Soit $A$ une algèbre de dimension finie que l'on suppose munie d'une norme \textbf{sous-multiplicative}.
+
+\begin{thm}{Distributivité généralisée}%lem
+	Soit $(a_i)_{i\in I}$ et $(b_j)_{j\in J}$ deux familles sommables d'éléments de $A$. Alors, la famille $(a_ib_j)_{(i,j)\in I\times J}$ est sommable et l'on a : $$\sum_{(i,j\in I\times J}a_ib_j=\left(\sum_{i\in I}a_i\right)\left(\sum_{j\in J}b_j\right)$$
+\end{thm}
+
+\begin{thm}
+	Soit $\displaystyle\sum a_n$ et $\displaystyle\sum b_n$ deux séries absolument convergentes à termes dans $A$. La série de terme général : $$\sum_{p+q=n}a_pb_q,$$ appelée série \textbf{produit de Cauchy} de $\displaystyle\sum a_n$ et $\displaystyle\sum b_n$, est absolument convergente, et l'on a : $$\left(\sum_{n=0}^{+\infty}a_n\right)\left(\sum_{n=0}^{+\infty}b_n\right)=\sum_{n=0}^{+\infty}\left(\sum_{p+q=n}a_pb_q\right)$$
+\end{thm}
+
+\subsection{Exponentielle dans une algèbre de dimension finie}
+
+Soit $A$ une algèbre de dimension finie munie d'une norme sous-multiplicative.
+
+\paragraph{Rappels}
+\begin{itemize}
+	\item Pour tout $a\in A$, la série $\displaystyle\sum\frac{a^n}{n!}$ converge absolument. Sa somme est notée $\exp(a)$.
+	\item La convergence est normale sur toute boule fermée $B_f(0,R)$.
+	\item La fonction exponentielle est continue sur tout $A$.
+	\item Pour tout $a\in A$, la fonction $e_a:t\mapsto\exp(ta)$ est de classe $\mathcal{C}^\infty$ sur $\R$ et vérifie $e_a'=ae_a=e_aa$.
+\end{itemize}
+
+\begin{exo}
+	Soit $\varphi:I\to\C$ une application de classe $\mathcal{C}^1$. Montrer que $\exp\circ \varphi$ est de classe $\mathcal{C}^1$, de dérivée $\varphi'\times(\exp\circ\varphi)$.
+\end{exo}
+
+\begin{exo}
+	On pose $\begin{array}{lrcl}
+		f:&\R&\longrightarrow&\mathcal{M}_2(\R)\\
+		&t&\longmapsto&\exp A(t)
+	\end{array}$ où $A(t)=\displaystyle\begin{pmatrix}
+	0&1\\
+	0&t
+	\end{pmatrix}$. \\ Comparer $f'$ aux fonctions $t\mapsto A'(t)\exp(A(t))$ et $t\mapsto \exp(A(t))A'(t)$.
+\end{exo}
+
+\begin{exo}
+	\begin{enumerate}
+		\item Soit $\varphi$ un morphisme d'algèbres de $A$ sur $B$. Montrer : $$\forall a\in A,\ \exp(\varphi(a))=\varphi(\exp(a))$$
+		\item Pour $(a,b)\in\R^2$, calculer $\exp\displaystyle\begin{pmatrix}
+			a&-b\\
+			b&a
+		\end{pmatrix}$. %Utiliser le morphisme qui à a+ib associe la matrice a -b b a
+	\end{enumerate}
+\end{exo}
+
+\subsection{Propriétés algébriques}
+
+\begin{thm}{}%thm
+	Soit $a$ et $b$ deux éléments de $A$ tels que $ab=ba$. Alors : $$\exp(a+b)=\exp(a)\exp(b)$$
+\end{thm}
+
+\paragraph{Attention} L'hypothèse de commutation est essentielle.
+
+\begin{exo}
+	Calculer $\exp(A)\exp(B)$ et $\exp(A+B)$ pour $A=\displaystyle\begin{pmatrix}
+		0&1\\
+		0&0
+	\end{pmatrix}$ et $B=A^T$.
+\end{exo}
+
+\begin{thm}{}%cor
+	Pour tout $a\in A$, l'endomorphisme $\exp(a)$ est inversible, d'inverse $\exp(-a)$.
+\end{thm}
+
+\subsection{Cas des endomorphismes et des matrices}
+
+Soit $E$ un $\K$-espace vectoriel de dimension $n$.
+
+\begin{exo}
+	Montrer que si $u$ est un endomorphisme de $E$ de matrice $A$ dans une base $\mathcal{B}$, alors $\exp(u)$ a pour matrice $\exp(A)$ dans la base $\mathcal{B}$.
+\end{exo}
+
+\begin{exo}
+	Quelle est l'exponentielle d'une matrice diagonale ? d'une matrice diagonale par blocs ? \\
+	Comment calculer l'exponentielle d'une matrice diagonalisable ?
+\end{exo}
+
+\begin{exo}
+	Montrer : $\exp\displaystyle\begin{pmatrix}
+		\lambda_1&&(*)\\
+		&\ddots&\\
+		(0)&&\lambda_n
+	\end{pmatrix}=\begin{pmatrix}
+	e^{\lambda_1}&&(*')\\
+	&\ddots&\\
+	(0)&&e^{\lambda_n}
+	\end{pmatrix}$.
+\end{exo}
+
+\begin{exo}
+	Montrer : $\forall A\in\mathcal{M}_n(\C),\ \det(\exp(A))=\exp(\Tr(A))$. \\
+	Est-ce vrai pour $A\in\mathcal{M}_n(\R)$ ?
+\end{exo}
+
+\begin{exo}
+	\begin{enumerate}
+		\item Soit $\lambda$ un scalaire et $u$ un endomorphisme nilpotent d'indice $r$. Que vaut $\exp(\lambda\text{Id}_E+u)$ ?
+		\item Comment calculer $\exp(tA)$ si $A$ est une matrice complexe ? \\
+		Montrer que ses coefficients sont de la forme $\displaystyle\sum_{\lambda\in\text{Sp}(A)}e^{\lambda_t}P_\lambda(t)$, où les $P_\lambda$ sont des polynômes.
+		\item Dans quelle chapitre va-t-on retrouver l'exponentielle de matrices ?
+	\end{enumerate}
+\end{exo}
+
+\subsection{Rappels : exponentielle complexe}
+
+Pour $z\in\K$, on note $e^z=\exp(z)\in\K$.
+
+\subsubsection*{Exponentielle réelle}
+
+\begin{thm}{}%prop
+	L'exponentielle réelle est strictement croissante de $\R$ dans $\R$ et définit un isomorphisme de $(\R,+)$ sur $(\R_+\st,\times)$.
+\end{thm}
+
+\subsubsection*{Exponentielle complexe}
+
+\begin{thm}{}%prop
+	L'exponentielle complexe est un morphisme de $(\C,+)$ dans $(\C\st,\times)$. \\
+	Pour tout $z\in\C$, on a $\overline{e^z}=e^{\overline{z}}$. \\
+	En particulier, on a $\lvert e^z\rvert=1\iff z\in i\R$ et $\forall z\in\C,\ \lvert e^z\rvert=e^{\text{Re}(z)}$.
+\end{thm}
+
+\subsubsection*{Fonctions trigonométriques}
+
+Via l'exponentielle complexe, on peut définir les fonctions circulaires usuelles ainsi que le nombre $\pi$.
+
+\begin{dfn}
+	Pour $z\in\C$, on note : $$\cos(z)=\frac{\exp(iz)+\exp(-iz)}{2}=\sum_{n=0}^{+\infty}(-1)^n\frac{z^{2n}}{(2n)!}$$
+	$$\sin(z)=\frac{\exp(iz)-\exp(-iz)}{2i}=\sum_{n=0}^{+\infty}(-1)^n\frac{z^{2n+1}}{(2n+1)!}$$
+\end{dfn}
+
+On a donc $\exp(iz)=\cos(z)+i\sin(z)$. Comme pour tout $x$ réel, $\cos(x)$ et $\sin(x)$ sont réels, et comme $e^{ix}$ est alors de module $1$, on en déduit : $$\forall x\in\R,\ \cos^2(x)+\sin^2(x)=1$$
+
+\begin{exo}
+	A-t-on $\forall z\in\C,\ \cos^2(z)+\sin^2(z)=1$ ? %OUI ! Séries entières ou juste exp(iz)exp(-iz)
+\end{exo}
+
+\paragraph{Propriétés}
+\begin{itemize}
+	\item De l'égalité $\exp(a+b)=\exp(a)\exp(b)$, on déduit toutes les formules d'addition et de duplication pour les fonctions trigonométriques.
+	\item Par dérivation de $\exp(it)$, on obtient les dérivées des fonctions cosinus et sinus sur $\R$.
+\end{itemize}
+
+\begin{exo}
+	\begin{enumerate}
+		\item Montrer l'inégalité $\cos(2)<0$.
+		\item En déduire l'existence d'un plus petit réel $\alpha>0$ tel que $\cos(\alpha)=0$. Que vaut s$\sin(\alpha)$ ?
+		\item Montrer que les fonctions sinus et cosinus sont périodiques et que $4\alpha$ est leur plus petit période.\\
+		On pose $\pi=2\alpha$.
+		\item En déduire les variations des fonctions sinus et cosinus.
+	\end{enumerate}
+\end{exo}
+
+A partir de là, on peut définir la fonction tangente ainsi que les fonctions trigonométriques réciproques.
+
+\begin{thm}{}%prop
+	L'exponentielle complexe est une application surjective de $\C$ sur $\C\st$. Elle vérifie : $$\exp(z)=\exp(z')\iff z-z'\in 2i\pi\Z$$
+	C'est donc un morphisme surjectif de groupes de $(\C,+)$ dans $(\C\st,\times)$ dont le noyau est $2i\pi\Z$.
+\end{thm}
+\begin{proof}
+	\begin{itemize}
+		\item Grâce à l'égalité $e^{x+iy}=e^xe^{iy}$ et à la bijectivité de l'exponentielle réelle de $\R$ sur $\R_+\st$, il suffit de se limiter aux imaginaires purs. 
+		\item Soit $(\alpha,\beta)\in\R^2$ tel que $\alpha^2+\beta^2=1$. Les variations de la fonction cosinus montrent qu'il existe $\theta\in\R$ tel que $\alpha=\cos(\theta)$. \\
+		Quitte à changer $\theta$ en $-\theta$, on a alors $e^{i\theta}=\alpha+i\beta$.
+	\end{itemize}
+\end{proof}
+
+\section{Séries entières}
+
+\subsection{Rayon de convergence}
+
+\paragraph{Notation} Soit $z_0\in\K$ et $r\in\overline{\R}_+$.
+\begin{itemize}
+	\item On note $D_O(z_0,r)$ l'ensemble $\{z\in\K\ : \ \lvert z-z_0\rvert <r\}$. \\
+	Si $r$ est un réel strictement positif, cela correspond dans le cas où $\K=\C$ au \textbf{disque ouvert} de centre $z_0$ et de rayon $r$.\\
+	Dans le cas où $\K=\R$, $D_O(z_0,r)=]z_0-r,z_0+r[$.\\
+	Dans les deux cas, $D_O(z_0,+\infty)=\K$ et $D_O(z_0,0)=\emptyset$.
+	\item On note $D_F(z_0,r)$ l'ensemble $\{z\in\K\ : \ \lvert z-z_0\rvert \leqslant r\}$. \\
+	Si $r$ est un réel strictement positif, cela correspond dans le cas où $\K=\C$ au \textbf{disque fermé} de centre $z_0$ et de rayon $r$.\\
+	Dans le cas où $\K=\R$, $D_F(z_0,r)=[z_0-r,z_0+r]$.\\
+	Dans les deux cas, $D_F(z_0,+\infty)=\K$ et $D_F(z_0,0)=\{0\}$.
+\end{itemize}
+
+\subsubsection*{Séries entières}
+
+\begin{dfn}
+	Soit $a=(a_n)_{n\in\N}\in\K^\N$. \\
+	La \textbf{série entière} associée à la suite $a$ est la série de fonctions $\displaystyle\sum u_n$, où : $$\begin{array}{lrcl}
+		u_n:&\K&\longrightarrow&\K\\
+		&z&\longmapsto&a_nz^n.
+	\end{array}$$ La \textbf{somme de la série entière} est la somme de la série $\displaystyle\sum u_n$, c'est-à-dire la fonction $z\mapsto\displaystyle\sum_{n=0}^{+\infty}a_nz^n$.
+\end{dfn}
+
+\begin{rmq}
+	\begin{itemize}
+		\item On note $\displaystyle\sum a_nz^n$ la série entière associée à la suite $a$.
+		\item Si l'indexation commence à partir du rang $n_0$, la série entière est notée $\displaystyle\sum_{n\geqslant n_0}a_nz^n$.
+	\end{itemize}
+\end{rmq}
+
+\paragraph{Terminologie}
+Soit $a=(a_n)_{n\in\N}\in\K^\N$. La série de fonctions $\displaystyle\sum u_n$, où : $$\begin{array}{lrcl}
+	u_n:&\R&\longrightarrow&\K\\
+	&t&\longmapsto&a_nt^n
+	\end{array}$$ est appelée \textbf{série entière de la variable réelle} associée à la suite $a$, et est notée $\displaystyle\sum a_nt^n$.
+
+\subsubsection*{Rayon de convergence}
+
+Dans cette section, on s'intéresse au domaine de définition de la somme d'une série entière.
+
+\begin{thm}{Lemme d'Abel}%thm
+	Soit $(a_n)_{n\in\N}\in\K^\N$ et $z_0\in\K$ tel que la suite $(a_nz_0^n)$ soit bornée. Alors, pour tout $z\in\K$ tel que $\lvert z\rvert <\lvert z_0\rvert$, la série $\displaystyle\sum a_nz^n$ converge absolument.
+\end{thm}
+\begin{proof}
+	On se ramène à une comparaison avec une série géométrique.
+\end{proof}
+
+L'ensemble $\{r\in\R_+ : (a_nr^n)\ \text{est bornée}\}$ contient évidemment le réel $0$, ce qui justifie la définition suivante :
+
+\begin{dfn}
+	Soit $(a_n)_{n\in\N}\in\K^\N$.\\
+	 La borne supérieure dans $\overline{\R}_+$ de $\{r\in\R_+ : (a_nr^n)\ \text{est bornée}\}$ est le \textbf{rayon de convergence} de la série entière $\displaystyle\sum a_n z^n$. \\
+	 En notant $R$ ce rayon de convergence, on appelle : 
+	 \begin{itemize}
+	 	\item \textbf{disque ouvert de convergence} de la série entière $\displaystyle\sum a_nz^n$ l'ensemble $D_O(0,R)$ ;
+	 	\item \textbf{intervalle ouvert de convergence} de la série entière (de la variable réelle) $\displaystyle\sum a_n t^n$ l'intervalle $]-R,R[$.
+	 \end{itemize}
+\end{dfn}
+
+\begin{ex}%exs
+	\begin{enumerate}
+		\item Soit $\alpha\in\C\st$. La rayon de convergence de $\displaystyle\sum\alpha^nz^n$ est $R=\displaystyle\frac{1}{\lvert\alpha\rvert}$. \\
+		En effet, pour $r\in\R_+$, la suite $(\alpha^nr^n)_{n\in\N}$ est bornée si, et seulement si, $r\leqslant\displaystyle\frac{1}{\lvert\alpha\rvert}$.
+		\item Le rayon de convergence de $\displaystyle\sum\frac{z^n}{n!}$ est $+\infty$. En effet, pour tout $r\in\R_+$, la série $\displaystyle\sum\frac{r^n}{n!}$ est convergente donc son terme général converge vers $0$ et est \textit{a fortiori} borné.
+	\end{enumerate}
+\end{ex}
+
+Exercice Moulin.SE.2
+Exercice Moulin.SE.3
+
+\begin{rmq}%rmqs
+	\begin{itemize}
+		\item Le disque ouvert de convergence est vide si $R=0$.
+		\item Si $(a_n)_{n\in\N}$ est une suite complexe et $\lambda\in\C\st$, alors les rayons de convergence des séries entières $\displaystyle\sum a_nz^n$, $\displaystyle\sum\lvert a_n\rvert z^n$ et $\displaystyle\sum\lambda a_nz^n$ coïncident.
+		\item \textbf{Invariance par décalage}. Soit $p\in\N$ et $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R$. \\
+		Le rayon de convergence de $\displaystyle\sum a_nz^{n+p}$ est alors $R$. En effet, si $r\in\R_+\st$, alors la suite $(a_nr^n)_{n\in\N}$ est bornée  si, et seulement si, la suite : $$(a_nr^{n+p})_{n\in\N}=r^p(a_nr^n)_{n\in\N}$$ est bornée. \\
+		De même, le rayon de convergence de $\displaystyle\sum_{n\geqslant p}a_nz^{n-p}$ est $R$. En effet, si $r\in\R_+\st$, alors la suite $(a_nr^n)_{n\in\N}$ est bornée  si, et seulement si, la suite : $$(a_nr^{n-p})_{n\in\N}=r^{-p}(a_nr^n)_{n\in\N}$$ est bornée.
+	\end{itemize}
+\end{rmq}
+
+\begin{thm}{}%prop
+	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R$ et $z\in\K$.
+	\begin{itemize}
+		\item Si $\lvert z\rvert <R$, alors la série numérique $\displaystyle\sum a_nz^n$ converge absolument.
+		\item Si $\lvert z\rvert >R$, alors la série numérique $\displaystyle\sum a_nz^n$ diverge grossièrement.
+	\end{itemize}
+\end{thm}
+
+\begin{rmq}%rmq
+	\begin{itemize}
+		\item Le rayon de convergence $R$ est donc la borne supérieure (dans $\overline{\R}$) de l'ensemble des $r\in\R_+$ tels que $\displaystyle\sum a_nr^n$ soit (absolument) convergente.
+		\item On ne peut rien dire \textit{a priori} sur le comportement de la suite $(a_nR^n)_{n\in\N}$ lorsque le rayon de convergence $R$ est strictement positif.
+		\item Le théorème des séries alternées ne peut en aucun cas permettre de déterminer le rayon de convergence, puisque ce dernier est défini à partir du module du terme général. \\
+		Il sert d'ailleurs, en général, à montrer une semi-convergence; dont la seule interférence avec le rayon de convergence est donnée par l'exercice suivant.
+	\end{itemize}
+\end{rmq}
+
+\begin{exo}
+	Montrer que si $\displaystyle\sum a_nz^n$ est semi-convergente, alors le rayon de convergence est $\lvert z\rvert$.
+\end{exo}
+
+\begin{thm}{}%prop
+	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R$. Le domaine de définition $\mathcal{D}$ de la somme $f:z\mapsto\displaystyle\sum_{n=0}^{+\infty}a_nz^n$ vérifie : $$D_O(0,R)\subset\mathcal{D}\subset D_F(0,R)$$
+\end{thm}
+
+\begin{rmq}%rlqs
+	\begin{itemize}
+		\item L'intérieur du domaine de définition $\mathcal{D}$ est le disque ouvert $D_O(0,R)$.
+		\item Dans le cas où le rayon de convergence $R$ est un réel strictement positif, on ne peut rien dire \textit{a priori} sur la nature de la série $\displaystyle\sum a_nz^n$ lorsque $\lvert z\rvert=R$ (\textit{ie} sur la frontière de $\mathcal{D}$).
+	\end{itemize}
+\end{rmq}
+
+\begin{ex}%exs
+	\begin{enumerate}
+		\item Le domaine de définition de la somme de la série entière $\displaystyle \sum z^n$ est $D_O(0,1)$ et son rayon de convergence vaut donc $1$.
+		\item La somme d'une série entière de rayon de convergence infini est définie sur $\K$.
+		\item Le domaine de convergence de la série entière $\displaystyle\sum_{n\geqslant 1}\frac{z^n}{n^2}$ est le disque fermé $D_F(0,1)$ puisque :
+		\begin{itemize}
+			\item si $\lvert z\rvert\leqslant 1$, alors $\displaystyle\frac{z^n}{n^2}=O\left(\frac{1}{n^2}\right)$ ;
+			\item si $\lvert z\rvert >1$, alors $\displaystyle\frac{\lvert z\rvert^2}{n^2}\xrightarrow[n\to+\infty]{}+\infty$ par croissances comparées donc $\displaystyle\sum_{n\geqslant 1}\frac{z^n}{n^2}$ est une série grossièrement divergente.
+		\end{itemize}
+		Le rayon de convergence de cette série entière vaut donc $1$.
+	\end{enumerate}
+\end{ex}
+
+\subsection{Pratique de la détermination du rayon de convergence}
+
+\begin{thm}{Comparaison}%prop
+	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières de rayons de convergence respectifs $R_a$ et $R_b$. Si l'inégalité $\lvert a_n\rvert\leqslant\lvert b_n\rvert$ est vérifiée à partir d'un certain rang, alors $R_a\geqslant R_b$.
+\end{thm}
+
+\begin{thm}{}%cor
+	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières de rayons de convergence respectifs $R_a$ et $R_b$.
+	\begin{itemize}
+		\item Si $a_n=O(b_n)$ ou $a_n=o(b_n)$, alors $R_a\geqslant R_b$.
+		\item Si $\lvert a_n\rvert\sim \lvert b_n\rvert$, alors $R_a=R_b$.
+	\end{itemize}
+\end{thm}
+
+\begin{ex}
+	Le rayon de convergence de la série entière $\displaystyle\sum\arctan\left(\frac{1}{2^n}\right)z^n$ est $2$. En effet : $$\arctan\left(\frac{1}{2^n}\right)\underset{n\to+\infty}{\sim}\frac{1}{2^n}$$ D'autre part, la série entière $\displaystyle\sum\frac{z^n}{2^n}$ est de rayon de convergence $2$. On en déduit le résultat par comparaison.
+\end{ex}
+
+Exercice Moulin.SE.1
+
+Le fait que le terme général d'une série convergente converge vers $0$ et donc soit borné conduit au point méthode suivant.
+
+\begin{met}
+	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R$ et $z_0\in\C$.
+	\begin{itemize}
+		\item Si $\displaystyle\sum a_nz_0^n$ est une série convergente, alors $R\geqslant\lvert z_0\rvert$.
+		\item Si $\displaystyle\sum a_nz_0^n$ est une série divergente, alors $R\leqslant\lvert z_0\rvert$.
+	\end{itemize}
+	En particulier, la règle de d'Alembert pour les séries permet parfois de déterminer le rayon de convergence.
+\end{met}
+
+\begin{ex}%exs
+	\begin{enumerate}
+		\item Déterminons le rayon de convergence de la série entière $\displaystyle\sum\binom{2n}{n}z^{2n}$.\\
+		Posons pour tout $n\in\N$ : $a_n=\displaystyle\binom{2n}{n}$. Soit $z\in\C\st$. On a : $$\forall n\in\N,\ \frac{a_nz^{2n}}{a_{n-1z^{2(n-1)}}}=\frac{2n(2n-1)}{n^2}z^2\xrightarrow[n\to+\infty]{}4z^2$$
+		D'après la règle de d'Alembert :
+		\begin{itemize}
+			\item si $\lvert z\rvert <\displaystyle\frac{1}{2}$, alors la série $\displaystyle\sum a_nz^n$ est convergente (y compris si $z=0$) ;
+			\item si $\lvert z\rvert >\displaystyle\frac{1}{2}$, alors la série $\displaystyle\sum a_nz^n$ est divergente.
+		\end{itemize}
+		On en déduit ue le rayon de convergence de la série entière $\displaystyle\sum a_nz^{2n}$ vaut $\displaystyle\frac{1}{2}$.
+		\item Déterminons le rayon de convergence de la série entière $\displaystyle\sum\frac{1}{2^n}z^{n^2}$.
+	\end{enumerate}
+\end{ex}
+
+En particulier, si $\displaystyle\sum a_nz^n$ est une série entière de rayon de convergence $R$ dont les coefficients $a_n$ sont non nuls à partir d'un certain rang, on a le résultat suivant :
+
+\begin{thm}{Règle de d'Alembert pour les séries entières}%prop
+	On suppose qu'il existe $L\in\overline{\R}_+$ tel que $\displaystyle\frac{\lvert a_{n+1}\rvert}{\lvert a_n\rvert}\xrightarrow[n\to+\infty]{}L$.
+	\begin{itemize}
+		\item Lorsque $L\in\R_+\st$, on a $R=\displaystyle\frac{1}{L}$.
+		\item Lorsque $L=0$, on a $R=+\infty$.
+		\item Lorsque $L=+\infty$, on a $R=0$.
+	\end{itemize}
+\end{thm}
+
+\paragraph{Attention}
+Lorsque la règle de d'Alembert permet de conclure rapidement, il ne faut pas s'en priver. Mais il y a des cas où elle ne veut pas fonctionner (ne serait-ce que parce que la suite $(a_n)$ s'annule souvent et de manière imprévisible) et il ne faut pas insister. Il y a souvent beaucoup plus simple en revenant à la définition.
+
+\begin{ex}
+	\begin{enumerate}
+		\item $\displaystyle\sum a_nx^n$ avec $a_{2n}=2n$ et $a_{2n+1}=1/(2n+1)$.
+		\item $\displaystyle\sum\sin(\alpha n)x^n$.
+	\end{enumerate}
+\end{ex}
+
+Exercice Moulin.SE.6
+
+\begin{exo}
+	Soit $(a_n)_{n\in\N\st}$ une suite de complexes non nuls. On suppose $\displaystyle\frac{\lvert a_{n+2}\rvert}{\lvert a_n\rvert}\xrightarrow[n\to+\infty]{}2$. \\
+	Montrer que le rayon de convergence de la série entière $\displaystyle\sum a_nz^n$ vaut $\displaystyle\frac{1}{\sqrt{2}}$. \\
+	Indication : On pourra étudier les suites extraites de rangs pairs et impairs de la suite $(\lvert a_n\rvert r^n)_{n\in\N\st}$ pour $r\in\R_+\st$ fixé.
+\end{exo}
+
+\begin{thm}
+	Soit $\alpha\in\R$. La série entière $\displaystyle n^\alpha z^n$ est de rayon de convergence $1$.
+\end{thm}
+\begin{proof}
+	Application directe de la règle de d'Alembert.
+\end{proof}
+
+\begin{exo}
+	Pour $n\in\N\st$, on note $d(n)$ le nombre de diviseur positifs de $n$. Déterminer le rayon de convergence de la série entière $\displaystyle\sum d(n)z^n$.
+\end{exo}
+
+\begin{rmq}
+	A l'intérieur du disque ouvert de convergence, une série entière converge "mieux" qu'une série géométrique. En dehors du disque fermé, sa divergence est "pire" que celle d'une série géométrique. \\
+	La notion de rayon de convergence ne relève donc que de la comparaison à des séries géométriques, ce qui explique (pourquoi ?) que la règle de d'Alembert puisse donner "facilement" le rayon de convergence.
+\end{rmq}
+
+\subsection{Opérations algébriques sur les séries entières}
+
+\subsubsection*{Somme}
+
+\begin{thm}{}%prop
+	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières de rayons de convergence $R_a$ et $R_b$. \\
+	Le rayon de convergence $R_s$ de $\displaystyle\sum (a_n+b_n)z^n$ vérifie l'inégalité : $$R_s\geqslant\min(R_a,R_b)$$ et l'on a : $$\forall z\in\K,\ \lvert z\rvert<\min(R_a,R_b)\implies\sum_{n=0}^{+\infty}(a_n+b_n)z^n=\sum_{n=0}^{+\infty}a_nz^n+\sum_{n=0}^{+\infty}b_nz^n$$ De plus, si $R_a\ne R_b$, alors $R_s=\min(R_a,R_b)$.
+\end{thm}
+
+\begin{exo}
+	Déterminer le rayon de convergence et la somme de la série entière $\displaystyle\sum_{n\geqslant 0}\cosh(n)z^n$.
+\end{exo}
+
+\subsubsection*{Produit}
+
+\begin{dfn}
+	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières. La série entière $\displaystyle\sum c_nz^n$, où : $$\forall n\in\N,\ c_n=\sum_{k=0}^{n}a_kb_{n-k}$$ est le \textbf{produit de Cauchy} des séries entières $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$.
+\end{dfn}
+
+\begin{rmq}
+	On peut (doit ?) aussi écrire le produit de Cauchy des séries entières $\displaystyle\sum b_nz^n$ sous la forme $\displaystyle\sum\left(\sum_{p+q=n}a_pb_q\right)z^n$.
+\end{rmq}
+
+\begin{thm}{}%prop
+	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières de rayons de convergence $R_a$ et $R_b$. \\
+	Pour tout $z\in\K$ vérifiant $\lvert z\rvert <\min(R_a,R_b)$, on a : $$\left(\sum_{p=0}^{+\infty}a_pz^p\right)\times \left(\sum_{q=0}^{+\infty}b_qz^q\right)=\sum_{n=0}^{+\infty}\left(\sum_{k=0}^{n}a_kb_{n-k}\right)z^n$$ En particulier, le rayon de convergence $R_p$ du produit de Cauchy des séries entières $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ vérifie l'inégalité : $$R_p\geqslant\min(R_a,R_b)$$
+\end{thm}
+
+\begin{rmq}
+	Soit $\displaystyle\sum a_n^{(1)}z^n,\ldots,\sum a_n^{(p)}z^n$ des séries entières de rayons de convergence respectifs $R_1,\ldots,R_p$, avec $p\in\N\st$. On pose $R=\min(R_1,\ldots,R_p)$. \\
+	Par récurrence sur $p$; on démontre que pour tout $z\in\K$ vérifiant $\lvert z\rvert <R$ :
+	$$\prod_{k=1}^{p}\left(\sum_{n=0}^{+\infty}a_n^{(k)}z^n\right)=\sum_{n=0}^{+\infty}\left(\sum_{i_1+\cdots+i_p=n}a_{i_1}^{(1)}\cdots a_{i_p}^{(p)}\right)z^n$$
+\end{rmq}
+
+\begin{rmq}
+	Il n'y a pas d'égalité comme pour la somme. Considérer pour cela $\displaystyle\sum z^n$ et $1-z$.
+\end{rmq}
+
+\begin{exo}
+	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R>0$ et de somme $f$. Pour tout $n\in\N$, on pose $S_n=\displaystyle\sum_{k=0}^{n}a_k$. \\
+	Donner une minoration du rayon de convergence de la série entière $\displaystyle\sum S_nz^n$ et donner sa somme en fonction de $f$ au voisinage de $0$.
+\end{exo}
+%Faire le produit de Cauchy de $f$ avec $1/(1-z)$.
+
+\section{Régularité de la somme d'une série entière}
+
+\subsection{Continuité}
+
+\begin{thm}{}%thm
+	Soit $\displaystyle\sum a_n z^n$ une série entière de rayon de convergence $R$. La série $\displaystyle \sum a_n z^n$ converge normalement sur tout disque fermé $D_F(0,\rho)$, où $0\leqslant\rho<R$.
+\end{thm}
+
+\begin{rmq}
+	On peut étendre ceci. Si $A$ est une algèbre de dimension finie munie d'une norme sous-multiplicative, alors $\displaystyle\sum a_nx^n$ converge normalement sur tout boule fermée $B_F(0,\rho)$, où $0\leqslant\rho < R$. \\
+	Mais attention ! La série entière peut alors très bien converger au-delà du rayon de convergence. On pourra regarder le cas des matrices carrées nilpotentes.
+\end{rmq}
+
+\paragraph{Attention} La série $\displaystyle\sum a_n z^n$ ne converge pas normalement sur $D_O(0,R)$ en général. Par exemple, la série entière $\displaystyle\sum z^n$ ne converge pas normalement sur $D_O(0,1)$.
+
+Exercice Moulin.SE.4
+
+\begin{rmq}
+	\begin{itemize}
+		\item Toute série entière de rayon de convergence $R\in\R_+\st$ qui converge normalement sur $D_O(0,R)$ converge normalement sur $D_F(0,R)$. En effet, $\displaystyle\underset{\lvert z\rvert <R}{\sup}\lvert a_n z^n\rvert=\underset{\lvert z\rvert\leqslant R}{\sup}\lvert a_n z^n\rvert$.
+		\item Tout élève qui parlera de convergence normale sur le disque ouvert de convergence sera donc immédiatement passé par la fenêtre.
+		\item il en est de même pour la convergence uniforme.
+	\end{itemize}
+\end{rmq}
+
+\begin{ex}
+	La somme de la série entière $\displaystyle\sum_{n\geqslant 1}\frac{z^n}{n^2}$ est définie et continue sur $1$. En effet, les fonctions $z\mapsto\displaystyle\frac{z^n}{n^2}$ sont continues et la série de fonctions $\displaystyle\sum_{n\geqslant 1}\frac{z^n}{n^2}$ converge normalement sur le disque fermé $D_F(0,1)$ étant donné que : $$\forall z\in D_F(0,1),\ \left\lvert\frac{z^n}{n^2}\right\rvert\leqslant\frac{1}{n^2}$$
+\end{ex}
+
+\begin{thm}{}%cor
+	Soit $\displaystyle\sum a_n z^n$ une série entière de rayon de convergence $R>0$. Alors la restriction de la somme au disque ouvert, c'est-à-dire l'application : $$\begin{array}{rcl}
+		D_O(0,R)&\longrightarrow&\C\\
+		z&\longmapsto&\displaystyle\sum_{n=0}^{+\infty} a_nz^n
+	\end{array}$$ est continue.
+\end{thm}
+
+\begin{ex}
+	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence non nul et de somme $f$. Pour tout $p\in\N$, la fonction $f$ admet un développement limité à l'ordre $p$ en $0$, qui s'écrit : $$f(z)=\sum_{n=0}^{p}a_nz^n+o(z^p)$$
+\end{ex}
+
+\begin{ex}%CVU avec le thm des séries alternées
+	A l'aide des développements en série entière valable pour $x\in]-1,1[$ : $$\ln(1+x)=\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n}x^n\ \ \text{et}\ \ \arctan(x)=\sum_{n=0}^{+\infty}\frac{(-1)^n}{2n+1}x^n,$$ on obtient : $$\ln(2)=\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n}\ \ \text{et}\ \ \frac{\pi}{4}=\sum_{n=0}^{+\infty}\frac{(-1)^n}{2n+1}$$
+\end{ex}
+
+\begin{thm}{}%lem
+	Soit $\displaystyle\sum a_n$ une série convergente. La série de fonctions $t\mapsto\displaystyle\sum a_nt^n$ converge uniformément sur le segment $[0,1]$ et, en particulier, la restriction de sa somme à $[0,1]$ est continue.
+\end{thm}
+\begin{proof}
+	On démontre la convergence uniforme de la suite des restes sur le segment $[0,1]$ par une transformation d'Abel.
+\end{proof}
+
+\begin{thm}{Théorème d'Abel radial}
+	Soit $z_0\in\C$ tel que la série $\displaystyle\sum a_nz_0^n$ converge. Alors la série entière $\displaystyle\sum a_nz^n$ converge uniformément sur le segment $[0,z_0]$ et, en particulier, la restriction de sa somme à ce segment est continue. 
+\end{thm}
+\begin{proof}
+	Utiliser le lemme précédent et une paramétrisation par $[0,1]$ de $[0,z_0]$.
+\end{proof}
+
+\begin{thm}{Théorème d'Abel radial - version du programme}%thm #loser
+	Soit $\displaystyle\sum a_nt^n$ une série entière de rayon de convergence $R\in\R_+\st$. On suppose que $\displaystyle\sum a_nR^n$ est une série convergente. Alors, la somme : $$\begin{array}{rcl}
+		[0,R]&\longrightarrow&\C\\
+		t&\longmapsto&\displaystyle\sum_{n=0}^{+\infty} a_nt^n
+	\end{array}$$ est continue. En particulier : $$\sum_{n=0}^{+\infty}a_nt^n\xrightarrow[t\to R]{}\sum_{n=0}^{+\infty}a_nR^n$$
+\end{thm}
+
+\begin{rmq}
+	Lorsque le rayon de convergence est strictement supérieur à $R$ (ou à $\lvert z_0\rvert$), tout cela est trivial par convergence normale sur le disque fermé de rayon $R$ (ou $\lvert z_0\rvert$).
+\end{rmq}
+
+\paragraph{Attention}
+\begin{itemize}
+	\item Il se peut que la fonction $t\mapsto\displaystyle\sum_{n=0}^{+\infty}a_nt^n$ admette une limite en $R$, sans pour autant que $\displaystyle\sum a_nR^n$ converge.
+	\item La somme d'une série entière peut ne pas être continue en un point du cercle de convergence : voir l'exercice Moulin.EV.54
+\end{itemize}
+
+\begin{ex}
+	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières de rayon de convergence $1$. Pour tout $n\in\N$, on pose $c_n=\displaystyle\sum_{k=0}^{n}a_kb_{n-k}$. et l'on suppose que $\displaystyle\sum a_n$, $\displaystyle\sum b_n$ et $\displaystyle \sum c_n$ sont des séries convergentes. On a alors : $$\left(\sum_{n=0}^{+\infty}a_n\right)\left(\sum_{n=0}^{+\infty}b_n\right)=\sum_{n=0}^{+\infty}c_n$$
+	Cette relation était déjà connue en supposant les séries $\displaystyle\sum a_n$ et $\displaystyle\sum b_n$ absolument convergentes (la convergence absolue de $\displaystyle\sum c_n$ étant alors une conséquence de celles de ces deux séries), et même lorsque seulement l'une des deux séries est absolument convergente (théorème de Mertens, exercice Moulin.SSF.52).
+\end{ex}
+
+\subsection{Dérivation terme à terme d'une série entière}
+
+\begin{thm}{}%prop
+	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R$. Alors $\displaystyle\sum na_nz^n$ a pour rayon de convergence $R$.
+\end{thm}
+
+\begin{rmq}
+	Du résultat précédent, on déduit immédiatement que $\displaystyle\sum a_nz^n$ et $\displaystyle\sum\frac{a_n}{n}z^n$ ont le même rayon de convergence, et plus généralement que $\displaystyle\sum a_nz^n$ et $\displaystyle\sum n^k a_nz^n$ ont même rayon de convergence pour $k\in\Z$.
+\end{rmq}
+
+\begin{exo}
+	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R$ et $\alpha\in\R\st$. Déterminer le rayon de convergence de la série entière $\displaystyle\sum n^\alpha a_nz^n$. 
+\end{exo}
+%Solution : coincer alpha entre 2 entiers et utiliser la remarque précédente
+
+\begin{thm}{Dérivation terme à terme}%thm
+	Soit $\displaystyle\sum a_nt^n$ une série entière de la variable réelle, de rayon de convergence $R>0$. Alors sa somme $f$ est de classe $\mathcal{C}^1$ sur $]-,R,R[$ et: $$\forall t\in]-R,R[,\ f'(t)=\sum_{n=1}^{+\infty}na_nt^{n-1}$$
+\end{thm}
+
+\begin{rmq}
+	Ainsi, la dérivée sur $]-R,R[$ de la somme d'une série entière $\displaystyle\sum a_nt^n$ de rayon de convergence $R$ est la somme de la série entière $\displaystyle\sum_{n\geqslant1}na_nt^{n-1}$.
+\end{rmq}
+
+\begin{met}
+	On peut dériver terme à terme la somme d'une série entière de la variable réelle sur son intervalle \textbf{ouvert} de convergence.
+\end{met}
+
+\begin{ex}
+	\begin{enumerate}
+		\item On a : $\forall t\in]-1,1[,\ \displaystyle\sum_{n=0}^{+\infty}t^n=\frac{1}{1-t}$ (série géométrique convergente). Par dérivation terme à terme d'une série entière sur son intervalle ouvert de convergence, on obtient : $$\forall t\in]-1,1[,\ \frac{1}{(1-t)^2}=\sum_{n=1}^{+\infty}nt^{n-1}=\sum_{n=0}^{+\infty}(n+1)t^n$$
+		\item En multipliant par $t$ puis en dérivant terme à terme, on obtient : $$\forall t\in]-1,1[,\ \frac{t}{(1-t)^2}=\sum_{n=1}^{+\infty}nt^n\ \text{puis}\ \frac{1+t}{(1-t)^3}=\sum_{n=1}^{+\infty}n^2t^{n-1}$$
+		En particulier, en évaluant en $\frac{1}{2}$, il vient : $$\sum_{n=1}^{+\infty}\frac{n^2}{2^n}=\frac{1}{2}\frac{\frac{3}{2}}{\frac{1}{8}}=6$$
+		\item Pour tout $\theta\in]0,2\pi[$, on a : $$\sum_{n=1}^{+\infty}\frac{\cos(n\theta)}{n}=-\ln\left(2\sin\left(\frac{\theta}{2}\right)\right)\ \ \text{et}\ \ \sum_{n=1}^{+\infty}\frac{\sin(n\theta)}{n}=\frac{\pi-\theta}{2}$$
+	\end{enumerate}
+\end{ex}
+
+La propriété suivante généralise le théorème précédent en exprimant le fait que la somme d'une série entière de la variable réelle est de classe $\mathcal{C}^\infty$ sur son intervalle \textbf{ouvert} de convergence, et que ses dérivées d'ordre $p$ s'obtiennent en dérivant terme à terme.
+
+\begin{thm}{}%cor
+	Soit $\displaystyle\sum a_nt^n$ une série entière de la variable réelle, de rayon de convergence $R>0$ et de somme $f$. Alors la fonction $f$ est de classe $\mathcal{C}^\infty$ sur $]-R,R[$ et : $$\forall p\in\N,\ \forall t\in]-R,R[,\ f^{(p)}(t)=\sum_{n=p}^{+\infty}n(n-1)\cdots(n-p+1)a_nt^{n-p}$$ En particulier, on a : $$\forall p\in\N,\ a_p=\frac{f^{(p)(0)}}{p!}$$
+\end{thm}
+
+\begin{ex}%ex
+	Soit $p\in\N$. Le corollaire précédent appliqué à la série entière $\displaystyle\sum t^n$ donne, par calcul de la dérivée $p$-ème : $$\forall t\in]-1,1[,\ \frac{p!}{(1-t)^{p+1}}=\sum_{n=0}^{+\infty}(n+1)\cdots(n+p)t^n$$ ce qui se réécrit : $$\forall t\in]-1,1[,\ \sum_{n=0}^{+\infty}\binom{n+p}{p}t^n=\frac{1}{(1-t)^{p+1}}$$
+\end{ex}
+
+\begin{thm}{}%prop
+	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières de rayons de convergence strictement positifs. On suppose qu'il existe $\alpha\in\R_+\st$ tel que : $$\forall t\in]0,\alpha[,\ \sum_{n=0}^{+\infty}a_nt^n=\sum_{n=0}^{+\infty}b_nt^n$$ Alors, on a : $\forall n\in\N,\  a_n=b_n$.
+\end{thm}
+
+\begin{rmq}
+	Dans la propriété précédente, le réel strictement positif $\alpha$ doit être inférieur ou égal aux rayons de convergence des séries entières $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$.
+\end{rmq}
+
+\begin{ex}
+	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R>0$. On suppose que la somme est une fonction paire sur $]-R,R[$. Alors on a : $$\forall t\in]-R,R[,\ \sum_{n=0}^{+\infty}(-1)^na_nt^n=\sum_{n=0}^{+\infty}a_nt^n$$ Par unicité du développement en série entière d'une série entière de rayon de convergence strictement positif, on en déduit : $$\forall k\in\N,\ a_{2k+1}=0$$
+\end{ex}
+
+\begin{exo}
+	Montrer qu'il existe une unique série entière de rayon de convergence $+\infty$ dont la somme $f$ vérifie : $$f(0)=1\ \text{et}\ \forall x\in\R,\ xf''(x)+f'(x)+f(x)=0$$
+\end{exo}
+
+\subsubsection*{Primitivation d'une série entière}
+
+\begin{thm}
+	Si $\displaystyle\sum a_nt^n$ est une série entière de rayon de convergence $R>0$, sa somme admet pour primitives sur $]-R,R[$ les : $$\int\left(\sum_{n=0}^{+\infty}a_nt^n\right)=k+\sum_{n=0}^{+\infty}\frac{a_n}{n+1}t^n\ \ \text{avec}\ k\in\K$$
+\end{thm}
+
+\begin{rmq}
+	Cette propriété sera illustrée dans la section suivante.
+\end{rmq}
+
+\begin{met}
+	On peut primitiver terme à terme la somme d'une série entière sur l'intervalle ouvert de convergence. On peut intégrer terme à terme la somme d'une série entière sur tout segment inclus dans l'intervalle ouvert de convergence.
+\end{met}
+
+\paragraph{Attention} On ne peut pas \textit{a priori} intégrer sur tout l'intervalle ouvert de convergence, sauf évidemment dans certains cas particuliers, comme par exemple l'exemple ci-dessous.
+
+\begin{ex}
+	Si la série $\displaystyle\sum a_nR^n$ converge absolument, alors on peut intégrer terme à terme sur le segment $[-R,R]$ (ou sur $[0,R]$) car la série de fonctions $\displaystyle\sum a_nt^n$ converge alors normalement sur $[-,R,R]$.
+\end{ex}
+
+Exercice Moulin.SE.35
+
+\begin{rmq}
+	Et si l'on suppose seulement la convergence de $\displaystyle\sum a_nR^n$ ?
+\end{rmq}
+
+\subsection{Formule de Cauchy et holomorphie (HP)}
+
+\begin{thm}{Formule de Cauchy (HP)}%prop
+	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R>0$ et $f$ sa somme. Alors, pour tout $n\in\N$, et tout $r\in]0,R[$ : $$a_n=\frac{1}{2\pi r^n}\int_{0}^{2\pi}f(re^{i\theta})e^{-in\theta}d\theta$$
+\end{thm}
+\begin{proof}
+	Intégrer terme à terme.
+\end{proof}
+
+\begin{exo}
+	Montrer qu'une fonction bornée, somme sur $\C$ d'une série entière, est constante.
+\end{exo}
+
+\begin{rmq}
+	Il faut à tout prix accepter de voir les séries entières comme étant des fonctions de la variable complexe. On ne peut comprendre réellement ces fonctions qu'en observant leur comportement dans le plan complexe. Par exemple, l'exercice précédent montre que sinus n'est pas bornée.
+\end{rmq}
+
+\begin{dfn}
+	On dit qu'une fonction $f$ à valeurs complexes définie sur un ouvert $U$ de $\C$ est \textbf{dérivable au sens complexe} en $z_0\in U$ lorsque la quantité : $$\frac{f(z)-f(z_0)}{z-z_0}$$ admet une limite lorsque $z$ tend vers $z_0$. Dans ce cas, on note $f'(z_0)$ sa limite. \\
+	On dit que $f$ est holomorphe sur $U$ lorsque $f$ est dérivable au sens complexe en tout point de $U$.
+\end{dfn}
+
+\begin{dfn}
+	Soit $\Gamma:[a,b]\to\C$ de classe $\mathcal{C}^1$ et $f:D\to\C$ continue, tels que $\Gamma([a,b])\subset D$. On définit l'intégrale de $f$ sur le chemin $\Gamma$ par : $$\int_\Gamma f(z)dz=\int_{a}^{b}f(\Gamma(t))\Gamma'(t)dt$$
+\end{dfn}
+
+\begin{exo}
+	Reformuler la formule de Cauchy en termes d'intégrales sur un chemin.
+\end{exo}
+
+\begin{thm}{}%prop
+	La somme d'une série entière est holomorphe sur $D_O(0,R)$.
+\end{thm}
+
+\section{Développements en série entière}
+
+\subsection{Fonctions développables en série entière}
+
+\subsubsection*{Domaine complexe}
+
+\begin{dfn}
+	Soit $U\subset\C$ un voisinage de $0$, ainsi qu'une fonction $f:U\to\C$. Soit $r>0$. S'il existe une série entière $\displaystyle\sum a_nz^n$ telle que : $$\forall z\in D_O(0,R),\ f(z)=\sum_{n=0}^{+\infty}a_nz^n$$ on dit que $f$ est \textbf{développable en série entière sur $D_O(0,r)$}.
+\end{dfn}
+
+\paragraph{Terminologie}
+On dit que $f$ est \textbf{développable en série entière} (au voisinage de $0$) s'il existe $r>0$ tel que $f$ soit développable en série entière sur $D_O(0,r)$.
+
+\begin{ex}%exs
+	\begin{enumerate}
+		\item La fonction $\exp$ est dérivable en série entière sur $\C$ puisque : $$\forall z\in\C,\ \exp(z)=\displaystyle\sum_{n=0}^{+\infty}\frac{z^n}{n!}$$
+		\item La fonction $z\mapsto\displaystyle\frac{1}{1-z}$ est développable en série entière sur $D_O(0,1)$ puisque : $$\forall z\in D_O(0,1),\ \frac{1}{1-z}=\sum_{n=0}^{+\infty}z^n$$
+		\item Toute fonction polynomiale $P$ est développable en série entière sur $\C$ : $$\forall z\in\C,\ P(z)=\sum_{n=0}^{+\infty}\frac{P^{(n)}(0)}{n!}z^n$$
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	Soit $(a,b)\in(\C\st)^2$ et $f:z\mapsto\displaystyle\frac{1}{(z-a)(z-b)}$. Montrer que $f$ est développable en série entière et expliciter le développement en série entière.
+\end{exo}
+
+\begin{exo}
+	\begin{enumerate}
+		\item A quelle condition une fraction rationnelle est-elle développable en série entière ?
+		\item Sur quel disque a-t-on alors le développement ?
+		\item Quel est le rayon de convergence de la série entière ?
+	\end{enumerate}
+\end{exo}
+
+\subsubsection*{Domaine réel}
+
+\begin{dfn}
+	Soit $I\subset\R$ un voisinage de $0$, ainsi qu'une fonction $f:I\to\K$. Soit $r>0$. S'il existe une série entière $\displaystyle\sum a_nt^n$ telle que : $$\forall t\in]-R,R[,\ f(t)=\sum_{n=0}^{+\infty}a_nt^n$$ on dit que $f$ est \textbf{développable en série entière sur $]-R,R[$}.
+\end{dfn}
+
+\paragraph{Terminologie}
+On dit que $f$ est \textbf{développable en série entière} (au voisinage de $0$) s'il existe $r>0$ tel que $f$ soit développable en série entière sur $]-r,r[$.
+
+\begin{rmq}%rmqs
+	\begin{enumerate}
+		\item Lorsque la fonction $f$ est développable en série entière sur $]-r,r[$, $f$ est de classe $\mathcal{C}^\infty$ sur $]-r,r[$ et l'on a : $$\forall t\in]-r,r[,\ f(t)=\sum_{n=0}^{+\infty}\frac{f^{(n)}(0)}{n!}t^n$$
+		\item Lorsque la fonction $f$ est de classe $\mathcal{C}^\infty$ au voisinage de $0$, la série entière $\displaystyle\sum\frac{f^{(n)}(0)}{n!}t^n$ est bien définie et appelée \textbf{série de Taylor} de la fonction $f$. Elle ne converge pas nécessairement en tout point du domaine de définition de $f$ et lorsqu'elle converge, sa somme ne vaut pas toujours $f(t)$ (se référer à l'exercice suivant pour un exemple).
+	\end{enumerate}	
+\end{rmq}
+
+\begin{exo}
+	Soit $f:\R\st\to\R$ définie par $f(x)=\exp(-1/x^2)$.
+	\begin{enumerate}
+		\item Montrer que pour tout $n\in\N$, il existe $P_n\in\R[X]$ tel que : $$\forall x\in\R\st,\ f^{(n)}(x)=P_n\left(\frac{1}{x}\right)f(x)$$
+		\item Montrer que $f$ admet un prolongement $g$ de classe $\mathcal{C}^\infty$ sur $\R$ et que : $$\forall n\in\N,\ g^{(n)}(0)=0$$
+		\item Montrer que $g$ n'est pas développable en série entière.
+	\end{enumerate}
+	On vient de donner un exemple de fonction de classe $\mathcal{C}^\infty$ mais non développable en série entière.
+\end{exo}
+
+\begin{ex}
+	La fonction $\begin{array}{lrcl}
+		f:&]-1,+\infty[&\longrightarrow&\R\\
+		&t&\longmapsto&\ln(1+t)
+	\end{array}$ est développable en série entière.
+\end{ex}
+
+\begin{thm}{}%prop
+	Pour que $f\in\mathcal{C}\infty(]-r,r[,\K)$ soit développable en série entière, il faut et il suffit que le reste de Taylor $R_n(x)$ de $f$ converge simplement vers $0$ sur $]-r,r[$ quand $n$ tend vers l'infini.
+\end{thm}
+
+\begin{rmq}
+	On dispose pour cela de l'inégalité de Taylor-Lagrange : $$\lvert R_n(x)\rvert\leqslant\frac{\lvert x\rvert^{n+1}}{(n+1)!}\underset{[0,x]}{\sup}\lvert f^{(n+1)}\rvert$$ ou de l'expression du reste : $$R_n(x)=\int_{0}^{x}\frac{(x-u)^n}{n!}f^{(n+1)}(u)du=x^{n+1}\int_{0}^{1}\frac{(1-t)^n}{n!}f^{(n+1)}(xt)dt$$ Utiliser l'expression explicite du reste est un cas désespéré. Dans ce cas, ne pas redémontrer l'inégalité de Taylor-Lagrange : affiner les majorations par un découpage de l'intégrale.
+\end{rmq}
+
+\begin{exo}
+	Soit $f$ une fonction de classe $\mathcal{C}^\infty$ sur un intervalle de la forme $I=]-a,a[$. Démontrer que s'il existe $\rho >0$ et $M\in\R_+$ tels que : $$\forall x\in I,\ \forall n\in\N,\ \lvert f^{(n)}(x)\rvert\leqslant\frac{Mn!}{\rho^n}$$ alors $f$ est développable en série entière sur $]-R,R[$, où $R=\min(a,\rho)$.
+\end{exo}
+
+Les théorèmes sur les opérations sur les séries entières donnent le point méthode suivant.
+
+\begin{met}
+	On a les résultats suivants.
+	\begin{itemize}
+		\item Si $f$ et $g$ sont des fonctions développables en série entière sur $D_O(0,r)$, alors $f+g$, $\lambda f$ et $fg$ sont développables en série entière sur $D_O(0,r)$.
+		\item Si $f$ et $g$ sont développables en série entière, alors $f+g$, $\lambda f$ et $fg$ sont développables en série entière.
+		\item Si $f$ est développable en série entière sur $]-r,r[$, alors toutes les dérivées et les primitives de $f$ sont développables en série entière sur $]-r,[$.
+	\end{itemize}
+	
+\end{met}
+
+\begin{rmq}
+	En particulier, si $U\subset\R$ (ou $U\subset\C$) est un voisinage de $0$, l'ensemble des fonctions $\mathcal{F}(U,\K)$ développables en série entière est une sous-algèbre de $\mathcal{F}(U,\K)$.
+\end{rmq}
+
+\subsection{Développements usuels dans le domaine réel}
+
+
+La proposition qui suit montre que les fonctions $\cos$, $\sin$, $\cosh$ et $\sinh$ sont développables en série entière sur $\R$.
+
+\begin{thm}{}%prop
+	Pour tout $x\in\R$, on a : $$\cos(x)=\sum_{n=0}^{+\infty}\frac{(-1)^n}{(2n)!}x^{2n}\ \ \ \sin(x)=\sum_{n=0}^{+\infty}\frac{(-1)^n}{(2n+1)!}x^{2n+1}$$
+	$$\cosh(x)=\sum_{n=0}^{+\infty}\frac{1}{(2n)!}x^{2n}\ \ \ \sinh(x)=\sum_{n=0}^{+\infty}\frac{1}{(2n+1)!}x^{2n+1}$$
+\end{thm}
+
+Le théorème de primitivation permet d'obtenir d'autres développements en série entière.
+
+\begin{thm}{}%prop
+	Pour tout $x\in]-1,1[$, on a : $$\ln(1+x)=\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n}x^n\ \ \ \ \arctan(x)=\sum_{n=0}^{+\infty}\frac{(-1)^n}{2n+1}x^{2n+1}$$
+\end{thm}
+
+\begin{ex}%exs
+	\begin{enumerate}
+		\item En remplaçant $x$ par $-x$ dans le développement en série entière de la fonction $t\mapsto\ln(1+t)$, on obtient : $$\forall x\in]-1,1[,\ \ln(1-x)=-\sum_{n=1}^{+\infty}\frac{x^n}{n}$$
+		\item La série $\displaystyle\sum\frac{(-1)^n}{2n+1}$ est convergente (d'après le critère des séries alternées). D'après le théorème d'Abel radial (ou par convergence uniforme grâce au critère des séries alternées), on a : $$\sum_{n=0}^{+\infty}\frac{(-1)^n}{2n+1}=\underset{x\to 1^-}{\lim}\arctan(x)=\frac{\pi}{4}$$ On peut vérifier de même que : $$\sum_{n=0}^{+\infty}\frac{(-1)^{n-1}}{n}=\underset{x\to 1^-}{\lim}\ln(1+x)=\ln(2)$$
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	Déterminer le développement en série entière de $f:x\mapsto\ln(1+x+x^2)$. \\
+	Indication : on pourra donner le développement en série entière de $f'$ ou bien...
+\end{exo}
+
+\subsubsection*{Série du binôme}
+
+Pour faciliter la compréhension de la formule qui suit, pour tout $(\alpha,n)\in\C\times\N$, on pose : $$\binom{\alpha}{n}=\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}$$ Cette notation n'est pas explicitement au programme, mais elle est assez fréquemment utilisée.
+
+\begin{thm}{}%prop
+	Pour tout $\alpha\in\C$, on a : $$\forall x\in]-1,1[,\ (1+x)^\alpha=\sum_{n=0}^{+\infty}\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}x^n=\sum_{n=0}^{+\infty}\binom{\alpha}{n}x^n$$
+\end{thm}
+
+\begin{rmq}
+	On retrouve ainsi le fait que si $t\in]-1,1[$ et $p\in\N$, alors : $$\frac{1}{(1-t)^{p+1}}=\sum_{n=0}^{+\infty}\binom{n+p}{p}t^n$$ En effet, pour $n\in\N$, on a : $$\binom{-p-1}{n}=(-1)^n\binom{n+p}{n}$$
+\end{rmq}
+
+\begin{ex}
+	Donnons le développement en série entière de la fonction $x\mapsto\displaystyle\frac{1}{\sqrt{1-x}}$. \\
+	Pour tout $n\in\N$, on a : $$\binom{-1/2}{n}=\frac{(-1)^n}{4^n}\binom{2n}{n}$$ Par conséquent, d'après la proposition précédente, on a : $$\forall x\in]-1,1[,\ \frac{1}{\sqrt{1-x}}=(1-x)^{-1/2}=\sum_{n=0}^{+\infty}\frac{\binom{2n}{n}}{4^n}x^n$$
+\end{ex}
+
+\begin{exo}
+	Donner le développement en série entière de la fonction $x\mapsto\sqrt{1+x}$.
+\end{exo}
+
+\subsection{Méthode de l'équation différentielle}
+
+Une méthode de détermination de développement en série entière est celle de l'équation différentielle. Elle consiste à trouver une équation différentielle linéaire à coefficients polynomiaux vérifiée par la fonction et à la résoudre formellement avec une série entière. Deux situations peuvent se présenter.
+
+\begin{met}
+	Voici comment utiliser une équation différentielle.
+	\begin{itemize}
+		\item Si on sait que $f$ est développable en série entière, on cherche une relation de récurrence entre les coefficients de ce développement (par unicité du développement en série entière) pour déterminer ces derniers.
+		\item Si on cherche à montrer que $f$ est développable en série entière, on cherche une série entière de rayon de convergence strictement positif satisfaisant à la même équation différentielle et l'on utilise un résultat d'unicité des solutions d'une telle équation différentielle.
+	\end{itemize}
+\end{met}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Développons en série entière la fonction $f:x\mapsto\displaystyle e^{x^2}\int_{0}^{x}e^{-t^2}dt$. \\
+		La fonction $f$ est dérivable sur $\R$ et on a : $$\forall x\in\R,\ f'(x)=2xf(x)+1\ \ \text{et}\ \ f(0)=0$$
+		Par substitution dans le développement en série entière de l'exponentielle, puis primitivation et produit, $f$ est développable en série entière. Il existe donc une suite $(a_n)_{n\in\N}$ de réels telle que pour tout réel $x$ on ait : $$xf(x)=\sum_{n=2}^{+\infty}a_{n-2}x^{n-1}$$
+		$$f'(x)=\sum_{n=1}^{+\infty}na_nx^{n-1}$$
+		$$f'(x)-2xf(x)=a_1+\sum_{n=2}^{+\infty}(na_n-2a_{n-2})x^{n-1}$$
+		Par unicité du développement en série entière, on obtient : $$a_1=1\ \ \text{et}\ \ \forall n\geqslant2,\ a_n=\frac{2}{n}a_{n-2}$$ Comme $f(0)=0$, on a aussi $a_0=0$. Par récurrence, on obtient : $$\forall p\in\N,\ a_{2p}=0\ \ \text{et}\ \ a_{2p+1}=\frac{4^pp!}{(2p+1)!}$$ On peut conclure : $$\forall x\in\R,\ f(x)=\sum_{p=0}^{+\infty}\frac{4^pp!}{(2p+1)!}x^{2p+1}$$
+		\item La démonstration de la proposition précédente est une illustration de la deuxième situation.
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	\begin{enumerate}
+		\item Montrer que $\arcsin^2$ est développable en série entière sur $]-1,1[$.
+		\item Expliciter ce développement en série entière.
+	\end{enumerate}
+\end{exo}
+
+\subsection{Compléments (HP)}
+
+\subsubsection*{Fonctions analytiques et holomorphes}
+
+\begin{exo}
+	Soit $f$ une fonction développable en série entière, dont le rayon de convergence du développement en série entière est $R>0$. Montrer que pour tout $z\in\C$ tel que $\lvert z\rvert <R$, la fonction $h\mapsto f(z+h)$ est développable en série entière. on dit que $f$ est \textbf{analytique}.
+\end{exo}
+
+\begin{exo}
+	En utilisant la formule de Cauchy, montrer qu'une fonction holomorphe est analytique.
+\end{exo}
+
+\subsubsection*{Résolution d'équation différentielle}
+
+\begin{exo}
+	Déterminer les solutions développables en série entière de l'équation différentielle : $$ (1-t^2)y''-ty'+\alpha^2y=0$$
+\end{exo}
+
+\subsubsection*{Théorème de Bernstein}
+
+\begin{exo}
+	Soit $a>0$ et $f\in\mathcal{C}^\infty(]-a,a[,\R)$ telle que $\forall n\in\N,\ \forall x\in]-a,a[,\ f^{(n)}(x)\geqslant 0$. On dit que $f$ est absolument monotone sur $]-a,a[$. Montrer que $f$ est développable en série entière sur $[0,a[$ et sur $]-a,a[$. \\
+	En déduire que $\tan$ est développable en série entière au voisinage de $0$.
+\end{exo}
+
+\end{document}

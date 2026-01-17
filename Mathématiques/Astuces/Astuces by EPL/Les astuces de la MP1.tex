@@ -245,7 +245,7 @@ En effet, on prouve qu'il s'agit d'une bijection en utilisant la valuation 2-adi
 \section{Points méthode}
 \begin{PM}{Familles génératrices} Si $(x_i)_{i\in I}$ est une famille génératrice de $E$, une famille $(y_j)_{j\in J}$ de $E$ est génératrice de $E$ si, et seulement si, tous les $x_i$ sont combinaison linéaire des $y_j$.
 \end{PM}
-\begin{PM}{Décomposition d'un polynôme en $u$} Pour décomposer $v=P(u)\in\K[u]$, on détermine le reste de la division euclidienne de $P$ pa le polynôme minimale de $u$. Par exemple, pour calculer les puissances successives de $u$, on peut déterminer le reste de la divison euclidienne de $X^p$, avec $p\in\N$, par le polynôme minimal de $u$.
+\begin{PM}{Décomposition d'un polynôme en $u$} Pour décomposer $v=P(u)\in\K[u]$, on détermine le reste de la division euclidienne de $P$ par le polynôme minimal de $u$. Par exemple, pour calculer les puissances successives de $u$, on peut déterminer le reste de la division euclidienne de $X^p$, avec $p\in\N$, par le polynôme minimal de $u$.
 \end{PM}\begin{app}
 	Calcul d'exponentielles d'endomorphismes.
 \end{app}
@@ -1100,10 +1100,10 @@ Bien entendu, une domination sur tout $J$ est suffisante. Dans la pratique, on c
 \end{PM}
 \begin{PM}{Sommabilité d'une famille double} Pour montrer la sommabilité d'une famille double, on montrera en général l'un des résultats suivants : $$\sum_{p=0}^{+\infty}\left(\sum_{q=0}^{+\infty}\lVert a_{p,q}\rVert\right)<+\infty \ \ \text{ou} \ \ \sum_{q=0}^{+\infty}\left(\sum_{p=0}^{+\infty}\lVert a_{p,q}\rVert\right)<+\infty \ \ \text{ou} \ \ \sum_{n=0}^{+\infty}\left(\sum_{p+q=n}\lVert a_{p,q}\rVert\right)<+\infty$$
 \end{PM}
-\begin{PM}{Une méthode de détermination du rayon de convergence} Soit $\sum a_nz^n$ une série entière de rayon de convergence $R$ et $z_0\in\C$.
+\begin{PM}{Une méthode de détermination du rayon de convergence} Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R$ et $z_0\in\C$.
 \begin{itemize}
-	\item Si $\sum a_nx_0^n$ est une série convergente, alors $R\geqslant\lvert z_0\rvert$.
-	\item Si $\sum a_nz_0^n$ est une série divergente, alors $R\leqslant\lvert z_0\rvert$.
+	\item Si $\displaystyle\sum a_nz_0^n$ est une série convergente, alors $R\geqslant\lvert z_0\rvert$.
+	\item Si $\displaystyle\sum a_nz_0^n$ est une série divergente, alors $R\leqslant\lvert z_0\rvert$.
 \end{itemize}
 En particulier, la règle de d'Alembert pour les séries permet parfois de déterminer le rayon de convergence.
 \end{PM}

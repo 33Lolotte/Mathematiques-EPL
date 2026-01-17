@@ -89,7 +89,7 @@
 	On munit le groupe symétrique $\mathcal{S}_n$ de la probabilité uniforme. Déterminer la probabilité pour que l'orbite de $1$ pour $\sigma$ soit de longueur $k$.
 \end{ex}
 \begin{proof}
-	C'est un exercice de dénombrement. Se donner une permutation dont l'orbite de $1$ est de taille $k$ revient à se donner $k-1$ éléments avec ordre parmi les $n-1$ restants puis une permutation des $n-k$ restants. Donc, il y en a : $$\binom{n-1}{k-1}(n-k)!=\frac{(n-1!)}{(n-k)!}(n-k)!=(n-1)!$$ donc une probabilité $1/n$.
+	C'est un exercice de dénombrement. Se donner une permutation dont l'orbite de $1$ est de taille $k$ revient à se donner $k-1$ éléments avec ordre parmi les $n-1$ restants puis une permutation des $n-k$ restants. Donc, il y en a : $$\frac{(n-1)!}{(n-k)!}(n-k)!=(n-1)!$$ donc une probabilité $1/n$.
 \end{proof}
 
 \begin{ex}[Moulin.Prob.06]{}
@@ -106,7 +106,7 @@
 \end{ex}
 
 \begin{ex}[Moulin.Prob.08]{$\Delta$ Téléphone arabe}
-	Soit $X_0,\varepsilon_1,\ldots,\varepsilon_n$ des variables aléatoires indépendantes à valeurs dans $\{-1,1\}$. On suppose qu'il existe $p\in]0,1[$ tel que $$\forall k\in\llbracket1,n\rrbracket,\ \P(\varepsilon_k=1)=p$$ et l'on pose $X_n=X_0\varepsilon_1\cdots\varepsilon_n$. Calculer $p_n:=\P(X_n=X_0)$ et étudier la convergence de la suite $(p_n)_{n\in N}$.
+	Soit $X_0,\varepsilon_1,\ldots,\varepsilon_n$ des variables aléatoires indépendantes à valeurs dans $\{-1,1\}$. On suppose qu'il existe $p\in]0,1[$ tel que $$\forall k\in\llbracket1,n\rrbracket,\ \P(\varepsilon_k=1)=p$$ et l'on pose $X_n=X_0\varepsilon_1\cdots\varepsilon_n$. Calculer $p_n:=\P(X_n=X_0)$ et étudier la convergence de la suite $(p_n)_{n\in \N}$.
 \end{ex}
 \begin{proof}
 	Faire une récurrence en utilisant la formule des probabilités totales. On trouve $$p_{n+1}=pp_n+(1-p)(1-p_n)=(2p-1)p_n+(1-p)$$ Ensuite, étude classique de suite arithmético-géométrique qui donne $$p_n=\frac{1}{2}+(2p-1)^n\left(p_0-\frac{1}{2}\right)$$ Or, $-1<2p-1<1$ donc la suite converge vers $1/2$.
@@ -132,7 +132,7 @@
 	Soit $n\geqslant 2$. On munit $\llbracket 1,n\rrbracket$ de la probabilité uniforme. Pour $p$ un diviseur de $n$, on note $A_p$ l'événement "le nombre choisi est divisible par $p$".
 	\begin{enumerate}
 		\item Montrer que les $A_p$ pour $p$ premier divisant $n$ sont mutuellement indépendants.
-		\item En déduire le nombre $\varphi(n)$ d'éléments de $\llbracket1,n\rrbracket$ premiers avec $n$ vérifie $$\frac{\varphi}{n}=\prod_{p\in\mathcal{P}(n)}\left(1-\frac{1}{p}\right)$$ où $P(n)$ est l'ensemble des diviseurs premiers de $n$.
+		\item En déduire le nombre $\varphi(n)$ d'éléments de $\llbracket1,n\rrbracket$ premiers avec $n$ vérifie $$\frac{\varphi(n)}{n}=\prod_{p\in\mathcal{P}(n)}\left(1-\frac{1}{p}\right)$$ où $P(n)$ est l'ensemble des diviseurs premiers de $n$.
 		\item Bonus (sans rapport) : montrer que $n=\displaystyle\sum_{d\mid n}\varphi(d)$
 	\end{enumerate}
 \end{ex}
@@ -529,7 +529,7 @@
 \end{ex}
 
 \begin{ex}[Moulin.Prob.44]{$\Delta$ Taux de panne}
-	Soit $(\Omega,\mathcal{A},\P)$ un espace probabilisé, $X$ une variable aléatoire discrète définie sur cet espace probabilisé à valeurs dans $\N\st$ et vérifiant : $$\forall n\in\N\st,\ \P(x\geqslant n)>0$$ On appelle taux de panne associé à $X$ la suite réelle $(x_n)_{n\in\N\st}$ définie par : $$\forall n\in\N\st,\ x_n=\P(X=n\mid X\geqslant n)$$
+	Soit $(\Omega,\mathcal{A},\P)$ un espace probabilisé, $X$ une variable aléatoire discrète définie sur cet espace probabilisé à valeurs dans $\N\st$ et vérifiant : $$\forall n\in\N\st,\ \P(X\geqslant n)>0$$ On appelle taux de panne associé à $X$ la suite réelle $(x_n)_{n\in\N\st}$ définie par : $$\forall n\in\N\st,\ x_n=\P(X=n\mid X\geqslant n)$$
 	\begin{enumerate}
 		\item Exprimer $p_n=\P(X=n)$ en fonction des $x_k$.
 		\item Soit $(x_n)_{n\in\N\st}$ le taux de panne associé à une variable aléatoire $X$. Montrer que, pour tout $n\in\N\st$, on a $0\leqslant x_n<1$ et que la série de terme général $x_n$ diverge.

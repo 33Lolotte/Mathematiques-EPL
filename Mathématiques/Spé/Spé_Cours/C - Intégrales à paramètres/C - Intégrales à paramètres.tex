@@ -52,6 +52,10 @@
 \newtheorem*{ex}{Exemple}
 \newtheorem*{met}{Point méthode}
 \newtheorem{exo}{Exercice}
+\newtheorem*{rmq}{Remarque}
+
+\theoremstyle{remark}
+\newtheorem*{app}{Application}
 
 \newtcolorbox[auto counter]{dfn}{
 	enhanced,
@@ -63,11 +67,14 @@
 
 \newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
 
-\theoremstyle{remark}
-\newtheorem*{rmq}{Remarque}
-\newtheorem*{app}{Application}
+\title{Intégrales à paramètres}
+\date{}
 
 \begin{document}
+
+\tableofcontents
+\newpage
+\maketitle
 
 Dans ce chapitre, nous étudions des intégrales dépendant d'un paramètre qui peut être entier (suites de fonctions) ou réel. Dans les deux cas, nous nous intéresserons aux problèmes de convergence et dans le second cas à la continuité et à la dérivabilité. pour la continuité, le paramètre pourra même plus généralement être pris dans un espace vectoriel de dimension finie. Dans tout le chapitre, les intervalles de $\R$ considérés sont d'intérieur non vide et les fonctions sont à valeurs dans $\K=\R$ ou $\K=\C$.
 

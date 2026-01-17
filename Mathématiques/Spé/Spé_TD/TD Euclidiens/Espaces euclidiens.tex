@@ -567,11 +567,19 @@
 \begin{ex}[Moulin.Euc.40]{$\star$ Ordre de Löwner}
 	Soit $(A,B)\in\mathcal{S}_n(\R)^2$. on note $A\leqslant B$ pour signifier que $B-A$ est positive.
 	\begin{enumerate}
-		\item On suppose $B$ définie positive. Montrer que $A\leqslant B$ si, et seulement si, le spectre de $B\in A$ est majoré par $1$.
+		\item On suppose $B$ définie positive. Montrer que $A\leqslant B$ si, et seulement si, le spectre de $B\inv A$ est majoré par $1$.
 		\item On suppose $A$ et $B$ définies positives. Montrer que $A\leqslant B\implies B\inv\leqslant A\inv$.
 		\item On suppose $A$ et $B$ définies positives. Montrer que $A\leqslant B\implies A^{1/2}\leqslant B^{1/2}$.
 	\end{enumerate}
 \end{ex}
+\begin{proof}
+	Joli exercice ! La question $2$ est tombée seule à Maths U.
+	\begin{enumerate}
+		\item $A\leqslant B\iff B-A\geqslant 0\iff B^{1/2}(I_n-B^{-1/2}AB^{-1/2})B^{1/2}\geqslant0\iff I_n-B^{-1/2}AB^{-1/2}\geqslant 0$ Cela revient à dire que le spectre de $B^{-1/2}AB^{-1/2}$ est majoré par $1$, mais cette matrice a même spectre de $B^{-1/2}\left(B^{-1/2}A\right)=B\inv A$ (utiliser le fait que le polynôme caractéristique d'un produit est le même peu importe le sens du produit).
+		\item Supposons $A\leqslant B$. Par la première question, $B\inv\leqslant A\inv$ si, et seulement si, le spectre de $(A\inv)\inv B\inv=AB\inv$ est majoré par $1$. Utiliser le fait que le spectre de $AB\inv$ est égal à celui de $B\inv A$ puis utiliser de nouveau la première question.
+		\item Supposons $A\leqslant B$. $B^{-1/2}A^{1/2}$ a les mêmes valeurs propres que $B^{-1/4}A^{1/2}B^{-1/4}$, dont les valeurs propres sont strictement positives car cette matrice est symétrique définie positive (le faire avec des produits scalaires). Mais pour tout vecteur $x\in\R^n$ : $$x^TB^{-1/2}AB^{-1/2}x=\lVert A^{1/2}B^{-1/2}x\rVert^2\leqslant \lVert x\rVert^2$$ donc la norme d'opérateur de la matrice $A^{1/2}B^{-1/2}$ est inférieure à $1$. Or, on montre facilement que le rayon spectral d'une matrice est inférieur à la norme d'opérateur d'une matrice. Ici, la plus grand valeur propre de $B^{-1/2}A^{1/2}$ est la plus grande valeur propre de $A^{1/2}B^{-1/2}$, et c'est le rayon spectral car toutes les valeurs propres sont positives. On en déduit que la plus grande valeur propre de $B^{-1/2}A^{1/2}$ est inférieure à $1$, donc que $A^{1/2}\leqslant B^{1/2}$.
+	\end{enumerate}
+\end{proof}
 
 \begin{ex}[Moulin.Euc.41]{}
 	Soit $A\in\mathcal{M}_n(\R)$. Montrer que $\det(I_n+A^TA)>0$.

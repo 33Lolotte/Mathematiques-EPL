@@ -1,0 +1,327 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Vect}{\text{Vect}}
+\newcommand{\rg}{\text{rg}}
+
+\theoremstyle{plain}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+
+\newtheorem*{ex}{Exemple}
+\newtheorem*{met}{Point méthode}
+\newtheorem{exo}{Exercice}
+\newtheorem*{rmq}{Remarque}
+
+\theoremstyle{remark}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{dfn}{
+	enhanced,
+	breakable,
+	colback=white,
+	fonttitle=\sc,
+	title={Définition \thetcbcounter}
+}
+
+\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+
+\title{Dénombrabilité}
+\date{}
+
+\begin{document}
+\tableofcontents
+
+\newpage
+\maketitle
+
+\section{Équipotence}
+
+\subsection{Relation d'équipotence}
+
+\begin{dfn}
+	Deux ensembles sont \textbf{équipotents} s'il existe une bijection entre eux.
+\end{dfn}
+Il s'agit d'une relation d'équivalence. Sur quoi ?
+
+\begin{ex}
+	Si $E$ est un ensemble, alors $\mathcal{P}(E)$ et $\{0,1\}^E$.
+\end{ex}
+
+\begin{thm}{Théorème de Cantor}%prop
+	Soit $E$ un ensemble. Il n'existe pas de surjection de $E$ sur $\mathcal{P}(E)$.
+\end{thm}
+\begin{proof}
+	Si $f$ est une application de $E$ dans $\mathcal{P}(E)$, on montre que l'ensemble $$\{x\in E\ : \ x\notin f(x)\}$$ n'a pas d'antécédent par $f$.
+\end{proof}
+
+\subsection{Parties de $\N$}
+
+\begin{dfn}
+	Un ensemble $E$ est \textbf{fini} s'il est équipotent à une partie de $\N$ de la forme $\llbracket1,n\rrbracket$. Dans ce cas, un tel entier $n$ est unique : on l'appelle \textbf{cardinal} de $E$ et on le note $\card(E)$.
+\end{dfn}
+\begin{proof}
+	On montre par récurrence \begin{center}
+		"s'il existe une bijection $f:\llbracket1,n\rrbracket\to\llbracket1,m\rrbracket$, alors $n=m$"
+	\end{center} en se ramenant au cas où $f(n)=m$.
+\end{proof}
+
+\begin{thm}{}%prop
+	Une partie $F$ d'un ensemble $E$ fini est elle-même finie, et l'on a $\card(F)\leqslant\card(E)$. On a de plus $F=E$ si, et seulement si, $\card(F)=\card(E)$.
+\end{thm}
+\begin{proof}
+	On montre que si $a\in E$, alors $\card(E\setminus\{a\})=\card(E)-1$, puis on raisonne par récurrence sur $\card(E)$.
+\end{proof}
+
+\begin{thm}{}%prop
+	Une partie de $\N$ est finie si, et seulement si, elle est majorée.
+\end{thm}
+
+\begin{rmq}
+	En particulier, $\N$ n'est pas un ensemble fini.
+\end{rmq}
+
+\begin{thm}{}%prop
+	Toute partie infini de $\N$ est en bijection avec $\N$.
+\end{thm}
+\begin{proof}
+	Si $A$ est une partie infinie de $\N$, on construit par récurrence la suite $(a_n)_{n\in\N}$ définie par $a_0=\min(A)$ et : $$\forall n\in\N,\ a_{n+1}=\min\{x\in A\ : \ x>a_n\}$$ et l'on vérifier que $n\mapsto a_n$ est une bijection de $\N$ sur $A$. \\
+	Pour la surjectivité, on peut remarquer que $]a_{n},a_{n+1}[\cap A=\emptyset$.
+\end{proof}
+
+\section{Ensembles dénombrables}
+
+\subsection{Définitions, exemples}
+
+\begin{dfn}
+	Un ensemble est \textbf{dénombrable} s'il est équipotent à $\N$. Il est \textbf{au plus dénombrable} s'il est équipotent à une partie de $\N$.
+\end{dfn}
+
+\begin{ex}
+	\begin{enumerate}
+		\item D'après la proposition précédente, les parties de $\N$ sont finies ou dénombrables.
+		\item Un ensemble est au plus dénombrable si, et seulement s'il est fini ou dénombrable.
+		\item $\Z$ est dénombrable.
+	\end{enumerate}
+\end{ex}
+
+\begin{thm}{}%prop
+	Un ensemble $A$ est au plus dénombrable si, et seulement s'il existe une injection de $A$ dans $\N$.
+\end{thm}
+\begin{proof}
+	C'est la traduction de la définition.
+\end{proof}
+
+\begin{thm}{}%cor
+	Toute partie d'un ensemble au plus dénombrable est au plus dénombrable.
+\end{thm}
+
+\begin{ex}
+	L'ensemble $\N^2$ est dénombrable. En effet, il est infini et l'application $(p,q)\mapsto 2^p3^q$ est injective de $\N^2$ dans $\N$ par unicité de la décomposition en facteurs premiers.
+\end{ex}
+
+\begin{exo}
+	Montrer que l'ensemble $\N^{(\N)}$ des suites presque nulles d'entiers naturels est au plus dénombrable.
+\end{exo}
+
+\begin{thm}{}%lem
+	Soit $f:E\to F$ une application, avec $E$ non vide.
+	\begin{itemize}
+		\item $f$ est injective si, et seulement s'il existe $g:F\to E$ telle que $g\circ f=\text{Id}_E$.
+		\item $f$ est surjective si, et seulement s'il existe $g:F\to E$ telle que $f\circ g=\text{Id}_E$.
+	\end{itemize}
+	Une telle application $g$ est alors respectivement surjective et injective.
+\end{thm}
+
+\begin{thm}{}%prop
+	Soit $A$ un ensemble non vide. Les propriétés suivantes sont équivalentes :
+	\begin{enumerate}[label=(\roman*)]
+		\item $A$ est au plus dénombrable ;
+		\item il existe une surjection d'un ensemble au plus dénombrable $X$ sur $A$ ;
+		\item il existe une surjection de $\N$ sur $A$.
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	Pour $(iii)\implies(i)$, on prend une surjection $f$ de $\N$ sur $A$ et l'on montre que l'application $a\mapsto\min f\inv(\{a\})$ est une injection de $A$ dans $\N$.
+\end{proof}
+
+\begin{met}
+	Pour montrer qu'un ensemble infini est dénombrable, on peut :
+	\begin{itemize}
+		\item exhiber une bijection de $\N$ sur $A$, ce qui revient à numéroter les éléments de $A$ en suite $(a_n)$ ;
+		\item exhiber une injection de $A$ dans $\N$ (ou dans un ensemble dénombrable) ;
+		\item exhiber une surjection de $\N$ (ou d'un ensemble dénombrable) dans $A$
+	\end{itemize}
+\end{met}
+
+\begin{exo}
+	Montrer que $\N^2$ est dénombrable, en mettant en évidence une numérotation sur un dessin, puis en explicitant celle-ci.
+\end{exo}
+
+\begin{thm}{}%prop
+	Soit $A$ un ensemble. Les propriétés suivantes sont équivalentes :
+	\begin{enumerate}[label=(\roman*)]
+		\item $A$ est infini ;
+		\item il existe une suite d'éléments de $A$ distincts deux à deux ;
+		\item $A$ contient une partie dénombrable.
+	\end{enumerate}
+\end{thm}
+
+\begin{rmq}
+	Un ensemble fini n'est donc pas dénombrable.
+\end{rmq}
+
+\subsection{Opérations sur les ensembles dénombrables}
+
+\begin{exo}
+	Montrer que la réunion de deux ensembles dénombrables est dénombrable. Et pour une réunion d'une famille finie non vide d'ensembles dénombrables ?
+\end{exo}
+
+\begin{thm}{}%prop
+	Le produit cartésien de deux ensembles dénombrables est un ensemble dénombrable.
+\end{thm}
+\begin{proof}
+	Soit $A$ et $B$ deux ensembles dénombrables ainsi que $f$, une bijection de $A$ dans $\N$, et $g$, une bijection de $B$ dans $\N$. \\
+	Alors $h:(x,y)\mapsto(f(x),g(y))$ est une bijection de $A\times B$ dans $\N^2$, de réciproque $(p,q)\mapsto(f\inv(p),g\inv(q))$. Comme $\N^2$ est dénombrable, on en déduit que $A\times B$ est dénombrable.
+\end{proof}
+
+\begin{ex}
+	$\Q$ est dénombrable.
+\end{ex}
+
+\begin{exo}
+	Que peut-on dire du produit cartésien de deux ensembles au plus dénombrables ? A quelle condition est-il dénombrable ?
+\end{exo}
+
+\begin{thm}{}%cor
+	Le produit cartésien d'une famille finie non vide d'ensembles dénombrables est dénombrable.
+\end{thm}
+
+\begin{exo}
+	Montrer qu'un espace vectoriel sur $\Q$ de dimension finie non nulle est dénombrable.
+\end{exo}
+
+\begin{thm}{}%cor
+	La réunion d'une famille au plus dénombrable d'ensembles au plus dénombrables est au plus dénombrable.
+\end{thm}
+\begin{proof}
+	Soit $(A_i)_{i\in I}$ une famille d'ensembles non vides au plus dénombrables indexée par un ensemble $I$ non vide au plus dénombrable. En considérant, pour tout $i\in I$, une surjection $f_i$ de $\N$ sur $A_i$, on construit une surjection de $f:I\times\N$ sur $\displaystyle\bigcup_{i\in I}A_i$ en posant : $$\forall (i,n)\in I\times\N,\ f(i,n)=f_i(n)$$
+\end{proof}
+
+\begin{ex}
+	On retrouve ainsi les résultats de l'exercice précédent.
+\end{ex}
+
+\begin{exo}
+	Montrer que $\Q[X]$ est dénombrable. EN déduire que l'ensemble des nombres algébriques, c'est-à-dire des éléments de $\C$ racines d'un polynôme non nul de $\Q[X]$, est dénombrable.
+\end{exo}
+
+\begin{thm}{}%prop
+	Si $(a_i)_{i\in I}$ est une famille sommable de nombres complexes, l'ensemble $\{i\in I\ : \ a_i\ne 0\}$, appelé \textbf{support} de la famille $(a_i)_{i\in I}$, est au plus dénombrable.
+\end{thm}
+
+\begin{ex}
+	L'ensemble des points de discontinuité d'une fonction monotone de $\R$ dans $\R$ est au plus dénombrable.
+\end{ex}
+
+\section{Exemples d'ensembles infinis non dénombrables}
+
+Le corps $\Q$ des rationnels est dénombrable, comme on l'a vu précédemment. Le fait que $\R$ vérifie la propriété de la borne supérieure fait qu'il ne peut être dénombrable.
+
+\begin{thm}{}%lem
+	Soit $(u_n)_{n\in\N}$ une suite réelle.\\
+	Il existe au moins un réel n'appartenant pas à $\{u_n\ \mid \ n\in\N\}$.
+\end{thm}
+\begin{proof}
+	On construit par récurrence deux suites adjacentes $(a_n)_{n\in\N}$ et $(b_n)_{n\in\N}$ vérifiant $\forall n\in\N,\  u_n\notin[a_n,b_n]$. Leur limite commune ne peut être égale à aucun des $u_n$.
+\end{proof}
+
+\begin{thm}{}%cor
+	Le corps $\R$ est non dénombrable.
+\end{thm}
+
+Le premier théorème de ce chapitre prouve que $\mathcal{P}(\N)$ est indénombrable.
+
+\begin{exo}
+	Montrer que si $A$ est un ensemble possédant au moins deux éléments, alors $A^\N$ est non dénombrable.
+\end{exo}
+
+\begin{exo}
+	En utilisant le développement décimal illimité des réels, exhiber une injection de $\{0,1\}^\N$ dans $\R$. Exhiber une injection de $\R$ dans $\{0,1\}^\N$.
+\end{exo}
+
+\begin{rmq}
+	Le théorème de Cantor-Bernstein stipule que s'il existe une injection d'un ensemble $E$ dans un ensemble $F$, et une injection de $F$ dans $E$, alors $E$ et $F$ sont équipotents. L'exercice précédent permet donc de montrer que $\R$ et $\mathcal{P}(\N)$ sont équipotents, ainsi donc que $\{0,1\}^\N$.
+\end{rmq}
+
+\section{Exercices}
+
+\begin{exo}
+	\begin{enumerate}
+		\item Montrer qu'un ensemble est infini si, et seulement s'il contient une partie dénombrable.
+		\item Montrer que si $A$ est un ensemble au plus dénombrable et $B$ un ensemble infini, alors $A\cup B$ est en bijection avec $B$.
+		\item Montrer qu'il existe une bijection de $\R$ sur $\R_+$. Peut-on en trouver une continue ?
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}
+	Soit $E$ un espace vectoriel contenant une famille génératrice dénombrable $(e_n)_{n\in\N}$. Montrer que toute famille libre de $E$ est au plus dénombrable.
+\end{exo}
+
+\begin{exo}
+	Soit $P:\R^2\to\R$. On suppose que pour tout $(a,b)\in\R^2$, les fonctions partielles $x\mapsto P(x,b)$ et $y\mapsto P(a,y)$ sont polynomiales. Montrer que $P$ est polynomiale. \\
+	Indication : pour $a\in\R$, on pourra considérer le degré de $y\mapsto P(a,y)$. \\
+	Question subsidiaire : que se passe-t-il si l'on remplace $\R$ par $\Q$ ?
+\end{exo}
+
+\begin{exo}
+	Une fonction polynomiale de $\R^2$ dans $\R$ est une combinaison linéaire de fonctions de la forme $(x,y)\mapsto x^ky^l$ avec $(k,l)\in\N^2$.\\
+	Soit $(P_n)_{n\in\N}$ une suite de telles fonctions, supposées toutes non nulles. Montrer qu'il existe un couple $(a,b)\in\R^2$ tel que $\forall n\in\N,\ P_n(a,b)\ne 0$.\\
+	La propriété subsiste-t-elle si l'on remplace partout $\R$ par $\Q$ ? \\
+	Indication : on pourra écrire toute fonction polynomiale sous la forme $(x,y)\mapsto\displaystyle\sum_{l=0}^{N}Q_l(x)y^l$ avec $Q_0,\ldots,Q_N$ des fonctions polynomiales d'une seule variable.
+\end{exo}
+
+\end{document}
