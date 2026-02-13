@@ -167,7 +167,7 @@
 \end{proof}
 
 \begin{ex}[Moulin.SSF.16]{$\star$}
-	Soit $A$ un réel strictement positif et $f:\R\to\R$ une fonction continue vérifiant $$\forall x\in\R\st,\ \lvert f(x)\rvert<\lvert x\rvert$$ Montrer que la suite $f^=f\circ \cdots\circ f$ converge uniformément vers $0$ sur tout segment $[-A,A]$.
+	Soit $A$ un réel strictement positif et $f:\R\to\R$ une fonction continue vérifiant $$\forall x\in\R\st,\ \lvert f(x)\rvert<\lvert x\rvert$$ Montrer que la suite $f^n=f\circ \cdots\circ f$ converge uniformément vers $0$ sur tout segment $[-A,A]$.
 \end{ex}
 \begin{proof}
 	On remarque par passage à la limite que $f(0)=0$ puis on prend $\varepsilon>0$ suffisamment petit. On applique le théorème des bornes atteintes à $\displaystyle\frac{\lvert f(x)\rvert}{\lvert x\rvert}$ sur $[-A,-\varepsilon]$ et sur $[\varepsilon,A]$ pour obtenir qu'elle est contractante (ou presque) sur ces ensembles. Nécessairement, les itérées rentrent dans $[-\varepsilon,\varepsilon]$ à partir d'un certain $n$ qui ne dépend que $A$ et $\varepsilon$.
@@ -384,7 +384,7 @@
 \begin{proof}
 	On fait comme d'habitude.
 	\begin{enumerate}
-		\item On pose $u_k(n)$ qui vaut $\displaystyle\left(1-\frac{k}{n}\right)$ si $k<n$ et $0$ sinon. On a alors $$S_n=\sum_{k=0}^{+\infty}u_k(n)$$ Or, pour tout $k\in\N$, $u_k(n)\xrightarrow[n\to+\infty]{}e^{-k}$ Et on a $$\lvert _k(n)\rvert\leqslant \underbrace{e^{-k}}_{\text{ind. de }n}\text{ sommable}$$ donc on a une convergence normale. On a donc convergence et la limite est $$\frac{1}{1-e^{-1}}$$
+		\item On pose $u_k(n)$ qui vaut $\displaystyle\left(1-\frac{k}{n}\right)^n$ si $k<n$ et $0$ sinon. On a alors $$S_n=\sum_{k=0}^{+\infty}u_k(n)$$ Or, pour tout $k\in\N$, $u_k(n)\xrightarrow[n\to+\infty]{}e^{-k}$ Et on a $$\lvert u_k(n)\rvert\leqslant \underbrace{e^{-k}}_{\text{ind. de }n}\text{ sommable}$$ donc on a une convergence normale. On a donc convergence et la limite est $$\frac{1}{1-e^{-1}}$$
 		\item Avec un changement d'indice, on montre que $$S_n=\frac{1}{n^n}S_n'$$ On en déduit que $$S_n'\sim\frac{n^n}{1-e^{-1}}$$
 	\end{enumerate}
 \end{proof}
@@ -604,7 +604,7 @@
 	En utilisant le théorème de Weierstrass, montrer que pour toute fonction $f\in\mathcal{C}^0(\R,\C)$ paire et $2\pi$-périodique, il existe une suite de polynômes $(P_n)_{n\in\N}$ telle que la suite de fonctions $(t\mapsto P_n(\cos(t)))_{n\in\N}$ converge uniformément vers $f$.
 \end{ex}
 \begin{proof}
-	On considère $g=f\circ\arccos$ définie sur $[-,1,1]$ et on lui applique le théorème de Weierstrass pour obtenir $(P_n)$. Pour montrer que la convergence est alors uniforme sur $\R$, utiliser la parité et la $2\pi$-périodicité de $f$ et de $\cos$.
+	On considère $g=f\circ\arccos$ définie sur $[-1,1]$ et on lui applique le théorème de Weierstrass pour obtenir $(P_n)$. Pour montrer que la convergence est alors uniforme sur $\R$, utiliser la parité et la $2\pi$-périodicité de $f$ et de $\cos$.
 \end{proof}
 
 \begin{ex}[]{$\star$ Théorème de Weierstrass trigonométrique}
@@ -641,7 +641,7 @@
 	Soit $f:[a,b]\to\C$ continue telle que $$\forall n\in\N,\ \int_{a}^{b}t^nf(t)\ dt=0$$ Montrer que $f$ est nulle. On pourra commencer par le cas où $f$ est à valeurs réelles.
 \end{ex}
 \begin{proof}
-	Le prouver dans le cas où $f$ est réelle. Le résultat s'en déduire en passant aux parties réelle et imaginaire. utiliser le théorème de Weierstrass pour approximer $f$ par une suite de polynômes. Alors, l'hypothèse permet de montrer que l'intégrale de $f^2$ est nulle, donc $f=0$ car continue positive.
+	Le prouver dans le cas où $f$ est réelle. Le résultat s'en déduire en passant aux parties réelle et imaginaire. Utiliser le théorème de Weierstrass pour approximer $f$ par une suite de polynômes. Alors, l'hypothèse permet de montrer que l'intégrale de $f^2$ est nulle, donc $f=0$ car continue positive.
 \end{proof}
 
 \begin{ex}[Moulin.SSF.58]{Analogue au précédent}

@@ -55,6 +55,11 @@
 \newtheorem*{met}{Point méthode}
 \newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
+\newtheorem*{notation}{Notation}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{terminologie}{Terminologie}
+\newtheorem*{attention}{Attention}
+\newtheorem*{conséquence}{Conséquence}
 
 \newtcolorbox[auto counter]{dfn}{
 	enhanced,
@@ -95,11 +100,13 @@ Dans tout le chapitre, la lettre $\K$ désigne le corps $\R$ ou le corps $\C$. T
 	Tout espace vectoriel muni d'une norme est appelé \textbf{espace vectoriel normé}.
 \end{dfn}
 
-\paragraph{Notations}
-\begin{itemize}
-	\item On note $(E,N)$ pour désigner l'espace vectoriel $E$ muni d'une norme $N$. Lorsqu'il n'y a pas de risque d'ambiguïté quant à la norme utilisée, on peut ne pas la préciser et se contenter de noter $E$.
-	\item La plupart du temps, il est d'usage de noter $\lVert \cdot\rVert$ la norme utilisée, et donc $\lVert x\rVert$ la norme d'un vecteur $x$.
-\end{itemize}
+
+\begin{notation}
+	\begin{itemize}
+		\item On note $(E,N)$ pour désigner l'espace vectoriel $E$ muni d'une norme $N$. Lorsqu'il n'y a pas de risque d'ambiguïté quant à la norme utilisée, on peut ne pas la préciser et se contenter de noter $E$.
+		\item La plupart du temps, il est d'usage de noter $\lVert \cdot\rVert$ la norme utilisée, et donc $\lVert x\rVert$ la norme d'un vecteur $x$.
+	\end{itemize}
+\end{notation}
 
 \begin{rmq}
 	\begin{itemize}
@@ -134,7 +141,9 @@ Dans tout le chapitre, la lettre $\K$ désigne le corps $\R$ ou le corps $\C$. T
 	\end{enumerate}
 \end{ex}
 
-\paragraph{Terminologie} Dans chacun des deux exemples précédents, la norme euclidienne considérée est appelée \textbf{norme deux}. Tout cela sera précisé dans la section "Exemples d'espaces vectoriels normés".
+\begin{terminologie}
+	Dans chacun des deux exemples précédents, la norme euclidienne considérée est appelée \textbf{norme deux}. Tout cela sera précisé dans la section "Exemples d'espaces vectoriels normés".
+\end{terminologie}
 
 \subsubsection*{Vecteur unitaire}
 
@@ -146,7 +155,9 @@ Dans tout le chapitre, la lettre $\K$ désigne le corps $\R$ ou le corps $\C$. T
 	On suppose que $\K=\R$. Soit $x$ un vecteur non nul d'un espace vectoriel normé $E$. Montrer qu'il existe un unique vecteur unitaire colinéaire à $x$ et de même sens que lui.
 \end{exo}
 
-\paragraph{Terminologie} Étant donné un vecteur $x$ non nul de $E$, le vecteur $\displaystyle\frac{x}{\lVert x\rVert}$ est appelé \textbf{vecteur unitaire associé à $x$}.
+\begin{terminologie}
+	Étant donné un vecteur $x$ non nul de $E$, le vecteur $\displaystyle\frac{x}{\lVert x\rVert}$ est appelé \textbf{vecteur unitaire associé à $x$}.
+\end{terminologie}
 
 \begin{exo}
 	Donner une condition nécessaire et suffisante sur $E$ pour qu'il existe dans $E$ des vecteurs unitaires.
@@ -161,7 +172,9 @@ Nous avons défini l'inégalité triangulaire (propriété vérifiée par toute 
 	Soit $x$ et $y$ deux vecteurs d'un espace vectoriel normée $E$. Alors on a : $$\lvert \lVert x\rVert-\lVert y\rVert\rvert\leqslant\lVert x\pm y\rVert\leqslant\lVert x\rVert+\lVert y\rVert$$
 \end{thm}
 
-\paragraph{Terminologie} L'inégalité $\lvert \lVert x\rVert-\lVert y\rVert\rvert\leqslant\lVert x\pm y\rVert$ est parfois appelée \textit{seconde inégalité triangulaire}.
+\begin{terminologie}
+	L'inégalité $\lvert \lVert x\rVert-\lVert y\rVert\rvert\leqslant\lVert x\pm y\rVert$ est parfois appelée \textit{seconde inégalité triangulaire}.
+\end{terminologie}
 
 \begin{exo}
 	\begin{enumerate}
@@ -170,10 +183,12 @@ Nous avons défini l'inégalité triangulaire (propriété vérifiée par toute 
 	\end{enumerate}
 \end{exo}
 
-\paragraph{Attention}\begin{itemize}
+\begin{attention}
+\begin{itemize}
 	\item Contrairement à l'intuition géométrique, et comme le montre l'exercice précédent, dans le cas d'égalité de l'inégalité triangulaire, on ne peut, \textit{a priori}, rien en déduire.
 	\item En revanche, si la norme considérée est euclidienne, c'est-à-dire si elle est associée à un produit scalaire, alors le cas d'égalité dans l'inégalité triangulaire est celui où les deux vecteurs sont positivement colinéaires.
 \end{itemize}
+\end{attention}
 
 \begin{exo}
 	Démontrer l'affirmation précédente.
@@ -216,7 +231,9 @@ De manière moins formelle, l'inégalité $d(M,P)\leqslant d(M,N)+d(N,P)$ signif
 	\item \textit{un} plus court chemin entre deux points est la ligne droite.
 \end{itemize}
 
-\paragraph{Attention} Bien comprendre la raison d'un choix de l'article indéfini \textit{un} dans la phrase "\textit{un} plus court chemin entre deux points" : la ligne droite est un plus court chemin entre deux points, mais ce n'est pas nécessairement le seul (du moins si la norme n'est pas euclidienne ; produit un exemple).
+\begin{attention} 
+	Bien comprendre la raison d'un choix de l'article indéfini \textit{un} dans la phrase "\textit{un} plus court chemin entre deux points" : la ligne droite est un plus court chemin entre deux points, mais ce n'est pas nécessairement le seul (du moins si la norme n'est pas euclidienne ; produit un exemple).
+\end{attention}
 
 \subsection{Espaces métriques (HP)}
 
@@ -280,7 +297,9 @@ Mais il existe des espaces métriques plus exotiques dont la distance n'est pas 
 	\end{itemize}
 \end{dfn}
 
-\paragraph{Notation} Dans $\C$, on parle plutôt de \textit{disque}, et l'on utilise alors les notations $D_o(a,r)$ et $D_f(a,r)$ au lieu de $B_o(a,r)$ et $B_f(a,r)$ respectivement.
+\begin{notation} 
+	Dans $\C$, on parle plutôt de \textit{disque}, et l'on utilise alors les notations $D_o(a,r)$ et $D_f(a,r)$ au lieu de $B_o(a,r)$ et $B_f(a,r)$ respectivement.
+\end{notation}
 
 \begin{rmq}
 	Il est clair, d'après la définition, que les boules dépendant de la distance considérée sur $E$ : une partie de $E$ peut être une boule pour une distance et ne pas l'être pour une autre distance.
@@ -313,7 +332,9 @@ Dans cette section, $E$ est un espace vectoriel réel ou complexe.
 	\end{enumerate}
 \end{ex}
 
-\paragraph{Terminologie} Étant donnés deux points $x$ et $y$,  l'ensemble des points de la forme $$(1-\lambda)x+\lambda y\ \ \text{avec}\ \ \lambda\in[0,1]$$ est appelé \textbf{segment} $[x,y]$.
+\begin{terminologie}
+	Étant donnés deux points $x$ et $y$,  l'ensemble des points de la forme $$(1-\lambda)x+\lambda y\ \ \text{avec}\ \ \lambda\in[0,1]$$ est appelé \textbf{segment} $[x,y]$.
+\end{terminologie}
 
 \paragraph{Interprétation géométrique} Dire qu'une partie $A$ est convexe signifie qu'étant donnés deux points de $A$, le segment reliant ces deux points est inclus dans $A$.
 
@@ -553,11 +574,12 @@ Soit $E$ et $F$ deux $\K$-espaces vectoriels. Si l'on dispose d'une norme $\lVer
 	\end{array}$$ est $1$-lipschitzienne.
 \end{rmq}
 
-\paragraph{Attention}
+\begin{attention}
 \begin{itemize}
 	\item Si $x$ appartient à $A$, alors il est clair que $d(x,A)=0$. En revanche, la réciproque est fausse. Par exemple, dans $\R$ muni de la valeur absolue, on a $d(0,\R_+\st)=0$ et pourtant $0\notin\R_+\st$.
 	\item Comme le prouve le cas de la distance de $à$ à $\R_+\st$, il n'existe pas toujours d'élément $a\in A$ tel que $d(x,A)=d(x,a)$. Lorsqu'un tel élément existe, on dit que la distance de $x$ à $A$ est atteinte.
 \end{itemize}
+\end{attention}
 
 \begin{exo}
 	Soit $B$ une boule de centre $a$ et de rayon $r>0$ d'un espace vectoriel normé $E$, et $x$ un élément de $E$. Exprimer, en fonction de $a$, $r$ et $x$, la distance de $x$ à $B$.
@@ -659,7 +681,9 @@ $$\forall\varepsilon>0,\ \exists n_0\in\N\ : \forall n\in\N,\ n\geqslant n_0\imp
 Dans le cadre d'un espace vectoriel normé, cela s'écrit aussi : $$\forall\varepsilon>0,\ \exists n_0\in\N\ : \forall n\in\N,\ n\geqslant n_0\implies \lVert a_n-l\rVert\leqslant\varepsilon$$
 
 
-\paragraph{Notation} Pour signifier qu'une suite $(a_n)_{n\in\N}$ tend vers $l$, on écrit $a_n\xrightarrow[n\to+\infty]{}l$ ou plus simplement $a_n\to l$.
+\begin{notation}
+	Pour signifier qu'une suite $(a_n)_{n\in\N}$ tend vers $l$, on écrit $a_n\xrightarrow[n\to+\infty]{}l$ ou plus simplement $a_n\to l$.
+\end{notation}
 
 \begin{thm}{Unicité de la limite}%prop
 	Soit $(a_n)_{n\in\N}$ une suite d'éléments de $E$ ainsi que $l_1$ et $l_2$ deux éléments de $E$. Si $a_n\to l_1$ et $a_n\to l_2$, alors $l_1=l_2$.
@@ -673,10 +697,14 @@ Dans le cadre d'un espace vectoriel normé, cela s'écrit aussi : $$\forall\vare
 	Une suite qui n'est pas convergente est dite \textbf{divergente}.
 \end{dfn}
 
-\paragraph{Notation} Pour dire qu'une suite est convergente (respectivement divergente), on dit souvent simplement qu'elle converge (respectivement diverge).
+\begin{notation}
+	Pour dire qu'une suite est convergente (respectivement divergente), on dit souvent simplement qu'elle converge (respectivement diverge).
+\end{notation}
 
-\paragraph{Attention} La convergence d'une suite à valeurs dans un espace métrique dépend par définition de la distance avec laquelle on travaille. Une suite peut en effet converger pour une distance et diverger pour une autre.\\
+\begin{attention} 
+	La convergence d'une suite à valeurs dans un espace métrique dépend par définition de la distance avec laquelle on travaille. Une suite peut en effet converger pour une distance et diverger pour une autre.\\
 En cas d'ambiguïté, il est donc important de préciser la distance (ou norme) utilisée.
+\end{attention}
 
 \begin{ex}
 	Dans l'espace $\mathcal{C}([0,1],\R)$, on considère la suite de fonctions $(f_n)_{n\in\N}$ définie par $f_n(x)=x^n$.
@@ -807,7 +835,9 @@ A toute suite $(u_n)_{n\in\N}\in\E^\N$, on associe la suite $(S_n)_{n\in\N}$ dé
 	On dit que la série $\displaystyle\sum u_n$ \textbf{converge} si la suite $(S_n)$ admet une limite dans $\E$, appelée \textbf{somme de la série} et notée $\displaystyle\sum_{n=0}^{+\infty}u_n$. Dans le cas contraire, on dit que la série \textbf{diverge}. On parle de la nature d'une série pour parler de sa convergence ou sa divergence.
 \end{dfn}
 
-\paragraph{Notation} On note $S_n(u)$ la $n$-ième somme partielle de la série de terme général $u_n$. Lorsque la série converge, on note aussi $S(u)$ sa somme.
+\begin{notation} 
+	On note $S_n(u)$ la $n$-ième somme partielle de la série de terme général $u_n$. Lorsque la série converge, on note aussi $S(u)$ sa somme.
+\end{notation}
 
 \begin{rmq}
 	\begin{itemize}
@@ -828,7 +858,9 @@ A toute suite $(u_n)_{n\in\N}\in\E^\N$, on associe la suite $(S_n)_{n\in\N}$ dé
 	Une série dont le terme général ne tend pas vers $à$ est dite \textbf{grossièrement divergente}.
 \end{dfn}
 
-\paragraph{Attention} Comme pour les séries numériques, la convergence vers $0$ du terme général est une condition nécessaire mais non suffisante de convergence.
+\begin{attention} 
+Comme pour les séries numériques, la convergence vers $0$ du terme général est une condition nécessaire mais non suffisante de convergence.
+\end{attention}
 
 \begin{thm}{}%prop
 	L'ensemble des suites $(u_n)_{n\in\N}\in\E^\N$ telles que la série $\displaystyle\sum u_n$ converge est un sous-espace vectoriel de $\E^\N$ sur lequel l'application somme est linéaire.
@@ -848,7 +880,9 @@ A toute suite $(u_n)_{n\in\N}\in\E^\N$, on associe la suite $(S_n)_{n\in\N}$ dé
 	On dit que la série $\displaystyle\sum u_n$ est \textbf{absolument convergente}, ou \textbf{converge absolument}, si la série réelle positive $\displaystyle\sum \lVert u_n\rVert$ est convergente.
 \end{dfn}
 
-\paragraph{Attention} Contrairement à ce qui se passe dans $\R$ ou dans $\C$, une série absolument convergente peut très bien ne pas converger.
+\begin{attention}
+	Contrairement à ce qui se passe dans $\R$ ou dans $\C$, une série absolument convergente peut très bien ne pas converger.
+\end{attention}
 
 \begin{ex}
 	Dans $\K[X]$ muni de la norme $\displaystyle\left\lVert\sum_{k=0}^{+\infty}a_kX^k\right\rVert=\max\lvert a_k\rvert$, la série $\displaystyle\sum\frac{X^n}{n!}$ converge absolument, mais est divergente.
@@ -894,7 +928,9 @@ L'équivalence entre les deux assertions de la définition ci-dessus est éviden
 	Le dessin fait lors de la démonstration précédente correspond à une norme euclidienne, mais nous a permis de trouver une démonstration valable pour tout norme. Cette représentation des boules n'induit en général pas de fausse intuition lors de considérations topologiques, et est donc couramment utilisée. Concrètement, le risque majeur de cette vision euclidienne concerne le cas d'égalité dans l'inégalité triangulaire.
 \end{rmq}
 
-\paragraph{Attention} Le caractère ouvert ou non d'un ensemble n'est pas une notion intrinsèque à cet ensemble, mais dépend de l'espace dans lequel on le considère. Si $F$ est un sous-espace métrique de $E$, alors une partie ouverte ouvert dans $F$ n'est en général pas une partie ouvert dans $E$, comme le montre l'exercice suivant.
+\begin{attention}
+	Le caractère ouvert ou non d'un ensemble n'est pas une notion intrinsèque à cet ensemble, mais dépend de l'espace dans lequel on le considère. Si $F$ est un sous-espace métrique de $E$, alors une partie ouverte ouvert dans $F$ n'est en général pas une partie ouvert dans $E$, comme le montre l'exercice suivant.
+\end{attention}
 
 \begin{exo}
 	Soit $a$ et $b$ deux réels tels que $a<b$.
@@ -923,7 +959,9 @@ L'équivalence entre les deux assertions de la définition ci-dessus est éviden
 	Montrer que toute partie ouvert peut s'écrire comme une réunion de boules ouvertes.
 \end{exo}
 
-\paragraph{Attention} Avant d'affirmer qu'une intersection d'ouverts est un ouvert, il faut bien vérifier le caractère fini de cette intersection. En effet, une intersection quelconque de parties ouvertes n'est en général pas ouverte, comme l'illustre l'exemple suivant.
+\begin{attention}
+	Avant d'affirmer qu'une intersection d'ouverts est un ouvert, il faut bien vérifier le caractère fini de cette intersection. En effet, une intersection quelconque de parties ouvertes n'est en général pas ouverte, comme l'illustre l'exemple suivant.
+\end{attention}
 
 \begin{exo}
 	Pour tout $n\in\N\st$, on note $U_n=\displaystyle\left]-\frac{1}{n},\frac{1}{n}\right[$. Bien que chacun des $U_n$ soit un ouvert, leur intersection $\{0\}$ ne l'est pas.
@@ -947,9 +985,11 @@ L'équivalence entre les deux assertions de la définition ci-dessus est éviden
 	Montrer que tout intervalle fermé de $\R$, c'est-à-dire tout intervalle de la forme $]-\infty,b]$, $[a,b]$ ou $[a,+\infty[$, est un fermé de $\R$.
 \end{exo}
 
-\paragraph{Attention} Il ne faut pas croire, par jeu de mots, qu'une partie qui n'est pas ouvert est nécessairement fermée. En effet, dans tout $\K$-espace vectoriel normé non réduit à $\{0\}$, il existe des parties ni ouvertes ni fermées.\\
+\begin{attention}
+Il ne faut pas croire, par jeu de mots, qu'une partie qui n'est pas ouvert est nécessairement fermée. En effet, dans tout $\K$-espace vectoriel normé non réduit à $\{0\}$, il existe des parties ni ouvertes ni fermées.\\
 C'est le cas par exemple de l'intervalle $[0,1[$ dans $\R$.\\
 De plus, il existe des parties à la fois ouvertes et fermées, comme $E$ et $\emptyset$.
+\end{attention}
 
 \begin{exo}
 	Quelles sont les parties à la fois ouvertes et fermées d'un ensemble muni de la distance discrète ?
@@ -976,7 +1016,9 @@ De plus, il existe des parties à la fois ouvertes et fermées, comme $E$ et $\e
 	\end{itemize}
 \end{thm}
 
-\paragraph{Attention} Avant d'affirmer qu'une réunion de fermés est fermée, il faut bien vérifier le caractère fini de cette réunion. En effet, une réunion quelconque de fermés n'est en général pas fermée, comme l'illustre l'exercice suivant.
+\begin{attention}
+	Avant d'affirmer qu'une réunion de fermés est fermée, il faut bien vérifier le caractère fini de cette réunion. En effet, une réunion quelconque de fermés n'est en général pas fermée, comme l'illustre l'exercice suivant.
+\end{attention}
 
 \begin{exo}
 	On se place dans $\R$. Pour tout $n\in\N\st$, on note $F_n=\left[\frac{1}{n},1-\frac{1}{n}\right]$. Déterminer l'ensemble $A=\displaystyle\bigcup_{n\in\N\st}F_n$. Cet ensemble est-il fermé ?
@@ -1364,7 +1406,9 @@ On donne ici une présentation d'espaces plus généraux, dits topologiques, dan
 	Il s'agit donc bien d'une généralisation des sections précédentes.
 \end{rmq}
 
-\paragraph{Terminologie} Si une topologie $\mathcal{O}$ est la topologie associée à une distance $d$, on dit qu'elle est \textbf{métrisable.}
+\begin{terminologie}
+	Si une topologie $\mathcal{O}$ est la topologie associée à une distance $d$, on dit qu'elle est \textbf{métrisable.}
+\end{terminologie}
 
 \begin{ex}
 	La topologie grossière est non métrisable si $E$ possède plus de éléments. En effet, il est aisé qu'alors, toute suite d'éléments de $E$ converge vers tout élément de $E$. Si $E$ possède au moins deux éléments, il n'y a donc pas unicité de la limite, si bien que la topologie ne provient pas d'une distance.
@@ -1399,7 +1443,9 @@ Cependant, nous allons voir ici que sous des condition supplémentaires, certain
 	Soit $N_1$ et $N_2$ deux normes sur $E$. On dit que $N_1$ est \textbf{dominée} par $N_2$, ou que $N_2$ \textbf{domine} $N_1$, s'il existe un réel $\alpha$ strictement positif tel que $N_1\leqslant\alpha N_2$, ou encore : $$\forall x\in E,\ N_1(x)\leqslant\alpha N_2(x).$$
 \end{dfn}
 
-\paragraph{Terminologie} Pour signifier que $N_1$ est dominée par $N_2$, on dit aussi que $N_2$ est \textbf{plus fine} que $N_1$.
+\begin{terminologie}
+	Pour signifier que $N_1$ est dominée par $N_2$, on dit aussi que $N_2$ est \textbf{plus fine} que $N_1$.
+\end{terminologie}
 
 \begin{rmq}
 	La propriété $N_1\leqslant\alpha N_2$ s'interprète ainsi :

@@ -1,0 +1,790 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Vect}{\text{Vect}}
+\newcommand{\rg}{\text{rg}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
+
+
+\theoremstyle{plain}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+
+\newtheorem*{ex}{Exemple}
+\newtheorem*{met}{Point méthode}
+\newtheorem{exo}{Exercice}
+\newtheorem*{rmq}{Remarque}
+
+\theoremstyle{remark}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{dfn}{
+	enhanced,
+	breakable,
+	colback=white,
+	fonttitle=\sc,
+	title={Définition \thetcbcounter}
+}
+
+\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+
+\title{Intégration sur un intervalle quelconque}
+\date{}
+
+\begin{document}
+\tableofcontents	
+
+\newpage
+\maketitle
+
+\section{Intégrale généralisée}
+
+Dans ce chapitre, on étend la notion d'intégrale, déjà connue pour les fonctions continues par morceaux sur un segment, à certaines fonctions continues par morceaux sur un intervalle $I$ quelconque de $\R$ et à valeurs dans $\K=\R$ ou $\K=\C$.\\
+Les intervalles de $\R$ considérés dans ce chapitre sont tous d'intérieur non vide.
+
+\subsection{Fonction continue par morceaux}
+
+Rappelons la définition d'une fonction continue par morceaux sur un segment et étendons-la à un intervalle quelconque.
+
+\begin{dfn}
+	\begin{itemize}
+		\item Une fonction $f:[a,b]\to\K$ est dite \textbf{continue par morceaux sur le segment $[a,b]$} de $\R$ s'il existe une subdivision $(a_0,\ldots,a_n)$ de ce segment telle que, pour tout $i\in\llbracket0,n-1\rrbracket$, la restriction de $f$ à $]a_i,a_{i+1}[$ possède un prolongement continu sur le segment $[a_i,a_{i+1}]$?
+		\item Une fonction $f:I\to\K$ est dite \textbf{continue par morceaux sur l'intervalle $I$} si sa restriction à tout segment inclus dans $I$ est continue par morceaux.
+	\end{itemize}
+\end{dfn}
+
+\paragraph{Notation} On note $\mathcal{CM}(I,\K)$ l'ensemble des fonctions continues par morceaux sur l'intervalle $I$ à valeurs dans $\K$.
+
+\begin{rmq}
+	L'ensemble $\mathcal{CM}(I,\K)$ contient les fonctions constantes sur $I$, est stable par combinaison linéaire et produit : c'est une sous-algèbre de $\K^I$. On a immédiatement l'inclusion $\mathcal{C}(I,\K)\subset\mathcal{CM}(I,\K)$.
+\end{rmq}
+
+\begin{ex}
+	\begin{enumerate}
+		\item La fonction partie entière est une fonction continue par morceaux sur $\R$.
+		\item La fonction inverse est continue par morceaux sur $]0,+\infty[$ mais ne possède pas de prolongement continue par morceaux sur $[0,+\infty[$ puisqu'elle n'est pas bornée au voisinage de $0$.
+	\end{enumerate}
+\end{ex}
+
+\paragraph{Attention} Il n'y a pas de théorème concernant la composition ni le quotient de fonctions continues par morceaux !
+
+\paragraph{Rappel} Lorsque $f$ est une fonction continue sur $I$, pour $a\in I$, la fonction : $$\begin{array}{lrcl}
+	F:&I&\longrightarrow&\K\\
+	&x&\longmapsto&\displaystyle\int_{a}^{x}f(t)\d t
+\end{array}$$ est dérivable, de dérivée $f$. On en déduit, en particulier, que si $f$ est positive, alors $F$ est croissante.\\
+Voyons ce que ces résultats deviennent pour des fonctions continues par morceaux.
+
+\begin{thm}{}%prop
+	Soit $f$ une fonction continue par morceaux et positive sur $I$. Alors la fonction :
+	$$\begin{array}{lrcl}
+		F:&I&\longrightarrow&\R\\
+		&x&\longmapsto&\displaystyle\int_{a}^{x}f(t)\d t
+	\end{array}$$
+	est croissante sur $I$.
+\end{thm}
+
+\begin{thm}{}%prop
+	Soit $f:I\to\K$ une fonction continue par morceaux et $a\in I$. La fonction :
+	$$\begin{array}{lrcl}
+		F:&I&\longrightarrow&\K\\
+		&x&\longmapsto&\displaystyle\int_{a}^{x}f(t)\d t
+	\end{array}$$
+	est continue sur $I$. Elle est :
+	\begin{itemize}
+		\item dérivable à droite en tout point de $x$ différent de $\sup(I)$, avec $F_d'(x)=f(x^+)$ ;
+		\item dérivable à gauche en tout point de $x$ différent de $\inf(I)$, avec $F_g'(x)=f(x^-)$.
+	\end{itemize}
+	En particulier, $F$ est dérivable en tout point de continuité de $f$ avec $F'(x)=f(x)$.
+\end{thm}
+
+\begin{rmq}
+	Par extension, on dira que $F:x\mapsto\displaystyle\int_{a}^{x}f(t)\d t$ est une \textbf{primitive} de $f$.
+\end{rmq}
+
+\subsection{Définitions}
+
+\subsubsection*{Cas où $I=[a,b[$}
+
+Ici, on considère $a\in\R$ et $b\in\overline{\R}$ tels que $a<b\leqslant+\infty$.
+
+\begin{dfn}
+	Soit $f\in\mathcal{CM}([a,b[,\K)$.
+	On dit que l'\textbf{intégrale $\displaystyle\int_{[a,b[}f$ converge} si la fonction $x\mapsto\displaystyle\int_{[a,x]}f$ admet une limite finie en $b$. Dans ce cas, on note $\displaystyle\int_{[a,b[}f$ ou $\displaystyle\int_{[a,b[}f(t)\d t$ cette limite.\\
+	Dans le cas contraire, on dit que l'intégrale $\displaystyle\int_{[a,b[}f$ \textbf{diverge} (et on ne la note pas).
+\end{dfn}
+
+\paragraph{Terminologie}
+\begin{itemize}
+	\item Une telle intégrale est appelée \textbf{intégrale généralisée}. On parle aussi d'\textbf{intégrale impropre}.
+	\item Pour une intégrale généralisée, son caractère convergent ou divergent est appelé sa nature.
+\end{itemize}
+
+\begin{thm}{Caractère local de la nature d'une intégrale}%prop
+	Soit $f\in\mathcal{CM}([a,b[,\K)$ ainsi que $c\in[a,b[$.\\
+	Les intégrales $\displaystyle\int_{[a,b[}f$ et $\displaystyle\int_{[c,b[}f$ sont de même nature et, si elles convergent, on a :
+	$$\int_{[a,b[}f=\int_{[a,c]}f+\int_{[c,b[}f.$$
+\end{thm}
+\begin{proof}
+	On utilise la relation de Chasles et la définition de la convergence d'une intégrale.
+\end{proof}
+
+\begin{thm}{}%cor
+	Soit $f\in\mathcal{CM}([a,b[,\K)$. Si l'intégrale converge, $\displaystyle\int_{[a,b[}f$ converge, alors $\displaystyle\int_{[x,b[}f\xrightarrow[x\to b]{}0$.
+\end{thm}
+
+\begin{rmq}
+	On peut noter une analogie entre l'étude des intégrales généralisées sur un intervalle $[a,+\infty[$ et celle des séries numériques.
+\end{rmq}
+
+\paragraph{Terminologie} Par analogie avec les séries, l'intégrale $\displaystyle\int_{[a,x]}f$ est appelée \textbf{intégrale partielle} et, en cas de convergence, l'intégrale $\displaystyle\int_{[x,b[}f$ est appelée \textbf{reste} de l'intégrale $\displaystyle\int_{[a,b[}f$.
+
+
+Le résultat suivant assure que, pour une fonction $f$ continue par morceaux sur le segment $[a,b]$, il n'y a pas de différence entre son intégrale sur le segment $[a,b]$ (au sens de la première année) et son intégrale sur l'intervalle semi-ouvert $[a,b[$ (au sens que nous venons de définir).
+
+\begin{thm}{}%prop
+	Soit $f\in\mathcal{CM}([a,b],\K)$. Alors l'intégrale généralisée $\displaystyle\int_{[a,b[}f$ converge et l'on a :
+	$$\int_{[a,b[}f=\int_{[a,b]}f$$
+\end{thm}
+
+\paragraph{Notation} Dans la suite, l'intégrale $\displaystyle\int_{[a,b[}f$ est notée $\displaystyle\int_{a}^{b}f$. Dans le cas où $f$ est continue par morceaux sur le segment $[a,b]$, le résultat précédent assure la cohérence de cette notation avec celle déjà utilisée en première année.
+
+\begin{thm}{}%prop
+	Soit $f\in\mathcal{C}([a,b[,\K)$ et $F$ une primitive de $F$. L'intégrale $\displaystyle\int_{a}^{b}f$ converge si, et seulement si, $F$ possède une limite finie en $b$. Dans ce cas, on a : 
+	$$\int_{a}^{b}f=\underset{b}{\lim}F-F(a)$$ et la fonction définie sur $[a,b[$ par $x\mapsto\displaystyle\int_{x}^{b}f$ est dérivable, de dérivée $-f$.
+\end{thm}
+
+\paragraph{Notation} Si $\underset{b}{\lim}F$ existe, on note $[F]_a^b$ l'expression $\underset{b}{\lim}F-F(a)$.
+
+\begin{ex}
+	\begin{enumerate}
+		\item L'intégrale $\displaystyle\int_{0}^{+\infty}e^{-t}\d t$ converge et vaut $\displaystyle\int_{0}^{+\infty}e^{-t}\d t=1$.
+		\item Montrons que l'intégrale $\displaystyle\int_{1}^{+\infty}\frac{\d t}{t(1+t^2)}$ converge et calculons sa valeur. %par cdv x=t^2, $0,5\ln(x^2/(1+x^2)) en est une primitive, on trouve finalement $\ln(2)/2$.
+		\item L'intégrale $\displaystyle\int_{0}^{+\infty}\cos(t)\d t$ diverge. %sin n'admet pas de limite
+	\end{enumerate}
+\end{ex}
+
+\paragraph{Attention} A l'instar des séries numériques, la condition $f\xrightarrow[+\infty]{}0$ n'est pas suffisante pour que l'intégrale $\displaystyle\int_{a}^{+\infty}f$ converge, comme le montre l'exemple suivant.
+
+\begin{ex}
+	Considérons $f:t\mapsto\displaystyle\frac{1}{t}$ sur $[1,+\infty[$. $f\xrightarrow[+\infty]{}0$, mais l'intégrale $\displaystyle\int_{1}^{+\infty}f$ diverge car :
+	$$\forall x\geqslant1,\ \int_{1}^{x}\frac{\d t}{t}=\ln(x)\xrightarrow[x\to +\infty]{}+\infty.$$
+\end{ex}
+
+\paragraph{Attention} En revanche, contrairement au cas des séries numériques, la convergence de l'intégrale $\displaystyle\int_{a}^{+\infty}f$ n'entraîne le fait que $f$ tende vers $0$ en $+\infty$, ni même que $f$ est bornée au voisinage de $+\infty$, comme on le verra dans un exemple dans la suite du chapitre.
+
+\begin{met}
+	Pour $N\in\N$ et $a>0$, on a d'après la relation de Chasles : $$\sum_{n=1}^{N}\int_{na}^{(n+1)a}f=\int_{a}^{(N+1)a}f$$ Par conséquent, si l'intégrale $\displaystyle\int_{a}^{+\infty} f$ converge alors la série $\displaystyle\sum \int_{na}^{(n+1)a}f$ converge. Ainsi, on peut utilise la divergence d'une série pour prouver la divergence d'une intégrale. Attention, la réciproque est fausse.
+\end{met}
+
+\begin{ex}
+	Montrons que l'intégrale $\displaystyle\int_{\pi}^{+\infty}\left\lvert\frac{\sin(t)}{t}\right\rvert \d t$ diverge.
+\end{ex}
+
+\paragraph{Attention} La réciproque est fausse : la convergence de la série $\displaystyle\sum \int_{na}^{(n+1)a}f$ n'implique pas la convergence de l'intégrale $\displaystyle\int_{a}^{+\infty}f$, comme le montre l'exemple suivant.
+
+\begin{ex}
+	L'intégrale $\int_{0}^{+\infty}\cos(t)\d t$ diverge mais $\displaystyle\sum \int_{n\pi}^{2(n+1)\pi}\cos(t)\d t$ est convergente, car son terme général est nul.
+\end{ex}
+
+Voir néanmoins le point méthode de la section $1.3$.
+
+\subsubsection*{Cas où $I=]a,b]$}
+
+Ici, on considère $a\in\overline{\R}$ et $b\in\R$ tels que $-\infty\leqslant a<b$.
+
+\begin{dfn}
+	Soit $f\in\mathcal{CM}(]a,b],\K)$.
+	On dit que l'\textbf{intégrale $\displaystyle\int_{]a,b]}f$ converge} si la fonction $x\mapsto\displaystyle\int_{[x,b]}f$ admet une limite finie en $a$. Dans ce cas, on note $\displaystyle\int_{]a,b]}f$ ou $\displaystyle\int_{]a,b]}f(t)\d t$ cette limite.\\
+	Dans le cas contraire, on dit que l'intégrale $\displaystyle\int_{]a,b]}f$ \textbf{diverge} (et on ne la note pas).
+\end{dfn}
+
+\begin{ex}
+	$\displaystyle\int_{]0,1]}\ln(t)\d t=-1$.
+\end{ex}
+
+\begin{exo}
+	Déterminer la nature et la valeur éventuelle de l'intégrale $\displaystyle\int_{0}^{\frac{\pi}{2}}\frac{\cos(u)}{\sqrt{\sin(u)}}\d u$.
+\end{exo}
+
+\begin{rmq}
+	On adapte sans difficulté au cas d'un intervalle semi-ouvert $]a,b]$ les propositions énoncées précédemment dans le cas d'un intervalle du type $[a,b[$.
+\end{rmq}
+
+\paragraph{Notation}
+L'intégrale $\displaystyle\int_{]a,b]}f$ est aussi notée $\displaystyle\int_{a}^{b}f$.
+
+\subsubsection*{Cas d'un intervalle ouvert $]a,b[$}
+
+Dans cette section, on considère $(a,b)\in\overline{\R}^2$ tel que $-\infty\leqslant a\leqslant b\leqslant+\infty$.
+
+\begin{thm}{}%lem
+	Soit $f\in\mathcal{CM}(]a,b[,\K)$.\\
+	S'il existe $c\in]a,b[$ tel que les deux intégrales $\displaystyle\int_{]a,c]}f$ et $\displaystyle\int_{[c,b[}f$ convergent, alors, pour tout réel $c'\in]a,b[$, les intégrales $\displaystyle\int_{]a,c']}f$ et $\displaystyle\int_{[c',b[}f$ convergent aussi, et :
+	$$\int_{]a,c]}f+\int_{[c,b[}f=\int_{]a,c']}f+\int_{[c',b[}f.$$
+\end{thm}
+\begin{proof}
+	Utiliser le caractère local de la nature d'une intégrale.
+\end{proof}
+
+On peut donc poser la définition suivante.
+
+\begin{dfn}
+	Soit $f\in\mathcal{CM}(]a,b[,\K)$. On dit que l'intégrale $\displaystyle\int_{]a,b[}f$ \textbf{converge} s'il existe un réel $c\in]a,b[$ tels que les deux intégrales $\displaystyle\int_{]a,c]}f$ et $\displaystyle\int_{[c,b[}f$ convergent. On pose alors : 
+	$$\int_{]a,b[}f=\int_{]a,c]}f+\int_{[c,b[}f.$$ Dans le cas contraire, on dit que l'intégrale $\displaystyle\int_{]a,b[}f$ \textbf{diverge}.
+\end{dfn}
+
+\paragraph{Compatibilité avec les définitions déjà données}
+\begin{itemize}
+	\item Si $f\in\mathcal{CM}(]a,b],\K)$, il découle de la définition précédente et du caractère local de la nature d'une intégrale que les intégrales $\displaystyle\int_{]a,b[}f$ et $\displaystyle\int_{]a,b]}f$ ont même nature et, en cas de convergence, sont égales. On a le même résultat si $f\in\mathcal{CM}([a,b[,\K)$.
+	\item De même, un autre résultat précédent s'étend : si $f\in\mathcal{CM}([a,b],\K)$, l'intégrale $\displaystyle\int_{]a,b[}f$ converge et on a $\displaystyle\int_{]a,b[}f=\int_{[a,b}f$.
+\end{itemize}
+
+\paragraph{Notation} La discussion précédente justifie alors la notation $\displaystyle\int_{a}^{b}f$ utilisée pour désigner cette intégrale.
+
+\begin{ex}
+	Si $\displaystyle\int_{-\infty}^{+\infty}f$ converge, alors $\displaystyle\int_{-x}^{x}f\xrightarrow[x\to+\infty]{}\int_{-\infty}^{+\infty}f$.
+\end{ex}
+
+\paragraph{Attention} La réciproque du résultat obtenue par l'exemple précédent est fausse : comme le montre l'exemple suivant, l'existence de $\displaystyle\underset{x\to+\infty}{\lim}\int_{-x}^{x}f(t)\d t$ n'entraîne pas nécessairement la convergence de l'intégrale $\displaystyle\int_{-\infty}^{+\infty}f$.
+
+\begin{ex}
+	Pour tout $x\in\R$, on a $\displaystyle\int_{-x}^{x}t\ \d t=0$, donc $\displaystyle\int_{-x}^{x}t\ \d t\xrightarrow[x\to+\infty]{}0$, mais l'intégrale $\displaystyle\int_{-\infty}^{+\infty}t\ \d t$ n'est pas convergente puisque $\displaystyle\int_{0}^{x}t\ \d t\xrightarrow[x\to+\infty]{}+\infty$.
+\end{ex}
+
+\begin{met}
+	Si $F$ est une primitive de $f$, alors l'intégrale $\displaystyle\int_{a}^{b}f$ converge si, et seulement si, $F$ admet des limites finies en $a$ et en $b$, et l'on a alors : $$\int_{a}^{b}f=\lim_{b}F-\lim_{a}F$$ quantité alors notée $[F(t)]_a^b$.
+\end{met}
+
+\begin{ex}
+	$\displaystyle\int_{-\infty}^{+\infty}\frac{\d t}{1+t^2}$.
+\end{ex}
+
+\subsection{Cas des fonctions réelles à valeurs positives}
+
+De la même façon que pour les séries numériques, on étudie le cas des fonctions positives. La notion d'intégrabilité permettra ensuite de se ramener à ce cas.\\
+On traite dans ce paragraphe le cas des intégrales généralisées sur l'intervalle semi-ouvert $[a,b[$, le cas $]a,b]$ étant analogue et le cas $]a,b[$ se ramenant aux deux précédents.
+
+\begin{thm}{}%prop
+	Soit $a\in\R$ et $b\in\overline{\R}$ tels que $a<b\leqslant+\infty$, ainsi que $f\in\mathcal{CM}([a,b[,\R)$ à valeurs \textit{positives}.
+	\begin{enumerate}
+		\item L'intégrale $\displaystyle\int_{a}^{b}f$ converge si, et seulement si, $x\mapsto\displaystyle\int_{a}^{x}f$ est majorée sur $[a,b[$.
+		\item L'intégrale $\displaystyle\int_{a}^{b}f$ diverge si, et seulement si, $\displaystyle\int_{a}^{x}f\xrightarrow[x\to b]{}+\infty$. On pose alors : $\displaystyle\int_{a}^{b}f=+\infty$.
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	On utilise la croissance de la fonction $x\mapsto\displaystyle\int_{a}^{x}f$ et le théorème de la limite monotone.
+\end{proof}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Les conclusions sur la nature de l'intégrale subsistent si $f$ n'est positive qu'au voisinage de $b$, car $x\mapsto\displaystyle\int_{a}^{x}f$ est alors croissante au voisinage de $b$.
+		\item L'adaptation de la proposition précédente au cas d'une fonction $f\in\mathcal{CM}(]a,b],\R)$ positive est la suivante : l'intégrale $\displaystyle\int_{a}^{b}f$ converge si, et seulement si, la fonction $x\mapsto\displaystyle\int_{x}^{b}f$ est majorée, et si ce n'est pas le cas, alors $\displaystyle\int_{x}^{b}f\xrightarrow[x\to a]{}+\infty$.
+	\end{itemize}
+\end{rmq}
+
+\begin{thm}{Comparaison d'intégrales de fonctions positives}%prop
+	Soit $a\in\R$ et $b\in\overline{\R}$ tels que $a<b\leqslant+\infty$, ainsi que $(f,g)\in\mathcal{CM}([a,b[,\R)^2$ à valeurs \textit{positives}.
+	Si $f\leqslant g$ sur $[a,b[$, alors on a l'inégalité suivant dans $\overline{\R}_+$ : $$\int_{a}^{b}f\leqslant\int_{a}^{b}g.$$
+	En particulier, si l'intégrale $\displaystyle\int_{a}^{b}g$ converge, alors l'intégrale $\displaystyle\int_{a}^{b}f$ converge.
+\end{thm}
+\begin{proof}
+	On utilise la caractérisation de la convergence de l'intégrale d'une fonction positive (proposition précédente) pour écrire : $$\int_{a}^{x}f\leqslant\int_{a}^{x}g\leqslant\int_{a}^{b}g$$ et on passe à la limite sur $x$.
+\end{proof}
+
+\begin{met}
+	Soit $a>0$ et $f\in\mathcal{CM}([a,+\infty[,\R_+)$. Puisqu'on a pour tout $N\in\N$ : $$\sum_{n=1}^{N}\int_{na}^{(n+1)a}f=\int_{a}^{(N+1)a}f$$ on obtient dans $\overline{\R_+}$, par passage à la limite et positivité : $$\sum_{n=1}^{+\infty}\int_{na}^{(n+1)a}f=\int_{a}^{+\infty}f$$ En particulier, la série $\displaystyle\sum \int_{na}^{(n+1)a}f$ et l'intégrale l'intégrale $\displaystyle\int_{a}^{+\infty} f$ ont même nature.
+\end{met}
+
+\begin{ex}
+	Fonction continue en dents-de-scie dont les pics sont de largeur $1/n$ et de hauteur $n$.
+\end{ex}
+
+\begin{exo}
+	Pour tout $n\in\N\st$, on pose $u_n=\displaystyle\sum_{k=1}^{n}\frac{1}{k}-\ln(n)$. On définit $f$ sur $]0,+\infty[$ par $f(t)=\displaystyle\frac{t-\lfloor t\rfloor}{t^2}$.
+	\begin{enumerate}
+		\item Montrer que $\displaystyle\int_{1}^{+\infty}f(t)\d t$ est bien définie dans $[0,+\infty]$ et : $$\int_{1}^{+\infty}f(t)\d t=\sum_{j=1}^{+\infty}\left(\ln(j+1)-\ln(j)-\frac{1}{j+1}\right)<+\infty.$$
+		\item Montrer que la suite $(u_n)_{n\in\N\st}$ converge vers $1-\displaystyle\int_{1}^{+\infty}f(t)\d t$.
+	\end{enumerate}
+\end{exo}
+
+\subsection{Intégrales de référence}
+
+Comme pour les séries numériques, nous disposons d'un certain nombre d'exemples de référence permettant, grâce au théorème de comparaison, de déterminer la nature de beaucoup d'autres intégrales.
+
+\begin{thm}{}%prop
+	Soit $\alpha\in\R$. L'intégrale $\displaystyle\int_{0}^{+\infty}e^{-\alpha t}\ \d t$ converge si, et seulement si, $\alpha>0$.
+\end{thm}
+
+\begin{thm}{Intégrales de Riemann}%prop
+	Soit $\alpha\in\R$.
+	\begin{itemize}
+		\item L'intégrale $\displaystyle\int_{1}^{+\infty}\frac{\d t}{t^\alpha}$ converge si, et seulement si, $\alpha>1$.
+		\item L'intégrale $\displaystyle\int_{0}^{1}\frac{\d t}{t^\alpha}$ converge si, et seulement si, $\alpha<1$.
+		\item Plus généralement, étant donné $(a,b)\in\R^2$ tel que $a<b$, les intégrales $\displaystyle\int_{a}^{b}\frac{\d t}{(b-t)^\alpha}$ et $\displaystyle\int_{a}^{b}\frac{\d t}{(t-a)^\alpha}$ convergent si, et seulement si, $\alpha<1$.
+	\end{itemize}
+\end{thm}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Les intégrales $\displaystyle\int_{1}^{+\infty}\frac{\d t}{t^2}$, $\displaystyle\int_{0}^{1}\frac{\d t}{\sqrt{t}}$ et $\displaystyle\int_{0}^{1}\frac{\d t}{\sqrt{1-t}}$ convergent.
+		\item Les intégrales $\displaystyle\int_{1}^{+\infty}\frac{\d t}{t}$, $\displaystyle\int_{0}^{1}\frac{\d t}{t}$ et $\displaystyle\int_{1}^{3}\frac{\d t}{(3-t)^2}$ divergent.
+	\end{enumerate}
+\end{ex}
+
+\section{Propriétés de l'intégrale}
+
+Les propositions suivantes étendent à un intervalle $I$ quelconque des propriétés déjà connues sur un segment. Rappelons que $I$ désigner un intervalle de $\R$ d'\textit{intérieur non vide}.
+
+\paragraph{Convention} Par extension, lorsque $I$ est un segment et que $f$ est continue par morceaux sur $I$, on dit encore que l'intégrale $\displaystyle\int_If$ converge.
+
+\subsection{Linéarité}
+
+\begin{thm}{Linéarité}%prop
+	L'ensemble des fonctions $f\in\mathcal{CM}(I,\K)$ telles que $\displaystyle\int_I f$ converge est un sous-espace vectoriel de $\mathcal{CM}(I,\K)$ sur lequel l'application $f\mapsto\displaystyle\int_I f$ est une forme linéaire.
+\end{thm}
+\begin{proof}
+	Cela résulte de la définition de la convergence d'une intégrale, de la linéarité de l'intégrale sur un segment et des théorèmes d'opérations sur les limites.
+\end{proof}
+
+\begin{thm}{Fonctions à valeurs complexes}%prop
+	Étant donnée $f\in\mathcal{CM}(I,\C)$, l'intégrale $\displaystyle\int_I f$ converge si, et seulement si, les deux intégrales $\displaystyle\int_I\text{Re}(f)$ et $\displaystyle\int_I\text{Im}(f)$ convergent, et l'on a alors : $$\int_{I}f=\int_I\text{Re}(f)+i\int_I\text{Im}(f).$$
+\end{thm}
+\begin{proof}
+	Cela résulte de la définition de la convergence d'une intégrale et des propriétés des limites des fonctions à valeurs complexes.
+\end{proof}
+
+\subsection{Positivité, croissance}
+
+On considère ici des fonctions à valeurs réelles.
+
+\begin{thm}{Positivité}%prop
+	Soit $f\in\mathcal{CM}(I,\R)$ telle que $\displaystyle\int_I f$ converge. Si $f$ est positive sur $I$, alors $\displaystyle\int_If\geqslant0$.
+\end{thm}
+
+\begin{thm}{Croissance}%prop
+	Soit $(f,g)\in\mathcal{CM}(I,\R)^2$ tel que $\displaystyle\int_I f$ et $\displaystyle\int_I g$ convergent. Si $f\leqslant g$ sur $I$, alors $\displaystyle\int_If\leqslant\int_I g$.
+\end{thm}
+\begin{proof}
+	On applique la positivité de l'intégrale à la fonction $g-f$ en utilisant la linéarité de l'intégrale.
+\end{proof}
+
+\begin{thm}{Fonction continue positive et d'intégrale nulle}
+	Soit $f\in\mathcal{C}(I,\R)$ continue à valeurs positives. Si $\displaystyle\int_If=0$, alors $f=0$.
+\end{thm}
+\begin{proof}
+	Dans le cas où $I$ est de la forme $[a,b[$, on dérive $x\mapsto\displaystyle\int_{a}^{x}f(t)\ \d t$.
+\end{proof}
+
+\begin{met}
+	Si $f$ est une fonction continue positive et non nulle sur $I$, alors $\displaystyle\int_I f>0$.
+\end{met}
+
+\begin{rmq}
+	Hors minoration ou calcul explicite, c'est la seule méthode dont on dispose pour montrer qu'une intégrale est strictement positive.
+\end{rmq}
+
+\subsection{Relation de Chasles}
+
+\begin{thm}{}%prop
+	Soit $f\in\mathcal{CM}(I,\K)$ telle que $\displaystyle\int_If$ converge. Si $J$ est un sous-intervalle d'intérieur non vide de $I$, alors $\displaystyle\int_Jf$ converge.
+\end{thm}
+\begin{proof}
+	Le cas $J=I$ étant trivial, supposons $J\subsetneq I$.
+	Si aucune des deux extrémités $\alpha$ et $\beta$ de $J$ n'est une extrémité ouvert de $I$, la fonction $f$ est définie et continue par morceaux sur le segment $[\alpha,\beta]$, et il a déjà été indiqué qu'alors l'intégrale $\displaystyle\int_Jf$ converge. Supposons donc qu'au moins l'un des extrémités ouvertes de $J$ soit une extrémité ouverte de $I$.\\
+	\textbf{Cas $I=[a,b[$.} Dans ce cas, on a $J=[c,b[$ avec $a\leqslant c<b$, et la convergence de $\displaystyle\int_Jf$ résulte du caractère local de la convergence d'une intégrale.\\
+	\textbf{Cas $I=]a,b]$.} Se traite de manière analogue au précédent.\\
+	\textbf{Cas $I=]a,b[$} Dans ce cas, $J=]a,c]$ ou $J=[c,b[$ avec $a<c<b$ ; la convergence de l'intégrale $\displaystyle\int_Jf$ provient alors de la définition de la convergence de l'intégrale $f$ sur l'intervalle ouvert $]a,b[$.
+\end{proof}
+
+\paragraph{Conséquence} Supposons que $\displaystyle\int_I f$ converge. Si $x<y$ sont des points ou des extrémités de $I$, alors on a $]x,y[\subset I$, donc l'intégrale $\displaystyle\in_{]x,y[}f$, notée aussi $\displaystyle\int_{x}^{y}f$, converge.
+
+\paragraph{Notation} Plus généralement, si $\displaystyle\int_I f$ converge, la notation $\displaystyle\int_{x}^{y}f$, déjà définie dans le cas où $x<uy$, est étendue au cas général ainsi :
+$$\int_{x}^{y}f=-\int_{y}^{x}f\quad\text{si}\quad x>y\quad\quad\text{et}\quad\quad\int_{x}^{y}f=0\quad\text{si}\quad x=y.$$
+
+\begin{thm}{Relation de Chasles}%prop
+	Soit $f\in\mathcal{CM}(I,\K)$ telle que $\displaystyle\int_If$ converge. Si $x$, $y$ et $z$ sont trois points ou extrémités de $I$, alors les intégrales $\displaystyle\int_{x}^{z}f$, $\displaystyle\int_{x}^{y}f$ et $\displaystyle\int_{y}^{z}f$ convergent, et l'on a : 
+	$$\int_{x}^{z}f=\int_{x}^{y}f+\int_{y}^{z}f.$$
+\end{thm}
+
+\subsection{Intégrabilité}
+
+Dans cette section, $I$ désigne un intervalle de $\R$ d'intérieur non vide.
+
+\begin{dfn}
+	On dit que $f\in\mathcal{CM}(I,\K)$ est \textbf{intégrable} sur $I$, ou que l'intégrale $\displaystyle\int_I f$ \textbf{converge absolument}, si l'intégrale $\displaystyle\int_I \lvert f\rvert$ converge.
+\end{dfn}
+
+\paragraph{Notation}
+On note $L^1(I,\K)$ l'ensemble des fonctions intégrables sur $I$.
+
+\begin{thm}{}%prop
+	$L^1(I,\K)$ est un sous-espace vectoriel de $\mathcal{CM}(I,\K)$.
+\end{thm}
+\begin{proof}
+	Utiliser l'inégalité triangulaire et le théorème de comparaison pour les fonctions à valeurs positives.
+\end{proof}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Si $f\in\mathcal{CM}(I,\K)$ est une fonction \textit{positive}, alors l'intégrabilité de $f$ équivaut à la convergence de l'intégrale $\displaystyle\int_I f$.
+		\item En particulier, les fonctions des exemples de référence étant toutes positives, leur convergence équivaut à leur intégrabilité.
+	\end{itemize}
+\end{rmq}
+
+\begin{thm}{}%thm
+	Si $f\in L^1(I,\K)$, alors $\displaystyle\int_If$ converge.
+\end{thm}
+\begin{proof}
+	On étudier d'abord le cas des fonctions $f$ à valeurs réelles, en utilisant les fonctions $f^+=\displaystyle\frac{\lvert f\rvert+f}{2}$ et $f^-=\displaystyle\frac{\lvert f\rvert-f}{2}$, puis on en déduit le cas des fonctions à valeurs complexes en écrivant $f=\text{Re}(f)+i\text{Im}(f)$.
+\end{proof}
+
+\begin{thm}{Inégalité triangulaire}%thm
+	Pour tout $f\in L^1(I,\K)$, on a $\displaystyle\left\lvert\int_If\right\rvert\leqslant\int_I \lvert f\rvert$.
+\end{thm}
+
+\begin{thm}{Caractère local de l'intégrabilité}%prop
+	Sot $a\in\R$ et $b\in\overline{\R}$ tels que $a<b\leqslant+\infty$. Soit $f\in\mathcal{CM}([a,b[,\K)$. Alors, pour tout $c\in[a,b[$, la fonction $f$ est intégrable sur $[a,b[$ si, et seulement si, elle l'est sur $[c,b[$.
+\end{thm}
+\begin{proof}
+	C'est une conséquence immédiate du caractère local de la nature d'une intégrale.
+\end{proof}
+
+\paragraph{Conséquence et terminologie}
+\begin{itemize}
+	\item L'intégrabilité de $f$ sur $[a,b[$ ne dépend que du comportement local de $f$ au voisinage de $b$.
+	\item Pour $f\in\mathcal{CM}([a,b[,\K)$, on dira que $f$ est \textbf{intégrable en $b$} si $f$ est intégrable sur $[a,b[$.
+\end{itemize}
+
+\subsection{Intégrabilité et comparaison}
+
+\begin{thm}{Théorème de comparaison}%thm
+	Soit $(a,b)\in\R\times\overline{\R}$ tel que $a<b\leqslant+\infty$ et $(f,g)\in\mathcal{CM}([a,b[,\K)^2$.
+	\begin{itemize}
+		\item Si $f\underset{b}{=}\O(g)$ et si $g$ est intégrable sur $[a,b[$, alors $f$ est intégrable sur $[a,b[$.
+		\item Si $f\underset{b}{\sim}g$, alors l'intégrabilité de $f$ sur $[a,b[$ équivaut à celle de $g$.
+	\end{itemize}
+\end{thm}
+\begin{proof}
+	Cela résulte de la définition de l'intégrabilité, du théorème de comparaison pour les fonctions à valeurs positives et du caractère local de l'intégrabilité.
+\end{proof}
+
+\paragraph{Attention}
+Le théorème de comparaison énoncé ici concerne l'\textit{intégrabilité} des des fonctions, c'est-à-dire la convergence \textit{absolue} de leurs intégrales. On peut très bien avoir $f\underset{b}{\sim}g$ sans que les intégrales $\displaystyle\int_{a}^{b}f$ et $\displaystyle\int_{a}^{b}g$ soient de même nature. Se référer à un exemple et une remarque de la section sur la semi-convergence.
+
+\begin{rmq}
+	Ce qui précède (en particulier le théorème de comparaison) a été énoncé dans le cas où $I=[a,b[$ mais s'adapte naturellement au cas $I=]a,b]$.
+\end{rmq}
+
+\begin{exo}[Intégrales de Bertrand]
+	On étudie ici, en fonction de $(\alpha,\beta)\in\R^2$ la nature de l'\textbf{intégrale de Bertrand} : $$B_{\alpha,\beta}=\int_{2}^{+\infty}\frac{\d t}{t^\alpha(\ln t)^\beta}.$$
+	\begin{enumerate}
+		\item Établir la convergence de $B_{\alpha,\beta}$ pour $\alpha>1$.
+		\item Établir la divergence de $B_{\alpha,\beta}$ pour $\alpha<1$.
+		\item Faire l'étude de la nature de $B_{\alpha,\beta}$ pour $\alpha=1$.
+	\end{enumerate}
+\end{exo}
+
+\begin{met}
+	Pour étudier l'intégrabilité d'une fonction continue par morceaux sur un intervalle $I$, on peut s'intéresser au comportement asymptotique de $f$ au voisinage des "bornes ouvertes" de $I$, puis utiliser le théorème de comparaison. En particulier, si l'intervalle $I$ est ouvert, on étudiera séparément les deux bornes.
+\end{met}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Soit $x>0$. Montrons la convergence de l'intégrale $\displaystyle\int_{0}^{+\infty}t^{x-1}e^{-t}\d t$ (\textbf{fonction Gamma} d'Euler). La fonction $f:t\mapsto t^{x-1}e^{-t}$ est continue sur $]0,+\infty[$.\\
+		\textbf{Étude en $0$.} Quand $t$ tend vers $0$, on a $f(t)\sim\displaystyle\frac{1}{t^{1-x}}$. Comme $1-x<1$ la fonction $t\mapsto\displaystyle\frac{1}{t^{1-x}}$ est intégrable (intégrale de Riemann), donc par comparaison, $f$ est intégrable en $0$.\\
+		\textbf{Étude en $+\infty$.} Par croissances comparées, on a : $$t^{x-1}e^{-t}\underset{+\infty}{=}\O\left(\frac{1}{t^2}\right).$$
+		Comme $2>1$, la fonction $t\mapsto\displaystyle\frac{1}{t^2}$ est intégrable en $+\infty$, donc $f$ aussi par comparaison. \\
+		En conclusion, la fonction $f$ est intégrable sur $]0,+\infty[$ donc son intégrale converge.
+		
+		\item Déterminons la nature de l'intégrale $\displaystyle\int_{0}^{+\infty}\sin(t)\ln\left(\frac{t^2+2}{t^2+1}\right)\d t$.\\
+		La fonction $f:t\mapsto\displaystyle\sin(t)\ln\left(\frac{t^2+2}{t^2+1}\right)$ est continue sur $[0,+\infty[$. On a par calcul asymptotique : $$f(t)\underset{+\infty}{=}\O\left(\frac{1}{t^2}\right).$$
+		Comme $2>1$, la fonction $t\mapsto\displaystyle\frac{1}{t^2}$ est intégrable en $+\infty$, donc $f$ aussi par théorème de comparaison. Par conséquent, $f$ est intégrable sur $[0,+\infty[$ donc son intégrale converge.
+		
+		\item Déterminons la nature de l'intégrale $\displaystyle\int_{0}^{+\infty}\frac{\cos(x)}{\sqrt{x}+x^2}\d x$.\\
+		La fonction $f:x\mapsto\displaystyle\frac{\cos(x)}{\sqrt{x}+x^2}$ est continue sur $]0,+\infty[$.\\
+		\textbf{Étude en $0$.} On a $f(x)\underset{x\to 0}{\sim}\frac{1}{\sqrt{x}}$. Comme $\displaystyle\frac12<1$, la fonction $\displaystyle x\mapsto\frac{1}{\sqrt{x}}$ est intégrable en $0$ donc $f$ aussi par théorème de comparaison.\\
+		\textbf{Étude en $+\infty$.} On a $f(x)\displaystyle\underset{x\to+\infty}{=}\O\left(\frac{1}{x^2}\right)$. Comme $2>1$, la fonction $x\mapsto\displaystyle\frac{1}{x^2}$ est intégrable en $+\infty$, donc $f$ aussi par théorème de comparaison.\\
+		En conclusion, la fonction $f$ est intégrable sur $]0,+\infty[$ donc son intégrale converge.
+	\end{enumerate}
+\end{ex}
+
+\begin{met}
+	On a les différents résultats.
+	\begin{itemize}
+		\item Si une fonction $f$ est bornée au voisinage d'un point $b\in\R$, alors on a $f\underset{b}{=}\O(1)$. La fonction constante égale à $1$ étant intégrable sur tout intervalle borné, on en déduit que $f$ est intégrable en $b$.
+		\item En particulier, si $f\in\mathcal{CM}([a,b[,\K)$ admet une limite finie en $b\in\R$, alors $f$ est intégrable.
+	\end{itemize}
+\end{met}
+
+\begin{exo}
+	Dans ce dernier cas, en prolongeant $f$ par continuité en $b$ et une fonction $\tilde{f}$, a-t-on $\displaystyle\int_{[a,b[}f=\int_{[a,b]}\tilde{f}$ ? %peu de chances que ça ait du sens, mais si cela en a, oui
+\end{exo}
+
+\paragraph{Attention} Le caractère \textit{fini} de $b$ est essentiel, comme le montre l'exemple de la fonction $t\mapsto\displaystyle\frac{1}{t}$, bornée et non intégrable sur $[1,+\infty[$.
+
+\begin{ex}
+	La fonction $f:t\mapsto\sin\left(\frac{1}{t^2}\right)$ est intégrable sur $]0,+\infty[$ car bornée au voisinage de $0$ et équivalente à $t^{-2}$ positive et intégrable en $+\infty$.
+\end{ex}
+
+\begin{ex}
+	Soit $x\leqslant0$. Montrons la divergence de l'intégrale $\displaystyle\int_{0}^{+\infty}t^{x-1}e^{-t}\d t$.\\
+	La fonction $t\mapsto t^{x-1}e^{-t}$ est continue par morceaux sur $]0,+\infty[$. Comme elle est de plus positive, la convergence de son intégrale équivaut à son intégrabilité. L'équivalent : $$t^{x-1}e^{-t}\underset{t\to0}{\sim}t^{x-1},$$ prouve, par comparaison avec un exemple de Riemann divergent, que la fonction $t\mapsto t^{x-1}e^{-t}$ n'est pas intégrable en $0$.\\
+	Conclusion : l'intégrale $\displaystyle\int_{0}^{+\infty}t^{x-1}e^{-t}\ \d t$.
+\end{ex}
+
+\subsubsection*{Utilisation d'une série}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Pour $\alpha\in\R_+\st$, on pose $\begin{array}{lrcl}
+			f_\alpha:&[\pi,+\infty[&\longrightarrow&\R\\
+			&t&\longmapsto&\displaystyle\frac{\sin(t)}{t^{\alpha}}
+		\end{array}$.
+		\begin{itemize}
+			\item Il est clair, par comparaison, que $f_\alpha$ est intégrable sur $[\pi,+\infty[$ si $\alpha>1$.
+			\item Pour $\alpha\leqslant1$, on peut utiliser la série de terme général $_n=\displaystyle\int_{n\pi}^{(n+1)\pi}f_\alpha(t)\ \d t$.
+		\end{itemize}
+		\item Convergence de l'intégrale $\displaystyle\int_{0}^{+\infty}\frac{\d t}{1+t^{\alpha}\sin^2(t)}$.
+	\end{enumerate}
+\end{ex}
+
+\section{Calcul d'intégrales}
+
+\subsection{Intégration par parties}
+
+\paragraph{Convention} Si $h$ est une fonction continue sur un intervalle d'extrémités $a$ et $b$, avec $-\infty\leqslant a<b\leqslant+\infty$, on dit que le \textbf{crochet $[h]_a^b$ converge} si $h$ possède des limites \textit{finies} en $a$ et en $b$, et l'on pose alors $[h]_a^n=\underset{b}{\lim}h-\underset{a}{\lim}h$.
+
+\begin{rmq}
+	\begin{itemize}
+		\item Dans le cas d'un segment $[a,b]$, par continuité de $h$, on a $\underset{a}{\lim}h=h(a)$ et $\underset{b}{\lim}h=h(b)$, et donc simplement $[h]_a^b=h(b)-h(a)$.
+		\item Dans le cas d'un intervalle semi-ouvert, par exemple $[a,b[$, alors le crochet $[h]_a^b$ converge si, et seulement si, $h$ possède une limite finie en $b$, et l'on a alors $[h]_a^b=\underset{b}{\lim}h-h(a)$.
+	\end{itemize}
+\end{rmq}
+
+\begin{thm}{Théorème d'intégration par parties}%prop
+	Soit $f$ et $g$ deux fonctions de classe $\mathcal{C}^1$ sur un intervalle d'extrémités $a$ et $b$, avec $-\infty\leqslant a<b\leqslant+\infty$.\\
+	Si le crochet $[fg]_a^b$ converge, alors les deux intégrales $\displaystyle\int_{a}^{b}f'g$ et $\displaystyle\int_{a}^{b}fg'$ sont de même nature et, en cas de convergence, on a : $$\int_{a}^{b}f'g=[fg]_a^b-\int_{a}^{b}fg'.$$
+\end{thm}
+
+\begin{ex}
+	Calcul de l'intégrale $\displaystyle\int_{1}^{+\infty}\frac{\arctan(t)}{t^2}\d t$.
+\end{ex}
+
+\begin{met}
+	En pratique, on peut commencer par intégrer par parties sur les primitives, puis passer à la limite. Il y a deux buts possibles :
+	\begin{itemize}
+		\item justifier une convergence ;
+		\item effectuer un calcul.
+	\end{itemize}
+\end{met}
+
+\begin{ex}
+	Étudions la convergence de $I=\displaystyle\int_{0}^{1}\frac{\ln(1-t^2)}{t^2}\d t$ et calculons son éventuelle valeur. %prolonger par continuité en 0, dériver le $\ln$, on trouve $-2\ln(2)$
+\end{ex}
+
+\begin{exo}
+	\begin{enumerate}
+		\item Montrer que pour tout $n\in\N\st$, l'intégrale $I_n=\displaystyle\int_{0}^{+\infty}\frac{\d t}{(1+t^2)^n}$.
+		\item A l'aide d'une intégration par parties, exprimer $I_{n+1}$ en fonction de $I_n$.
+		\item Calculer $I_n$.
+	\end{enumerate}
+\end{exo}
+
+\subsection{Changement de variables}
+
+Soit $(a,b,\alpha,\beta)\in\overline{\R}^4$ tel que $-\infty\leqslant a<b\leqslant+\infty$ et $-\infty\leqslant\alpha<\beta\leqslant+\infty$.
+
+\begin{thm}{Théorème de changement de variable (cas croissant)}%prop
+	Soit $f\in\mathcal{CM}(]a,b[,\K)$ et $\varphi:]\alpha,\beta[\to]a,b[$ une fonction de classe $\mathcal{C}^1$, strictement croissante et bijective. Alors, les intégrales $\displaystyle\int_{a}^{b}f(t)\d t$ et $\displaystyle\int_{\alpha}^{\beta}f(\varphi(u))\varphi'(u)\d u$ sont de même nature et, en cas de convergence :
+	$$\int_{a}^{b}f(t)\d t=\int_{\alpha}^{\beta}f(\varphi(u))\varphi'(u)\d u.$$
+\end{thm}
+\begin{proof}
+	Remarquer qu'en notant $F$ une primitive de $f$, alors $F\circ\varphi$ est une primitive de $\varphi'\times(f\circ\varphi)$, et utiliser un point méthode précédent.
+\end{proof}
+
+\begin{rmq}
+	Dans le cas d'un intervalle $[a,b[$, on pourra se ramener à la situation de la proposition précédente, puisque si $\displaystyle\int_{[a,b[}f$ converge, il en est de même pour $\displaystyle_{]a,b[}$ et les deux intégrales sont égales. Même principe pour un intervalle $]a,b]$.
+\end{rmq}
+
+\begin{ex}
+	Montrons l'égalité $\displaystyle\int_{0}^{+\infty}e^{-t^2}\d t=\frac{1}{2}\int_{0}^{+\infty}\frac{e^{-u}}{\sqrt{u}}\d u$.
+\end{ex}
+
+\begin{thm}{Théorème de changement de variable (cas décroissant)}%prop
+	Soit $f\in\mathcal{CM}(]a,b[,\K)$ et $\varphi:]\alpha,\beta[\to]a,b[$ une fonction de classe $\mathcal{C}^1$, strictement décroissante et bijective. Alors, les intégrales $\displaystyle\int_{a}^{b}f(t)\d t$ et $\displaystyle\int_{\alpha}^{\beta}f(\varphi(u))\varphi'(u)\d u$ sont de même nature et, en cas de convergence :
+	$$\int_{a}^{b}f(t)\d t=-\int_{\alpha}^{\beta}f(\varphi(u))\varphi'(u)\d u.$$
+\end{thm}
+\begin{proof}
+	Le principe est le même que pour la proposition précédente, en notant bien que cette fois on a : $$\underset{\alpha}{\lim}\varphi=b\quad\text{et}\quad\underset{\beta}{\lim}\varphi=a.$$
+\end{proof}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Dans chacun des deux cas, on a 	$\displaystyle\int_{a}^{b}f(t)\d t=\int_{\alpha}^{\beta}f(\varphi(u))\lvert\varphi'(u)\rvert \d u.$
+		\item Comme $\varphi'$ est de signe constant, en appliquant le théorème de changement de variable à $\lvert f\rvert$, on obtient que l'intégrabilité de $f$ sur $]a,b[$ sur $]a,b[$ équivaut à celle de $(f\circ\varphi)\times\varphi'$ sur $]\alpha,\beta[$.
+	\end{itemize}
+\end{rmq}
+
+\begin{ex}
+	Montrons la convergence de l'intégrale $I=\displaystyle\int_{0}^{+\infty}\frac{\ln(t)}{(1+t)^2}\d t$ et calculons sa valeur.
+\end{ex}
+
+\subsection{Semi-convergence}
+
+Il se peut qu'une fonction $f\in\mathcal{CM}(I,\C)$ ne soit pas intégrable, mais que l'intégrale $\displaystyle\int_I f$ converge. on dit alors que cette dernière intégrale est \textbf{semi-convergente}.
+
+
+Comme pour les séries semi-convergentes, l'étude de la convergence d'une intégrale non absolument convergente ne peut pas se faire complètement à l'aide des théorèmes de comparaison, puisque ces derniers ne concernent que des fonctions intégrables.
+
+
+Il va donc falloir transformer l'intégrale pour pouvoir étudier sa convergence. Un changement de variable ne sert à rien en général puisque, d'après la remarque précédente, on ne pourra pas obtenir une intégrale absolument convergente en partant d'une intégrale semi-convergente par changement de variable.
+
+
+L'outil principal est l'\textit{intégration par parties}, avec en général comme objectif de transformer l'intégrale en faisant apparaître une intégrale absolument convergente.
+
+\begin{ex}
+	\begin{enumerate}
+		\item Soit $\alpha\in]0,1]$. Étudions la convergence de l'intégrale $\displaystyle\int_{1}^{+\infty}\frac{e^{it}}{t^{\alpha}}$.
+		\item Convergence des deux intégrales $\displaystyle\int_{1}^{+\infty}\frac{\cos(t)}{t^{\alpha}}\d t$ et $\displaystyle\int_{1}^{+\infty}\frac{\sin(t)}{t^{\alpha}}\d t$.
+	\end{enumerate}
+\end{ex}
+
+\begin{rmq}
+	Pour l'étude de certaines intégrales non absolument convergentes, on pourra, comme pour les séries, effectuer un développement asymptotique, le dernier terme écrit étant :
+	\begin{itemize}
+		\item ou bien une fonction intégrable ;
+		\item ou bien de signe constant (dans le cas où la fonction est à valeurs réelles).
+	\end{itemize}
+\end{rmq}
+
+\begin{ex}
+	Déterminons la nature des intégrales $\displaystyle\int_{0}^{+\infty}\ln\left(1+\frac{\sin(t)}{\sqrt{t}}\right)\d t$ et $\displaystyle\int_{0}^{+\infty}\frac{\sin(t)}{\sqrt{t}}\d t$.
+\end{ex}
+
+\begin{rmq}
+	Remarquons que nous avons ainsi obtenu deux fonctions continues par morceaux sur $[1,+\infty[$, équivalentes en $+\infty$, mais dont les intégrales ne sont pas de même nature.
+\end{rmq}
+
+\begin{exo}
+	Montrer la convergence de l'intégrale $\displaystyle\int_{1}^{+\infty}\sin\left(\frac{\sin(t)}{\sqrt{t}}\right)\d t$.
+\end{exo}
+	
+\section{Intégration des relations de comparaison}
+
+Ici, les fonctions sont définies sur un intervalle $[a,b[$ avec $-\infty<a<b\leqslant+\infty$, et l'on fait une étude locale au voisinage de $b$.
+
+On procéderait de la même façon dans le cas d'un intervalle $]a,b]$, pour une étude au voisinage de $a$.
+
+\subsection{Cas convergent : comparaison des restes}
+
+\begin{thm}{Intégration des relations de comparaison (cas convergent)}%prop
+	Soit $f\in\mathcal{CM}([a,b[,\K)$, ainsi que $\varphi\in\mathcal{CM}([a,b[,\R])$ \textit{positive} et \textit{intégrable}.
+	\begin{itemize}
+		\item Si $f\underset{b}{=}\O(\varphi)$, alors $f$ est intégrable sur $[a,b[$ et $\displaystyle\int_{x}^{b}f\underset{x\to b}{=}\O\left(\int_{x}^{b}\varphi\right)$.
+		\item Si $f\underset{b}{=}\o(\varphi)$, alors $f$ est intégrable sur $[a,b[$ et $\displaystyle\int_{x}^{b}f\underset{x\to b}{=}\o\left(\int_{x}^{b}\varphi\right)$.
+		\item Si $f\underset{b}{\sim}\varphi$, alors $f$ est intégrable sur $[a,b[$ et $\displaystyle\int_{x}^{b}f\underset{x\to b}{\sim}\int_{x}^{b}\varphi$.
+	\end{itemize}
+\end{thm}
+
+\begin{rmq}
+	L'énoncé précédent, donnant un résultat au voisinage de $b$, reste valable si la fonction $\varphi$ n'est positive qu'au voisinage de $b$.
+\end{rmq}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Existence, équivalent puis développement asymptotique de $\displaystyle\int_{x}^{+\infty}\frac{\arctan(t)}{t\sqrt{t}}\d t$ lorsque $x$ tend vers $+\infty$.
+		\item Équivalent simple de $\arccos$ en $1$.
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	Pour tout $n\in\N\st$, on pose $u_n=\displaystyle\int_{n}^{+\infty}e^{-t^2}\d t$.
+	\begin{enumerate}
+		\item Montrer, pour tout $n\in\N\st$, la convergence de l'intégrale définissant $u_n$.
+		\item Déterminer un équivalent simple de la suite $(u_n)_{n\in\N\st}$. On pourra effectuer une intégration par parties.
+	\end{enumerate}
+\end{exo}
+
+\begin{met}
+	On peut appliquer le théorème si la fonction à laquelle on compare est de signe constant et intégrable.
+\end{met}
+
+\subsection{Cas divergent : comparaison des intégrales partielles}
+
+\begin{thm}{Intégration des relations de comparaison (cas divergent)}%prop
+	Soit $f\in\mathcal{CM}([a,b[,\K)$, ainsi que $\varphi\in\mathcal{CM}([a,b[,\R])$ \textit{positive} et \textit{non intégrable}.
+	\begin{itemize}
+		\item Si $f\underset{b}{=}\O(\varphi)$, alors $f$ est intégrable sur $[a,b[$ et $\displaystyle\int_{a}^{x}f\underset{x\to b}{=}\O\left(\int_{a}^{x}\varphi\right)$.
+		\item Si $f\underset{b}{=}\o(\varphi)$, alors $f$ est intégrable sur $[a,b[$ et $\displaystyle\int_{a}^{x}f\underset{x\to b}{=}\o\left(\int_{a}^{x}\varphi\right)$.
+		\item Si $f\underset{b}{\sim}\varphi$, alors $f$ est intégrable sur $[a,b[$ et $\displaystyle\int_{a}^{x}f\underset{x\to b}{\sim}\int_{a}^{x}\varphi$.
+	\end{itemize}
+\end{thm}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Soit $f\in\mathcal{CM}(\R_+,\K)$ et $l\in\K$. On suppose que $f(x)\xrightarrow[x\to+\infty]{}l$.\\
+		Alors on a $f(x)-l\underset{x\to+\infty}{=}o(1)$ et la fonction constante égale à $1$ est positive et non intégrable sur $[0,+\infty[$. Par intégration des relations de comparaison (cas divergent), on en déduit : $$\int_{0}^{x}(f(t)-l)\d t\underset{x\to+\infty}{=}\o\left(\int_{0}^{x}1\ \d t\right)\quad\text{donc}\quad\int_{0}^{x}f(t)\ \d t\underset{x\to+\infty}{=}lx+\o(x).$$
+		\item Déterminons, à l'aide d'une intégration par parties, un équivalent simple de $\displaystyle Li(x)=\int_{2}^{x}\frac{\d t}{\ln(t)}$ quand $x$ tend vers $+\infty$.
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	Pour tout $x>0$, on pose $f(x)=\displaystyle\int_{0}^{+\infty}\frac{e^{-t}}{x+t}\d t$.
+	\begin{enumerate}
+		\item Montrer que pour tout $x>0$, l'intégrale définissant $f(x)$ est convergente.
+		\item Déterminer un équivalent simple de $f(x)$ quand $x$ tend vers $0$.
+	\end{enumerate}
+\end{exo}
+
+\begin{met}
+	On peut appliquer le théorème si la fonction à laquelle on compare est de signe constant et non intégrable.
+\end{met}
+
+\end{document}

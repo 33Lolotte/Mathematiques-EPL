@@ -45,6 +45,10 @@
 \newcommand{\Tr}{\text{Tr}}
 \newcommand{\Vect}{\text{Vect}}
 \newcommand{\rg}{\text{rg}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
 
 \theoremstyle{plain}
 \newtheorem*{ind}{Indication}
@@ -323,11 +327,11 @@ A toute suite $(u_n)_{n\in\N}\in\K^\N$, on associe la suite $(S_n)_{n\in\N}$ dé
 \subsection{Théorèmes de comparaison}
 
 \begin{thm}{}%prop
-	Soit $(u_n)$ et $(v_n)$ deux séries telles que $u_n=O(v_n)$. Si $(v_n)$ est sommable, alors $(u_n)$ est sommable.
+	Soit $(u_n)$ et $(v_n)$ deux séries telles que $u_n=\O(v_n)$. Si $(v_n)$ est sommable, alors $(u_n)$ est sommable.
 \end{thm}
 
 \begin{rmq}
-	Évidemment, le résultat subsiste si l'on a $u_n=o(v_n)$.
+	Évidemment, le résultat subsiste si l'on a $u_n=\o(v_n)$.
 \end{rmq}
 
 \begin{ex}
@@ -365,7 +369,7 @@ Exercice Moulin.SSN.22
 \subsection{Règle de d'Alembert}
 
 \begin{thm}{Comparaison logarithmique}%prop
-	Si, à partir d'un certain rang, $u_n$ et $v_n$ sont strictement positifs et si $\displaystyle\frac{u_{n+1}}{u_n}\leqslant\frac{v_{n+1}}{v_n}$, alors $u_n=O(v_n)$, et donc :
+	Si, à partir d'un certain rang, $u_n$ et $v_n$ sont strictement positifs et si $\displaystyle\frac{u_{n+1}}{u_n}\leqslant\frac{v_{n+1}}{v_n}$, alors $u_n=\O(v_n)$, et donc :
 	\begin{itemize}
 		\item la convergence de $\displaystyle\sum v_n$ entraîne la convergence de $\displaystyle\sum u_n$ ;
 		\item la divergence de $\displaystyle\sum u_n$ entraîne la divergence.
@@ -400,7 +404,7 @@ Exercice Moulin.SSN.11
 
 \begin{thm}{Règle de Raabe-Duhamel (HP)}%prop
 	Soit $(u_n)_{n\in\N}$ une suite à valeurs strictement positives vérifiant :
-	$$\frac{u_{n+1}}{u_n}=1-\frac{\alpha}{n}+o\left(\frac{1}{n}\right)$$
+	$$\frac{u_{n+1}}{u_n}=1-\frac{\alpha}{n}+\o\left(\frac{1}{n}\right)$$
 	Alors :
 	\begin{itemize}
 		\item si $\alpha>1$, alors $\displaystyle\sum u_n$ converge.
@@ -408,13 +412,13 @@ Exercice Moulin.SSN.11
 	\end{itemize}
 \end{thm}
 
-Lorsque $\alpha=1$, on ne peut rien conclure. Les séries de Bertrand $\displaystyle\sum u_n$ avec : $$u_n=\frac{1}{n\ln(n)^\alpha}$$ vérifient : $\displaystyle\frac{u_{n+1}}{u_n}=1-\frac{1}{n}+\frac{\alpha}{n\ln(n)}+o\left(\frac{1}{n\ln(n)}\right)$ alors que, suivant les valeurs de $\alpha$, la série $\displaystyle\sum u_n$ peut converger ou diverger. \\
+Lorsque $\alpha=1$, on ne peut rien conclure. Les séries de Bertrand $\displaystyle\sum u_n$ avec : $$u_n=\frac{1}{n\ln(n)^\alpha}$$ vérifient : $\displaystyle\frac{u_{n+1}}{u_n}=1-\frac{1}{n}+\frac{\alpha}{n\ln(n)}+\o\left(\frac{1}{n\ln(n)}\right)$ alors que, suivant les valeurs de $\alpha$, la série $\displaystyle\sum u_n$ peut converger ou diverger. \\
 
 Néanmoins : 
 \begin{ex}
 	\begin{enumerate}
-		\item Soit $(u_n)_{n\in\N}$ une suite à valeurs strictement positives vérifiant : $$\frac{u_{n+1}}{u_n}=1+\frac{\alpha}{n}+O\left(\frac{1}{n^2}\right)$$ Alors il existe $K>0$ telle que $u_n\sim Kn^\alpha$.
-		\item Cas $\alpha=1$ : si $\displaystyle\frac{u_{n+1}}{u_n}=1-\frac{1}{n}+O\left(\frac{1}{n^2}\right)$, alors $\displaystyle\sum u_n$ diverge.
+		\item Soit $(u_n)_{n\in\N}$ une suite à valeurs strictement positives vérifiant : $$\frac{u_{n+1}}{u_n}=1+\frac{\alpha}{n}+\O\left(\frac{1}{n^2}\right)$$ Alors il existe $K>0$ telle que $u_n\sim Kn^\alpha$.
+		\item Cas $\alpha=1$ : si $\displaystyle\frac{u_{n+1}}{u_n}=1-\frac{1}{n}+\O\left(\frac{1}{n^2}\right)$, alors $\displaystyle\sum u_n$ diverge.
 		\item Formule de Stirling.
 	\end{enumerate}
 \end{ex}
@@ -489,8 +493,8 @@ Dans l'exemple qui suit, on traite le cas d'une fonction positive croissante pui
 \begin{thm}{}
 	Soit $\displaystyle\sum u_n$ et $\displaystyle\sum v_n$ deux séries numériques, la série $\displaystyle \sum v_n$ étant convergente et à terme général \textbf{réel positif}.
 	\begin{itemize}
-		\item Si $u_n=O(v_n)$, alors $R_n(u)=O(R_n(v))$.
-		\item Si $u_n=o(v_n)$, alors $R_n(u)=o(R_n(v))$.
+		\item Si $u_n=\O(v_n)$, alors $R_n(u)=\O(R_n(v))$.
+		\item Si $u_n=\o(v_n)$, alors $R_n(u)=\o(R_n(v))$.
 		\item Si $u_n\sim v_n$, alors $R_n(u)\sim R_n(v)$.
 	\end{itemize}
 \end{thm}
@@ -514,13 +518,15 @@ Ne pas oublier de vérifier le caractère positif (au moins à partir d'un certa
 	Équivalent, développement asymptotique à $2$ termes, puis développement asymptotique à $2026$ termes de $\displaystyle\sum_{k=n}^{+\infty}\frac{1}{k!}$.
 \end{exo}
 
+"Chaque année c'est plus difficile !"
+
 \subsection{Cas divergent}
 
 \begin{thm}{}
 	Soit $\displaystyle\sum u_n$ et $\displaystyle\sum v_n$ deux séries numériques, la série $\displaystyle \sum v_n$ étant divergente et à terme général \textbf{réel positif}.
 	\begin{itemize}
-		\item Si $u_n=O(v_n)$, alors $S_n(u)=O(S_n(v))$.
-		\item Si $u_n=o(v_n)$, alors $S_n(u)=(S_n(v))$.
+		\item Si $u_n=\O(v_n)$, alors $S_n(u)=\O(S_n(v))$.
+		\item Si $u_n=\o(v_n)$, alors $S_n(u)=\o(S_n(v))$.
 		\item Si $u_n\sim v_n$, alors $S_n(u)\sim S_n(v)$.
 	\end{itemize}
 \end{thm}
@@ -529,7 +535,7 @@ Ne pas oublier de vérifier le caractère positif (au moins à partir d'un certa
 	\begin{enumerate}
 		\item Soit $(u_n)_{n\in\N}$ une suite telle que $u_n\sim\displaystyle\frac{1}{n^\alpha}$ avec $\alpha<1$. Alors : $S_n(u)\sim\displaystyle\frac{1}{1-\alpha}n^{1-\alpha}$.
 		\item Développement asymptotique de $H_n=\displaystyle\sum_{k=1}^{n}\frac{1}{k}$ (utiliser plutôt $H_{n-1}$). \\
-		On trouve : $H_n=\displaystyle\ln(n)+\gamma+\frac{1}{2n}-\frac{1}{12n^2}+O\left(\frac{1}{n^3}\right)$.
+		On trouve : $H_n=\displaystyle\ln(n)+\gamma+\frac{1}{2n}-\frac{1}{12n^2}+\O\left(\frac{1}{n^3}\right)$.
 	\end{enumerate}
 \end{ex}
 
@@ -656,7 +662,7 @@ La transformation d'Abel est l'équivalent discret de l'intégration par parties
 
 \subsection{Utilisation d'une primitive (HP)}
 
-Pour étudier une série $\displaystyle\sum f(n)$ semi-convergente, on peut considérer une primitive $F$ de $f$ et montrer que la série de terme général $f(n)-(F(n+1)-F(n))$ converge (absolument). la série $\displaystyle\sum f(n)$ converger alors si, et seulement si, $F(n)$ admet une limite finie.
+Pour étudier une série $\displaystyle\sum f(n)$ semi-convergente, on peut considérer une primitive $F$ de $f$ et montrer que la série de terme général $f(n)-(F(n+1)-F(n))$ converge (absolument). La série $\displaystyle\sum f(n)$ converge alors si, et seulement si, $F(n)$ admet une limite finie.
 
 \begin{ex}
 	$\displaystyle\sum n^z$ pour $z\in\C$.

@@ -489,18 +489,18 @@ Pour montrer cela, il suffit de remarquer que le membre de gauche est une forme 
 \end{PM}
 \begin{PM}{Expression dans le cas diagonalisable} Soit $A\in\mathcal{M}_n(\K)$ diagonalisable et $(E_1,\ldots,E_n)$ une base de $\K^n$ constituée de vecteurs propres de $A$ associés aux valeurs propres $\lambda_1,\ldots,\lambda_n$. Si on pose $p$ la matrices dont les colonnes sont $E_1,\ldots,E_n$, alors : $$A=PDP\inv \text{  ou  }D=\text{Diag}(\lambda_1,\ldots,\lambda_n)$$
 \end{PM}
-\begin{PM}{CS de diagonalisabilité} Pour montrer qu'une endomorphisme d'un espace vectoriel de dimension $n$, ou une matrice de taille $n$, est diagonalisable, il suffit de montrer que la somme des dimensions de ses sous-espaces propres est supérieure ou égale à $n$.
+\begin{PM}{CS de diagonalisabilité} Pour montrer qu'un endomorphisme d'un espace vectoriel de dimension $n$, ou une matrice de taille $n$, est diagonalisable, il suffit de montrer que la somme des dimensions de ses sous-espaces propres est supérieure ou égale à $n$.
 \end{PM}
 \begin{PM}{Savoir si un endomorphisme est diagonalisable} Pour savoir si un endomorphisme $u$ est diagonalisable, on peut calculer son polynôme caractéristique.
 \begin{itemize}
 	\item S'il n'est pas scindé, alors $u$ n'est pas diagonalisable.
-	\item Sinon, pour toute valeur propre multiple, on compare $\dim(E\lambda(u))$ et $m(\lambda)$, par exemple en calculant le rang de $u-\lambda\text{Id}_E$.
+	\item Sinon, pour toute valeur propre multiple, on compare $\dim(E_\lambda(u))$ et $m(\lambda)$, par exemple en calculant le rang de $u-\lambda\text{Id}_E$.
 \end{itemize}
 \end{PM}
-\begin{PM}{Processus de trigonalisation} Une base trigonalisation commençant par un vecteur propre, pour trigonaliser un endomorphisme $u$, on commence souvent par compléter un vecteur propre de $u$ en une base de $E$, dans laquelle la matrice de $u$ est donc de la forme $$\begin{pmatrix}
+\begin{PM}{Processus de trigonalisation} Une base de trigonalisation commençant par un vecteur propre, pour trigonaliser un endomorphisme $u$, on commence souvent par compléter un vecteur propre de $u$ en une base de $E$, dans laquelle la matrice de $u$ est donc de la forme $$\begin{pmatrix}
 	\lambda&L\\
 	0&A
-\end{pmatrix}\in\mathcal{M}_n(\K) \ \ \text{où}\ \ A\in\mathcal{M}_{n-1}(\K)\ \ \text{et} \ \ L\in\mathcal{M}_{n-1,1}(\K)$$ Il suffit alors de montrer que l'on peut prendre $A$ triangulaire supérieure pour conclure. Comme la matrice $A$ n'est pas \textit{a priori} la matrice d'un endomorphisme, on raisonne le plus souvent en trigonalisant la matrice $A$ (ou alors on fait le terroriste en composant par une projection sur un hyperplan pour se ramener à un endomorphisme).
+\end{pmatrix}\in\mathcal{M}_n(\K) \ \ \text{où}\ \ A\in\mathcal{M}_{n-1}(\K)\ \ \text{et} \ \ L\in\mathcal{M}_{1,n-1}(\K)$$ Il suffit alors de montrer que l'on peut prendre $A$ triangulaire supérieure pour conclure. Comme la matrice $A$ n'est pas \textit{a priori} la matrice d'un endomorphisme, on raisonne le plus souvent en trigonalisant la matrice $A$ (ou alors on fait le terroriste en composant par une projection sur un hyperplan pour se ramener à un endomorphisme).
 \end{PM}
 \section{Astuces}
 \subsection{Généralités}
@@ -1180,7 +1180,7 @@ En particulier, la règle de d'Alembert pour les séries permet parfois de déte
 	\item si l'on n'en trouve pas, on peut utiliser la méthode de variation de la constante car une solution non nulle de l'équation homogène associée ne s'annule pas.
 \end{itemize}
 \end{PM}
-\begin{PM}{Résolution d'une EDL d'ordre $1$} Résolution d'une équation différentielle de la forme $a(t)y'+b(t)y=c(t)$ sur un intervalle sur lequel $a$ ne s'annule :
+\begin{PM}{Résolution d'une EDL d'ordre $1$ non normalisée} Résolution d'une équation différentielle de la forme $a(t)y'+b(t)y=c(t)$ sur un intervalle sur lequel $a$ s'annule :
 \begin{itemize}
 	\item On commence par résoudre l'équation sur tout intervalle sur lequel $a$ ne s'annule pas (on sait que l'ensemble des solutions est une droite affine).
 	\item On procède ensuite par analyse/synthèse puisque l'on n'a aucune théorème ni d'existence ni d'unicité.
@@ -1312,7 +1312,7 @@ Remarquer qu'il n'est donc pas nécessaire de calculer $P\inv$. Et lorsqu'on tri
 \end{PM}
 
 \begin{PM}{Recherche d'\textit{extrema}}
-	Pour démontrer qu'une fonction $f:A\to\R$ admet un extremum en $a$, on peut étudier le signe de $g:h\mapsto f(a+h)-f(a)$.
+	Pour démontrer qu'une fonction $f:A\to\R$ admet un \textit{extremum} en $a$, on peut étudier le signe de $g:h\mapsto f(a+h)-f(a)$.
 	\begin{itemize}
 		\item Si $g$ est de signe fixe au voisinage de $0$, alors $f$ admet un \textit{extremum} local en $a$.
 		\item Si $g$ est de signe fixe sur tout son domaine de définition, alors $f$ admet un \textit{extremum} global en $a$.
@@ -1473,7 +1473,7 @@ Pour montrer qu'un ensemble infini est dénombrable, on peut :
 \end{PM} 
 \begin{PM}{Loi d'une fonction de deux variables aléatoires discrètes indépendantes}Connaissant la loi de deux variables aléatoires indépendantes $X$ et $Y$, on peut en déduire la loi de tout variable aléatoire $Z$ fonction de $X$ et $Y$. Pour tout $z\in Z(\Omega)$, on écrit $\left\{Z=z\right\}$ comme réunion d'événements de la forme $\left\{X=x\right\}\cap\left\{Y=y\right\}$.
 \end{PM}
-\begin{PM}{Détermination d'une espérance sans connaître la loi}Pour déterminer la loi d'une variable aléatoire discrète dont on ne connaît pas la loi, on peut chercher à la décomposer en somme de variables aléatoires discrètes d'espérance connue. Par exemple, on pourra décomposer la variable aléatoire sous forme de somme d'indicatrices, et utiliser le fait que l'espérance de l'indicatrice d'un événement est la probabilité de cet événement.
+\begin{PM}{Détermination d'une espérance sans connaître la loi}Pour déterminer l'espérance d'une variable aléatoire discrète dont on ne connaît pas la loi, on peut chercher à la décomposer en somme de variables aléatoires discrètes d'espérance connue. Par exemple, on pourra décomposer la variable aléatoire sous forme de somme d'indicatrices, et utiliser le fait que l'espérance de l'indicatrice d'un événement est la probabilité de cet événement.
 \end{PM}
 \section{Astuces}
 

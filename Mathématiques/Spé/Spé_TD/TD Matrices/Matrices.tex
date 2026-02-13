@@ -278,7 +278,9 @@ Dans toute la feuille d'exercices, $\K$ désigne un sur-corps de $\Q$.
 		A&0
 	\end{pmatrix}$ avec $A\in\mathcal{M}_n(\K)$. Montrer que $\text{rg}(M)=n+\text{rg}(A^2)$.
 \end{ex}
-Vérifier que le carré est bien sur $A$ et non pas sur son rang.
+\begin{proof}
+	Effectuer la transvection par blocs $L_2\leftarrow L_2-AL_1$ pour se ramener à une matrice triangulaire par blocs de blocs diagonaux $I_n$ et $-A^2$. Un exemple du cours (obtenu par transvection par blocs avec un bloc diagonal inversible) donne alors le résultat souhaité.
+\end{proof}
 
 \begin{ex}[Moulin.Mat.29]{}
 	Soit $A\in\mathcal{M}_{p,n}(\K)$ et $B\in\mathcal{M}_{n,p}(\K)$. Montrer : $$\text{rg}\begin{pmatrix}

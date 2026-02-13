@@ -23,7 +23,6 @@
 
 \setlist[itemize]{label=$\bullet$}
 
-
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -45,6 +44,10 @@
 \newcommand{\Tr}{\text{Tr}}
 \newcommand{\Vect}{\text{Vect}}
 \newcommand{\rg}{\text{rg}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
 
 \theoremstyle{plain}
 \newtheorem*{ind}{Indication}
@@ -470,7 +473,7 @@ Exercice Moulin.SE.3
 		\item La somme d'une série entière de rayon de convergence infini est définie sur $\K$.
 		\item Le domaine de convergence de la série entière $\displaystyle\sum_{n\geqslant 1}\frac{z^n}{n^2}$ est le disque fermé $D_F(0,1)$ puisque :
 		\begin{itemize}
-			\item si $\lvert z\rvert\leqslant 1$, alors $\displaystyle\frac{z^n}{n^2}=O\left(\frac{1}{n^2}\right)$ ;
+			\item si $\lvert z\rvert\leqslant 1$, alors $\displaystyle\frac{z^n}{n^2}=\O\left(\frac{1}{n^2}\right)$ ;
 			\item si $\lvert z\rvert >1$, alors $\displaystyle\frac{\lvert z\rvert^2}{n^2}\xrightarrow[n\to+\infty]{}+\infty$ par croissances comparées donc $\displaystyle\sum_{n\geqslant 1}\frac{z^n}{n^2}$ est une série grossièrement divergente.
 		\end{itemize}
 		Le rayon de convergence de cette série entière vaut donc $1$.
@@ -486,7 +489,7 @@ Exercice Moulin.SE.3
 \begin{thm}{}%cor
 	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières de rayons de convergence respectifs $R_a$ et $R_b$.
 	\begin{itemize}
-		\item Si $a_n=O(b_n)$ ou $a_n=o(b_n)$, alors $R_a\geqslant R_b$.
+		\item Si $a_n=\O(b_n)$ ou $a_n=\o(b_n)$, alors $R_a\geqslant R_b$.
 		\item Si $\lvert a_n\rvert\sim \lvert b_n\rvert$, alors $R_a=R_b$.
 	\end{itemize}
 \end{thm}
@@ -551,7 +554,7 @@ Exercice Moulin.SE.6
 	Indication : On pourra étudier les suites extraites de rangs pairs et impairs de la suite $(\lvert a_n\rvert r^n)_{n\in\N\st}$ pour $r\in\R_+\st$ fixé.
 \end{exo}
 
-\begin{thm}
+\begin{thm}{}
 	Soit $\alpha\in\R$. La série entière $\displaystyle n^\alpha z^n$ est de rayon de convergence $1$.
 \end{thm}
 \begin{proof}
@@ -755,8 +758,8 @@ La propriété suivante généralise le théorème précédent en exprimant le f
 
 \subsubsection*{Primitivation d'une série entière}
 
-\begin{thm}
-	Si $\displaystyle\sum a_nt^n$ est une série entière de rayon de convergence $R>0$, sa somme admet pour primitives sur $]-R,R[$ les : $$\int\left(\sum_{n=0}^{+\infty}a_nt^n\right)=k+\sum_{n=0}^{+\infty}\frac{a_n}{n+1}t^n\ \ \text{avec}\ k\in\K$$
+\begin{thm}{}
+	Si $\displaystyle\sum a_nt^n$ est une série entière de rayon de convergence $R>0$, sa somme admet pour primitives sur $]-R,R[$ les : $$\int\left(\sum_{n=0}^{+\infty}a_nt^n\right)\d t=k+\sum_{n=0}^{+\infty}\frac{a_n}{n+1}t^n\ \ \text{avec}\ k\in\K$$
 \end{thm}
 
 \begin{rmq}
@@ -782,7 +785,7 @@ Exercice Moulin.SE.35
 \subsection{Formule de Cauchy et holomorphie (HP)}
 
 \begin{thm}{Formule de Cauchy (HP)}%prop
-	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R>0$ et $f$ sa somme. Alors, pour tout $n\in\N$, et tout $r\in]0,R[$ : $$a_n=\frac{1}{2\pi r^n}\int_{0}^{2\pi}f(re^{i\theta})e^{-in\theta}d\theta$$
+	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R>0$ et $f$ sa somme. Alors, pour tout $n\in\N$, et tout $r\in]0,R[$ : $$a_n=\frac{1}{2\pi r^n}\int_{0}^{2\pi}f(re^{i\theta})e^{-in\theta}\d\theta$$
 \end{thm}
 \begin{proof}
 	Intégrer terme à terme.
@@ -802,7 +805,7 @@ Exercice Moulin.SE.35
 \end{dfn}
 
 \begin{dfn}
-	Soit $\Gamma:[a,b]\to\C$ de classe $\mathcal{C}^1$ et $f:D\to\C$ continue, tels que $\Gamma([a,b])\subset D$. On définit l'intégrale de $f$ sur le chemin $\Gamma$ par : $$\int_\Gamma f(z)dz=\int_{a}^{b}f(\Gamma(t))\Gamma'(t)dt$$
+	Soit $\Gamma:[a,b]\to\C$ de classe $\mathcal{C}^1$ et $f:D\to\C$ continue, tels que $\Gamma([a,b])\subset D$. On définit l'intégrale de $f$ sur le chemin $\Gamma$ par : $$\int_\Gamma f(z)\d z=\int_{a}^{b}f(\Gamma(t))\Gamma'(t)\d t$$
 \end{dfn}
 
 \begin{exo}
@@ -884,7 +887,7 @@ On dit que $f$ est \textbf{développable en série entière} (au voisinage de $0
 \end{thm}
 
 \begin{rmq}
-	On dispose pour cela de l'inégalité de Taylor-Lagrange : $$\lvert R_n(x)\rvert\leqslant\frac{\lvert x\rvert^{n+1}}{(n+1)!}\underset{[0,x]}{\sup}\lvert f^{(n+1)}\rvert$$ ou de l'expression du reste : $$R_n(x)=\int_{0}^{x}\frac{(x-u)^n}{n!}f^{(n+1)}(u)du=x^{n+1}\int_{0}^{1}\frac{(1-t)^n}{n!}f^{(n+1)}(xt)dt$$ Utiliser l'expression explicite du reste est un cas désespéré. Dans ce cas, ne pas redémontrer l'inégalité de Taylor-Lagrange : affiner les majorations par un découpage de l'intégrale.
+	On dispose pour cela de l'inégalité de Taylor-Lagrange : $$\lvert R_n(x)\rvert\leqslant\frac{\lvert x\rvert^{n+1}}{(n+1)!}\underset{[0,x]}{\sup}\lvert f^{(n+1)}\rvert$$ ou de l'expression du reste : $$R_n(x)=\int_{0}^{x}\frac{(x-u)^n}{n!}f^{(n+1)}(u)\d u=x^{n+1}\int_{0}^{1}\frac{(1-t)^n}{n!}f^{(n+1)}(xt)\d t$$ Utiliser l'expression explicite du reste est un cas désespéré. Dans ce cas, ne pas redémontrer l'inégalité de Taylor-Lagrange : affiner les majorations par un découpage de l'intégrale.
 \end{rmq}
 
 \begin{exo}
@@ -970,7 +973,7 @@ Une méthode de détermination de développement en série entière est celle de
 
 \begin{ex}
 	\begin{enumerate}
-		\item Développons en série entière la fonction $f:x\mapsto\displaystyle e^{x^2}\int_{0}^{x}e^{-t^2}dt$. \\
+		\item Développons en série entière la fonction $f:x\mapsto\displaystyle e^{x^2}\int_{0}^{x}e^{-t^2}\d t$. \\
 		La fonction $f$ est dérivable sur $\R$ et on a : $$\forall x\in\R,\ f'(x)=2xf(x)+1\ \ \text{et}\ \ f(0)=0$$
 		Par substitution dans le développement en série entière de l'exponentielle, puis primitivation et produit, $f$ est développable en série entière. Il existe donc une suite $(a_n)_{n\in\N}$ de réels telle que pour tout réel $x$ on ait : $$xf(x)=\sum_{n=2}^{+\infty}a_{n-2}x^{n-1}$$
 		$$f'(x)=\sum_{n=1}^{+\infty}na_nx^{n-1}$$

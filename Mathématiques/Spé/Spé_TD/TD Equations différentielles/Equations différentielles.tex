@@ -154,7 +154,7 @@ Dans tous les exercices, $I$ est un intervalle de $\R$ et $\K$ désigne $\R$ ou 
 	\begin{enumerate}
 		\item Montrer que $f(x)=\displaystyle\int_{0}^{+\infty}\frac{\sin t}{x+t}dt$ est solution de $(E)$ sur $\R_+\st$ et que c'est la seule solution ayant pour limite $0$ en $+\infty$.
 		\item Montrer que $g(x)=\displaystyle\int_{0}^{+\infty}\frac{e^{-xt}}{1+t^2}dt$ est solution de $(E)$ sur $\R_+\st$. Calculer la limite de $g(x)$ quand $x$ tend vers $+\infty$ et en déduire : $$\forall x\in\R_+\st,\ f(x)=g(x)$$
-		\item Montrer que $f$ et $g$ sont continue sur $\R_+$ et en déduire la valeur de $\displaystyle\int_{0}^{+\infty}\frac{s\in t}{t}dt$.
+		\item Montrer que $f$ et $g$ sont continues sur $\R_+$ et en déduire la valeur de $\displaystyle\int_{0}^{+\infty}\frac{\sin t}{t}dt$.
 	\end{enumerate}
 \end{ex}
 
@@ -245,6 +245,9 @@ Dans tous les exercices, $I$ est un intervalle de $\R$ et $\K$ désigne $\R$ ou 
 		z'=x
 	\end{cases}$$
 \end{ex}
+\begin{proof}
+	Mettre le système sous la forme $X'=JX$. On peut calculer l'exponentielle de la matrice en remarquant que $J^3=I_3$.
+\end{proof}
 
 \begin{ex}[Moulin.ED.27]{}
 	Résoudre le système différentiel $X'=AX$, où : $$A=\begin{pmatrix}
@@ -558,7 +561,7 @@ Dans tous les exercices, $I$ est un intervalle de $\R$ et $\K$ désigne $\R$ ou 
 	Soit $y$ une solution de cette équation. Prouvons les deux points dans l'ordre.
 	\begin{itemize}
 		\item En intégrant $y''$ entre $0$ et $t$ et en remarquant que $qy$ est intégrable car c'est un $O(q)$, on trouve que $y'$ admet une limite finie en $+\infty$. Cette limite ne peut être non nulle, car en intégrant $y'$ au voisinage de $+\infty$ là où $y'$ serait de signe constant est de module minorée par un réel strictement positif, on trouverait que $y$ est non bornée.
-		\item S'il existe une solution non nulle bornée $y_1$, on considère une deuxième solution $y_2$ telle que $(y_1,y_2)$ soit un système fondamental. Alors, le wronskien de $y_1$ et $y_2$ est constant car l'équation différentielle ne possède pas de terme en $y'$, et il est donc égal à une constante non nulle car $(y_1,y_2)$ est un système fondamental. De plus, si $y_2$ est bornée, alors d'après le premier point, le wronskien doit tendre vers $0$ en l'infini, donc être nul. Or, il est non nul, donc $y_2$ et non bornée. Dans tous les cas, il existe une solution non bornée.
+		\item S'il existe une solution non nulle bornée $y_1$, on considère une deuxième solution $y_2$ telle que $(y_1,y_2)$ soit un système fondamental. Alors, le wronskien de $y_1$ et $y_2$ est constant car l'équation différentielle ne possède pas de terme en $y'$, et il est donc égal à une constante non nulle car $(y_1,y_2)$ est un système fondamental. De plus, si $y_2$ est bornée, alors d'après le premier point, le wronskien doit tendre vers $0$ en l'infini, donc être nul. Or, il est non nul, donc $y_2$ est non bornée. Dans tous les cas, il existe une solution non bornée.
 	\end{itemize}
 \end{proof}
 
