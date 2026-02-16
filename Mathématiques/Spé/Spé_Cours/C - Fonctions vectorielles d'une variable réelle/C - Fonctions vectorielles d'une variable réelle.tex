@@ -1,0 +1,1023 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+
+\setlist[itemize]{label=$\bullet$}
+
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Vect}{\text{Vect}}
+\newcommand{\rg}{\text{rg}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
+
+
+\theoremstyle{plain}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+
+\newtheorem*{ex}{Exemple}
+\newtheorem*{met}{Point méthode}
+\newtheorem{exo}{Exercice}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{notation}{Notation}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{terminologie}{Terminologie}
+\newtheorem*{attention}{Attention}
+\newtheorem*{conséquence}{Conséquence}
+
+\theoremstyle{remark}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{dfn}{
+	enhanced,
+	colback=white,
+	fonttitle=\sc,
+	title={Définition \thetcbcounter}
+}
+
+\newtcolorbox[auto counter]{thm}[2][]{enhanced, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+
+\title{Fonctions vectorielles d'une variable réelle}
+\date{}
+
+\begin{document}
+\tableofcontents
+
+\newpage
+\maketitle
+
+Le but de ca chapitre est de généraliser aux fonctions vectorielles les notions de dérivation et de primitivation déjà vues pour les fonctions à valeurs réelles ou complexes.
+
+Pour cela, on considère des fonctions sur un intervalle $I$ de $\R$ et à valeurs dans un espace vectoriel normé $E$ de dimension finie sur $\K=\R$ ou $\K=\C$. Le cas trivial $E=\{0\}$ étant sans intérêt, on supposera $E\ne\{0\}$.
+
+On peut, au moyen d'une base $\mathcal{B}=(e_i)$, ramener l'étude d'une fonction $f:I\to E$ à l'étude de ses \textit{fonctions coordonnées} (ou \textit{fonctions composantes}), c'est-à-dire des fonctions $f_i$ à valeurs dans $\K$ définies par :
+$$\forall t\in I,\ f(t)=\sum_{i}f_i(t)e_i.$$
+
+On note $p_i$ l'application $\displaystyle\sum y_ie_i\mapsto y_i$ et $q_i$ l'application $t\mapsto te_i$. Les applications $p_i$ et $q_i$ sont linéaires donc continues (pourquoi ?) et l'on a :
+$$f_i=p_i\circ f\quad\text{et}\quad f=\sum_{i=1}^{n}q_i\circ f_i.$$
+
+\section{Dérivation}
+
+\subsection{Dérivée en un point}
+
+On considère ici une fonction $f:I\to E$ et $a$ un point de $I$.
+
+\begin{dfn}
+	L'application $f$ est \textbf{dérivable en $a$} si son \textbf{taux d'accroissement en $a$} :
+	$$\begin{array}{lrcl}
+		\tau_a(f):&I\setminus\{a\}&\longrightarrow&E\\
+		&t&\longmapsto&\displaystyle\frac{f(t)-f(a)}{t-a}
+	\end{array}$$
+	admet une limite dans $E$ en $a$, alors appelée \textbf{dérivée de $f$ en $a$} et notée :
+	$$f'(a)\quad\text{ou}\quad\frac{\d f}{\d t}(a).$$
+\end{dfn}
+
+\begin{rmq}
+	La dérivée de $f$ en $a$ est parfois appelée \textbf{vecteur dérivé} de $f$ en $a$.
+\end{rmq}
+
+\begin{thm}{}%prop
+	La fonction $f$ est dérivable en $a\in I$ si, et seulement s'il existe un vecteur $l\in E$ et une fonction $\alpha:I\to E$ tendant vers $0$ en $a$ tels que :
+	$$\forall t\in I,\ f(t)=f(a)+(t-a)l+(t-a)\alpha().$$
+	On a alors $f'(a)=l$.
+\end{thm}
+
+\paragraph{Interprétation cinématique}
+Lorsque la fonction $f$ représente le mouvement d'un point matériel en fonction du temps, le vecteur $f'(t_0)$ représente la \textbf{vitesse instantanée} du point à l'instant $t_0$.
+
+\begin{thm}{}%cor
+	Si la fonction $f$ est dérivable en $a$, alors elle est continue en $a$.
+\end{thm}
+
+\subsubsection*{Dérivabilité à droite et à gauche}
+
+\begin{dfn}
+	\begin{itemize}
+		\item Si $a$ n'est pas l'extrémité droite de $I$, on dit que $f$ est \textbf{dérivable à droite} en $a$ si la restriction $f_{\mid I\cap [a,+\infty[}$ est dérivable en $a$. Par définition, la \textbf{dérivée à droite de $f$ en $a$} est alors $(f_{\mid I\cap [a,+\infty[})'(a)$. Elle est notée $f_d'(a)$.
+		\item Si $a$ n'est pas l'extrémité gauche de $I$, on dit que $f$ est \textbf{dérivable à gauche} en $a$ si la restriction $f_{\mid I\cap ]-\infty,a]}$ est dérivable en $a$. Par définition, la \textbf{dérivée à gauche de $f$ en $a$} est alors $(f_{\mid I\cap ]-\infty,a]})'(a)$. Elle est notée $f_g'(a)$.
+	\end{itemize}
+\end{dfn}
+
+\begin{rmq}
+	\begin{itemize}
+		\item  Si $I$ admet un maximum $a$, la notion de dérivabilité à droite en $a$ n'a pas de sens puisque $I\cap[a,+\infty[=\{a\}$. Dans ce cas, la dérivabilité à gauche de $f$ en $a$ est équivalente à sa dérivabilité en $a$, et, sous réserve d'existence, $f'(a)=f_g'(a)$.
+		\item De la même façon, si $I$ admet un minimum en $a$, seule la dérivabilité à droite en $a$ a un sens, et elle est alors équivalente à la dérivabilité en $a$.
+	\end{itemize}
+	Ainsi, les notions de dérivabilité latérale ne sont pertinentes qu'en un point intérieur.
+\end{rmq}
+
+\paragraph{Résultats} Soit $a$ un point intérieur à $I$.
+\begin{itemize}
+	\item La fonction $f$ est dérivable en $a$ si, et seulement si, elle est dérivable à droite et à gauche en $a$ et $f_g'(a)=f_d'(a)$.
+	\item Une fonction dérivable à droite et à gauche en $a$ est continue en $a$, car elle est continue à droite et à gauche en $a$.
+\end{itemize}
+
+\begin{ex}
+	Pour discuter, suivant les valeurs de $a$, $b$ et $c$, la classe de la fonction :
+	$$\begin{array}{rcl}
+		\R&\longrightarrow&\R\\
+		x&\longmapsto&\displaystyle\begin{cases}
+			a+bx+cx^2&\text{si }x<0\\
+			\cos(x)&\text{si }x\geqslant0,
+		\end{cases}
+	\end{array}$$ on commence par montrer que l'on peut la définir par :
+	$$\begin{array}{rcl}
+		\R&\longrightarrow&\R\\
+		x&\longmapsto&\displaystyle\begin{cases}
+			a+bx+cx^2&\text{si }x\leqslant0\\
+			\cos(x)&\text{si }x\geqslant0,
+		\end{cases}
+	\end{array}$$ ce qui donne l'existence des dérivées à droite et à gauche à tout ordre en $0$. Il reste à voir jusqu'à quel ordre ces dérivées latérales sont égales.
+\end{ex}
+
+\subsection{Fonction dérivée}
+
+\begin{dfn}
+	On dit que $f$ est \textbf{dérivable} sur $I$ si elle est dérivable en tout point de $I$. On note alors $f'$ ou $\displaystyle\frac{\d f}{\d t}$, l'application qui à tout $t\in I$ associe le vecteur dérivé de $f$ en $t$. On l'appelle \textbf{application dérivée de $f$}, ou plus simplement \textbf{la dérivée de $f$}.
+\end{dfn}
+
+\begin{notation}
+	L'ensemble des fonctions dérivables de $I$ dans $E$ se note $\mathcal{D}(I,E)$.
+\end{notation}
+
+Exercice Moulin.FV.01
+
+\subsection{Inégalité des accroissements finis}
+
+\begin{thm}{Théorème fondamental de l'analyse (HP)}%thm
+	Soit $I=[a,b]$, avec $a<b$. On suppose que $f:I\to E$ et $\varphi:I\to\R$ sont telles que :
+	\begin{itemize}
+		\item $f$ et $\varphi$ soient continues sur $I$ ;
+		\item $f$ et $\varphi$ soient dérivables à droite sur $[a,b[$ ;
+		\item $\forall t\in[a,b[,\ \lVert f_d'(t)\rVert\leqslant\varphi_d'(t)$.
+	\end{itemize}
+	Alors $\lVert f(b)-f(a)\rVert\leqslant\varphi(b)-\varphi(a)$.
+\end{thm}
+\begin{proof}
+	Considérer la borne supérieure de l'ensemble :
+	$$A=\{t\in[a,b]\mid \lVert f(t)-f(a)\rVert\leqslant\varphi(t)-\varphi(a)+\varepsilon(t-a)\}.$$
+\end{proof}
+
+\begin{thm}{}%cor
+	Le résultat reste vrai si l'on suppose $f$ et $\varphi$ continues sur $[a,b]$ et dérivables à droite sur $]a,b[$. %démontrer sur $[x,b]$ avec $x>a$ et faire tendre vers $a$ par continuité
+\end{thm}
+
+\begin{ex}
+	Une fonction continue sur un intervalle $I$ admettant en tout point $x$ intérieur à $I$ une dérivée à droite vérifiant $\lVert f_d'\rVert\leqslant k$ est $k$-lipschitzienne sur $I$.
+\end{ex}
+
+\begin{exo}
+	Montrer qu'une fonction continue d'un intervalle $I$ dans $\R$ possède en tout point intérieur à $I$ une dérivée à droite positive est croissante sur $I$.
+\end{exo}
+
+\begin{thm}{}%cor
+	Si $f$ est continue sur un intervalle $I$ et dérivable sur l'intérieur de $I$ a une dérivée bornée par $M$ sur l'intérieur de $I$, alors $f$ est $M$-lipschitzienne sur $I$.
+\end{thm}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Pour les fonctions à valeurs réelles, ce dernier résultat est une conséquence immédiate de l'égalité des accroissements finis.
+		\item Pour les fonctions à valeurs dans un espace vectoriel de dimension finie, le programme se limite à la classe $\mathcal{C}^1$, grâce au théorème de la partie $3.3$.
+	\end{itemize}
+\end{rmq}
+
+\begin{exo}
+	Soit $f$ et $\varphi$ continues sur $[a,b]$, dérivables en tout point $x$ de $[a,b]$, sauf un nombre fini, avec $\lVert f'(x)\rVert\leqslant\varphi(x)$. Montrer qu'alors $\lVert f(b)-f(a)\rVert\leqslant\varphi(b)-\varphi(a)$.
+\end{exo}
+
+\begin{thm}{Caractérisation des fonctions constantes}%thm
+	Une application est constante sur l'intervalle $I$ si, et seulement si, elle est dérivable et de dérivée nulle en tout point de $I$.
+\end{thm}
+
+\begin{attention}
+	On a souvent des résultats sur une fonction $f$ à partir de sa dérivée, mais jamais dans l'autre sens (sauf hypothèse(s) supplémentaire(s)).
+\end{attention}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Pour les fonctions $f$ de $\R$ dans $\R$, on a équivalence entre la croissance de $f$ et la positivité de $f'$ (grâce à l'égalité des accroissements finis).
+		\item Une fonction dérivable est lipschitzienne si, et seulement si, sa dérivée est bornée.
+	\end{enumerate}
+\end{ex}
+
+Ainsi, ce n'est pas parce qu'une fonction dérivable est "petite" que sa dérivée l'est aussi. Physiquement, un signal peut être faible mais avoir de grandes variations (bruit). En revanche, l'inégalité des accroissements finis permet de montrer la réciproque.
+
+\begin{thm}{}%prop
+	Soit $f:I\to E$ continue sur $I$ dérivable sur $I\setminus\{a\}$, avec $a\in I$. Soit $n\in\N$ tel que $f'(t)=\o((t-a)^n)$ au voisinage de $a$. Alors $f(t)-f(a)=\o((t-a)^{n+1})$.
+\end{thm}
+
+\begin{dfn}
+	Une fonction $f:I\to E$ admet un \textbf{développement limité à l'ordre $n$ en $a$} s'il existe des éléments $(a_0,\ldots,a_n)\in E^{n+1}$ tels que :
+	$$f(t)=a_0+(t-a)a_1+\cdots+(t-a)^na_n+\o((t-a)^n).$$
+\end{dfn}
+
+\begin{thm}{}%cor
+	Si une fonction $f$ continue sur $I$ admet un développement limité à l'ordre $n$ en $a\in I$, alors toute primitive de $f$ admet un développement limité à l'ordre $n+1$ en $a$ obtenu en primitivant celui de $f$.
+\end{thm}
+
+\begin{exo}
+	\begin{enumerate}
+		\item La dérivée d'une fonction dérivable admettant un développement limité à l'ordre $n$ admet-elle un développement limité à l'ordre $n-1$ ? 
+		\item Peut-elle admettre un autre développement limite que celui obtenu en dérivant celui de $f$ ?
+	\end{enumerate}
+\end{exo}
+
+\subsection{Opérations sur les fonctions dérivables}
+
+\begin{thm}{}%prop
+	Soit $f:I\to E$ et $g:I\to E$ deux fonctions dérivables en $a\in I$ et $(\lambda,\mu)\in\K^2$. Alors $\lambda f+\mu g$ est dérivable en $a$ et :
+	$$(\lambda+\mu g)'(a)=\lambda f'(a)+\mu g'(a).$$
+\end{thm}
+\begin{proof}
+	$\tau_a(\lambda f+\mu g)=\lambda\tau_a(f)+\mu\tau_a(g)$ puis linéarité de la limite.
+\end{proof}
+
+\begin{thm}{Linéarité de la dérivation}%cor
+	Soit $f:I\to E$ et $g:I\to E$ deux fonctions dérivables sur $I$ et $(\lambda,\mu)\in\K^2$. Alors $\lambda f+\mu g$ est dérivable sur $I$ et :
+	$$(\lambda+\mu g)'=\lambda f'+\mu g'.$$
+\end{thm}
+
+\begin{rmq}
+	Il s'ensuit que $\mathcal{D}(I,E)$ est un sous-espace vectoriel de $\mathcal{F}(I,E)$ et que l'application $f\mapsto f'$ de $\mathcal{D}(I,E)$ de $\mathcal{F}(I,E)$ est linéaire.
+\end{rmq}
+
+\begin{thm}{}%prop
+	Soit $L$ une application linéaire de $E$ dans un espace vectoriel $F$ de dimension finie. Si $f$ est dérivable en $a\in I$, alors $L\circ f$ est dérivable en $a$ et :
+	$$(L\circ f)'(a)=L(f'(a)).$$
+\end{thm}
+\begin{proof}
+	Comme $E$ est de dimension finie, l'application linéaire $E$ est continue. Si $\tau_a(f)$ est le taux d'accroissement de $f$ en $a$, puisque $f$ est linéaire, $L\circ\tau_a(f)$ est le taux d'accroissement de $L\circ f$ en $a$. Puisque $\tau_a(f)\xrightarrow[a]{}f'(a)$, on a par continuité de $L$ :
+	$$L\circ\tau_a(f)\xrightarrow[a]{}L(f'(a)).$$
+	Ceci prouve la dérivabilité de $L\circ f$ en $a$ et donne $(L\circ f)'(a)=L(f'(a))$.
+\end{proof}
+
+\begin{thm}{}%cor
+	Soit $L$ une application linéaire de $E$ dans un espace vectoriel $F$ de dimension finie. Si $f$ est dérivable sur $I$, alors $L\circ f$ est dérivable sur $I$ et :
+	$$(L\circ f)'=L\circ f'.$$
+\end{thm}
+
+\begin{notation}
+	La fonction $L\circ f$ se note également $L(f)$, voire $Lf$. \\
+	Plus généralement, si $M:E_1\times\cdots\times E_p\to F$ est une application multilinéaire et si $f_1,\ldots,f_p$ sont des fonctions de $I$ dans $E_1,\ldots,E_p$ respectivement, alors on note :
+	$$\begin{array}{lrcl}
+		M(f_1,\ldots,f_p):&I&\longrightarrow& F\\
+		&t&\longmapsto& M(f_1(t),\ldots,f_p(t)).
+	\end{array}$$
+\end{notation}
+
+\begin{thm}{}%prop
+	Soit $\mathcal{B}=(e_i)_{1\leqslant i\leqslant n}$ une base de $E$. La fonction $f$ est dérivable en $a$ si, et seulement si, chacune des fonctions coordonnées dans la base $\mathcal{B}$ est dérivable en $a$.\\
+	Dans ce cas, si l'on note $f_i$ ces fonctions coordonnées, on a :
+	$$f'(a)=\sum_{i=1}^{n}f_i'(a)e_i.$$
+\end{thm}
+\begin{proof}
+	Conséquence des relations $f_i=p_i\circ f$ et $f=\displaystyle\sum_{i=1}^{n}q_i\circ f_i$.
+\end{proof}
+
+\begin{rmq}
+	On retrouve ainsi qu'une fonction $f:I\to \C$ est dérivable en $a$ si, et seulement si, les fonctions $\text{Re}(f)$ et $\text{Im}(f)$ le sont, puisque ces dernières sont les fonctions coordonnées de $f$ dans la base $(1,i)$ du $\R$-espace vectoriel $\C$.
+\end{rmq}
+
+\begin{thm}{}%prop
+	Soit $\mathcal{B}$ une base de $E$. La fonction $f:I\to E$ est dérivable sur $I$ si, et seulement si, ses fonctions coordonnées dans $\mathcal{B}$ sont dérivables sur $I$.\\
+	Les fonctions coordonnées de $f'$ sont alors les dérivées des fonctions coordonnées de $f$.
+\end{thm}
+
+\begin{ex}
+	Considérons l'application $f:\R\to\mathcal{M}_2(\R)$ définie par $f(t)=\begin{pmatrix}
+		\cos(t)&\sin(t)\\
+		\cos(2t)&\sin(2t)
+	\end{pmatrix}$. Les fonctions coordonnées dans la base canonique de $\mathcal{M}_2(\R)$ ($t\mapsto\cos(t)$, $t\mapsto\sin(t)$, $t\mapsto\cos(2t)$ et $t\mapsto\sin(2t)$) étant dérivable en tout point, $f$ est dérivable en tout point et l'on a :
+	$$\forall t\in\R,\ f'(t)=\begin{pmatrix}
+		-\sin(t)&\cos(t)\\
+		-2\sin(2t)&2\cos(2t)
+	\end{pmatrix}.$$
+\end{ex}
+
+Exercice Moulin.FV.11
+
+\begin{thm}{}%prop
+	Soit $E$, $F$ et $G$ des espaces vectoriels de dimension finie et $B$ une application bilinéaire de $E\times F$ dans $G$.\\
+	Si $f:I\to E$ et $g:I\to F$ sont dérivables en $a\in I$, alors $B(f,g)$ est dérivable en $a$ et :
+	$$B(f,g)'(a)=B(f'(a),g(a))+B(f(a),g'(a)).$$
+\end{thm}
+\begin{proof}
+	Pour tout $t\in I\setminus\{a\}$, on a, en utilisant la bilinéarité de $B$ :
+	\begin{align*}
+		\tau_a(B(f,g))(t)&=\frac{B(f(t),g(t))-B(f(a),g(a))}{t-a}\\
+		&=\frac{B(f(t),g(t))-B(f(a),g(t))+B(f(a),g(t))-B(f(a),g(a))}{t-a}\\
+		&=B\left(\frac{f(t)-f(a)}{t-a},g(t)\right)+B\left(f(a),\frac{g(t)-g(a)}{t-a}\right).
+	\end{align*}
+	Puisque les espaces $E$ et $F$ sont de dimension finie, l'application bilinéaire $B$ est continue. De plus, la fonction $g$ étant dérivable en $a$, elle est continue. Enfin, puisque les taux d'accroissements $\tau_a(f)$ et $\tau_a(g)$ ont des limites finies en $a$, on déduit de l'expression ci-dessus que $\tau_a(B(f,g))$ a une limite finie en $a$ et :
+	$$\tau_a(B(f,g))(t)\xrightarrow[t\to a]{}B(f'(a),g(a))+B(f(a),g'(a)),$$
+	ce qui prouve la dérivabilité de $B(f,g)$ en $a$ et l'égalité :
+	$$B(f,g)'(a)=B(f'(a),g(a))+B(f(a),g'(a)).$$
+\end{proof}
+
+\begin{thm}{}%cor
+	Soit $E$, $F$ et $G$ des espaces vectoriels de dimension finie et $B$ une application bilinéaire de $E\times F$ dans $G$.\\
+	Si $f:I\to E$ et $g:I\to F$ sont dérivables sur $I$, alors $B(f,g)$ est dérivable sur $I$ et :
+	$$B(f,g)'=B(f',g)+B(f,g').$$
+\end{thm}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Si $\varphi$ est dérivable sur $I$ à valeurs dans $\K$ et si $f$ est dérivable sur $I$ à valeurs dans $E$, alors $\varphi f$ est dérivable sur $I$ et :
+		$$(\varphi f)'=\varphi'f+\varphi f'.$$
+		\item Soit $E$ un espace euclidien.
+		\begin{itemize}
+			\item Si $f$ et $g$ sont dérivables sur $I$, alors $(f\mid g)$ est dérivable sur $I$ et :
+			$$(f\mid g)'=(f'\mid g)+(f\mid g').$$
+			\item En particulier, si $f$ est dérivable sur $I$, l'application $\lVert f\rVert^2$ est dérivable sur $I$ et l'on a :
+			$$(\lVert f\rVert^2)'=2(f\mid f').$$
+			\item Si de plus $f$ ne s'annule pas, la fonction racine carrée étant dérivable sur $\R_+\st$ et $\lVert f\rVert=\sqrt{\lVert f\rVert^2}$, on en déduit :
+			$$\lVert f\rVert'=\frac{(f\mid f')}{\lVert f\rVert}.$$
+			\item On en déduit également que si $f$ est dérivable et l'application $\lVert f\rVert$ est constante, alors, pour tout $t\in I$, les vecteurs $f(t)$ et $f'(t)$ sont orthogonaux.
+		\end{itemize}
+	\end{enumerate}
+\end{ex}
+
+\begin{thm}{}%prop
+	Soit $E_1,\ldots,E_p$ et $F$ des espaces vectoriels de dimension finie, avec $p\geqslant 1$, ainsi que $M$ une application multilinéaire de $E_1\times\cdots\times E_p$ dans $F$.\\
+	Si $f_1,\ldots,f_p$ sont des fonctions de $I$ dans $E_1,\ldots,E_p$ respectivement, dérivables en $a\in I$, alors $M(f_1,\ldots,f_p)$ est dérivable en $a$ et :
+	$$M(f_1,\ldots,f_p)'(a)=\sum_{i=1}^{p}M(f_1(a),\ldots,f_{i-1}(a),f_i'(a),f_{i+1}(a),\ldots,f_p(a)).$$
+\end{thm}
+\begin{proof}
+	Soit $a\in I$. Pour tout $t\in I$, on a par "télescopage" et multilinéarité de $M$ :
+	$$M(f_1(t),\ldots,f_p(t))-M(f_1(a),\ldots,f_p(a))=\sum_{i=1}^{p}M(f_1(a),\ldots,f_{i-1}(a),f_i(t)-f_i(a),f_{i+1}(t),\ldots,f_p(t)).$$
+	Ainsi, si $t$ et $a$ sont distincts, toujours par multilinéarité de $M$, on a :
+	$$\tau_a(M(f_1,_ldots,f_p))(t)=\sum_{i=1}^{p}M\left(f_1(a),\ldots,f_{i-1}(a),\frac{f(t)-f(a)}{t-a},f_{i+1}(t),\ldots,f_p(t)\right).$$
+	Puisque les espaces $E_1\ldots,E_p$ sont de dimension finie, l'application multilinéaire $M$ est continue. De plus, les fonctions $f_i$ étant dérivables en $a$, elles sont continues en $a$. Enfin, puisque les taux d'accroissement $\tau_a(f_i)$ ont des limites en $a$, le taux d'accroissement $\tau_a(M(f_1,\ldots,f_p))$ admet une limite en $a$ d'après l'expression précédente et :
+	$$\tau_a(M(f_1,\ldots,f_p))(t)\xrightarrow[t\to a]{}\sum_{i=1}^{p}M(f_1(a),\ldots,f_{i-1}(a),f_i'(a),f_{i+1}(a),\ldots,f_p(a)),$$ ce qui prouve la dérivabilité de $M(f_1,\ldots,f_p)$ en $a$ et l'égalité :
+	$$M(f_1,\ldots,f_p)'(a)=\sum_{i=1}^{p}M(f_1(a),\ldots,f_{i-1}(a),f_i'(a),f_{i+1}(a),\ldots,f_p(a)).$$
+\end{proof}
+
+\begin{thm}{}%cor
+	Soit $E_1,\ldots,E_p$ et $F$ des espaces vectoriels de dimension finie, avec $p\geqslant 1$, ainsi que $M$ une application multilinéaire de $E_1\times\cdots\times E_p$ dans $F$.\\
+	Si $f_1,\ldots,f_p$ sont des fonctions de $I$ dans $E_1,\ldots,E_p$ respectivement, dérivables sur $I$, alors $M(f_1,\ldots,f_p)$ est dérivable sur $I$ et :
+	$$M(f_1,\ldots,f_p)'=\sum_{i=1}^{p}M(f_1,\ldots,f_{i-1},f_i',f_{i+1},\ldots,f_p).$$
+\end{thm}
+
+\begin{ex}
+	\begin{enumerate}
+		\item En particulier, si $\mathcal{B}$ est une base de $E$ de dimension $p$ et si $f_1,\ldots,f_p$ sont des fonctions dérivable définies sur $I$ à valeurs dans $E$, alors $\det_{\mathcal{B}}(f_1,\ldots,f_p)$ est dérivable sur $I$ et :
+		$$\det_{\mathcal{B}}(f_1,\ldots,f_p)'=\sum_{i=1}^{p}\det_{\mathcal{B}}(f_1,\ldots,f_{i-1},f_i',f_{i+1},\ldots,f_p).$$
+		\item Soit $f$, $g$ et $h$ trois fois dérivables sur $I$. Dérivée de $\begin{vmatrix}
+			f&g&h\\
+			f'&g'&h'\\
+			f''&g''&h''
+		\end{vmatrix}$.
+	\end{enumerate}
+\end{ex}
+
+\begin{thm}{}%prop
+	Soit $I$ et $J$ deux intervalles, ainsi que $f:I\to E$ et $\varphi:J\to\R$ deux fonctions telles que $\varphi(J)\subset I$. Si $\varphi$ est dérivable en $t_0\in J$ et $f$ est dérivable en $a=\varphi(t_0)$, alors $f\circ\varphi$ est dérivable en $t_0$ et l'on a :
+	$$(f\circ\varphi)'(t_0)=\varphi'(t_0)f'(a)=\varphi'(t_0)f(\varphi(t_0)).$$
+\end{thm}
+\begin{proof}
+	Soit $t_0\in J$ et $a=\varphi(t_0)$. Prolongeons par continuité le taux d'accroissement $\tau_a f$ de $f$ en $a$ en posant $\tau_af(a)=f'(a)$. On a alors :
+	$$\forall x\in I,\ f(x)=f(a)+(x-a)\tau_af(x).$$
+	On en déduit :
+	$$\forall t\in J,\ f(\varphi(t))=f(a)+(\varphi(t)-a)\tau_af(\varphi(t)).$$
+	Par continuité de $\tau_af$ en $a$ et de $\varphi$ en $t_0$, on tire $\tau_af(\varphi(t))=\tau_af(a)+\o(1)$ ; d'autre part, la dérivabilité de $\varphi$ en $t_0$ entraîne :
+	$$\varphi(t)-\varphi(t_0)=(t-t_0)\varphi'(t_0)+\o(t-t_0).$$
+	Finalement, on en déduit :
+	$$\forall t\in J,\ f(\varphi(t))=f(\varphi(t_0))+(t-t_0)\varphi'(t_0)\tau_af(a)+\o(t-t_0),$$ c'est-à-dire la dérivabilité de $f\circ\varphi$ en $t_0$, avec :
+	$$(f\circ\varphi)'(t_0)=\varphi'(t_0)\tau_af(a)=\varphi'(t_0)f'(\varphi(t_0)).$$
+\end{proof}
+
+\begin{thm}{}%cor
+	Étant donnés deux intervalles $I$ et $J$, ainsi que deux fonctions dérivables $f:I\to E$ et $\varphi :J\to\R$ telles que $\varphi(J)\subset I$, la fonction $f\circ\varphi$ est dérivable sur $I$ et l'on a :
+	$$(f\circ\varphi)'=\varphi'\cdot(f'\circ\varphi).$$
+\end{thm}
+
+\begin{ex}
+	Soit $f:\R_+\to E$ une fonction dérivable. La fonction $g$ définie sur $\R$ par $g(t)=f(t^2)$ est dérivable et, pour tout $t\in\R$, $g'(t)=2tf'(t^2)$.
+\end{ex}
+
+\begin{attention}
+	Bien écrire $(f\circ\varphi)'=\varphi'\cdots(f'\circ\varphi)$ lorsque $f$ est une fonction vectorielle, le point désignant la multiplication d'un vecteur par un scalaire. Le produit $(f'\circ\varphi)\cdot\varphi'$ n'a de sens que lorsque $f$ est à valeurs dans $\K$ (scalaires devant les vecteurs).
+\end{attention}
+
+\subsection{Fonctions de classe $\mathcal{C}^k$}
+
+\begin{dfn}
+	Soit $k\in\N$ et $f;I\to E$.\\
+	On dit ue $f$ est \textbf{$k$ fois dérivable} s'il existe $(\varphi_0,\ldots,\varphi_k)\in\mathcal{F}(I,E)^{k+1}$ tel que :
+	$$f=\varphi_0\quad\text{et}\quad\forall i\in\llbracket0,k-1\rrbracket,\ \varphi_i'=\varphi_{i+1}.$$
+	Une telle suite est alors unique. On note $f^{(k)}=\varphi_k$ la \textbf{dérivée $k$-ième} de $f$.
+\end{dfn}
+
+\begin{notation}
+	\begin{itemize}
+		\item La dérivée $k$-ième se note également $\displaystyle\frac{\d^kf}{\d t^k}$.
+		\item $\mathcal{D}^k(I,E)$ désigne l'ensemble des fonctions $k$ fois dérivables de $I$ dans $E$.
+	\end{itemize}
+\end{notation}
+
+\paragraph{Interprétation cinématique}
+Lorsque la fonction $f$ représente le mouvement d'un point matériel en fonction du temps, le vecteur $f''(t_0)$ représente le \textbf{vecteur accélération} du point à l'instant $t_0$.
+
+\begin{rmq}
+	Soit $(i,j)\in\N^2$ et $f:I\to E$. La fonction $f$ est $i+j$ fois dérivable si, et seulement si, elle est $i$ fois dérivable et $f^{(i)}$ est $j$ fois dérivable. Dans ce cas :
+	$$f^{(i+j)}=(f^{(i)})^{(j)}.$$
+	En particulier, $f$ est $i+1$ fois dérivable si, et seulement si, elle est dérivable et si $f'$ est $i$ fois dérivable.
+\end{rmq}
+
+\begin{dfn}
+	Soit $f:I\to E$.
+	\begin{itemize}
+		\item Soit $k\in\N$. La fonction $f$ est de \textbf{classe $\mathcal{C}^k$}si elle est $k$ fois dérivable et $f^{(k)}$ continue.
+		\item La fonction $f$ est de classe $\mathcal{C}^\infty$ si elle est de classe $\mathcal{C}^k$, pour tout $k\in\N$.
+	\end{itemize}
+\end{dfn}
+
+\begin{notation}
+	Pour $k\in\N\cup\{\infty\}$, on note $\mathcal{C}^k(I,E)$ l'ensemble des fonctions de classe $\mathcal{C}^k$ de $I$ dans $E$.
+\end{notation}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Les fonctions de classe $\mathcal{C}^0$ sont les fonctions continues.
+		\item On a l'inclusion $\mathcal{C}^1(I,E)\subset\mathcal{C}^0(I,E)$, car toute fonction dérivable est continue.
+		\item Plus généralement, pour tout $k\in\N$, on a $\mathcal{C}^{k+1}(I,E)\subset\mathcal{C}^k(I,E)$.
+		\item Pour tout $k\in\N$ et $f\in\mathcal{F}(I,E)$, la fonction $f$ est de classe $\mathcal{C}^{k+1}$ si, et seulement si, $f$ est dérivable et $f'$ est de classe $\mathcal{C}^k$, ou encore, si, et seulement si, $f$ est de classes $\mathcal{D}^k$ (ou $\mathcal{C}^k$) et $f^{(k)}$ est de classe $\mathcal{C}^1$. \\
+		Lorsque l'on procède par récurrence, c'est en général en utilisant l'une des ces deux propriétés que l'on montre qu'une fonction est de classe $\mathcal{C}^k$.
+		\item On a $\mathcal{C}^\infty(I,E)=\displaystyle\bigcap_{k\in\N}\mathcal{C}^k(I,E)=\bigcap_{k\in\N}\mathcal{D}^k(I,E)$.
+	\end{itemize}
+\end{rmq}
+
+\begin{ex}
+	L'inclusion $\mathcal{C}^k(I,E)\subset\mathcal{D}^k(I,E)$ est stricte.
+\end{ex}
+
+\begin{thm}{Linéarité de la dérivation}%prop
+	Pour $k\in\N$, $\mathcal{C}^k(I,E)$ est un espace vectoriel et l'application $f\mapsto f^{(k)}$ est linéaire.
+\end{thm}
+\begin{proof}
+	Par restriction, la dérivation est une application linéaire de $\mathcal{C}^k(I,E)$ dans $\mathcal{C}^{k-1}(I,E)$ pour tout $k\in\N\st$. Le résultat s'ensuit par composition.
+\end{proof}
+
+\begin{thm}{}%cor
+	$\mathcal{C}^\infty(I,E)$ est un espace vectoriel et l'application $f\mapsto f'$ est un endomorphisme.
+\end{thm}
+
+\begin{rmq}
+	Si l'on note $\Delta$ l'endomorphisme de $\mathcal{C}^\infty(I,E)$ défini par $\Delta(f)=f'$, on a $f^{(k)}=\Delta^k(f)$, pour $f\in\mathcal{C}^\infty(I,E)$ et $k\in\N$.
+\end{rmq}
+
+\subsubsection*{Opérations sur les fonctions de classe $\mathcal{C}^k$}
+
+Dans cette section, $k\in\N\cup\{+\infty\}$.
+
+\begin{thm}{}%prop
+	Soit $L$ une application linéaire de $E$ dans un espace vectoriel de dimension finie $F$. Si $f\in\mathcal{C}^k(I,E)$, alors $L\circ f\in\mathcal{C}^k(I,E)$. De plus, si $k$ est entier, on a :
+	$$(L\circ f)^{(k)}=L\circ f^{(k)}.$$
+\end{thm}
+\begin{proof}
+	Démontrons ce résultat par récurrence pour $k\in\N$, le cas des fonctions de classe $\mathcal{C}^\infty$ s'en déduisant immédiatement.
+	\begin{itemize}
+		\item Pour $k=0$, c'est le résultat sur la composition d'une application linéaire et d'une application continue.
+		\item Supposons le résultat vrai pour un certain $k\in\N$ et considérons $f\in\mathcal{C}^{k+1}(I,E)$. \\
+		Comme $f$ est de classe $\mathcal{C}^k$, l'hypothèse de récurrence donne que $L\circ f$ est de classe $\mathcal{C}^k$ et $(L\circ f)^{(k)}=L\circ f^{(k)}$. \\
+		Puisque $f^{(k)}$ est dérivable, $L\circ f^{(k)}$ est dérivable et :
+		$$(L\circ f^{(k)})'=L\circ (f^{(k)})'=L\circ f^{(k+1)}.$$
+		Par composition, les application $L$ et $f^{(k+1)}$ étant continues, on obtient que $L\circ f^{(k)}$ est de classe $\mathcal{C}^1$. Ainsi, $L\circ f$ est de classe $\mathcal{C}^{k+1}$ et $(L\circ f)^{(k+1)}=L\circ f^{(k+1)}$.
+	\end{itemize}
+\end{proof}
+
+\begin{thm}{}%cor
+	Soit $\mathcal{B}=(e_i)_{1\leqslant i\leqslant n}$ une base de $E$. La fonction $f:I\to E$ est de classe $\mathcal{C}^k$ si, et seulement si, toutes ses fonctions coordonnées dans la base $\mathcal{B}$ le sont. En notant alors $f_i$ ces fonctions coordonnées, lorsque $k$ est entier, on a : $f^{(k)}=\displaystyle\sum_{i=1}^{n}f_i^{(k)}e_i$.
+\end{thm}
+
+\begin{thm}{Formule de Leibniz}%prop
+	Soit $E$, $F$ et $G$ des espaces vectoriels de dimension finie et $B$ une application bilinéaire de $E\times F$ dans $G$.\\
+	Si $f\in\mathcal{C}^k(I,E)$ et $g\in\mathcal{C}^k(I,F)$, alors $B(f,g)\in\mathcal{C}^k(I,G)$. De plus, si $k$ est entier, la dérivée d'ordre $k$ de $B(f,g)$ est donnée par la \textbf{formule de Leibniz} :
+	$$B(f,g)^{(k)}=\sum_{j=0}^{k}\binom{k}{j}B(f^{(j)},g^{(k-j)}).$$
+\end{thm}
+\begin{proof}
+	Soit $f:I\to E$ et $g:I\to F$ deux fonctions. Pour $k\in\N$, notons $\mathcal{H}_k$ : "Si $f$ et $g$ sont de classe $\mathcal{C}^k$, alors la fonction $B(f,g)$ est de classe $\mathcal{C}^k$ et $B(f,g)^{(k)}=\sum_{j=0}^{k}\binom{k}{j}B(f^{(j)},g^{(k-j)})$", et montrons $\mathcal{H}_k$ par récurrence.
+	\begin{itemize}
+		\item La propriété $\mathcal{H}_0$ est évidente.
+		\item Supposons $\mathcal{H}_k$ vraie pour un certain $k\in\N$ et supposons que $f$ et $g$ soient de classe $\mathcal{C}^{(k+1)}$. \\
+		Puisque $f$ et $g$ sont de classe $\mathcal{C}^{(k+1)}$, elle sont de classe $\mathcal{C}^k$ et d'après l'hypothèse de récurrence :
+		$$B(f,g)^{(k)}=\sum_{j=0}^{k}\binom{k}{j}B(f^{(j)},g^{(k-j)}).$$
+		Pour $j\in\llbracket0,k\rrbracket$, les fonctions $f^{(j)}$ et $g^{(k-j)}$ sont respectivement de classe $k+1-j>0$ et $j+1>0$. Il vient alors par linéarité que $B(f,g)^{(k)}$e st dérivable et :
+		$$B(f,g)^{(k+1)}=B(f,g)^{(k)}=\sum_{j=0}^{k}\binom{k}{j}B(f^{(j)},g^{(k-j)}),$$ donc en dérivant une application bilinéaire puis en réindexant et en utilisant la relation de Pascal, on obtient :
+		\begin{align*}
+			B(f,g)^{(k+1)}&=\sum_{j=0}^{k}\binom{k}{j}(B(f^{(j+1)},g^{(k-j)}))+B(f^{(j)},g^{(k+1-j)})\\
+			&=\sum_{j=1}^{k+1}\binom{k}{j-1}B(f^{(j)},g^{(k+1-j)})+\sum_{j=0}^{k}\binom{k}{j}B(f^{(j)},g^{(k+1-j)})\\
+			&=\sum_{j=1}^{k+1}\binom{k}{j-1}B(f^{(j)},g^{(k+1-j)})+\sum_{j=0}^{k+1}\binom{k}{j}B(f^{(j)},g^{(k+1-j)})\\
+			&=\binom{k}{0}B(f,g^{(k+1)})+\sum_{j=1}^{k+1}\left(\binom{k}{j-1}+\binom{k}{j}\right)B(f^{(j)},g^{(k+1-j)})\\
+			&=\sum_{k=0}^{j+1}\binom{k+1}{j}B(f^{(j)},g^{(k+1-j)}).
+		\end{align*}
+		Cette dernière expression de $B(f,g)^{(k+1)}$ montre, par opérations sur les fonctions continues, que la fonction $B(f,g)^{(k+1)}$ est continue. La propriété est ainsi démontrée.
+	\end{itemize}
+	On en déduit que si $f\in\mathcal{C}^\infty(I,E)$ et $g\in\mathcal{C}^\infty(I,E)$, alors $B(f,g)\in\mathcal{C}^\infty(I,E)$.
+\end{proof}
+
+\begin{thm}{}%prop
+	Soit $E_1,\ldots,E_p$ des espaces vectoriels de dimension finie, avec $p\geqslant 1$, et $M$ une application multilinéaire de $E_1\times\cdots\times E_p$ dans $F$. Si $f_1,\ldots,f_p$ sont des fonctions de classe $\mathcal{C}^k$ de $I$ dans $E_1\ldots,E_p$, alors $M(f_1,\ldots,f_p)$ est de classe $\mathcal{C}^k$.
+\end{thm}
+\begin{proof}
+	Montrons par récurrence sur $k$ que si les fonctions $f_1,\ldots,f_p$ sont de classe $\mathcal{C}^k$, alors $M(f_1,\ldots,f_p)$ est également de classe $\mathcal{C}^k$.
+	\begin{itemize}
+		\item Le cas $k=0$. les fonctions $f_1,\ldots,f_p$ étant continues, la fonction $t\mapsto(f_1(t),\ldots,f_p(t))$ est continue. Les espaces $E_1,\ldots,E_p$ étant de dimension finie,; l'application multilinéaire $M$ est continue. Ainsi, par composition, $M(f_1,\ldots,f_p)$ est continue.
+		\item Supposons la propriété vraie pour un $k\in\N$. Soit $f_1,\ldots,f_p$ des fonctions de classe $\mathcal{C}^{k+1}$ de $I$ dans $E_1,\ldots,E_p$. Comme elles sont dérivables, $M(f_1,\ldots,f_p)$ est dérivable et :
+		$$M(f_1,\ldots,f_p)'=M(f_1',\ldots,f_p)+M(f_1,f_2',\ldots,f_p)+\cdots+M(f_1,\ldots,f_p').$$
+		Pour tout $i\in\llbracket1,n\rrbracket$, en appliquant l'hypothèse de récurrence à $f_i'$ et les $f_j$ pour $j\ne i$, qui sont de classe $\mathcal{C}^k$, on obtient que $M(f_1,\ldots,f_{i-1},f_i',f_{i+1},\ldots,f_p)$ est de classe $\mathcal{C}^k$. Par somme, cela prouve que $M(f_1,\ldots,f_p)'$ est de classe $\mathcal{C}^k$, \textit{ie} $M(f_1,\ldots,f_p)$ est de classe $\mathcal{C}^{k+1}$. La conclusion suit.
+	\end{itemize}
+	On en déduit que si $f_1,\ldots,f_p$ sont des fonctions de classe $\mathcal{C}^\infty$, alors $M(f_1,\ldots,f_p)$ est de classe $\mathcal{C}^\infty$.
+\end{proof}
+
+\begin{thm}{}%prop
+	Soit $I$ et $J$ deux intervalles, ainsi que deux fonctions $f\in\mathcal{C}^k(I,E)$ et $\varphi\in\mathcal{C}^k(J,\R)$ telles que $\varphi(J)\subset I$. Alors la fonction $f\circ\varphi$ est un élément de $\mathcal{C}^k(J,E)$.
+\end{thm}
+\begin{proof}
+	Pour $k\in\N$, posons $\mathcal{H}_k$ : "Pour tout $f\in\mathcal{C}^k(I,E)$ et tout $\varphi\in\mathcal{C}^k(J,\R)$ telles que $\varphi(J)\subset I$, $f\circ\varphi$ est de classe $\mathcal{C}^k$".
+	\begin{itemize}
+		\item La propriété est immédiate pour $k=0$ (composition de fonctions continues).
+		\item Supposons $\mathcal{H}_k$ pour un entier $n$. Considérons deux fonctions $f\in\mathcal{C}^{k+1}(I,E)$ et $\varphi\in\mathcal{C}^k(J,\R)$ telles que $\varphi(J)\subset I$. Ces deux fonctions sont dérivables, donc $f\circ\varphi$ est dérivable et :
+		$$(f\circ\varphi)'=\varphi'\cdot(f'\circ\varphi).$$
+		L'application $(\lambda,x)\mapsto\lambda x$ définie sur $\K\times E$ est bilinéaire. Puisque $E$ et $\K$ sont de dimension fini et que $\varphi'$ et $f'\circ\varphi$ sont de classe $\mathcal{C}^k$ (d'après $\mathcal{H}_k$), on en déduit que $\varphi'\cdot(f'\circ\varphi)$ est de classe $\mathcal{C}^k$, c'est-à-dire que $(f\circ\varphi)'$ est de classe $\mathcal{C}^k$, \textit{ie} $f\circ\varphi$ est de classe $\mathcal{C}^{k+1}$. La conclusion suit.
+	\end{itemize}
+\end{proof}
+
+\subsection{Théorème de la limite de la dérivée}
+
+
+\begin{thm}{Théorème de la limite de la dérivée}%prop
+	Soit $f$ une application de $I$ dans $E$ et $a$ un point de $I$. On suppose que :
+	\begin{itemize}
+		\item $f$ est continue sur $I$ ;
+		\item $f$ est dérivable en tout point de $I\setminus\{a\}$ ;
+		\item $f_{\mid I\setminus\{a\}}'$ admet une limite $l\in E$ en $a$.
+	\end{itemize}
+	Alors $f$ est dérivable en $a$, et $f'(a)=l$.
+\end{thm} %démo : EAF pour le cas réel, puis fonctions composantes
+
+\begin{rappel}
+	Un exemple de fonction dérivable mais non de classe $\mathcal{C}^1$ est donné par la fonction qui à $x$ associe $x^2\sin(1/x)$ si $x$ est non nul, prolongée par continuité par $0$ en $0$.
+\end{rappel}
+
+\begin{ex}
+	Si $f$ est dérivable sur $I$ et a une dérivée continue par morceaux sur $I$, alors elle est de classe $\mathcal{C}^1$.
+\end{ex}
+
+\begin{rappel}
+	Soit $f$ une application de $I$ dans $\R$ et $a$ un point de $I$. On suppose que :
+	\begin{itemize}
+		\item $f$ est continue sur $I$ ;
+		\item $f$ est dérivable en tout point de $I\setminus\{a\}$ ;
+		\item $f_{\mid I\setminus\{a\}}'$ tend vers $+\infty$ en $a$.
+	\end{itemize}
+	Alors $\displaystyle\underset{x\to a}{\lim}\frac{f(x)-f(a)}{x-a}=+\infty$ et, en particulier, $f$ est non dérivable en $a$.
+\end{rappel}
+
+\begin{exo}[$\star$]
+	Soit $f$ une application de $I$ dans $E$ et $a$ un point de $I$. On suppose que :
+	\begin{itemize}
+		\item $f$ est continue sur $I$ ;
+		\item $f$ est dérivable en tout point de $I\setminus\{a\}$ ;
+		\item $\lVert f_{\mid I\setminus\{a\}}'\Vert$ tend vers $+\infty$ en $a$.
+	\end{itemize}
+	Peut-on en déduire que $f$ est non dérivable en $a$ :
+	\begin{itemize}
+		\item lorsque $E=\R$ ?
+		\item lorsque $E=\C$ ?
+		\item dans le cas général ?
+	\end{itemize}
+	On pourra s'inspirer des exemples usuels de fonctions dérivables mais non de classe $\mathcal{C}^1$.
+\end{exo}
+
+"La réponse est croissante au sens de l'ordre naturel des booléens." [???]
+
+\begin{thm}{}%cor
+	Soit $f$ une application continue sur $I$ et $a$ un point de $I$ tel que $f$ soit de classe $\mathcal{C}^1$ sur $I\setminus\{a\}$.\\
+	Si $f_{\mid I\setminus\{a\}}'$ a une limite $l$ en $a$, alors $f$ est de classe $\mathcal{C}^1$ sur $I$, donc $f'(a)=l$.
+\end{thm}
+
+\begin{thm}{(HP)}%prop
+	Soit $k\in\N\cup{\infty}$, $a\in I$ et $f:I\setminus\{a\}\to\K$ une fonction de classe $\mathcal{C}^k$. On suppose que $f^{(n)}$ admet une limite finie en $a$ pour tout entier naturel $n\leqslant k$. \\
+	Alors $f$ se prolonge en $a$ en une fonction de classe $\mathcal{C}^k$ sur $I$.
+\end{thm}
+\begin{proof}
+	Notons $\tilde{f}$ le prolongement par continuité de $f$.\\
+	Lorsque $k\in\N\st$, la fonction $g=f'$ se prolonge par hypothèse de récurrence en une fonction $\tilde{g}$ de classe $\mathcal{C}^{k-1}$ et l'on montre que $(\tilde{f})'=\tilde{g}$.
+\end{proof}
+
+\begin{ex}
+	La fonction :
+	$$\begin{array}{lrcl}
+		f:&\R&\longrightarrow&\R\\
+		&x&\longmapsto&\displaystyle\begin{cases}
+			\exp(-1/x^2)&\text{si }x\ne 0\\
+			0&\text{si }x=0
+		\end{cases}
+	\end{array}$$ est de classe $\mathcal{C}^\infty$ sur $\R$.
+\end{ex}
+
+Exercice Moulin.FV.15
+
+\section{Intégration sur un segment}
+
+Dans cette section, les fonctions sont définies sur un segment $[a,b]$ ($a<b$) et à valeurs dans $E$.
+
+\subsection{Fonctions continues par morceaux sur $[a,b]$}
+
+\begin{dfn}
+	On dit que $f:[a,b]\to E$ est \textbf{continue par morceaux} s'il existe une subdivision $\sigma=(a_0,\ldots,a_p)$ de $[a,b]$ telle que pour tout $i\in\llbracket0,p-1\rrbracket$, on puisse prolonger $f_{\mid]a_i,a_{i+1}}$ en une fonction continue sur $[a_i,a_{i+1}]$. \\
+	une telle subdivisions est dite \textbf{adaptée} à $f$.
+\end{dfn}
+
+\paragraph{Reformulation} La fonction $f$ est continue par morceaux s'il existe une subdivision $\sigma=(a_0,\ldots,a_p)$ de $[a,b]$ telle que :
+\begin{itemize}
+	\item pour tout $i\in\llbracket0,p-1\rrbracket$, la fonction $f_{\mid]a_i,a_{i+1}}$ soit continue ;
+	\item pour tout $i\in\llbracket0,p-1\rrbracket$, la fonction $f_{\mid]a_i,a_{i+1}}$ admette des limites finies en $a_i$ et $a_{i+1}$.
+\end{itemize}
+
+\begin{notation}
+	On note $\mathcal{CM}([a,b],E)$ l'ensemble des fonctions continues par morceaux sur le segment $[a,b]$ à valeurs dans $E$.
+\end{notation}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Toute fonction continue est continue par morceaux.
+		\item On dit que $f:[a,b]\to E$ est \textbf{en escalier} s'il existe une subdivision $\sigma=(a_0,\ldots,a_p)$ de $[a,b]$ telle que pour tout $i\in\llbracket0,p-1\rrbracket$, la fonction $f_{\mid]a_i,a_{i+1}}$ soit constante. Une telle fonction est continue par morceaux.
+	\end{enumerate}
+\end{ex}
+
+\begin{thm}{}%prop
+	Soit $L$ une application linéaire de $E$ dans un espace vectoriel $F$ de dimension finie. Si $f:[a,b]\to E$ est continue par morceaux, alors $LF$ est continue par morceaux.
+\end{thm}
+\begin{proof}
+	A l'aide de la reformulation ci-dessus, c'est une conséquence de la composition des limites (et donc en particulier des applications continues) avec l'application $L$ qui est continue puisque linéaire sur $E$ de dimension finie.
+\end{proof}
+
+\begin{thm}{}%cor
+	Une fonction définie sur $[a,b]$ à valeurs dans $E$ est continue par morceaux si, et seulement si, chacune de ses fonctions coordonnées l'est.
+\end{thm}
+
+\begin{thm}{}%prop
+	Toute fonction continue par morceaux définie sur $[a,b]$ à valeurs dans $E$ est bornée.
+\end{thm}
+\begin{proof}
+	Soit $f\in\mathcal{CM}([a,b],E)$. Considérons $(a_0,\ldots,a_n)$ une subdivision adaptée.\\
+	Pour tout $i\in\llbracket1,n\rrbracket$, le prolongement par continuité de la restriction de $f$ à $]a_{i-1},a_i[$ est une fonction continue sur le segment $[a_{i-1},a_i]$, donc bornée par un certain réel $M_i$. La fonction $f$ est alors bornée par $\max(\lVert f(a_0)\rVert,\ldots,\lVert f(a_n)\rVert,M_1,\ldots,M_n)$.
+\end{proof}
+
+\begin{thm}{}%prop
+	L'ensemble $\mathcal{CM}([a,b],E)$ est un sous-espace vectoriel de $\mathcal{F}([a,b],E)$.
+\end{thm}
+
+\subsection{Intégrale d'une fonction continue par morceaux}
+
+\begin{thm}{}%prop
+	Soit $f\in\mathcal{CM}([a,b],E)$ et $\mathcal{B}=(e_1,\ldots,e_n)$ une base de $E$. On note $f_1,\ldots,f_n$ les fonctions coordonnées de $f$ dans la base $\mathcal{B}$. Alors, le vecteur :
+	$$\sum_{i=1}^{n}\left(\int_{a}^{b}f_i\right)e_i$$ ne dépend pas de la base de $E$ choisie. Ce vecteur est l'\textbf{intégrale de $f$ sur $[a,b]$}.
+\end{thm}
+"C'est bête, c'est moche comme tout, mais ça marche."
+\begin{proof}
+	Soit $f:[a,b]\to E$ une fonction continue par morceaux et $\mathcal{B}=(e_1,\ldots,e_n)$ une base de $E$. On note $(f_1,\ldots,f_n)$ les fonctions coordonnées de $f$ dans la base $\mathcal{B}$ et l'on pose :
+	$$I=\sum_{i=1}^{n}\left(\int_{a}^{b}f_i\right)e_i.$$
+	Soit $\mathcal{B}'=(e_1',\ldots,e_n')$ une autre base de $E$. Posons $P=(a_{i,j})_{1\leqslant i,j\leqslant n}$ la matrice de passage de $\mathcal{B}$ vers $\mathcal{B}'$. On note également $(g_1,\ldots,g_n)$ les fonctions coordonnées de $f$ dans la base $\mathcal{B}'$. Montrons que $$I=\sum_{i=1}^{n}\left(\int_{a}^{b}g_i\right)e_i'.$$
+	La formule de changement de bases donne :
+	$$\forall i\in\llbracket1,n\rrbracket,\ f_i=\sum_{j=1}^{n}a_{i,j}g_j\quad\text{et}\quad\forall j\in\llbracket1,n\rrbracket,\ e_j'=\sum_{i=1}^{n}a_{i,j}e_i.$$
+	Par conséquent, par linéarité de l'intégrale (des fonctions scalaires) :
+	\begin{align*}
+		I=\sum_{i=1}^{n}\left(\int_{a}^{b}f_i\right)e_i&=\sum_{i=1}^{n}\left(\int_{a}^{b}\sum_{j=1}^{n}a_{i,j}g_j\right)\\
+		&=\sum_{i=1}^{n}\left(\sum_{j=1}^{n}a_{i,j}\int_{a}^{b}g_j\right)e_i\\
+		&=\sum_{j=1}^{n}\left(\int_{a}^{b}g_j\right)\left(\sum_{i=1}^{n}a_{i,j}e_i\right)\\
+		&=\sum_{j=1}^{n}\left(\int_{a}^{b}g_j\right)e_j,
+	\end{align*}
+	ce qui prouve le résultat annoncé.
+\end{proof}
+
+\begin{notation}
+	L'intégrale sur $[a,b]$ est notée $\displaystyle\int_{[a,b]}f$ ou $\displaystyle\int_{a}^{b}f$ ou $\displaystyle\int_{a}^{b}f(t)\d t$.
+\end{notation}
+
+\begin{ex}
+	Soit $f:[a,b]\to E$ une fonction en escalier et $\sigma=(a_0,\ldots,a_p)$ une subdivision adaptée. En notant $u_i$ la valeur constante de $f$ sur $]a_i,a_{i+1}$ pour $i\in\llbracket0,p-1\rrbracket$, on a :
+	$$\int_{a}^{b}f(t)\d t=\sum_{i=0}^{p-1}(a_{i+1}-a_i)u_i.$$
+\end{ex}
+
+\begin{met}
+	Une fois une base de $E$ de dimension finie fixée, pour établir des propriétés de l'intégrale d'une fonction $f:[a,b]\to E$, on peut souvent se ramener aux fonctions coordonnées.
+\end{met}
+
+\subsection{Propriétés de l'intégrale}
+
+\subsubsection*{Linéarité}
+
+\begin{thm}{}%prop
+	L'application $f\mapsto\displaystyle\int_{a}^{b}f(t)\d t$ définie sur $\mathcal{CM}([a,b],E)$ à valeurs dans $E$ est linéaire.
+\end{thm}
+\begin{proof}
+	Conséquence immédiate de la linéarité de l'intégrale des fonctions continues par morceaux sur un segment à valeurs dans $\K$, appliquée aux fonctions composantes.
+\end{proof}
+
+\begin{thm}{}%cor
+	Deux fonctions continues par morceaux coïncidant sauf sur une partie finie de $[a,b]$ ont des intégrales égales.
+\end{thm}
+
+\subsubsection*{Image par une application linéaire}
+
+\begin{thm}{}%prop
+	Soit $L$ une application linéaire de $E$ dans un espace vectoriel de dimension finie $F$. \\
+	Si $f\in\mathcal{CM}([a,b],E)$, alors $L\circ f\in\mathcal{CM}([a,b],E)$ et :
+	$$L\left(\int_{a}^{b}f\right)=\int_{a}^{b}L\circ f.$$
+\end{thm}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Soit $u\in E$ ainsi que $\varphi:[a,b]\to\K$ une fonction continue. L'application $L:x\mapsto xu$ définie sur $\R$ étant linéaire, on obtient :
+		$$\int_{a}^{b}\varphi(t)u\d t=\left(\int_{a}^{b}\varphi(t)\d t\right)u.$$
+		\item Si $(u,v)\in E^2$, alors la fonction $t\mapsto (1-t)u+tv$ définie sur $[0,1]$ est continue et :
+		$$\int_{0}^{1}((1-t)u+tv)\d t=\int_{0}^{1}(1-t)u\d t+\int_{0}^{1}tv\d t=\frac{u+v}{2}.$$
+	\end{enumerate}
+\end{ex}
+
+\subsubsection*{Relation de Chasles}
+
+Soit $I$ un intervalle de $\R$ d'intérieur non vide. Comme pour les fonctions scalaires, on dit que $f:I\to E$ est \textbf{continue par morceaux sur $I$} si la restriction de $f$ a tout segment de $I$ est continue par morceaux.
+
+\begin{notation}
+	Soit $f$ continue par morceaux sur $I$. Pour tout couple $(a,b)\in I^2$, on étend la notation $\displaystyle\int_{a}^{b}f$ au cas où $a\geqslant b$ de la manière suivante :
+	$$\int_{a}^{b}f=-\int_{b}^{a}\ \text{si}\ a>b\quad\text{et}\quad \int_{a}^{b}f=0\ \text{si}\ a=b.$$
+\end{notation}
+
+Avec les notations précédentes, on obtient la proposition suivante.
+
+\begin{thm}{Relation de Chasles}%prop
+	Soit $f:I\to E$ une fonction continue par morceaux sur $I$ et $(a,b,c)\in I^3$. On a :$$\int_{a}^{b}f(t)\d t+\int_{b}^{c}f(t)\d t=\int_{a}^{c}f(t)\d t.$$
+\end{thm}
+\begin{proof}
+	On applique la relation de Chasles aux fonctions coordonnées.
+\end{proof}
+
+\subsubsection*{Sommes de Riemann}
+
+\begin{dfn}
+	Soit $f\in\mathcal{CM}([a,b],E)$. Pour tout entier $n\in\N\st$, on appelle \textbf{somme de Riemann d'ordre $n$ associée à $f$} le vecteur :
+	$$\frac{b-a}{n}\sum_{k=0}^{n-1}f\left(a+k\frac{b-a}{n}\right).$$
+\end{dfn}
+
+\begin{rappel}
+	Soit $f\in\mathcal{CM}([a,b],\K)$. Alors :
+	$$\frac{b-a}{n}\sum_{k=0}^{n-1}f\left(a+k\frac{b-a}{n}\right)\xrightarrow[n\to+\infty]{}\int_{a}^{b}f.$$
+\end{rappel}
+
+En appliquant ce résultat à chacune des fonctions coordonnées d'une fonction continue par morceaux, on obtient le théorème suivant.
+
+\begin{thm}{Convergence des sommes de Riemann}%thm
+	Soit $f\in\mathcal{CM}([a,b],E)$. Alors :
+	$$\frac{b-a}{n}\sum_{k=0}^{n-1}f\left(a+k\frac{b-a}{n}\right)\xrightarrow[n\to+\infty]{}\int_{a}^{b}f.$$
+\end{thm}
+
+\subsubsection*{Inégalités}
+
+\begin{thm}{Inégalité triangulaire}%prop
+	On a pour toute fonction $f\in\mathcal{CM}([a,b],E)$ :
+	$$\left\lVert\int_{a}^{b}f\right\rVert\leqslant\int_{a}^{b}\lVert f\rVert.$$
+\end{thm}
+\begin{proof}
+	Pour tout $n\in\N\st$, on a :
+	$$\left\lVert\frac{b-a}{n}\sum_{k=0}^{n-1}f\left(a+k\frac{b-a}{n}\right)\right\rVert\leqslant\frac{b-a}{n}\sum_{k=0}^{n-1}\left\lVert f\left(a+k\frac{b-a}{n}\right)\right\rVert\quad\text{puisque}\quad\frac{b-a}{n}\geqslant0.$$
+	On obtient l'inégalité annoncée par passage à la limite, en utilisant la continuité de la norme et la convergence de Riemann appliquée aux fonctions continues par morceaux $f$ et $\lVert f\rVert$.
+\end{proof}
+
+\begin{attention}
+	La relation $\displaystyle \left\lVert\int_{a}^{b}f(t)\d t\right\rVert\leqslant\int_{a}^{b}\lVert f(t)\rVert\d t$ n'est valable que si $a\leqslant b$. Sans hypothèse sur $a$ et $b$, on peut écrire :
+	$$\left\lVert\int_{[a,b]}f\right\rVert\leqslant\int_{[a,b]}\lVert f\rVert,$$ où $[a,b]$ est le segment d'extrémités $a$ et $b$.
+\end{attention}
+
+\begin{exo}
+	Soit $E$ un espace vectoriel de dimension finie muni d'une norme $\lVert\cdot\rVert$ et $f:[a,b]\to E$ une fonction de classe $\mathcal{C}^1$ telle que $f(a)=0$. Montrer :
+	$$\left\lVert\int_{a}^{b}f(t)\d t\right\rVert\leqslant\frac{(b-a)^2}{2}\underset{t\in[a,b]}{\sup}\lVert f'(t)\rVert.$$
+\end{exo}
+
+Rappelons qu'une fonction $f\in\mathcal{CM}([a,b],E)$ est bornée, donc $\mathcal{N}_\infty(f)$ existe.
+
+\begin{thm}{}%cor
+	Soit $f\in\mathcal{CM}([a,b],E)$. Alors :
+	$$\left\lVert\int_{a}^{b}f\right\rVert \leqslant(b-a)\mathcal{N}_\infty(f).$$
+\end{thm}
+\begin{proof}
+	En effet :
+	$$\left\lVert\int_{a}^{b}f\right\rVert\leqslant\int_{a}^{b}\lVert f\rVert\leqslant\int_{a}^{b}\mathcal{N}_\infty(f)=(b-a)\mathcal{N}_\infty(f).$$
+\end{proof}
+
+\section{Primitives et intégrales}
+
+\subsection{Primitives des fonctions continues}
+
+\begin{dfn}
+	Soit $f\in\mathcal{C}(I,E)$. Une application $g$ de $I$ dans $E$ est une \textbf{primitive} de $f$ si $g$ est dérivable sur $I$ avec $g'=f$.
+\end{dfn}
+
+\begin{thm}{}%prop
+	Soit $f\in\mathcal{C}(I,E)$. Deux primitives sur $I$ de $f$ diffèrent d'une constante.
+\end{thm}
+\begin{proof}
+	En effet, la dérivée de leur différence est nulle sur l'intervalle $I$.
+\end{proof}
+
+\begin{rmq}
+	La réciproque est immédiate : si $F$ est une primitive de $f$ et $G=F+a$, où $a\in E$, alors $G$ est une primitive de $f$.
+\end{rmq}
+
+\subsection{Théorème fondamental}
+
+\begin{thm}{}%thm
+	Soit $f\in\mathcal{C}(I,E)$ et $a\in I$.
+	\begin{enumerate}
+		\item L'application :
+		$$\begin{array}{lrcl}
+			g_a:&I&\longrightarrow&E\\
+			&t&\longmapsto&\displaystyle\int_{a}^{b}f(s)\d s
+		\end{array}$$ est l'unique primitive de $f$ qui s'annule en $a$.
+		\item Pour toute primitive $g$ de $f$ et tout couple $(\alpha,\beta)\in I^2$, on a :
+		$$\int_{\alpha}^{\beta}f(t)\d t=g(\beta)-g(\alpha).$$
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	Raisonner sur les fonctions coordonnées.
+\end{proof}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Si la fonction $f$ est seulement continue par morceaux sur $I$, l'application $g_a$ du théorème précédent est encore continue puisque localement lipschitzienne, comme on peut le prouver en utilisant l'inégalité :
+		$$\lVert g_a(x)-g_a(y)\rVert \lvert x-y\rvert\underset{J}{\sup}\lVert f\rVert,$$
+		où $J$ est un segment contenant $a$, $x$ et $y$.
+		\item Elle est dérivable à droite en tout point $x\in I$ différent de $\sup I$ avec $(g_a)_d'(x)=f(x^+)$, dérivable à gauche en tout point $x\in I$ différent de $\inf I$ avec $(g_a)_g'(x)=f(x^-)$.
+		\item En particulier, on a la dérivabilité de $g_a$ en tout point $x$ de continuité de $f$ avec $g_a'(x)=f(x)$.
+	\end{itemize}
+\end{rmq}
+
+\begin{thm}{}%cor
+	Soit $g\in\mathcal{C}^1(I,E)$. Pour tout $(a,b)\in I^2$, on a :
+	$$f(b)-f(a)=\int_{a}^{b}f'(t)\d t.$$
+\end{thm}
+
+\begin{thm}{Changement de variable}%cor
+	Soit $f:I\to E$ une fonction continue et $\varphi:J\to\R$ de classe $\mathcal{C}^1$ telles que $\varphi(J)\subset I$. Pour tout $(a,b)\in J^2$, on a :
+	$$\int_{\varphi(a)}^{\varphi(b)}f(t)\d t=\int_{a}^{b}f(\varphi(s))\varphi'(s)\d s.$$
+\end{thm}
+\begin{proof}
+	Si $g$ est une primitive de $f$, alors $g\circ\varphi$ est une primitive de $\varphi'\cdot(f'\circ \varphi)$. Par suite :
+	$$\int_{\varphi(a)}^{\varphi(b)}f(t)\d t=g(\varphi(b))-g(\varphi(a))=\int_{a}^{b}f(\varphi(s))\varphi'(s)\d s.$$
+\end{proof}
+
+\begin{exo}[Intégration par parties]
+	Soit $f\in\mathcal{C}^1(I,E)$ et $g\in\mathcal{C}^1(I,F)$ ainsi que $B$ une application bilinéaire de $E\times F$ dans $G$. Montrer que, pour tout $(a,b)\in I^2$ :
+	$$\int_{a}^{b}B(f(t),g'(t))\d t=\left[B(f(t),g(t))\right]_a^b-\int_{a}^{b}B(f'(t),g(t))\d t.$$
+\end{exo}
+
+\subsection{Inégalité des accroissements finis}
+
+\begin{thm}{Inégalité des accroissements finis}%thm
+	Soit $f\in\mathcal{C}(I,E)$ de classe $\mathcal{C}^1$ sur l'intérieur de $I$.\\
+	S'il existe $\lambda\in\R$ tel que $\forall t\in\mathring{I},\ \lVert f'(t)\rVert\leqslant\lambda$, alors on a :
+	$$\forall (a,b)\in I^2,\ \lVert f(b)-f(a)\rVert\leqslant\lambda\lvert b-a\rvert.$$
+\end{thm}
+
+\paragraph{Interprétation cinématique}
+Un mobile qui se déplace à une vitesse instantanée de norme inférieure à $v$ pendant un certain temps $t$ se trouve au maximum à une distance $vt$ de son point de départ.
+
+\begin{exo}
+	Soit $I=[a,b]$ avec $a<b$. \\
+	On suppose que $f:I\to\K$ et $\varphi:I\to\R$ sont de classe $\mathcal{C}^1$ sur $I$ et vérifient :
+	$$\forall t\in[a,b[,\ \lVert f'(t)\rVert\leqslant\varphi'(t).$$
+	Montrer que $\lVert f(b)-f(a)\rVert\leqslant\varphi(b)-\varphi(a)$.
+\end{exo}
+
+\subsection{Intégrales généralisées (HP)}
+
+La définition de la convergence de l'intégrale d'une fonction continue par morceaux définie sur un intervalle quelconque $I$ de $\R$ et à valeurs dans $E$ est identique à celle des fonctions à valeurs scalaires.
+
+On définit de même la convergence absolue comme la convergence de l'intégrale $\lVert f\rVert$.
+
+On dit alors aussi que $f$ est intégrable.
+
+La linéarité est évidemment conservée. On a aussi le résultat suivant.
+
+\begin{thm}{}%prop
+	Soit $L$ une application linéaire de $E$ dans un espace vectoriel $F$ de dimension finie et $f:I\to E$ une fonction continue par morceaux.\\
+	Si l'intégrale $\displaystyle\int_I f$ converge (respectivement converge absolument), alors l'intégrale $\displaystyle\int_I Lf$ converge (respectivement converge absolument) et l'on a :
+	$$\int_I Lf=L\left(\int_I f\right).$$
+\end{thm}
+
+On en déduit l'équivalence entre la convergence (absolue) de l'intégrale de $f$ et celles de ses fonctions coordonnées dans une base.
+
+\begin{thm}{}%thm
+	Toute intégrale absolument convergente est convergente.
+\end{thm}
+
+\section{Formules de Taylor}
+
+\subsection{Formule de Taylor avec reste intégrale}
+
+\begin{thm}{Formule de Taylor-Laplace}%thm
+	Étant donnée une fonction $f\in\mathcal{C}^{(n+1)}(I,E)$, on a pour tout $(a,b)\in I^2$ :
+	\begin{align*}
+		f(b)-\sum_{k=0}^{n}\frac{(b-a)^k}{k!}f^{(k)}(a)&=\int_{a}^{b}\frac{b(x)^n}{n!}f^{(n+1)}(x)\d x \\
+		&=(b-a)^{n+1}\int_{0}^{1}\frac{(1-t)^n}{n!}f^{(n+1)}(a+t(b-a))\d t.
+	\end{align*}
+\end{thm}
+
+\begin{ex}
+	Si $f$ est une fonction continue sur $\R$, la fonction $g$ définie par :
+	$$g(x)=\int_{0}^{x}\frac{(x-t)^n}{n!}f(t)\d t$$
+	est de classe $\mathcal{C}^{n+1}$ sur $\R$, avec $g^{(n+1)}=f$ et $\forall k\leqslant n,\ g^{(k)}(0)=0$.
+\end{ex}
+
+\begin{ex}
+	Pour tout réel $x\geqslant$, la série $\displaystyle\sum\frac{x^n}{n!}$ converge. Et pour $x\leqslant 0$ ?
+\end{ex}
+
+\subsection{Inégalité de Taylor-Lagrange}
+
+\begin{thm}{}%thm
+	Étant donnée une fonction $f\in\mathcal{C}^{(n+1)}(I,E)$, on a pour tout $(a,b)\in I^2$ :
+	$$\left\lVert f(b)-\sum_{k=0}^{n}\frac{(b-a)^k}{k!}f^{(k)}(a)\right\rVert\leqslant\frac{\lvert b-a\rvert^{n+1}}{(n+1)!}M_{n+1},$$
+	où $M_{n+1}$ est un majorant de $\lVert f^{(n+1)}\rVert$ sur $[a,b]$.
+\end{thm}
+
+\begin{ex}
+	Pour tout complexe $z$, la série $\displaystyle\sum\frac{z^n}{n!}$ converge vers $e^z$.
+\end{ex}
+
+\subsection{Formule de Taylor-Young}
+
+\begin{thm}{}%thm
+	Soit $n\in\N\st$ et $f$ une fonction $n-1$ fois dérivable sur $I$ et $n$ fois dérivable en $a$. Alors $f$ admet un développement limité à l'ordre $n$ en $a$ donné par la formule de Taylor-Young :
+	$$f(t)=\sum_{k=0}^{n}\frac{(t-a)^k}{k!}f^{(k)}(a)+\o((t-a)^n).$$
+\end{thm}
+\begin{proof}
+	Récurrence sur $n\in\N\st$ en primitivant les DL.
+\end{proof}
+
+\begin{ex}
+	On peut dériver terme à terme le développement limité à l'ordre $n$ d'une fonction de classe $\mathcal{C}^n$.
+\end{ex}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Bien remarquer la différence de statut entre les trois formules de Taylor : les deux premières sont globales, alors que la dernière ne peut donner que des résultats locaux (limites, équivalents, développements limités).
+		\item Le programme se limite, pour la formule de Taylor-Young, au cas des fonctions de classe $\mathcal{C}^n$.
+	\end{itemize}
+\end{rmq}
+
+\begin{exo}
+	Soit $n\in\N\st$ et $f$ une fonction de classe $\mathcal{C}^n$ sur $\R$.
+	\begin{enumerate}
+		\item Montrer qu'au voisinage de $0$ :
+		$$f(0)=f(x)-xf'(x)+\frac{x^2}{2!}f''(x)-\cdots+(-1)^n\frac{x^n}{n!}f^{(n)}(x)+\o(x^n).$$
+		\item En déduire que $g:x\mapsto\displaystyle\frac{f(x)-f(0)}{x}$ se prolonge en une fonction de classe $\mathcal{C}^n$ sur $\R$.
+	\end{enumerate}
+\end{exo}
+
+\end{document}

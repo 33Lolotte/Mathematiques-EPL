@@ -316,7 +316,7 @@ Dans tous les exercices, $I$ est un intervalle de $\R$ et $\K$ désigne $\R$ ou 
 \end{proof}
 
 \begin{ex}[Moulin.ED.40 / Cours Moulin]{$\Delta\star$ Lemme de Gronwall}
-	Soit $I$ un intervalle de $\R$, $t_0\in I$, ainsi que que $a:I\to\R_+$ et $b:I\to\R_+$ deux fonctions continues. On note $A$ la primitive de $a$ s'annulant en $t_0$. Si $y$ de classe $\mathcal{C}^1$ vérifie : $$\forall t\geqslant t_0,\ \lVert y'(t)\rVert\leqslant b(t)+a(t)\lVert y(t)\rVert$$ alors $y$ vérifie : $$\forall t\geqslant t_0,\ \lVert y(t)\rVert\leqslant\lVert y(t_0)\rVert e^{A(t)}+e^{A(t)}\int_{t_0}^{t}b(s)e^{-A(s)}\ ds$$ Le résultat est facile à retrouver : on majore $\lVert y\rVert$ par la solution du problème de Cauchy : $$\begin{cases}
+	Soit $I$ un intervalle de $\R$, $t_0\in I$, ainsi que que $a:I\to\R_+$ et $b:I\to\R_+$ deux fonctions continues. On note $A$ la primitive de $a$ s'annulant en $t_0$. Si $y$ de classe $\mathcal{C}^1$ vérifie : $$\forall t\geqslant t_0,\ \lVert y'(t)\rVert\leqslant b(t)+a(t)\lVert y(t)\rVert$$ alors $y$ vérifie : $$\forall t\geqslant t_0,\ \lVert y(t)\rVert\leqslant\lVert y(t_0)\rVert e^{A(t)}+e^{A(t)}\int_{t_0}^{t}b(s)e^{-A(s)}\ \text{d} s$$ Le résultat est facile à retrouver : on majore $\lVert y\rVert$ par la solution du problème de Cauchy : $$\begin{cases}
 		z'=b(t)+a(t)z \\
 		z(t_0)=\lVert y(t_0)\rVert
 	\end{cases}$$
