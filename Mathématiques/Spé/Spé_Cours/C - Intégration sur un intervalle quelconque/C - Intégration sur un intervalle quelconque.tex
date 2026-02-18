@@ -20,9 +20,12 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
 
 \setlist[itemize]{label=$\bullet$}
-
+\setlist{before=\leavevmode, leftmargin=*}
 
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
@@ -46,10 +49,10 @@
 \newcommand{\Vect}{\text{Vect}}
 \newcommand{\rg}{\text{rg}}
 \newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
-
 \renewcommand{\o}{\text{o}}
 \renewcommand{\O}{\text{O}}
 \renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
 
 
 \theoremstyle{plain}
@@ -58,22 +61,130 @@
 \theoremstyle{definition}
 
 \newtheorem*{ex}{Exemple}
-\newtheorem*{met}{Point méthode}
-\newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
+\newtheorem*{notation}{Notation}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{terminologie}{Terminologie}
+\newtheorem*{attention}{Attention}
+\newtheorem*{conséquence}{Conséquence}
 
 \theoremstyle{remark}
 \newtheorem*{app}{Application}
 
-\newtcolorbox[auto counter]{dfn}{
+\newtcolorbox[auto counter]{dfn}[1][]{
 	enhanced,
-	breakable,
 	colback=white,
-	fonttitle=\sc,
-	title={Définition \thetcbcounter}
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
 }
 
-\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
 
 \title{Intégration sur un intervalle quelconque}
 \date{}
@@ -100,7 +211,9 @@ Rappelons la définition d'une fonction continue par morceaux sur un segment et 
 	\end{itemize}
 \end{dfn}
 
-\paragraph{Notation} On note $\mathcal{CM}(I,\K)$ l'ensemble des fonctions continues par morceaux sur l'intervalle $I$ à valeurs dans $\K$.
+\begin{notation}
+	On note $\mathcal{CM}(I,\K)$ l'ensemble des fonctions continues par morceaux sur l'intervalle $I$ à valeurs dans $\K$.
+\end{notation}
 
 \begin{rmq}
 	L'ensemble $\mathcal{CM}(I,\K)$ contient les fonctions constantes sur $I$, est stable par combinaison linéaire et produit : c'est une sous-algèbre de $\K^I$. On a immédiatement l'inclusion $\mathcal{C}(I,\K)\subset\mathcal{CM}(I,\K)$.
@@ -113,24 +226,28 @@ Rappelons la définition d'une fonction continue par morceaux sur un segment et 
 	\end{enumerate}
 \end{ex}
 
-\paragraph{Attention} Il n'y a pas de théorème concernant la composition ni le quotient de fonctions continues par morceaux !
+\begin{attention}
+	Il n'y a pas de théorème concernant la composition ni le quotient de fonctions continues par morceaux !
+\end{attention}
 
-\paragraph{Rappel} Lorsque $f$ est une fonction continue sur $I$, pour $a\in I$, la fonction : $$\begin{array}{lrcl}
+\begin{rappel}
+	Lorsque $f$ est une fonction continue sur $I$, pour $a\in I$, la fonction : $$\begin{array}{lrcl}
 	F:&I&\longrightarrow&\K\\
 	&x&\longmapsto&\displaystyle\int_{a}^{x}f(t)\d t
-\end{array}$$ est dérivable, de dérivée $f$. On en déduit, en particulier, que si $f$ est positive, alors $F$ est croissante.\\
+\end{array}$$ est dérivable, de dérivée $f$. On en déduit, en particulier, que si $f$ est positive, alors $F$ est croissante.
+\end{rappel}
 Voyons ce que ces résultats deviennent pour des fonctions continues par morceaux.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $f$ une fonction continue par morceaux et positive sur $I$. Alors la fonction :
 	$$\begin{array}{lrcl}
 		F:&I&\longrightarrow&\R\\
 		&x&\longmapsto&\displaystyle\int_{a}^{x}f(t)\d t
 	\end{array}$$
 	est croissante sur $I$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $f:I\to\K$ une fonction continue par morceaux et $a\in I$. La fonction :
 	$$\begin{array}{lrcl}
 		F:&I&\longrightarrow&\K\\
@@ -142,7 +259,7 @@ Voyons ce que ces résultats deviennent pour des fonctions continues par morceau
 		\item dérivable à gauche en tout point de $x$ différent de $\inf(I)$, avec $F_g'(x)=f(x^-)$.
 	\end{itemize}
 	En particulier, $F$ est dérivable en tout point de continuité de $f$ avec $F'(x)=f(x)$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Par extension, on dira que $F:x\mapsto\displaystyle\int_{a}^{x}f(t)\d t$ est une \textbf{primitive} de $f$.
@@ -160,47 +277,54 @@ Ici, on considère $a\in\R$ et $b\in\overline{\R}$ tels que $a<b\leqslant+\infty
 	Dans le cas contraire, on dit que l'intégrale $\displaystyle\int_{[a,b[}f$ \textbf{diverge} (et on ne la note pas).
 \end{dfn}
 
-\paragraph{Terminologie}
-\begin{itemize}
+\begin{terminologie}
+	\begin{itemize}
 	\item Une telle intégrale est appelée \textbf{intégrale généralisée}. On parle aussi d'\textbf{intégrale impropre}.
 	\item Pour une intégrale généralisée, son caractère convergent ou divergent est appelé sa nature.
 \end{itemize}
+\end{terminologie}
 
-\begin{thm}{Caractère local de la nature d'une intégrale}%prop
+\begin{prop}[Caractère local de la nature d'une intégrale]%prop
 	Soit $f\in\mathcal{CM}([a,b[,\K)$ ainsi que $c\in[a,b[$.\\
 	Les intégrales $\displaystyle\int_{[a,b[}f$ et $\displaystyle\int_{[c,b[}f$ sont de même nature et, si elles convergent, on a :
 	$$\int_{[a,b[}f=\int_{[a,c]}f+\int_{[c,b[}f.$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	On utilise la relation de Chasles et la définition de la convergence d'une intégrale.
 \end{proof}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $f\in\mathcal{CM}([a,b[,\K)$. Si l'intégrale converge, $\displaystyle\int_{[a,b[}f$ converge, alors $\displaystyle\int_{[x,b[}f\xrightarrow[x\to b]{}0$.
-\end{thm}
+\end{cor}
 
 \begin{rmq}
 	On peut noter une analogie entre l'étude des intégrales généralisées sur un intervalle $[a,+\infty[$ et celle des séries numériques.
 \end{rmq}
 
-\paragraph{Terminologie} Par analogie avec les séries, l'intégrale $\displaystyle\int_{[a,x]}f$ est appelée \textbf{intégrale partielle} et, en cas de convergence, l'intégrale $\displaystyle\int_{[x,b[}f$ est appelée \textbf{reste} de l'intégrale $\displaystyle\int_{[a,b[}f$.
+\begin{terminologie}
+	Par analogie avec les séries, l'intégrale $\displaystyle\int_{[a,x]}f$ est appelée \textbf{intégrale partielle} et, en cas de convergence, l'intégrale $\displaystyle\int_{[x,b[}f$ est appelée \textbf{reste} de l'intégrale $\displaystyle\int_{[a,b[}f$.
+\end{terminologie}
 
 
 Le résultat suivant assure que, pour une fonction $f$ continue par morceaux sur le segment $[a,b]$, il n'y a pas de différence entre son intégrale sur le segment $[a,b]$ (au sens de la première année) et son intégrale sur l'intervalle semi-ouvert $[a,b[$ (au sens que nous venons de définir).
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $f\in\mathcal{CM}([a,b],\K)$. Alors l'intégrale généralisée $\displaystyle\int_{[a,b[}f$ converge et l'on a :
 	$$\int_{[a,b[}f=\int_{[a,b]}f$$
-\end{thm}
+\end{prop}
 
-\paragraph{Notation} Dans la suite, l'intégrale $\displaystyle\int_{[a,b[}f$ est notée $\displaystyle\int_{a}^{b}f$. Dans le cas où $f$ est continue par morceaux sur le segment $[a,b]$, le résultat précédent assure la cohérence de cette notation avec celle déjà utilisée en première année.
+\begin{notation}
+	Dans la suite, l'intégrale $\displaystyle\int_{[a,b[}f$ est notée $\displaystyle\int_{a}^{b}f$. Dans le cas où $f$ est continue par morceaux sur le segment $[a,b]$, le résultat précédent assure la cohérence de cette notation avec celle déjà utilisée en première année.
+\end{notation}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $f\in\mathcal{C}([a,b[,\K)$ et $F$ une primitive de $F$. L'intégrale $\displaystyle\int_{a}^{b}f$ converge si, et seulement si, $F$ possède une limite finie en $b$. Dans ce cas, on a : 
 	$$\int_{a}^{b}f=\underset{b}{\lim}F-F(a)$$ et la fonction définie sur $[a,b[$ par $x\mapsto\displaystyle\int_{x}^{b}f$ est dérivable, de dérivée $-f$.
-\end{thm}
+\end{prop}
 
-\paragraph{Notation} Si $\underset{b}{\lim}F$ existe, on note $[F]_a^b$ l'expression $\underset{b}{\lim}F-F(a)$.
+\begin{notation}
+	Si $\underset{b}{\lim}F$ existe, on note $[F]_a^b$ l'expression $\underset{b}{\lim}F-F(a)$.
+\end{notation}
 
 \begin{ex}
 	\begin{enumerate}
@@ -210,14 +334,18 @@ Le résultat suivant assure que, pour une fonction $f$ continue par morceaux sur
 	\end{enumerate}
 \end{ex}
 
-\paragraph{Attention} A l'instar des séries numériques, la condition $f\xrightarrow[+\infty]{}0$ n'est pas suffisante pour que l'intégrale $\displaystyle\int_{a}^{+\infty}f$ converge, comme le montre l'exemple suivant.
+\begin{attention}
+	A l'instar des séries numériques, la condition $f\xrightarrow[+\infty]{}0$ n'est pas suffisante pour que l'intégrale $\displaystyle\int_{a}^{+\infty}f$ converge, comme le montre l'exemple suivant.
+\end{attention}
 
 \begin{ex}
 	Considérons $f:t\mapsto\displaystyle\frac{1}{t}$ sur $[1,+\infty[$. $f\xrightarrow[+\infty]{}0$, mais l'intégrale $\displaystyle\int_{1}^{+\infty}f$ diverge car :
 	$$\forall x\geqslant1,\ \int_{1}^{x}\frac{\d t}{t}=\ln(x)\xrightarrow[x\to +\infty]{}+\infty.$$
 \end{ex}
 
-\paragraph{Attention} En revanche, contrairement au cas des séries numériques, la convergence de l'intégrale $\displaystyle\int_{a}^{+\infty}f$ n'entraîne le fait que $f$ tende vers $0$ en $+\infty$, ni même que $f$ est bornée au voisinage de $+\infty$, comme on le verra dans un exemple dans la suite du chapitre.
+\begin{attention}
+	En revanche, contrairement au cas des séries numériques, la convergence de l'intégrale $\displaystyle\int_{a}^{+\infty}f$ n'entraîne le fait que $f$ tende vers $0$ en $+\infty$, ni même que $f$ est bornée au voisinage de $+\infty$, comme on le verra dans un exemple dans la suite du chapitre.
+\end{attention}
 
 \begin{met}
 	Pour $N\in\N$ et $a>0$, on a d'après la relation de Chasles : $$\sum_{n=1}^{N}\int_{na}^{(n+1)a}f=\int_{a}^{(N+1)a}f$$ Par conséquent, si l'intégrale $\displaystyle\int_{a}^{+\infty} f$ converge alors la série $\displaystyle\sum \int_{na}^{(n+1)a}f$ converge. Ainsi, on peut utilise la divergence d'une série pour prouver la divergence d'une intégrale. Attention, la réciproque est fausse.
@@ -227,7 +355,9 @@ Le résultat suivant assure que, pour une fonction $f$ continue par morceaux sur
 	Montrons que l'intégrale $\displaystyle\int_{\pi}^{+\infty}\left\lvert\frac{\sin(t)}{t}\right\rvert \d t$ diverge.
 \end{ex}
 
-\paragraph{Attention} La réciproque est fausse : la convergence de la série $\displaystyle\sum \int_{na}^{(n+1)a}f$ n'implique pas la convergence de l'intégrale $\displaystyle\int_{a}^{+\infty}f$, comme le montre l'exemple suivant.
+\begin{attention}
+	La réciproque est fausse : la convergence de la série $\displaystyle\sum \int_{na}^{(n+1)a}f$ n'implique pas la convergence de l'intégrale $\displaystyle\int_{a}^{+\infty}f$, comme le montre l'exemple suivant.
+\end{attention}
 
 \begin{ex}
 	L'intégrale $\int_{0}^{+\infty}\cos(t)\d t$ diverge mais $\displaystyle\sum \int_{n\pi}^{2(n+1)\pi}\cos(t)\d t$ est convergente, car son terme général est nul.
@@ -257,18 +387,19 @@ Ici, on considère $a\in\overline{\R}$ et $b\in\R$ tels que $-\infty\leqslant a<
 	On adapte sans difficulté au cas d'un intervalle semi-ouvert $]a,b]$ les propositions énoncées précédemment dans le cas d'un intervalle du type $[a,b[$.
 \end{rmq}
 
-\paragraph{Notation}
-L'intégrale $\displaystyle\int_{]a,b]}f$ est aussi notée $\displaystyle\int_{a}^{b}f$.
+\begin{notation}
+	L'intégrale $\displaystyle\int_{]a,b]}f$ est aussi notée $\displaystyle\int_{a}^{b}f$.
+\end{notation}
 
 \subsubsection*{Cas d'un intervalle ouvert $]a,b[$}
 
 Dans cette section, on considère $(a,b)\in\overline{\R}^2$ tel que $-\infty\leqslant a\leqslant b\leqslant+\infty$.
 
-\begin{thm}{}%lem
+\begin{lem}%lem
 	Soit $f\in\mathcal{CM}(]a,b[,\K)$.\\
 	S'il existe $c\in]a,b[$ tel que les deux intégrales $\displaystyle\int_{]a,c]}f$ et $\displaystyle\int_{[c,b[}f$ convergent, alors, pour tout réel $c'\in]a,b[$, les intégrales $\displaystyle\int_{]a,c']}f$ et $\displaystyle\int_{[c',b[}f$ convergent aussi, et :
 	$$\int_{]a,c]}f+\int_{[c,b[}f=\int_{]a,c']}f+\int_{[c',b[}f.$$
-\end{thm}
+\end{lem}
 \begin{proof}
 	Utiliser le caractère local de la nature d'une intégrale.
 \end{proof}
@@ -286,13 +417,17 @@ On peut donc poser la définition suivante.
 	\item De même, un autre résultat précédent s'étend : si $f\in\mathcal{CM}([a,b],\K)$, l'intégrale $\displaystyle\int_{]a,b[}f$ converge et on a $\displaystyle\int_{]a,b[}f=\int_{[a,b}f$.
 \end{itemize}
 
-\paragraph{Notation} La discussion précédente justifie alors la notation $\displaystyle\int_{a}^{b}f$ utilisée pour désigner cette intégrale.
+\begin{notation}
+	La discussion précédente justifie alors la notation $\displaystyle\int_{a}^{b}f$ utilisée pour désigner cette intégrale.
+\end{notation}
 
 \begin{ex}
 	Si $\displaystyle\int_{-\infty}^{+\infty}f$ converge, alors $\displaystyle\int_{-x}^{x}f\xrightarrow[x\to+\infty]{}\int_{-\infty}^{+\infty}f$.
 \end{ex}
 
-\paragraph{Attention} La réciproque du résultat obtenue par l'exemple précédent est fausse : comme le montre l'exemple suivant, l'existence de $\displaystyle\underset{x\to+\infty}{\lim}\int_{-x}^{x}f(t)\d t$ n'entraîne pas nécessairement la convergence de l'intégrale $\displaystyle\int_{-\infty}^{+\infty}f$.
+\begin{attention}
+	La réciproque du résultat obtenue par l'exemple précédent est fausse : comme le montre l'exemple suivant, l'existence de $\displaystyle\underset{x\to+\infty}{\lim}\int_{-x}^{x}f(t)\d t$ n'entraîne pas nécessairement la convergence de l'intégrale $\displaystyle\int_{-\infty}^{+\infty}f$.
+\end{attention}
 
 \begin{ex}
 	Pour tout $x\in\R$, on a $\displaystyle\int_{-x}^{x}t\ \d t=0$, donc $\displaystyle\int_{-x}^{x}t\ \d t\xrightarrow[x\to+\infty]{}0$, mais l'intégrale $\displaystyle\int_{-\infty}^{+\infty}t\ \d t$ n'est pas convergente puisque $\displaystyle\int_{0}^{x}t\ \d t\xrightarrow[x\to+\infty]{}+\infty$.
@@ -311,13 +446,13 @@ On peut donc poser la définition suivante.
 De la même façon que pour les séries numériques, on étudie le cas des fonctions positives. La notion d'intégrabilité permettra ensuite de se ramener à ce cas.\\
 On traite dans ce paragraphe le cas des intégrales généralisées sur l'intervalle semi-ouvert $[a,b[$, le cas $]a,b]$ étant analogue et le cas $]a,b[$ se ramenant aux deux précédents.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $a\in\R$ et $b\in\overline{\R}$ tels que $a<b\leqslant+\infty$, ainsi que $f\in\mathcal{CM}([a,b[,\R)$ à valeurs \textit{positives}.
 	\begin{enumerate}
 		\item L'intégrale $\displaystyle\int_{a}^{b}f$ converge si, et seulement si, $x\mapsto\displaystyle\int_{a}^{x}f$ est majorée sur $[a,b[$.
 		\item L'intégrale $\displaystyle\int_{a}^{b}f$ diverge si, et seulement si, $\displaystyle\int_{a}^{x}f\xrightarrow[x\to b]{}+\infty$. On pose alors : $\displaystyle\int_{a}^{b}f=+\infty$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 \begin{proof}
 	On utilise la croissance de la fonction $x\mapsto\displaystyle\int_{a}^{x}f$ et le théorème de la limite monotone.
 \end{proof}
@@ -329,11 +464,11 @@ On traite dans ce paragraphe le cas des intégrales généralisées sur l'interv
 	\end{itemize}
 \end{rmq}
 
-\begin{thm}{Comparaison d'intégrales de fonctions positives}%prop
+\begin{prop}[Comparaison d'intégrales de fonctions positives]%prop
 	Soit $a\in\R$ et $b\in\overline{\R}$ tels que $a<b\leqslant+\infty$, ainsi que $(f,g)\in\mathcal{CM}([a,b[,\R)^2$ à valeurs \textit{positives}.
 	Si $f\leqslant g$ sur $[a,b[$, alors on a l'inégalité suivant dans $\overline{\R}_+$ : $$\int_{a}^{b}f\leqslant\int_{a}^{b}g.$$
 	En particulier, si l'intégrale $\displaystyle\int_{a}^{b}g$ converge, alors l'intégrale $\displaystyle\int_{a}^{b}f$ converge.
-\end{thm}
+\end{prop}
 \begin{proof}
 	On utilise la caractérisation de la convergence de l'intégrale d'une fonction positive (proposition précédente) pour écrire : $$\int_{a}^{x}f\leqslant\int_{a}^{x}g\leqslant\int_{a}^{b}g$$ et on passe à la limite sur $x$.
 \end{proof}
@@ -358,18 +493,18 @@ On traite dans ce paragraphe le cas des intégrales généralisées sur l'interv
 
 Comme pour les séries numériques, nous disposons d'un certain nombre d'exemples de référence permettant, grâce au théorème de comparaison, de déterminer la nature de beaucoup d'autres intégrales.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $\alpha\in\R$. L'intégrale $\displaystyle\int_{0}^{+\infty}e^{-\alpha t}\ \d t$ converge si, et seulement si, $\alpha>0$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{Intégrales de Riemann}%prop
+\begin{prop}[Intégrales de Riemann]%prop
 	Soit $\alpha\in\R$.
 	\begin{itemize}
 		\item L'intégrale $\displaystyle\int_{1}^{+\infty}\frac{\d t}{t^\alpha}$ converge si, et seulement si, $\alpha>1$.
 		\item L'intégrale $\displaystyle\int_{0}^{1}\frac{\d t}{t^\alpha}$ converge si, et seulement si, $\alpha<1$.
 		\item Plus généralement, étant donné $(a,b)\in\R^2$ tel que $a<b$, les intégrales $\displaystyle\int_{a}^{b}\frac{\d t}{(b-t)^\alpha}$ et $\displaystyle\int_{a}^{b}\frac{\d t}{(t-a)^\alpha}$ convergent si, et seulement si, $\alpha<1$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	\begin{enumerate}
@@ -386,16 +521,16 @@ Les propositions suivantes étendent à un intervalle $I$ quelconque des propri�
 
 \subsection{Linéarité}
 
-\begin{thm}{Linéarité}%prop
+\begin{prop}[Linéarité]%prop
 	L'ensemble des fonctions $f\in\mathcal{CM}(I,\K)$ telles que $\displaystyle\int_I f$ converge est un sous-espace vectoriel de $\mathcal{CM}(I,\K)$ sur lequel l'application $f\mapsto\displaystyle\int_I f$ est une forme linéaire.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Cela résulte de la définition de la convergence d'une intégrale, de la linéarité de l'intégrale sur un segment et des théorèmes d'opérations sur les limites.
 \end{proof}
 
-\begin{thm}{Fonctions à valeurs complexes}%prop
+\begin{prop}[Fonctions à valeurs complexes]%prop
 	Étant donnée $f\in\mathcal{CM}(I,\C)$, l'intégrale $\displaystyle\int_I f$ converge si, et seulement si, les deux intégrales $\displaystyle\int_I\text{Re}(f)$ et $\displaystyle\int_I\text{Im}(f)$ convergent, et l'on a alors : $$\int_{I}f=\int_I\text{Re}(f)+i\int_I\text{Im}(f).$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	Cela résulte de la définition de la convergence d'une intégrale et des propriétés des limites des fonctions à valeurs complexes.
 \end{proof}
@@ -404,20 +539,20 @@ Les propositions suivantes étendent à un intervalle $I$ quelconque des propri�
 
 On considère ici des fonctions à valeurs réelles.
 
-\begin{thm}{Positivité}%prop
+\begin{prop}[Positivité]%prop
 	Soit $f\in\mathcal{CM}(I,\R)$ telle que $\displaystyle\int_I f$ converge. Si $f$ est positive sur $I$, alors $\displaystyle\int_If\geqslant0$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{Croissance}%prop
+\begin{prop}[Croissance]%prop
 	Soit $(f,g)\in\mathcal{CM}(I,\R)^2$ tel que $\displaystyle\int_I f$ et $\displaystyle\int_I g$ convergent. Si $f\leqslant g$ sur $I$, alors $\displaystyle\int_If\leqslant\int_I g$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	On applique la positivité de l'intégrale à la fonction $g-f$ en utilisant la linéarité de l'intégrale.
 \end{proof}
 
-\begin{thm}{Fonction continue positive et d'intégrale nulle}
+\begin{prop}[Fonction continue positive et d'intégrale nulle]
 	Soit $f\in\mathcal{C}(I,\R)$ continue à valeurs positives. Si $\displaystyle\int_If=0$, alors $f=0$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Dans le cas où $I$ est de la forme $[a,b[$, on dérive $x\mapsto\displaystyle\int_{a}^{x}f(t)\ \d t$.
 \end{proof}
@@ -432,9 +567,9 @@ On considère ici des fonctions à valeurs réelles.
 
 \subsection{Relation de Chasles}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $f\in\mathcal{CM}(I,\K)$ telle que $\displaystyle\int_If$ converge. Si $J$ est un sous-intervalle d'intérieur non vide de $I$, alors $\displaystyle\int_Jf$ converge.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Le cas $J=I$ étant trivial, supposons $J\subsetneq I$.
 	Si aucune des deux extrémités $\alpha$ et $\beta$ de $J$ n'est une extrémité ouvert de $I$, la fonction $f$ est définie et continue par morceaux sur le segment $[\alpha,\beta]$, et il a déjà été indiqué qu'alors l'intégrale $\displaystyle\int_Jf$ converge. Supposons donc qu'au moins l'un des extrémités ouvertes de $J$ soit une extrémité ouverte de $I$.\\
@@ -443,15 +578,19 @@ On considère ici des fonctions à valeurs réelles.
 	\textbf{Cas $I=]a,b[$} Dans ce cas, $J=]a,c]$ ou $J=[c,b[$ avec $a<c<b$ ; la convergence de l'intégrale $\displaystyle\int_Jf$ provient alors de la définition de la convergence de l'intégrale $f$ sur l'intervalle ouvert $]a,b[$.
 \end{proof}
 
-\paragraph{Conséquence} Supposons que $\displaystyle\int_I f$ converge. Si $x<y$ sont des points ou des extrémités de $I$, alors on a $]x,y[\subset I$, donc l'intégrale $\displaystyle\in_{]x,y[}f$, notée aussi $\displaystyle\int_{x}^{y}f$, converge.
+\begin{conséquence}
+	Supposons que $\displaystyle\int_I f$ converge. Si $x<y$ sont des points ou des extrémités de $I$, alors on a $]x,y[\subset I$, donc l'intégrale $\displaystyle\in_{]x,y[}f$, notée aussi $\displaystyle\int_{x}^{y}f$, converge.
+\end{conséquence}
 
-\paragraph{Notation} Plus généralement, si $\displaystyle\int_I f$ converge, la notation $\displaystyle\int_{x}^{y}f$, déjà définie dans le cas où $x<uy$, est étendue au cas général ainsi :
+\begin{notation}
+	Plus généralement, si $\displaystyle\int_I f$ converge, la notation $\displaystyle\int_{x}^{y}f$, déjà définie dans le cas où $x<uy$, est étendue au cas général ainsi :
 $$\int_{x}^{y}f=-\int_{y}^{x}f\quad\text{si}\quad x>y\quad\quad\text{et}\quad\quad\int_{x}^{y}f=0\quad\text{si}\quad x=y.$$
+\end{notation}
 
-\begin{thm}{Relation de Chasles}%prop
+\begin{prop}[Relation de Chasles]%prop
 	Soit $f\in\mathcal{CM}(I,\K)$ telle que $\displaystyle\int_If$ converge. Si $x$, $y$ et $z$ sont trois points ou extrémités de $I$, alors les intégrales $\displaystyle\int_{x}^{z}f$, $\displaystyle\int_{x}^{y}f$ et $\displaystyle\int_{y}^{z}f$ convergent, et l'on a : 
 	$$\int_{x}^{z}f=\int_{x}^{y}f+\int_{y}^{z}f.$$
-\end{thm}
+\end{prop}
 
 \subsection{Intégrabilité}
 
@@ -461,12 +600,13 @@ Dans cette section, $I$ désigne un intervalle de $\R$ d'intérieur non vide.
 	On dit que $f\in\mathcal{CM}(I,\K)$ est \textbf{intégrable} sur $I$, ou que l'intégrale $\displaystyle\int_I f$ \textbf{converge absolument}, si l'intégrale $\displaystyle\int_I \lvert f\rvert$ converge.
 \end{dfn}
 
-\paragraph{Notation}
-On note $L^1(I,\K)$ l'ensemble des fonctions intégrables sur $I$.
+\begin{notation}
+	On note $L^1(I,\K)$ l'ensemble des fonctions intégrables sur $I$.
+\end{notation}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	$L^1(I,\K)$ est un sous-espace vectoriel de $\mathcal{CM}(I,\K)$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Utiliser l'inégalité triangulaire et le théorème de comparaison pour les fonctions à valeurs positives.
 \end{proof}
@@ -478,33 +618,35 @@ On note $L^1(I,\K)$ l'ensemble des fonctions intégrables sur $I$.
 	\end{itemize}
 \end{rmq}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Si $f\in L^1(I,\K)$, alors $\displaystyle\int_If$ converge.
 \end{thm}
 \begin{proof}
 	On étudier d'abord le cas des fonctions $f$ à valeurs réelles, en utilisant les fonctions $f^+=\displaystyle\frac{\lvert f\rvert+f}{2}$ et $f^-=\displaystyle\frac{\lvert f\rvert-f}{2}$, puis on en déduit le cas des fonctions à valeurs complexes en écrivant $f=\text{Re}(f)+i\text{Im}(f)$.
 \end{proof}
 
-\begin{thm}{Inégalité triangulaire}%thm
+\begin{thm}[Inégalité triangulaire]%thm
 	Pour tout $f\in L^1(I,\K)$, on a $\displaystyle\left\lvert\int_If\right\rvert\leqslant\int_I \lvert f\rvert$.
 \end{thm}
 
-\begin{thm}{Caractère local de l'intégrabilité}%prop
+\begin{prop}[Caractère local de l'intégrabilité]%prop
 	Sot $a\in\R$ et $b\in\overline{\R}$ tels que $a<b\leqslant+\infty$. Soit $f\in\mathcal{CM}([a,b[,\K)$. Alors, pour tout $c\in[a,b[$, la fonction $f$ est intégrable sur $[a,b[$ si, et seulement si, elle l'est sur $[c,b[$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	C'est une conséquence immédiate du caractère local de la nature d'une intégrale.
 \end{proof}
 
-\paragraph{Conséquence et terminologie}
-\begin{itemize}
-	\item L'intégrabilité de $f$ sur $[a,b[$ ne dépend que du comportement local de $f$ au voisinage de $b$.
-	\item Pour $f\in\mathcal{CM}([a,b[,\K)$, on dira que $f$ est \textbf{intégrable en $b$} si $f$ est intégrable sur $[a,b[$.
-\end{itemize}
+\begin{conséquence}
+	L'intégrabilité de $f$ sur $[a,b[$ ne dépend que du comportement local de $f$ au voisinage de $b$.
+\end{conséquence}
+
+\begin{terminologie}
+	Pour $f\in\mathcal{CM}([a,b[,\K)$, on dira que $f$ est \textbf{intégrable en $b$} si $f$ est intégrable sur $[a,b[$.
+\end{terminologie}
 
 \subsection{Intégrabilité et comparaison}
 
-\begin{thm}{Théorème de comparaison}%thm
+\begin{thm}[Théorème de comparaison]%thm
 	Soit $(a,b)\in\R\times\overline{\R}$ tel que $a<b\leqslant+\infty$ et $(f,g)\in\mathcal{CM}([a,b[,\K)^2$.
 	\begin{itemize}
 		\item Si $f\underset{b}{=}\O(g)$ et si $g$ est intégrable sur $[a,b[$, alors $f$ est intégrable sur $[a,b[$.
@@ -515,8 +657,9 @@ On note $L^1(I,\K)$ l'ensemble des fonctions intégrables sur $I$.
 	Cela résulte de la définition de l'intégrabilité, du théorème de comparaison pour les fonctions à valeurs positives et du caractère local de l'intégrabilité.
 \end{proof}
 
-\paragraph{Attention}
-Le théorème de comparaison énoncé ici concerne l'\textit{intégrabilité} des des fonctions, c'est-à-dire la convergence \textit{absolue} de leurs intégrales. On peut très bien avoir $f\underset{b}{\sim}g$ sans que les intégrales $\displaystyle\int_{a}^{b}f$ et $\displaystyle\int_{a}^{b}g$ soient de même nature. Se référer à un exemple et une remarque de la section sur la semi-convergence.
+\begin{attention}
+	Le théorème de comparaison énoncé ici concerne l'\textit{intégrabilité} des des fonctions, c'est-à-dire la convergence \textit{absolue} de leurs intégrales. On peut très bien avoir $f\underset{b}{\sim}g$ sans que les intégrales $\displaystyle\int_{a}^{b}f$ et $\displaystyle\int_{a}^{b}g$ soient de même nature. Se référer à un exemple et une remarque de la section sur la semi-convergence.
+\end{attention}
 
 \begin{rmq}
 	Ce qui précède (en particulier le théorème de comparaison) a été énoncé dans le cas où $I=[a,b[$ mais s'adapte naturellement au cas $I=]a,b]$.
@@ -567,7 +710,9 @@ Le théorème de comparaison énoncé ici concerne l'\textit{intégrabilité} de
 	Dans ce dernier cas, en prolongeant $f$ par continuité en $b$ et une fonction $\tilde{f}$, a-t-on $\displaystyle\int_{[a,b[}f=\int_{[a,b]}\tilde{f}$ ? %peu de chances que ça ait du sens, mais si cela en a, oui
 \end{exo}
 
-\paragraph{Attention} Le caractère \textit{fini} de $b$ est essentiel, comme le montre l'exemple de la fonction $t\mapsto\displaystyle\frac{1}{t}$, bornée et non intégrable sur $[1,+\infty[$.
+\begin{attention}
+	Le caractère \textit{fini} de $b$ est essentiel, comme le montre l'exemple de la fonction $t\mapsto\displaystyle\frac{1}{t}$, bornée et non intégrable sur $[1,+\infty[$.
+\end{attention}
 
 \begin{ex}
 	La fonction $f:t\mapsto\sin\left(\frac{1}{t^2}\right)$ est intégrable sur $]0,+\infty[$ car bornée au voisinage de $0$ et équivalente à $t^{-2}$ positive et intégrable en $+\infty$.
@@ -608,10 +753,10 @@ Le théorème de comparaison énoncé ici concerne l'\textit{intégrabilité} de
 	\end{itemize}
 \end{rmq}
 
-\begin{thm}{Théorème d'intégration par parties}%prop
+\begin{prop}[Théorème d'intégration par parties]%prop
 	Soit $f$ et $g$ deux fonctions de classe $\mathcal{C}^1$ sur un intervalle d'extrémités $a$ et $b$, avec $-\infty\leqslant a<b\leqslant+\infty$.\\
 	Si le crochet $[fg]_a^b$ converge, alors les deux intégrales $\displaystyle\int_{a}^{b}f'g$ et $\displaystyle\int_{a}^{b}fg'$ sont de même nature et, en cas de convergence, on a : $$\int_{a}^{b}f'g=[fg]_a^b-\int_{a}^{b}fg'.$$
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Calcul de l'intégrale $\displaystyle\int_{1}^{+\infty}\frac{\arctan(t)}{t^2}\d t$.
@@ -641,10 +786,10 @@ Le théorème de comparaison énoncé ici concerne l'\textit{intégrabilité} de
 
 Soit $(a,b,\alpha,\beta)\in\overline{\R}^4$ tel que $-\infty\leqslant a<b\leqslant+\infty$ et $-\infty\leqslant\alpha<\beta\leqslant+\infty$.
 
-\begin{thm}{Théorème de changement de variable (cas croissant)}%prop
+\begin{prop}[Théorème de changement de variable (cas croissant)]%prop
 	Soit $f\in\mathcal{CM}(]a,b[,\K)$ et $\varphi:]\alpha,\beta[\to]a,b[$ une fonction de classe $\mathcal{C}^1$, strictement croissante et bijective. Alors, les intégrales $\displaystyle\int_{a}^{b}f(t)\d t$ et $\displaystyle\int_{\alpha}^{\beta}f(\varphi(u))\varphi'(u)\d u$ sont de même nature et, en cas de convergence :
 	$$\int_{a}^{b}f(t)\d t=\int_{\alpha}^{\beta}f(\varphi(u))\varphi'(u)\d u.$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	Remarquer qu'en notant $F$ une primitive de $f$, alors $F\circ\varphi$ est une primitive de $\varphi'\times(f\circ\varphi)$, et utiliser un point méthode précédent.
 \end{proof}
@@ -657,10 +802,10 @@ Soit $(a,b,\alpha,\beta)\in\overline{\R}^4$ tel que $-\infty\leqslant a<b\leqsla
 	Montrons l'égalité $\displaystyle\int_{0}^{+\infty}e^{-t^2}\d t=\frac{1}{2}\int_{0}^{+\infty}\frac{e^{-u}}{\sqrt{u}}\d u$.
 \end{ex}
 
-\begin{thm}{Théorème de changement de variable (cas décroissant)}%prop
+\begin{prop}[Théorème de changement de variable (cas décroissant)]%prop
 	Soit $f\in\mathcal{CM}(]a,b[,\K)$ et $\varphi:]\alpha,\beta[\to]a,b[$ une fonction de classe $\mathcal{C}^1$, strictement décroissante et bijective. Alors, les intégrales $\displaystyle\int_{a}^{b}f(t)\d t$ et $\displaystyle\int_{\alpha}^{\beta}f(\varphi(u))\varphi'(u)\d u$ sont de même nature et, en cas de convergence :
 	$$\int_{a}^{b}f(t)\d t=-\int_{\alpha}^{\beta}f(\varphi(u))\varphi'(u)\d u.$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	Le principe est le même que pour la proposition précédente, en notant bien que cette fois on a : $$\underset{\alpha}{\lim}\varphi=b\quad\text{et}\quad\underset{\beta}{\lim}\varphi=a.$$
 \end{proof}
@@ -724,14 +869,14 @@ On procéderait de la même façon dans le cas d'un intervalle $]a,b]$, pour une
 
 \subsection{Cas convergent : comparaison des restes}
 
-\begin{thm}{Intégration des relations de comparaison (cas convergent)}%prop
+\begin{prop}[Intégration des relations de comparaison (cas convergent)]%prop
 	Soit $f\in\mathcal{CM}([a,b[,\K)$, ainsi que $\varphi\in\mathcal{CM}([a,b[,\R])$ \textit{positive} et \textit{intégrable}.
 	\begin{itemize}
 		\item Si $f\underset{b}{=}\O(\varphi)$, alors $f$ est intégrable sur $[a,b[$ et $\displaystyle\int_{x}^{b}f\underset{x\to b}{=}\O\left(\int_{x}^{b}\varphi\right)$.
 		\item Si $f\underset{b}{=}\o(\varphi)$, alors $f$ est intégrable sur $[a,b[$ et $\displaystyle\int_{x}^{b}f\underset{x\to b}{=}\o\left(\int_{x}^{b}\varphi\right)$.
 		\item Si $f\underset{b}{\sim}\varphi$, alors $f$ est intégrable sur $[a,b[$ et $\displaystyle\int_{x}^{b}f\underset{x\to b}{\sim}\int_{x}^{b}\varphi$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	L'énoncé précédent, donnant un résultat au voisinage de $b$, reste valable si la fonction $\varphi$ n'est positive qu'au voisinage de $b$.
@@ -758,14 +903,14 @@ On procéderait de la même façon dans le cas d'un intervalle $]a,b]$, pour une
 
 \subsection{Cas divergent : comparaison des intégrales partielles}
 
-\begin{thm}{Intégration des relations de comparaison (cas divergent)}%prop
+\begin{prop}[Intégration des relations de comparaison (cas divergent)]%prop
 	Soit $f\in\mathcal{CM}([a,b[,\K)$, ainsi que $\varphi\in\mathcal{CM}([a,b[,\R])$ \textit{positive} et \textit{non intégrable}.
 	\begin{itemize}
 		\item Si $f\underset{b}{=}\O(\varphi)$, alors $f$ est intégrable sur $[a,b[$ et $\displaystyle\int_{a}^{x}f\underset{x\to b}{=}\O\left(\int_{a}^{x}\varphi\right)$.
 		\item Si $f\underset{b}{=}\o(\varphi)$, alors $f$ est intégrable sur $[a,b[$ et $\displaystyle\int_{a}^{x}f\underset{x\to b}{=}\o\left(\int_{a}^{x}\varphi\right)$.
 		\item Si $f\underset{b}{\sim}\varphi$, alors $f$ est intégrable sur $[a,b[$ et $\displaystyle\int_{a}^{x}f\underset{x\to b}{\sim}\int_{a}^{x}\varphi$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	\begin{enumerate}

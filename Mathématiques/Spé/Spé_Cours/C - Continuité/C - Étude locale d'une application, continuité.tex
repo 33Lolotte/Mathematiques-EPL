@@ -20,9 +20,12 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
 
 \setlist[itemize]{label=$\bullet$}
-
+\setlist{before=\leavevmode, leftmargin=*}
 
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
@@ -46,6 +49,11 @@
 \newcommand{\Vect}{\text{Vect}}
 \newcommand{\rg}{\text{rg}}
 \newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
+
 
 \theoremstyle{plain}
 \newtheorem*{ind}{Indication}
@@ -53,22 +61,130 @@
 \theoremstyle{definition}
 
 \newtheorem*{ex}{Exemple}
-\newtheorem*{met}{Point méthode}
-\newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
+\newtheorem*{notation}{Notation}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{terminologie}{Terminologie}
+\newtheorem*{attention}{Attention}
+\newtheorem*{conséquence}{Conséquence}
 
 \theoremstyle{remark}
 \newtheorem*{app}{Application}
 
-\newtcolorbox[auto counter]{dfn}{
+\newtcolorbox[auto counter]{dfn}[1][]{
 	enhanced,
-	breakable,
 	colback=white,
-	fonttitle=\sc,
-	title={Définition \thetcbcounter}
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
 }
 
-\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
 
 \title{Étude locale d'une application, continuité}
 \date{}
@@ -82,19 +198,22 @@
 Dans tout le chapitre, $E$ et $F$ désigneront des espaces métriques et $A$ une partie de $E$. En l'absence de précision supplémentaire, les applications seront définies sur $A$ et à valeurs dans $F$. Le programme se limite au cas où $E$ et $F$ sont des espaces vectoriels normés.
 
 \section{Limite d'une application}
+
 \subsection{Définitions, généralités}
 
 \begin{dfn}
 	Soit $f:A\to F$ une application, ainsi que $a$ un point adhérent à $A$ et $l\in F$. On dit que \textbf{$f$ tend vers $l$ en $a$} si : $$\forall\varepsilon>0,\ \exists\eta>0\ :\ \forall x\in A,\ d(x,a)\leqslant\eta\implies d(f(x),l)\leqslant\varepsilon.$$
 \end{dfn}
 
-\paragraph{Notation} Pour signifier que $f$ tend vers $l$ en $a$, on note :
+\begin{notation}
+	Pour signifier que $f$ tend vers $l$ en $a$, on note :
 $$f\xrightarrow[a]{}l\ \ \text{ou encore}\ \ f(x)\xrightarrow[x\to a]{}l.$$
+\end{notation}
 
 \begin{rmq}
 	\begin{itemize}
 		\item Cette définition peut s'écrire en termes de boules :
-		$$\forall\varepsilon>0,\ \exists\eta>0,\ : \ \forall x\in B_f(a,\eta)\cap A,\ f(x)\in B_f(l,\varepsilon)?$$ ou encore :*
+		$$\forall\varepsilon>0,\ \exists\eta>0,\ : \ \forall x\in B_f(a,\eta)\cap A,\ f(x)\in B_f(l,\varepsilon)?$$ ou encore :
 		$$\forall\varepsilon>0,\ \exists\eta>0,\ : f(B_f(a,\eta)\cap A)\subset B_f(l,\varepsilon).$$
 		\item Lorsque $E$ et $F$ sont des espaces vectoriels normés, on peut aussi écrire : 
 		$$\forall\varepsilon>0,\ \exists\eta>0\ :\ \forall x\in A,\ \lVert x-a\rVert\leqslant\eta\implies \lVert f(x)-l\rVert\leqslant\varepsilon.$$
@@ -103,9 +222,9 @@ $$f\xrightarrow[a]{}l\ \ \text{ou encore}\ \ f(x)\xrightarrow[x\to a]{}l.$$
 
 \paragraph{Convention} Dans toute la suite, afin d'alléger les énoncés, nous convenons qu'en l'absence de précision supplémentaire, les lettres $f$, $a$ et $l$ désignent respectivement une application de $A$ dans $F$, un point adhérent à $F$ et un élément de $F$.
 
-\begin{thm}{}%lem
+\begin{lem}%lem
 	Si $f$ tend vers $l$ en $a$, alors $l$ est adhérent à $f(A)$.
-\end{thm}
+\end{lem}
 
 \begin{rmq}
 	Lorsque $a\in A$, si $f$ admet une limite en $a$, celle-ci ne peut être que $f(a)$. Cela conduit à la définition suivante :
@@ -121,23 +240,23 @@ Exercice Moulin.Cont.08
 
 Le résultat suivant va permettre d'obtenir de nombreux résultats sur les limites d'applications à partir des résultats déjà obtenus sur les suites.
 
-\begin{thm}{Caractérisation séquentielle de la limite}%prop
+\begin{prop}[Caractérisation séquentielle de la limite]%prop
 	L'application $f$ tend vers $l$ en $a$ si, et seulement si, pour tout suite $(a_n)_{n\\in\N}$ d'éléments de $A$ tendant vers $a$, on a $f(a_n)\to l$.
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Peut-on remplacer la caractérisation ci-dessus par : "l'image par $f$ de toute suite d'éléments de $A$ tendant vers $a$ est convergente" ?
 \end{exo}
 
-\begin{thm}{Caractérisation séquentielle de la continuité}%cor
+\begin{cor}[Caractérisation séquentielle de la continuité]%cor
 	L'application $f$ est continue en $a\in A$ si, et seulement si, pour tout suite $(a_n)_{n\in\N}$ d'éléments de $A$ tendant vers $a$, on a $f(a_n)\to f(a)$.
-\end{thm}
+\end{cor}
 
 \subsubsection*{Limite d'une application}
 
-\begin{thm}
+\begin{prop}[Unicité de la limite]
 	Si deux éléments $l_1$ et $l_2$ de $F$ vérifient $f\xrightarrow[a]{}l_1$ et $f\xrightarrow[a]{}l_2$, alors $l_1=l_2$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Utiliser la caractérisation séquentielle de la limite pour se ramener à l'unicité de la limite d'une suite.
 \end{proof}
@@ -164,9 +283,11 @@ Pour une application à valeurs réelles, on introduit la notion de limites infi
 	\end{itemize}
 \end{dfn}
 
-\paragraph{Notation} On note $f\xrightarrow[a]{}+\infty$ ou encore $f(x)\xrightarrow[x\to a]{}+\infty$ pour signifier que $f$ tend vers $+\infty$ en $a$. On dit également que $f$ admet $+\infty$ comme limite en $a$, et on note $\underset{a}{\lim}f=+\infty$ et $\underset{x\to a}{\lim}f(x)=+\infty$. Même principe pour $-\infty$.
+\begin{notation}
+	On note $f\xrightarrow[a]{}+\infty$ ou encore $f(x)\xrightarrow[x\to a]{}+\infty$ pour signifier que $f$ tend vers $+\infty$ en $a$. On dit également que $f$ admet $+\infty$ comme limite en $a$, et on note $\underset{a}{\lim}f=+\infty$ et $\underset{x\to a}{\lim}f(x)=+\infty$. Même principe pour $-\infty$.
+\end{notation}
 
-\begin{dfn}{(HP)}
+\begin{dfn}[HP]
 	Soit $f$ une application de $A$ dans un espace vectoriel normé et $a$ un point adhérent à $A$. On dit que \textbf{$f$ tend vers l'infini} ou \textbf{tend vers $\infty$} en $a$ si $x\mapsto\lVert f(x)\rVert$ tend vers $+\infty$, c'est-à-dire si : $$\forall R\in\R,\ \exists\eta>0,\ :\ \forall x\in A,\ d(x,a)\leqslant\eta\implies \lVert f(x)\rVert\geqslant R.$$
 \end{dfn}
 
@@ -192,7 +313,7 @@ Pour une application définie sur une partie de $\R$, on introduit la notion de 
 	Dans le cas d'une suite $(a_n)_{n\in\N}$ d'éléments de $E$, qui est une application de $\N$ dans $E$, la définition précédente permet d'envisager la convergence de la suite vers $+\infty$. On constate que cette définition est alors la même que celle déjà vue de la convergence d'une suite.
 \end{ex}
 
-\begin{dfn}{(HP)}
+\begin{dfn}[HP]
 	Soit $A$ une partie non bornée d'un espace vectoriel normé $E$. Une application $f:A\to F$ \textbf{tend vers $l\in F$ à l'infini} si : $$\forall\varepsilon>0,\ \exists M\in\R\ :\ \forall x\in A,\ \lVert x\rVert\geqslant M\implies d(f(x),l)\leqslant\varepsilon.$$
 \end{dfn}
 
@@ -210,10 +331,10 @@ On peut unifier toutes ces définitions de limite (ainsi que celle(s) qui manque
 	\item $l$ est un élément de $F$, ou $\infty$ lorsque $F$ est un espace vectoriel normé, ou encore $\pm\infty$ lorsque $F=\R$.
 \end{itemize}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	On suppose que $a$ est adhérent à $A$. Une application $f:A\to F$ tend vers $l$ en $a$ si, et seulement si : $$\forall V\in\mathcal{V}_l,\ \exists W\in\mathcal{V}_a\ : \ \forall x\in A,\ x\in W\implies f(x)\in V$$ ou encore :
 	$$\forall V\in\mathcal{V}_l,\ \exists W\in\mathcal{V}_a\ :\ f(W\cap A)\subset V.$$
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Dans un espace topologique, on prend ceci comme définition de la limite.
@@ -221,9 +342,9 @@ On peut unifier toutes ces définitions de limite (ainsi que celle(s) qui manque
 
 \paragraph{Cas de la continuité} L'application $f$ est continue en $a$ si, et seulement si, l'image réciproque par $f$ de tout voisinage de $f(a)$ est un voisinage de $a$ relatif à $A$.
 
-\begin{thm}{Caractère local de la limite}%porp
+\begin{prop}[Caractère local de la limite]%prop
 	On suppose que $A$ est adhérent à $A$ et que $U$ est un voisinage de $A$. Une application $f:A\to F$ tend vers $l$ en $a$ si, et seulement si, sa restriction à $A\cap U$ tend vers $l$ en $a$.
-\end{thm}
+\end{prop}
 
 \subsubsection*{Dépendance envers les normes}
 On suppose que $E$ et $F$ sont des espaces vectoriels normés.\\
@@ -243,24 +364,24 @@ On dit qu'une fonction $f:A\to F$ \textbf{vérifie une propriété au voisinage 
 
 On suppose ici que $F$ est un espace vectoriel normé.
 
-\begin{thm}{Limite d'une combinaison linéaire}%prop
+\begin{prop}[Limite d'une combinaison linéaire]%prop
 	Soit $f_1$ et $f_2$ deux applications de $A$ dans $F$ ainsi que $\lambda_1$ et $\lambda_2$ deux scalaires. Si deux éléments $l_1$ et $l_2$ de $F$ vérifient $f_1\xrightarrow[a]{}l_1$ et $f_2\xrightarrow[a]{}l_2$, alors on a : $$\lambda_1f_1+\lambda_2f_2\xrightarrow[a]{}\lambda_1l_1+\lambda_2l_2.$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	Caractérisation séquentielle de la limite et opérations sur les suites convergentes.
 \end{proof}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Toute combinaison linéaire d'applications continues en $a$ est continue en $a$.
-\end{thm}
+\end{cor}
 
-\begin{thm}{Produit par une fonction à valeurs dans $\K$}
+\begin{prop}[Produit par une fonction à valeurs dans $\K$]
 	Si $f\xrightarrow[a]{}l\in F$ et si $\varphi$ est une fonction de $A$ dans $\K$ tendant vers $\lambda\in\K$ en $a$, alors l'application
 	$\begin{array}{lrcl}
 		\varphi\times f:&A&\longrightarrow& F\\
 		&x&\longmapsto&\varphi(xf(x))
 	\end{array}$ tend vers $\lambda l$ en $a$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Procéder par caractérisation séquentielle et utiliser le théorème analogue sur les suites.
 \end{proof}
@@ -269,9 +390,9 @@ On suppose ici que $F$ est un espace vectoriel normé.
 	Produit d'applications continues en $a$.
 \end{ex}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $f:A\to\K$ telle que $\underset{a}{\lim}f=l\ne0$. Alors il existe un voisinage $V$ de $a$ tel que $1/f$ soit définie sur $V\cap A$, et alors $1/f$ tend vers $1/l$ en $a$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	$\K\st$ est un voisinage de $l$ donc $f\inv(\K\st)$ est un voisinage de $a$ relatif à $A$, donc $f\inv(\K\st)=V\cap A$ avec $V\in\mathcal{V}_a$, puis on termine par caractérisation séquentielle.
 \end{proof}
@@ -286,18 +407,18 @@ On suppose ici que $F$ est un espace vectoriel normé.
 
 \subsubsection*{Composition}
 
-\begin{thm}{Limite d'une fonction composée}%prop
+\begin{prop}[Limite d'une fonction composée]%prop
 	Soit $E$, $F$ et $G$ trois espaces topologiques, ainsi que $A$ une partie de $E$ et $B$ une partie de $F$. Soit $f:A\to F$ et $g:B\to G$ deux applications, avec $f(A)\subset B$. \\
 	On suppose que $a$ est adhérent à $A$ et $\underset{a}{\lim}f=b$. Alors $b$ est adhérent à $B$.\\
 	Si de plus on a $\underset{b}{\lim}=l$, alors $\underset{a}{\lim}(g\circ f)=l$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Utiliser des voisinages. Dans le cadre des espaces métriques, on peut aussi le faire par caractérisation séquentielle.
 \end{proof}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Si $f:A\to B$ est continue en $a\in A$ et $g:B\to G$ est continue en $b=f(a)$, alors $g\circ f$ est continue en $a$.
-\end{thm}
+\end{cor}
 
 \subsection{Applications à valeurs dans un espace produit}
 
@@ -305,9 +426,9 @@ Soit $E_1,\ldots,E_p$ des espaces vectoriels normés (voire des espaces métriqu
 On munit $E\times\cdots\times E_p$ de la norme produit (voire de la distance produit ou de la topologie produit). \\
 Les \textbf{fonctions composantes} d'une application $f$ définie sur $A$ et à valeurs dans $E_1\times\cdots\times E_p$ sont les applications $f_i:A\to E_i$ ($i\in\llbracket1,p\rrbracket$) définies par : $$\forall x\in A,\ f(x)=(f_1(x),\ldots,f_p(x)).$$
 
-\begin{thm}'
+\begin{prop}
 	Si l'application $f$ est à valeurs dans un espace produit $E_1\times\cdots\times E_p$, et si $f_1,\ldots,f_p$ désignent les applications composantes de $f$, alors $f$ tend vers : $$l=(l_1,\ldots,l_p)\in E_1\times\cdots\times E_p$$ en $a$ si, et seulement si, chacune des applications $f_k$ tend vers $l_k$ en $a$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Dans le cadre des espaces métriques, on utilise la caractérisation séquentielle de la limite et le résultat sur la convergence d'une suite à valeurs dans un espace produit.
 \end{proof}
@@ -335,7 +456,9 @@ Par composition, si $f$ est continue en $a$, alors ces deux applications sont co
 	Que devient ce qui précède su l'on remplace la continuité par la notion de limite dans le cas où $a$ n'appartient pas à $A$ mais est seulement adhérent à $A$ ?
 \end{exo}
 
-\paragraph{Attention} Réciproquement, la continuité des applications $f_1$ et $f_2$ respectivement en $a_1$ et $a_2$ (\textbf{continuité partielle}) n'entraîne pas la continuité de $f$ en $a$.
+\begin{attention}
+	Réciproquement, la continuité des applications $f_1$ et $f_2$ respectivement en $a_1$ et $a_2$ (\textbf{continuité partielle}) n'entraîne pas la continuité de $f$ en $a$.
+\end{attention}
 
 \begin{ex}
 	$f:(x,y)\mapsto\displaystyle\frac{xy}{x^2+y^2}$ prolongée par $0$ en $(0,0)$.
@@ -354,49 +477,50 @@ Par composition, si $f$ est continue en $a$, alors ces deux applications sont co
 
 \subsection{Obtention de limites (HP?)}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $f:A\to F$, $\varphi:A\to\R_+$ et $l\in F$. \\
 	On suppose qu'au voisinage de $a$, on a $d(f(x),l)\leqslant\varphi(x)$ avec $\underset{a}{\lim}\varphi=0$. \\
 	Alors $\underset{a}{\lim}f=l$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{Théorème des gendarmes}%prop
+\begin{prop}[Théorème des gendarmes]%prop
 	Soit $f$, $g$ et $h$ trois fonctions de $A$ dans $\R$ telles que $f\leqslant g\leqslant h$ au voisinage de $a$. Si $f$ et $h$ admettent la même limite finie $l$ en $a$, alors $g$ tend également vers $l$ en $a$.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Théorème du marteau et de l'enclume. %ie cas où $f$ ou $h$ est constante
 \end{ex}
 
-\begin{thm}{Théorème de reconduite à la frontière}%prop
+\begin{prop}[Théorème de reconduite à la frontière]%prop
 	Soit $f$ et $g$ deux fonctions de $A$ dans $\R$ telles que $f\leqslant g$ au voisinage de $a$.
 	\begin{enumerate}
 		\item Si $\underset{a}{\lim}f=+\infty$, alors $\underset{a}{\lim}g=+\infty$.
 		\item Si $\underset{a}{\lim}g=-\infty$, alors $\underset{a}{\lim}f=-\infty$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 %rq : nom douteux mais historique dans le poly de François Moulin
 
 \subsection{Limites et inégalités (HP)}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $f:A\to\R$ telle que $\underset{a}{\lim}f=l\in\overline{\R}$.\\
 	Si $l>m$, alors $f>m$ au voisinage de $a$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $f_1,f_2:A\to\R$ telles que $\underset{a}{\lim}f_1=l_1\in\overline{\R}$ et $\underset{a}{\lim}f_2=l_2\in\overline{\R}$.\\
 	Si $l_1>l_2$, alors $f_1>f_2$ au voisinage de $a$.
-\end{thm}
+\end{cor}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $fA\to\R$ telle que $\underset{a}{\lim}f=l\in\overline{\R}$. \\
 	Si $f\leqslant m$ au voisinage de $a$, alors $l\leqslant m$.
-\end{thm}
+\end{cor}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Une fonction $f:A\to\R$ continue en $a\in A$ et strictement positive en $a$ est strictement positive au voisinage de $a$.
-\end{thm}
+\end{cor}
+
 \subsection{Prolongement par continuité (HP)}
 
 \begin{dfn}
@@ -483,7 +607,9 @@ Soit $P\subset A$ et $a$ adhérent à $P$.
 	Soit $k\geqslant0$. On dit que l'application $f$ (définie entre des espaces métriques) est \textbf{$k$-lipschitzienne} ou \textbf{lipschitzienne de rapport $k$} si : $$\forall (x,y)\in A^2,\ d(f(x),f(y))\leqslant k d(x,y).$$
 \end{dfn}
 
-\paragraph{Terminologie} On dit que $f$ est \textbf{lipschitzienne} pour signifier qu'il existe $k\geqslant 0$ tel que $f$ soit $k$-lipschitzienne.
+\begin{terminologie}
+	On dit que $f$ est \textbf{lipschitzienne} pour signifier qu'il existe $k\geqslant 0$ tel que $f$ soit $k$-lipschitzienne.
+\end{terminologie}
 
 \begin{ex}
 	\begin{enumerate}
@@ -500,9 +626,9 @@ Soit $P\subset A$ et $a$ adhérent à $P$.
 	\end{itemize}
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Toute application lipschitzienne est continue.
-\end{thm}
+\end{prop}
 
 \begin{met}
 	Pour montrer qu'une application est continue, on commence souvent par regarder si elle est lipschitzienne car si c'est le cas, c'est en général la manière la plus rapide de justifier la continuité.
@@ -534,12 +660,12 @@ Soit $P\subset A$ et $a$ adhérent à $P$.
 Ici, $F$ est un espace vectoriel normé.\\
 Les résultats suivants sont les versions globales des résultats concernant les limites et donc aussi la continuité ponctuelle d'applications à valeurs dans un espace vectoriel normé.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{itemize}
 		\item Une combinaison linéaire de deux applications continues est continue.
 		\item Le produit d'une application continue avec une application continue à valeurs dans $\K$ est une application continue.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	L'ensemble $\mathcal{C}(A,F)$ des applications continues de $A$ dans $F$ est donc un sous-espace vectoriel de $\mathcal{F}(A,F)$, et $\mathcal{C}(A,\K)$ est une sous-algèbre de $\mathcal{F}(A,\K)$.
@@ -574,9 +700,9 @@ Les résultats suivants sont les versions globales des résultats concernant les
 	L'application $M\mapsto\pi_M$ est-elle continue sur $\mathcal{M}_n(\K)$ ?
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $f:a\to\K$ une application continue ne s'annulant pas. Alors l'application $1/f$, définie sur $A$ et à valeurs dans $\K$, qui à $x$ associe $1/f(x)$, appelée \textbf{inverse} de $f$, est continue.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Si $f:A\to\K$ et $g:A\to\K$ sont deux applications continues à valeurs scalaires, et si $g$ ne s'annule par, alors la fonction $f/g$ est continue, comme produit des deux applications continues $f$ et $1/g$.
@@ -588,9 +714,9 @@ Les résultats suivants sont les versions globales des résultats concernant les
 
 Soit $E$, $F$ et $G$ trois espaces topologiques.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $A$ une partie de $E$, $B$ une partie de $F$. Si $f\in\mathcal{C}(A,F)$ est telle que $f(A)\subset B$ et si $g\in\mathcal{C}(B,G)$, alors l'application $g\circ f$ est continue sur $A$.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	\begin{enumerate}
@@ -601,7 +727,9 @@ Soit $E$, $F$ et $G$ trois espaces topologiques.
 
 \subsubsection*{Homéomorphismes (HP)}
 
-\paragraph{Attention} La bijection réciproque d'une bijection continue peut très bien ne pas être continue.
+\begin{attention}
+	La bijection réciproque d'une bijection continue peut très bien ne pas être continue.
+\end{attention}
 
 \begin{ex}
 	\begin{enumerate}
@@ -613,7 +741,9 @@ Soit $E$, $F$ et $G$ trois espaces topologiques.
 	\end{enumerate}
 \end{ex}
 
-\paragraph{Rappel} Revoir dans le cours de première année ce qu'il en est lorsque l'application est définie sur un intervalle et à valeur réelles.
+\begin{rappel}
+	Revoir dans le cours de première année ce qu'il en est lorsque l'application est définie sur un intervalle et à valeur réelles.
+\end{rappel}
 
 \begin{exo}
 	Trouver une bijection d'une partie de $\R$ dans une partie de $\R$ continue, mais dont la réciproque n'est pas continue.
@@ -644,9 +774,9 @@ Soit $E$, $F$ et $G$ trois espaces topologiques.
 
 \subsection{Continuité et densité}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $f:A\to F$ et $g;A\to F$ sont deux applications continues coïncidant sur une partie dense dans $E$, alors elles sont égales.
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Soit $E$ et $F$ deux $\R$-espaces vectoriels. Montrer qu'une application continue $f:E\to F$ est $\R$-linéaire si, et seulement si : $$\forall (x,y)\in E^2,\ f(x+y)=f(x)+f(y).$$
@@ -654,7 +784,7 @@ Soit $E$, $F$ et $G$ trois espaces topologiques.
 
 \subsection{Images réciproques d'ouverts et de fermés par une application continue}
 
-\begin{thm}{Topologie et continuité}
+\begin{thm}[Topologie et continuité]
 	Si $f:A\to F$ est continue, alors :
 	\begin{enumerate}[label=(\roman*)]
 		\item l'image réciproque de tout ouvert de $F$ est un ouvert relatif de $A$ ;
@@ -692,14 +822,15 @@ Exercice Moulin.Cont.44
 	On dit que l'application $f$ (définies entre des espaces métriques) est \textbf{uniformément continue} si : $$\forall\varepsilon>0,\ \exists\eta>0,\ :\ \forall (x,y)\in A^2,\ d(x,y)\leqslant\eta\implies d(f(x),f(y))\leqslant\varepsilon.$$
 \end{dfn}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{enumerate}
 		\item Toute application uniformément continue est continue.
 		\item Toute application lipschitzienne est uniformément continue.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
-\paragraph{Attention} Les réciproques des résultats précédents sont fausses ! Par exemple :
+\begin{attention}
+	Les réciproques des résultats précédents sont fausses ! Par exemple :
 \begin{itemize}
 	\item la fonction $\begin{array}{rcl}
 		\R_+\st&\longrightarrow&\R\\
@@ -710,6 +841,7 @@ Exercice Moulin.Cont.44
 		x&\longmapsto&\sqrt(x)
 	\end{array}$ est uniformément continue, mais pas lipschitzienne.
 \end{itemize}
+\end{attention}
 
 Exercice Moulin.Cont.18
 
@@ -728,9 +860,9 @@ Exercice Moulin.Cont.18
 
 \subsection{Critère de continuité d'une application linéaire}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Une application linéaire $u\in\mathcal{L}(E,F)$ est continue si, et seulement s'il existe $C>0$ telle que : $$\forall x\in E,\ \lVert u(x)\rVert\leqslant C\lVert x\rVert.$$ 
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Montrer qu'une application linéaire $u:E\to F$ est continue si, et seulement si, sa restriction à la sphère unité est bornée.
@@ -748,9 +880,9 @@ Exercice Moulin.Cont.18
 	\end{enumerate}
 \end{ex}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Une application linéaire $u\in\mathcal{L}(E,F)$ est continue si, et seulement si, elle est bornée sur la boule unité.
-\end{thm}
+\end{cor}
 \begin{proof}
 	Utiliser la linéarité de $u$ et l'homogénéité de la norme.
 \end{proof}
@@ -775,9 +907,9 @@ Exercice Moulin.Cont.18
 	Soit $f$ une forme linéaire non nulle sur $E$. Montrer que l'hyperplan $\ker(f)$ est fermé si, et seulement si, $f$ est continue. On pourra considérer $f\inv(\{1\})$.
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $\displaystyle\sum u_n$ une série convergente à termes dans $E$ et $f$ une application linéaire continue de $E$ dans $F$. Alors $\displaystyle\sum f(u_n)$ converge et : $$\sum_{n=0}^{+\infty}f(u_n)=f\left(\sum_{n=0}^{+\infty}u_n\right).$$
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Sous les mêmes hypothèses, si $\displaystyle\sum u_n$ est absolument convergente, la série $\displaystyle\sum f(u_n)$ est-elle absolument convergente ?
@@ -785,7 +917,7 @@ Exercice Moulin.Cont.18
 
 Nous verrons dans le prochain chapitre le théorème suivant.
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Soit $E$ et $F$ deux $\K$-espaces vectoriels normés. Si $E$ est de dimension finie, alors toute application linéaire de $E$ dans $F$ est continue.
 \end{thm}
 
@@ -793,7 +925,9 @@ Nous verrons dans le prochain chapitre le théorème suivant.
 	L'ensemble des projecteurs de rang donné d'un espace vectoriel $E$ de dimension finie est un fermé de $\mathcal{L}(E)$.
 \end{ex}
 
-\paragraph{Attention} Le rang n'est pas continu sur $\mathcal{L}(E)$ !
+\begin{attention}
+	Le rang n'est pas continu sur $\mathcal{L}(E)$ !
+\end{attention}
 
 \subsection{Espace $\mathcal{L}_c(E,F)$, norme subordonnée}
 
@@ -805,11 +939,13 @@ Nous verrons dans le prochain chapitre le théorème suivant.
 
 Dans la suite de cette section, on suppose que $E$ n'est pas l'espace nul.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $u\in\mathcal{L}_c(E,F)$. L'ensemble des réels $C\geqslant 0$ tels que $\forall x\in E,\ \lVert u(x)\rVert\leqslant C\lVert x\rVert$ admet un plus petit élément, appelé \textbf{norme subordonnée} de $u$ et noté $\vertiii{u}$. On a de plus : $$\vertiii{u}=\underset{x\ne 0}{\sup}\frac{\lVert u(x)\rVert}{\lVert x\rVert}=\underset{\lVert x\rVert\leqslant1}{\sup}\lVert u(x)\rVert=\underset{\lVert x\rVert=1}{\sup}\lVert u(x)\rVert.$$
-\end{thm}
+\end{prop}
 
-\paragraph{Terminologie} La norme subordonnée est aussi appelée \textbf{norme triple}, ou encore \textbf{norme d'opérateur}, et elle est également notée $\lVert u\rVert_{\text{op}}$.
+\begin{terminologie}
+	La norme subordonnée est aussi appelée \textbf{norme triple}, ou encore \textbf{norme d'opérateur}, et elle est également notée $\lVert u\rVert_{\text{op}}$.
+\end{terminologie}
 
 \begin{rmq}
 	\begin{itemize}
@@ -854,18 +990,20 @@ Dans la suite de cette section, on suppose que $E$ n'est pas l'espace nul.
 	Nous verrons au chapitre suivant que $\mathcal{L}_c(E,F)=\mathcal{L}(E,F)$ lorsque $E$ est de dimension finie. Nous verrons aussi, comme conséquence du théorème des bornes atteintes, que si $E$ est de dimension finie non nulle et $u\in\mathcal{L}(E,F)$, il existe toujours un vecteur $x\ne0$ tel que $\lVert u(x)\rVert=\vertiii{u}\lVert x\rVert$.
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	L'application $\begin{array}{rcl}
 		\mathcal{L}_c(E,F)&\longrightarrow&\R_+\\
 		u&\longmapsto&\vertiii{u}
 	\end{array}$ est une norme sur $\mathcal{L}_c(E,F)$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{Sous-multiplicativité de la norme d'opérateur}%prop
+\begin{prop}[Sous-multiplicativité de la norme d'opérateur]%prop
 	Pour $(u,v)\in\mathcal{L}_c(E,F)\times\mathcal{L}_c(F,G)$, on a $\vertiii{v\circ u}\leqslant\vertiii{v}\vertiii{u}$.
-\end{thm}
+\end{prop}
 
-\paragraph{Attention} En général, on n'a pas égalité dans l'inégalité précédente. Par exemple, si $u\in\mathcal{L}_c(E)$ est nilpotent d'indice $2$, on a $u^2=0$ donc $\vertiii{u^2}=0$ mais $u\ne 0$ donc $\vertiii{u}^2>0$.
+\begin{attention}
+	En général, on n'a pas égalité dans l'inégalité précédente. Par exemple, si $u\in\mathcal{L}_c(E)$ est nilpotent d'indice $2$, on a $u^2=0$ donc $\vertiii{u^2}=0$ mais $u\ne 0$ donc $\vertiii{u}^2>0$.
+\end{attention}
 
 \begin{exo}
 	Soit $E$ un espace vectoriel normé. Montrer que si $\lVert\cdot\rVert_1$ et $\lVert\cdot\rVert_2$ sont deux normes équivalentes, alors les normes $\vertiii{\cdot}_1$ et $\vertiii{\cdot}_2$, subordonnées à $\lVert\cdot\rVert_1$ et $\lVert\cdot\rVert_2$ respectivement, sont des normes équivalentes sur $\mathcal{L}_c(E)$.
@@ -905,9 +1043,9 @@ Dans la suite, $E_1,\ldots,E_p$ et $F$ désignent des $\K$-espaces vectoriels no
 	\end{array}$$ est linéaire.
 \end{dfn}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Une application multilinéaire $\varphi:E_1\times\cdots\times E_p\to F$ est continue si, et seulement s'il existe $C\geqslant à$ telle que : $$\forall (u_1,\ldots,u_p)\in E_1\times\cdots\times E_p,\ \lVert \varphi(u_1,\ldots,u_p)\rVert\leqslant C\prod_{i=1}^{p}\lVert u_i\rVert.$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	\begin{itemize}
 		\item Supposons $\varphi$ continue. Par définition de la continuité en $0$, il existe $r>0$ tel que $$\forall (u_1,\ldots,u_p)\in E_1\times\cdots\times E_p,\ \lVert (u_1,\ldots,u_p)\rVert\leqslant r\implies\lVert\varphi(u_1,\ldots,u_p)\rVert\leqslant1.$$ On montre alors après une normalisation des composantes à $r$ qu'en posant $C=r^{-p}$, on a : $$\forall (x_1,\ldots,x_p)\in E_1\times\cdots\times E_p,\ \lVert \varphi(x_1,\ldots,x_p)\rVert\leqslant C\prod_{i=1}^{p}\lVert x_i\rVert.$$

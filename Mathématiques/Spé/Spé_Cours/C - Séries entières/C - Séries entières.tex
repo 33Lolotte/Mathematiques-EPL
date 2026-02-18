@@ -20,8 +20,12 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
 
 \setlist[itemize]{label=$\bullet$}
+\setlist{before=\leavevmode, leftmargin=*}
 
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
@@ -48,6 +52,8 @@
 \renewcommand{\o}{\text{o}}
 \renewcommand{\O}{\text{O}}
 \renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
+
 
 \theoremstyle{plain}
 \newtheorem*{ind}{Indication}
@@ -55,22 +61,130 @@
 \theoremstyle{definition}
 
 \newtheorem*{ex}{Exemple}
-\newtheorem*{met}{Point méthode}
-\newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
+\newtheorem*{notation}{Notation}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{terminologie}{Terminologie}
+\newtheorem*{attention}{Attention}
+\newtheorem*{conséquence}{Conséquence}
 
 \theoremstyle{remark}
 \newtheorem*{app}{Application}
 
-\newtcolorbox[auto counter]{dfn}{
+\newtcolorbox[auto counter]{dfn}[1][]{
 	enhanced,
-	breakable,
 	colback=white,
-	fonttitle=\sc,
-	title={Définition \thetcbcounter}
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
 }
 
-\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
 
 \title{Séries entières}
 \date{}
@@ -104,33 +218,35 @@ On considère ici un espace vectoriel de dimension finie sur $\K$.
 
 Avec ces définitions, on obtient facilement que l'ensemble $\l^1(I,E)$ des familles sommables d'éléments de $E$ indexés par $I$ est un $\K$-espace vectoriel et que l'application "somme" est linéaire.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $L$ une application linéaire de $E$ dans un espace vectoriel $F$ de dimension finie. Pour tout famille $(a_i)_{i\in I}\in\l^1(I,E)$, la famille $(La_i)_{i\in I}$ est sommable avec : $$\sum_{i\in I}La_i=L\left(\sum_{i\in I}a_i\right)$$
-\end{thm}
+\end{prop}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $\mathcal{B}=(e_k)$ une base de $E$. une famille $(a_i)_{i\in I}$ d'éléments de $E$ est sommable si, et seulement si, toutes ses familles composantes $(a_i^{(k)})_{i\in I}$ dans $\mathcal{B}$ sont sommables, et dans ce cas : $$\sum_{i\in I}a_i=\sum_k\left(\sum_{i\in I}a_i^{(k)}\right)e_k$$
-\end{thm}
+\end{cor}
 
 \subsection{Propriétés}
 
 En utilisant les coordonnées dans une base de $E$, on obtient les résultats suivantes.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $(a_n)_{n\in\N}$ une suite d'éléments de $E$. La famille $(a_n)_{n\in\N}$ est sommable si, et seulement si, la série $\displaystyle\sum a_n$ converge absolument, et l'on a alors : $$\sum_{n\in\N}a_n=\sum_{n=0}^{+\infty}a_n$$
-\end{thm}
+\end{prop}
 
-\begin{thm}{Changement d'indice}%prop
+\begin{prop}[Changement d'indice]%prop
 	Étant donnée une bijection $\sigma$ d'un ensemble $J$ sur $I$, et une famille sommable $(a_i)_{i\in I}$ d'éléments de $E$, la famille $(a_{\sigma(j)})_{j\in J}$ est sommable et l'on a : $$\sum_{i\in I}a_i=\sum_{j\in J}a_{\sigma(j)}$$
-\end{thm}
+\end{prop}
 
-\begin{thm}{Commutativité}%prop
+\begin{prop}[Commutativité]%prop
 	Étant donnée une permutation $\sigma$ de $I$, et une famille sommable $(a_i)_{i\in I}$ d'éléments de $E$, la famille $(a_{\sigma(i)})_{i\in I}$ est sommable et l'on a : $$\sum_{i\in I}a_i=\sum_{i\in I}a_{\sigma(i)}$$
-\end{thm}
+\end{prop}
 
-\paragraph{Rappel} Ces deux résultats restent vrais sans hypothèse de sommabilité pour des familles de réels positifs.
+\begin{rappel}
+	Ces deux résultats restent vrais sans hypothèse de sommabilité pour des familles de réels positifs.
+\end{rappel}
 
-\begin{thm}
+\begin{thm}[Inégalité triangulaire]
 	Si $(a_i)_{i\in I}$ est une famille sommable d'éléments de $E$, alors on a : $$\left\lVert\sum_{i\in I}a_i\right\rVert\leqslant\sum_{i\in I}\lVert a_i\rVert$$
 \end{thm}
 \begin{proof}
@@ -144,7 +260,7 @@ En utilisant les coordonnées dans une base de $E$, on obtient les résultats su
 	\end{enumerate}
 \end{exo}
 
-\begin{thm}{Sommation par paquets}%thm
+\begin{thm}[Sommation par paquets]%thm
 	On suppose que $I$ est réunion disjointe de $(I_\lambda)_{\lambda\in\Lambda}$. Etant donnée une famille sommable $(a_i)_{i\in I}$ d'éléments de $E$ : 
 	\begin{itemize}
 		\item pour tout $\lambda\in\Lambda$, la famille $(a_i)_{i\in I_\lambda}$ est sommable, de somme notée $\sigma_\lambda$ ;
@@ -180,16 +296,18 @@ En utilisant les coordonnées dans une base de $E$, on obtient les résultats su
 \begin{met}
 	Si $(a_{p,q})_{(p,q)\in\N^2}$ est une famille à valeurs dans $\overline{\R_+}$ ou une famille sommable, on a : $$\sum_{(p,q)\in\N^2}a_{p,q}=\sum_{p=0}^{+\infty}\left(\sum_{q=0}^{+\infty}a_{p,q}\right)=\sum_{q=0}^{+\infty}\left(\sum_{p=0}^{+\infty}a_{p,q}\right)=\sum_{n=0}^{+\infty}\left(\sum_{p+q=n}a_{p,q}\right)$$
 \end{met}
+
 \begin{met}
 	Pour montrer la sommabilité d'une famille double, on montrera en général l'un des résultats suivants : $$\sum_{p=0}^{+\infty}\left(\sum_{q=0}^{+\infty}\lVert a_{p,q}\rVert\right)<+\infty \ \ \text{ou} \ \ \sum_{q=0}^{+\infty}\left(\sum_{p=0}^{+\infty}\lVert a_{p,q}\rVert\right)<+\infty \ \ \text{ou} \ \ \sum_{n=0}^{+\infty}\left(\sum_{p+q=n}\lVert a_{p,q}\rVert\right)<+\infty$$
 \end{met}
+
 \subsection{Produit de Cauchy}
 
 Soit $A$ une algèbre de dimension finie que l'on suppose munie d'une norme \textbf{sous-multiplicative}.
 
-\begin{thm}{Distributivité généralisée}%lem
+\begin{lem}[Distributivité généralisée]%lem
 	Soit $(a_i)_{i\in I}$ et $(b_j)_{j\in J}$ deux familles sommables d'éléments de $A$. Alors, la famille $(a_ib_j)_{(i,j)\in I\times J}$ est sommable et l'on a : $$\sum_{(i,j\in I\times J}a_ib_j=\left(\sum_{i\in I}a_i\right)\left(\sum_{j\in J}b_j\right)$$
-\end{thm}
+\end{lem}
 
 \begin{thm}
 	Soit $\displaystyle\sum a_n$ et $\displaystyle\sum b_n$ deux séries absolument convergentes à termes dans $A$. La série de terme général : $$\sum_{p+q=n}a_pb_q,$$ appelée série \textbf{produit de Cauchy} de $\displaystyle\sum a_n$ et $\displaystyle\sum b_n$, est absolument convergente, et l'on a : $$\left(\sum_{n=0}^{+\infty}a_n\right)\left(\sum_{n=0}^{+\infty}b_n\right)=\sum_{n=0}^{+\infty}\left(\sum_{p+q=n}a_pb_q\right)$$
@@ -199,13 +317,14 @@ Soit $A$ une algèbre de dimension finie que l'on suppose munie d'une norme \tex
 
 Soit $A$ une algèbre de dimension finie munie d'une norme sous-multiplicative.
 
-\paragraph{Rappels}
-\begin{itemize}
+\begin{rappel}
+	\begin{itemize}
 	\item Pour tout $a\in A$, la série $\displaystyle\sum\frac{a^n}{n!}$ converge absolument. Sa somme est notée $\exp(a)$.
 	\item La convergence est normale sur toute boule fermée $B_f(0,R)$.
 	\item La fonction exponentielle est continue sur tout $A$.
 	\item Pour tout $a\in A$, la fonction $e_a:t\mapsto\exp(ta)$ est de classe $\mathcal{C}^\infty$ sur $\R$ et vérifie $e_a'=ae_a=e_aa$.
 \end{itemize}
+\end{rappel}
 
 \begin{exo}
 	Soit $\varphi:I\to\C$ une application de classe $\mathcal{C}^1$. Montrer que $\exp\circ \varphi$ est de classe $\mathcal{C}^1$, de dérivée $\varphi'\times(\exp\circ\varphi)$.
@@ -233,11 +352,13 @@ Soit $A$ une algèbre de dimension finie munie d'une norme sous-multiplicative.
 
 \subsection{Propriétés algébriques}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Soit $a$ et $b$ deux éléments de $A$ tels que $ab=ba$. Alors : $$\exp(a+b)=\exp(a)\exp(b)$$
 \end{thm}
 
-\paragraph{Attention} L'hypothèse de commutation est essentielle.
+\begin{attention}
+	L'hypothèse de commutation est essentielle !
+\end{attention}
 
 \begin{exo}
 	Calculer $\exp(A)\exp(B)$ et $\exp(A+B)$ pour $A=\displaystyle\begin{pmatrix}
@@ -246,9 +367,9 @@ Soit $A$ une algèbre de dimension finie munie d'une norme sous-multiplicative.
 	\end{pmatrix}$ et $B=A^T$.
 \end{exo}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Pour tout $a\in A$, l'endomorphisme $\exp(a)$ est inversible, d'inverse $\exp(-a)$.
-\end{thm}
+\end{cor}
 
 \subsection{Cas des endomorphismes et des matrices}
 
@@ -295,17 +416,17 @@ Pour $z\in\K$, on note $e^z=\exp(z)\in\K$.
 
 \subsubsection*{Exponentielle réelle}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	L'exponentielle réelle est strictement croissante de $\R$ dans $\R$ et définit un isomorphisme de $(\R,+)$ sur $(\R_+\st,\times)$.
-\end{thm}
+\end{prop}
 
 \subsubsection*{Exponentielle complexe}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	L'exponentielle complexe est un morphisme de $(\C,+)$ dans $(\C\st,\times)$. \\
 	Pour tout $z\in\C$, on a $\overline{e^z}=e^{\overline{z}}$. \\
 	En particulier, on a $\lvert e^z\rvert=1\iff z\in i\R$ et $\forall z\in\C,\ \lvert e^z\rvert=e^{\text{Re}(z)}$.
-\end{thm}
+\end{prop}
 
 \subsubsection*{Fonctions trigonométriques}
 
@@ -313,7 +434,7 @@ Via l'exponentielle complexe, on peut définir les fonctions circulaires usuelle
 
 \begin{dfn}
 	Pour $z\in\C$, on note : $$\cos(z)=\frac{\exp(iz)+\exp(-iz)}{2}=\sum_{n=0}^{+\infty}(-1)^n\frac{z^{2n}}{(2n)!}$$
-	$$\sin(z)=\frac{\exp(iz)-\exp(-iz)}{2i}=\sum_{n=0}^{+\infty}(-1)^n\frac{z^{2n+1}}{(2n+1)!}$$
+	$$\sin(z)=\frac{\exp(iz)-\exp(-iz)}{2i}=\sum_{n=0}^{+\infty}(-1)^n\frac{z^{2n+1}}{(2n+1)!}.$$
 \end{dfn}
 
 On a donc $\exp(iz)=\cos(z)+i\sin(z)$. Comme pour tout $x$ réel, $\cos(x)$ et $\sin(x)$ sont réels, et comme $e^{ix}$ est alors de module $1$, on en déduit : $$\forall x\in\R,\ \cos^2(x)+\sin^2(x)=1$$
@@ -340,10 +461,10 @@ On a donc $\exp(iz)=\cos(z)+i\sin(z)$. Comme pour tout $x$ réel, $\cos(x)$ et $
 
 A partir de là, on peut définir la fonction tangente ainsi que les fonctions trigonométriques réciproques.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	L'exponentielle complexe est une application surjective de $\C$ sur $\C\st$. Elle vérifie : $$\exp(z)=\exp(z')\iff z-z'\in 2i\pi\Z$$
 	C'est donc un morphisme surjectif de groupes de $(\C,+)$ dans $(\C\st,\times)$ dont le noyau est $2i\pi\Z$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	\begin{itemize}
 		\item Grâce à l'égalité $e^{x+iy}=e^xe^{iy}$ et à la bijectivité de l'exponentielle réelle de $\R$ sur $\R_+\st$, il suffit de se limiter aux imaginaires purs. 
@@ -356,7 +477,8 @@ A partir de là, on peut définir la fonction tangente ainsi que les fonctions t
 
 \subsection{Rayon de convergence}
 
-\paragraph{Notation} Soit $z_0\in\K$ et $r\in\overline{\R}_+$.
+\begin{notation}
+	Soit $z_0\in\K$ et $r\in\overline{\R}_+$.
 \begin{itemize}
 	\item On note $D_O(z_0,r)$ l'ensemble $\{z\in\K\ : \ \lvert z-z_0\rvert <r\}$. \\
 	Si $r$ est un réel strictement positif, cela correspond dans le cas où $\K=\C$ au \textbf{disque ouvert} de centre $z_0$ et de rayon $r$.\\
@@ -367,6 +489,7 @@ A partir de là, on peut définir la fonction tangente ainsi que les fonctions t
 	Dans le cas où $\K=\R$, $D_F(z_0,r)=[z_0-r,z_0+r]$.\\
 	Dans les deux cas, $D_F(z_0,+\infty)=\K$ et $D_F(z_0,0)=\{0\}$.
 \end{itemize}
+\end{notation}
 
 \subsubsection*{Séries entières}
 
@@ -385,17 +508,18 @@ A partir de là, on peut définir la fonction tangente ainsi que les fonctions t
 	\end{itemize}
 \end{rmq}
 
-\paragraph{Terminologie}
-Soit $a=(a_n)_{n\in\N}\in\K^\N$. La série de fonctions $\displaystyle\sum u_n$, où : $$\begin{array}{lrcl}
+\begin{notation}
+	Soit $a=(a_n)_{n\in\N}\in\K^\N$. La série de fonctions $\displaystyle\sum u_n$, où : $$\begin{array}{lrcl}
 	u_n:&\R&\longrightarrow&\K\\
 	&t&\longmapsto&a_nt^n
 	\end{array}$$ est appelée \textbf{série entière de la variable réelle} associée à la suite $a$, et est notée $\displaystyle\sum a_nt^n$.
+\end{notation}
 
 \subsubsection*{Rayon de convergence}
 
 Dans cette section, on s'intéresse au domaine de définition de la somme d'une série entière.
 
-\begin{thm}{Lemme d'Abel}%thm
+\begin{thm}[Lemme d'Abel]%thm
 	Soit $(a_n)_{n\in\N}\in\K^\N$ et $z_0\in\K$ tel que la suite $(a_nz_0^n)$ soit bornée. Alors, pour tout $z\in\K$ tel que $\lvert z\rvert <\lvert z_0\rvert$, la série $\displaystyle\sum a_nz^n$ converge absolument.
 \end{thm}
 \begin{proof}
@@ -423,6 +547,7 @@ L'ensemble $\{r\in\R_+ : (a_nr^n)\ \text{est bornée}\}$ contient évidemment le
 \end{ex}
 
 Exercice Moulin.SE.2
+
 Exercice Moulin.SE.3
 
 \begin{rmq}%rmqs
@@ -435,13 +560,13 @@ Exercice Moulin.SE.3
 	\end{itemize}
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R$ et $z\in\K$.
 	\begin{itemize}
 		\item Si $\lvert z\rvert <R$, alors la série numérique $\displaystyle\sum a_nz^n$ converge absolument.
 		\item Si $\lvert z\rvert >R$, alors la série numérique $\displaystyle\sum a_nz^n$ diverge grossièrement.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{rmq}%rmq
 	\begin{itemize}
@@ -456,9 +581,9 @@ Exercice Moulin.SE.3
 	Montrer que si $\displaystyle\sum a_nz^n$ est semi-convergente, alors le rayon de convergence est $\lvert z\rvert$.
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R$. Le domaine de définition $\mathcal{D}$ de la somme $f:z\mapsto\displaystyle\sum_{n=0}^{+\infty}a_nz^n$ vérifie : $$D_O(0,R)\subset\mathcal{D}\subset D_F(0,R)$$
-\end{thm}
+\end{prop}
 
 \begin{rmq}%rlqs
 	\begin{itemize}
@@ -482,17 +607,17 @@ Exercice Moulin.SE.3
 
 \subsection{Pratique de la détermination du rayon de convergence}
 
-\begin{thm}{Comparaison}%prop
+\begin{prop}[Comparaison]%prop
 	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières de rayons de convergence respectifs $R_a$ et $R_b$. Si l'inégalité $\lvert a_n\rvert\leqslant\lvert b_n\rvert$ est vérifiée à partir d'un certain rang, alors $R_a\geqslant R_b$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières de rayons de convergence respectifs $R_a$ et $R_b$.
 	\begin{itemize}
 		\item Si $a_n=\O(b_n)$ ou $a_n=\o(b_n)$, alors $R_a\geqslant R_b$.
 		\item Si $\lvert a_n\rvert\sim \lvert b_n\rvert$, alors $R_a=R_b$.
 	\end{itemize}
-\end{thm}
+\end{cor}
 
 \begin{ex}
 	Le rayon de convergence de la série entière $\displaystyle\sum\arctan\left(\frac{1}{2^n}\right)z^n$ est $2$. En effet : $$\arctan\left(\frac{1}{2^n}\right)\underset{n\to+\infty}{\sim}\frac{1}{2^n}$$ D'autre part, la série entière $\displaystyle\sum\frac{z^n}{2^n}$ est de rayon de convergence $2$. On en déduit le résultat par comparaison.
@@ -527,17 +652,18 @@ Le fait que le terme général d'une série convergente converge vers $0$ et don
 
 En particulier, si $\displaystyle\sum a_nz^n$ est une série entière de rayon de convergence $R$ dont les coefficients $a_n$ sont non nuls à partir d'un certain rang, on a le résultat suivant :
 
-\begin{thm}{Règle de d'Alembert pour les séries entières}%prop
+\begin{prop}[Règle de d'Alembert pour les séries entières]%prop
 	On suppose qu'il existe $L\in\overline{\R}_+$ tel que $\displaystyle\frac{\lvert a_{n+1}\rvert}{\lvert a_n\rvert}\xrightarrow[n\to+\infty]{}L$.
 	\begin{itemize}
 		\item Lorsque $L\in\R_+\st$, on a $R=\displaystyle\frac{1}{L}$.
 		\item Lorsque $L=0$, on a $R=+\infty$.
 		\item Lorsque $L=+\infty$, on a $R=0$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
-\paragraph{Attention}
-Lorsque la règle de d'Alembert permet de conclure rapidement, il ne faut pas s'en priver. Mais il y a des cas où elle ne veut pas fonctionner (ne serait-ce que parce que la suite $(a_n)$ s'annule souvent et de manière imprévisible) et il ne faut pas insister. Il y a souvent beaucoup plus simple en revenant à la définition.
+\begin{attention}
+	Lorsque la règle de d'Alembert permet de conclure rapidement, il ne faut pas s'en priver. Mais il y a des cas où elle ne veut pas fonctionner (ne serait-ce que parce que la suite $(a_n)$ s'annule souvent et de manière imprévisible) et il ne faut pas insister. Il y a souvent beaucoup plus simple en revenant à la définition.
+\end{attention}
 
 \begin{ex}
 	\begin{enumerate}
@@ -554,9 +680,9 @@ Exercice Moulin.SE.6
 	Indication : On pourra étudier les suites extraites de rangs pairs et impairs de la suite $(\lvert a_n\rvert r^n)_{n\in\N\st}$ pour $r\in\R_+\st$ fixé.
 \end{exo}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $\alpha\in\R$. La série entière $\displaystyle n^\alpha z^n$ est de rayon de convergence $1$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Application directe de la règle de d'Alembert.
 \end{proof}
@@ -574,10 +700,10 @@ Exercice Moulin.SE.6
 
 \subsubsection*{Somme}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières de rayons de convergence $R_a$ et $R_b$. \\
 	Le rayon de convergence $R_s$ de $\displaystyle\sum (a_n+b_n)z^n$ vérifie l'inégalité : $$R_s\geqslant\min(R_a,R_b)$$ et l'on a : $$\forall z\in\K,\ \lvert z\rvert<\min(R_a,R_b)\implies\sum_{n=0}^{+\infty}(a_n+b_n)z^n=\sum_{n=0}^{+\infty}a_nz^n+\sum_{n=0}^{+\infty}b_nz^n$$ De plus, si $R_a\ne R_b$, alors $R_s=\min(R_a,R_b)$.
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Déterminer le rayon de convergence et la somme de la série entière $\displaystyle\sum_{n\geqslant 0}\cosh(n)z^n$.
@@ -593,10 +719,10 @@ Exercice Moulin.SE.6
 	On peut (doit ?) aussi écrire le produit de Cauchy des séries entières $\displaystyle\sum b_nz^n$ sous la forme $\displaystyle\sum\left(\sum_{p+q=n}a_pb_q\right)z^n$.
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières de rayons de convergence $R_a$ et $R_b$. \\
 	Pour tout $z\in\K$ vérifiant $\lvert z\rvert <\min(R_a,R_b)$, on a : $$\left(\sum_{p=0}^{+\infty}a_pz^p\right)\times \left(\sum_{q=0}^{+\infty}b_qz^q\right)=\sum_{n=0}^{+\infty}\left(\sum_{k=0}^{n}a_kb_{n-k}\right)z^n$$ En particulier, le rayon de convergence $R_p$ du produit de Cauchy des séries entières $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ vérifie l'inégalité : $$R_p\geqslant\min(R_a,R_b)$$
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Soit $\displaystyle\sum a_n^{(1)}z^n,\ldots,\sum a_n^{(p)}z^n$ des séries entières de rayons de convergence respectifs $R_1,\ldots,R_p$, avec $p\in\N\st$. On pose $R=\min(R_1,\ldots,R_p)$. \\
@@ -605,7 +731,7 @@ Exercice Moulin.SE.6
 \end{rmq}
 
 \begin{rmq}
-	Il n'y a pas d'égalité comme pour la somme. Considérer pour cela $\displaystyle\sum z^n$ et $1-z$.
+	Il n'y a pas de cas d'égalité comme pour la somme. Considérer pour cela $\displaystyle\sum z^n$ et $1-z$.
 \end{rmq}
 
 \begin{exo}
@@ -618,7 +744,7 @@ Exercice Moulin.SE.6
 
 \subsection{Continuité}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Soit $\displaystyle\sum a_n z^n$ une série entière de rayon de convergence $R$. La série $\displaystyle \sum a_n z^n$ converge normalement sur tout disque fermé $D_F(0,\rho)$, où $0\leqslant\rho<R$.
 \end{thm}
 
@@ -627,7 +753,9 @@ Exercice Moulin.SE.6
 	Mais attention ! La série entière peut alors très bien converger au-delà du rayon de convergence. On pourra regarder le cas des matrices carrées nilpotentes.
 \end{rmq}
 
-\paragraph{Attention} La série $\displaystyle\sum a_n z^n$ ne converge pas normalement sur $D_O(0,R)$ en général. Par exemple, la série entière $\displaystyle\sum z^n$ ne converge pas normalement sur $D_O(0,1)$.
+\begin{attention}
+	La série $\displaystyle\sum a_n z^n$ ne converge pas normalement sur $D_O(0,R)$ en général. Par exemple, la série entière $\displaystyle\sum z^n$ ne converge pas normalement sur $D_O(0,1)$.
+\end{attention}
 
 Exercice Moulin.SE.4
 
@@ -643,12 +771,12 @@ Exercice Moulin.SE.4
 	La somme de la série entière $\displaystyle\sum_{n\geqslant 1}\frac{z^n}{n^2}$ est définie et continue sur $1$. En effet, les fonctions $z\mapsto\displaystyle\frac{z^n}{n^2}$ sont continues et la série de fonctions $\displaystyle\sum_{n\geqslant 1}\frac{z^n}{n^2}$ converge normalement sur le disque fermé $D_F(0,1)$ étant donné que : $$\forall z\in D_F(0,1),\ \left\lvert\frac{z^n}{n^2}\right\rvert\leqslant\frac{1}{n^2}$$
 \end{ex}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $\displaystyle\sum a_n z^n$ une série entière de rayon de convergence $R>0$. Alors la restriction de la somme au disque ouvert, c'est-à-dire l'application : $$\begin{array}{rcl}
 		D_O(0,R)&\longrightarrow&\C\\
 		z&\longmapsto&\displaystyle\sum_{n=0}^{+\infty} a_nz^n
 	\end{array}$$ est continue.
-\end{thm}
+\end{cor}
 
 \begin{ex}
 	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence non nul et de somme $f$. Pour tout $p\in\N$, la fonction $f$ admet un développement limité à l'ordre $p$ en $0$, qui s'écrit : $$f(z)=\sum_{n=0}^{p}a_nz^n+o(z^p)$$
@@ -658,21 +786,21 @@ Exercice Moulin.SE.4
 	A l'aide des développements en série entière valable pour $x\in]-1,1[$ : $$\ln(1+x)=\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n}x^n\ \ \text{et}\ \ \arctan(x)=\sum_{n=0}^{+\infty}\frac{(-1)^n}{2n+1}x^n,$$ on obtient : $$\ln(2)=\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n}\ \ \text{et}\ \ \frac{\pi}{4}=\sum_{n=0}^{+\infty}\frac{(-1)^n}{2n+1}$$
 \end{ex}
 
-\begin{thm}{}%lem
+\begin{lem}%lem
 	Soit $\displaystyle\sum a_n$ une série convergente. La série de fonctions $t\mapsto\displaystyle\sum a_nt^n$ converge uniformément sur le segment $[0,1]$ et, en particulier, la restriction de sa somme à $[0,1]$ est continue.
-\end{thm}
+\end{lem}
 \begin{proof}
 	On démontre la convergence uniforme de la suite des restes sur le segment $[0,1]$ par une transformation d'Abel.
 \end{proof}
 
-\begin{thm}{Théorème d'Abel radial}
+\begin{thm}[Théorème d'Abel radial]%thm
 	Soit $z_0\in\C$ tel que la série $\displaystyle\sum a_nz_0^n$ converge. Alors la série entière $\displaystyle\sum a_nz^n$ converge uniformément sur le segment $[0,z_0]$ et, en particulier, la restriction de sa somme à ce segment est continue. 
 \end{thm}
 \begin{proof}
 	Utiliser le lemme précédent et une paramétrisation par $[0,1]$ de $[0,z_0]$.
 \end{proof}
 
-\begin{thm}{Théorème d'Abel radial - version du programme}%thm #loser
+\begin{thm}[Théorème d'Abel radial - version du programme]%thm #loser
 	Soit $\displaystyle\sum a_nt^n$ une série entière de rayon de convergence $R\in\R_+\st$. On suppose que $\displaystyle\sum a_nR^n$ est une série convergente. Alors, la somme : $$\begin{array}{rcl}
 		[0,R]&\longrightarrow&\C\\
 		t&\longmapsto&\displaystyle\sum_{n=0}^{+\infty} a_nt^n
@@ -683,11 +811,12 @@ Exercice Moulin.SE.4
 	Lorsque le rayon de convergence est strictement supérieur à $R$ (ou à $\lvert z_0\rvert$), tout cela est trivial par convergence normale sur le disque fermé de rayon $R$ (ou $\lvert z_0\rvert$).
 \end{rmq}
 
-\paragraph{Attention}
-\begin{itemize}
+\begin{attention}
+	\begin{itemize}
 	\item Il se peut que la fonction $t\mapsto\displaystyle\sum_{n=0}^{+\infty}a_nt^n$ admette une limite en $R$, sans pour autant que $\displaystyle\sum a_nR^n$ converge.
 	\item La somme d'une série entière peut ne pas être continue en un point du cercle de convergence : voir l'exercice Moulin.EV.54
 \end{itemize}
+\end{attention}
 
 \begin{ex}
 	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières de rayon de convergence $1$. Pour tout $n\in\N$, on pose $c_n=\displaystyle\sum_{k=0}^{n}a_kb_{n-k}$. et l'on suppose que $\displaystyle\sum a_n$, $\displaystyle\sum b_n$ et $\displaystyle \sum c_n$ sont des séries convergentes. On a alors : $$\left(\sum_{n=0}^{+\infty}a_n\right)\left(\sum_{n=0}^{+\infty}b_n\right)=\sum_{n=0}^{+\infty}c_n$$
@@ -696,9 +825,9 @@ Exercice Moulin.SE.4
 
 \subsection{Dérivation terme à terme d'une série entière}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R$. Alors $\displaystyle\sum na_nz^n$ a pour rayon de convergence $R$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Du résultat précédent, on déduit immédiatement que $\displaystyle\sum a_nz^n$ et $\displaystyle\sum\frac{a_n}{n}z^n$ ont le même rayon de convergence, et plus généralement que $\displaystyle\sum a_nz^n$ et $\displaystyle\sum n^k a_nz^n$ ont même rayon de convergence pour $k\in\Z$.
@@ -709,7 +838,7 @@ Exercice Moulin.SE.4
 \end{exo}
 %Solution : coincer alpha entre 2 entiers et utiliser la remarque précédente
 
-\begin{thm}{Dérivation terme à terme}%thm
+\begin{thm}[Dérivation terme à terme]%thm
 	Soit $\displaystyle\sum a_nt^n$ une série entière de la variable réelle, de rayon de convergence $R>0$. Alors sa somme $f$ est de classe $\mathcal{C}^1$ sur $]-,R,R[$ et: $$\forall t\in]-R,R[,\ f'(t)=\sum_{n=1}^{+\infty}na_nt^{n-1}$$
 \end{thm}
 
@@ -732,17 +861,17 @@ Exercice Moulin.SE.4
 
 La propriété suivante généralise le théorème précédent en exprimant le fait que la somme d'une série entière de la variable réelle est de classe $\mathcal{C}^\infty$ sur son intervalle \textbf{ouvert} de convergence, et que ses dérivées d'ordre $p$ s'obtiennent en dérivant terme à terme.
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $\displaystyle\sum a_nt^n$ une série entière de la variable réelle, de rayon de convergence $R>0$ et de somme $f$. Alors la fonction $f$ est de classe $\mathcal{C}^\infty$ sur $]-R,R[$ et : $$\forall p\in\N,\ \forall t\in]-R,R[,\ f^{(p)}(t)=\sum_{n=p}^{+\infty}n(n-1)\cdots(n-p+1)a_nt^{n-p}$$ En particulier, on a : $$\forall p\in\N,\ a_p=\frac{f^{(p)(0)}}{p!}$$
-\end{thm}
+\end{cor}
 
 \begin{ex}%ex
 	Soit $p\in\N$. Le corollaire précédent appliqué à la série entière $\displaystyle\sum t^n$ donne, par calcul de la dérivée $p$-ème : $$\forall t\in]-1,1[,\ \frac{p!}{(1-t)^{p+1}}=\sum_{n=0}^{+\infty}(n+1)\cdots(n+p)t^n$$ ce qui se réécrit : $$\forall t\in]-1,1[,\ \sum_{n=0}^{+\infty}\binom{n+p}{p}t^n=\frac{1}{(1-t)^{p+1}}$$
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$ deux séries entières de rayons de convergence strictement positifs. On suppose qu'il existe $\alpha\in\R_+\st$ tel que : $$\forall t\in]0,\alpha[,\ \sum_{n=0}^{+\infty}a_nt^n=\sum_{n=0}^{+\infty}b_nt^n$$ Alors, on a : $\forall n\in\N,\  a_n=b_n$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Dans la propriété précédente, le réel strictement positif $\alpha$ doit être inférieur ou égal aux rayons de convergence des séries entières $\displaystyle\sum a_nz^n$ et $\displaystyle\sum b_nz^n$.
@@ -758,9 +887,9 @@ La propriété suivante généralise le théorème précédent en exprimant le f
 
 \subsubsection*{Primitivation d'une série entière}
 
-\begin{thm}{}
+\begin{prop}
 	Si $\displaystyle\sum a_nt^n$ est une série entière de rayon de convergence $R>0$, sa somme admet pour primitives sur $]-R,R[$ les : $$\int\left(\sum_{n=0}^{+\infty}a_nt^n\right)\d t=k+\sum_{n=0}^{+\infty}\frac{a_n}{n+1}t^n\ \ \text{avec}\ k\in\K$$
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Cette propriété sera illustrée dans la section suivante.
@@ -770,7 +899,9 @@ La propriété suivante généralise le théorème précédent en exprimant le f
 	On peut primitiver terme à terme la somme d'une série entière sur l'intervalle ouvert de convergence. On peut intégrer terme à terme la somme d'une série entière sur tout segment inclus dans l'intervalle ouvert de convergence.
 \end{met}
 
-\paragraph{Attention} On ne peut pas \textit{a priori} intégrer sur tout l'intervalle ouvert de convergence, sauf évidemment dans certains cas particuliers, comme par exemple l'exemple ci-dessous.
+\begin{attention}
+	On ne peut pas \textit{a priori} intégrer sur tout l'intervalle ouvert de convergence, sauf évidemment dans certains cas particuliers, comme par exemple l'exemple ci-dessous.
+\end{attention}
 
 \begin{ex}
 	Si la série $\displaystyle\sum a_nR^n$ converge absolument, alors on peut intégrer terme à terme sur le segment $[-R,R]$ (ou sur $[0,R]$) car la série de fonctions $\displaystyle\sum a_nt^n$ converge alors normalement sur $[-,R,R]$.
@@ -784,9 +915,9 @@ Exercice Moulin.SE.35
 
 \subsection{Formule de Cauchy et holomorphie (HP)}
 
-\begin{thm}{Formule de Cauchy (HP)}%prop
+\begin{prop}[Formule de Cauchy (HP)]%prop
 	Soit $\displaystyle\sum a_nz^n$ une série entière de rayon de convergence $R>0$ et $f$ sa somme. Alors, pour tout $n\in\N$, et tout $r\in]0,R[$ : $$a_n=\frac{1}{2\pi r^n}\int_{0}^{2\pi}f(re^{i\theta})e^{-in\theta}\d\theta$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	Intégrer terme à terme.
 \end{proof}
@@ -812,9 +943,9 @@ Exercice Moulin.SE.35
 	Reformuler la formule de Cauchy en termes d'intégrales sur un chemin.
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	La somme d'une série entière est holomorphe sur $D_O(0,R)$.
-\end{thm}
+\end{prop}
 
 \section{Développements en série entière}
 
@@ -826,8 +957,9 @@ Exercice Moulin.SE.35
 	Soit $U\subset\C$ un voisinage de $0$, ainsi qu'une fonction $f:U\to\C$. Soit $r>0$. S'il existe une série entière $\displaystyle\sum a_nz^n$ telle que : $$\forall z\in D_O(0,R),\ f(z)=\sum_{n=0}^{+\infty}a_nz^n$$ on dit que $f$ est \textbf{développable en série entière sur $D_O(0,r)$}.
 \end{dfn}
 
-\paragraph{Terminologie}
-On dit que $f$ est \textbf{développable en série entière} (au voisinage de $0$) s'il existe $r>0$ tel que $f$ soit développable en série entière sur $D_O(0,r)$.
+\begin{terminologie}
+	On dit que $f$ est \textbf{développable en série entière} (au voisinage de $0$) s'il existe $r>0$ tel que $f$ soit développable en série entière sur $D_O(0,r)$.
+\end{terminologie}
 
 \begin{ex}%exs
 	\begin{enumerate}
@@ -855,8 +987,9 @@ On dit que $f$ est \textbf{développable en série entière} (au voisinage de $0
 	Soit $I\subset\R$ un voisinage de $0$, ainsi qu'une fonction $f:I\to\K$. Soit $r>0$. S'il existe une série entière $\displaystyle\sum a_nt^n$ telle que : $$\forall t\in]-R,R[,\ f(t)=\sum_{n=0}^{+\infty}a_nt^n$$ on dit que $f$ est \textbf{développable en série entière sur $]-R,R[$}.
 \end{dfn}
 
-\paragraph{Terminologie}
-On dit que $f$ est \textbf{développable en série entière} (au voisinage de $0$) s'il existe $r>0$ tel que $f$ soit développable en série entière sur $]-r,r[$.
+\begin{terminologie}
+	On dit que $f$ est \textbf{développable en série entière} (au voisinage de $0$) s'il existe $r>0$ tel que $f$ soit développable en série entière sur $]-r,r[$.
+\end{terminologie}
 
 \begin{rmq}%rmqs
 	\begin{enumerate}
@@ -882,9 +1015,9 @@ On dit que $f$ est \textbf{développable en série entière} (au voisinage de $0
 	\end{array}$ est développable en série entière.
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Pour que $f\in\mathcal{C}\infty(]-r,r[,\K)$ soit développable en série entière, il faut et il suffit que le reste de Taylor $R_n(x)$ de $f$ converge simplement vers $0$ sur $]-r,r[$ quand $n$ tend vers l'infini.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	On dispose pour cela de l'inégalité de Taylor-Lagrange : $$\lvert R_n(x)\rvert\leqslant\frac{\lvert x\rvert^{n+1}}{(n+1)!}\underset{[0,x]}{\sup}\lvert f^{(n+1)}\rvert$$ ou de l'expression du reste : $$R_n(x)=\int_{0}^{x}\frac{(x-u)^n}{n!}f^{(n+1)}(u)\d u=x^{n+1}\int_{0}^{1}\frac{(1-t)^n}{n!}f^{(n+1)}(xt)\d t$$ Utiliser l'expression explicite du reste est un cas désespéré. Dans ce cas, ne pas redémontrer l'inégalité de Taylor-Lagrange : affiner les majorations par un découpage de l'intégrale.
@@ -912,19 +1045,18 @@ Les théorèmes sur les opérations sur les séries entières donnent le point m
 
 \subsection{Développements usuels dans le domaine réel}
 
-
 La proposition qui suit montre que les fonctions $\cos$, $\sin$, $\cosh$ et $\sinh$ sont développables en série entière sur $\R$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Pour tout $x\in\R$, on a : $$\cos(x)=\sum_{n=0}^{+\infty}\frac{(-1)^n}{(2n)!}x^{2n}\ \ \ \sin(x)=\sum_{n=0}^{+\infty}\frac{(-1)^n}{(2n+1)!}x^{2n+1}$$
 	$$\cosh(x)=\sum_{n=0}^{+\infty}\frac{1}{(2n)!}x^{2n}\ \ \ \sinh(x)=\sum_{n=0}^{+\infty}\frac{1}{(2n+1)!}x^{2n+1}$$
-\end{thm}
+\end{prop}
 
 Le théorème de primitivation permet d'obtenir d'autres développements en série entière.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Pour tout $x\in]-1,1[$, on a : $$\ln(1+x)=\sum_{n=1}^{+\infty}\frac{(-1)^{n-1}}{n}x^n\ \ \ \ \arctan(x)=\sum_{n=0}^{+\infty}\frac{(-1)^n}{2n+1}x^{2n+1}$$
-\end{thm}
+\end{prop}
 
 \begin{ex}%exs
 	\begin{enumerate}
@@ -942,9 +1074,9 @@ Le théorème de primitivation permet d'obtenir d'autres développements en sér
 
 Pour faciliter la compréhension de la formule qui suit, pour tout $(\alpha,n)\in\C\times\N$, on pose : $$\binom{\alpha}{n}=\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}$$ Cette notation n'est pas explicitement au programme, mais elle est assez fréquemment utilisée.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Pour tout $\alpha\in\C$, on a : $$\forall x\in]-1,1[,\ (1+x)^\alpha=\sum_{n=0}^{+\infty}\frac{\alpha(\alpha-1)\cdots(\alpha-n+1)}{n!}x^n=\sum_{n=0}^{+\infty}\binom{\alpha}{n}x^n$$
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	On retrouve ainsi le fait que si $t\in]-1,1[$ et $p\in\N$, alors : $$\frac{1}{(1-t)^{p+1}}=\sum_{n=0}^{+\infty}\binom{n+p}{p}t^n$$ En effet, pour $n\in\N$, on a : $$\binom{-p-1}{n}=(-1)^n\binom{n+p}{n}$$

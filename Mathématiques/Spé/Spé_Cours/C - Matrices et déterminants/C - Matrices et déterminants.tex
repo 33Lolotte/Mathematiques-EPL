@@ -20,9 +20,12 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
 
 \setlist[itemize]{label=$\bullet$}
-
+\setlist{before=\leavevmode, leftmargin=*}
 
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
@@ -49,7 +52,7 @@
 \renewcommand{\o}{\text{o}}
 \renewcommand{\O}{\text{O}}
 \renewcommand{\d}{\text{d}}
-
+\newcommand{\Id}{\text{Id}}
 
 
 \theoremstyle{plain}
@@ -58,8 +61,6 @@
 \theoremstyle{definition}
 
 \newtheorem*{ex}{Exemple}
-\newtheorem*{met}{Point méthode}
-\newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
 \newtheorem*{notation}{Notation}
 \newtheorem*{rappel}{Rappel}
@@ -70,14 +71,120 @@
 \theoremstyle{remark}
 \newtheorem*{app}{Application}
 
-\newtcolorbox[auto counter]{dfn}{
+\newtcolorbox[auto counter]{dfn}[1][]{
 	enhanced,
 	colback=white,
-	fonttitle=\sc,
-	title={Définition \thetcbcounter}
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
 }
 
-\newtcolorbox[auto counter]{thm}[2][]{enhanced, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
 
 \title{Matrices et déterminants}
 \date{}
@@ -224,9 +331,9 @@ Alors $A'=Q\inv AP$.
 
 C'est une relation d'équivalence.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Deux matrices sont équivalentes si, et seulement si, elles représentent la même application linéaire (dans des bases \textit{a priori} différentes, évidemment).
-\end{thm}
+\end{prop}
 
 \subsubsection*{Effet d'un changement de base sur la matrice d'un endomorphisme}
 
@@ -249,9 +356,9 @@ Alors $A'=P\inv AP$.
 
 C'est une relation d'équivalence.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Deux matrices sont semblables si, et seulement si, elles représentent le même endomorphisme (dans des bases \textit{a priori} différentes, évidemment).
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	On fera attention à la différence entre les notions d'équivalence et de similitude.
@@ -281,7 +388,7 @@ Soit $\mathcal{B}$ une base de $E$ (de dimension finie) et $\mathcal{B}\st$ sa b
 
 \subsection{Matrices inversibles}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $A\in\mathcal{M}_n(\K)$. Les propriétés suivantes sont équivalentes :
 	\begin{enumerate}[label=(\roman*)]
 		\item $A$ est inversible ;
@@ -289,7 +396,7 @@ Soit $\mathcal{B}$ une base de $E$ (de dimension finie) et $\mathcal{B}\st$ sa b
 		\item il existe $B\in\mathcal{M}_n(\K)$ telle que $BA=I_n$ ;
 		\item pour tout $X\in\K^n$, $AX=0\implies X=0$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \paragraph{Matrices à diagonale dominante} Exercice Moulin.Mat.49
 
@@ -306,9 +413,9 @@ Soit $\mathcal{B}$ une base de $E$ (de dimension finie) et $\mathcal{B}\st$ sa b
 	Le \textbf{centre} d'une algèbre (ou plus généralement d'un anneau) $A$ est l'ensemble des éléments de $A$ qui commutent avec tout élément de $A$.
 \end{dfn}
 
-\begin{thm}{Caractérisation des homothéties (HP)}%prop
+\begin{prop}[Caractérisation des homothéties (HP)]%prop
 	Soit $E$ un espace vectoriel et $u\in\mathcal{L}(E)$ tel que pour tout $x\in E$, la famille $(x,u(x))$ soit liée. Alors $u$ est une homothétie.
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Montrer que le centre de $\mathcal{L}(E)$ est l'ensemble des homothéties.
@@ -330,13 +437,13 @@ Soit $\mathcal{B}$ une base de $E$ (de dimension finie) et $\mathcal{B}\st$ sa b
 	$$\Tr(A)=\sum_{i=1}^{n}a_{i,i}.$$
 \end{dfn}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{enumerate}
 		\item La trace est une forme linéaire sur $\mathcal{M}_n(\K)$.
 		\item Pour $A\in\mathcal{M}_{n,p}(\K)$ et $B\in\mathcal{M}_{p,n}$, on a :
 		$$\Tr(AB)=\sum_{(i,j)\in\llbracket1,n\rrbracket\times\llbracket1,p\rrbracket}a_{i,j}b_{j,i}=\Tr(BA).$$
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Dans la formule $\Tr(AB)=\Tr(BA)$, on ne suppose pas $A$ et $B$ carrées.
@@ -386,22 +493,22 @@ Le rang d'une matrice $A$ est donc aussi le rang de toute application linéaire 
 
 Deux matrices équivalentes ont donc même rang. En particulier, la multiplication à gauche ou à droite par une matrice inversible ne change pas le rang.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $\rg(A)=r$, alors $A$ est équivalente à $J_r=\begin{pmatrix}
 		I_r&0\\
 		0&0
 	\end{pmatrix}$.
-\end{thm}
+\end{prop}
 
 Exercice Moulin.Mat.32
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Le rang d'une matrice est égal au rang de sa transposée, donc aussi au rang de ses lignes.
-\end{thm}
+\end{cor}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Deux matrices $A$ et $B$ de mêmes dimensions sont équivalentes si, et seulement si, elles ont même rang.
-\end{thm}
+\end{cor}
 
 \begin{rmq}
 	On en déduit que si $A\in\mathcal{M}_n(\K)$, alors $A$ et $A^T$ sont équivalentes. En fait, dans un sous-corps de $\C$, elles sont mêmes semblables, mais cela est bien plus difficile à démontrer et découle du théorème de réduction de Jordan.
@@ -421,10 +528,10 @@ Exercice Moulin.Mat.32
 
 Pour $i\in\llbracket1,n\rrbracket$ et $j\in\llbracket1,p\rrbracket$, on note $E_{i,j}$ la matrice de $\mathcal{M}_{n,p}(\K)$ dont tous les termes sont nuls sauf celui de la ligne $i$ et de la colonne $j$ qui vaut $1$. Ces matrices constituent la \textbf{base canonique} de $\mathcal{M}_n(\K)$.
 
-\begin{thm}{Table de multiplication des $E_{i,j}$}%prop
+\begin{prop}[Table de multiplication des $E_{i,j}$]%prop
 	Lorsque les dimensions sont compatibles, on a :
 	$$E_{i,j}E_{k,l}=\delta_{j,k}E_{i,l}.$$
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	En prenant $(k,l)=(i,j)$ dans le résultat précédent :
@@ -637,7 +744,7 @@ $$\lambda A+\mu B=\begin{pmatrix}
 
 \subsubsection*{Produit par blocs}
 
-\begin{thm}{Produit par blocs}%prop
+\begin{prop}[Produit par blocs]%prop
 	Si $A$ et $B$ sont écrites par blocs sous la forme :
 	$$A=\begin{pmatrix}
 		A_{1,1}&\cdots&A_{1,p}\\
@@ -653,7 +760,7 @@ $$\lambda A+\mu B=\begin{pmatrix}
 		\vdots&&\vdots\\
 		C_{n,1}&\cdots&C_{n,q}
 	\end{pmatrix}\quad\text{avec}\quad\forall (i,j)\in\llbracket1,n\rrbracket\times\llbracket1,q\rrbracket,\ C_{i,j}=\sum_{k=1}^{p}A_{i,k}B_{k,q}.$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	Pour $(i,k,j)\in\llbracket1,n\rrbracket\times\llbracket1,p\rrbracket\times\llbracket1,q\rrbracket$, notons :
 	\begin{itemize}
@@ -869,7 +976,7 @@ Exercice Moulin.Mat.28
 
 Dans cette partie, $E$ est un espace vectoriel de dimension finie.
 
-\begin{thm}{Traduction matricielle de la stabilité}%prop
+\begin{prop}[Traduction matricielle de la stabilité]%prop
 	Soit $\mathcal{B}=(e_1,\ldots,e_n)$ une base de $E$ et $u\in\mathcal{L}(E)$. Si l'on écrit :
 	$$M_\mathcal{B}(u)=\begin{pmatrix}
 		A&C\\
@@ -880,7 +987,7 @@ Dans cette partie, $E$ est un espace vectoriel de dimension finie.
 		\item $\Vect(e_1,\ldots,e_r)$ est stable par $u$ si, et seulement si, $B=0$ ;
 		\item $\Vect(e_{r+1},\ldots,e_n)$ est stable par $u$ si, et seulement si, $C=0$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 \begin{proof}
 	Notons $F=\Vect(e_1,\ldots,e_r)$.\\
 	La stabilité de $F$ se traduit par le fait que les $r$ première colonnes de sa matrice dans $\mathcal{B}$ représentent, dans $\mathcal{B}$, des vecteurs de $F$, c'est-à-dire  que ces colonnes aient leurs $n-r$ derniers coefficients non nuls. Cela signifie exactement que $B=0$. \\
@@ -909,7 +1016,7 @@ Dans cette partie, $E$ est un espace vectoriel de dimension finie.
 	\end{itemize}
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $E$ de dimension finie tel que $E=\displaystyle\bigoplus_{i=1}^pE_i$. Si $\mathcal{B}$ est une base adaptée à cette décomposition, alors l'endomorphisme $u$ stabilise chaque $E_i$ si, et seulement si, sa matrice dans la base $\mathcal{B}$ est diagonale par blocs :
 	$$\begin{pmatrix}
 		A_1&&(0)\\
@@ -917,7 +1024,7 @@ Dans cette partie, $E$ est un espace vectoriel de dimension finie.
 		(0)&&A_p
 	\end{pmatrix},$$ où, pour tout $i\in\llbracket1,p\rrbracket$, la matrice $A_i$ est carrée de taille $\dim(E_i)$.\\
 	Dans ce cas, chacun des blocs diagonaux $A_i$ est la matrice de l'endomorphisme induit par $u$ sur $E_i$ dans la base de $E_i$ extraite de $\mathcal{B}$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Pour $i\in\llbracket1,p\rrbracket$, notons $\mathcal{B}_i$ la base de $E_i$ extraite de $\mathcal{B}$ ; le sous-espace $E_i$ est alors stable par $u$ si, et seulement si, les vecteurs de $\mathcal{B}_i$ ont pour image par $u$ un vecteur de $E_i$, c'est-à-dire une combinaison linéaire de vecteurs de $\mathcal{B}_i$. D'où l'équivalence annoncée et l'interprétation des blocs diagonaux $A_i$.
 \end{proof}
@@ -935,16 +1042,16 @@ Dans cette partie, $E$ est un espace vectoriel de dimension finie.
 	$$u_i=u_j\implies f(u_1,u_2,\ldots,u_n)=0.$$
 \end{dfn}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $f$ est une forme $n$-linéaire alternée, alors elle est \textbf{antisymétrique}, c'est-à-dire qu'elle vérifier, pour tout $(u_1,\ldots,u_n)\in E^n$ et pour tout $(i,j)\in\llbracket1,n\rrbracket^2$ tel que $i<j$ :
 	$$f(u_1,\ldots,\underset{\substack{\uparrow\\i\text{-ème}}}{u_i},\ldots,\underset{\substack{\uparrow\\j\text{-ème}}}{u_j},\ldots,u_n)=-f(u_1,\ldots,\underset{\substack{\uparrow\\i\text{-ème}}}{u_j},\ldots,\underset{\substack{\uparrow\\j\text{-ème}}}{u_i},\ldots,u_n).$$
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Montrer que la réciproque de la proposition précédente est vrai si $\K$ est un corps de caractéristique différente de $2$. Comme nous travaillons avec des sur-corps de $\Q$, cela sera donc toujours vrai.
 \end{exo}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Soit $(e_1,\ldots,e_n)$ une base de $E$.
 	\begin{itemize}
 		\item Il existe une unique forme $n$-linéaire alternée $\varphi_0$ sur $E$ telle que :
@@ -1015,9 +1122,9 @@ On définit sur l'ensemble des bases de $E$ la relation suivante :
 $$\mathcal{B}\mathcal{R}\mathcal{B}'\iff\det_\mathcal{B}(\mathcal{B}')>0.$$
 Lorsque $\mathcal{B}\mathcal{R}\mathcal{B}'$, on dit que les bases $\mathcal{B}$ et $\mathcal{B}'$ ont \textbf{même orientation}.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	La relation $\mathcal{R}$ est une relation d'équivalence sur l'ensemble des bases de $E$. Elle possède deux classes d'équivalence.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Les propriétés usuelles du déterminant montrent aisément qu'il s'agit bien d'une relation d'équivalence. Pour les classes d'équivalence, en fixant $\mathcal{B}_0=(e_1,\ldots,e_n)$ une base de $E$ et en posant $\mathcal{B}_0'=(-e_1,e_2,\ldots,e_n)$, les deux classes d'équivalence sont les classes de $\mathcal{B}_0$ et de $\mathcal{B}_0'$.
 \end{proof}
@@ -1054,7 +1161,7 @@ Revoir dans le cours de première année les méthodes usuelles de calcul de dé
 
 \paragraph{Convention} Si une matrice est de taille nulle, son déterminant vaut $1$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Le déterminant d'une matrice triangulaire par blocs est le produit des déterminants de ses blocs diagonaux, c'est-à-dire :
 	$$\det\begin{pmatrix}
 		A_1&&(\star)\\
@@ -1065,7 +1172,7 @@ Revoir dans le cours de première année les méthodes usuelles de calcul de dé
 	&\ddots&\\
 	(\star)&&A_n
 	\end{pmatrix}=\prod_{k=1}^{n}\det(A_k).$$
-\end{thm}
+\end{prop}
 
 \begin{proof}
 	Quitte à faire une récurrence sur le nombre de blocs, il suffit de prouver le résultat pour une matrice $L\in\mathcal{M}_n(\K)$ de la forme $M=\begin{pmatrix}
@@ -1113,7 +1220,7 @@ Exercice Moulin.Mat.70.
 
 \subsection{Déterminant de Vandermonde}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Étant donnés des scalaires $x_0,x_1,\ldots,x_n$, on note $V(x_0,x_1,\ldots,x_n)$ le déterminant d'ordre $n+1$ défini par :
 	$$V(x_0,x_1,\ldots,x_n)=\begin{vmatrix}
 		1&1&\cdots&1\\
@@ -1126,7 +1233,7 @@ Exercice Moulin.Mat.70.
 		\item Dans tous les cas, on a :
 		$$V(x_0,\ldots,x_n)=\prod_{0\leqslant j<i\leqslant n}(x_i-x_j).$$
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{exo}[Vandermonde et polynômes]
 	Soit $A=\begin{pmatrix}
@@ -1149,17 +1256,17 @@ Exercice Moulin.Mat.70.
 	1\leqslant j\leqslant n}}\in\mathcal{M}_n(\K)$, où $b_{i,j}$ est le cofacteur de $a_{i,j}$ dans $A$.
 \end{dfn}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $B$ est la comatrice de $A\in\mathcal{M}_n(\K)$, on a :
 	$$AB^T=B^TA=(\det(A))I_n.$$
-\end{thm}
+\end{prop}
 
 Exercice Moulin.Mat.78
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Si $B$ est la comatrice d'une matrice $A\in\mathcal{GL}_n(\K)$, alors on a :
 	$$A\inv=\frac{1}{\det(A)}B^T.$$
-\end{thm}
+\end{cor}
 
 \begin{met}
 	On utilise cette formule pour inverser pratiquement une matrice $n\times n$ si, et seulement si, $n=2$.
@@ -1177,7 +1284,7 @@ Exercice Moulin.Mat.78
 
 Considérons un système de Cramer $AX=B$, où $A$ est une matrice inversible de $\mathcal{M}_n(\K)$ et $B\in\K^n$. Pour tout $k\in\llbracket1,n\rrbracket$, on note $A_k$ la matrice obtenue en remplaçant la $k$-ième colonne de $A$ par $B$, le seconde membre du système.
 
-\begin{thm}{Formules de Cramer}%thm
+\begin{thm}[Formules de Cramer]%thm
 	L'unique solution du système est donnée par :
 	$$\forall k\in\llbracket1,n\rrbracket,\ x_k=\frac{\det(A_k)}{\det(A)}.$$
 \end{thm}

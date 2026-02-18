@@ -20,9 +20,12 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
 
 \setlist[itemize]{label=$\bullet$}
-
+\setlist{before=\leavevmode, leftmargin=*}
 
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
@@ -46,6 +49,9 @@
 \newcommand{\Vect}{\text{Vect}}
 \newcommand{\rg}{\text{rg}}
 \newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
 \newcommand{\Id}{\text{Id}}
 \newcommand{\Sp}{\text{Sp}}
 
@@ -56,22 +62,131 @@
 \theoremstyle{definition}
 
 \newtheorem*{ex}{Exemple}
-\newtheorem*{met}{Point méthode}
-\newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
+\newtheorem*{notation}{Notation}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{terminologie}{Terminologie}
+\newtheorem*{attention}{Attention}
+\newtheorem*{conséquence}{Conséquence}
 
 \theoremstyle{remark}
 \newtheorem*{app}{Application}
 
-\newtcolorbox[auto counter]{dfn}{
+\newtcolorbox[auto counter]{dfn}[1][]{
 	enhanced,
-	breakable,
 	colback=white,
-	fonttitle=\sc,
-	title={Définition \thetcbcounter}
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
 }
 
-\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	after title={\par\nobreak\medskip\noindent},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
 
 \title{Réduction des endomorphismes}
 \date{}
@@ -102,7 +217,7 @@
 	
 	\begin{rmq}
 		\begin{itemize}
-			\item un vecteur propre n'est associé qu'à une seule valeur propre.
+			\item Un vecteur propre n'est associé qu'à une seule valeur propre.
 			\item Une droite vectorielle est stable par $u$ si, et seulement si, elle est engendrée par un vecteur propre de $u$. %IMPORTANT
 			\item Si $\lambda\in\K$ est valeur propre de $u$, les vecteurs propres associés à la valeur propre $\lambda$ sont les vecteurs \textit{non nuls} de $E_\lambda(u)$. En particulier, si $E=\{0\}$, il n'y a aucun vecteur propre et donc aucune valeur propre.
 			\item Plus généralement, on notera $E_\lambda(u)=\ker(u-\lambda\Id_E)$ pour tout $\lambda\in\K$. Il est non réduit à $\{0\}$ si, et seulement si, $\lambda$ est valeur propre de $u$.
@@ -150,19 +265,19 @@
 	
 	\subsection{Propriétés}
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Si deux endomorphismes commutent, les sous-espaces propres de l'un sont stables par l'autre.
-	\end{thm}
+	\end{prop}
 	
 	Le résultat suivant est évident par définition d'un sous-espace propre.
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Si $F$ est un sous-espace vectoriel de $E$ stable par $u$, les valeurs propres de l'endomorphisme $u_F$ sont les valeurs propres de $E_\lambda(u)\cap F\ne\{0\}$. On a alors : $$E_\lambda(u_F)=E_\lambda(u)\cap F.$$
-	\end{thm}
+	\end{prop}
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Si $\lambda_1,\ldots,\lambda_p$ sont des valeurs propres de $u$ deux à deux distinctes, alors les sous-espaces propres associés $E_{\lambda_1}(u),\ldots,E_{\lambda_p}(u)$ sont en somme directe.
-	\end{thm}
+	\end{prop}
 	\begin{proof}
 		Appliquer le lemme de décomposition des noyaux à $P=(X-\lambda_1)\times\cdots\times(X-\lambda_p)$.
 	\end{proof}
@@ -175,9 +290,9 @@
 		\end{itemize}
 	\end{exo}
 	
-	\begin{thm}{}%cor
+	\begin{cor}%cor
 		Toute famille de vecteurs propres associés à deux valeurs propres deux à deux distinctes est libre.
-	\end{thm}
+	\end{cor}
 	\begin{proof}
 		Ce sont des vecteurs non nuls appartenant à des sous-espaces vectoriels en somme directe.
 	\end{proof}
@@ -199,23 +314,25 @@
 	
 	\subsection{Cas de la dimension finie}
 	
-	\begin{thm}{}%cor
+	\begin{cor}%cor
 		Si $E$ est de dimension finie et si $\lambda_1,\ldots,\lambda_p$ sont des valeurs propres de $u$ deux à deux distinctes, alors : $$\sum_{i=1}^{p}\dim(E_{\lambda_i}(u))\leqslant\dim(E).$$
-	\end{thm}
+	\end{cor}
 	
 	\begin{dfn}
 		Si $u$ est un endomorphisme d'un espace vectoriel de dimension finie, l'ensemble des valeurs propres de $u$ est le \textbf{spectre} de $u$, que l'on note $\Sp(u)$.
 	\end{dfn}
 	
-	\paragraph{Attention} Il arrive parfois que l'on parle du spectre d'un endomorphisme $u$ en dimension infinie : il s'agit alors de l'ensemble des scalaires $\lambda$ tels que $u-\lambda\Id_E$ soit non \textit{bijectif}, alors que les valeurs propres de $u$ sont les scalaires $\lambda$ tels que $u-\lambda\Id_E$ soit non injectif. Les éléments du spectre sont appelés les \textbf{valeurs spectrales} de $u$.
+	\begin{attention}
+		Il arrive parfois que l'on parle du spectre d'un endomorphisme $u$ en dimension infinie : il s'agit alors de l'ensemble des scalaires $\lambda$ tels que $u-\lambda\Id_E$ soit non \textit{bijectif}, alors que les valeurs propres de $u$ sont les scalaires $\lambda$ tels que $u-\lambda\Id_E$ soit non injectif. Les éléments du spectre sont appelés les \textbf{valeurs spectrales} de $u$.
+	\end{attention}
 	
 	\begin{ex}
 		L'endomorphisme $P\mapsto XP$ de $\K[X]$ n'admet pas de valeur propre. En particulier, $0$ n'en est pas valeur propre, alors que $0$ en est valeur spectrale puisque cet endomorphisme est non bijectif (son image est incluse dans l'hyperplan d'équation $P(0)=0$).
 	\end{ex}
 	
-	\begin{thm}{}%cor
+	\begin{cor}%cor
 		Le spectre d'un endomorphisme d'un espace vectoriel de dimension $n$ a au plus $n$ éléments distincts.
-	\end{thm}
+	\end{cor}
 	
 	\subsection{Éléments propres d'une matrice carrée}
 	
@@ -253,9 +370,9 @@
 		\end{enumerate}
 	\end{exo}
 	
-	\begin{thm}{}%cor
+	\begin{cor}%cor
 		Une matrice $A\in\mathcal{M}_n(\K)$ admet au plus $n$ valeurs propres.
-	\end{thm}
+	\end{cor}
 	
 	\begin{met}
 		Pour rechercher les éléments propres d'une matrice $A$, on peut résoudre l'équation $AX=\lambda X$, appelée équation aux éléments propres.
@@ -278,21 +395,21 @@
 		\end{enumerate}
 	\end{ex}
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Soit $A$ une matrice représentant $u$ dans une base $\mathcal{B}=(e_1,\ldots,e_n)$.\\
 		On a alors $\Sp(A)=\Sp(u)$ et, pour tout $\lambda\in\Sp(u)$ : $$x=\sum_{i=1}^{n}x_ie_i\in E_\lambda(u)\iff X=\begin{pmatrix}
 			x_1\\
 			\vdots\\
 			x_n
 		\end{pmatrix}\in E_\lambda(A).$$
-	\end{thm}
+	\end{prop}
 	\begin{proof}
 		Si $X$ est la matrice représentant un vecteur $x\in E$ dans la base $\mathcal{B}$, on a l'équivalence $u(x)=\lambda x\iff AX=\lambda X$.
 	\end{proof}
 	
-	\begin{thm}{}%cor
+	\begin{cor}{}%cor
 		Deux matrices semblables ont le même spectre et les sous-espaces propres associés sont de même dimension.
-	\end{thm}
+	\end{cor}
 	
 	\begin{rmq}
 		Plus précisément, si $B=PAP\inv$, alors pour tout $\lambda\in\Sp(B)$ : $$E_\lambda(B)=\{PX\ \mid\ X\in E_\lambda(A)\}.$$
@@ -306,10 +423,10 @@
 		\item On distinguera donc le spectre réel de $A$, noté $\Sp_\R(A)$, de son spectre complexe, noté $\Sp_\C(A)$.
 	\end{itemize}
 	
-	\begin{thm}{}%prop
+	\begin{prop}{}%prop
 		Soit $A$ une matrice réelle et $\lambda\in\C$. On a :
 		$$\lambda\in\Sp_\C(A)\iff\overline{\lambda}\in\Sp_C(A)\quad\text{et}\quad \forall X\in\C^n,\ X\in E_\lambda(A)\iff\overline{X}\in E_{\overline{\lambda}}(A).$$
-	\end{thm}
+	\end{prop}
 	
 	\begin{rmq}
 		On peut démontrer de la même façon que si $A$ est une matrice complexe, alors $\Sp(\overline{A})=\overline{\Sp(A)}$ et que, pour tout $\lambda\in\Sp(A)$, les éléments de $E_\lambda(A)$ et de $E_{\overline{\lambda}}(\overline{A})$ sont conjugués.
@@ -339,22 +456,22 @@
 	
 	Soit $u\in\mathcal{L}(E)$ et $A\in\mathcal{M}_n(\K)$.
 	
-	\begin{thm}
+	\begin{prop}
 		Soit $P$ un polynôme à coefficients dans $\K$ et $\lambda\in\K$.
 		\begin{itemize}
 			\item Si $x\in E_\lambda(u)$, on a $P(u)(x)=P(\lambda)x$.
 			\item Si $X\in E_\lambda(A)$, on a $P(A)X=P(\lambda)X$.
 		\end{itemize}
-	\end{thm}
+	\end{prop}
 	\begin{proof}
 		Récurrence immédiate pour la base canonique puis raisonnement par linéarité.
 	\end{proof}
 	
 	[Ouvre le programme] "Y a que deux bibles : le programme officiel et le tout-en-un !"
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Si $P$ est un polynôme annulateur de $u$, alors toute valeur propre de $u$ est racine de $P$. On a le même résultat pour une matrice $A\in\mathcal{M}_n(\K)$.
-	\end{thm}%prop précédente et pseudo intégrité
+	\end{prop}%prop précédente et pseudo intégrité
 	
 	\begin{ex}
 		\begin{enumerate}
@@ -367,14 +484,18 @@
 		\end{enumerate}
 	\end{ex}
 	
-	\paragraph{Attention} Lorsque l'on dispose d'un polynôme annulateur $P$ de $u\in\mathcal{L}(E)$, toutes les valeurs propres de $u$ sont racines de $P$, mais certaines racines de $P$ peuvent ne pas être valeur propre de $u$.\\
-	Ainsi, le polynôme $X^2-X=X(X-1)$ est un polynôme annulateur de tout projecteur, dont $\Id_E$, alors que $0$ n'est pas valeur propre de l'identité.
+	\begin{attention}
+		Lorsque l'on dispose d'un polynôme annulateur $P$ de $u\in\mathcal{L}(E)$, toutes les valeurs propres de $u$ sont racines de $P$, mais certaines racines de $P$ peuvent ne pas être valeur propre de $u$.\\
+		Ainsi, le polynôme $X^2-X=X(X-1)$ est un polynôme annulateur de tout projecteur, dont $\Id_E$, alors que $0$ n'est pas valeur propre de l'identité.
+	\end{attention}
 	
-	\paragraph{Notation} Lorsqu'un endomorphisme $u$ admet un polynôme annulateur non nul, son polynôme minimal est noté $\pi_u$ ou $\mu_u$. De même, le polynôme minimale d'une matrice carrée $A$ est noté $\pi_A$ ou $\mu_A$.
+	\begin{notation}
+		Lorsqu'un endomorphisme $u$ admet un polynôme annulateur non nul, son polynôme minimal est noté $\pi_u$ ou $\mu_u$. De même, le polynôme minimale d'une matrice carrée $A$ est noté $\pi_A$ ou $\mu_A$.
+	\end{notation}
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Si un endomorphisme $u$ admet un polynôme annulateur non nul, ses valeurs propres sont exactement les racines de $\pi_u$.
-	\end{thm}
+	\end{prop}
 	\begin{proof}
 		Écrire $\pi_u=(X-\lambda)P$, et prendre $x$ tel que $P(u)(x)\ne 0$.
 	\end{proof}
@@ -401,7 +522,6 @@
 		On appelle \textbf{polynôme caractéristique} de $A$, et l'on note $\chi_A$, l'unique polynôme tel que : $$\forall\lambda\in\K,\ \chi_A(\lambda)=\det(\lambda I_n-A).$$
 	\end{dfn}
 	
-	
 	\begin{rmq}
 		\begin{itemize}
 			\item Il y a bien unicité d'un tel polynôme. En effet, $\K$ étant un sous-corps de $\C$, il contient $\Q$, qui est infini, et donc deux polynôme ayant la même fonction polynomiale associée sont égaux.
@@ -414,9 +534,9 @@
 		On a $\chi_A=\chi_{A^T}$.
 	\end{ex}
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Le polynôme caractéristique $\chi_A$ est un polynôme unitaire de degré $n$ et l'on a : $$\chi_A=X^n-\Tr(A)X^{n-1}+\cdots+(-1)^n\det(A).$$
-	\end{thm}
+	\end{prop}
 	\begin{proof}
 		Utiliser la formule des signatures.
 	\end{proof}
@@ -429,9 +549,9 @@
 		Le polynôme caractéristique de $A\in\mathcal{M}_2(\K)$ est : $$X^2-\Tr(A)X+\det(A)$$ On utilise impérativement cette expression quand on travaille dans $\mathcal{M}_2(\K)$.
 	\end{met}
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Deux matrices semblables ont le même polynôme caractéristique.
-	\end{thm}
+	\end{prop}
 	
 	\begin{ex}
 		Pour tout $(A,B)\in\mathcal{M}_n(\K)^2$, on a $\chi_{AB}=\chi_{BA}$.
@@ -460,9 +580,9 @@
 		\end{pmatrix}$ et fonction de celui de $A\in\mathcal{M}_n(\K)$.
 	\end{exo}
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Si $A\in\mathcal{M}_n(\K)$ est triangulaire de diagonale $(\alpha_1,\ldots,\alpha_n)$, alors son polynôme caractéristique est : $$\chi_A=\prod_{i=1}^{n}(X-\alpha_i).$$
-	\end{thm}
+	\end{prop}
 	
 	\begin{ex}
 		Soit $(a_0,\ldots,a_{n-1})\in\K^n$. Polynôme caractéristique de la matrice compagnon :
@@ -481,9 +601,9 @@
 	
 	\subsection{Polynôme caractéristique et spectre}
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Un scalaire $\lambda\in\K$ est une valeur propre de $A$ si, et seulement s'il est racine du polynôme caractéristique de $A$.
-	\end{thm}
+	\end{prop}
 	
 	\begin{rmq}
 		Comme on sait que le polynôme caractéristique d'une matrice de taille $n$ est de degré $n$, cela permet donc de retrouver qu'une matrice carrée de taille $n$ a au plus $n$ valeurs propres.
@@ -528,15 +648,17 @@
 	
 	En particulier, si $u$ est l'endomorphisme canoniquement associé à la matrice $A$, alors $\chi_u=\chi_A$.
 	
-	\paragraph{Attention} La notion de polynôme caractéristique d'un endomorphisme n'a aucun sens si $E$ n'est pas de dimension finie.
+	\begin{attention}
+		La notion de polynôme caractéristique d'un endomorphisme n'a aucun sens si $E$ n'est pas de dimension finie.
+	\end{attention}
 	
 	\begin{ex}
 		Soit $u\in\mathcal{L}(E)$ de rang $1$. Son polynôme caractéristique est : $$\chi_u(X)=X^{n-1}(X-\Tr(u)).$$
 	\end{ex}
 	
-	\begin{thm}{}%prop
+	\begin{prop}{}%prop
 		Un scalaire $\lambda\in\K$ est une valeur propre de $u$ si, et seulement si, c'est une racine du polynôme caractéristique de $u$.
-	\end{thm}
+	\end{prop}
 	
 	\begin{rmq}
 		\begin{itemize}
@@ -549,11 +671,13 @@
 		\end{itemize}
 	\end{rmq}
 	
-	\paragraph{Attention} En dimension infinie, un endomorphisme d'un $\C$-espace vectoriel n'admet pas nécessairement de valeur propre.
+	\begin{attention}
+		En dimension infinie, un endomorphisme d'un $\C$-espace vectoriel n'admet pas nécessairement de valeur propre.
+	\end{attention}
 	
-	\begin{thm}{}%prop
+	\begin{prop}{}%prop
 		Si $F$ est un sous-espace vectoriel de $E$ stable par $u$, alors le polynôme caractéristique de $u_F$ divise le polynôme caractéristique de $u$.
-	\end{thm}
+	\end{prop}
 	
 	\begin{rmq}
 		\begin{itemize}
@@ -575,13 +699,17 @@
 		En particulier, une valeur propre de $u$ est dite simple, double, triple... si c'est une racine simple, double, triple... du polynôme caractéristique de $u$.
 	\end{rmq}
 	
-	\paragraph{Notation} Dans la suite, l'ordre de multiplicité de $\lambda$ sera noté $m(\lambda)$.
+	\begin{notation}
+		Dans la suite, l'ordre de multiplicité de $\lambda$ sera noté $m(\lambda)$.
+	\end{notation}
 	
-	\paragraph{Attention} La notion d'ordre de multiplicité n'a pas de sens en dimension infinie.
+	\begin{attention}
+		La notion d'ordre de multiplicité n'a pas de sens en dimension infinie.
+	\end{attention}
 	
-	\begin{thm}{}%prop
+	\begin{prop}{}%prop
 		Pour tout $\lambda\in\Sp(u)$, on a : $$1\leqslant\dim(E_\lambda(u))\leqslant m(\lambda).$$
-	\end{thm}
+	\end{prop}
 	\begin{proof}
 		$(X-\lambda)^{\dim(E_\lambda(u))}$ divise $\chi_u$ d'après la proposition précédente.
 	\end{proof}
@@ -599,9 +727,9 @@
 		\end{enumerate}
 	\end{ex}
 	
-	\begin{thm}{}%cor
+	\begin{cor}{}%cor
 		Si $\lambda$ est valeur propre simple de $u$, alors $\dim(E_\lambda(u))=1$.
-	\end{thm}
+	\end{cor}
 	
 	\begin{rmq}
 		Le spectre de $u$ est, par définition, l'ensemble des racines de $\chi_u$ dans $\K$. Comme dans le cas des polynômes, on distinguera soigneusement les notions d'ensemble er de liste des valeurs propres de $u$.
@@ -619,9 +747,9 @@
 		La diagonale d'une matrice triangulaire constitue une liste de ses valeurs propres, comptées avec leur ordre de multiplicité.
 	\end{ex}
 	
-	\begin{thm}{}%prop
+	\begin{prop}{}%prop
 		Si $\chi_u=\displaystyle\prod_{i=1}^{n}(X-\mu_i)$ est scindé, alors : $$\Tr(u)=\sum_{i=1}^{n}\mu_i\quad\text{et}\quad\det(u)=\prod_{i=1}^{n}\mu_i.$$
-	\end{thm}
+	\end{prop}
 	\begin{proof}
 		Relations coefficients-racines.
 	\end{proof}
@@ -643,7 +771,7 @@
 		\end{enumerate}
 	\end{exo}
 	
-	\begin{thm}{Théorème de Cayley-Hamilton}%thm
+	\begin{thm}[Théorème de Cayley-Hamilton]%thm
 		Le polynôme caractéristique de $u\in\mathcal{L}(E)$ annule $u$, c'est-à-dire $\chi_u(u)=0$.\\
 		De même, si $A\in\mathcal{M}_n(\K)$, alors $\chi_A(A)=0$.
 	\end{thm}
@@ -651,7 +779,9 @@
 		Des exemples précédents montrent que $\pi_A=\chi_A$ pour une matrice compagnon. L'exercice précédent donner alors $\chi_u(u)(x)=0$ pour tout $x\in E$.
 	\end{proof}
 	
-	\paragraph{Attention} Comme il fait intervenir le polynôme caractéristique de $u\in\mathcal{L}(E)$, le théorème de Cayley-Hamilton n'a de sens que si $E$ est de dimension \textbf{finie}.
+	\begin{attention}
+		Comme il fait intervenir le polynôme caractéristique de $u\in\mathcal{L}(E)$, le théorème de Cayley-Hamilton n'a de sens que si $E$ est de dimension \textbf{finie}.
+	\end{attention}
 	
 	\begin{exo}
 		On reprend la matrice $A=\begin{pmatrix}
@@ -661,9 +791,9 @@
 		\end{pmatrix}$. Montrer que $A$ est inversible et calculer $A\inv$ en fonction de $I_3$, $A$ et $A^2$.
 	\end{exo}
 	
-	\begin{thm}{}%cor
+	\begin{cor}{}%cor
 		Le polynôme minimal d'un endomorphisme d'un espace vectoriel de dimension finie $n$ ou d'une matrice de $\mathcal{M}_n(\K)$ est de degré inférieur ou égal à $n$.
-	\end{thm}
+	\end{cor}
 	
 	\begin{exo}
 		Que penser de ces deux démonstrations de la version matricielle du théorème de Cayley-Hamilton ?
@@ -689,33 +819,35 @@
 	
 	\paragraph{Reformulation} Autrement dit, $u$ est diagonalisable si, et seulement s'il existe une base de $E$ constituée de vecteurs propres de $u$.
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Si $A$ représente $u$, elle est diagonalisable si, et seulement si, $u$ est diagonalisable.
-	\end{thm}
+	\end{prop}
 	
-	\begin{thm}{}%cor
+	\begin{cor}%cor
 		La matrice $A$ est diagonalisable si, et seulement si, son endomorphisme canoniquement associé est diagonalisable.
-	\end{thm}
+	\end{cor}
 	
-	\paragraph{Terminologie}
-	\begin{itemize}
+	\begin{terminologie}
+		\begin{itemize}
 		\item \textbf{Diagonaliser} un endomorphisme de $E$ signifie trouver une base de $E$ dans laquelle la matrice de $u$ soit diagonale, c'est-à-dire une base constituée de vecteurs propres de $u$.
 		\item \textbf{Diagonaliser} une matrice signifie diagonaliser son endomorphisme canoniquement associé, ce qui revient à trouver une matrice $D$ diagonale et une matrice $P$ inversible telles que $A=PDP\inv$.
 	\end{itemize}
+	\end{terminologie}
 	
 	\begin{met}
 		Soit $A\in\mathcal{M}_n(\K)$ diagonalisable et $(E_1,\ldots,E_n)$ une base de $\K^n$ constituée de vecteurs propres de $A$ associés aux valeurs propres $\lambda_1,\ldots,\lambda_n$. Si on pose $p$ la matrices dont les colonnes sont $E_1,\ldots,E_n$, alors : $$A=PDP\inv \text{  ou  }D=\text{Diag}(\lambda_1,\ldots,\lambda_n)$$
 	\end{met}
+	
 	Exercice Moulin.Red.23
 	
 	\begin{ex}
 		Une matrice est diagonalisable si, et seulement si, sa transposée est diagonalisable.
 	\end{ex}
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Si $E$ est de dimension $n$ et si $u\in\mathcal{L}(E)$ possède $n$ valeurs propres distinctes, alors $u$ est diagonalisable et chaque sous-espace propre est de dimension $1$.\\
 		De même, si $A\in\mathcal{M}_n(\K)$ possède $n$ valeurs propres distinctes, alors $A$ est diagonalisable et chaque sous-espace propre est de dimension $1$.
-	\end{thm}
+	\end{prop}
 	
 	\begin{ex}
 		La matrice $\begin{pmatrix}
@@ -725,25 +857,27 @@
 		\end{pmatrix}$ est diagonalisable.
 	\end{ex}
 	
-	\paragraph{Attention} Il ne s'agit bien que d'une condition \textit{suffisante} pour que $u$ soit diagonalisable. La proposition suivante donne une caractérisation, qui peut être utile dans le cas où le nombre de valeurs propres est strictement inférieur à la dimension de $E$.
+	\begin{attention}
+		Il ne s'agit bien que d'une condition \textit{suffisante} pour que $u$ soit diagonalisable. La proposition suivante donne une caractérisation, qui peut être utile dans le cas où le nombre de valeurs propres est strictement inférieur à la dimension de $E$.
+	\end{attention}
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Les propriétés suivantes sont équivalentes :
 		\begin{enumerate}[label=(\roman*)]
 			\item l'endomorphisme $u$ est diagonalisable ;
 			\item $\displaystyle\bigoplus_{\lambda\in\Sp(u)}E_\lambda(u)=E$ ;
 			\item $\displaystyle\sum_{\lambda\in\Sp(u)}\dim(E_\lambda(u))=n$.
 		\end{enumerate}
-	\end{thm}
+	\end{prop}
 	
-	\begin{thm}{}%cor
+	\begin{cor}%cor
 		Il y a équivalence entre :
 		\begin{enumerate}[label=(\roman*)]
 			\item la matrice $A$ est diagonalisable ;
 			\item $\displaystyle\bigoplus_{\lambda\in\Sp(A)}E_\lambda(A)=\K^n$ ;
 			\item $\displaystyle\sum_{\lambda\in\Sp(A)}\dim(E_\lambda(A))=n$.
 		\end{enumerate}
-	\end{thm}
+	\end{cor}
 	
 	\begin{exo}
 		La matrice $A=\begin{pmatrix}
@@ -802,16 +936,19 @@
 	
 	Les valeurs propres étant les racines du polynôme caractéristique, on peut reformuler une proposition précédente.
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Si le polynôme caractéristique de $u$ (respectivement de $A$) est scindé à racines simples, alors $u$ (respectivement $A$) est diagonalisable.
-	\end{thm}
+	\end{prop}
 	
-	\paragraph{Terminologie} Un polynôme scindé à racines simples est dit aussi \textbf{simplement scindé}.
+	\begin{terminologie}
+		Un polynôme scindé à racines simples est dit aussi \textbf{simplement scindé}.
+	\end{terminologie}
 	
-	\paragraph{Attention} Il faut bien noter que le résultat précédent ne fournit qu'une condition \textit{suffisante} pour que $u$ soit diagonalisable comme le montre, par exemple, le cas d'une homothétie.\\
-	Le théorème qui suit donne une condition nécessaire et suffisante.
+	\begin{attention}
+		Il faut bien noter que le résultat précédent ne fournit qu'une condition \textit{suffisante} pour que $u$ soit diagonalisable comme le montre, par exemple, le cas d'une homothétie.\\	Le théorème qui suit donne une condition nécessaire et suffisante.
+	\end{attention}
 	
-	\begin{thm}{}%thm
+	\begin{thm}%thm
 		Pour que $u$ soit diagonalisable, il faut et il suffit qu'il vérifie les deux conditions suivantes :
 		\begin{itemize}
 			\item son polynôme caractéristique est scindé sur $\K$ ;
@@ -853,7 +990,7 @@
 	A lui seul, le polynôme caractéristique ne peut permettre de montrer que $u$ est diagonalisable que s'il est scindé à racines simples. Sinon, on a besoin d'étudier en plus la dimension de ses sous-espaces propres.\\
 	Le théorème suivant donne une condition nécessaire et suffisante pour être diagonalisable, en utilisant cette fois-ci les polynômes annulateurs.
 	
-	\begin{thm}{}%thm
+	\begin{thm}%thm
 		L'endomorphisme $u$ est diagonalisable si, et seulement s'il possède un polynôme annulateur scindé à racines simples.\\
 		On a le même résultat si $A\in\mathcal{M}_n(\K)$.
 	\end{thm}
@@ -873,14 +1010,14 @@
 		\end{enumerate}
 	\end{ex}
 	
-	\begin{thm}{}%cor
+	\begin{cor}%cor
 		L'endomorphisme $u$ est diagonalisable si, et seulement si, son polynôme minimal est scindé à racines simples.\\
 		On a le même résultat pour $A\in\mathcal{M}_n(\K)$.
-	\end{thm}
+	\end{cor}
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Soit $u\in\mathcal{L}(E)$ diagonalisable et $F$ un sous-espace vectoriel de $E$ stable par $u$. Alors l'endomorphisme induit par $u$ sur $F$ est diagonalisable.
-	\end{thm}
+	\end{prop}
 	
 	\begin{exo}
 		Soit $u$ un endomorphisme diagonalisable d'un espace vectoriel $E$ de dimension finie.
@@ -904,7 +1041,7 @@
 		\end{itemize}
 	\end{ex}
 	
-	\begin{thm}{Diagonalisation simultanée (HP)}%thm
+	\begin{thm}[Diagonalisation simultanée (HP)]%thm
 		Des endomorphismes diagonalisables qui commutent deux à deux sont simultanément diagonalisables.
 	\end{thm}
 	\begin{proof}
@@ -936,9 +1073,9 @@
 		 Si $u$ est diagonalisable et inversible, exprimer $u^n$ en fonction de $p_{\lambda_i}$ pour tout $n\in\Z$.
 	\end{exo}
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Les projecteurs spectraux de $u$ sont des polynômes en $u$.
-	\end{thm}
+	\end{prop}
 	\begin{proof}
 		Cela peut être vu comme une conséquence du fait (HP) que les projecteurs liés au lemme de décomposition des noyaux sont des polynômes en $u$. Sinon, utiliser l'égalité précédente élargie à tous les polynômes par linéarité, puis considérer la base de Lagrange associée au spectre de $u$.
 	\end{proof}
@@ -962,11 +1099,12 @@
 	Dire que la matrice de $u$ dans une base $\mathcal{B}=(e_1,\ldots,e_n)$ est triangulaire supérieure revient à dire que, pour tout $i\in\llbracket0,n\rrbracket$, le sous-espace vectoriel $\Vect(e_1,\ldots,e_n)$ est stable par $u$. Donc l'endomorphisme $u$ est trigonalisable si, et seulement s'il existe des sous-espaces vectoriels $F_0,\ldots,F_n$ de $E$, stables par $u$, tels que : $$\forall i\in\llbracket0,n\rrbracket,\ \dim(F_i)=i\quad\text{et}\quad\forall i\in\llbracket1,n\rrbracket,\ F_{i-1}\subset F_i.$$
 	%DRAPEAUX !!!
 	
-	\paragraph{Terminologie}
-	\begin{itemize}
+	\begin{terminologie}
+		\begin{itemize}
 		\item \textbf{Trigonaliser} un endomorphisme $u$ signifie trouver une base dans laquelle sa matrice est triangulaire supérieure.
 		\item \textbf{Trigonaliser} une matrice signifie trigonaliser son endomorphisme canoniquement associé, ce qui revient à trouver une matrice $T$ triangulaire supérieure et une matrice $P$ inversible telles que $A=PTP\inv$.
 	\end{itemize}
+	\end{terminologie}
 	
 	\begin{ex}
 		\begin{enumerate}
@@ -983,13 +1121,13 @@
 		\end{enumerate}
 	\end{ex}
 	
-	\begin{thm}{}%prop
+	\begin{prop}%prop
 		Si $A$ représente $u$, elle est trigonalisable si, et seulement si, $u$ est trigonalisable.
-	\end{thm}
+	\end{prop}
 	
-	\begin{thm}{}%cor
+	\begin{cor}%cor
 		La matrice $A$ est trigonalisable si, et seulement si, son endomorphisme canoniquement associé est trigonalisable.
-	\end{thm}
+	\end{cor}
 	
 	\begin{rmq}
 		On aurait pu aussi choisir la forme triangulaire inférieure. En effet, si la matrice de $u\in\mathcal{L}(E)$ dans la base $(e_1,\ldots,e_n)$e st triangulaire supérieure, alors la matrice de $u$ dans la base $(e_n,e_{n-1},\ldots,e_1)$ est triangulaire inférieure.
@@ -1019,7 +1157,7 @@
 	
 	\subsection{Utilisation du polynôme caractéristique}
 	
-	\begin{thm}{}%thm
+	\begin{thm}%thm
 		Un endomorphisme $u\in\mathcal{L}(E)$ est trigonalisable si, et seulement si, son polynôme caractéristique est scindé sur $\K$.
 	\end{thm}
 	\begin{proof}
@@ -1067,10 +1205,10 @@
 		\end{enumerate}
 	\end{ex}
 	
-	\begin{thm}{}%cor
+	\begin{cor}%cor
 		Si $E$ est un $\C$-espace vectoriel de dimension finie non nulle, alors tout endomorphisme de $E$ est trigonalisable. \\
 		Toute matrice carrée à coefficients dans $\C$ est trigonalisable sur $\C$.
-	\end{thm}
+	\end{cor}
 	\begin{proof}
 		Le théorème de d'Alembert-Gauss nous dit que le polynôme caractéristique est scindé, ce qui permet de conclure d'après le théorème précédent.
 	\end{proof}
@@ -1110,7 +1248,7 @@
 		Rappelons qu'un polynôme scindé est \textit{non nul} par définition.
 	\end{rmq}
 	
-	\begin{thm}{}%thm
+	\begin{thm}%thm
 		L'endomorphisme $u$ est trigonalisable si, et seulement s'il possède un polynôme annulateur scindé.\\
 		On a le même résultat pour $A\in\mathcal{M}_n(\K)$.
 	\end{thm}
@@ -1121,12 +1259,12 @@
 		\end{itemize}
 	\end{proof}
 	
-	\begin{thm}{}%cor
+	\begin{cor}%cor
 		L'endomorphisme $u$ est trigonalisable si, et seulement si, son polynôme minimal est scindé.\\
 		On a le même résultat pour $A\in\mathcal{M}_n(\K)$.
-	\end{thm}
+	\end{cor}
 	
-	\begin{thm}{Trigonalisation simultanée (HP)}%thl
+	\begin{thm}[Trigonalisation simultanée (HP)]%thm
 		Des endomorphismes trigonalisables qui commutent deux à deux sont simultanément trigonalisables.
 	\end{thm}
 	\begin{proof}
@@ -1135,12 +1273,12 @@
 	
 	\subsubsection*{Cas des endomorphismes nilpotents}
 	
-	\begin{thm}{}%prop
+	\begin{prop}{}%prop
 		\begin{itemize}
 			\item Un endomorphisme est nilpotent si, e seulement s'il est trigonalisable et toutes ses valeurs propres sont nulles.
 			\item Une matrice est nilpotente si, et seulement si, elle est semblable à une matrice triangulaire supérieure stricte.
 		\end{itemize}
-	\end{thm}
+	\end{prop}
 	\begin{proof}
 		Le deuxième point est simplement la traduction matricielle du premier.
 		\begin{itemize}
@@ -1153,23 +1291,25 @@
 		En particulier, une matrice triangulaire supérieure stricte est nilpotente.
 	\end{rmq}
 	
-	\begin{thm}{}%cor
+	\begin{cor}{}%cor
 		\begin{itemize}
 			\item Si $\dim(E)=n$, un endomorphisme de $E$ est nilpotent si, et seulement si, son polynôme caractéristique est $X^n$.
 			\item Une matrice $A\in\mathcal{M}_n(\K)$ est nilpotente si, et seulement si, son polynôme caractéristique est $X^n$.
 		\end{itemize}
-	\end{thm}
+	\end{cor}
 	
 	\subsection{Sous-espaces caractéristiques}
 	
-	\begin{thm}
+	\begin{prop}[Décomposition en sous-espaces caractéristiques]
 		Soit $u\in\mathcal{L}(E)$ dont le polynôme caractéristique $\chi_u=\displaystyle\prod_{\lambda\in\Sp(u)}(X-\lambda)^{m(\lambda)}$ est scindé. On a la décomposition : $$E=\bigoplus_{\lambda\in\Sp(u)}\ker(u-\lambda\Id_E)^{m(\lambda)}.$$
-	\end{thm}
+	\end{prop}
 	\begin{proof}
 		D'après le théorème de Cayley-Hamilton, on a $\chi_u(u)=0$ et le lemme de décomposition des noyaux donne alors le résultat puisque les polynômes $(X-\lambda)^{m(\lambda)}$ sont premiers entre eux deux à deux.
 	\end{proof}
 	
-	\paragraph{Terminologie} Les sous-espaces vectoriels $F_\lambda=\ker(u-\lambda\Id_E)^{m(\lambda)}$, pour $\lambda\in\Sp(u)$, sont appelés \textbf{sous-espaces caractéristiques} de l'endomorphisme de $u$.
+	\begin{terminologie}
+		Les sous-espaces vectoriels $F_\lambda=\ker(u-\lambda\Id_E)^{m(\lambda)}$, pour $\lambda\in\Sp(u)$, sont appelés \textbf{sous-espaces caractéristiques} de l'endomorphisme de $u$.
+	\end{terminologie}
 	
 	Soit $\lambda\in\Sp(u)$. Comme noyau d'un polynôme en $u$, $F_\lambda$ est stable par $u$ et l'endomorphisme induit $u_\lambda$ par $u$ sur $F_\lambda$ vérifie $(u_\lambda-\lambda\Id_{F_\lambda})^{m(\lambda)}=0$. Ainsi, $u_\lambda$ est la somme d'une homothétie de rapport $\lambda$ et d'un endomorphisme nilpotent.
 	
@@ -1177,15 +1317,15 @@
 		Soit $\pi_u$ le polynôme minimal d'un tel endomorphisme. Il divise $chi_u$ donc de la forme $\pi_u=\displaystyle\prod_{\lambda\in\Sp(u)}(X-\lambda)^{n(\lambda)}$, avec $n(\lambda)\leqslant m(\lambda)$ pour tout $\lambda\in\Sp(u)$. On a donc également : $$E=\bigoplus_{\lambda\in\Sp(u)}\ker(u-\lambda\Id_E)^{n(\lambda)}.$$
 	\end{rmq}
 	
-	\begin{thm}{}%prop
+	\begin{prop}{}%prop
 		Pour toute valeur propre $\lambda$, la dimension de $F_\lambda$ est l'ordre de multiplicité de $\lambda$.
-	\end{thm}
+	\end{prop}
 	
-	\begin{thm}{}%cor
+	\begin{cor}{}%cor
 		Soit $u\in\mathcal{L}(E)$ dont le polynôme caractéristique est scindé. Il existe une base de $E$ dans laquelle la matrice de $E$ est diagonale par blocs, chaque bloc étant triangulaire à coefficients diagonaux égaux.
-	\end{thm}
+	\end{cor}
 	\begin{proof}
-		Dans chaque sous-espace caractéristique, $F_\lambda$, on choisit une base de trigonalisation de l'endomorphisme nilpotent induit par $u-\lambda\Id_E$ sur $F_\lambda$.
+		Dans chaque sous-espace caractéristique $F_\lambda$, on choisit une base de trigonalisation de l'endomorphisme nilpotent induit par $u-\lambda\Id_E$ sur $F_\lambda$.
 	\end{proof}
 	
 	\begin{ex}

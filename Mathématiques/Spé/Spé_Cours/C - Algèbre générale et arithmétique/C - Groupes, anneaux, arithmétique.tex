@@ -20,9 +20,12 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
 
 \setlist[itemize]{label=$\bullet$}
-
+\setlist{before=\leavevmode, leftmargin=*}
 
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
@@ -49,7 +52,7 @@
 \renewcommand{\o}{\text{o}}
 \renewcommand{\O}{\text{O}}
 \renewcommand{\d}{\text{d}}
-
+\newcommand{\Id}{\text{Id}}
 
 
 \theoremstyle{plain}
@@ -58,8 +61,6 @@
 \theoremstyle{definition}
 
 \newtheorem*{ex}{Exemple}
-\newtheorem*{met}{Point méthode}
-\newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
 \newtheorem*{notation}{Notation}
 \newtheorem*{rappel}{Rappel}
@@ -70,14 +71,120 @@
 \theoremstyle{remark}
 \newtheorem*{app}{Application}
 
-\newtcolorbox[auto counter]{dfn}{
+\newtcolorbox[auto counter]{dfn}[1][]{
 	enhanced,
 	colback=white,
-	fonttitle=\sc,
-	title={Définition \thetcbcounter}
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
 }
 
-\newtcolorbox[auto counter]{thm}[2][]{enhanced, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
 
 \title{Groupes, anneaux, arithmétique}
 \date{}
@@ -184,9 +291,9 @@ On se place dans toute la suite dans le cadre d'anneaux commutatifs.
 	Quels sont les idéaux d'un corps ?
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Le noyau de tout morphisme d'anneaux $\varphi$ de $A$ dans $B$ est un idéal de $A$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	On verra ultérieurement que tout idéal d'un anneau commutatif est le noyau d'un morphisme d'anneaux.
@@ -196,33 +303,33 @@ On se place dans toute la suite dans le cadre d'anneaux commutatifs.
 
 Soit $A$ un anneau commutatif.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Une intersection d'idéaux de $A$ est un idéal de $A$.
-\end{thm}
+\end{prop}
 
 \begin{dfn}
 	Étant donnée une partie $X$ de $A$, il existe un plus petit idéal contenant $X$. On l'appelle \textbf{idéal de $A$ engendré par $X$}.
 \end{dfn}
 
-\begin{thm}{Idéal engendré par un élément}%prop
+\begin{prop}[Idéal engendré par un élément]%prop
 	Soit $x\in A$. L'idéal engendré par $x$ est $xA=\{xa\mid a\in A\}$/
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Montrer qu'un anneau commutatif $A$ non trivial ayant pour seuls idéaux $A$ et $\{0\}$ est un corps. %considérer l'idéal engendré par $x$ non nul
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	L'idéal de $A$ engendré par une partie finie $\{x_1,\ldots,x_k\}$ est :
 	$$x_1A+\cdots+x_kA=\{x_1a_1+\cdots+x_ka_k\mid (a_1,\ldots,a_k)\in A^k\}.$$
 	C'est aussi le plus petit idéal contenant tous les idéaux $x_1A,\ldots,x_kA$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{(HP)}%prop
+\begin{prop}[HP]%prop
 	Si $I_1$ et $I_2$ sont deux idéaux de $A$, leur \textbf{somme} :
 	$$I_1+I_2=\{x_1+x_2\mid (x_1,\ldots,x_2)\in I_1\times I_2\}$$ est un idéal de $A$.\\
 	C'est le plus petit idéal de $A$ contenant $I_1$ et $I_2$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	La proposition précédente se généralise aisément au cas d'une somme finie d'idéaux et d'une famille fini d'idéaux.
@@ -238,7 +345,7 @@ Soit $A$ un anneau commutatif et $I$ un idéal de $A$.
 
 \subsubsection*{Congruence modulo un idéal}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	La relation de \textbf{congruence modulo $I$} définie par :
 	$$x\equiv y\quad\mod I\iff y-x\in I$$ est une relation d'équivalence sur $A$ qui est compatible avec les opérations de $A$, c'est-à-dire qui vérifie :
 	$$\forall (x,yx',y')\in A^4,\ \begin{cases}
@@ -248,7 +355,7 @@ Soit $A$ un anneau commutatif et $I$ un idéal de $A$.
 	x+y\equiv x'+y'\quad\mod I\\
 	xy\equiv x'y'\quad\mod I.
 	\end{cases}$$
-\end{thm}
+\end{prop}
 
 \begin{notation}
 	On note $A/I$ l'ensemble quotient de $A$ par la relation de congruence modulo $I$, c'est-à-dire l'ensemble des classes d'équivalence pour cette relation.\\
@@ -257,7 +364,7 @@ Soit $A$ un anneau commutatif et $I$ un idéal de $A$.
 
 \subsubsection*{Anneau quotient}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{enumerate}
 		\item Il existe sur $A/I$ des lois, encore notées $+$ et $\times$ (ou implicitement pour le produit), appelées \textbf{lois quotient}, telles que :
 		$$\forall (x,y)\in A^2,\ \overline{x}+\overline{y}=\overline{x+y}\quad\text{et}\quad\overline{x}\times\overline{y}=\overline{xy}.$$
@@ -267,7 +374,7 @@ Soit $A$ un anneau commutatif et $I$ un idéal de $A$.
 			&x&\longmapsto&\overline{x}
 		\end{array}$$ est un morphisme d'anneaux surjectif de noyau $I$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Tout idéal de $A$ est donc le noyau du morphisme d'anneaux projection canonique de $A$ sur $A/I$.
@@ -279,7 +386,7 @@ Soit $A$ un anneau commutatif et $I$ un idéal de $A$.
 
 \subsubsection*{Théorème de factorisation (HP)}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Soit $\varphi:A\to B$ un morphisme d'anneaux tel que $I\subset\ker(\varphi)$.
 	\begin{enumerate}
 		\item Il existe une unique application $\tilde{\varphi}:A/I\to B$ telle que $\varphi=\tilde{\varphi}\circ\pi$, où $\pi$ est la projection canonique de $A$ sur $A/I$. Elle est caractérisée par :
@@ -296,7 +403,7 @@ Soit $A$ un anneau commutatif et $I$ un idéal de $A$.
 	Qu'est-ce que $\Z/0\Z$ ? $\Z/1\Z$ ? $\Z/2\Z$ ?
 \end{exo}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $n\in\N$.
 	\begin{enumerate}
 		\item $(\Z/n\Z,+,\times)$ est un anneau commutatif.
@@ -306,12 +413,12 @@ Soit $A$ un anneau commutatif et $I$ un idéal de $A$.
 			k&\longmapsto&\overline{k}
 		\end{array}$$ est un morphisme d'anneaux de $\Z$ sur $\Z/n\Z$ surjectif et de noyau $n\Z$.
 	\end{enumerate}
-\end{thm}
+\end{cor}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Pour $n\in\N\st$, l'ensemble $\Z/n\Z$ a $n$ éléments, et l'on a :
 	$$\Z/n\Z=\{\overline{0},\overline{1},\ldots,\overline{n-1}\}.$$
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	\begin{itemize}
@@ -363,24 +470,24 @@ La relation de divisibilité est une relation réflexive et transitive, mais n'e
 
 La proposition suivante permet de ramener la notion de divisibilité à une relation d'ordre (inclusion sur les idéaux).
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	On a, pour tout $(x,y)\in A^2$ :
 	$$x\mid y\iff yA\subset xA.$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	Soit $(x,y)\in A^2$. Comme $yA$ est le plus petit idéal contenant $y$ et que $xA$ est un idéal, l'inclusion $yA\subset xA$ est équivalente à $y\in xA$, c'est-à-dire à $x\mid y$.
 \end{proof}
 
 \subsection{Éléments associés}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $a$ et $b$ deux éléments de $A$. Les propriétés suivantes sont équivalentes :
 	\begin{enumerate}[label=(\roman*)]
 		\item $a\mid b$ et $b\mid a$ ;
 		\item il existe $u\in A$ inversible tel que $b=au$.
 	\end{enumerate}
 	On dit alors que $a$ et $b$ sont \textbf{associés}.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	\begin{enumerate}
@@ -419,13 +526,13 @@ La proposition suivante permet de ramener la notion de divisibilité à une rela
 	Un élément non nul de $A$ est \textbf{irréductible} si ce n'est pas une unité et si ses seuls diviseurs sont ses associés et les unités.
 \end{dfn}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Un élément $a\in A$ non nul est irréductible si, et seulement si :
 	\begin{itemize}
 		\item $a$ n'est pas un unité ;
 		\item si $a=bc$ avec $(b,c)\in A^2$, alors $b$ ou $c$ est une unité.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	\begin{enumerate}
@@ -447,13 +554,13 @@ La proposition suivante permet de ramener la notion de divisibilité à une rela
 
 Plus généralement :
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $p$ un irréductible et $a$ un élément quelconque. On a l'alternative entre :
 	\begin{itemize}
 		\item $p$ divise $a$ ;
 		\item $p$ et $a$ sont premiers entre eux.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Montrer que $2$ et $X$ sont premiers entre eux dans $\Z[X]$.
@@ -477,19 +584,19 @@ Les propriétés arithmétiques de $\Z$ et $\K[X]$, où $\K$ est un corps, provi
 
 Commençons par un résultat sur les sous-groupes de $\Z$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Les sous-groupes de $(\Z,+)$ sont les $n\Z$, pour $n\in\N$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Si $H$ est un sous-groupe non nul de $\Z$, on considère le plus petit élément $n$ strictement positif de $H$ et l'on utilise la division euclidienne par $n$ pour montrer que tout élément de $H$ est un multiple de $n$.
 \end{proof}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{enumerate}
 		\item Les idéaux de $\Z$ sont les $n\Z$, pour $n\in\N$.
 		\item Soit $\K$ un corps. Les idéaux de $\K[X]$ sont $\{0\}$ et les $\Pi\K[X]$, où $\Pi$ désigne n'importe quel polynôme unitaire.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Montrer que $\Z[X]$ n'est pas principal. On pourra considérer l'idéal engendré par $2$ et $X$.
@@ -507,12 +614,12 @@ Soit $A$ un anneau principal. Dans la pratique, $A$ sera $\Z$ ou $\K[X]$, où $\
 
 Soit $n\in\N\st$ et $a_1,\ldots,a_n$ des éléments de $A$. Nous avons vu que l'idéal de $\Z$ engendré par les éléments $a_1,\ldots,a_n$ est $I=a_1\Z+\cdots a_n\Z$. Cela permet de donner une (nouvelle dans le cas où $A=\Z$ ou $A=\K[X]$) définition du PGCD.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Étant donnés des éléments $a_1,\ldots,a_n$ de $A$, il existe un élément $d\in A$ tel que $$dA=a_1A+\cdots+a_n.$$ Pour tout $b\in A$, on a la relation :
 	$$b\mid d\iff (\forall i\in\llbracket1,n\rrbracket,\ b\mid a_i).$$
 	Un tel élément $d$ est appelé \textbf{un PGCD} de $a_1,\ldots,a_n$ et l'on dispose de la \textbf{relation de Bézout} :
 	$$\exists (u_1,\ldots,u_n)\in A^n\ :\ d=a_1u_1+\cdots+a_nu_n.$$
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	\begin{itemize}
@@ -541,9 +648,9 @@ Soit $n\in\N\st$ et $a_1,\ldots,a_n$ des éléments de $A$. Nous avons vu que l'
 	Le premier exemple nous donne une idée de bijection croissante dont la réciproque n'est pas croissante : l'identité de $(\N\st,\mid)$ dans $(\N\st,\leqslant)$.
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Deux éléments sont premiers entre eux si, et seulement s'ils admettent $1$ comme PGCD.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	La définition et les propositions précédentes se généralise,t naturellement à $k$ éléments $(a_1,\ldots,a_k)\in A^k$.
@@ -553,10 +660,10 @@ Soit $n\in\N\st$ et $a_1,\ldots,a_n$ des éléments de $A$. Nous avons vu que l'
 
 Par définition du PGCD, on a immédiatement le résultat suivant.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $A$ un anneau principal et $(a,b)\in A^2$.\\
 	Si $d$ est un PGCD de $a$ et $b$, alors il existe $(u,v)\in A^2$ tel que $d=au+bv$.
-\end{thm}
+\end{prop}
 
 \paragraph{Algorithme d'Euclide}
 Dans $\Z$ et $\K[X]$, on peut déterminer le PGCD et un couple de coefficients de Bézout par l'algorithme d'Euclide. Mais ce dernier, utilisant la division euclidienne, ne s'applique pas à n'importe quel anneau principal.
@@ -568,9 +675,9 @@ Résultat : PGCD unitaire et coefficients de Bézout.\\
 Si $B=0$, alors $\lambda$ devient le coefficient dominant de $A$ et on renvoie $(A/\lambda,1\lambda,0)$.\\
 Sinon, $(Q,R)$ reçoit le quotient et le reste de la division euclidienne de $A$ par $B$, $(D,U,V)$ reçoit le PGCD de $B$ et $R$ et on renvoie $(D,V,U-QV)$.\\ \par Exercice Moulin.AG.70
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Dans un anneau principal, deux éléments $a$ et $b$ sont premiers entre eux si, et seulement s'il existe $(u,v)\in A^2$ tel que $au+bv=1$.
-\end{thm}
+\end{prop}
 
 \begin{met}
 	Si $d$ est un PGCD de $a$ et $b$, on peut écrire $a=da'$ et $b=db'$, avec $a'$ et $b'$ premiers entre eux.
@@ -589,7 +696,7 @@ Sinon, $(Q,R)$ reçoit le quotient et le reste de la division euclidienne de $A$
 
 \subsection{Lemme de Gauss}
 
-\begin{thm}{Lemme de Gauss}%thm
+\begin{thm}[Lemme de Gauss]%thm
 	Soit $a$, $b$ et $c$ trois éléments d'un anneau principal.\\
 	Si $a$ divise $bc$ et si $a$ est premier avec $b$, alors $a$ divise $c$.
 \end{thm}
@@ -598,13 +705,13 @@ Sinon, $(Q,R)$ reçoit le quotient et le reste de la division euclidienne de $A$
 	Rappeler les conséquences du lemme de Gauss vues en première année. Elles se généralisent à n'importe quel anneau principal.
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $d$ (respectivement $m$) est un PGCD (respectivement un PPCM) de $a$ et $b$, alors $dm$ et $ab$ sont associés.
-\end{thm}
+\end{prop}
 
 \subsection{Décomposition en facteurs irréductibles}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Tout élément non nul et non inversible d'un anneau principal $A$ est produit d'irréductibles.
 \end{thm}
 \begin{proof}
@@ -629,7 +736,7 @@ Pour l'unicité d'une telle décomposition, il faut faire attention aux irréduc
 	\item Dans le cas de $\K[X]$, on prend pour $\mathcal{P}$ l'ensemble des polynômes irréductibles unitaires.
 \end{itemize}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Tout élément $a$ non nul d'un anneau principal $A$ s'écrit de façon unique sous la forme :
 	$$a=u\prod_{p\in\mathcal{P}}p^{\alpha_p}$$ où $u$ est une unité et $(\alpha_p)_{p\in\mathcal{P}}$ est une famille presque nulle d'entiers naturels.
 \end{thm}
@@ -664,16 +771,16 @@ Pour l'unicité d'une telle décomposition, il faut faire attention aux irréduc
 	\end{enumerate}
 \end{exo}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Tout entier naturel non nul s'écrit de façon unique (à l'ordre des termes près) sous la forme :
 	$$n=p_1^{\alpha_1}\cdots p_k^{\alpha_k}$$ où $p_1,\ldots,p_k$ sont des nombres premiers deux à deux distincts et $\alpha_1,\ldots,\alpha_k$ des entiers naturels non nuls.
-\end{thm}
+\end{cor}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Tout polynôme $A$ non nul s'écrit de façon unique (à l'ordre des termes près) sous la forme :
 	$$A=\lambda P_1^{\alpha_1}\cdots P_k^{\alpha_k}$$
 	avec $\lambda\in\K\st$, $\alpha_1,\ldots,\alpha_k$ des entiers naturels non nuls et $P_1,\ldots,P_k$ des irréductibles unitaires deux à deux distincts.
-\end{thm}
+\end{cor}
 
 \begin{exo}
 	Rappeler quels sont les irréductibles de $\R[X]$ et $\C[X]$.
@@ -684,7 +791,7 @@ Pour l'unicité d'une telle décomposition, il faut faire attention aux irréduc
 	L'exercice Moulin.AG.72 montre alors qu'il est irréductible dans $\Q[X]$. Contrairement au cas de $\R[X]$ et de $\C[X]$, il existe donc des polynômes irréductibles de tout degré dans $\Q[X]$.
 \end{ex}
 
-\begin{thm}{Critère d'Eisenstein (HP)}%prop
+\begin{thm}[Critère d'Eisenstein (HP)]%prop
 	Soit $A=a_0+a_1X+a_nX^n\in\Z[X]$. Si :
 	\begin{itemize}
 		\item $p\wedge a_n=1$ ;
@@ -702,11 +809,11 @@ Soit $n$ un entier naturel non nul.
 
 \subsection{$\Z/n\Z$}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Muni des lois quotient, $\Z/n\Z$ est un anneau commutatif.
-\end{thm}
+\end{prop}
 
-\begin{thm}{Éléments inversibles de $\Z/n\Z$}%prop
+\begin{prop}[Éléments inversibles de $\Z/n\Z$]%prop
 	\begin{enumerate}
 		\item La classe de $k\in\Z$ est inversibles dans $\Z/n\Z$ si, et seulement si, $k$ est premier avec $n$.
 		\item Pour $n\in\N\st$, on a les équivalences :
@@ -716,7 +823,7 @@ Soit $n$ un entier naturel non nul.
 			\item $n$ est premier.
 		\end{enumerate}
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Trouver l'inverse de $\overline{k}$ dans $\Z/n\Z$ revient donc à trouver l'inverse de $k$ modulo $n$ (voir le cours de première année). Rappelons (c'est d'ailleurs aussi ce qui a été fait dans la démonstration précédente) qu'il suffit pour cela de trouver un couple $(u,v)$ tel que $ku+nv=1$ (coefficients de Bézout). L'inverse de $\overline{k}$ est alors $\overline{u}$.
@@ -741,25 +848,25 @@ Soit $n$ un entier naturel non nul.
 
 Soit $n$ et $m$ deux entiers naturels non nuls. On note $[k]_n$ et $[k]_m$ les classes de l'entier $k$ respectivement modulo $n$ et $m$.
 
-\begin{thm}{Théorème chinois}%prop
+\begin{prop}[Théorème chinois]%prop
 	Si $n$ et $m$ sont premiers entre eux, alors le morphisme d'anneaux :
 	$$\begin{array}{rcl}
 		\Z&\longrightarrow&(\Z/n\Z)\times(\Z.m\Z)\\
 		k&\longmapsto&([k]_n,[k]_m)
 	\end{array}$$
 	se factorise en un isomorphisme d'anneaux de $\Z/(nm)\Z$ sur $(\Z/n\Z)\times(\Z/m\Z)$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	C'est le théorème de factorisation de la section $1.4$.
 \end{proof}
 
-\begin{thm}{Théorème chinois}%prop
+\begin{prop}[Théorème chinois]%prop
 	Si $n$ et $m$ sont premiers entre eux, pour tout $(a,b)\in\Z^2$, il existe un entier $k$ vérifiant le système :
 	$$\begin{cases}
 		k\equiv a\ [n]\\
 		k\equiv b\ [m]
 	\end{cases}$$ et les solutions de ce système sont exactement les entiers congrus à $k$ modulo $nm$.
-\end{thm}
+\end{prop}
 
 Le théorème chinois permet de ramener l'étude d'une équation sur $\Z/n\Z$ lorsque $n$ n'est pas premier, à celle d'équations sur des anneaux plus simples.
 
@@ -776,9 +883,9 @@ Le théorème chinois permet de ramener l'étude d'une équation sur $\Z/n\Z$ lo
 
 Exercice Moulin.AG.53
 
-\begin{thm}{}%cor
+\begin{cor}{}%cor
 	Étant donnés des entiers naturels $n_1,\ldots,n_r$ premiers entre eux deux à deux, les anneaux $\Z/(n_1\cdots n_r)\Z$ et $(\Z/n_1\Z)\times\cdots\times(\Z/n_r\Z)$ sont isomorphes.
-\end{thm}
+\end{cor}
 \begin{proof}
 	Par récurrence sur $r$ en remarquant que si $n_0,\ldots,n_r$ sont premiers entre eux deux à deux, alors $n_0$ et $n_1\cdots n_r$ sont premiers entre eux et que l'anneau produit $(\Z/n_0\Z)\times\cdots\times(\Z/n_r\Z)$ est isomorphe à $(\Z/n_0\Z)\times\left((\Z/n_1\Z)\times\cdots\times(\Z/n_r\Z)\right)$.
 \end{proof}
@@ -804,24 +911,24 @@ Exercice Moulin.AG.53
 
 Plus généralement :
 
-\begin{thm}{}
+\begin{prop}
 	Soit $p$ un nombre premier. Pour tout $k\in\N\st$, on a $\varphi(p^k)=p^{k}-p^{k-1}$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Les éléments qui sont non premiers avec $p^k$ sont les multiples de $p$, c'est-à-dire les entiers $p,2p,\ldots,p^{k-1}p$ pour ceux qui sont dans $\llbracket1,p^k$. Il y en a donc $p^{k-1}$.
 \end{proof}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $m$ et $n$ sont premiers entre eux, alors $\varphi(mn)=\varphi(m)\varphi(n)$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Par le théorème chinois, l'isomorphisme d'anneaux induit un isomorphisme sur les groupes des unités.
 \end{proof}
 
-\begin{thm}{}
+\begin{prop}
 	Si $n=p_1^{\alpha_1}\cdots p_r^{\alpha_r}$ avec $p_1,\ldots,p_r$ des nombres premiers deux à deux distincts et $\alpha_1,\ldots,\alpha_r$ des entiers naturels non nuls, alors on a : 
 	$$\varphi(n)=n\left(1-\frac{1}{p_1}\right)\cdots\left(1-\frac{1}{p_r}\right).$$
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Calcul de l'indicatrice d'Euler à l'aide d'une méthode de crible.
@@ -952,17 +1059,17 @@ Un automorphisme intérieur conserve :
 
 Soit $G$ un groupe.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Une intersection de sous-groupes de $G$ est un sous-groupe de $G$.
-\end{thm}
+\end{prop}
 
 \begin{dfn}
 	Soit $A$ une partie de $G$. Il existe un plus petit sous-groupe de $G$ contenant $A$. On l'appelle \textbf{sous-groupe engendré par $A$}.
 \end{dfn}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Le sous-groupe engendré par $A$ est l'ensemble des produits d'éléments de $A$ et d'inverses d'éléments de $A$.
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Montrons que si $G$ est fini, le sous-groupe engendré par $A$ est l'ensemble des produits d'éléments de $A$.
@@ -1009,10 +1116,10 @@ Soit $G$ un groupe.
 
 Soit $G$ un groupe multiplicatif de neutre $e$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Pour $a\in G$, le sous-groupe engendré par $a$ est :
 	$$\langle a\rangle=\{a^n\mid n\in\Z\}.$$
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Pour un groupe noté additivement, le sous-groupe engendré par $a$ est :
@@ -1049,7 +1156,7 @@ $$\begin{array}{lrcl}
 \end{array}$$ est donc surjective. Les règles de calcul sur les itérés montrent que $\varphi_a$ est un morphisme de groupes de $\Z$ dans $G$. Son noyau :
 $$\ker(\varphi_a)=\{k\in\Z\ :\ a^k=e\}$$ est un sous-groupe de $\Z$, donc de la forme $n\Z$, pour $n\in\N$. ON obtient alors la description suivante de $G$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Avec les notations précédentes :
 	\begin{itemize}
 		\item ou bien $\varphi_a$ est injective et $G$ est infini, isomorphe à $\Z$ ;
@@ -1057,7 +1164,7 @@ $$\ker(\varphi_a)=\{k\in\Z\ :\ a^k=e\}$$ est un sous-groupe de $\Z$, donc de la 
 		$$G=\{e,a,a^2,\ldots,a^{n-1}\}$$ est isomorphe à $\Z/n\Z$.\\
 		L'entier $n$ est alors le plus petit entier $k$ non nul tel que $a^k=e$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 \begin{proof}
 	Lorsque $\ker(\varphi_a)=n\Z$ avec $n\in\N\st$, on vérifie que l'on peut définir l'application :
 	$$\begin{array}{rcl}
@@ -1066,12 +1173,12 @@ $$\ker(\varphi_a)=\{k\in\Z\ :\ a^k=e\}$$ est un sous-groupe de $\Z$, donc de la 
 	\end{array}$$ et que cette dernière est un isomorphisme.
 \end{proof}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	\begin{enumerate}
 		\item Toute groupe monogène infini est isomorphe à $\Z$.
 		\item Tout groupe cyclique de cardinal $n\in\N\st$ est isomorphe à $\Z/n\Z$.
 	\end{enumerate}
-\end{thm}
+\end{cor}
 
 \begin{exo}
 	Montrer que $G=\displaystyle\left\{\begin{pmatrix}
@@ -1084,9 +1191,9 @@ $$\ker(\varphi_a)=\{k\in\Z\ :\ a^k=e\}$$ est un sous-groupe de $\Z$, donc de la 
 	Pour $n\in\N\st$, le groupe $\U_n$ des racines $n$-ièmes de l'unité est isomorphe à $\Z/n\Z$.
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $n\in\N\st$. Les générateurs de $\Z/n\Z$ sont les classes des entiers premiers avec $n$. Il y en a donc $\varphi(n)$, où $\varphi$ est l'indicatrice d'Euler.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Remarquer que $\overline{k}$ engendre $\Z/n\Z$ si, et seulement si, $\overline{1}$ est dans le sous-groupe engendré par $\overline{k}$.
 \end{proof}
@@ -1101,10 +1208,10 @@ $$\ker(\varphi_a)=\{k\in\Z\ :\ a^k=e\}$$ est un sous-groupe de $\Z$, donc de la 
 	Soit $G$ un sous-groupe fini de $\mathcal{GL}_n(\C)$. Montrer que tout élément de $G$ est diagonalisable.
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	L'ordre $p$ d'un élément $a$ d'un groupe est caractérisé par la relation :
 	$$\forall n\in\N,\ a^n=e\iff p\mid n.$$
-\end{thm}
+\end{prop}
 
 L'ordre de $a$ est donc le plus petit entier naturel non nul tel que $a^p=e$, aussi bien pour l'ordre naturel sur $\N$ que pour la relation de divisibilité.
 
@@ -1123,9 +1230,9 @@ L'ordre de $a$ est donc le plus petit entier naturel non nul tel que $a^p=e$, au
 	\end{enumerate}
 \end{exo}
 
-\begin{thm}{}%cor de la définition
+\begin{cor}%cor de la définition
 	Dans un groupe fini, tout élément est d'ordre fini.
-\end{thm}
+\end{cor}
 
 \begin{rmq}
 	\begin{itemize}
@@ -1138,9 +1245,9 @@ L'ordre de $a$ est donc le plus petit entier naturel non nul tel que $a^p=e$, au
 	L'ensemble $\U_\infty$ des racines de l'unité, c'est-à-dire l'ensemble des $z\in\C\st$ pour lesquels il existe $n\in\N\st$ tel que $z^n=1$, est un groupe infini dans lequel tout élément est d'ordre fini.
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Un groupe $G$ de cardinal fini $n$ est cyclique si, et seulement s'il admet un élément d'ordre $n$.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Il n'y a pas d'élément d'ordre $24$ dans $\mathcal{S}_4$, sans quoi $\mathcal{S}_4$ serait monogène donc commutatif.
@@ -1161,7 +1268,7 @@ $$\begin{array}{rcl}
 \end{array}.$$
 Lorsque $G$ est fini, les classes ont donc toutes le même cardinal égal à celui de $H$. On en déduit :
 
-\begin{thm}{Théorème de Lagrange (HP)}%thm
+\begin{thm}[Théorème de Lagrange (HP)]%thm
 	Si $G$ est un groupe fini, le cardinal de tout sous-groupe de $G$ divise celui de $G$.
 \end{thm}
 
@@ -1177,7 +1284,7 @@ Cette loi confère à $G/H$ une structure de groupe dont l'élément neutre est 
 
 \subsubsection*{Ordre d'un élément d'un groupe fini}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	L'ordre de tout élément d'un groupe fini $G$ divise le cardinal de $G$ (on dit aussi l'\textbf{ordre} de $G$).
 \end{thm}
 \begin{proof}
@@ -1203,7 +1310,7 @@ Exercice Moulin.AG.20
 
 Exercice Moulin.AG.44
 
-\begin{thm}{Théorème d'Euler}%thm
+\begin{thm}[Théorème d'Euler]%thm
 	Soit $n\in\N\st$. Pour tout $a\in\Z$ premier avec $n$, on a $a^{\varphi(n)}\equiv 1\ [n]$.
 \end{thm}
 

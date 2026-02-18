@@ -20,9 +20,12 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
 
 \setlist[itemize]{label=$\bullet$}
-
+\setlist{before=\leavevmode, leftmargin=*}
 
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
@@ -58,8 +61,6 @@
 \theoremstyle{definition}
 
 \newtheorem*{ex}{Exemple}
-\newtheorem*{met}{Point méthode}
-\newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
 \newtheorem*{notation}{Notation}
 \newtheorem*{rappel}{Rappel}
@@ -70,14 +71,120 @@
 \theoremstyle{remark}
 \newtheorem*{app}{Application}
 
-\newtcolorbox[auto counter]{dfn}{
+\newtcolorbox[auto counter]{dfn}[1][]{
 	enhanced,
 	colback=white,
-	fonttitle=\sc,
-	title={Définition \thetcbcounter}
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
 }
 
-\newtcolorbox[auto counter]{thm}[2][]{enhanced, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
 
 \title{Équations différentielles linéaires}
 \date{}
@@ -185,7 +292,7 @@ On considère les équations différentielles :
 
 Rappelons les résultats vus en première année.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{enumerate}
 		\item L'ensemble des solutions de l'équation $(E_0)$ sur $I$ est une droite vectorielle sur $\K$.\\
 		Plus précisément, il existe une fonction $y_0$ qui ne s'annule par sur $I$ et telle que les solutions de $(E_0)$ sur $I$ soient les $\lambda y_0$, avec $\lambda\in\K$.
@@ -193,7 +300,7 @@ Rappelons les résultats vus en première année.
 		Les solutions de $(E)$ sur $I$ sont alors les $y_1+\lambda y_0$ pour $\lambda\in\K$.
 		\item Tout problème de Cauchy associé à $(E)$ admet une unique solution définie sur $I$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{attention}
 	Lorsque $a$ s'annule sur $I$, l'équation n'est plus une équation normalisée. L'ensemble des solutions est (presque) toujours un sous-espace affine, mais on ne sait rien de sa dimension, ni s'il existe des solutions (sauf évidemment dans le cas où l'équation est homogène).
@@ -260,7 +367,7 @@ Rappelons les résultats vus en première année.
 
 Nous démontrerons le théorème suivant :
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	\begin{itemize}
 		\item Tout problème de Cauchy associé à $(E)$ admet une unique solution.
 		\item L'ensemble $\mathcal{S}_0$ des solutions du système homogène $(E_0)$ est un sous-espace vectoriel de $\mathcal{D}(I,\K^n)$ de dimension $n$ et pour tout $t_0\in I$, l'application :
@@ -360,31 +467,31 @@ $$(E)\ :\ L(x)=b\quad\text{et}\quad (E_0)\ :\ L(x)=0.$$
 
 Le théorème de Cauchy linéaire montrera que $L$ est surjective. Les propriétés générales des équations linéaires donnent alors les deux résultats suivants.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{itemize}
 		\item L'ensemble $\mathcal{S}_0$ des solutions de l'équation homogène est un sous-espace vectoriel de $\mathcal{C}^1(I,E)$ ; c'est le noyau de l'application linéaire $L$ introduite ci-dessus.
 		\item Si $\varphi_p$ est une solution particulière de $(E)$, l'ensemble $\mathcal{S}$ des solutions de l'équation $(E)$ s'écrit :
 		$$\mathcal{S}=\varphi_p+\mathcal{S}_0.$$
 		C'est donc un sous-espace affine de $\mathcal{C}^1(I,E)$ de direction $\mathcal{S}_0$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{met}
 	Pour résoudre une équation différentielle linéaire, on ajoute une solution particulière à la solution générale de l'équation homogène associée.
 \end{met}
 
-\begin{thm}{Principe de superposition}%prop
+\begin{prop}[Principe de superposition]%prop
 	Soit $(\alpha_1,\alpha_2)\in\K^2$ et $(b_1,b_2)\in\mathcal{C}^0(I,E)^2$ tels que $b=\alpha_1b_1+\alpha_2b_2$. \\
 	Si $\varphi_1$ et $\varphi_2$ sont respectivement solution des équations :
 	$$x'=a(t)\cdot x+b_1\quad\text{et}\quad x'=a(t)\cdot x+b_2,$$ alors la fonction $\varphi=\alpha_1\varphi_1+\alpha_2\varphi_2$ est solution de $(E)$ : $x'=a(t)\cdot x+b(t)$.
-\end{thm}
+\end{prop}
 
 \subsection{Théorème de Cauchy linéaire}
 
 On rappelle que $a$ et $b$ désignent des applications continues sur $I$ à valeurs respectivement dans $\mathcal{L}(E)$ et $E$. On considère l'équation différentielle linéaire du premier ordre $(E)$ :
 $$x'=a(t)\cdot x+b(t).$$
 
-\begin{thm}{Théorème de Cauchy linéaire}%thm
+\begin{thm}[Théorème de Cauchy linéaire]%thm
 	\begin{itemize}
 		\item Tout problème de Cauchy associé à $(E)$ admet une unique solution.
 		\item L'ensemble $\mathcal{S}_0$ des solutions de l'équation homogène $(E_0)$ est un sous-espace vectoriel de $\mathcal{C}^1(I,E)$ et pour tout $t_0\in I$, l'application :
@@ -440,14 +547,14 @@ $$\begin{array}{lrcl}
 	&\varphi&\longmapsto&\varphi(t_0)
 \end{array}$$ est un isomorphisme d'espaces vectoriels.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $\varphi_1,\ldots,\varphi_n$ sont des solutions de l'équation homogène $(E_0)$, alors les trois assertions suivantes sont équivalentes :
 	\begin{enumerate}[label=(\roman*)]
 		\item la famille $(\varphi_1,\ldots,\varphi_n)$ est une base de $\mathcal{S}_0$ ;
 		\item il existe $t_0\in I$ tel que la famille $(\varphi_1(t_0),\ldots,\varphi_n(t_0))$ soit une base de $E$ ;
 		\item pour tout $t\in I$, la famille $(\varphi_1(t),\ldots,\varphi_n(t))$ est une base de $E$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Considérons l'équation homogène $(E_0)$ : $x'=a(t)\cdot x$ et $t_0\in I$. Soit $\mathcal{B}=(e_1,\ldots,e_n)$ une base de $E$. Pour tout $k\in\llbracket1,n\rrbracket$, il existe une unique solution $\varphi_k$ de $(E_0)$ telle que $\varphi_k(t_0)=e_k$. Alors $(\varphi_1,\ldots,\varphi_n)$ est une base de $\mathcal{S}_0$. Soit $(\lambda_1,\ldots,\lambda_n)\in\K^n$. On a, pour tout $\varphi\in\mathcal{S}_0$ :
@@ -484,14 +591,14 @@ $$\begin{array}{lrcl}
 
 La non nullité du wronskien caractérise les systèmes fondamentaux.
 
-\begin{thm}{Propriétés du wronskien}%prop
+\begin{prop}[Propriétés du wronskien]%prop
 	Soit $y_1,\ldots,y_n$ des solutions de $(E_0)$. Il est équivalent de dire :
 	\begin{enumerate}[label=(\roman*)]
 		\item $(y_1,\ldots,y_n)$ est un système fondamental ;
 		\item $\exists t\in I :\ w(t)\ne 0$ ;
 		\item $\forall t\in I,\ w(t)\ne 0$. 
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Trouver une équation différentielle vérifiée par $w$. retrouver le résultat précédent. \\
@@ -532,18 +639,18 @@ Le caractère linéaire de l'équation différentielle n'est pas indispensable p
 
 Pour démontrer l'existence et l'unicité des solutions de ce problème de Cauchy, nous aurons besoin des deux lemmes techniques suivants.
 
-\begin{thm}{}%lem
+\begin{lem}%lem
 	Soit $a\in\mathcal{C}^0(I,\mathcal{L}(E))$ et $(z_n)$ une suite de fonctions continues de $I$ dans $E$ telles que :
 	$$\forall t\in I,\ z_{n+1}(t)=\int_{t_0}^{t}a(u)\cdot z_n(u)\d u.$$
 	Alors la série $\displaystyle\sum z_n$ converge normalement sur tout segment de $I$.
-\end{thm}
+\end{lem}
 
-\begin{thm}{}%lem
+\begin{lem}%lem
 	Soit $a\in\mathcal{C}^0(I,\mathcal{L}(E))$ et $h\in\mathcal{C}^0(I,E)$. S'il existe un réel $t_0\in I$ tel que :
 	$$\forall t\in I,\ h(t)=\int_{t_0}^{t}a(u)\cdot h(u)\d u$$ alors $h$ est nulle sur $I$.
-\end{thm}
+\end{lem}
 
-\begin{thm}{Existence et unicité des solutions}
+\begin{thm}[Existence et unicité des solutions]%thm
 	Soit $(t_0,y_0)\in I\times E$. Alors le problème de Cauchy :
 	$$y'=a(t)\cdot y+b(t)\quad\text{avec}\quad y'(t_0)=y_0$$ admet une unique solution sur $I$.
 \end{thm}
@@ -603,14 +710,14 @@ Soit $a\in\mathcal{L}(E)$ et $b\in\mathcal{C}^0(I,E)$. On considère les équati
 
 On s'intéresse naturellement aux solutions sur $\R$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Les solutions sur $\R$ de l'équation différentielle $y'=a\cdot y$ sont les fonctions :
 	$$t\mapsto\exp(ta)\cdot y_0\quad\text{avec}\quad y_0\in E.$$
 	En particulier, la solution du problème de Cauchy :
 	$$y'=a\cdot y\quad\text{et}\quad y(t_0)=y_0$$
 	sur tout intervalle $I$ contenant $t_0$ est la restriction à $I$ de la solution sur $\R$ définie par :
 	$$y(t)=\exp((t-t_0)a)\cdot y_0.$$
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	On retrouve, par ces résultats, les propriétés classiques de l'exponentielle.
@@ -865,13 +972,13 @@ b(t)
 \end{pmatrix}.$$
 Les applications continues $A$ et $b$ ainsi définies permettent de traduire l'équation différentielle scalaire $(E)$ sous la forme d'un système différentiel d'ordre $1$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{itemize}
 		\item Si une fonction $\varphi\in\mathcal{C}^n(I,\K)$ est solution de l'équation différentielle $(E)$, alors l'application $\Phi=\Gamma(\varphi)\in\mathcal{C}^1(I,\K^n)$ est solution du système différentiel d'ordre $1$ :
 		$$(EM)\ :\ X'=A(t)X+B(t).$$
 		\item Si $\Phi\in\mathcal{C}^1(I,\K^n)$ est solution du système différentiel $(EM)$, alors sa première fonction coordonnée $\varphi$ est solution de $(E)$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 \begin{proof}
 	Calculer le produit matriciel.
 \end{proof}
@@ -880,13 +987,13 @@ La proposition précédente signifie que l'application linéaire $\Gamma$ induit
 
 Cela ramène ainsi l'étude des équations différentielles scalaires d'ordre $n$ à celle des systèmes différentiels du premier ordre. Les résultats qui suivent sont donc des conséquences de ceux établis dans la partie $2$.
 
-\begin{thm}{Structure de l'ensemble des solutions}%prop
+\begin{prop}[Structure de l'ensemble des solutions]%prop
 	\begin{enumerate}
 		\item L'ensemble $\mathcal{S}_0$ des solutions de l'équation homogène $(E_0)$ est un sous-espace vectoriel de dimension $n$ de $\mathcal{C}^n(I,\K)$.
 		\item Si $\varphi_P$ est une solution de $(E)$, alors l'ensemble $\mathcal{S}$ des solutions sur $I$ de l'équation $(E)$ est le sous-espace affine de dimension $n$ de $\mathcal{C}^n(I,\K)$ passant par $\varphi_P$ et de direction $\mathcal{S}_0$ :
 		$$\mathcal{S}=\varphi_P+\mathcal{S}_0.$$
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{dfn}[Problème de Cauchy]
 	\begin{itemize}
@@ -899,7 +1006,7 @@ Cela ramène ainsi l'étude des équations différentielles scalaires d'ordre $n
 
 D'après le théorème ci-dessous, un tel problème de Cauchy admet une unique solution. Le résoudre, c'est trouver la solution $\varphi$ de $(E)$ vérifiant la condition initiale
 
-\begin{thm}{Théorème de Cauchy linéaire}%thm
+\begin{thm}[Théorème de Cauchy linéaire]%thm
 	Pour tout $(t_0,x_0,\ldots,x_{n-1})\in I\times\K^n$, il existe une et une seule solution de (E) vérifiant :
 	$$\forall k\in\llbracket0,n-1\rrbracket,\ \varphi^{(k)}(t_0)=x_k.$$
 \end{thm}
@@ -909,13 +1016,13 @@ D'après le théorème ci-dessous, un tel problème de Cauchy admet une unique s
 	$$x''+\sin(t)x'+\cos(t)x=t\quad\text{et}\quad (x(0),x'(0))=(1,0).$$
 \end{ex}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $t_0\in I$. L'application :
 	$$\begin{array}{rcl}
 		\mathcal{S}_0&\longrightarrow&\K^n\\
 		\varphi&\longmapsto&(\varphi(t_0),\ldots,\varphi^{(n-1)}(t_0))
 	\end{array}$$ est un isomorphisme d'espaces vectoriels.
-\end{thm}
+\end{cor}
 
 \begin{exo}
 	On s'intéresse à l'équation différentielle scalaire homogène à coefficients constants $(E)$ : $$x^{(n)}+\sum_{k=0}^{n-1}a_kx^{(k)}=0$$
@@ -975,10 +1082,10 @@ où $a_0$, $a_1$ et $b$ sont des fonctions continues de $I$ dans $\K$. Cette éq
 	$$W_{\varphi_1,\varphi_2}'=\varphi_1\varphi_2''-\varphi_1''\varphi_2.$$
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Le wronskien d'un couple $(\varphi_1,\varphi_2)\in(\mathcal{S}_0)^2$ est solution sur $I$ de l'équation différentielle homogène d'ordre $1$ :
 	$$x'+a(t)x=0.$$
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Si l'équation différentielle est de la forme :
@@ -988,7 +1095,7 @@ où $a_0$, $a_1$ et $b$ sont des fonctions continues de $I$ dans $\K$. Cette éq
 
 Le wronskien est un outil qui permet de caractériser les bases de solutions.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $\varphi_1$ et $\varphi_2$ des solutions de $(E_0)$. Notons $W$ le wronskien du couple $(\varphi_1,\varphi_2)$.\\
 	Les trois assertions suivantes sont équivalentes :
 	\begin{enumerate}[label=(\roman*)]
@@ -996,7 +1103,7 @@ Le wronskien est un outil qui permet de caractériser les bases de solutions.
 		\item $\exists t\in I\ :\ W(t)\ne 0$ ;
 		\item $\forall t\in I,\ W(t)\ne0$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Justifier que les fonctions $\varphi_1:t\mapsto\cos(t)$ et $\varphi_2:t\mapsto\cos(t)$ ne sont pas solution sur $\R$ d'une même équation différentielle linéaire homogène de la forme :
@@ -1028,7 +1135,7 @@ $$\begin{cases}
 \end{cases}$$
 permet de déterminer $\lambda_1'()$ et $\lambda_2'(t)$. Les fonctions $\lambda_1'$ et $\lambda_2'$ sont alors continues comme quotients de fonctions continues. En primitivant, on obtient une solution $\varphi$ de $(E)$.
 
-\begin{met}[Méthode de variation des constantes]
+\begin{met}[(Méthode de variation des constantes)]
 	Si on connaît une base $(\varphi_1,\varphi_2)$ de l'espace des solutions de $(E_0)$, alors on peut chercher une solution particulière de $(E)$ : $x''+a_1(t)x'+a_0(t)x=b(t)$ sous la forme : $$\varphi =\lambda_1\varphi_1+\lambda_2\varphi_2\ \ \text{avec}\ \ \lambda_1\ \ \text{et}\ \ \lambda_2\ \ \text{dérivables sur} \ \ I$$ Une telle fonction $\varphi$ est solution de $(E)$ si : $$\begin{cases}
 		\lambda_1'\varphi_1+\lambda_2\varphi_2=0 \\
 		\lambda_1'\varphi_1'+\lambda_2'\varphi_2'=b
@@ -1195,9 +1302,9 @@ Le plan d'étude d'équations non normalisées sera en général le suivant :
 	Montrer que les zéros d'une solution $y$ sur $\R_+$ non nulle de $y''+e^ty=0$ forment une suite strictement croissante $(t_n)$. Déterminer un équivalent de la suite $(t_n)$.
 \end{exo}
 
-\subsection{Lemme de Gronwall (HP)}
+\subsection{Lemme de Grönwall (HP)}
 
-\begin{thm}{}%thm
+\begin{thm}[Lemme de Grönwall]%thm
 	Soit $I$ un intervalle de $\R$, $t_0\in I$, ainsi que que $a:I\to\R_+$ et $b:I\to\R_+$ deux fonctions continues. On note $A$ la primitive de $a$ s'annulant en $t_0$. Si $y$ de classe $\mathcal{C}^1$ vérifie : $$\forall t\geqslant t_0,\ \lVert y'(t)\rVert\leqslant b(t)+a(t)\lVert y(t)\rVert$$ alors $y$ vérifie : $$\forall t\geqslant t_0,\ \lVert y(t)\rVert\leqslant\lVert y(t_0)\rVert e^{A(t)}+e^{A(t)}\int_{t_0}^{t}b(s)e^{-A(s)}\ \d s$$
 \end{thm}
 
@@ -1212,7 +1319,7 @@ Le plan d'étude d'équations non normalisées sera en général le suivant :
 	Voici un plan d'attaque pour étudier un comportement asymptotique de solutions :
 	\begin{enumerate}
 		\item on effectue une variation de la constante vectorielle $Y(x)=M(x)\Lambda(x)$ avec $M(x)$ la solution obtenue à l'infini ;
-		\item le lemme de Gronwall peut permettre de montrer que $\Lambda$ est bornée ;
+		\item le lemme de Grönwall peut permettre de montrer que $\Lambda$ est bornée ;
 		\item donc $\Lambda'$ est intégrable en $+\infty$ ;
 		\item donc $\Lambda$ admet une limite finie en $\infty$.
 	\end{enumerate}

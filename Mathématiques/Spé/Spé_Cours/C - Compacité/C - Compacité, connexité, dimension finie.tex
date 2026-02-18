@@ -20,9 +20,12 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
 
 \setlist[itemize]{label=$\bullet$}
-
+\setlist{before=\leavevmode, leftmargin=*}
 
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
@@ -45,6 +48,12 @@
 \newcommand{\Tr}{\text{Tr}}
 \newcommand{\Vect}{\text{Vect}}
 \newcommand{\rg}{\text{rg}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
+
 
 \theoremstyle{plain}
 \newtheorem*{ind}{Indication}
@@ -52,22 +61,130 @@
 \theoremstyle{definition}
 
 \newtheorem*{ex}{Exemple}
-\newtheorem*{met}{Point méthode}
-\newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
+\newtheorem*{notation}{Notation}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{terminologie}{Terminologie}
+\newtheorem*{attention}{Attention}
+\newtheorem*{conséquence}{Conséquence}
 
 \theoremstyle{remark}
 \newtheorem*{app}{Application}
 
-\newtcolorbox[auto counter]{dfn}{
+\newtcolorbox[auto counter]{dfn}[1][]{
 	enhanced,
-	breakable,
 	colback=white,
-	fonttitle=\sc,
-	title={Définition \thetcbcounter}
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
 }
 
-\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
 
 \title{Compacité, connexité, dimension finie}
 \date{}
@@ -95,7 +212,9 @@ Nous finirons par voir (enfin !) les conséquences sur les espaces vectoriels de
 	On dit qu'une partie $A\subset E$ est \textbf{compacte} si toute suite de $A$ admet une valeur 'adhérence dans $A$, c'est-à-dire si de toute suite de $A$ on peut extraire une suite convergeant dans $A$.
 \end{dfn}
 
-\paragraph{Terminologie} On dit parfois qu'il s'agit de la compacité au sens de Bolzano-Weierstrass.
+\begin{terminologie}
+	On dit parfois qu'il s'agit de la compacité au sens de Bolzano-Weierstrass.
+\end{terminologie}
 
 \begin{rmq}
 	\begin{enumerate}
@@ -109,15 +228,17 @@ Nous finirons par voir (enfin !) les conséquences sur les espaces vectoriels de
 	L'ensemble vide, les singletons et les parties finies sont des compacts.
 \end{ex}
 
-\begin{thm}{}
+\begin{prop}
 	Toute partie compacte de $E$ est fermée dans $E$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{}
+\begin{prop}
 	Toute partie compacte de $E$ est bornée.
-\end{thm}
+\end{prop}
 
-\paragraph{Attention} Les parties compactes d'un espace métrique sont donc fermées et bornées? Mais la réciproque est fausse en général, sauf pour les espaces vectoriels de dimension finie.
+\begin{attention}
+	Les parties compactes d'un espace métrique sont donc fermées et bornées. Mais la réciproque est fausse en général, sauf pour les espaces vectoriels de dimension finie.
+\end{attention}
 
 \begin{ex}
 	Dans $\R[X]$ muni de la norme $\lVert\cdot\rVert_\infty$, la suite $X^n$ est bornée et vérifie $\lVert X^p-X^q\rVert_\infty=1$ pour $p\ne q$, donc n'admet pas de sous-suite convergente. La sphère unité est donc un fermé borné non compact.
@@ -127,22 +248,22 @@ Nous finirons par voir (enfin !) les conséquences sur les espaces vectoriels de
 	Comme on l'a fait dans l'exemple précédent, une méthode classique pour montrer qu'une partie (non fermée bornée) est non compacte est d'essayer d'en exhiber une suite $(u_n)$ vérifiant $\forall p\ne q,\ d(u_p,u_q)\geqslant\alpha$, où $\alpha$ est un réel strictement positif.
 \end{met}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Toute partie fermée dans un compact est compacte.
-\end{thm}
+\end{prop}
 
 \begin{ex}%un exemple de partie compacte
 	Soit $(x_p)$ une suite de $E$ convergeant vers $l\in E$. Alors $A=\{x_p\ \mid\ p\in\N\}\cup\{l\}$ est un compact.
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Un produit de deux compacts (et donc par récurrence d'un nombre fini de compacts) est compact pour la distance produit.
-\end{thm}
+\end{prop}
 "Ah bah en fait c'était trivial !" (barre sa preuve)
 
 \subsection{Parties compactes de $\K$ et de $\K^n$}
 
-\begin{thm}{Théorème de Bolzano-Weierstrass}%thm
+\begin{thm}[Théorème de Bolzano-Weierstrass]%thm
 	Les parties compactes de $\K^n$ sont exactement les parties fermées bornées.
 \end{thm}
 
@@ -154,7 +275,7 @@ Nous finirons par voir (enfin !) les conséquences sur les espaces vectoriels de
 
 "Je n'ai fait que copier l'énoncé idiot du programme."
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Une suite à valeurs dans un compact si, et seulement si, elle n'a qu'une seul valeur d'adhérence.
 \end{thm}
 
@@ -167,9 +288,9 @@ Nous finirons par voir (enfin !) les conséquences sur les espaces vectoriels de
 	%Soit $b\in B$. Soit $(y_n)\in B^\N$ qui converge vers $b$. On peut écrire $b=f(a)$ par surjectivité de $f$ et $x_n=f\inv(y_n)$. Montrons que toute valeur d'adhérence de $(x_n)$ est égale à $a$. Si une suite extraite de $(x_n)$ tend vers $l$, alors par continuité de $f$ en $l$ et unicité de la limite, on trouve $l=a$. On conclut par compacité de $A$.
 \end{ex}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Une suite bornée de $\K^n$ n'ayant qu'une seule valeur d'adhérence est convergente.
-\end{thm}
+\end{cor}
 
 \begin{ex}
 	Soit $\displaystyle\sum u_n$ une série numérique dont les sommes partielles sont bornées et le terme général tend vers $0$. Alors soit elle est convergente, soit ses sommes partielles admettent une infinité de valeurs d'adhérence.
@@ -177,9 +298,9 @@ Nous finirons par voir (enfin !) les conséquences sur les espaces vectoriels de
 
 \subsection{Fonctions continues sur un compact}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	L'image d'un compact par une application continue est un compact.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	\begin{enumerate}
@@ -188,9 +309,11 @@ Nous finirons par voir (enfin !) les conséquences sur les espaces vectoriels de
 	\end{enumerate}
 \end{ex}
 
-\paragraph{Attention} L'image réciproque d'un compact par une application continue peut très bien ne pas être compacte. Elle est tout au plus fermée. Produire un exemple.
+\begin{attention}
+	L'image réciproque d'un compact par une application continue peut très bien ne pas être compacte. Elle est tout au plus fermée. Produire un exemple.
+\end{attention}
 
-\begin{thm}{Théorème des bornes atteintes}%thm
+\begin{thm}[Théorème des bornes atteintes]%thm
 	Toute application réelle continue définie sur un compact non vide est bornée et atteint ses bornes.
 \end{thm}
 
@@ -204,7 +327,7 @@ Nous finirons par voir (enfin !) les conséquences sur les espaces vectoriels de
 
 Exercice Moulin.EVN.14
 
-\begin{thm}{Théorème de Heine}%thm
+\begin{thm}[Théorème de Heine]%thm
 	Tout application continue sur un compact est uniformément continue.
 \end{thm}
 
@@ -227,24 +350,24 @@ Exercice Moulin.EVN.14
 Les résultats suivants ne sont pas au programme mais peuvent s'avérer utiles. \\
 "Hors programme mais vraiment très utile, c'est donc pour ça que c'est hors programme."
 
-\begin{thm}{Théorème des compacts emboîtés}
+\begin{thm}[Théorème des compacts emboîtés]
 	Soit $(K_n)_{n\in\N}$ une suite décroissante de compacts tous non vides. Alors $\displaystyle\bigcap_{n\in\N}A_n\ne\emptyset$.
 \end{thm}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $(F_n)$ une suite de fermés d'un compact $K$. \\
 	Si $\displaystyle\bigcap_{n\in\N} F_n=\emptyset$, alors il existe $N\in\N$ tel que $\displaystyle\bigcap_{n=0}^NF_n=\emptyset$.
-\end{thm}
+\end{cor}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $K$ une partie compacte d'un espace métrique $E$. Si $(U_n)$ est une suite d'ouverts de $E$ recouvre $K$ (c'est-à-dire si $K\subset\displaystyle\bigcup_{n\in\N}U_n$), alors $K$ est aussi recouvert par un nombre fini de $U_n$.
-\end{thm}
+\end{cor}
 
 Les deux résultats équivalents ci-dessus admettent une réciproque :
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $K\subset E$. Si de tout recouvrement de $K$ par une suite d'ouverts de $E$ on peut en extraire un sous-recouvrement fini, alors $K$ est compact.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Si $(x_n)$ est une suite de $K$, alors $K\cap\displaystyle\left(\bigcap_{n\in\N}\overline{\{x_p\ \mid\ p\geqslant n\}}\right)\ne\emptyset$ en utilisant la version équivalente à l'hypothèse concernant les fermés.
 \end{proof}
@@ -255,7 +378,7 @@ Les deux résultats équivalents ci-dessus admettent une réciproque :
 
 Curieusement, le caractère dénombrable de la famille d'ouverts de la famille d'ouverts des deux résultats précédents est inutile :
 
-\begin{thm}{Théorème de Borel-Lebesgue (FHP)}%thm
+\begin{thm}[Théorème de Borel-Lebesgue (FHP)]%thm
 	Une partie $K$ d'un espace métrique est compacte si, et seulement si, elle vérifie la propriété de Borel-Lebesgue, c'est-à-dire si de tout recouvrement de $K$ par des ouverts on peut extraire un sous-recouvrement fini.
 \end{thm}
 \begin{proof}
@@ -289,9 +412,9 @@ Nous donnons ici des définitions plus générales de la compacité dans les esp
 	Tout espace métrique est séparé.
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Tout espace topologique séparé vérifie la propriété d'unicité de la limite.
-\end{thm}
+\end{prop}
 
 \begin{dfn}
 	Un espace topologique est dit \textbf{compact} s'il est quasi-compact et séparé.
@@ -309,9 +432,9 @@ Pour démontrer l'équivalence énoncée plus haut, nous allons avoir besoin d'u
 	Un espace métrique $E$ est dit \textbf{précompact} si pour tout $\varepsilon>0$, on peut recouvrir $E$ par un nombre \textit{fini} de boules de rayon $\varepsilon$.
 \end{dfn}
 
-\begin{thm}{Compact $\implies$ précompact}%lem
+\begin{lem}[Compact $\implies$ précompact]%lem
 	Tout espace métrique compact $E$ est précompact.
-\end{thm}
+\end{lem}
 \begin{proof}[Preuve par la propriété de Borel-Lebesgue]
 	Si $\varepsilon>0$, il suffit d'extraire un sous-recouvrement fini du recouvrement : $$E\subset\bigcup_{x\in E}B_o(x,\varepsilon).$$
 \end{proof}
@@ -319,23 +442,23 @@ Pour démontrer l'équivalence énoncée plus haut, nous allons avoir besoin d'u
 	Par l'absurde, on suppose qu'il existe $\varepsilon>0$ tel que $E$ ne soit jamais recouvert par un nombre fini de boules de rayon $\varepsilon$. On construit par récurrence une suite $(x_n)$ qui vérifie : $$\forall n\in\N,\ x_{n+1}\notin\bigcup_{i=0}^nB_o(x_i,\varepsilon).$$ Une telle suite ne possède pas de valeur d'adhérence, ce qui est absurde.
 \end{proof}
 
-\begin{thm}{Lemme de recouvrement}%lem
+\begin{lem}[Lemme de recouvrement]%lem
 	Soit $E$ un espace métrique compact. On suppose que $(O_i)_{i\in I}$ est une famille d'ouverts recouvrant $E$. Alors : $$\exists\varepsilon >0,\ \forall x\in E,\ \exists i\in I,\ B_o(x,\varepsilon)\subset O_i.$$
-\end{thm}
+\end{lem}
 \begin{proof}
 	On raisonne par l'absurde avec $\varepsilon=1/2^n$ et un $x_n$ correspondant. On prend $x$ une valeur d'adhérence de $(x_n)$. Il existe $i$ tel que $x\in O_i$. Mais alors, à partir d'un certain rang : $$B\left(x_{\varphi(n)},\frac{1}{2^{\varphi(n)}}\right)\subset O_i$$ ce qui est une contradiction.
 \end{proof}
 
 Nous pouvons désormais passer à la démonstration de l'équivalence entre les compacités au sens de Borel-Lebesgue et de Bolzano-Weierstrass.
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Tout espace métrique compact au sens de Bolzano-Weierstrass est compact au sens de Borel-Lebesgue.
 \end{thm}
 \begin{proof}
 	Un espace métrique est séparé, il suffit de prouver la propriété de Borel-Lebesgue. On prend le $\varepsilon>0$ obtenu avec le lemme de recouvrement, et on utilise la précompacité de $E$. On choisit finalement, grâce au lemme de recouvrement, un ouvert par boule de rayon $\varepsilon$.
 \end{proof}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Tout espace métrique compact au sens de Borel-Lebesgue est compact au sens de Bolzano-Weierstrass.
 \end{thm}
 \begin{proof}
@@ -369,9 +492,9 @@ Soit $A$ une partie de l'espace topologique $E$.
 	On dit que $A$ est \textbf{connexe par arcs} si deux éléments quelconques de $A$ peuvent être reliés par un chemin.
 \end{dfn}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Toute partie convexe d'un espace vectoriel normé est connexe par arcs.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	\begin{enumerate}
@@ -404,16 +527,16 @@ Soit $A$ une partie de l'espace topologique $E$.
 	\end{enumerate}
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Toute partie d'un espace vectoriel normé étoilée par rapport à l'un de ses points est connexe par arcs.
-\end{thm}
+\end{prop}
 
 \subsection{Composantes connexes par arcs}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	La relation "il existe un chemin joignant $x$ à $y$ dans $A$" est une relation d'équivalence sur $A$.\\
 	Ses classes d'équivalence sont appelées \textbf{composantes connexes par arcs de $A$}.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	\begin{itemize}
@@ -458,9 +581,9 @@ Soit $A$ une partie de l'espace topologique $E$.
 
 \subsection{Parties connexes par arcs de $\R$}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Les parties connexes par arcs de $\R$ sont les intervalles.
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Montrer que tout ouvert de $\R$ est une réunion au plus dénombrable d'intervalles ouverts disjoints deux à deux.
@@ -470,19 +593,21 @@ Soit $A$ une partie de l'espace topologique $E$.
 
 On dispose d'un version plus générale du théorème des valeurs intermédiaires.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	L'image d'un connexe par arcs par une application continue est un connexe par arcs.
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Soit $E$ un $\K$-espace vectoriel normé (éventuellement de dimension infinie). La sphère unité de $E$ est connexe par arcs sauf si $\K=\R$ et $\dim(E)=1$.
 \end{exo}
 
-\paragraph{Attention} L'image réciproque d'un connexe par arcs par une application continue peut très bien ne pas être connexe par arcs. Produire un exemple.
+\begin{attention}
+	L'image réciproque d'un connexe par arcs par une application continue peut très bien ne pas être connexe par arcs. Produire un exemple.
+\end{attention}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Si $f:E\to\R$ est continue, l'image de tout connexe par arcs de $E$ est un intervalle.
-\end{thm}
+\end{cor}
 
 \begin{ex}
 	\begin{enumerate}
@@ -517,9 +642,9 @@ On dispose d'un version plus générale du théorème des valeurs intermédiaire
 	Dans un connexe, quelles sont les parties de frontière vide ?
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Tout connexe par arcs est connexe.
-\end{thm}
+\end{prop}
 \begin{proof}
 	La fonction indicatrice d'une partie $P$ ouverte et fermée est continue.
 \end{proof}
@@ -528,11 +653,13 @@ On dispose d'un version plus générale du théorème des valeurs intermédiaire
 	On dit qu'une application $f:A\to F$ est localement constante sur $A$ si elle constante au voisinage de tout point.
 \end{dfn}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Une application localement constante sur un connexe (et donc sur un connexe par arcs) est constante.
-\end{thm}
+\end{cor}
 
-\paragraph{Attention} Il existe des connexes non connexes par arcs : voir l'exercice Moulin.Comp.39.
+\begin{attention}
+	Il existe des connexes non connexes par arcs : voir l'exercice Moulin.Comp.39.
+\end{attention}
 
 \begin{exo}
 	En utilisant les résultats de l'exercice sur les composantes connexes par arcs d'un ouvert d'un espace vectoriel normé, montrer qu'un ouvert connexe d'un espace vectoriel normé est connexe par arcs.
@@ -550,12 +677,12 @@ $$\forall x\in\K^n,\ N_\infty(f(x))=\lVert x\rVert_\infty.$$
 
 Elle est donc continue, ainsi que sa réciproque. On en déduit :
 
-\begin{thm}{}%lem
+\begin{lem}%lem
 	Les compacts de $(E,N_\infty)$ sont les fermés bornés. \\
 	En particulier, la sphère unité de $(E,N_\infty)$ est compacte.
-\end{thm}
+\end{lem}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Sur un espace $E$ de dimension finie, toutes les normes sont équivalentes.
 \end{thm}
 
@@ -573,35 +700,35 @@ Elle est donc continue, ainsi que sa réciproque. On en déduit :
 
 \subsection{Compacité en dimension finie}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Les parties compactes d'un espace vectoriel normé de dimension finie sont exactement ses parties fermées bornées.
 \end{thm}
 
 Exercice Moulin.Comp.49
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	\begin{enumerate}
 		\item Toute suite bornée d'un espace vectoriel de dimension finie admet une valeur d'adhérence.
 		\item Toute suite bornée d'un espace vectoriel de dimension finie admettant une unique valeur d'adhérence est convergente.
 	\end{enumerate}
-\end{thm}
+\end{cor}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $F$ un sous-espace vectoriel de dimension finie d'un espace vectoriel normé $E$. Alors $F$ est fermé dans $E$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Ce qui est remarquable dans ce résultat, c'est que $F$ est fermé pour n'importe quelle norme de $E$. D'ailleurs, toutes les normes de $E$ induisent la même topologie sur $F$.
 \end{rmq}
 
-\begin{thm}{(HP)}%prop
+\begin{prop}[HP]%prop
 	Dans chacun des deux cas suivants :
 	\begin{itemize}
 		\item $F$ est un sous-espace vectoriel de dimension finie d'un espace vectoriel normé $E$ ;
 		\item $F$ est une partie fermée non vide d'un espace vectoriel $E$ de dimension finie ;
 	\end{itemize}
 	la distance à $F$ de tout point $x\in E$ est atteinte en au moins un point de $F$
-\end{thm}
+\end{prop}
 \begin{proof}
 	On considère le compact $K=F\cap B_f(x,d(a,x))$ où $a\in F$.
 \end{proof}
@@ -618,7 +745,7 @@ Exercice Moulin.Comp.49
 	La boule unité fermée d'un espace vectoriel de dimension finie est compacte puisque fermée bornée en dimension finie. Nous avons vu au début du chapitre que la boule unité fermée pouvait être non compacte. Pire :
 \end{rmq}
 
-\begin{thm}{Théorème de Riesz (HP)}%thm
+\begin{thm}[Théorème de Riesz (HP)]%thm
 	Soit $E$ un espace vectoriel normé dont la boule unité $B$ est compacte. Alors $E$ est de dimension finie.
 \end{thm}
 \begin{proof}
@@ -627,7 +754,7 @@ Exercice Moulin.Comp.49
 
 \subsection{Continuité des applications (multi)linéaires et polynomiales}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Soit $E$ un espace vectoriel normé de dimension finie et $F$ un espace vectoriel normée de dimension quelconque. Toute application linéaire de $E$ dans $F$ est continue.
 \end{thm}
 
@@ -641,17 +768,17 @@ Exercice Moulin.Comp.49
 
 En particulier, les formes linéaires coordonnées dans la base $\mathcal{B}$ sont continues. Par combinaison linéaire et produit :
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Toute application d'un $\K$-espace vectoriel de dimension finie polynomiale en les coordonnées dans la base $\mathcal{B}$ est continue sur $E$.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	L'application déterminant $\det:\mathcal{M}_n(\K)\to\K$ est une application continue.
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $E_1,\ldots,E_p$ des $\K$-espaces vectoriels de dimension finie. Toute application $p$ linéaire de $E_1\times\cdots\times E_p$ dans un espace vectoriel $F$ est continue.
-\end{thm}
+\end{prop}
 \begin{proof}
 	\begin{itemize}
 		\item Si $F=\K$, une telle application est polynomiale.
@@ -666,9 +793,9 @@ En particulier, les formes linéaires coordonnées dans la base $\mathcal{B}$ so
 
 Exercice Moulin.Comp.53 (première question).
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $E_1,\ldots,E_p$ des $\K$-espaces vectoriels normés de dimension finie et $f$ une application $p$-linéaire de $e_1\times\cdots\times E_p$ dans un espace vectoriel $F$. Alors il existe un réel $C$ tel que : $$\forall (_1,\ldots,x_p)\in E_1\times\cdots\times E_p,\ \lVert f(x_1,\ldots,x_p)\rVert\leqslant C\lVert x_1\rVert\cdots\lVert x_p\rVert.$$
-\end{thm}
+\end{cor}
 
 \begin{exo}
 	Soit $E$ une $\K$-algèbre de dimension finie. Montrer qu'il existe une norme sur $E$ qui soit sous-multiplicative, c'est-à-dire vérifiant : $$\forall (x,y)\in E^2,\ \lVert xy\rVert\leqslant\lVert x\rVert\lVert y\rVert.$$
@@ -694,7 +821,7 @@ On a alors $f_k=p_k\circ f$ et $f=\displaystyle\sum q_i\circ f_i$.
 	En particulier, une suite $(u_k)_{k\in\N}=\displaystyle\left(\sum_{i=1}^{n}u_{i,k}e_i\right)$ à valeurs dans $F$ converge si, et seulement si, toutes les suites coordonnées $(u_{i,k})_{k\in\N}$ convergent.
 \end{rmq}
 
-\begin{thm}
+\begin{thm}%thm
 	Dans un espace vectoriel normé de dimension finie, toute série absolument convergente est convergente.
 \end{thm}
 \begin{proof}

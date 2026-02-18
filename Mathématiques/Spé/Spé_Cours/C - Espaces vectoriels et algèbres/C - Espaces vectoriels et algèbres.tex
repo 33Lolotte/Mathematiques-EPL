@@ -20,9 +20,12 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
 
 \setlist[itemize]{label=$\bullet$}
-
+\setlist{before=\leavevmode, leftmargin=*}
 
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
@@ -45,6 +48,12 @@
 \newcommand{\Tr}{\text{Tr}}
 \newcommand{\Vect}{\text{Vect}}
 \newcommand{\rg}{\text{rg}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
+
 
 \theoremstyle{plain}
 \newtheorem*{ind}{Indication}
@@ -52,22 +61,130 @@
 \theoremstyle{definition}
 
 \newtheorem*{ex}{Exemple}
-\newtheorem*{met}{Point méthode}
-\newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
+\newtheorem*{notation}{Notation}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{terminologie}{Terminologie}
+\newtheorem*{attention}{Attention}
+\newtheorem*{conséquence}{Conséquence}
 
 \theoremstyle{remark}
 \newtheorem*{app}{Application}
 
-\newtcolorbox[auto counter]{dfn}{
+\newtcolorbox[auto counter]{dfn}[1][]{
 	enhanced,
-	breakable,
 	colback=white,
-	fonttitle=\sc,
-	title={Définition \thetcbcounter}
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
 }
 
-\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
 
 \title{Espaces vectoriels et algèbres}
 \date{}
@@ -93,9 +210,12 @@ Dans un espace vectoriel sur un corps $\K$, on peut donc noter $2x$ à la place 
 	Citer deux notions du programme d'algèbre linéaire pour lesquelles ce dernier point poserait problème.
 \end{exo}
 % Symétries et équivalence antisymétrique/alterné
+
 Autre situation où le fait que le corps de base contienne $\Q$ est important : si $p$ est un projecteur d'un espace vectoriel de dimension finie, on a $\Tr(p)=\rg(p)$. En fait, dans un corps quelconque, il faudrait écrire $\Tr(p)=(\rg(p)).1_\K$. et l'on aurait à nouveau le problème qu'un projecteur non nul pourrait avoir une trace nulle. \\
 Dans toute la suite de ce chapitre et des autres chapitres d'algèbre linéaire, le corps $\K$ sera donc considéré comme étant un sur-corps de $\Q$.
+
 \section{Espaces vectoriels et applications linéaires}
+
 Revoir dans le cours de première année :
 \begin{itemize}
 	\item la définition d'un espace vectoriel sur un corps $\K$ ;
@@ -140,14 +260,16 @@ On appelle relation linéaire entre les $x_i$ toute combinaison linéaire de la 
 	Si $I=\emptyset$, alors par convention/définition $\displaystyle\sum_{i\in I}\lambda_ix_i=0$.
 \end{rmq}
 
-\paragraph{Attention} Ne jamais oublier que dans l'écriture d'une combinaison linéaire $\displaystyle\sum_{i\in I}\lambda_ix_i$, la famille $(\lambda_i)_{i\in I}$ \textbf{doit} appartenir à $\K^{(I)}$ et donc avoir tous ses termes nuls sauf un nombre fini d'entre eux.
+\begin{attention}
+	Ne jamais oublier que dans l'écriture d'une combinaison linéaire $\displaystyle\sum_{i\in I}\lambda_ix_i$, la famille $(\lambda_i)_{i\in I}$ \textbf{doit} appartenir à $\K^{(I)}$ et donc avoir tous ses termes nuls sauf un nombre fini d'entre eux.
+\end{attention}
 
 \subsection{Sous-espaces vectoriel engendré par une partie}
 Soit $E$ un espace vectoriel.
 
-\begin{thm}{}
+\begin{prop}
 	Une intersection de sous-espaces vectoriels de $E$ est un sous-espace vectoriel de $E$.
-\end{thm}
+\end{prop}
 
 \begin{dfn}{}
 	Soit $A$ une partie de $E$. il existe un plus petit sous-espace vectoriel de $E$ contenant $A$. on l'appelle \textbf{sous-espace vectoriel engendré par $A$} et on le note $\Vect(A)$.
@@ -156,9 +278,9 @@ Soit $E$ un espace vectoriel.
 	C'est l'intersection de tous les sous-espaces vectoriels contenant $A$.
 \end{proof}
 
-\begin{thm}{}
+\begin{prop}
 	Le sous-espace vectoriel engendré par une partie $A$ de $E$ est l'ensemble des combinaisons linéaires des éléments de $A$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Les combinaisons linéaires des éléments d'une partie $A$ de $E$ peuvent s'écrire au choix :
@@ -191,9 +313,9 @@ Nous généralisons ici les notions vues en première année de somme et de somm
 	La somme d'une famille finie $(E_i)_{i\in I}$ de sous-espaces vectoriels de $E$, que l'on note $\displaystyle\sum_{i\in I}E_i$, est le plus petit sous-espace vectoriel de $E$ contenant tous les $E_i$.
 \end{dfn}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $(E_i)_{i\in I}$ une famille finie de sous-espaces vectoriels de $E$. On a : $$\sum_{i\in I}E_i=\left\{\sum_{i\in I}x_i\ \mid\ (x_i)_{i\in I}\in\prod_{i\in I} E_i\right\}$$
-\end{thm}
+\end{prop}
 
 \paragraph{Propriétés}
 \begin{itemize}
@@ -216,7 +338,7 @@ Revoir dans le cours de première année :
 	\item la caractérisation d'une application linéaire par l'image d'une base.
 \end{itemize}
 
-\begin{thm}{}
+\begin{thm}
 	Deux applications linéaires de $E$ dans $F$ sont égales si, et seulement si, elles coïncident sur une base.
 \end{thm}
 
@@ -265,9 +387,9 @@ Revoir dans le cours de première année :
 
 Si une famille $L$ est liée, un de ses vecteurs est combinaison linéaire des autres, mais on ne sait pas \textit{a priori} lequel. Cependant, on dispose du résultat suivant :
 
-\begin{thm}{}
+\begin{lem}
 	Si $L$ est libre, alors la famille $L\cup\{x\}$ est liée si, et seulement si, $x\in\Vect(L)$.
-\end{thm}
+\end{lem}
 
 \begin{ex}
 	Dans $\mathcal{F}(\R,\R)$, la famille de fonctions $(f_a)_{a\in\R}$ définie par $f_a(x)=e^{ax}$ est libre. Est-elle génératrice de $\mathcal{F}(\R,\R)$ ? de $\mathcal{C}^\infty(\R,\R)$
@@ -279,7 +401,7 @@ Si une famille $L$ est liée, un de ses vecteurs est combinaison linéaire des a
 
 Exercice Moulin.EV.11
 
-\begin{thm}{Caractérisation des bases}
+\begin{thm}[Caractérisation des bases]
 	Soit $S$ une famille de vecteurs de $E$. Il est équivalent de dire :
 	\begin{enumerate}[label=(\roman*)]
 		\item $S$ est une base de $E$ ;
@@ -308,9 +430,13 @@ Exercice Moulin.EV.11
 	Soit $(E_i)_{i\in I}$ une famille finie de sous-espaces vectoriels de $E$. On dit que les $E_i$ sont en \textbf{somme directe} si pour tout $x\in\displaystyle\sum_{i\in I} E_i$, la décomposition $\displaystyle x=\sum_{i\in I}x_i$ avec $(x_i)_{i\in I}\in\displaystyle\prod_{i\in I} E_i$ est unique.
 \end{dfn}
 
-\paragraph{Terminologie} On dit aussi que la somme $\displaystyle\sum_{i\in I}E_i$ est \textbf{directe} ou que les $E_i$ sont indépendants.
+\begin{terminologie}
+	On dit aussi que la somme $\displaystyle\sum_{i\in I}E_i$ est \textbf{directe} ou que les $E_i$ sont indépendants.
+\end{terminologie}
 
-\paragraph{Notation} Lorsque la somme $\displaystyle\sum_{i\in I} E_i$ est direct; on la note $\displaystyle\bigoplus_{i\in I}E_i$. Dans le cas d'une famille de la forme $(E_1,\ldots,E_p)$, on note $\displaystyle\bigoplus_{i=1}^pE_i$ ou $E_1\oplus\cdots\oplus E_p$.
+\begin{notation}
+	Lorsque la somme $\displaystyle\sum_{i\in I} E_i$ est direct; on la note $\displaystyle\bigoplus_{i\in I}E_i$. Dans le cas d'une famille de la forme $(E_1,\ldots,E_p)$, on note $\displaystyle\bigoplus_{i=1}^pE_i$ ou $E_1\oplus\cdots\oplus E_p$.
+\end{notation}
 
 \begin{rmq}
 	\begin{itemize}
@@ -325,19 +451,21 @@ Exercice Moulin.EV.11
 
 En pratique, on utilise la caractérisation suivante pour prouver qu'une somme est directe :
 
-\begin{thm}{}%proposition
+\begin{prop}{}%proposition
 	Un somme $\displaystyle\sum_{i\in I}E_i$ est directe si, et seulement si : $$\forall (x_i)_{i\in I}\in\prod_{i\in I}E_i,\ \sum_{i\in I}x_i=0\implies\forall i\in I,\ x_i=0$$
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Soit $a_1,\ldots,a_p$ des vecteurs non nuls d'un $\K$-espace vectoriel $E$. Montrer que la somme $F=\Vect(a_1)+\cdots+\Vect(a_p)$ est directe si, et seulement si, la famille $(a_1,\ldots,a_p)$ est libre.
 \end{exo}
 
-\paragraph{Attention} Des sous-espaces vectoriels peuvent être en somme directe deux à deux sans que leur somme soit directe.
+\begin{attention}
+	Des sous-espaces vectoriels peuvent être en somme directe deux à deux sans que leur somme soit directe.
+\end{attention}
 
-\begin{thm}{Associativité de la somme directe}%proposition
+\begin{prop}[Associativité de la somme directe]%proposition
 	Étant donnée une partition $(I_\lambda)_{\lambda\in\Lambda}$ de l'ensemble fini $I$ et une famille $(E_i)_{i\in I}$ de sous-espaces vectoriels de $E$, la famille $(E_i)_{i\in I}$ est en somme directe si, et seulement si, pour tout $\lambda\in\Lambda$, la famille $(E_i)_{i\in I_\lambda}$ est en somme directe et la famille $\displaystyle\left(\sum_{i\in I_\lambda} E_i\right)_{\lambda\in\Lambda}$ est en somme directe. Dans ce cas, on dispose alors de l'égalité : $$\bigoplus_{i\in I} E_i=\bigoplus_{\lambda\in\Lambda}\left(\bigoplus_{i\in I_\lambda}E_i\right)$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	On le démontre dans le cas où $\Lambda=\{1,2\}$ puis on conclura par une récurrence sur le cardinal de $\Lambda$.
 \end{proof}
@@ -354,9 +482,9 @@ D'après la proposition précédente, si $E=\displaystyle\bigoplus_{i\in I}E_i$,
 	Supposons que $E$ se décompose sous la forme $E=\displaystyle\bigoplus_{i\in I}E_i$. On appelle \textbf{famille des projecteurs associés à la décomposition $E=\displaystyle\bigoplus_{i\in I}E_i$} la famille $(p_i)_{i\in I}$ où, pour tout $i\in I$, $p_i$ est la projection sur $E_i$ parallèlement à $\displaystyle\bigoplus_{j\in I\setminus\{i\}}E_j$.
 \end{dfn}
 
-\begin{thm}{}
+\begin{prop}
 	La famille de projecteurs associés à une décomposition $E=\displaystyle\bigoplus_{i\in I}E_i$ vérifie : $$\sum_{i\in I}p_i=\text{Id}_E\ \ \text{et}\ \ \forall (i,j)\in I^2,\ i\ne j\implies p_i\circ p_j=0$$
-\end{thm}
+\end{prop}
 
 Exercice Moulin.EV.56
 
@@ -368,26 +496,26 @@ Exercice Moulin.EV.56
 	Un $\K$-espace vectoriel est de \textbf{dimension finie} s'il admet une famille génératrice finie. Dans le cas contraire, on dit qu'il est de \textbf{dimension infinie}.
 \end{dfn}
 
-\begin{thm}{Théorème de la base incomplète}%thm
+\begin{thm}[Théorème de la base incomplète]%thm
 	Soit $S$ une famille génératrice finie d'un espace vectoriel $E$ de dimension finie. Alors on peut compléter en une base de $E$ toute famille libre $L$ de $E$ en lui adjoignant des éléments de $S$.
 \end{thm}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Tout espace vectoriel de dimension finie admet une base.
-\end{thm}
+\end{cor}
 
 \subsubsection*{Dimension d'un espace vectoriel}
 L'un des deux lemmes suivants permet de montrer que toutes les bases d'un espace vectoriel de dimension finie ont le même nombre d'éléments.
 
-\begin{thm}{}%lem
+\begin{lem}%lem
 	Une famille de $n+1$ vecteurs $(y_i)_{0\leqslant i\leqslant n}$, chacun combinaison linéaire d'une même famille de $n$ vecteurs $(x_i)_{1\leqslant i\leqslant n}$ est liée.
-\end{thm}
+\end{lem}
 
 De ce lemme, on déduit que toutes les bases d'un espace vectoriel de dimension finie ont le même nombre d'éléments.
 
-\begin{thm}{}%lem
+\begin{lem}%lem
 	Soit $\mathcal{B}$ une base d'un espace vectoriel $E$, $x$ un élément de $\mathcal{B}$ et $y$ un élément non combinaison linéaire des éléments de $\mathcal{B}$ différents de $x$. Alors, en remplaçant $x$ par $y$ dans $\mathcal{B}$, on obtient une base de $E$.
-\end{thm}
+\end{lem}
 
 \begin{ex}
 	On admet que $E$ possède une base (lemme de Zorn !). Si $x$ est un vecteur non nul de $E$, alors il existe une base de $E$ contenant $x$.
@@ -401,11 +529,13 @@ De ce lemme, on déduit, par récurrence sur $\card(\mathcal{B}\cap\mathcal{B}')
 
 Exercice Moulin.EV.21
 
-\paragraph{Notation}
-\begin{itemize}
+
+\begin{notation}
+	\begin{itemize}
 	\item Lorsque $E$ est de dimension infinie, on convient de noter $\dim(E)=+\infty$.
 	\item On pourra aussi traduire par $\dim(E)<+\infty$ le fait que $E$ est de dimension finie.
 \end{itemize}
+\end{notation}
 
 \begin{rmq}
 	\begin{itemize}
@@ -414,76 +544,76 @@ Exercice Moulin.EV.21
 	\end{itemize}
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $E$ et $F$ sont deux espaces vectoriels de dimension finie, alors $E\times F$ et $\mathcal{L}(E,F)$ sont de dimension finie avec : $$\dim(E\times F)=\dim(E)+\dim(F)\ \ \text{et}\ \ \dim\left(\mathcal{L}(E,F)\right)=\dim(E)\times\dim(F)$$
-\end{thm}
+\end{prop}
 
 \subsubsection*{Dimension et familles de vecteurs}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $(x_1,\ldots,x_p)$ une famille de vecteurs d'un espace vectoriel $E$ de dimension finie $n$.
 	\begin{enumerate}
 		\item Lorsque $(x_1,\ldots,x_p)$ est libre, on a $p\leqslant n$ avec égalité si, et seulement si, $(x_1,\ldots,x_p)$ est une base de $E$.
 		\item Lorsque $(x_1,\ldots,x_p)$ est génératrice de $E$, on a $p\geqslant n$ avec égalité si, et seulement si, $(x_1,\ldots,x_p)$ est une base de $E$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 \begin{proof}
 	Dans le premier cas, compléter $(x_A,\ldots,x_p)$ en une base de $E$, et dans le second cas, en extraire une base de $E$.
 \end{proof}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $E$ un espace vectoriel de dimension finie $n$ et $\mathcal{B}$ une famille de $E$. Il y a équivalence entre :
 	\begin{enumerate}[label=(\roman*)]
 		\item $\mathcal{B}$ est une base de $E$ ;
 		\item $\mathcal{B}$ est une famille libre de $E$ à $n$ éléments ;
 		\item $\mathcal{B}$ est une famille génératrice de $E$ à $n$ éléments.
 	\end{enumerate}
-\end{thm}
+\end{cor}
 
 \subsubsection*{Sous-espaces vectoriels de dimension finie}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $E$ un espace vectoriel de dimension finie $n$. Tout sous-espace vectoriel $F$ de $E$ est de dimension finie $p$ avec $p\leqslant n$. \\
 	De plus, on a $\dim(F)=\dim(E)$ si, et seulement si, $F=E$.
-\end{thm}
+\end{prop}
 
 \begin{exo}[$\star$]
 	Soit $E=\mathcal{C}(\R,\R)$ et $F=\left\{f\in E\ :\ f(0)=0\right\}$. Existe-t-il des éléments $f_1,\ldots,f_n$ de $F$ tels que : $$F=\left\{f_1g_1+\cdots+f_ng_n\ \mid\ (g_1,\ldots,g_n)\in E^n\right\}\ ?$$ Quel rapport avec ce qui précède ?
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{enumerate}
 		\item Si $\mathcal{B}$ est une base de $E$, et $(\mathcal{B}_i)_{i\in I}$ est une partition finie de $\mathcal{B}$, alors $E$ est la somme directe des $E_i=\Vect(\mathcal{B}_i)$.
 		\item Réciproquement, si $\mathcal{B}_i$ est une base de $E_i$ avec $E=\displaystyle\bigoplus_{i\in I}E_i$, alors $\mathcal{B}=\displaystyle\bigcup_{i\in I}\mathcal{B}_i$ est une base de $E$, dite \textbf{adaptée} à la décomposition $(E_i)_{i\in I}$ de $E$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 On en déduit les résultats suivants en dimension finie.
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	En dimension finie, tout sous-espace vectoriel admet un supplémentaire.
-\end{thm}
+\end{cor}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $E$ un espace vectoriel de dimension finie. \\
 	Une famille finie $(E_i)_{i\in I}$ de sous-espaces vectoriels de $E$ est en somme directe si, et seulement si : $$\dim\left(\sum_{i\in I}E_i\right)=\sum_{i\in I}\dim(E_i)$$
-\end{thm}
+\end{cor}
 \begin{proof}
 	En considérant une base $\mathcal{B}_i$ de chaque $E_i$ et $\mathcal{B}=\displaystyle\bigcup_{i\in I}\mathcal{B}_i$, on a : $$\dim\left(\sum_{i\in I}E_i\right)\leqslant\card(\mathcal{B})\leqslant\sum_{i\in i}\card(\mathcal{B}_i)\leqslant\sum_{i\in I}\dim(E_i)$$
 \end{proof}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $(E_i)_{i\in i}$ une famille finie de sous-espaces vectoriels d'un espace vectoriel $E$ de dimension finie. Les propriétés suivantes sont équivalentes :
 	\begin{enumerate}[label=(\roman*)]
 		\item $(E_i)_{i\i n I}$ est une décomposition de $E$ ;
 		\item les $E_i$ sont indépendants et $\displaystyle\dim(E)=\sum_{i\in I}\dim(E_i)$ ;
 		\item $E=\displaystyle\sum_{i\in i}E_i$ et $\displaystyle\dim(E)=\sum_{i\in I}\dim(E_i)$.
 	\end{enumerate}
-\end{thm}
+\end{cor}
 
 On retrouve les caractérisations suivantes des sous-espaces vectoriels supplémentaires lorsque $I$ possède deux éléments :
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Si $F$ et $G$ sont deux sous-espaces vectoriels d'un espace vectoriel $E$ de dimension finie, alors il est équivalent de dire :
 	\begin{enumerate}[label=(\roman*)]
 		\item $E=F\oplus G$ ;
@@ -492,9 +622,9 @@ On retrouve les caractérisations suivantes des sous-espaces vectoriels supplém
 	\end{enumerate}
 \end{thm}
 
-\begin{thm}{Formule de Grassmann}%prop
+\begin{prop}[Formule de Grassmann]%prop
 	Si $F$ et $G$ sont deux sous-espaces vectoriels d'un espace vectoriel $E$ de dimension finie, on a : $$\dim(F+G)+\dim(F\cap G)=\dim(F)+\dim(G)$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	Construire une base de $F+G$ en prenant comme point de départ une base de $F\cap G$, puis en complétant pour que des sous-familles de la famille finale soient des bases de $F$ et de $G$.
 \end{proof}
@@ -555,7 +685,7 @@ Soit $E$ et $F$ deux $\K$-espaces vectoriels et $u\in\mathcal{L}(E,F)$.
 
 Soit $E_1$ un sous-espace vectoriel de $E$ et $u_1$ la restriction de $u_{\mid E_1}$. Alors $\ker(u_1)=\ker(u)\cap E_i$. En particulier, $u_1$ est injective si, et seulement si, $E_1$ est indépendant de $\ker(u)$.
 
-\begin{thm}{}%prop
+\begin{thm}
 	L'application linéaire $u$ induit un isomorphisme de tout supplémentaire de son noyau sur son image.
 \end{thm}
 
@@ -583,9 +713,9 @@ On en déduit la surjectivité de $u$ (par dimension) ainsi que l'existence et l
 	Une application linéaire $u\in\mathcal{L}(E,F)$ est de \textbf{rang fini} si $\text{Im}(u)$ est de dimension finie. Le \textbf{rang} de $u$ est alors la dimension de $\text{Im}(u)$. On le note $\rg(u)$.
 \end{dfn}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $E$ ou $F$ est de dimension finie, alors toute application linéaire $u\in\mathcal{L}(E,F)$ est de rang fini inférieur ou égal à cette dimension.
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Soit $f$ et $g$ deux endomorphismes d'un espace vectoriel $E$ de dimension finie $n$ tels que $f+g=\text{Id}_E$ et $\rg(f)+\rg(g)\leqslant n$. Montrer que $f$ et $g$ sont des projections.
@@ -593,18 +723,18 @@ On en déduit la surjectivité de $u$ (par dimension) ainsi que l'existence et l
 
 \subsubsection*{Théorème du rang}
 
-\begin{thm}{Formule du rang}%thm
+\begin{thm}[Formule du rang]%thm
 	Soit $u\in\mathcal{L}(E,F)$. Si $E$ est de dimension finie, alors : $$\dim(E)=\dim(\ker(u))+\dim(\text{Im}(u))$$
 \end{thm}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $u\in\mathcal{L}(E,F)$ avec $\dim(E)=\dim(F)<+\infty$. Les trois propositions suivantes sont équivalentes : 
 	\begin{enumerate}[label=(\roman*)]
 		\item $u$ est injective ;
 		\item $u$ est surjective ;
 		\item $u$ est bijective.
 	\end{enumerate}
-\end{thm}
+\end{cor}
 
 Exercice Moulin.EV.36
 
@@ -633,9 +763,9 @@ Soit $u\in\mathcal{L}(E,F)$ et $v\in\mathcal{L}(F,G)$.
 
 \subsection{Détermination d'une application linéaire sur une décomposition}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Étant donnée une décomposition $\displaystyle\bigoplus_{i\in I} E_i$, ainsi que des applications linéaires $u_i$ de $E_i$ dans $F$, il existe une unique application linéaire $u$ de $E$ dans $F$ telle que : $$\forall i\in I,\ u_{\mid E_i}=u_i$$
-\end{thm}
+\end{prop}
 
 Exercice Moulin.EV.39
 
@@ -688,15 +818,17 @@ Dans toute la suite du chapitre, sauf indication explicite du contraire, $u$ dé
 	\end{enumerate}
 \end{exo}
 
-\paragraph{Rappel} Les endomorphismes $u$ et $v$ commutent si $u\circ v=v\circ u$.
+\begin{rappel}
+	Les endomorphismes $u$ et $v$ commutent si $u\circ v=v\circ u$.
+\end{rappel}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si les endomorphismes $u$ et $v$ commutent, alors $\ker(v)$ et $\text{Im}(v)$ sont stables par $u$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $F$ est le sous-espace vectoriel de $E$ engendré par une famille $(e_i)_{i\in I}$, alors $F$ est stable par $u$ si, et seulement si : $$\forall i\in I,\ u(e_i)\in F$$
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	\begin{enumerate}
@@ -717,7 +849,9 @@ Dans toute la suite du chapitre, sauf indication explicite du contraire, $u$ dé
 	Soit $F$ un sous-espace vectoriel stable par $u$. On appelle \textbf{endomorphisme induit} par $u$ sur $F$ l'endomorphisme $u_F\in\mathcal{L}(F)$ défini par : $$\forall x\in F,\ u_F(x)=u(x)$$
 \end{dfn}
 
-\paragraph{Attention} On ne peut parler d'endomorphisme induit par $u$ sur un sous-espace vectoriel $F$ que dans le mesure où $F$ est stable par $u$. Dans ce cas, on distinguera soigneusement l'endomorphisme induit $u_F$, qui est une application linéaire de $F$ dans $F$, de la restriction $u_{\mid F}$ qui est une application linéaire de $F$ dans $E$.
+\begin{attention}
+	On ne peut parler d'endomorphisme induit par $u$ sur un sous-espace vectoriel $F$ que dans le mesure où $F$ est stable par $u$. Dans ce cas, on distinguera soigneusement l'endomorphisme induit $u_F$, qui est une application linéaire de $F$ dans $F$, de la restriction $u_{\mid F}$ qui est une application linéaire de $F$ dans $E$.
+\end{attention}
 
 \begin{rmq}
 	L'image de $u_F$ est $u(F)$ et son noyau est $\ker(u)\cap F$.
@@ -741,18 +875,18 @@ Soit $E$ un $\K$-espace vectoriel. L'espace vectoriel $\mathcal{L}(E,\K)$ des fo
 	Le noyau d'une forme linéaire non nulle sur $E$ est appelé \textbf{hyperplan} de $E$.
 \end{dfn}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Un sous-espace vectoriel $H$ de $E$ est un hyperplan si, et seulement s'il admet une droite pour supplémentaire. \\
 	De plus, si $H$ est un hyperplan, tout vecteur n'appartenant pas à $H$ engendre alors une droite supplémentaire de $H$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{}%lem
+\begin{lem}%lem
 	Soit $\varphi$ et $\psi$ deux formes linéaires sur $E$. Si $\ker(\varphi)\subset\ker(\psi)$, alors il existe $\lambda\in\K$ tel que $\psi=\lambda\varphi$.
-\end{thm}
+\end{lem}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Deux formes linéaires non nulles sur $E$ ont le même noyau si, et seulement si, elles sont proportionnelles.
-\end{thm}
+\end{prop}
 
 Exercice Moulin.EV.22
 
@@ -762,12 +896,12 @@ Exercice Moulin.EV.22
 	Soit $\mathcal{B}=(e_i)_{i\in I}$ une base de $E$. Les formes linéaires $e_i\st$ définies par $e_i\st(e_j)=\delta_{i,j}$ sont appelées\textbf{formes linéaires coordonnées} dans la base $\mathcal{B}$.
 \end{dfn}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{enumerate}
 		\item Pour tout $x\in E$, on a : $x=\displaystyle\sum_{i\in I}e_i\st(x)e_i$.
 		\item Les $e_i\st$ forment une famille libre de $E\st$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Si $E$ est de dimension infinie, la famille $(e_i\st)_{i\in I}$ est non génératrice de $E\st$ : prendre $f(x)=\sum_{i\in i}x_i$. \\
@@ -788,13 +922,13 @@ On suppose que $E$ est un espace vectoriel de dimension $n$.
 	Les éléments de $E$ et $E\st$ prennent donc, dans $\mathcal{B}$ et $\mathcal{B}\st$, les formes symétriques suivantes : $$\forall x\in E,\ x=\sum_{j=1}^{n}\langle e_j\st,x\rangle e_j$$ $$\forall \varphi\in E\st,\ \varphi=\sum_{i=1}^{n}\langle\varphi,e_i\rangle e_i\st$$
 \end{rmq}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Si $E$ est de dimension finie $n$, alors $E\st$ est de dimension finie $n$.
-\end{thm}
+\end{cor}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Les formes linéaires sur $E$ sont les fonctions de la forme : $$\sum_{j=1}^{n}x_je_j\longmapsto\sum_{i=1}^{n}a_ix_i\ \ \text{où}\ \ (a_1,\ldots,a_n)\in\K^n$$ et toute forme linéaire s'écrit de façon unique sous cette forme.
-\end{thm}
+\end{cor}
 
 \begin{exo}
 	Montrer que $\K[X]\st$ est isomorphe à $\K^\N$, et n'est donc pas de dimension dénombrable.
@@ -802,17 +936,17 @@ On suppose que $E$ est un espace vectoriel de dimension $n$.
 
 \subsubsection*{Hyperplans}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Les hyperplans de $E$ de dimension finie $n$ sont exactement ses sous-espaces vectoriels de dimension $n-1$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Tout sous-espace vectoriel strict d'un espace vectoriel de dimension finie est contenu dans un hyperplan.
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Tout hyperplan de $E$ admet, dans la base $\mathcal{B}$, une équation du type $\displaystyle\sum_{i=1}^{n}a_ix_i=0$, où $(a_1,\ldots,a_n)\in\K^n\setminus\{(0,\ldots,0)\}$, et une telle équation est unique à un facteur de proportionnalité près.
-\end{thm}
+\end{prop}
 
 \begin{ex}%utile pour la dualité en dimension finie
 	Soit $E$ un espace vectoriel de dimension quelconque. \\ Une famille $(\varphi_1,\ldots,\varphi_p)$ de formes linéaires sur $E$ est libre si, et seulement si, l'application linéaire : $$\begin{array}{lrcl}
@@ -825,12 +959,12 @@ On suppose que $E$ est un espace vectoriel de dimension $n$.
 
 Soit $E$ un espace vectoriel. Pour $x\in E$, on définit la forme linéaire $\hat{x}$ sur $E\st$ par $\hat{x}(\varphi)=\varphi(x)$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	L'application $\displaystyle\begin{array}{lrcl}
 		j:&E&\longrightarrow&(E\st)\st\\
 		&x&\longmapsto&\hat{x}
 	\end{array}$ est linéaire injective. \\ Si $E$ est de dimension finie, $j$ est un isomorphisme.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Pour un vecteur $x$ non nul, considérer une base de $E$ utilisant $x$.
 \end{proof}
@@ -860,13 +994,13 @@ Soit $E$ un espace vectoriel de dimension finie $n$.
 \end{itemize}
 On a les résultats symétriques pour l'application $B\mapsto B_\bot$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	On rappelle que $n=\dim(E)<+\infty$.
 	\begin{enumerate}
 		\item Si $F$ est un sous-espace vectoriel de dimension $p$ de $E$, alors $E^\bot$ est un sous-espace vectoriel de dimension $n-p$ de $E\st$.
 		\item Si $G$ est un sous-espace vectoriel de dimension $p$ de $E\st$, alors $G_\bot$ est un sous-espace vectoriel de dimension $n-p$ de $E$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 \begin{proof}
 	\begin{enumerate}
 		\item En considérant un supplémentaire $F'$ de $F$, on montre que $F^\bot$ est isomorphe à $(F')\st$.
@@ -878,24 +1012,24 @@ On a les résultats symétriques pour l'application $B\mapsto B_\bot$.
 	On peut déduire le deuxième point de la proposition précédente du premier en remarquant que $G_\bot=j\inv(G^\bot)$.
 \end{rmq}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $E$ un espace vectoriel de dimension finie.
 	\begin{enumerate}
 		\item Pour tout sous-espace vectoriel $F$ de $E$, on a : $(F^\bot)_\bot=F$.
 		\item pour tout sous-espace vectoriel $G$ de $E\st$, on a : $(G_\bot)^\bot=G$.
 	\end{enumerate}
-\end{thm}
+\end{cor}
 
 \subsubsection*{Intersection d'hyperplans}
 
 A l'aide des propositions précédentes, retrouver les résultats du cours de première année :
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{enumerate}
 		\item Si $E$ est un espace de dimension fini $n$, l'intersection de $m$ hyperplans est de dimension au moins $n-m$.
 		\item Tout sous-espace de $E$ de dimension $n-m$ est l'intersection de $m$ hyperplans.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Soit $(\varphi,\varphi_1,\ldots,\varphi_p)$ des formes linéaires sur un espace vectoriel $E$ de dimension finie. Montrer : $$\varphi\in\Vect(\varphi_1,\ldots,\varphi_n)\iff\bigcap_{i=1}^p\ker(\varphi_i)\subset\ker(\varphi)$$
@@ -956,18 +1090,18 @@ Soi $b$ une application bilinéaire de $E\times F$ dans $G$. Si $(\lambda_i)_{i\
 	\end{enumerate}
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Étant donnés trois $\K$-espaces vectoriels $E$, $F$ et $G$, une base $(e_i)_{i\in i}$ de $E$, une base $(f_j)_{j\in J}$ de $F$ et une famille de vecteurs $(z_{i,j})_{(i,j)\in I\times J}$ de $G$, il existe une unique application bilinéaire $b$ de $E\times F$ dans $G$ telle que :
 	$$\forall (i,j)\in I\times J,\ b(e_i,f_j)=z_{i,j}$$
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Si $\mathcal{B}=(e_1,\ldots,e_n)$ et $\mathcal{C}=(f_1,\ldots,f_p)$ sont des bases respectivement de $E$ et $F$, une forme bilinéaire $b$ sur $E\times F$ est caractérisée par sa matrice dans les base $\mathcal{B}$ et $\mathcal{C}$ : $$M_{\mathcal{B},\mathcal{C}}(b)=(b(e_i,f_j))_{(i,j)\in\llbracket1,n\rrbracket\times\llbracket1,p\rrbracket}\in\mathcal{M}_{n,p}(\K)$$ On en déduit que $\mathcal{BL}(E\times F,\K)$ est de dimension $np$.
 \end{ex}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Deux applications bilinéaires sur $E\times F$ sont égales si, et seulement si, elles coïncident sur tous les couples $(e_i,f_j)$, où $(e_i)_{i\in I}$ et $(f_j)_{j\in J}$ sont respectivement des bases de $E$ et $F$.
-\end{thm}
+\end{cor}
 
 \begin{exo}
 	Montrer la formule de Leibniz pour les polynômes : $$\forall (P,Q)\in\K[X]^2,\ \forall n\in\N,\ (PQ)^{(n)}=\sum_{k=0}^{n}\binom{n}{k}P^{(k)}Q^{(n-k)}$$
@@ -1028,9 +1162,9 @@ La structure d'algèbre est une notion très importante qui se rencontre fréque
 	Il arrive parfois, dans la définition d'une algèbre, que l'on n'impose pas l'existence d'un élément neutre multiplicatif. Il en est alors évidemment de même pour les sous-algèbres. Pour préciser que l'on suppose l'existence d'une élément neutre multiplicatif, on peut parler d'algèbres et de sous-algèbres \textbf{unitaires}.
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Toute intersection de sous-algèbres d'une algèbre $A$ est une sous-algèbre de $A$.
-\end{thm}
+\end{prop}
 
 \begin{dfn}
 	Étant donnée une partie $X$ de $A$, il existe une plus petite sous-algèbre de $A$ contenant $X$. On l'appelle la \textbf{sous-algèbre engendrée par $X$}.
@@ -1059,7 +1193,9 @@ Si $\mathcal{B}=(e_1,\ldots,e_n)$ est une base de $E$ et si l'on note $(x_1,\ldo
 	On dit que $f$ est un \textbf{isomorphisme d'algèbres} lorsqu'elle est bijective, que c'est un \textbf{endomorphisme d'algèbres} lorsque $A=B$ et que c'est un \textbf{automorphisme d'algèbres} lorsque c'est un endomorphisme bijectif.
 \end{dfn}
 
-\paragraph{Terminologie} Deux algèbres sont \textbf{isomorphes} lorsqu'il existe un isomorphisme d'algèbres entre elles.
+\begin{terminologie}
+	Deux algèbres sont \textbf{isomorphes} lorsqu'il existe un isomorphisme d'algèbres entre elles.
+\end{terminologie}
 
 \begin{ex}
 	\begin{enumerate}
@@ -1098,11 +1234,11 @@ Si $\mathcal{B}=(e_1,\ldots,e_n)$ est une base de $E$ et si l'on note $(x_1,\ldo
 
 \subsection{Éléments nilpotents}
 
-Soit $(A,+,.,\times)$ une $\K$-algèbre. En pratique, on prendra souvent $A=\mathcal{L}(E)$ où $E$ est un $\K$-espace vectoriel ou bien $A=\mathcal{M}_n(\K)$.
+Soit $(A,+,.\cdot,\times)$ une $\K$-algèbre. En pratique, on prendra souvent $A=\mathcal{L}(E)$ où $E$ est un $\K$-espace vectoriel ou bien $A=\mathcal{M}_n(\K)$.
 
-\paragraph{Rappel : itérés}
-
-Étant donnés $u\in A$ et $k\in\N$, on définit l'itéré $k$-ième de $u$, noté $u^k$, par récurrence : $$u^0=1_A\ \ \text{et}\ \ \forall k\in\N,\ u^{k+1}=u\times u^k$$ On dispose des règles de compatibilité suivantes : $$\forall (k,l)\in\N^2,\ u^k\times u^l=u^{k+l}$$
+\begin{rappel}
+	Étant donnés $u\in A$ et $k\in\N$, on définit l'itéré $k$-ième de $u$, noté $u^k$, par récurrence : $$u^0=1_A\ \ \text{et}\ \ \forall k\in\N,\ u^{k+1}=u\times u^k$$ On dispose des règles de compatibilité suivantes : $$\forall (k,l)\in\N^2,\ u^k\times u^l=u^{k+l}.$$
+\end{rappel}
 
 \begin{dfn}
 	Un élément $u\in A$ est dit \textbf{nilpotent} s'il existe $k\in\N$ tel que $u^k=0$. \\ Le plus petit de ces entiers est alors appelé \textbf{indice de nilpotence} de $u$.
@@ -1138,9 +1274,9 @@ Soit $(A,+,.,\times)$ une $\K$-algèbre. En pratique, on prendra souvent $A=\mat
 	\end{enumerate}
 \end{ex}
 
-\begin{thm}{(HP)}%prop
+\begin{prop}[HP]%prop
 	Si $u$ est nilpotent et si $p$ est tel que $u^p=0$, alors $1_A-u$ est inversible, et on a : $$(1_A-u)\inv=\sum_{k=0}^{p-1}u^k$$
-\end{thm}
+\end{prop}
 
 \subsubsection*{Majoration de l'indice de nilpotence par la dimension de l'espace}
 
@@ -1150,9 +1286,9 @@ Soit $E$ un espace vectoriel.
 	Si $u\in\mathcal{L}(E)$ est nilpotent d'indice $p$ et si $a\in E$ est tel que $u^{p-1}(a)\ne 0$, alors la famille $(a,u(a),\ldots,u^{p-1}(a))$ est libre.
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Supposons de dimension finie $n\in\N\st$. Si $u\in\mathcal{L}(E)$ est un endomorphisme nilpotent d'indice $p$, alors $p\leqslant n$.
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Si $p=n$, montrer qu'il existe une base de $E$ dans laquelle la matrice de $u$ est : $$\begin{pmatrix}
@@ -1192,9 +1328,9 @@ Soit $A$ une $\K$-algèbre.
 	\end{enumerate}
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $A$ une $\K$-algèbre et $u\in A$. L'application $P\mapsto P(u)$ est un morphisme d'algèbres de $\K[X]$ dans $A$.
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Montrer qu'il s'agit de l'unique morphisme d'algèbres de $\K[X]$ dans $A$ envoyant $X$ sur $u$.
@@ -1214,7 +1350,7 @@ Ces notions sont au programme uniquement lorsque $A=\mathcal{L}(E)$ ou $A=\mathc
 
 La structure des idéaux de $\K[X]$ est donnée par le théorème suivant.
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Soit $I$ un idéal de $\K[X]$. Il existe un unique polynôme $\Pi$, unitaire ou nul, tel que $I=\Pi\K[X]$, c'est-à-dire tel que $I$ soit l'ensemble des multiples de $\Pi$. \\
 	Lorsque $I\ne \{0\}$, le polynôme $\Pi$ est appelé \textbf{générateur unitaire} de $I$.
 \end{thm}
@@ -1246,18 +1382,18 @@ Si $u$ admet un polynôme minimal, tous ses polynômes annulateurs sont les mult
 
 Soit $u\in\mathcal{L}(E)$.
 
-\begin{thm}{Lemme de décomposition des noyaux}%thm
+\begin{thm}[Lemme de décomposition des noyaux]%thm
 	Soit $(P_1,\ldots,P_r)\in\K[X]^r$ une famille finie de polynôme deux à deux premiers entre eux et $P$ leur produit. On a alors la décomposition en somme directe : $$\ker(P(u))=\bigoplus_{i=1}^r\ker(P_i(u))$$
 \end{thm}
 \begin{proof}
 	On commence par $r=2$ en utilisant une relation de Bézout, puis on procède par récurrence sur $r$.
 \end{proof}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $(P_1,\ldots,P_r)\in\K[X]^r$ une famille finie de polynôme deux à deux premiers entre eux, $P$ leur produit et $u\in\mathcal{L}(E)$. \\
 	Si $P$ est un polynôme annulateur de $E$, alors on a la décomposition :
 	$$E=\bigoplus_{i=1}^r\ker(P_i(u))$$
-\end{thm}
+\end{cor}
 
 \begin{rmq}
 	On retrouve que si $p$ est un projecteur, alors $\ker(p)$ et $\ker(p-\text{Id})$ sont supplémentaires, et que si $s$ est une symétrie, alors $\ker(s-\text{Id})$ et $\ker(s+\text{Id})$ sont supplémentaires.
@@ -1290,12 +1426,12 @@ Soit $u\in\mathcal{L}(E)$.
 Soit $u$ un élément de l'algèbre $A$. \\
 On note $\K[u]=\left\{P(u)\ \mid\ P\in\K[X]\right\}$. C'est une sous-algèbre commutative de $A$ comme image du morphisme $P\mapsto P(u)$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{itemize}
 		\item Si $u$ admet un polynôme minimal et si on note $d$ le degré de $\pi_u$, alors $\K[u]$ est de dimension finie $d$ et la famille $(u^k)_{0\leqslant k\leqslant d-1}$ est une base de $\K[u]$.
 		\item Sinon, $\K[u]$ est isomorphe à $\K[X]$ donc de dimension infinie.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{met}
 	Pour décomposer $v=P(u)\in\K[u]$, on détermine le reste de la division euclidienne de $P$ par le polynôme minimal de $u$. Par exemple, pour calculer les puissances successives de $u$, on peut déterminer le reste de la division euclidienne de $X^p$, avec $p\in\N$, par le polynôme minimal de $u$.
@@ -1315,9 +1451,9 @@ On note $\K[u]=\left\{P(u)\ \mid\ P\in\K[X]\right\}$. C'est une sous-algèbre co
 
 \subsubsection*{Cas de la dimension finie}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Dans une algèbre de dimension finie, tout élément admet un polynôme minimal.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Soit $E$ un espace vectoriel de dimension $n$. Toute endomorphisme $u$ de $E$ admet un polynôme annulateur de degré inférieur ou égal à $n^2$. En fait, nous verrons que le polynôme minimal de $u$ est même de degré inférieur ou égal à $n$. \\ Nous avons déjà vu que c'est le cas pour les endomorphismes nilpotents.

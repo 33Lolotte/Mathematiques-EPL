@@ -20,9 +20,12 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
 
 \setlist[itemize]{label=$\bullet$}
-
+\setlist{before=\leavevmode, leftmargin=*}
 
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
@@ -43,6 +46,14 @@
 \newcommand{\im}{\text{Im}}
 \newcommand{\card}{\text{Card}}
 \newcommand{\Tr}{\text{Tr}}
+\newcommand{\Vect}{\text{Vect}}
+\newcommand{\rg}{\text{rg}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
+
 
 \theoremstyle{plain}
 \newtheorem*{ind}{Indication}
@@ -50,22 +61,130 @@
 \theoremstyle{definition}
 
 \newtheorem*{ex}{Exemple}
-\newtheorem*{met}{Point méthode}
-\newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
+\newtheorem*{notation}{Notation}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{terminologie}{Terminologie}
+\newtheorem*{attention}{Attention}
+\newtheorem*{conséquence}{Conséquence}
 
 \theoremstyle{remark}
 \newtheorem*{app}{Application}
 
-\newtcolorbox[auto counter]{dfn}{
+\newtcolorbox[auto counter]{dfn}[1][]{
 	enhanced,
-	breakable,
 	colback=white,
-	fonttitle=\sc,
-	title={Définition \thetcbcounter}
-	}
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
 
-\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
 
 \title{Endomorphismes d'un espace euclidien}
 \date{}
@@ -83,7 +202,7 @@ Dans ce chapitre, on considère un espace euclidien $E$ dont le produit scalaire
 \subsection{Formes bilinéaires symétriques, formes quadratiques (HP)}
 
 \begin{dfn}
-	On dit qu'une forme bilinéaire $\varphi$ sur $E$ est symétrique lorsque $$\forall (x,y)\in E^2,\ \varphi(x,y)=\varphi(y,x)$$ On note $\mathcal{BLS}(E)$ l'ensemble des formes bilinéaires symétriques sur $E$.
+	On dit qu'une forme bilinéaire $\varphi$ sur $E$ est symétrique lorsque $$\forall (x,y)\in E^2,\ \varphi(x,y)=\varphi(y,x).$$ On note $\mathcal{BLS}(E)$ l'ensemble des formes bilinéaires symétriques sur $E$.
 \end{dfn}
 
 \begin{dfn}
@@ -91,18 +210,18 @@ Dans ce chapitre, on considère un espace euclidien $E$ dont le produit scalaire
 \end{dfn}
 
 \begin{rmq}
-	Les formules de polarisation permettent de retrouver la forme bilinéaire symétrique $\varphi$ à partir de la forme quadratique $q$ : $$\forall (x,y)\in E^2,\ \varphi(x,y)=\frac{q(x+y)-q(x)-q(y)}{2}=\frac{q(x)+q(y)-q(x-y)}{2}=\frac{q(x+y)-q(x-y)}{4}$$
+	Les formules de polarisation permettent de retrouver la forme bilinéaire symétrique $\varphi$ à partir de la forme quadratique $q$ : $$\forall (x,y)\in E^2,\ \varphi(x,y)=\frac{q(x+y)-q(x)-q(y)}{2}=\frac{q(x)+q(y)-q(x-y)}{2}=\frac{q(x+y)-q(x-y)}{4}.$$
 \end{rmq}
 
 \subsubsection*{Matrice d'une forme bilinéaire}
-Soit $\mathcal{B}=(e_1,\ldots,e_n)$ une base de $E$. A toute forme bilinéaire $\varphi$ sur $E$, on associe sa matrice dans $\mathcal{B}$ définie par : $$M_\mathcal{B}(\varphi)=\left(\varphi(e_i,e_j)\right)_{1\leqslant i,j\leqslant n}$$ Cette matrice est symétrique si, et seulement si, $\varphi$ est une forme bilinéaire symétrique. De plus, si $(x,y)\in E^2$ et si on pose $X=M_\mathcal{B}(x)$ et $Y=M_\mathcal{B}(y)$, alors on dispose de la relation : $$\varphi(x,y)=X^TM_\mathcal{B}(\varphi)Y$$
+Soit $\mathcal{B}=(e_1,\ldots,e_n)$ une base de $E$. A toute forme bilinéaire $\varphi$ sur $E$, on associe sa matrice dans $\mathcal{B}$ définie par : $$M_\mathcal{B}(\varphi)=\left(\varphi(e_i,e_j)\right)_{1\leqslant i,j\leqslant n}$$ Cette matrice est symétrique si, et seulement si, $\varphi$ est une forme bilinéaire symétrique. De plus, si $(x,y)\in E^2$ et si on pose $X=M_\mathcal{B}(x)$ et $Y=M_\mathcal{B}(y)$, alors on dispose de la relation : $$\varphi(x,y)=X^TM_\mathcal{B}(\varphi)Y.$$
 
 \begin{exo}
 	Effet d'un changement de base sur la matrice d'une forme bilinéaire.
 \end{exo}
 
 \begin{dfn}
-	Une forme bilinéaire symétrique $\varphi$ (ou sa forme quadratique associée) est dite positive lorsque $$\forall x\in E,\ \varphi(x,x)\geqslant 0$$ Elle est définie positive si de plus $$\forall x\in E,\ \varphi(x,x)=0\implies x=0$$
+	Une forme bilinéaire symétrique $\varphi$ (ou sa forme quadratique associée) est dite positive lorsque $$\forall x\in E,\ \varphi(x,x)\geqslant 0$$ Elle est définie positive si de plus $$\forall x\in E,\ \varphi(x,x)=0\implies x=0.$$
 \end{dfn}
 
 \begin{dfn}
@@ -139,13 +258,13 @@ On considère $E$ un espace préhilbertien réel.
 	\end{array}$$
 \end{dfn}
 
-\begin{thm}{Inégalité de Cauchy-Schwarz}
+\begin{prop}[Inégalité de Cauchy-Schwarz]
 	La norme euclidienne associée au produit scalaire $(\cdot\mid\cdot)$ vérifie : 
 	\begin{enumerate}
 		\item $\forall (x,y)\in E^2,\ \lvert (x\mid y)\rvert\leqslant\lVert x\rVert\lVert y\rVert$
 		\item Cette inégalité est une égalité si, et seulement si, $x$ et $y$ sont colinéaires, c'est-à-dire si, et seulement si : $$\exists\lambda\in\R\ : \ y=\lambda x\ \ \text{ou}\ \ \exists\lambda\in\R\ : \ x=\lambda y$$
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	\begin{enumerate}
@@ -154,9 +273,9 @@ On considère $E$ un espace préhilbertien réel.
 	\end{enumerate}
 \end{ex}
 
-\begin{thm}{}
+\begin{prop}
 	La norme euclidienne $\lVert\cdot\rVert$ associée au produit scalaire $(\cdot\mid\cdot)$ est une norme. Elle vérifie donc en particulier l'inégalité triangulaire : $$\forall (x,y)\in E^2,\ \lVert x+y\rVert\leqslant\lVert x\rVert+\Vert y\rVert$$ En plus de l'inégalité triangulaire, on dispose dans le cas d'une norme euclidienne d'un cas d'égalité : il y a égalité dans l'inégalité triangulaire si, et seulement si, $x$ et $y$ sont colinéaires directs, c'est-à-dire si, et seulement si : $$\exists\lambda\in\R_+\ : \ y=\lambda x\ \ \text{ou}\ \ \exists\lambda\in\R_+\ : \ x=\lambda y$$
-\end{thm}
+\end{prop}
 
 \begin{rmq}[HP]
 	Si $\varphi$ est une forme bilinéaire symétrique positive sur $E$, on dispose toujours de l'inégalité de Cauchy-Schwarz : $$\forall (x,y)\in E^2,\ \varphi(x,y)^2\leqslant\varphi(x,x)\varphi(y,y)$$ On peut alors poser $N(x)=\sqrt{\varphi(x,x)}$ pour tout $x\in E$, définissant ainsi seulement une semi-norme sur $E$. La condition d'égalité dans l'inégalité de Cauchy-Schwarz devient : $$\exists\lambda\in\R\ : \ N(x+\lambda y)=0\ \ \text{ou}\ \ \exists\lambda\in\R\ : \ N(y+\lambda x)=0$$ et de même pour la condition d'égalité dans l'inégalité triangulaire.
@@ -170,25 +289,25 @@ On considère $E$ un espace préhilbertien réel.
 
 La norme euclidienne d'un espace vectoriel préhilbertien est définie à partir du produit scalaire. Réciproquement, si l'on connaît la norme euclidienne, on peut retrouver le produit scalaire grâce aux égalités suivantes appelées \textbf{formules (ou identités) de polarisation}.
 
-\begin{thm}{Formules de polarisation}
+\begin{prop}[Formules de polarisation]
 	Pour tout $(x,y)\in E^2$, on a :
 	\begin{itemize}
 		\item $2(x\mid y)=\lVert x+y\rVert^2-\lVert x\rVert^2-\lVert y\rVert^2=\lVert x\rVert^2+\lVert y\rVert^2-\lVert x-y\rVert^2$ ;
 		\item $4(x\mid y)=\lVert x+y\rVert^2-\lVert x-y\rVert^2$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 En combinant les deux premières formules de polarisation, on obtient le résultat suivant : 
 
-\begin{thm}{Identité du parallélogramme}
+\begin{prop}[Identité du parallélogramme]
 	Pour tout $(x,y)\in E^2$, on a $\lVert x+y\rVert^2+\lVert x-y\rVert^2=2(\lVert x\rVert^2+\lVert y\rVert^2)$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Cette égalité traduit le fait que, dans un parallélogramme, la somme des carrés des longueurs des deux diagonales est égale à la somme des carrés des longueurs des quatre côtés.
 \end{rmq}
 
-\begin{exo}
+\begin{exo}[$\star$]
 	Montrer que réciproquement, toute norme vérifiant l'identité du parallélogramme est issue d'un produit scalaire.
 \end{exo}
 
@@ -244,11 +363,12 @@ On considère $E$ un espace vectoriel réel muni d'une forme bilinéaire symétr
 	\end{enumerate}
 \end{exo}
 
-\begin{thm}{}
+\begin{thm}
 	Si $E$ est de dimension finie, il admet une base orthogonale.
 \end{thm}
 
 \subsection{Bases orthonormées}
+
 Soit $E$ un espace préhilbertien réel.
 
 \begin{dfn}
@@ -259,9 +379,9 @@ Soit $E$ un espace préhilbertien réel.
 	\end{itemize}
 \end{dfn}
 
-\begin{thm}{}
+\begin{prop}
 	Tout espace vectoriel euclidien admet une base orthonormée.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	\begin{enumerate}
@@ -274,13 +394,13 @@ Soit $E$ un espace préhilbertien réel.
 	Dans le deuxième exemple ci-dessus, s'agit-il d'une famille orthonormée ?
 \end{exo}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $E$ un espace vectoriel euclidien et $\mathcal{B}=(e_1,\ldots,e_n)$ une base orthonormée de $E$.
 	\begin{enumerate}
 		\item Si $x$ est un vecteur de $E$, alors on a $x=\displaystyle\sum_{i=1}^{n}(e_i\mid x)e_i$.
 		\item Si $x=\displaystyle\sum_{i=1}^{n}x_ie_i$ et $y=\displaystyle\sum_{i=1}^{n}y_ie_i$ sont deux vecteurs de $E$, alors on a : $$(x\mid y)=\sum_{i=1}^{n}x_iy_i=X^TY\ \ \text{et}\ \ \lVert x\rVert^2=\sum_{i=1}^{n}x_i^2=X^TX$$ où $X$ et $Y$ sont les matrices colonnes constituées des composantes dans la base $\mathcal{B}$ des vecteurs $x$ et $y$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Soit $O(t)$ un point et $\overrightarrow{u}(t)$, $\overrightarrow{v}(t)$ deux vecteurs orthonormées de l'espace, et $M(t)$ un point du plan $(O(t),\overrightarrow{u}(t),\overrightarrow{v}(t))$. On suppose que les fonctions $O$, $\overrightarrow{u}$, $\overrightarrow{v}$ et $M$ sont continues. Montrer que les coordonnées de $M(t)$ dans $(O(t),\overrightarrow{u}(t),\overrightarrow{v}(t))$ sont des fonctions continues de $t$.
@@ -292,17 +412,17 @@ Soit $E$ un espace vectoriel préhilbertien.
 
 \subsubsection*{Orthogonal d'un sous-espace de dimension finie}
 
-\begin{thm}{}
+\begin{thm}
 	Pour tout sous-espace vectoriel $F$ de dimension finie de $E$, on a $E=F\oplus F^\bot$. La \textbf{projection orthogonale} sur $F$, notée $\pi_F$ est la projection sur $F$ parallèlement à son supplémentaire orthogonal $F^\bot$. Si $\mathcal{B}=(e_1,\ldots,e_p)$ est une base orthonormée de $F$, le projeté orthogonal sur $F$ d'un vecteur $x$ de $E$ est $$\pi_F(x)=\sum_{i=1}^{p}(e_i\mid x)e_i$$
 \end{thm}
 
-\begin{thm}{}
+\begin{prop}
 	Si $F$ est un sous-espace vectoriel de $E$ et si $E$ est de dimension finie, alors :
 	\begin{enumerate}
 		\item $\dim(F)+\dim(F^\bot)=\dim(E)$ ;
 		\item $(F^\bot)^\bot=F$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	En dimension finie, le supplémentaire orthogonal d'un hyperplan est donc une droite, et le supplémentaire orthogonal d'une droite, un hyperplan.
@@ -314,7 +434,7 @@ Soit $E$ un espace vectoriel préhilbertien.
 	Soit $\mathcal{X}$ une partie non vide de $E$ et $A$ un point de $E$. On appelle \textbf{distance} de $A$ à $\mathcal{X}$ la quantité : $$d(A,\mathcal{X})=\underset{M\in\mathcal{X}}{\inf}d(A,M)$$
 \end{dfn}
 
-\begin{thm}{}
+\begin{thm}[Projection orthogonale sur un sous-espace de dimension finie]
 	Soit $F$ un sous-espace vectoriel de dimension finie d'un espace préhilbertien réel $E$ et $x$ un vecteur de $E$. La distance du vecteur $x$ à $F$ est atteinte en un unique point de $F$, à savoir $\pi_F(x)$. Autrement dit : 
 	\begin{enumerate}
 		\item $d(x,F)=\lVert x-\pi_F(x)\rVert$ ;
@@ -336,7 +456,7 @@ Soit $E$ un espace vectoriel préhilbertien.
 
 \subsection{Procédé d'orthonormalisation de Gram-Schmidt}
 
-\begin{thm}{Algorithme d'orthogonalisation de Gram-Schmidt}
+\begin{thm}[Algorithme d'orthogonalisation de Gram-Schmidt]
 	Soit $\mathcal{F}=(e_1,\ldots,e_n)$ une famille libre de $E$. Alors il existe une famille orthogonale $(g_1,\ldots,g_n)$ de vecteurs (non nuls) de $E$ telle que $$\forall p\in\llbracket 1,n\rrbracket,\ \text{Vect}\{e_1,\ldots,e_p\}=\text{Vect}\{g_1,\ldots,g_p\}$$
 \end{thm}
 
@@ -351,13 +471,13 @@ Soit $E$ un espace vectoriel préhilbertien.
 	Montrer que si $(e_1,\ldots,e_n)$ est une famille libre de $E$, alors il existe une unique famille orthonormée $(f_1,\ldots,f_n)$ de $E$ telle que pour tout $p\in\llbracket1,n\rrbracket$, on ait : $$\text{Vect}\{e_1,\ldots,e_p\}=\text{Vect}\{f_1,\ldots,f_p\}\ \ \text{et}\ \ (e_p\mid f_p)>0$$
 \end{exo}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $(e_n)_{n\in\N}$ une famille libre d'un espace préhilbertien réel $E$. Alors, il existe une famille orthonormée $(f_n)_{n\in\N}$ telle que $$\forall n\in\N,\ \text{Vect}\{e_0,\ldots,e_n\}=\text{Vect}\{f_0,\ldots,f_n\}$$
-\end{thm}
+\end{prop}
 
-\begin{thm}{(HP)}
+\begin{prop}[HP]
 	Tout espace préhilbertien réel de dimension dénombrable possède une base orthonormée.
-\end{thm}
+\end{prop}
 
 \subsection{Matrices de Gram (HP)}
 
@@ -380,13 +500,13 @@ Dans toute cette section, $E$ est un espace euclidien.
 
 Pour tout vecteur $a$, l'application $x\mapsto (a\mid x)$ est une forme linéaire sur $E$. Le théorème de Riesz permet de montrer réciproquement que toute forme linéaire sur $E$ est de cette forme.
 
-\begin{thm}{}
+\begin{thm}[Représentation des formes linéaires sur $E$]
 	Soit $\varphi$ une forme linéaire sur $E$. Il existe un unique vecteur $a\in E$ tel que $$\forall x\in E,\ \varphi(x)=(a\mid x)$$
 \end{thm}
 
 Le théorème de Riesz permet de définir l'adjoint d'un endomorphisme de $E$.
 
-\begin{thm}{Théorème de représentation de Riesz}
+\begin{thm}[Théorème de représentation de Riesz]
 	Soit $u\in\mathcal{L}(E)$. Il existe un unique endomorphisme de $E$, noté $u\st$, tel que $$\forall (x,y)\in E^2,\ (x\mid u(y))=(u\st(x)\mid y)$$ On l'appelle l'\textbf{adjoint} de $u$.
 \end{thm}
 
@@ -396,17 +516,17 @@ Le théorème de Riesz permet de définir l'adjoint d'un endomorphisme de $E$.
 
 L'adjoint peut aussi exister en dimension infinie.
 \begin{ex}
-	On munit $\R[X]$ du produit scalaire définie par $$(P\mid Q)=\int_{-\infty}^{+\infty}P(x)Q(x)e^{-x^2}\ dx$$ En notant $D$ l'opérateur de dérivation et $M$ celui de multiplication par $X$, on a $M\st=M$ et $D\st=2M-D$.
+	On munit $\R[X]$ du produit scalaire défini par $$(P\mid Q)=\int_{-\infty}^{+\infty}P(x)Q(x)e^{-x^2}\ dx$$ En notant $D$ l'opérateur de dérivation et $M$ celui de multiplication par $X$, on a $M\st=M$ et $D\st=2M-D$.
 \end{ex}
 
 \subsection{Propriétés}
 
-\begin{thm}{}
+\begin{prop}
 	\begin{itemize}
 		\item L'application $u\mapsto u\st$ est linéaire sur $\mathcal{L}(E)$.
 		\item Pour tout $(u,v)\in \mathcal{L}(E)^2$, dispose des relations : $$(v\circ u)\st=u\st\circ v\st \ \ \text{et}\ \ (u\st)\st=u$$
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	De la propriété précédente découle le fait que $u\mapsto u\st$ est une symétrie de l'espace vectoriel $\mathcal{L}(E)$.
@@ -419,29 +539,29 @@ L'adjoint peut aussi exister en dimension infinie.
 	\end{enumerate}
 \end{ex}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $u\in\mathcal{L}(E)$ et $\mathcal{B}$ une base orthonormée de $E$. Alors $M_\mathcal{B}(u\st)=M_\mathcal{B}(u)^T$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	On munit $\R^n$ de sa structure euclidienne canonique. Soit $A\in\mathcal{M}_n(\R)$ dont on note $\varphi_A$ l'endomorphisme canoniquement associé. Alors $(\varphi_A)\st$ est l'endomorphisme canoniquement associé à $A^T$ car la base canonique de $\R^n$ est une base orthonormée.
 \end{rmq}
 
-\begin{thm}{}
+\begin{cor}
 	Soit $u\in\mathcal{L}(E)$. Alors on a : $$\det(u\st)=\det(u)\ ; \ \Tr(u\st)=\Tr(u)\ \text{et}\ \text{rg}(u\st)=\text{rg}(u)$$
-\end{thm}
+\end{cor}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $u\in\mathcal{L}(E)$. Alors on a : $$\ker(u\st)=\text{Im}(u)^\bot \ \ \text{et} \ \ \text{Im}(u\st)=\ker(u)^\bot$$
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	En remplaçant $u$ par $u\st$ et en utilisant le fait que $(u\st)\st=u$, on obtient aussi : $$\ker(u)=\text{Im}(u\st)^\bot \ \ \text{et} \ \ \text{Im}(u)=\ker(u\st)^\bot$$
 \end{rmq}
 
-\begin{thm}{}
+\begin{lem}
 	Soit $u\in\mathcal{L}(E)$ et $F$ un sous-espace vectoriel de $E$ stable par $u$. Alors $F^\bot$ est stable par $u$.
-\end{thm}
+\end{lem}
 
 \section{Matrices orthogonales}
 
@@ -451,9 +571,11 @@ L'adjoint peut aussi exister en dimension infinie.
 	Soit $A\in\mathcal{M}_n(\R)$. On dit que $A$ est une matrice orthogonale lorsque $A^TA=I_n$.
 \end{dfn}
 
-\paragraph{Notation} On note $\mathcal{O}_n(\R)$ ou encore $\mathcal{O}(n)$ l'ensemble des matrices orthogonales de $\mathcal{M}_n(\R)$.
+\begin{notation}
+	On note $\mathcal{O}_n(\R)$ ou encore $\mathcal{O}(n)$ l'ensemble des matrices orthogonales de $\mathcal{M}_n(\R)$.
+\end{notation}
 
-\begin{thm}
+\begin{prop}
 	Soit $A\in\mathcal{M}_n(\R)$ dont note note $C_1,\ldots,C_n$ les colonnes et $L_1,\ldots,L_n$ les lignes (vues comme des vecteurs de $\R^n$). Alors la matrice $A$ est orthogonale si, et seulement si, l'une des propriétés équivalentes suivantes est vérifiée :
 	\begin{enumerate}[label=(\roman*)]
 		\item $A^TA=I_n$ ;
@@ -462,7 +584,7 @@ L'adjoint peut aussi exister en dimension infinie.
 		\item la famille $(C_1,\ldots,C_n)$ est une base orthonormée ;
 		\item la famille $(L_1,\ldots,L_n)$ est une base orthonormée.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	\begin{enumerate}
@@ -481,9 +603,9 @@ L'adjoint peut aussi exister en dimension infinie.
 
 La propriété suivante exprime le fait que les matrices de $\mathcal{O}_n(\R)$ sont les matrices de changement de base orthonormée dans n'importe quel espace euclidien de dimension $n$.
 
-\begin{thm}{}
+\begin{prop}
 	Soit $\mathcal{B}$ une base orthonormée de $E$ et $\mathcal{B}'$ une famille de $n$ vecteurs de $E$. Alors $\mathcal{B}'$ est une base orthonormée de $E$ si, et seulement si, $M_\mathcal{B}(\mathcal{B}')\in\mathcal{O}_n(\R)$.
-\end{thm}
+\end{prop}
 
 \begin{dfn}
 	Deux matrices $A$ et $B$ de $\mathcal{M}_n(\R)$ sont dites \textbf{orthogonalement semblables} lorsque : $$\exists P\in\mathcal{O}_n(\R)\ : \ A=PBP\inv$$
@@ -511,19 +633,24 @@ La propriété suivante exprime le fait que les matrices de $\mathcal{O}_n(\R)$ 
 	\end{itemize}
 \end{dfn}
 
-\paragraph{Notation} On note $\mathcal{SO}_n(\R)$ l'ensemble des matrices orthogonales positives de $\mathcal{M}_n(\R)$, aussi appelées \textbf{matrices de rotations}.
+\begin{notation}
+	On note $\mathcal{SO}_n(\R)$ l'ensemble des matrices orthogonales positives de $\mathcal{M}_n(\R)$, aussi appelées \textbf{matrices de rotations}.
+\end{notation}
 
-\begin{thm}{}
+\begin{prop}
 	Les ensembles $\mathcal{O}_n(\R)$ et $\mathcal{SO}_n(\R)$ sont des sous-groupes de $\mathcal{GL}_n(\R)$.
-\end{thm}
+\end{prop}
 
-\paragraph{Terminologie} Ces groupes sont respectivement appelés \textbf{groupe orthogonale d'ordre n} et \textbf{groupe spécial orthogonal d'ordre n}.
+\begin{terminologie}
+	Ces groupes sont respectivement appelés \textbf{groupe orthogonal d'ordre n} et \textbf{groupe spécial orthogonal d'ordre n}.
+\end{terminologie}
 
 \subsection{Espaces euclidiens orientés}
 
 Dans cette sous-section, on suppose que $E$ est un espace euclidien non nul.
 
-\paragraph{Rappel} On définit sur l'ensemble des bases de $E$ une relation d'équivalence en posant :
+\begin{rappel}
+	On définit sur l'ensemble des bases de $E$ une relation d'équivalence en posant :
 $$\mathcal{B}\mathcal{R}\mathcal{B}'\iff \det_\mathcal{B}(\mathcal{B}')>0$$
 \begin{itemize}
 	\item Pour cette relation, il y a deux classes d'équivalence.
@@ -531,20 +658,23 @@ $$\mathcal{B}\mathcal{R}\mathcal{B}'\iff \det_\mathcal{B}(\mathcal{B}')>0$$
 	\item On oriente $\R^n$, pour $n>0$, en décrétant directe sa base canonique.
 	\item Lorsque $\mathcal{B}\mathcal{R}\mathcal{B}'$, on dit que les bases $\mathcal{B}$ et $\mathcal{B}'$ définissent la même orientation.
 \end{itemize}
+\end{rappel}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $\mathcal{B}$ une base orthonormée de $E$ et $\mathcal{B}'$ une famille de $n$ vecteurs de $E$. Alors $\mathcal{B}'$ est une base orthonormée de même orientation que $\mathcal{B}$ si, et seulement si, $M_\mathcal{B}(\mathcal{B}')\in\mathcal{SO}_n(\R)$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Les matrices orthogonales positives sont donc les matrices de changement de bases orthonormées directes. En particulier, $A\in\mathcal{SO}_n(\R)$ si, et seulement si, la famille des colonnes de $A$ est une base orthonormée directe de $\R^n$.
 \end{rmq}
 
-\begin{thm}{}
-	Soit $\mathcal{B}$ et $\mathcal{B}'$ deux bases orthonormées directes de $E$. Alors on a : $$\det_\mathcal{B}=\det_{\mathcal{B}'}$$
-\end{thm}
+\begin{prop}
+	Soit $\mathcal{B}$ et $\mathcal{B}'$ deux bases orthonormées directes de $E$. Alors on a : $$\det_\mathcal{B}=\det_{\mathcal{B}'}.$$
+\end{prop}
 
-\paragraph{Terminologie} Pour $(u_1,\ldots,u_n)\in E^n$, le réel $\det_\mathcal{B}(u_1,\ldots,u_n)$, indépendant de la base orthonormée directe $\mathcal{B}$ choisie, est appelé \textbf{produit mixte} de $(u_1,\ldots,u_n)$ et parfois noté $[u_1,\ldots,u_n]$.
+\begin{terminologie}
+	Pour $(u_1,\ldots,u_n)\in E^n$, le réel $\det_\mathcal{B}(u_1,\ldots,u_n)$, indépendant de la base orthonormée directe $\mathcal{B}$ choisie, est appelé \textbf{produit mixte} de $(u_1,\ldots,u_n)$ et parfois noté $[u_1,\ldots,u_n]$.
+\end{terminologie}
 
 \begin{dfn}
 	On suppose $n\geqslant 2$. Pour $(u_1,\ldots,u_{n-1})\in E^{n-1}$, on considère $$\begin{array}{lrcl}
@@ -565,34 +695,40 @@ $$\mathcal{B}\mathcal{R}\mathcal{B}'\iff \det_\mathcal{B}(\mathcal{B}')>0$$
 \subsection{Généralités}
 
 \begin{dfn}
-	On dit qu'un endomorphisme $u\in\mathcal{L}(E)$ est \textbf{autoadjoint} lorsque $u\st=u$, c'est-à-dire lorsque $$\forall (x,y)\in E^2,\ (x\mid u(y))=(u(x)\mid y)$$
+	On dit qu'un endomorphisme $u\in\mathcal{L}(E)$ est \textbf{autoadjoint} lorsque $u\st=u$, c'est-à-dire lorsque $$\forall (x,y)\in E^2,\ (x\mid u(y))=(u(x)\mid y).$$
 \end{dfn}
 
-\paragraph{Notation} L'ensemble des endomorphismes autoadjoints de $E$ est noté $\mathcal{S}(E)$.
+\begin{notation}
+	L'ensemble des endomorphismes autoadjoints de $E$ est noté $\mathcal{S}(E)$.
+\end{notation}
 
-\paragraph{Terminologie} Un endomorphisme autoadjoint est parfois appelé \textbf{endomorphisme symétrique}, ce qui explique la notation $\mathcal{S}(E)$.
+\begin{notation}
+	Un endomorphisme autoadjoint est parfois appelé \textbf{endomorphisme symétrique}, ce qui explique la notation $\mathcal{S}(E)$.
+\end{notation}
 
-\begin{thm}{}
+\begin{prop}
 	L'ensemble $\mathcal{S}(E)$ est un sous-espace vectoriel de $\mathcal{L}(E)$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{}
-	Soit $\mathcal{B}$ une base orthonormée de $E$ et $u\in\mathcal{L}(E)$. Alors : $$u\in \mathcal{S}(E)\iff M_\mathcal{B}(u)\in\mathcal{S}_n(\R)$$
-\end{thm}
+\begin{prop}
+	Soit $\mathcal{B}$ une base orthonormée de $E$ et $u\in\mathcal{L}(E)$. Alors : $$u\in \mathcal{S}(E)\iff M_\mathcal{B}(u)\in\mathcal{S}_n(\R).$$
+\end{prop}
 
 \begin{rmq}
 	On munit $\R^n$ de sa structure euclidienne canonique, si bien que la base canonique est une bas orthonormée. Soit $A\in\mathcal{M}_n(\R)$. L'endomorphisme canoniquement associé à la matrice $A$ est autoadjoint si, et seulement si, $A\in\mathcal{S}_n(\R)$.
 \end{rmq}
 
-\paragraph{Attention} L'ensemble $\mathcal{S}(E)$ n'est en général pas stable par composition.
+\begin{attention}
+	L'ensemble $\mathcal{S}(E)$ n'est en général pas stable par composition.
+\end{attention}
 
-\begin{thm}{}
+\begin{cor}
 	L'espace vectoriel $\mathcal{S}(E)$ est de dimension $\displaystyle\frac{n(n+1)}{2}$.
-\end{thm}
+\end{cor}
 
-\begin{thm}{}
+\begin{lem}
 	Soit $u\in\mathcal{S}(E)$ et $F$ un sous-espace vectoriel stable par $u$. Alors l'endomorphisme induit $u_F$ est autoadjoint.
-\end{thm}
+\end{lem}
 
 \subsubsection*{Projecteurs orthogonaux}
 
@@ -604,9 +740,9 @@ $$\mathcal{B}\mathcal{R}\mathcal{B}'\iff \det_\mathcal{B}(\mathcal{B}')>0$$
 	Si $p$ est un projecteur orthogonal, on a la décomposition : $$E=\text{Im}(p)\overset{\bot}{\oplus}\ker(p)\ \ \text{donc} \ \ \text{Im}(p)=\ker(p)^\bot\ \ \text{et}\ \ \ker(p)=\text{Im}(p)^\bot$$
 \end{rmq}
 
-\begin{thm}{}
+\begin{prop}
 	Un projecteur de $E$ est orthogonal si, et seulement s'il est autoadjoint.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	On munit $\R^n$ de sa structure euclidienne canonique. Soit $A\in\mathcal{M}_n(\R)$. L'endomorphisme canoniquement associé à $A$ est un projecteur orthogonal si, et seulement si, $A^2=A$ et $A\in\mathcal{S}_n(\R)$.
@@ -618,21 +754,21 @@ $$\mathcal{B}\mathcal{R}\mathcal{B}'\iff \det_\mathcal{B}(\mathcal{B}')>0$$
 
 \subsection{Réduction des endomorphismes}
 
-\begin{thm}{}
+\begin{lem}
 	Soit $u$ un endomorphisme d'un $\R$-espace vectoriel $E$ de dimension finie non nulle. Alors il existe une droite ou un plan stable par $u$.
-\end{thm}
+\end{lem}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $u\in\mathcal{S}(E)$ et $F$ sous-espace vectoriel stable par $u$. Alors $F^\bot$ est stable par $u\st$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{}
+\begin{lem}
 	Les sous-espaces propres d'un endomorphisme autoadjoint sont deux à deux orthogonaux.
-\end{thm}
+\end{lem}
 
 Dans le théorème suivant et dans le reste du chapitre, $E_\lambda(u)$ désigne le sous-espace propre de l'endomorphisme $u$ associé à la valeur propre $\lambda$.
 
-\begin{thm}{Théorème spectral}
+\begin{thm}[Théorème spectral]
 	Soit $u\in\mathcal{L}(E)$. les propositions suivantes sont équivalentes :
 	\begin{enumerate}
 		\item $u$ est autoadjoint ;
@@ -652,18 +788,20 @@ Dans le théorème suivant et dans le reste du chapitre, $E_\lambda(u)$ désigne
 	\end{enumerate}
 \end{exo}
 
-\begin{thm}{}
+\begin{cor}
 	Une matrice $A\in\mathcal{M}_n(\R)$ est symétrique si, et seulement si, elle est orthogonalement semblable à une matrice diagonale.
-\end{thm}
+\end{cor}
 
 \begin{rmq}
 	Le corollaire précédent fournit une condition suffisant extrêmement simple de diagonalisabilité d'une matrice réelle : il suffit qu'elle soit symétrique.
 \end{rmq}
 
-\paragraph{Attention} Ce résultat n'est plus vrai pour les matrices complexes. La matrice complexe symétrique $\displaystyle\begin{pmatrix}
+\begin{attention}
+	Ce résultat n'est plus vrai pour les matrices complexes. La matrice complexe symétrique $\displaystyle\begin{pmatrix}
 	i&1\\
 	1&-i
 \end{pmatrix}$ est nilpotente, non nulle, donc n'est pas diagonalisable.
+\end{attention}
 
 \begin{ex}
 	On considère $A=\displaystyle\begin{pmatrix}
@@ -694,7 +832,7 @@ Dans le théorème suivant et dans le reste du chapitre, $E_\lambda(u)$ désigne
 	Soit $A\in\mathcal{M}_n(\R)$. On suppose que pour tout matrice $P\in\mathcal{O}_n(\R)$, la matrice $P\inv AP$ est à diagonale nulle. Montrer que $A$ est antisymétrique.
 \end{exo}
 
-\begin{thm}{Représentation des formes bilinéaires (HP)}
+\begin{thm}[Représentation des formes bilinéaires (HP)]
 	Pour tout endomorphisme $u$ de $E$, on note : $$\begin{array}{lrcl}
 		\varphi_u:&E^2&\longrightarrow&\R \\
 		&(x,y)&\longmapsto&(x\mid u(y))
@@ -723,7 +861,9 @@ Dans le théorème suivant et dans le reste du chapitre, $E_\lambda(u)$ désigne
 	\end{itemize}
 \end{dfn}
 
-\paragraph{Notation} L'ensemble des endomorphismes autoadjoints positifs (respectivement définis positifs) de $E$ est noté $\mathcal{S}^+(E)$ (respectivement $\mathcal{S}^{++}(E)$).
+\begin{notation}
+	L'ensemble des endomorphismes autoadjoints positifs (respectivement définis positifs) de $E$ est noté $\mathcal{S}^+(E)$ (respectivement $\mathcal{S}^{++}(E)$).
+\end{notation}
 
 \begin{rmq}
 	Comme $u$ est autoadjoint, la forme bilinéaire $(x,y)\mapsto (x\mid u(y))$ est symétrique.
@@ -742,13 +882,13 @@ Dans le théorème suivant et dans le reste du chapitre, $E_\lambda(u)$ désigne
 
 La propriété suivante fournit une caractérisation des endomorphismes autoadjoints (définis) positifs à l'aide de leur spectre.
 
-\begin{thm}{}
+\begin{prop}
 	Soit $u\in\mathcal{S}(E)$. On a les équivalences suivantes : 
 	\begin{itemize}
 		\item $u\in\mathcal{S}^+(E)\iff \text{Sp}(u)\subset\R_+$ ;
 		\item $u\in\mathcal{S}^{++}(E)\iff \text{Sp}(u)\subset\R_+\st$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Si $u$ est un endomorphisme autoadjoint d'un espace vectoriel euclidien non nul, on a : $$\underset{\lVert x\rVert=1}{\min}(x\mid u(x))=\min\text{Sp}(u)\ \ \text{et}\ \ \underset{\lVert x\rVert=1}{\max}(x\mid u(x))=\max\text{Sp}(u)$$
@@ -764,7 +904,9 @@ Munissons $\R^n$ de sa structure euclidienne canonique. En appliquant les défin
 	\end{itemize}
 \end{dfn}
 
-\paragraph{Notation} On note respectivement $\mathcal{S_n}^+(\R)$ et $\mathcal{S}_n^{++}(\R)$ l'ensemble des matrices symétriques positives et l'ensemble des matrices symétriques définies positives.
+\begin{notation}
+	On note respectivement $\mathcal{S_n}^+(\R)$ et $\mathcal{S}_n^{++}(\R)$ l'ensemble des matrices symétriques positives et l'ensemble des matrices symétriques définies positives.
+\end{notation}
 
 \begin{ex}
 	\begin{enumerate}
@@ -777,7 +919,7 @@ Munissons $\R^n$ de sa structure euclidienne canonique. En appliquant les défin
 
 \subsection{Applications (HP)}
 
-\begin{thm}{Pseudo-réduction simultanée}
+\begin{thm}[Pseudo-réduction simultanée]
 	Soit $A\in\mathcal{S}_n^{++}(\R)$ et $B\in\mathcal{S}_n(\R)$. Alors il existe une matrice $P\in\mathcal{GL}_n(\R)$ et une matrice diagonale $D\in\mathcal{M}_n(\R)$ telles que $$A=P^TP\ \ \text{et}\ \ B=P^TDP$$
 \end{thm}
 
@@ -785,13 +927,13 @@ Munissons $\R^n$ de sa structure euclidienne canonique. En appliquant les défin
 	On considère $E$ l'espace vectoriel euclidien $\R^n$ muni du produit scalaire $(X,Y)\mapsto X^TAY$. Ensuite, $q:X\mapsto X^TBX$ est une forme quadratique sur $E$. On prend alors $u\in\mathcal{S}(E)$ telle que $\forall x\in E,\ q(x)=(x\mid u(x))$ d'après le théorème de représentation des formes bilinéaires symétriques. On fixe $\mathcal{B}$ une base orthonormée de diagonalisation de $u$. Alors : $$M_\mathcal{B}(u)=D\ \ \text{donc} \ \ M_\mathcal{B}(q)=D$$ Or, on a aussi $M_{\mathcal{B}_c}(q)=B$ et on a : $$M_\mathcal{B}((\cdot\mid\cdot))=I_n \ \ \text{et} \ \ M_{\mathcal{B}_c}((\cdot\mid\cdot))=A$$ Par conséquent, il existe $P\in\mathcal{GL}_n(\R)$ telle que $$A=P^TI_nP\ \ \text{et}\ \ B=P^TDP$$
 \end{proof}
 
-\begin{thm}{Racine carrée}
+\begin{thm}[Racine carrée]
 	Soit $u$ un endomorphisme autoadjoint positif. Alors, il existe un unique endomorphisme autoadjoint positif $v$ tel que $u=v^2$.
 \end{thm}
 
-\begin{thm}{Décomposition polaire}
+\begin{cor}[Décomposition polaire]
 	Soit $M\in\mathcal{GL}_n(\R)$. Alors, il existe un unique couple $(O,S)\in\mathcal{O}_n(\R)\times\mathcal{S}_n^{+}(\R)$ tel que $M=OS$.
-\end{thm}
+\end{cor}
 
 \begin{exo}
 	Montrer que le résultat d'existence subsiste pour tout matrice de $\mathcal{M}_n(\R)$. Y a-t-il encore unicité ?
@@ -805,13 +947,15 @@ Munissons $\R^n$ de sa structure euclidienne canonique. En appliquant les défin
 	Soit $u\in\mathcal{L}(E)$. On dit que $u$ est une \textbf{isométrie vectorielle} lorsque $$\forall x\in E,\ \lVert u(x)\rVert=\lVert x\rVert$$
 \end{dfn}
 
-\paragraph{Notation} On note $\mathcal{O}(E)$ l'ensemble des isométries vectorielles de $E$.
+\begin{notation}
+	On note $\mathcal{O}(E)$ l'ensemble des isométries vectorielles de $E$.
+\end{notation}
 
 \begin{rmq}
 	Attention ! La notion d'isométrie vectorielle dépend de la norme euclidienne et donc du produit scalaire. On pourra donc, dans certains cas où ce n'est pas clair, indexer $\mathcal{O}(E)$ par le produit scalaire correspondant.
 \end{rmq}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $u\in\mathcal{L}(E)$. Soit $\mathcal{B}$ une base orthonormée de $E$. Les propriétés suivantes sont équivalentes : \begin{enumerate}[label=(\roman*)]
 		\item $u\in\mathcal{O}(E)$ ;
 		\item $\forall (x,y)\in E^2,\ \left(u(x)\mid u(y)\right)=(x\mid y)$ ;
@@ -819,13 +963,15 @@ Munissons $\R^n$ de sa structure euclidienne canonique. En appliquant les défin
 		\item $M_\mathcal{B}(u)\in\mathcal{O}_n(\R)$ ;
 		\item la famille $u(\mathcal{B})$ est une base orthonormée de $E$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
-\paragraph{Terminologie} Une isométrie étant un élément de $\mathcal{GL}(E)$, on parle parfois d'\textbf{automorphisme orthogonal} pour désigner un tel élément, ce qui explique la notation $\mathcal{O}(E)$.
+\begin{terminologie}
+	Une isométrie étant un élément de $\mathcal{GL}(E)$, on parle parfois d'\textbf{automorphisme orthogonal} pour désigner un tel élément, ce qui explique la notation $\mathcal{O}(E)$.
+\end{terminologie}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $u\in\mathcal{O}(E)$. Alors, $\det(u)\in\{-1,1\}$.
-\end{thm}
+\end{prop}
 
 \begin{dfn}
 	Une isométrie vectorielle $u\in\mathcal{O}(E)$ est dite :
@@ -835,23 +981,29 @@ Munissons $\R^n$ de sa structure euclidienne canonique. En appliquant les défin
 	\end{itemize}
 \end{dfn}
 
-\paragraph{Notation} On note $\mathcal{SO}(E)$ l'ensemble des isométries positives de $E$, aussi appelées \textbf{rotations} de $E$.
+\begin{notation}
+	On note $\mathcal{SO}(E)$ l'ensemble des isométries positives de $E$, aussi appelées \textbf{rotations} de $E$.
+\end{notation}
 
-\begin{thm}{}
-	Soit $u\in\mathcal{L}(E)$ et $\mathcal{B}$ une base orthonormée de $E$. Alors, on a : $$u\in\mathcal{SO}(E)\iff M_\mathcal{B}(u)\in\mathcal{SO}_n(\R)$$
-\end{thm}
+\begin{prop}
+	Soit $u\in\mathcal{L}(E)$ et $\mathcal{B}$ une base orthonormée de $E$. Alors, on a : $$u\in\mathcal{SO}(E)\iff M_\mathcal{B}(u)\in\mathcal{SO}_n(\R).$$
+\end{prop}
 
-\paragraph{Conséquence} On munit $\R^n$ de sa structure euclidienne orientée canonique. Soit $A\in\mathcal{M}_n(\R)$. La matrice $A$ est orthogonale (respectivement orthogonale positive) si, et seulement si, l'endomorphisme canoniquement associé à $A$ est une isométrie (respectivement une isométrie directe).
+\begin{conséquence}
+	On munit $\R^n$ de sa structure euclidienne orientée canonique. Soit $A\in\mathcal{M}_n(\R)$. La matrice $A$ est orthogonale (respectivement orthogonale positive) si, et seulement si, l'endomorphisme canoniquement associé à $A$ est une isométrie (respectivement une isométrie directe).
+\end{conséquence}
 
-\begin{thm}{}
+\begin{cor}{}
 	Les ensembles $\mathcal{O}(E)$ et $\mathcal{SO}(E)$ sont des sous-groupes de $\mathcal{GL}(E)$.
-\end{thm}
+\end{cor}
 
-\paragraph{Terminologie} Les groupes $\mathcal{O}(E)$ et $\mathcal{SO}(E)$ sont appelés respectivement \textbf{groupe orthogonal de E} et \textbf{groupe spécial orthogonal de E}.
+\begin{terminologie}
+	Les groupes $\mathcal{O}(E)$ et $\mathcal{SO}(E)$ sont appelés respectivement \textbf{groupe orthogonal de E} et \textbf{groupe spécial orthogonal de E}.
+\end{terminologie}
 
-\begin{thm}
+\begin{prop}
 	On suppose $E$ orienté et on se donne $u\in\mathcal{L}(E)$ et $\mathcal{B}$ une base orthonormée directe de $E$. Alors $u\in\mathcal{SO}(E)$ si, et seulement si, l'image de $\mathcal{B}$ par $u$ est une base orthonormée directe de $E$.
-\end{thm}
+\end{prop}
 
 \subsubsection*{Symétries orthogonales}
 
@@ -863,11 +1015,13 @@ Munissons $\R^n$ de sa structure euclidienne canonique. En appliquant les défin
 	Pour cette définition, il suffit que $F$ soit de dimension finie, même si $E$ est de dimension infinie.
 \end{rmq}
 
-\paragraph{Terminologie} Une symétrie orthogonale par rapport à un hyperplan est appelée \textbf{réflexion}.
+\begin{terminologie}
+	Une symétrie orthogonale par rapport à un hyperplan est appelée \textbf{réflexion}.
+\end{terminologie}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $s\in\mathcal{L}(E)$ une symétrie orthogonale. Alors $s\in\mathcal{O}(E)$.
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	\begin{enumerate}
@@ -881,7 +1035,7 @@ Munissons $\R^n$ de sa structure euclidienne canonique. En appliquant les défin
 
 \subsection{Isométries en dimension $2$}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $A\in\mathcal{M}_2(\R)$. Alors, on dispose des caractérisations suivantes :
 	\begin{itemize}
 		\item $A\in\mathcal{SO}_2(\R)\iff \exists\theta\in\R\ : \ A=\displaystyle\begin{pmatrix}
@@ -893,9 +1047,9 @@ Munissons $\R^n$ de sa structure euclidienne canonique. En appliquant les défin
 			\sin(\theta)&-\cos(\theta)
 		\end{pmatrix}$
 	\end{itemize}
-\end{thm}
+\end{prop}
 
-\begin{thm}{}
+\begin{prop}
 	L'application : $$\begin{array}{lrcl}
 		R:&(\R,+)&\longrightarrow&(\mathcal{SO}_2(\R),\times)\\
 		&\theta&\longmapsto&\displaystyle\begin{pmatrix}
@@ -903,44 +1057,46 @@ Munissons $\R^n$ de sa structure euclidienne canonique. En appliquant les défin
 			\sin(\theta)&\cos(\theta)
 		\end{pmatrix} 
 	\end{array}$$ est un morphisme de groupes surjectif de noyau $2\pi\Z$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{}
+\begin{cor}
 	Le groupe $\mathcal{SO}_2(\R)$ est commutatif et isomorphe à $\U$.
-\end{thm}
+\end{cor}
 
 Dans le reste de cette section, $E$ désigne un plan euclidien orienté, c'est-à-dire un espace euclidien de dimension $2$ que l'on oriente par le choix d'une base orthonormée directe de référence.
 
-\begin{thm}{}
+\begin{prop}
 	Soit $u\in\mathcal{SO}(E)$. Il existe $\theta\in\R$, unique modulo $2\pi$, tel que pour toute base orthonormée directe $\mathcal{B}$, on ait : $$M_\mathcal{B}(u)=\begin{pmatrix}
 		\cos(\theta)&-\sin(\theta)\\
 		\sin(\theta)&\cos(\theta)
 	\end{pmatrix}$$
-\end{thm}
+\end{prop}
 
-\paragraph{Terminologie} Un tel élément de $\mathcal{SO}(E)$ est appelé \textbf{rotation d'angle $\theta$}. Le réel $\theta$ est appelé la \textbf{mesure de l'angle de la rotation}.
+\begin{terminologie}
+	Un tel élément de $\mathcal{SO}(E)$ est appelé \textbf{rotation d'angle $\theta$}. Le réel $\theta$ est appelé la \textbf{mesure de l'angle de la rotation}.
+\end{terminologie}
 
 \begin{rmq}
 	Si $\mathcal{B}=(e_1,e_2)$ est une base orthonormée indirecte de $E$, et $u$ une rotation d'angle $\theta$, alors $\mathcal{B}'=(-e_1,e_2)$ est une base orthonormée directe de $E$, donc on a $M_{\mathcal{B}'}(u)=R(\theta)$ $M_{\mathcal{B}}(u)=R(-\theta)$ par une vérification immédiate.
 \end{rmq}
 
-\begin{thm}{}
+\begin{cor}
 	Le groupe $\mathcal{SO}(E)$ est commutatif et isomorphe à $\U$.
-\end{thm}
+\end{cor}
 
 \begin{rmq}
 	Soit $(u,v)\in\mathcal{SO}(E)^2$ deux rotations d'angles respectifs $\theta$ et $\theta'$. Si $\mathcal{B}$ est une base orthonormée directe de $E$, on a : $$M_\mathcal{B}(u\circ v)=M_\mathcal{B}(u)M_\mathcal{B}(v)=R(\theta)R(\theta')=R(\theta+\theta')$$ donc $u\circ v$ est la rotation d'angle $\theta+\theta'$.
 \end{rmq}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $u\in\mathcal{O}(E)\setminus\mathcal{SO}(E)$. Alors $u$ est une réflexion de $E$.
-\end{thm}
+\end{prop}
 
 \subsubsection*{Angles orientés de vecteurs dans $E$}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $x$ et $y$ deux vecteurs unitaires de $E$. Il existe une unique rotation $u\in\mathcal{SO}(E)$ telle que $u(x)=y$.
-\end{thm}
+\end{prop}
 
 \begin{dfn}
 	Soit $x$ et $y$ deux vecteurs non nuls du plan $E$.
@@ -950,26 +1106,28 @@ Dans le reste de cette section, $E$ désigne un plan euclidien orienté, c'est-�
 	\end{itemize}
 \end{dfn}
 
-\paragraph{Notation} L'angle orienté des vecteurs non nuls $x$ et $y$ est noté $(x,y)$.
+\begin{notation}
+	L'angle orienté des vecteurs non nuls $x$ et $y$ est noté $\widehat{(x,y)}$.
+\end{notation}
 
-\begin{thm}{}
-	Soit $(x,y,z)\in E^3$ trois vecteurs non nuls. Alors, on a : $$(x,z)=(x,y)+(y,z)\ [2\pi]$$
-\end{thm}
+\begin{prop}
+	Soit $(x,y,z)\in E^3$ trois vecteurs non nuls. Alors, on a : $$(x,z)=(x,y)+(y,z)\ [2\pi].$$
+\end{prop}
 
 \subsection{Réduction des isométries vectorielles}
 
-\begin{thm}{}
+\begin{lem}
 	L'endomorphisme induit sur un sous-espace vectoriel stable par une isométrie vectorielle est aussi une isométrie vectorielle.
-\end{thm}
+\end{lem}
 
-\begin{thm}{}
+\begin{prop}
 	Soit $u$ une isométrie vectorielle et $F$ un sous-espace vectoriel de $E$. Si $F$ est stable par $u$, alors $F^\bot$ est aussi stable par $u$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{}
+\begin{thm}[Réduction des isométries vectorielles]
 	Soit $u$ une isométrie vectorielle. Il existe une base orthonormée $\mathcal{B}$ de $E$ dans laquelle la matrice de $u$ est égale à une matrice diagonale par blocs avec des blocs diagonaux :
 	\begin{itemize}
-		\item  de taille $1$ et de la forme $(\gamma)$ avec $\gamma\in\{-1,1\}$ ;
+		\item de taille $1$ et de la forme $(\gamma)$ avec $\gamma\in\{-1,1\}$ ;
 		\item de taille $2$ et de la forme : $$R(\theta)=\begin{pmatrix}
 			\cos(\theta)&-\sin(\theta)\\
 			\sin(\theta)&\cos(\theta)
@@ -993,7 +1151,9 @@ Autrement dit, la matrice d'une isométrie dans une telle base orthonormée peut
 	\end{enumerate}
 \end{exo}
 
-\paragraph{Conséquence} Toute matrice orthogonale est orthogonalement semblable à une matrice de la forme précédente.
+\begin{conséquence}
+	Toute matrice orthogonale est orthogonalement semblable à une matrice de la forme précédente.
+\end{conséquence}
 
 \begin{exo}
 	Soit $u\in\mathcal{SO}(E)$. Montrer qu'il existe une base orthonormée de $E$ dans laquelle la matrice de $u$ est de la forme : $$\begin{pmatrix}
@@ -1014,23 +1174,25 @@ Autrement dit, la matrice d'une isométrie dans une telle base orthonormée peut
 \subsubsection*{Rotations en dimension 3}
 Dans le reste de cette section, $E$ désigne un espace euclidien de dimension $3$ que l'on oriente par le choix d'une base orthonormée directe de référence.
 
-\begin{thm}{}
+\begin{prop}
 	Si $u\in\mathcal{SO}(E)$, alors il existe une base orthonormée $\mathcal{B}$ de $E$ et un réel $\theta\in\R$ tels que : $$M_\mathcal{B}(u)=\begin{pmatrix}
 		1&0&0\\
 		0&\cos(\theta)&-\sin(\theta)\\
 		0&\sin(\theta)&\cos(\theta)
 	\end{pmatrix}$$
-\end{thm}
+\end{prop}
 
-\paragraph{Conséquence} On munit $\R^3$ de sa structure euclidienne orientée canonique et on se donne $A\in\mathcal{SO}_3(\R)$. Alors il existe $\theta\in\R$ tel que $A$ soit orthogonalement semblable à une matrice de la forme $$\begin{pmatrix}
+\begin{conséquence}
+	On munit $\R^3$ de sa structure euclidienne orientée canonique et on se donne $A\in\mathcal{SO}_3(\R)$. Alors il existe $\theta\in\R$ tel que $A$ soit orthogonalement semblable à une matrice de la forme $$\begin{pmatrix}
 	1&0&0\\
 	0&\cos(\theta)&-\sin(\theta)\\
 	0&\sin(\theta)&\cos(\theta)
 \end{pmatrix}$$
+\end{conséquence}
 
-\begin{thm}{}
+\begin{cor}
 	Si $u$ est une isométrie vectorielle directe de $E$, il existe une droite $D$ et un plan $P$ orthogonal à $D$ tel que $u_{\mid D}=\text{Id}_{D}$ et tel que $u_{\mid P}$ soit une rotation.
-\end{thm}
+\end{cor}
 
 \begin{rmq}
 	\begin{enumerate}

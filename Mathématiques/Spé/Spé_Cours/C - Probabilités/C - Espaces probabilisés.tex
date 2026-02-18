@@ -20,9 +20,12 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
 
 \setlist[itemize]{label=$\bullet$}
-
+\setlist{before=\leavevmode, leftmargin=*}
 
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
@@ -49,7 +52,7 @@
 \renewcommand{\o}{\text{o}}
 \renewcommand{\O}{\text{O}}
 \renewcommand{\d}{\text{d}}
-
+\newcommand{\Id}{\text{Id}}
 
 
 \theoremstyle{plain}
@@ -58,8 +61,6 @@
 \theoremstyle{definition}
 
 \newtheorem*{ex}{Exemple}
-\newtheorem*{met}{Point méthode}
-\newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
 \newtheorem*{notation}{Notation}
 \newtheorem*{rappel}{Rappel}
@@ -70,15 +71,120 @@
 \theoremstyle{remark}
 \newtheorem*{app}{Application}
 
-\newtcolorbox[auto counter]{dfn}{
+\newtcolorbox[auto counter]{dfn}[1][]{
 	enhanced,
-	breakable,
 	colback=white,
-	fonttitle=\sc,
-	title={Définition \thetcbcounter}
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
 }
 
-\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
 
 \title{Espaces probabilisés}
 \date{}
@@ -145,7 +251,7 @@ Cette partie de $\mathcal{P}(\Omega)$ doit vérifier certaines propriétés :
 	Au lieu de tribu, on dit aussi \textbf{$\sigma$-algèbre}, d'où la notation $\mathcal{A}$ adoptée par le programme.
 \end{rmq}
 
-\begin{dfn}{(HP)}
+\begin{dfn}[HP]
 	Un \textbf{espace mesurable} est un couple $(X,\mathcal{T})$ où $X$ est un ensemble non vide quelconque et $\mathcal{T}$ est une tribu sur $X$.
 \end{dfn}
 
@@ -166,11 +272,11 @@ Cette partie de $\mathcal{P}(\Omega)$ doit vérifier certaines propriétés :
 	\end{enumerate}
 \end{ex}
 
-\begin{thm}{(HP)}%prop
+\begin{prop}[HP]%prop
 	Soit $X$ un ensemble non vide. Une intersection quelconque de tribus sur $X$ est une tribu sur $X$.
-\end{thm}
+\end{prop}
 
-\begin{dfn}{(HP)}
+\begin{dfn}[HP]
 	Soit $X$ un ensemble non vide et $\mathcal{F}$ une partie de $\mathcal{P}(\Omega)$. L'intersection de toutes les tribus contenant $\mathcal{F}$ est la plus petite tribu contenant $\mathcal{F}$. On la note $\sigma(\mathcal{F})$ et on l'appelle la \textbf{tribu engendrée} par $\mathcal{F}$.
 \end{dfn}
 
@@ -190,7 +296,7 @@ Cette partie de $\mathcal{P}(\Omega)$ doit vérifier certaines propriétés :
 	Quelle est la tribu engendrée par un ensemble fini de parties de $\Omega$ ?
 \end{exo}
 
-\begin{dfn}{(HP)}
+\begin{dfn}[Tribu borélienne (HP)]
 	Soit $(X,\mathcal{O})$ un espace topologique. La tribu engendrée par $\mathcal{O}$ est appelée \textbf{tribu borélienne} sur $(X,\mathcal{O})$. C'est aussi la tribu engendrée par les fermés de $X$.
 \end{dfn}
 
@@ -204,9 +310,9 @@ Cette partie de $\mathcal{P}(\Omega)$ doit vérifier certaines propriétés :
 
 \subsubsection*{Opérations sur les événements}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Toute tribu contient l'ensemble vide, et est stable par union et intersection au plus dénombrable, ainsi que par différence.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	On emploie le même vocabulaire pour les espaces probabilisables que pour les espace probabilisés finis. En particulier, deux événements $A$ et $B$ tels que $A\cap B=\emptyset$ sont dits \textbf{incompatibles}.
@@ -248,7 +354,7 @@ Comme dans le cas d'un univers fini, une probabilité associe un réel appartena
 
 Plus généralement, on dispose des définitions suivantes (hors programme) de mesure et d'espace mesuré. Elles constituent le bon cadre à la théorie de l'intégration et expliquent le lien profond entre la théorie de l'intégration et la théorie des probabilités.
 
-\begin{dfn}{Mesure (HP)}
+\begin{dfn}[Mesure (HP)]
 	Soit $(X,\mathcal{T})$ un espace mesurable. On appelle \textbf{mesure} sur $(X,\mathcal{T})$ toute application $\mu$ définie sur $\mathcal{T}$ et à valeurs dans $[0,+\infty]$ vérifiant :
 	\begin{itemize}
 		\item $\mu(\emptyset)=0$ ;
@@ -274,12 +380,12 @@ Plus généralement, on dispose des définitions suivantes (hors programme) de m
 	Sur n'importe quel espace mesurable $(X,\mathcal{T})$, on peut définir la \textbf{mesure de comptage} qui à un élément de $\mathcal{T}$ associe son cardinal (éventuellement $+\infty$).
 \end{ex}
 
-\begin{dfn}{Espace mesuré (HP)}
+\begin{dfn}[Espace mesuré (HP)]
 	Un \textbf{espace mesuré} est un triplet $(X,\mathcal{T},\mu)$, où $(X,\mathcal{T})$ est un espace mesurable et $\mu$ une mesure sur $(X,\mathcal{T})$.
 \end{dfn}
 
 \begin{ex}
-	Tout espace probabilisée est un espace mesuré.
+	Tout espace probabilisé est un espace mesuré.
 \end{ex}
 
 \begin{terminologie}
@@ -290,7 +396,7 @@ Dans la suite, sauf mention explicite du contraire, $(\Omega,\mathcal{A},\P)$ d�
 
 \subsubsection*{Propriétés}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	On a les propriétés suivantes :
 	\begin{enumerate}
 		\item $\P(\emptyset)=0$ ;
@@ -351,17 +457,17 @@ La définition suivante généralise celle qui a été donnée en première ann�
 	\end{itemize}
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $(A_i)_{i\in I}$ est un système quasi complet d'événements, alors :
 	\begin{itemize}
 		\item la famille $(\P(A_i))_{i\in I}$ est sommable et $\displaystyle\sum_{i\in I}\P(A_i)=1$ ;
 		\item pour tout événement $B$, la famille $(\P(A_i\cap B))_{i\in I}$ est sommable et : $$\P(B)=\sum_{i\in I}\P(A_i\cap B).$$
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 La propriété suivante est une conséquence très forte de la $\sigma$-additivité.
 
-\begin{thm}{Continuité monotone}%thm
+\begin{thm}[Continuité monotone]%thm
 	Soit $(A_n)_{n\in\N}$ une suite d'événements.
 	\begin{enumerate}
 		\item Si la suite $(A_n)_{n\in\N}$ est croissante, \textit{ie} vérifie $A_n\subset A_{n+1}$ pour tout $n\in\N$, alors on a : $$\P\left(\bigcup_{n\in\N}A_n\right)=\underset{n\to+\infty}{\lim}\P(A_n)\quad\quad(\text{continuité croissante}).$$
@@ -373,15 +479,15 @@ La propriété suivante est une conséquence très forte de la $\sigma$-additivi
 	Dans une succession de lancers d'une pièce de monnaie, la probabilité de n'obtenir que des faces est nulle.
 \end{ex}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Pour toute suite $(A_n)_{n\in\N}$ d'événements, on a :
 	$$\P\left(\bigcup_{n=0}^{+\infty}A_n\right)=\underset{n\to+\infty}{\lim}\P\left(\bigcup_{k=0}^{n}A_k\right)\quad\quad\text{et}\quad\quad\P\left(\bigcap_{n=0}^{+\infty}A_n\right)=\underset{n\to+\infty}{\lim}\P\left(\bigcap_{k=0}^{n}A_k\right).$$
-\end{thm}
+\end{cor}
 
-\begin{thm}{Sous-additivité de $\P$}%prop
+\begin{prop}[Sous-additivité de $\P$]%prop
 	Si $(A_i)_{i\in I}$ est une famille \textit{au plus dénombrable} d'événements, on a :
 	$$\P\left(\bigcup_{i\in I}A_i\right)\leqslant\sum_{i\in I}\P(A_i).$$
-\end{thm}
+\end{prop}
 
 \begin{terminologie}
 	Cette inégalité est aussi appelée \textbf{inégalité de Boole}.
@@ -391,9 +497,9 @@ La propriété suivante est une conséquence très forte de la $\sigma$-additivi
 	On n'a pas nécessairement $\displaystyle\sum_{i\in I}\P(A_i)<+\infty$, mais si la somme est supérieure à $1$, l'inégalité est sans intérêt.
 \end{rmq}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Une réunion au plus dénombrable d'événements négligeable est un événement négligeable. Une intersection au plus dénombrable d'événements presque sûrs est un événement presque sûr.
-\end{thm}
+\end{cor}
 
 \begin{attention}
 	L'hypothèse "dénombrable" est indispensable :
@@ -422,26 +528,26 @@ La propriété suivante est une conséquence très forte de la $\sigma$-additivi
 	Une \textbf{distribution de probabilités discrète} sur un ensemble $\Omega$ est une famille d'éléments de $\R_+$, indexée par $\Omega$, sommable et de somme $1$. Le \textbf{support} d'une distribution de probabilités discrète $(p_\omega)_{\omega\in\Omega}$ est $\{\omega\in\Omega\ :\ p_{\omega}\ne0\}$.
 \end{dfn}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Le support d'une distribution de probabilités discrète est au plus dénombrable.
-\end{thm}
+\end{prop}
 \begin{proof}
 	C'est une propriété générale des familles sommables d'avoir un support au plus dénombrable.
 \end{proof}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $(p_\omega)_{\omega\in\Omega}$ est une distribution de probabilités discrète sur $\Omega$, alors l'application :
 	$$\begin{array}{lrcl}
 		\P:&\mathcal{P}(\Omega)&\longrightarrow&[0,1]\\
 		&A&\longmapsto&\displaystyle\sum_{\omega\in A}p_\omega
 	\end{array}$$ est une probabilité ur l'espace probabilisable $(\Omega,\mathcal{P}(\Omega))$, appelée \textbf{probabilité associée à la distribution} $(p_\omega)_{\omega\in\Omega}$. Elle vérifie : $\forall\omega\in\Omega,\ \P(\{\omega\})=p_\omega$.
-\end{thm}
+\end{prop}
 
 \begin{dfn}
 	Un espace probabilisé $(\omega,\mathcal{P}(\Omega),\P)$ où $P$ est la probabilité associée à une distribution de probabilités discrète sur $\Omega$ est appelé un \textbf{espace probabilisé discret}.
 \end{dfn}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Soit $\Omega$ un ensemble au plus dénombrable et $\P$ une probabilité sur $(\Omega,\mathcal{P}(\Omega))$. Si l'on pose $p_\omega=\P(\{\omega\})$ pour tout $\omega\in\Omega$, alors $(p_\omega)_{\omega\in\Omega}$ est une distribution de probabilités discrète sur $\Omega$ et $\P$ est la probabilité associée à cette distribution.
 \end{thm}
 
@@ -504,7 +610,7 @@ Définir une probabilité sur un univers non dénombrable est plus compliqué.
 
 \subsection{Probabilité image (HP)}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $(\Omega,\mathcal{A},\P)$ un espace probabilisé et $f$ une application de $\Omega$ dans un ensemble $\Omega'$.
 	\begin{enumerate}
 		\item L'ensemble $\mathcal{A}'=\{Y\in\mathcal{P}(\Omega')\ :\ f\inv(Y)\in\mathcal{A}\}$ est une tribu sur $\Omega'$.\\
@@ -512,7 +618,7 @@ Définir une probabilité sur un univers non dénombrable est plus compliqué.
 		\item L'application $\P_f:Y\mapsto\P(f\inv(Y))$ est une probabilité sur $(\Omega',\mathcal{A}')$.\\
 		On l'appelle la \textbf{probabilité image} de $\P$ par $f$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Plus généralement, on peut de même définir une mesure image sur l'espace mesurable $(\Omega',\mathcal{A}')$.
@@ -543,9 +649,9 @@ Définir une probabilité sur un univers non dénombrable est plus compliqué.
 	Une variable aléatoire discrète est dite \textbf{réelle} si elle est à valeurs dans $\R$, \textbf{complexe} si elle est à valeurs dans $\C$, \textbf{finie} si $X(\Omega)$ est fini.
 \end{terminologie}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $X$ une variable aléatoire discrète sur $(\Omega,\mathcal{A})$, à valeurs dans $E$. Alors, pour toute partie $A$ de $E$, l'ensemble $X\inv(A)$ est un événement.
-\end{thm}
+\end{prop}
 %intersecter avec $X(\Omega)$.
 
 \begin{notation}
@@ -575,9 +681,9 @@ Définir une probabilité sur un univers non dénombrable est plus compliqué.
 	\end{enumerate}
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $X$ est une variable aléatoire discrète sur $(\Omega,\mathcal{A})$ et $f$ une application définie sur un ensemble contenant $X(\Omega)$, alors $f\circ X$ est une variable aléatoire discrète, notée $f(X)$.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Soit $X_1,\ldots,X8n$ des variables aléatoires réelles définies sur un même espace probabilisable $(\Omega,\mathcal{A})$. Alors les fonctions $\inf(X_1,\ldots,X_n)$ et $\sup(X_1,\ldots,X_n)$ sont des variables aléatoires réelles sur $(\Omega,\mathcal{A})$.
@@ -598,7 +704,7 @@ Définir une probabilité sur un univers non dénombrable est plus compliqué.
 
 \subsection{Loi d'une variable aléatoire discrète}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Si $X$ est une variable aléatoire discrète sur $(\Omega,\mathcal{A},\P)$, à valeurs dans un ensemble $E$, alors l'application :
 	$$\begin{array}{rcl}
 		\mathcal{P}(E)&\longrightarrow&[0,1]\\
@@ -613,18 +719,18 @@ Définir une probabilité sur un univers non dénombrable est plus compliqué.
 	Par défaut, on prend souvent $E=X(\Omega)$ pour définir la loi de $X$, mais il y a des cas où il n'est pas aisé d'expliciter cet ensemble image.
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $X$ est une variable aléatoire discrète, la famille $(\{X=x\})_{x\in X(\Omega)}$ est un système complet d'événements, appelé \textbf{système complet d'événements associé à $X$}.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Si $A\ne\emptyset$ et $A\ne\Omega$, le système complet d'événement associé à la variable $\textbf{1}_A$ est $(A,\overline{A})$.
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	La loi d'une variable aléatoire discrète $X$ est déterminée de manière unique par la distribution de probabilités discrète $(\P(X=x))_{x\in X(\Omega)}$. Plus précisément, on a pour tout $A\subset X(\Omega)$ :
 	$$\P_X(A)=\sum_{x\in A}\P(X=x).$$
-\end{thm}
+\end{prop}
 
 \begin{proof}
 	La loi de $X$ est une probabilité $\P_X$ sur l'ensemble au plus dénombrable $X(\Omega)$ muni de la tribu discrète $\mathcal{P}(X(\Omega))$. C'est donc la probabilité associée à la distribution de probabilités discrète $(\P_X(x))_{x\in X(\Omega)}=(\P(X=x))_{x\in X(\Omega)}$. D'où l'expression de $\P_X(A)$.
@@ -661,14 +767,14 @@ Définir une probabilité sur un univers non dénombrable est plus compliqué.
 
 \subsubsection*{Loi de $f(X)$}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $X$ une variable aléatoire discrète sur $(\omega,\mathcal{A},\P)$ et $f$ une application définie sur $X(\Omega)$. Alors la loi de $f(X)$ est donnée par :
 	$$\forall y\in f(X)(\Omega),\ \P(f(X)=y)=\sum_{x\in f\inv(\{y\})}\P(X=x).$$
-\end{thm}
+\end{prop}
 
-\begin{thm}{Transfert de loi}%prop
+\begin{prop}[Transfert de loi]%prop
 	Soit $X$ et $Y$ deux variables aléatoires à valeurs dans $E$ et $f$ une application définie sur $E$. SI $X\sim Y$, alors $f(X)\sim f(Y)$.
-\end{thm}
+\end{prop}
 
 \subsection{Lois usuelles}
 
@@ -706,10 +812,10 @@ Plus précisément, pour $k\in\N\st$, on note $\Pi_k$ l'événement "la $k$-ièm
 La variable aléatoire discrète $T$ prend donc la valeurs $+\infty$ avec une probabilité nulle et pour out $k\in\N\st$, on a $\P(T=k)=pq^{k-1}$. On dit encore que $T$ suit la loi géométrique $\mathcal{G}(p)$ (voir la dernière remarque de la section $2.3$).\\
 Nous reviendrons dans cette situation dans le dernier exemple de la section $5$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si la variable aléatoire $X$ suit la loi géométrique de paramètre $p\in]0,1[$, on a, pour tout entier naturel $k$ : 
 	$$\P(X>k)=q^k.$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	Pour tout $k\in\N$ :
 	$$\P(X>k)=\sum_{n=k+1}^{+\infty}\P(X=n)=\sum_{n=k+1}^{+\infty}pq^{n-1}=\frac{pq^k}{1-q}=q^k.$$
@@ -739,9 +845,9 @@ Nous reviendrons dans cette situation dans le dernier exemple de la section $5$.
 
 Nous utiliserons le lemme suivant.
 
-\begin{thm}{}%lem
+\begin{lem}%lem
 	Soit $(X_n)_{n\in\N\st}$ une suite de variables aléatoires discrètes telles que $X_n$ suive la loi binomiale de paramètres $(n,p_n)$. On suppose que la suite $(np_n)_{n\in\N\st}$ converge vers un réel $\lambda>0$. Alors, pour tout $k\in\N$, on a : $$\underset{n\to+\infty}{\lim}\P(X_n=k)=\frac{\lambda^k}{k!}e^{-\lambda}.$$
-\end{thm}
+\end{lem}
 
 Si la variable $X$ suit une loi binomiale avec $n$ grand et $p$ proche de $0$, elle suit donc approximativement une loi de poisson de paramètre $\lambda=np$. C'est pourquoi l'on dit que la loi de Poisson est la \textbf{loi des événements "rares"}.
 
@@ -772,17 +878,17 @@ Voir aussi l'exercice de la section $5.2$ sur les modélisations par des lois de
 
 Les couples de variables aléatoires sont simplement les variables aléatoires à valeurs dans $E\times F$, comme le prouve la proposition suivante.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{itemize}
 		\item Si $X$ et $Y$ sont deux variables aléatoires discrètes à valeurs respectivement dans $E$ et $F$, alors le couple $(X,Y)$ est une variable aléatoire discrète à valeurs dans $E\times F$.
 		\item Réciproquement, toute variable aléatoire discrète à valeurs dans $E\times F$ peut s'écrire $(X,Y)$ où $X$ et $Y$ sont des variables aléatoires discrètes à valeurs respectivement dans $E$ et $F$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Soit $(X,Y)$ un couple de variables aléatoires discrètes. Alors, la famille d'événements :
 	$$(\{X=x\}\cap\{Y=y\})_{(x,y)\in X(\Omega)\times Y(\Omega)}$$ est un système complet d'événements, appelé \textbf{système complet d'événements associé au couple $(X,Y)$}.
-\end{thm}
+\end{cor}
 
 \begin{conséquence}
 	Si $(X,Y)$ est un couple de variables aléatoires discrètes, alors :
@@ -817,7 +923,7 @@ Les couples de variables aléatoires sont simplement les variables aléatoires �
 
 Le théorème suivant exprime le fait que l'on peut déduire les lois marginales de la loi du couple. Pour obtenir une loi marginale, on somme par rapport à l'autre variable.
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Soit $(X,Y)$ un couple de variables aléatoires discrètes. On a alors :
 	$$\forall x\in X(\Omega),\ \P(X=x)=\sum_{y\in Y(\Omega)}\P(X=x,Y=y).$$
 \end{thm}
@@ -858,9 +964,9 @@ Le théorème suivant exprime le fait que l'on peut déduire les lois marginales
 
 On peut démontrer, comme dans le cas des couples de variables aléatoires discrètes, la proposition suivante.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Les $n$-uplets de variables aléatoires discrètes, à valeurs respectivement dans $E_1,\ldots,E_n$, sont les variables aléatoires discrètes à valeurs dans $E_1\times\cdots\times E_n$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Un $n$-uplet de variables aléatoires discrètes réelles est donc une variable aléatoire discrète à valeurs dans l'espace $\R^n$.
@@ -890,7 +996,7 @@ On peut démontrer, comme dans le cas des couples de variables aléatoires discr
 
 Comme dans le cas ds couples de variables aléatoires, les lois marginales des $n$-uplets s'obtiennent à partir de la loi conjointe. Pour obtenir une loi marginale, il suffit de sommer par rapport aux autres variables.
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Soit $(X_1,\ldots,X_n)$ un $n$-uplet de variables aléatoires.\\
 	pour tout $k\in\llbracket1,n\rrbracket$ et $x_k\in X_k(\Omega)$, on a :
 	$$\P(X_k=x_k)=\sum_{(x_1,\ldots,x_{k-1},x_{k+1},\ldots,x_n)\in A_k}\P(X_1=x_1,\ldots,X_n=x_n),$$ où $A_k=X_1(\Omega)\times\cdots\times X_{k-1}(\Omega)\times X_{k+1}(\Omega)\times\cdots\times X_n(\Omega)$.
@@ -902,7 +1008,7 @@ Les définitions qui suivent généralisent simplement les définitions vues en 
 
 \subsection{Définition}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Pour tout événement de probabilité \textit{non nulle}, l'application :
 	$$\begin{array}{lrcl}
 		\P_A:&\mathcal{A}&\longrightarrow&\R\\
@@ -920,14 +1026,14 @@ Les définitions qui suivent généralisent simplement les définitions vues en 
 
 \subsubsection*{Formule des probabilités composée}
 
-\begin{thm}{Formule des probabilités composées}%thm
+\begin{thm}[Formule des probabilités composées]%thm
 	Soit $n\geqslant 2$ un entier. Pour toute famille $(A_1,\ldots,A_n)$ d'événements tels que $\P(A_1\cap\cdots\cap A_{n-1})\ne 0$, on a : 
 	$$\P(A_1\cap\cdots\cap A_n)=\P(A_1)\P(A_2\mid A_1)\cdots\P(A_n\mid A_1\cap\cdots\cap A_{n-1}).$$
 \end{thm}
 
 \subsubsection*{Formule des probabilités totales}
 
-\begin{thm}{Formule des probabilités totales}%thm
+\begin{thm}[Formule des probabilités totales]%thm
 	Soit $(A_i)_{i\in I}$ un système quasi-complet d'événements. pour $B\in\mathcal{A}$, on a :
 	$$\P(B)=\sum_{i\in I}\P(B\cap A_i)=\sum_{i\in I}\P(B\mid A_i)\P(A_i).$$
 \end{thm}
@@ -957,7 +1063,7 @@ Les définitions qui suivent généralisent simplement les définitions vues en 
 
 \subsubsection*{Formule de Bayes}
 
-\begin{thm}{Formule de Bayes}%thm
+\begin{thm}[Formule de Bayes]%thm
 	Si $A$ et $B$ sont deux événements de probabilité non nulle, on a :
 	$$\P(A\mid B)=\frac{\P(B\mid A)\P(A)}{\P(A)}.$$
 \end{thm}
@@ -1045,17 +1151,17 @@ Les définitions qui suivent généralisent les définitions vues en première a
 	L'indépendance est une notion probabiliste. Elle dépend de la probabilité dont est muni l'espace probabilisable $(\Omega,\mathcal{A})$.
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Deux événements $A$ et $B$ tels que$\P(A)\ne 0$ sont indépendants si, et seulement si, $\P(B\mid A)=\P(B)$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Si l'événement $A$ est négligeable, alors il est indépendant de tout événement $B$. En effet, on a $\P(A)=0$ et \textit{a fortiori} $\P(A\cap B)=0$.
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $A$ et $B$ sont deux événements indépendants, alors les événements $\overline{A}$ et $B$ sont indépendants.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	On en déduit que si $A$ est un événement presque sûr, il est indépendant de tout événement $B$. En effet, $\overline{A}$ est de probabilité nulle donc $\overline{A}$ et $B$ sont indépendants, comme nos l'avons déjà vu, et donc $A=\overline{(\overline{A})}$ et $B$ sont indépendants.
@@ -1078,7 +1184,7 @@ Les définitions qui suivent généralisent les définitions vues en première a
 	\end{itemize}
 \end{rmq}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Si $(A_i)_{i\in I}$ est une famille d'événements mutuellement indépendants, et si, pour tout $i\in I$, $B_i$ est égal à $A_i$ ou à $\overline{A_i}$, alors $(B_i)_{i\in I}$ est une famille d'événements mutuellement indépendants.
 \end{thm}
 \begin{proof}
@@ -1130,9 +1236,9 @@ Les variables aléatoires discrètes considérées ici sont définies sur le mê
 
 Exercice Moulin.Prob.45
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Deux variables aléatoires discrètes $X$ et $Y$ à valeurs dans $E$ et $F$ respectivement sont indépendantes si, et seulement si : $$\forall (x,y)\in E\times F,\ \P(X=x,\ Y=y)=\P(X=x)\P(Y=y).$$
-\end{thm}
+\end{prop}
 
 \paragraph{Reformulation}
 Les variables $X$ et $Y$ sont indépendantes si, et seulement si, la distribution de probabilités de $(X,Y)$ est égale au produit des distributions de probabilités de $X$ et $Y$.
@@ -1193,18 +1299,18 @@ Réciproquement, l'exercice suivant montre que c'est la seule modélisation rais
 	\end{enumerate}
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $(X,Y)$ un couple de variables aléatoires discrètes. il y a équivalence entre :
 	\begin{enumerate}[label=(\roman*)]
 		\item $X$ et $Y$ sont indépendantes ;
 		\item pour tout $y$ de $Y(\Omega)$ tel que $\P(Y=y)\ne0$, la loi conditionnelle de $X$ sachant $\{Y=y\}$ est égale à la loi de $X$ ;
 		\item pour tout $x$ de $X(\Omega)$ tel que $\P(X=x)\ne0$, la loi conditionnelle de $Y$ sachant $\{X=x\}$ est égale à la loi de $Y$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
-\begin{thm}{Transfert d'indépendance}%prop
+\begin{prop}[Transfert d'indépendance]%prop
 	Si $X$ et $Y$ sont des variables aléatoires discrètes indépendantes, alors, pour toute fonction $f$ définie sur $X(\Omega)$ et tout fonction $g$ définie sur $Y(\Omega)$, les variables aléatoires $f(X)$ et $g(Y)$ sont indépendantes.
-\end{thm}
+\end{prop}
 
 \subsubsection*{Indépendance de $n$ variables aléatoires}
 
@@ -1220,10 +1326,10 @@ Réciproquement, l'exercice suivant montre que c'est la seule modélisation rais
 	L'indépendance d'un $n$-uplet de variables aléatoires ne dépend pas de l'ordre de ces variables.
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Les variables aléatoires discrètes $X_1,\ldots,X_n$ à valeurs dans $E_1,\ldots,E_n$ sont mutuellement indépendantes si, et seulement si, pour tout $(x_1,\ldots,x_n)\in E_1\times\cdots\times E_n$, on a :
 	$$\P(X_1=x_1,\ldots,X_n=x_n)=\prod_{i=1}^{n}\P(X_i=x_i).$$
-\end{thm}
+\end{prop}
 
 \paragraph{Reformulation}
 Les variables $X_1,\ldots,X_n$ sont indépendantes si, et seulement si, la distribution de probabilités de $(X_1,\ldots,X_n)$ est égale au produit des distributions de probabilités de $X_1,\ldots,X_n$.
@@ -1244,9 +1350,9 @@ Les variables $X_1,\ldots,X_n$ sont indépendantes si, et seulement si, la distr
 	\end{itemize}
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $(X_1,\ldots,X_n)$ est une famille de variables aléatoires discrètes, mutuellement indépendantes, alors toute sous-famille est formée de variables mutuellement indépendantes.
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Montrer que les événements $A_1,\ldots,A_n$ sont indépendants si, et seulement si, les variables aléatoires $\textbf{1}_{A_1},\ldots,\textbf{1}_{A_n}$ sont mutuellement indépendantes.
@@ -1256,27 +1362,27 @@ Les variables $X_1,\ldots,X_n$ sont indépendantes si, et seulement si, la distr
 	Si les variables aléatoires discrètes $X_1,\ldots,X_n$ sont mutuellement indépendantes, alors elles sont indépendantes deux à deux, mais comme dans le cas fini, la réciproque est fausse.
 \end{attention}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Si les variables aléatoires $X_1,\ldots,X_n$ à valeurs dans $E_1,\ldots,E_n$ sont mutuellement indépendantes, alors, pour toutes parties $A_1,\ldots,A_n$ respectivement de $E_1,\ldots,E_n$, les événements $\{X_1\in A_1\},\ldots,\{X_n\in A_n\}$ sont mutuellement indépendants.
-\end{thm}
+\end{cor}
 \begin{proof}
 	Si $i$ est une partie de $\llbracket1,n\rrbracket$, alors, d'après la proposition précédente, $(X_i){i\in I}$ est une famille de variables aléatoires mutuellement indépendantes, et par définition :
 	$$\P\left(\bigcap_{i\in I}\{X_i\in A_i\}\right)=\prod_{i\in I}\P(X_i\in A_i).$$ Cela montre l'indépendance des événements $\{X_1\in A_1\},\ldots,\{X_n\in A_n\}$.
 \end{proof}
 
-\begin{thm}{Transfert d'indépendance}%prop
+\begin{prop}[Transfert d'indépendance]%prop
 	Soit $(X_1,\ldots,X_n)$ un $n$-uplet de variables aléatoires discrètes mutuellement indépendantes.\\
 	Si, pour tout $i\in\llbracket1,n\rrbracket$, la fonction $f_i$ est définie sur $X_i(\Omega)$, alors les variables aléatoires $f_1(X_1),\ldots,f_n(X_n)$ sont mutuellement indépendantes.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	La proposition précédente peut se généraliser à des variables aléatoires fonctions de plusieurs variables aléatoires $X_k$ ($1\leqslant k\leqslant n$). Commençons par le cas de deux fonctions.
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $X_1,\ldots,X_n$ un $n$-uplet de variables aléatoires discrètes mutuellement indépendantes à valeurs respectivement dans des ensembles $E_1,\ldots,E_n$, ainsi que $1\leqslant p<n$.\\
 	Si $f$ est une fonction définie sur $E_1\times\cdots\times E_p$ et $g$ une fonction définie sur $E_{p+1}\times\cdots\times E_n$, alors $f(X_1,\ldots,X_p)$ et $g(X_{p+1},\ldots,X_n)$ sont indépendantes.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	En particulier, si les variables $X_k$ sont à valeurs dans un groupe, alors les variables $X_1+\cdots+X_p$ et $X_{p+1}+\cdots+X_n$ sont indépendantes.
@@ -1289,10 +1395,10 @@ Les variables $X_1,\ldots,X_n$ sont indépendantes si, et seulement si, la distr
 
 Ce qui précède peut se généraliser à plus de deux fonctions.
 
-\begin{thm}{Lemme des coalitions}%prop
+\begin{prop}[Lemme des coalitions]%prop
 	Soit $(X_1,\ldots,X_n)$ un $n$-uplet de variables aléatoires mutuellement indépendantes, $k$ un entier naturel non nul, $I_1,\ldots,I_k$ des sous-ensembles non vides et disjoints de $\llbracket1,n\rrbracket$. Pour tout $j\in\llbracket1,k\rrbracket$, on considère une variable aléatoire $Y_j$ qui est une fonction des variables $X_i$ pour $i\in I_j$. \\
 	Alors les variables $Y_1,\ldots,Y_k$ sont mutuellement indépendantes.
-\end{thm}
+\end{prop}
 \begin{proof}
 	On montre que les $k$ variables $(X_i)_{i\in I_1},\ldots,(X_i)_{i\in I_k}$ sont mutuellement indépendantes comme dans la proposition précédente. On en déduit que $Y_1,\ldots,Y_k$ sont mutuellement indépendantes par transfert d'indépendance.
 \end{proof}
@@ -1315,7 +1421,7 @@ Ce qui précède peut se généraliser à plus de deux fonctions.
 
 Pour une suite infinie de lois discrètes, le problème est autrement plus difficile et fait l'objet du théorème suivant que nous admettrons.
 
-\begin{thm}{Théorème de Kolmogorov (admis)}
+\begin{thm}[Théorème de Kolmogorov (admis)]
 	Pour tout suite $(P_n)_{n\in\N}$ de lois de probabilités discrètes, il existe un espace probabilisé $(\Omega,\mathcal{A},\P)$ et des variables aléatoires discrètes définies sur $(\Omega,\mathcal{A},\P)$, indépendantes et telles que, pour tout $n\in\N$, la loi $\P_{X_n}$ soit $P_n$.
 \end{thm}
 
@@ -1391,10 +1497,10 @@ Il s'agit de la \textbf{mesure de Lebesgue} de $[0,1]$.
 	Si $X$ est une variable aléatoire à valeurs dans $\N$, on a $\E(X)=\displaystyle\sum_{n=0}^{+\infty}n\P(X=n)$ et la sommabilité de la famille $(x\P(X=x))_{x\in\N}$ équivaut à la convergence de la série $\displaystyle\sum n\P(X=n)$.
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $X$ est une variable aléatoire à valeurs dans $\N\cup\{+\infty\}$, on a :
 	$$\E(X)=\sum_{n=0}^{+\infty}\P(X>0)=\sum_{n=1}^{+\infty}\P(X\geqslant 1).$$
-\end{thm}
+\end{prop}
 
 \begin{dfn}
 	Soit $X$ une variable aléatoire discrète à valeurs dans $\K$. On dit que $X$ est \textbf{d'espérance finie} si la famille $(x\P(X=x))_{x\in X(\Omega)}$ est sommable. Dans ce cas, l'espérance de $X$, notée $\E(X)$, est la somme de cette famille :
@@ -1421,19 +1527,19 @@ Il s'agit de la \textbf{mesure de Lebesgue} de $[0,1]$.
 
 \subsection{Espérance des lois usuelles}
 
-\begin{thm}{Espérance d'une loi géométrique}%prop
+\begin{prop}[Espérance d'une loi géométrique]%prop
 	Si la variable aléatoire $X$ suit une loi géométrique de paramètre $p\in]0,1[$, alors son espérance est finie et $\E(X)=\displaystyle\frac{1}{p}$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{Espérance d'une loi de Poisson}%prop
+\begin{prop}[Espérance d'une loi de Poisson]%prop
 	Si la variable aléatoire $X$ suit une loi de Poisson de paramètre $\lambda\in\R$, alors son espérance est finie et $\E(X)=\lambda$.
-\end{thm}
+\end{prop}
 
 \subsection{Propriétés de l'espérance}
 
 \subsubsection*{Formule de transfert}
 
-\begin{thm}{Formule de transfert}%thm
+\begin{thm}[Formule de transfert]%thm
 	Soit $X$ une variable aléatoire discrète, à valeurs dans un ensemble quelconque, et $f$ une fonction à valeurs complexes définie sur $X(\Omega)$. Alors, la variable aléatoire $f(X)$ est d'espérance finie si, et seulement si, la famille $(f(x)\P(X=x))_{x\in X(\Omega)}$ est sommable. On a dans ce cas :
 	$$\E(f(X))=\sum_{x\in X(\Omega)}f(x)\P(X=x).$$
 \end{thm}
@@ -1466,21 +1572,21 @@ Il s'agit de la \textbf{mesure de Lebesgue} de $[0,1]$.
 
 \subsubsection*{Inégalité triangulaire}
 
-\begin{thm}{Inégalité triangulaire}%prop
+\begin{prop}[Inégalité triangulaire]%prop
 	Si $x$ est une variable aléatoire discrète complexe, alors $X$ est d'espérance finie si, et seulement si, $\lvert X\rvert$ est d'espérance finie, et l'on a alors :
 	$$\lvert\E(X)\rvert\leqslant\E(\lvert X\rvert).$$
-\end{thm}
+\end{prop}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $X$ et $Y$ deux variables aléatoires discrètes, respectivement complexe et réelle, telles que $\lvert X\rvert\leqslant Y$. Si $Y$ est d'espérance finie, alors $X$ est d'espérance finie.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Considérer $Z=(X,Y)$, ainsi que les projections $\pi_1:(x,y)\mapsto x$ et $\pi_2:(x,y)\mapsto y$, et appliquer la formule de transfert.
 \end{proof}
 
 \subsubsection*{Linéarité}
 
-\begin{thm}{Linéarité de l'espérance}%thm
+\begin{thm}[Linéarité de l'espérance]%thm
 	Si $X$ et $Y$ sont deux variables aléatoires discrète à valeurs dans $\K$, d'espérance finie et $\lambda\in\K$, alors les variables aléatoires $X+Y$ et $\lambda X$ sont d'espérance finie. De plus, on a :
 	$$\E(\lambda X)=\lambda\E(X)\quad\text{et}\quad\E(X+Y)=\E(X)+\E(Y).$$
 \end{thm}
@@ -1531,24 +1637,24 @@ Exercice Moulin.Prob.58
 	Une variable aléatoire discrète complexe d'espérance nulle est dite \textbf{centrée}.
 \end{dfn}
 
-\begin{thm}{}%cor
+\begin{cor}{}%cor
 	Si $X$ est une variable aléatoire discrète complexe d'espérance finie, alors $X-\E(X)$ est centrée.
-\end{thm}
+\end{cor}
 
 \subsubsection*{Positivité, croissance}
 
 Dans cette section, les variables aléatoires sont réelles.
 
-\begin{thm}{Positivité de l'espérance}%prop
+\begin{prop}[Positivité de l'espérance]%prop
 	Soit $X$ une variable aléatoire discrète à valeurs dans $\R_+$. Alors on a : $$\E(X)\geqslant.$$
 	De plus, $\E(X)$ équivaut alors à $X=0$ presque sûrement.
-\end{thm}
+\end{prop}
 
-\begin{thm}{Croissance de l'espérance}%cor
+\begin{cor}[Croissance de l'espérance]%cor
 	Soit $X$ et $Y$ deux variables aléatoires discrètes, d'espérance finie, telles que $X\leqslant Y$. Alors on a :
 	$$\E(X)\leqslant\E(Y).$$
 	De plus, $\E(X)=\E(Y)$ équivaut à $X=Y$ presque sûrement.
-\end{thm}
+\end{cor}
 
 \begin{rmq}
 	Dans les deux théorèmes précédents, on peut remplacer l'inégalité supposée sur les variables aléatoires par une inégalité ayant lieu presque sûrement.
@@ -1556,17 +1662,17 @@ Dans cette section, les variables aléatoires sont réelles.
 
 \subsubsection*{Espérance du produit de variables indépendantes}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Si $X$ et $Y$ sont deux variables aléatoires discrètes complexes indépendantes, d'espérance finie, alors $XY$ est d'espérance finie et : 
 	$$\E(XY)=\E(X)\E(Y).$$
 \end{thm}
 
 Cette propriété se généralise à $n$ variables aléatoires indépendantes.
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Si $X_1,\ldots,X_n$ sont des variables aléatoires complexes d'espérance finie, mutuellement indépendantes, alors $\displaystyle\prod_{k=1}^{n}X_k$ est d'espérance finie et :
 	$$\E\left(\prod_{k=1}^{n}X_k\right)=\prod_{k=1}^{n}\E(X_k).$$
-\end{thm}
+\end{cor}
 
 \begin{exo}
 	Soit $X$ et $Y$ deux variables aléatoires discrètes. Démontrer que $X$ et $Y$ sont indépendantes si, et seulement si, pour toutes fonctions $f$ et $g$, définies respectivement sur $X(\Omega)$ et $Y(\Omega)$ à valeurs complexes, bornées, on a :
@@ -1589,21 +1695,21 @@ Dans cette section, les variables aléatoires sont réelles.
 	Si $X^2$ est d'espérance finie, on dit aussi que $X$ possède un \textbf{moment d'ordre $2$}. Plus généralement, si $X^k$ est d'espérance finie, on dit que $X$ possède un \textbf{moment d'ordre $k$}.
 \end{terminologie}
 
-\begin{thm}{}%lem
+\begin{lem}%lem
 	Si $X$ et $Y$ appartiennent à $L^2(\Omega,\mathcal{A},\P)$, alors $XY$ appartient à $L^1(\omega,\mathcal{A},\P)$.
-\end{thm}
+\end{lem}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $X$ une variable aléatoire discrète. Si $X^2$ est d'espérance finie, alors $X$ est d'espérance finie.
-\end{thm}
+\end{prop}
 
 \paragraph{Reformulation} On a donc $L^2(\Omega,\mathcal{A},\P)\subset L^1(\Omega,\mathcal{A},\P)$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	L'ensemble $L^2(\Omega,\mathcal{A},\P)$ est un $\R$-espace vectoriel.
-\end{thm}
+\end{prop}
 
-\begin{thm}{Inégalité de Cauchy-Schwarz}%thm
+\begin{thm}[Inégalité de Cauchy-Schwarz]%thm
 	Soit $X$ et $Y$ des variables aléatoires discrètes appartenant à $L^2(\omega,\mathcal{A},\P)$. la variable aléatoire $XY$ est d'espérance finie et :
 	$$\E(XY)^2\leqslant\E(X^2)\E(Y^2).$$
 	De plus, il y a égalité dans l'inégalité ci-dessus si, et seulement si, les variables $X$ et $Y$ sont presque sûrement proportionnelles, c'est-à-dire si, et seulement s'il existe $(a,b)\in\R^2\setminus\{(0,0)\}$ tel que $aX+bY=0$ presque sûrement.
@@ -1646,17 +1752,17 @@ Dans cette section, les variables aléatoires sont réelles.
 	La variance est la moyenne du carré de la distance entre les valeurs de $X$ et $\E(X)$. Elle mesure donc la dispersion de $X$ par rapport à sa moyenne.
 \end{rmq}
 
-\begin{thm}{Formule de Koenig-Huygens}
+\begin{prop}[Formule de Koenig-Huygens]
 	Si $X\in L^2$, alors $\V(X)=\E(X^2)-\E(X)^2$.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Soit $X$ dans $L^2$? Étudions à quelle condition on a $\V(X)=0$.
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $(a,b)\in\R^2$ et $X\in L^2$. Alors $aX+b\in L^2$ et : $$\V(aX+b)=a^2\V(X).$$
-\end{thm}
+\end{prop}
 
 \begin{dfn}
 	Soit $X\in L^2$. L'\textbf{écart-type} de $X$ est le réel $\sigma(X)=\sqrt{\V(X)}$.
@@ -1666,24 +1772,24 @@ Dans cette section, les variables aléatoires sont réelles.
 	Soit $\in L^2$. Si $\E(X)=0$ et $\sigma(X)=1$, la variable aléatoire $X$ est dite \textbf{centrée réduite}.
 \end{dfn}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $X$ est une variable aléatoire discrète de variance finie non nulle, alors la variable aléatoire discrète $X^\star=\displaystyle\frac{X-\E(X)}{\sigma(X)}$ est une variable aléatoire discrète centrée réduite appelée variable aléatoire réelle \textbf{centrée réduite associée à $X$}.
-\end{thm}
+\end{prop}
 
 Exercice Moulin.Prob.65
 
 \subsubsection*{Variance des lois usuelles}
 
-\begin{thm}{Variance d'une loi géométrique}%prop
+\begin{prop}[Variance d'une loi géométrique]%prop
 	Si la variable aléatoire $X$ suit la loi géométrique de paramètre $p\in]0,1[$, alors elle est dans $L^2$ et on a $\V(X)=\displaystyle\frac{1-p}{p^2}$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Commencer par calculer $\E(X(X-1))$.
 \end{proof}
 
-\begin{thm}{Variance d'une loi de Poisson}%prop
+\begin{prop}[Variance d'une loi de Poisson]%prop
 	Si la variable aléatoire $X$ suit la loi de Poisson de paramètre $\lambda\in\R$, alors elle est dans $L^2$ et on a $\V(X)=\lambda$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Commencer par calculer $\E(X(X-1))$.
 \end{proof}
@@ -1702,9 +1808,9 @@ Si $X$ et $Y$ sont dans $L^2$, alors il en est de même de $X-\E(X)$ et $Y-\E(Y)
 	Pour tout $X\in L^2$, on a $\text{Cov}(X,X)=\V(X)$.
 \end{rmq}
 
-\begin{thm}{Formule de Koenig-Huygens}
+\begin{prop}[Formule de Koenig-Huygens]
 	Soit $X$ et $Y$ dans $L^2$. On a : $$\text{Cov}(X,Y)=\E(XY)-\E(X)\E(Y).$$
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Soit $(X_n)_{n\in\N\st}$ une suite de variables de Bernoulli de paramètre $p\in]0,1[$, indépendantes. On pose $q=1-p$. On dit que la première série est de longueur $n$ si les premières épreuves ont donné le même résultat $(n+1)$-ième un résultat différent. De même, la deuxième série commence à l'épreuve qui suit la dernière épreuve de la première série et s'arrête avant le changement suivant. On note $L_1$ et $L_2$ respectivement les longueurs de la première et de la seconde série.\\
@@ -1713,9 +1819,9 @@ Si $X$ et $Y$ sont dans $L^2$, alors il en est de même de $X-\E(X)$ et $Y-\E(Y)
 
 \subsubsection*{Bilinéarité}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	L'application $(X,Y)\mapsto\text{Cov}(X,Y)$ est une forme bilinéaire symétrique positive sur $L^2$.
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Soit $X$ et $Y$ dans $L^2(\Omega,\mathcal{A},\P)$.
@@ -1735,9 +1841,9 @@ Si $X$ et $Y$ sont dans $L^2$, alors il en est de même de $X-\E(X)$ et $Y-\E(Y)
 
 \subsubsection*{Variables décorrélées}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si $X$ et $Y$ appartiennent à $L^2$ et son indépendantes, alors on a $\text{Cov}(X,Y)=0$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Si $X$ et $Y$ appartiennent à $L^1$ et son indépendantes, alors $XY$ appartient à $L^1$ et $\E(XY)=\E(X)\E(Y)$, donc on peut définir $\text{Cov}(X,Y)$ et l'on trouve encore $\text{Cov}(X,Y)=0$.
@@ -1755,21 +1861,21 @@ Si $X$ et $Y$ sont dans $L^2$, alors il en est de même de $X-\E(X)$ et $Y-\E(Y)
 	Cependant, comme on l'a vu en première année dans le cas des variables finies, la réciproque est fausse : deux variables décorrélées ne sont pas nécessairement indépendantes.
 \end{attention}
 
-\begin{dfn}{(HP)}
+\begin{dfn}[HP]
 	Pour $X$ et $Y$ des variables aléatoires discrètes appartenant à $L^2$ et de variances non nulles, on peut définir le \textbf{coefficient de corrélation} par :
 	$$\frac{\text{Cov}(X,Y)}{\sigma(X)\sigma(Y)}\in[-1,1].$$
 \end{dfn}
 
 \subsubsection*{Variance d'une somme}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Pour tout famille de variables aléatoires discrètes appartenant à $L^2$, la variable aléatoire discrète $X_1+\cdots+X_n$ est dans $L^2$ et on a : $$\V(X_1+\cdots+X_n)=\sum_{k=1}^{n}\V(X_k)+2\sum_{1\leqslant i<j\leqslant n}\text{Cov}(X_i,X_j).$$
 \end{thm}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Pour tout famille de variables aléatoires discrètes appartenant à $L^2$, deux à deux décorrélées, on a : 
 	$$\V(X_1+\cdots+X_n)=\sum_{k=1}^{n}\V(X_k).$$
-\end{thm}
+\end{cor}
 
 \begin{rmq}
 	\begin{itemize}
@@ -1787,7 +1893,7 @@ Si $X$ et $Y$ sont dans $L^2$, alors il en est de même de $X-\E(X)$ et $Y-\E(Y)
 
 \subsubsection*{Inégalités probabilistes}
 
-\begin{thm}{Inégalité de Markov}%thm
+\begin{thm}[Inégalité de Markov]%thm
 	Toute variable aléatoire discrète, réelle positive (d'espérance finie) vérifie l'inégalité :
 	$$\forall a>0,\ \P(X\geqslant a)\leqslant\frac{\E(X)}{a}.$$
 \end{thm}
@@ -1797,7 +1903,7 @@ Si $X$ et $Y$ sont dans $L^2$, alors il en est de même de $X-\E(X)$ et $Y-\E(Y)
 	$$\P(X\geqslant)=\P(e^X\geqslant e^a)\leqslant\frac{\E(X)}{e^a}=\E(e^{X-a}).$$
 \end{ex}
 
-\begin{thm}{Inégalité de Bienaymé-Tchebychev}
+\begin{thm}[Inégalité de Bienaymé-Tchebychev]
 	Toute variable aléatoire discrète réelle $X$ de $L^2$ vérifie l'inégalité :
 	$$\forall\varepsilon>0,\ \P(\lvert X-\E(X)\rvert\geqslant\varepsilon)\leqslant\frac{\V(X)}{\varepsilon^2}.$$
 \end{thm}
@@ -1808,7 +1914,7 @@ Si $X$ et $Y$ sont dans $L^2$, alors il en est de même de $X-\E(X)$ et $Y-\E(Y)
 
 \subsubsection*{Loi faible des grands nombres}
 
-\begin{thm}
+\begin{thm}[Loi faible des grands nombres]
 	Soit $(X_n)_{n\in\N\st}$ une suite de variables aléatoires discrètes réelles i.i.d sur le même espace probabilisé, de variance finie. \\
 	On pose $m=\E(X_1)$ leur espérance commune, et, pour tout $n\in\N\st$, $S_n=\displaystyle\sum_{k=1}^{n}X_k$. On a alors :
 	$$\forall\varepsilon,\ \underset{n\to+\infty}{\lim}\P\left(\left\lvert\frac{S_n}{n}-m\right\rvert\geqslant\varepsilon\right)=0.$$
@@ -1855,10 +1961,10 @@ On dit que la suite $\displaystyle\left(\frac{S_n}{n}\right)_{n\in\N\st}$ \textb
 	$$G_X(t)=\sum_{n=0}^{+\infty}\P(X=n)t^n.$$
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $X$ une variable aléatoire à valeurs dans $\N$.\\
 	La série entière $\displaystyle\sum\P(X=n)t^n$ est de rayon de convergence supérieur ou égal à $1$ ; elle converge normalement sur le disque fermé de centre $0$ et de rayon $1$. La fonction $G_X$ est donc définie et continue sur $[-1,1]$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	\begin{itemize}
@@ -1867,32 +1973,32 @@ On dit que la suite $\displaystyle\left(\frac{S_n}{n}\right)_{n\in\N\st}$ \textb
 	\end{itemize}
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	La loi d'une variable aléatoire $X$ à valeurs dans $\N$ est déterminée de manière unique par $G_X$. Plus précisément, on a :
 	$$\forall n\in\N,\ \P(X=n)=\frac{G_X^{(n)}(0)}{n!}.$$
 	Deux variables aléatoires à valeurs dans $\N$ ont donc la même loi si, et seulement si, elles ont même fonction génératrice.
-\end{thm}
+\end{prop}
 
-\begin{rmq}{(HP)}
-	On peut définir de même les transformée de Fourier : $\E(e^{itX})$, qui vérifie $$\frac{1}{x}\int_{0}^{x}\E(e^{itX})e^{-ita}\d t\xrightarrow[x\to+\infty]{}\P(X=a),$$ ou encore la transformée de Laplace : $\E(e^{-pX})$, qui permettent aussi de caractériser la loi de $X$.
+\begin{rmq}[HP]
+	On peut définir de même la transformée de Fourier : $\E(e^{itX})$, qui vérifie $$\frac{1}{x}\int_{0}^{x}\E(e^{itX})e^{-ita}\d t\xrightarrow[x\to+\infty]{}\P(X=a),$$ ou encore la transformée de Laplace : $\E(e^{-pX})$, qui permettent aussi de caractériser la loi de $X$.
 \end{rmq}
 
-\begin{thm}{}%lem
+\begin{lem}%lem
 	Soit $(a_n)$ une suite à termes positifs telle que la série $\displaystyle\sum a_n$ converge. On note $f$ la somme de la série entière $\displaystyle\sum a_nt^n$. La fonction $f$ est dérivable en $1$ si, et seulement si, la série de terme général $na_n$ converge, et dans ce cas : 
 	$$f'(1)=\sum_{n=1}^{+\infty}na_n.$$
-\end{thm}
+\end{lem}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Une variable aléatoire $X$ à valeurs dans $\N$ est d'espérance finie si, et seulement si, $G_X$ est dérivable en $1$, et dans ce cas : $$\E(X)=G_X'(1).$$
 \end{thm}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Une variable aléatoire $X$ à valeurs dans $\N$ appartient à $L^2$ si, et seulement si, $G_X$ est deux fois dérivable en $1$, et dans ce cas $G_X''(1)=\E(X(X-1))$.
 \end{thm}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Si la fonction génératrice d'une variable aléatoire $X$ à valeurs dans $\N$ en $1$, alors $X\in L^2$ et l'on a : $$\V(X)=G_X''(1)+G_X'(1)-G_X'(1)^2.$$
-\end{thm}
+\end{cor}
 
 \begin{rmq}
 	\begin{itemize}
@@ -1918,7 +2024,7 @@ Exercice Moulin.Prob.69
 
 \subsection{Somme de variables aléatoires indépendantes}
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Soit $X_1,\ldots,X_n$ des variables indépendantes à valeurs dans $\N$.\\
 	On pose $S_n=\displaystyle\sum_{k=1}^{n}X_k$. Alors, pour tout réel $t$ tel que $G_{X_k}(t)$ soit défini pour tout $k\in\llbracket1,n\rrbracket$, $G_{S_n}(t)$ est défini et : 
 	$$G_{S_n}(t)=\prod_{k=1}^{n}G_{X_k}(t).$$

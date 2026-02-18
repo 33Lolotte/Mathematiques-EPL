@@ -20,9 +20,12 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
 
 \setlist[itemize]{label=$\bullet$}
-
+\setlist{before=\leavevmode, leftmargin=*}
 
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
@@ -49,6 +52,8 @@
 \renewcommand{\o}{\text{o}}
 \renewcommand{\O}{\text{O}}
 \renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
+
 
 \theoremstyle{plain}
 \newtheorem*{ind}{Indication}
@@ -56,22 +61,130 @@
 \theoremstyle{definition}
 
 \newtheorem*{ex}{Exemple}
-\newtheorem*{met}{Point méthode}
-\newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
+\newtheorem*{notation}{Notation}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{terminologie}{Terminologie}
+\newtheorem*{attention}{Attention}
+\newtheorem*{conséquence}{Conséquence}
 
 \theoremstyle{remark}
 \newtheorem*{app}{Application}
 
-\newtcolorbox[auto counter]{dfn}{
+\newtcolorbox[auto counter]{dfn}[1][]{
 	enhanced,
-	breakable,
 	colback=white,
-	fonttitle=\sc,
-	title={Définition \thetcbcounter}
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
 }
 
-\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
 
 \title{Intégrales à paramètres}
 \date{}
@@ -88,7 +201,7 @@ Dans ce chapitre, nous étudions des intégrales dépendant d'un paramètre qui 
 
 \subsection{Le théorème de convergence dominée}
 
-\begin{thm}{Théorème de convergence dominée}
+\begin{thm}[Théorème de convergence dominée]
 	Soit $(f_n)_{n\in\N}$ une suite de fonctions continues par morceaux sur un intervalle $I$. On fait les hypothèses suivantes : 
 	\begin{enumerate}
 		\item la suite de fonctions $(f_n)_{n\in\N}$ converge simplement sur $I$ vers une fonction $f$ continue par morceaux sur $I$ ;
@@ -142,7 +255,7 @@ Nous n'en ferons pas la démonstration qui est hors programme et pour cause : un
 
 Nous admettrons les deux théorèmes suivants.
 
-\begin{thm}{Théorème d'intégration terme à terme - cas positif}
+\begin{thm}[Théorème d'intégration terme à terme - cas positif]
 	Soit $(u_n)_{n\in\N}$ une suite de fonctions intégrables sur un intervalle $I$, à valeurs dans $\R_+$, telle que la série $\sum u_n$ converge simplement et telle que sa somme soit continue par morceaux sur $I$. Alors, dans $[0,+\infty]$, on a l'égalité : $$\int_I\sum_{n=0}^{+\infty}u_n=\sum_{n=0}^{+\infty}\int_I u_n$$ En particulier, l'intégrabilité de la somme équivaut à : $$\sum_{n=0}^{+\infty}\int_I u_n<+\infty$$
 \end{thm}
 
@@ -154,7 +267,7 @@ Nous admettrons les deux théorèmes suivants.
 	Montrer que $\displaystyle\int_{0}^{+\infty}\frac{x^2}{e^x-1}\d x=2\sum_{n=1}^{+\infty}\frac{1}{n^3}$
 \end{exo}
 
-\begin{thm}{Théorème d'intégration terme à terme - cas général}
+\begin{thm}[Théorème d'intégration terme à terme - cas général]
 	Soit $(u_n)_{n\in\N}$ une suite de fonctions intégrables sur un intervalle $I$, telle que la série $\sum u_n$ converge simplement et telle que sa somme soit continue par morceaux sur $I$.\\ Si $\displaystyle\sum_{n=0}^{+\infty}\int_I\lvert u_n\rvert<+\infty$, alors la fonctions $\displaystyle\sum_{n=0}^{+\infty}u_n$ est intégrable sur $I$ et on a l'égalité : $$\int_I\sum_{n=0}^{+\infty}u_n=\sum_{n=0}^{+\infty}\int_I u_n$$
 \end{thm}
 
@@ -170,7 +283,7 @@ Nous admettrons les deux théorèmes suivants.
 
 \subsection{Continuité d'une intégrale à paramètre}
 
-\begin{thm}{Théorème de continuité d'une intégrale à paramètre}
+\begin{thm}[Théorème de continuité d'une intégrale à paramètre]
 	Soit $A$ une partie non vide d'un espace vectoriel normé de dimension finie $E$, $I$ un intervalle de $\R$ et $f:A\times I\to\K$. On fait les hypothèses suivantes :
 	\begin{itemize}
 		\item pour tout $t\in I$, la fonction $x\mapsto f(x,t)$ est continue sur $A$ ;

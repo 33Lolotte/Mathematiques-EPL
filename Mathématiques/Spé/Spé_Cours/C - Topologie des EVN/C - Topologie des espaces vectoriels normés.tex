@@ -20,9 +20,12 @@
 \usepackage{esint}
 \usepackage{cancel}
 \usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
 
 \setlist[itemize]{label=$\bullet$}
-
+\setlist{before=\leavevmode, leftmargin=*}
 
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\N}{\mathbb{N}}
@@ -45,6 +48,12 @@
 \newcommand{\Tr}{\text{Tr}}
 \newcommand{\Vect}{\text{Vect}}
 \newcommand{\rg}{\text{rg}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
+
 
 \theoremstyle{plain}
 \newtheorem*{ind}{Indication}
@@ -52,8 +61,6 @@
 \theoremstyle{definition}
 
 \newtheorem*{ex}{Exemple}
-\newtheorem*{met}{Point méthode}
-\newtheorem{exo}{Exercice}
 \newtheorem*{rmq}{Remarque}
 \newtheorem*{notation}{Notation}
 \newtheorem*{rappel}{Rappel}
@@ -61,18 +68,124 @@
 \newtheorem*{attention}{Attention}
 \newtheorem*{conséquence}{Conséquence}
 
-\newtcolorbox[auto counter]{dfn}{
-	enhanced,
-	breakable,
-	colback=white,
-	fonttitle=\sc,
-	title={Définition \thetcbcounter}
-}
-
-\newtcolorbox[auto counter]{thm}[2][]{enhanced, breakable, colback=white, fonttitle=\sc, title=Théorème~\thetcbcounter~: #2}
-
 \theoremstyle{remark}
 \newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{dfn}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
 
 \title{Topologie des espaces vectoriels normés}
 \date{}
@@ -129,9 +242,9 @@ Dans tout le chapitre, la lettre $\K$ désigne le corps $\R$ ou le corps $\C$. T
 	\end{enumerate}
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}
 	Soit $E$ un espace préhilbertien réel, c'est-à-dire un $\R$-espace vectoriel muni d'un produit scalaire $(\cdot\mid\cdot)$. L'application $x\mapsto\sqrt{(x\mid x)}$ est une norme sur $E$, appelée \textbf{norme euclidienne} associée au produit scalaire $(\cdot\mid\cdot)$.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	De la proposition précédente, on déduit que les espaces préhilbertiens réels sont naturellement munis d'une structure d'espace vectoriel normé :
@@ -168,9 +281,9 @@ Dans tout le chapitre, la lettre $\K$ désigne le corps $\R$ ou le corps $\C$. T
 
 Nous avons défini l'inégalité triangulaire (propriété vérifiée par toute norme par définition) de la manière suivante : $$\forall (x,y)\in E^2,\ \lVert x+y\rVert\leqslant\lVert x\rVert+\lVert y\rVert$$ De manière plus complète, nous regroupons sous le nom d'\textit{inégalités triangulaires} les inégalités du résultat suivant :
 
-\begin{thm}{Inégalités triangulaires}%prop
+\begin{prop}[Inégalités triangulaires]%prop
 	Soit $x$ et $y$ deux vecteurs d'un espace vectoriel normée $E$. Alors on a : $$\lvert \lVert x\rVert-\lVert y\rVert\rvert\leqslant\lVert x\pm y\rVert\leqslant\lVert x\rVert+\lVert y\rVert$$
-\end{thm}
+\end{prop}
 
 \begin{terminologie}
 	L'inégalité $\lvert \lVert x\rVert-\lVert y\rVert\rvert\leqslant\lVert x\pm y\rVert$ est parfois appelée \textit{seconde inégalité triangulaire}.
@@ -194,7 +307,7 @@ Nous avons défini l'inégalité triangulaire (propriété vérifiée par toute 
 	Démontrer l'affirmation précédente.
 \end{exo}
 
-\paragraph{Inégalité triangulaire généralisée} La propriété d'homogénéité combinée à l'inégalité triangulaire permet, par récurrence, de montrer que si $x_1,\ldots,x_n$ sont des éléments de $E$ et $\lambda_1,\ldots,\lambda_n$ sont des scalaires, alors on a : $$\left\lVert\sum_{k=1}^{n}\lambda_kx_k\right\rVert\leqslant\sum_{k=1}^{n}\lvert\lambda_k\rvert\lVert x_k\rVert$$ Dorénavant, nous utiliserons librement ce résultat.
+\paragraph{Inégalité triangulaire généralisée} La propriété d'homogénéité combinée à l'inégalité triangulaire permet, par récurrence, de montrer que si $x_1,\ldots,x_n$ sont des éléments de $E$ et $\lambda_1,\ldots,\lambda_n$ sont des scalaires, alors on a : $$\left\lVert\sum_{k=1}^{n}\lambda_kx_k\right\rVert\leqslant\sum_{k=1}^{n}\lvert\lambda_k\rvert\lVert x_k\rVert.$$ Dorénavant, nous utiliserons librement ce résultat.
 
 \begin{exo}
 	Montrer réciproquement qu'une application $N:E\to\R_+$ qui vérifie : $$\forall (x,y)\in E^2,\ \forall (\lambda,\mu)\in\K^2,\ \lVert\lambda x+\mu y\rVert\leqslant\lvert\lambda\rvert\lVert x\rVert+\lvert\mu\rvert\lVert y\rVert$$ est une semi-norme.
@@ -221,9 +334,9 @@ Nous avons défini l'inégalité triangulaire (propriété vérifiée par toute 
 
 \subsubsection*{Formulation des inégalités triangulaires en termes de distance}
 
-\begin{thm}{}%prop
+\begin{prop}
 	Si $M$, $N$ et $P$ désignent trois points de $E$, alors on a : $$\lvert d(M,N)-d(N,P)\rvert\leqslant d(M,P)\leqslant d(M,N)+d(N,P)$$
-\end{thm}
+\end{prop}
 
 De manière moins formelle, l'inégalité $d(M,P)\leqslant d(M,N)+d(N,P)$ signifie que dans un espace vectoriel normé, les propriétés "géométriquement intuitives" suivantes sont vraies :
 \begin{itemize}
@@ -279,7 +392,7 @@ Mais il existe des espaces métriques plus exotiques dont la distance n'est pas 
 \end{ex}
 
 \begin{ex}
-	Dans $\C$, on définit $d(a,b)=\lvert b-a\rvert$ sir $a$ et $b$ sont positivement colinéaires, et $d(a,b)=\lvert a\rvert+\lvert b\rvert$ sinon. $d$ est une distance sur $\C$, appelée \textbf{distance SNCF}.
+	Dans $\C$, on définit $d(a,b)=\lvert b-a\rvert$ si $a$ et $b$ sont positivement colinéaires, et $d(a,b)=\lvert a\rvert+\lvert b\rvert$ sinon. $d$ est une distance sur $\C$, appelée \textbf{distance SNCF}.
 \end{ex}
 
 \begin{rmq}%rmq importante
@@ -338,9 +451,9 @@ Dans cette section, $E$ est un espace vectoriel réel ou complexe.
 
 \paragraph{Interprétation géométrique} Dire qu'une partie $A$ est convexe signifie qu'étant donnés deux points de $A$, le segment reliant ces deux points est inclus dans $A$.
 
-\begin{thm}{Stabilité par passage au barycentre à coefficients positifs (HP)}%prop
+\begin{prop}[Stabilité par passage au barycentre à coefficients positifs (HP)]%prop
 	Si $A$ est une partie convexe d'un espace vectoriel réel $E$, alors on a : $$\forall p\in\N\st,\ \forall (x_1,\ldots,x_p)\in A^p,\ \forall(\lambda_1,\ldots,\lambda_p)\in\R_+^p,\ \sum_{k=1}^{p}\lambda_k=1\implies\sum_{k=1}^{p}\lambda_kx_k\in A$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	Procéder par récurrence.
 \end{proof}
@@ -351,9 +464,9 @@ Dans cette section, $E$ est un espace vectoriel réel ou complexe.
 
 \subsubsection*{Boules d'un espace vectoriel normé}
 
-\begin{thm}{}%prop
-	Toute boule (ouvert ou fermée) d'un espace vectoriel normé est une partie convexe.
-\end{thm}
+\begin{prop}%prop
+	Toute boule (ouverte ou fermée) d'un espace vectoriel normé est une partie convexe.
+\end{prop}
 
 \begin{rmq}
 	Dans un espace vectoriel normé, la connaissance de la boule unité fermée $B_f(0,1)$ suffit pour connaître toutes les boules fermées. En effet, si $a$ est un élément de $E$ et $r$ un réel strictement positif, la boule $B_f(a,r)$ est l'image de $B_f(0,1)$ par... \\
@@ -372,9 +485,9 @@ Le résultat suivant sera utile pour prouver l'homogénéité d'une normé défi
 
 %"Dans sa grande sagesse, le programme nous donne ce lemme. Pour une fois que je peux mettre sagesse et prgramme dans la même phrase...
 
-\begin{thm}{}%lem
-	Étant donnée $A$ une partie non vide de $\R$ et $k\in\R_+$, on a : $$\sup(kA)=k\sup(A)$$
-\end{thm}
+\begin{lem}%lem
+	Étant donnée $A$ une partie non vide de $\R$ et $k\in\R_+$, on a : $$\sup(kA)=k\sup(A).$$
+\end{lem}
 
 \begin{rmq}
 	Ce résultat s'applique en particulier si la partie $A$ admet un plus grand élément, et l'on a dans ce cas $\max(kA)=k\max(A)$.
@@ -390,7 +503,7 @@ L'espace $\K^n$ peut être peut être muni d'une structure d'espace vectoriel no
 	\item la \textbf{norme deux}, ou \textbf{norme euclidienne canonique}, définie par : $$\lVert x\rVert_2=\sqrt{\lvert x_1\rvert^2+\cdots+\lvert x_n\rvert^2}$$
 \end{itemize}
 
-\begin{thm}{}
+\begin{prop}
 	Les trois applications :
 	$$\begin{array}{rcl}
 		\K^n&\longrightarrow&\R_+\\
@@ -404,7 +517,7 @@ L'espace $\K^n$ peut être peut être muni d'une structure d'espace vectoriel no
 		\K^n&\longrightarrow&\R_+\\
 		x&\longmapsto&\lVert x\rVert_2
 	\end{array}$$ sont des normes. Chacune d'entre elles munit donc $\K^n$ d'une structure d'espace vectoriel normé.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Si $\K=\R$, alors on peut aussi écrire $\lVert x\rVert_2=\sqrt{x_1^2+\cdots+x_n^2}$.
@@ -422,12 +535,12 @@ Plus généralement, si $E$ est un $\K$-espace vectoriel normé non nul muni d'u
 \subsubsection*{Espace des fonctions bornées}
 L'ensemble $\mathcal{B}(X,\K)$ des fonctions bornées d'un ensemble $X$ non vide à valeurs dans $\K$ est un sous-espace vectoriel du $\K$-espace vectoriel $\mathcal{F}(X,\K)$ des applications de $X$ dans $\K$.
 
-\begin{thm}{}
+\begin{prop}
 	L'application : $$\begin{array}{lrcl}
 		\mathcal{N}_\infty&\mathcal{B}(X,\K)&\longrightarrow&\R_+\\
 		&f&\longmapsto&\underset{X}{\sup}\lvert f\rvert
 	\end{array}$$ est une norme sur $\mathcal{B}(X,\K)$. On l'appelle \textbf{norme infinie}.
-\end{thm}
+\end{prop}
 La norme infinie munit donc $\mathcal{B}(X,\K)$ d'une structure d'espace vectoriel normé.
 
 \begin{ex}
@@ -507,12 +620,12 @@ Soit $E$ et $F$ deux $\K$-espaces vectoriels. Si l'on dispose d'une norme $\lVer
 
 \subsubsection*{Produit fini d'espaces vectoriels normés}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $p\in\N\st$ ainsi que $p$ espaces vectoriels normés $(E_1,\lVert\cdot\rVert_1),\ldots,(E_p,\lVert\cdot\rVert_p)$. Alors, l'application : $$\begin{array}{rcl}
 		E_1\times\cdots\times E_p&\longrightarrow&\R_+\\
 		(x_1,\ldots,x_p)&\longmapsto&\max(\lVert x_1\rVert_1,\ldots,\lVert x_p\rVert_p)
 	\end{array}$$ est une norme, et munit donc l'espace produit $E_1\times\cdots\times E_p$ d'une structure d'espace vectoriel normé. Cette norme est appelée \textbf{norme produit}.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	La norme infinie sur $\K^n$ est la norme produit obtenue en considérant, sur $\K$, la norme $x\mapsto\lvert x\rvert$.
@@ -560,9 +673,9 @@ Soit $E$ et $F$ deux $\K$-espaces vectoriels. Si l'on dispose d'une norme $\lVer
 	\end{enumerate}
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $A$ une partie non vide de $E$ ainsi que $x$ et $y$ deux éléments de $E$. On a : $$\lvert d(x,A)-d(y,A)\rvert\leqslant d(x,y)$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	Commencer par démontrer l'inégalité $d(x,A)-d(y,A)\leqslant d(x,y)$ puis utiliser la symétrie en $x$ et $y$.
 \end{proof}
@@ -629,26 +742,26 @@ Soit $E$ et $F$ deux $\K$-espaces vectoriels. Si l'on dispose d'une norme $\lVer
 	\end{enumerate}
 \end{exo}
 
-\begin{thm}{Caractérisation des parties bornées}%prop
+\begin{prop}[Caractérisation des parties bornées]%prop
 	Soit $A$ une partie de $E$ et $a\in E$. Les propriétés suivantes sont équivalentes :
 	\begin{enumerate}[label=(\roman*)]
 		\item $A$ est bornée ;
 		\item il existe un réel $r>0$ tel que $A\subset B_f(a,r)$.
 	\end{enumerate}
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	On retrouve que la réunion d'un nombre fini de parties bornées est une partie bornée.
 \end{ex}
 
-\begin{thm}{}%cor
-	Soit $E$ un espace vectoriel normé. Une partie $A$ de $E$ est bornée si, et seulement si : $$\exists R\in\R_+\ : \forall x\in A,\ \lVert x\rVert\leqslant R$$
-\end{thm}
+\begin{cor}%cor
+	Soit $E$ un espace vectoriel normé. Une partie $A$ de $E$ est bornée si, et seulement si : $$\exists R\in\R_+\ : \forall x\in A,\ \lVert x\rVert\leqslant R.$$
+\end{cor}
 
 \subsubsection*{Application bornée, suite bornée}
 
 \begin{dfn}
-	On dit qu'une application $f$ d'un ensemble $X$ dans un espace métrique $E$ est \textbf{bornée} si $f(X)$ est une partie bornée de $E$. Dans le cas d'un espace vectoriel normé, cela revient à dire qu'il existe $R\in\R_+$ tel que : $$\forall x\in X,\ \lVert f(x)\rVert\leqslant R$$
+	On dit qu'une application $f$ d'un ensemble $X$ dans un espace métrique $E$ est \textbf{bornée} si $f(X)$ est une partie bornée de $E$. Dans le cas d'un espace vectoriel normé, cela revient à dire qu'il existe $R\in\R_+$ tel que : $$\forall x\in X,\ \lVert f(x)\rVert\leqslant R.$$
 \end{dfn}
 
 \begin{rmq}
@@ -656,7 +769,7 @@ Soit $E$ et $F$ deux $\K$-espaces vectoriels. Si l'on dispose d'une norme $\lVer
 		\item Une suite d'éléments $(u_n)_{n\in\N}$ d'éléments de $E$ n'étant rien d'autre qu'une application de $\N$ dans $E$, la définition précédente s'applique.
 		\item Si $E$ est un espace vectoriel normé, il est facile de vérifier que l'ensemble des applications bornées de $X$ dans $E$ est un sous-espace vectoriel du $\K$-espace vectoriel $\mathcal{F}(X,E)$. des fonctions de $X$ dans $E$.
 		\item Il est clair, d'après la définition, que la notion de partie bornée (et donc de fonction ou suite bornée) dépend de la distance ou de la norme utilisée. Nous verrons :
-		\begin{itemize}[label=¤]
+		\begin{itemize}[label=$\star$]
 			\item qu'il est possible qu'une partie soit bornée pour une norme mais ne le soit pas pour une autre ;
 			\item que, néanmoins, deux normes équivalentes définissent les mêmes parties bornées ;
 			\item en particulier, en dimension finie, on peut choisir la norme que l'on veut pour vérifier qu'une partie est bornée.
@@ -685,9 +798,9 @@ Dans le cadre d'un espace vectoriel normé, cela s'écrit aussi : $$\forall\vare
 	Pour signifier qu'une suite $(a_n)_{n\in\N}$ tend vers $l$, on écrit $a_n\xrightarrow[n\to+\infty]{}l$ ou plus simplement $a_n\to l$.
 \end{notation}
 
-\begin{thm}{Unicité de la limite}%prop
+\begin{prop}[Unicité de la limite]%prop
 	Soit $(a_n)_{n\in\N}$ une suite d'éléments de $E$ ainsi que $l_1$ et $l_2$ deux éléments de $E$. Si $a_n\to l_1$ et $a_n\to l_2$, alors $l_1=l_2$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	Supposons que $(a_n)$ tende vers $l_1$ et vers $l_2$. Alors : $$\forall n\in\N,\ 0\leqslant d(l_1,l_2)\leqslant d(a_n,l_1)+d(a_n,l_2)$$ En passant, à la limite, $d(l_1,l_2)=0$ et on conclut par séparation de la distance $d$.
 \end{proof}
@@ -730,29 +843,29 @@ On retiendra de cet exercice que la convergence et la limite d'une suite dépend
 
 Ici, $E$ est un espace vectoriel normé.
 
-\begin{thm}{Combinaison linéaire de deux suites convergentes}%prop
+\begin{prop}[Combinaison linéaire de deux suites convergentes]%prop
 	Si deux suites $(a_n)$ et $(b_n)$ convergent respectivement vers $l_1$ et $l_2$, et si $\lambda$ et $\mu$ sont deux scalaires, alors la suite de terme général $\lambda a_n+\mu b_n$ converge vers $\lambda l_1+\mu l_2$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Par récurrence, on généralise le résultat précédente à une combinaison linéaire d'un nombre fini de suites : si l'on dispose de $p$ suites, de termes généraux respectifs $a_n^{(1)},\ldots,a_n^{(p)}$, convergeant respectivement vers $l_1;\ldots,l_p$, et si $\lambda_1,\ldots,\lambda_p$ sont des scalaires, alors la suite de terme général $\displaystyle\sum_{k=1}^{p}\lambda_ka_n^{(k)}$ converge vers $\displaystyle\sum_{k=1}^{p}\lambda_k l_k$.
 \end{rmq}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	L'ensemble des suites convergentes à valeurs dans $E$ est un sous-espace vectoriel de l'espace $E^\N$ des suites à valeurs dans $E$ sur lequel l'application $u\mapsto\lim u$ est linéaire.
-\end{thm}
+\end{cor}
 
-\begin{thm}{}%prop
+\begin{prop}[]%prop
 	Si une suite $(a_n)_{n\in\N}$ converge vers $l$, alors la suite de terme général $\lVert a_n\rVert$ converge vers $\lVert l\rVert$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{}%cor
+\begin{cor}%cor
 	Toute suite convergente est bornée.
-\end{thm}
+\end{cor}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $(u_n)_{n\in\N}$ une suite de $E$ et $(\lambda_n)_{n\in\N}$ une suite de $\K$, convergeant respectivement vers $a\in E$ et $\lambda\in\K$. Alors, $(\lambda_n u_n)_{n\in\N}$ converge vers $\lambda a$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	On verra ultérieurement une généralisation de ce résultat à d'autres types de produits.
@@ -762,10 +875,10 @@ Ici, $E$ est un espace vectoriel normé.
 
 Soit $(E_1,\lVert\cdot\rVert_1),\ldots,(E_pn\lVert\cdot\rVert_p)$ des espaces vectoriels normés. On rappelle que l'espace $E_1\times\cdots\times E_p$ est muni d'une structure d'espace vectoriel normé grâce à la norme produit définie par : $$\lVert(x_1,\ldots,x_p)\rVert=\max(\lVert x_1\rVert_2,\ldots,\lVert x_p\rVert_p).$$ Pour tout $k\in\llbracket1,p\rrbracket$, on considère $(a_n^{(k)})_{n\in\N}$ une suite à valeurs dans $E_k$, et on s'intéresse à la convergence au sens de la norme produit de la suite $(a_n)_{n\in\N}$ à valeurs dans $E_1\times\cdots\times E_p$ de terme général : $$a_n=(a_n^{(1)},\ldots,a_n^{(p)}).$$ La proposition suivante énonce que la convergence de la suite $(a_n)_{n\in\N}$ revient à celle de chacune des suites $(a_n^{(k)})_{n\in\N}$.
 
-\begin{thm}{}%prop
+\begin{prop}[]%prop
 	La suite de terme général $(a_n^{(1)},\ldots,a_n^{(p)})$ converge si, et seulement si, pour tout $k\in\llbracket1,p\rrbracket$, la suite $(a_n^{(k)})_{n\in\N}$ converge.\\
 	De plus, en notant alors $l_k$ la limite de la suite $(a_n^{(k)})_{n\in\N}$, la suite $(a_n)_{n\in\N}$ converge vers l'élément $(l_1,\ldots,l_p)$ de $E_1\times\cdots\times E_p$.
-\end{thm}
+\end{prop}
 
 \begin{ex}
 	Une suite à valeurs dans $\K^p$ converge au sens de la norme infinie si, et seulement si, chacune de ses composantes converge. L'étude de la convergence d'une telle suite revient donc à l'étude de $p$ suites à valeurs dans $\K$.
@@ -781,9 +894,9 @@ Soit $(E_1,\lVert\cdot\rVert_1),\ldots,(E_pn\lVert\cdot\rVert_p)$ des espaces ve
 
 Comme dans le cas des suites à valeurs réelles ou complexes, on appelle \textbf{suite extraite} ou \textbf{sous-suite} d'une suite $(a_n)_{n\in\N}$ toute suite de la forme $(a_{\varphi(n)})_{n\in\N}$ où $\varphi$ est une extraction, c'est-à-dire une application strictement croissante de $\N$ dans $\N$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $u$ une suite de $E$ convergeant vers $l\in E$. Alors toute sous-suite de $u$ converge également vers $l$.
-\end{thm}
+\end{prop}
 
 Exercice Moulin.EVN.38
 
@@ -807,9 +920,9 @@ Exercice Moulin.EVN.38
 	Comme pour les suites réelles, la convergence des deux suites $(u_{2n})$ et $(u_{2n+1})$ vers la même limite $l$ entraîne la convergence de $(u_n)$ vers $l$.
 \end{rmq}
 
-\begin{thm}{Caractérisation des valeurs d'adhérence}%prop
+\begin{prop}[Caractérisation des valeurs d'adhérence]%prop
 	Soit $(a_n)_{n\in\N}$ une suite à valeurs dans $E$ et $x$ un élément de $E$. Alors $x$ est valeur d'adhérence de la suite $(a_n)_{n\in\N}$ si, et seulement si : $$\forall\varepsilon>0,\ \forall n\in\N,\ \exists p\geqslant n\ : \ d(a_n,x)\leqslant\varepsilon$$
-\end{thm}
+\end{prop}
 
 \paragraph{Traduction en termes de boules} Soit $u=(u_n)$ une suite de $E$ et $l$ un élément de $E$.
 \begin{itemize}
@@ -850,9 +963,9 @@ A toute suite $(u_n)_{n\in\N}\in\E^\N$, on associe la suite $(S_n)_{n\in\N}$ dé
 	Pour étudier la convergence d'une suite $(u_n)_{n\in\N}$, il faut penser à étudier éventuellement la convergence de la série $\displaystyle\sum_{n\geqslant 1}(u_{n+1}-u_n)$.
 \end{met}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Si une série converge, alors son terme général converge vers $0$.
-\end{thm}
+\end{prop}
 
 \begin{dfn}
 	Une série dont le terme général ne tend pas vers $à$ est dite \textbf{grossièrement divergente}.
@@ -862,9 +975,9 @@ A toute suite $(u_n)_{n\in\N}\in\E^\N$, on associe la suite $(S_n)_{n\in\N}$ dé
 Comme pour les séries numériques, la convergence vers $0$ du terme général est une condition nécessaire mais non suffisante de convergence.
 \end{attention}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	L'ensemble des suites $(u_n)_{n\in\N}\in\E^\N$ telles que la série $\displaystyle\sum u_n$ converge est un sous-espace vectoriel de $\E^\N$ sur lequel l'application somme est linéaire.
-\end{thm}
+\end{prop}
 
 \begin{dfn}
 	Lorsque la série $\displaystyle\sum u_n$, on note $\displaystyle R_n(u)=\sum_{p=n+1}^{+\infty}u_p$, qu'on appelle \textbf{reste} au rang $p$.
@@ -890,7 +1003,7 @@ Comme pour les séries numériques, la convergence vers $0$ du terme général e
 
 Néanmoins, nous démontrons ultérieurement le résultat suivant :
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Toute série absolument convergente d'un espace vectoriel normé de dimension finie est convergente.
 \end{thm}
 
@@ -916,9 +1029,9 @@ L'équivalence entre les deux assertions de la définition ci-dessus est éviden
 	Il est clair, d'après la définition, que $E$ et $\emptyset$ sont des parties ouvertes de $E$.
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Toute boule ouverte est une partie ouverte de $E$.
-\end{thm}
+\end{prop}
 
 \begin{proof}
 	Pour $x$ appartenant à une boule ouvert de centre $a$ et de rayon $R$, considérer la boule ouverte de centre $x$ et de rayon $R-d(x,a)$. Faire un dessin peu aider...
@@ -944,12 +1057,12 @@ L'équivalence entre les deux assertions de la définition ci-dessus est éviden
 	Plus généralement, tout intervalle ouvert non vide de $\R$, c'est-à-dire de la forme $]-\infty,b[$, $]a,b[$ ou $]a,+\infty[$ est un ouvert de $\R$, mais pas de $\C$.
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{itemize}
 		\item La réunion d'une famille quelconque d'ouverts de $E$ est un ouvert de $E$.
 		\item L'intersection d'une famille finie d'ouverts de $E$ est un ouvert de $E$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	En particulier, une réunion quelconque de boules ouvertes est un ouvert de $E$. Réciproquement :
@@ -967,9 +1080,9 @@ L'équivalence entre les deux assertions de la définition ci-dessus est éviden
 	Pour tout $n\in\N\st$, on note $U_n=\displaystyle\left]-\frac{1}{n},\frac{1}{n}\right[$. Bien que chacun des $U_n$ soit un ouvert, leur intersection $\{0\}$ ne l'est pas.
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $E_1,\ldots,E_p$ des espaces métriques. On munit l'espace produit $E_1\times\cdots\times E_p$ de la distance produit. Si $U_1,\ldots,U_p$ sont ouverts respectivement dans $E_1,\ldots,E_p$, alors $U_1\times\cdots\times U_p$ est ouvert dans $E_1\times\cdots\times E_p$.
-\end{thm}
+\end{prop}
 
 \subsection{Parties fermées}
 
@@ -995,9 +1108,9 @@ De plus, il existe des parties à la fois ouvertes et fermées, comme $E$ et $\e
 	Quelles sont les parties à la fois ouvertes et fermées d'un ensemble muni de la distance discrète ?
 \end{exo}
 
-\begin{thm}
+\begin{prop}
 	Toute boule fermée est une partie fermée de $E$.
-\end{thm}
+\end{prop}
 \begin{proof}
 	On montre que le complémentaire de toute boule fermée est un ouvert. Pour $x$ n'appartenant pas à la boule fermée de centre $a$ et de rayon $R$, considérer la boule ouvert centrée en $x$ et de rayon $d(x,a)-R$. Faire un dessin peut aider...
 \end{proof}
@@ -1009,12 +1122,12 @@ De plus, il existe des parties à la fois ouvertes et fermées, comme $E$ et $\e
 	\end{enumerate}
 \end{ex}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	\begin{itemize}
 		\item L'intersection d'une famille quelconque de fermés est un fermé.
 		\item La réunion d'une famille finie de fermés est un fermé.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{attention}
 	Avant d'affirmer qu'une réunion de fermés est fermée, il faut bien vérifier le caractère fini de cette réunion. En effet, une réunion quelconque de fermés n'est en général pas fermée, comme l'illustre l'exercice suivant.
@@ -1063,13 +1176,13 @@ En revanche, il peut y avoir dans les voisinages de $a$ des points "très loin" 
 
 \subsubsection*{Opérations sur les voisinages}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $a$ un élément de $E$.
 	\begin{itemize}
 		\item Une intersection finie de voisinages de $a$ est encore un voisinage de $a$.
 		\item Si $A$ est un voisinage de $A$, alors toute partie contenant $A$ est également un voisinage de $A$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Le deuxième point de la proposition précédente permet d'affirmer que la réunion d'une famille non vide quelconque de voisinages de $a$ est un voisinage de $a$.
@@ -1081,9 +1194,9 @@ En revanche, il peut y avoir dans les voisinages de $a$ des points "très loin" 
 
 \subsubsection*{Limites et voisinages}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $a\in E$. Une suite $(u_n)$ de $E$ converge vers $a$ si, et seulement si : $$\forall V\in\mathcal{V}_a,\ \exists n_0\in\N\ : \ n\geqslant n_0\implies u_n\in V$$
-\end{thm}
+\end{prop}
 
 \begin{exo}
 	Traduire de même le fait que $a$ soit une valeur d'adhérence de $(u_n)$. Comparer avec les traductions en termes de boules. Explication ?
@@ -1107,16 +1220,17 @@ On suppose que $E$ est ici un espace vectoriel normé.
 \begin{rmq}
 	\begin{itemize}
 		\item Les voisinages de l'infini, de $+\infty$ et de $-\infty$ vérifient les opérations sur les voisinages énoncées dans la section précédente.
-		\item Dans $\R$, a-t-on $\mathcal{V}_\infty=\mathcal{V}_{+\infty}\cap\mathcal{V}_{-\infty}$ $\mathcal{V}_\infty=\mathcal{V}_{+\infty}\cup\mathcal{V}_{-\infty}$ ?	\end{itemize}
+		\item Dans $\R$, a-t-on $\mathcal{V}_\infty=\mathcal{V}_{+\infty}\cap\mathcal{V}_{-\infty}$ $\mathcal{V}_\infty=\mathcal{V}_{+\infty}\cup\mathcal{V}_{-\infty}$ ?
+		\end{itemize}
 \end{rmq}
 
 \begin{dfn}
 	Une suite $(u_n)_{n\in\N}$ d'un espace vectoriel normé $E$ \textbf{tend vers l'infini}, ou \textbf{tend vers $\infty$} (sans signe), et l'on écrit $\lim u_n=\infty$, lorsque la suite réelle $(\lVert u_n\rVert)_{n\in\N}$ tend vers $+\infty$.
 \end{dfn}
 
-\begin{thm}{Écriture topologique des limites}%prop
+\begin{prop}[Écriture topologique des limites]%prop
 	Une suite $(u_n)_{n\in\N}$ tend vers $l$ si, et seulement si, l'on a : $$\forall V\in\mathcal{V}_l,\ \exists n_0\in\N\ : \ n\geqslant n_0\implies u_n\in V,$$ ceci étant valable pour $l\in E$ ou $l=\infty$ lorsque $l$ est un espace vectoriel normé, et pour $l\in\R$ ou $l=\pm\infty$ lorsque $E=\R$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Cette proposition permet d'unifier les définitions et de prouver avec moins d'effort le théorème de composition des limites.
@@ -1134,9 +1248,9 @@ Désormais, $E$ est de nouveau un espace métrique.
 	L'\textbf{intérieur de $A$} est le plus grand ouvert inclus dans $A$. On le note $\mathring{A}$ ou $\text{Int}(A)$.
 \end{dfn}
 
-\begin{thm}
+\begin{prop}
 	L'intérieur de $A$ est l'ensemble de ses points intérieurs.
-\end{thm}
+\end{prop}
 
 On rappelle, d'après la définition des voisinages, que dire que $x$ est intérieur à $A$ signifie qu'on peut trouver $r>0$ tel que la boule centrée en $x$ et de rayon $r$ soit incluse dans $A$.
 
@@ -1148,7 +1262,7 @@ On rappelle, d'après la définition des voisinages, que dire que $x$ est intér
 \end{itemize}
 
 \begin{exo}
-	Montrer qu'une partie $A$ est ouvert si, et seulement si,  $\mathring{A}=A$.
+	Montrer qu'une partie $A$ est ouverte si, et seulement si,  $\mathring{A}=A$.
 \end{exo}
 
 \subsection{Point adhérent, adhérence d'une partie}
@@ -1164,9 +1278,9 @@ On rappelle, d'après la définition des voisinages, que dire que $x$ est intér
 	\end{enumerate}
 \end{ex}
 
-\begin{thm}{}%prop
-	un point $a$ est adhérent à $A$ si, et seulement si tout voisinage de $a$ rencontre $A$, ce qui s'écrit : $$\forall V\in\mathcal{V}_a,\ V\cap A\ne\emptyset$$
-\end{thm}
+\begin{prop}%prop
+	Un point $a$ est adhérent à $A$ si, et seulement si tout voisinage de $a$ rencontre $A$, ce qui s'écrit : $$\forall V\in\mathcal{V}_a,\ V\cap A\ne\emptyset$$
+\end{prop}
 
 \begin{dfn}
 	L'adhérence de $A$ est le plus petit fermé de $E$ contenant $A$. On le note $\overline{A}$ ou $\text{Adh}(A)$.
@@ -1182,9 +1296,9 @@ On rappelle, d'après la définition des voisinages, que dire que $x$ est intér
 
 Exercice Moulin.EVN.33
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	L'adhérence de $A$ est l'ensemble de ses points adhérents.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Dire qu'un point $x$ n'appartient pas à l'adhérence de $A$ signifie qu'on peut trouver $r>0$ tel que $B_o(x,r)\cap A=\emptyset$ (ou encore $B_o(x,r)\subset E\setminus A$), ce qui signifie que $x$ appartient à l'intérieur de $E\setminus A$. On a donc la relation : $$E\setminus\left(\text{Adh}(A)\right)\text{Int}(E\setminus A),$$
@@ -1193,11 +1307,11 @@ Exercice Moulin.EVN.33
 
 \subsubsection*{Caractérisation séquentielle des points adhérents}
 
-Le résultat suivant donne une caractérisation très importante des points adhérents à une partie $A$ d'un espace \textbf{métrique.}
+Le résultat suivant donne une caractérisation très importante des points adhérents à une partie $A$ d'un espace \textbf{métrique}.
 
-\begin{thm}{Caractérisation séquentielle des points adhérents}
+\begin{prop}[Caractérisation séquentielle des points adhérents]
 	Un point $x$ est adhérent à une partie $A$ si, et seulement s'il existe une suite d'éléments de $A$ qui converge vers $x$.
-\end{thm}
+\end{prop}
 
 Ce résultat s'énonce ainsi : l'adhérence d'une partie $A$ d'un espace métrique est l'ensemble des limites des suites convergentes à valeurs dans $A$.
 
@@ -1216,9 +1330,9 @@ Les notions de point adhérent à une partie et de valeur d'adhérence d'une sui
 
 Une partie étant un fermé si, et seulement si, elle est égale à sa propre adhérence, on déduit de la caractérisation séquentielle des points adhérents le résultat suivant :
 
-\begin{thm}{Caractérisation séquentielle des parties fermées}
+\begin{prop}[Caractérisation séquentielle des parties fermées]
 	Une partie $A$ est un fermé si, et seulement si, la limite de toute suite convergente d'éléments de $A$ appartient à $A$.
-\end{thm}
+\end{prop}
 
 \subsubsection*{Extension (HP) de la notion de point adhérent}
 
@@ -1240,10 +1354,10 @@ Ainsi :
 	\item $\infty$ est adhérent à $A$ si, et seulement si, $A$ est non bornée.
 \end{itemize}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Avec les définitions précédentes, $a$ est adhérent à $A$ si, et seulement si, tout voisinage de $a$ rencontre $A$, ce qui s'écrit : 
 	$$\forall V\in\mathcal{V}_a,\ V\cap A\ne\emptyset$$
-\end{thm}
+\end{prop}
 
 \subsection{Densité}
 
@@ -1305,9 +1419,9 @@ $$B_o(x,r)\cap A\ne\emptyset\ \ \text{et}\ \ B_o(x,r)\cap(E\setminus A)\ne\empty
 	\end{itemize}
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Pour toute partie $A$ de $E$, les trois parties : $$\mathring{A},\ \text{Fr}(A)\ \text{et}\ E\setminus\overline{A}$$ forment un recouvrement disjoint de $E$.
-\end{thm}
+\end{prop}
 
 \subsection{Ouvert relatif, fermé relatif, voisinage relatif}
 
@@ -1457,9 +1571,9 @@ Cependant, nous allons voir ici que sous des condition supplémentaires, certain
 
 Le résultat suivant assure que pour étudier le caractère dominé de la norme $N_1$ par la norme $N_2$, on peut se contenter de considérer les éléments $x\in E$ tels que $N_2(x)=1$.
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $N_1$ et $N_2$ deux normes sur $E$. La norme $N_1$ est dominée par la norme $N_2$ si, et seulement s'il existe un réel $\alpha$ strictement positif tel que : $$\forall x\in E,\ \lVert x\rVert=1\implies N_1(x)\leqslant\alpha.$$
-\end{thm}
+\end{prop}
 \begin{proof}
 	Raisonnement par homogénéité.
 \end{proof}
@@ -1472,17 +1586,17 @@ Le résultat suivant assure que pour étudier le caractère dominé de la norme 
 	Dans l'espace $\mathcal{C}([a,b],\K)$, montrer que les normes un et deux sont toutes les deux dominées par la norme infinie.
 \end{exo}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $N_1$ et $N_2$ deux normes sur $E$ telle que $N_1$ soit dominée par $N_2$. Si une partie de $E$ est bornée pour la norme $N_2$, alors elle l'est également pour la norme $N_1$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Avec les notations de la proposition précédente, si une application $f$ à valeurs dans $E$ (et donc en particulier une suite d'éléments de $E$) est bornée pour la norme $N_2$, alors elle l'est également pour la norme $N_1$.
 \end{rmq}
 
-\begin{thm}{}%prop
+\begin{prop}%prop
 	Soit $N_1$ et $N_2$ deux normes sur $E$ telle que $N_1$ soit dominée par $N_2$. Si une suite converge vers un élément $l$ de $E$ pour la norme $N_2$, alors elle converge également vers $l$ pour la norme $N_1$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Étant données deux normes $N_1$ et $N_2$, pour montrer que $N_1$ n'est pas dominée par $N_2$, il suffit, d'après la proposition précédente, d'exhiber une suite qui converge pour la norme $N_2$ mais pas pour la norme $N_1$.
@@ -1517,25 +1631,25 @@ Le résultat suivant assure que pour étudier le caractère dominé de la norme 
 Beaucoup de propriétés sont conservées lorsqu'on passe à une autre qui lui est équivalente. \\
 Donnons trois résultats, dont les deux premiers sont des conséquences immédiates de la remarque sur le fait que l'équivalence des normes correspond à une domination mutuelle et de résultats sur les normes qui en dominent d'autres.
 
-\begin{thm}{Conservation du caractère borné d'une partie}%prop
+\begin{prop}[Conservation du caractère borné d'une partie]%prop
 	Soit $N_1$ et $N_2$ deux normes équivalentes sur $E$. une partie est bornée pour la norme $N_1$ si, et seulement si, elle l'est pour la norme $N_2$.
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Ce résultat s'applique en particulier aux applications bornées et aux suites bornées.
 \end{rmq}
 
-\begin{thm}{Conservation du caractère convergent d'une suite}
+\begin{prop}[Conservation du caractère convergent d'une suite]
 	Soit $N_1$ et $N_2$ deux normes équivalentes sur $E$. Une suite converge vers un élément $l$ de $E$ pour la norme $N_1$ si, et seulement si, elle converge vers $l$ pour la norme $N_2$.
-\end{thm}
+\end{prop}
 
-\begin{thm}{Conservation des ouverts et des fermés}%prop
+\begin{prop}[Conservation des ouverts et des fermés]%prop
 	Soit $N_1$ et $N_2$ deux normes équivalentes sur $E$, et $A$ une partie de $E$. Alors :
 	\begin{itemize}
 		\item la partie $A$ est ouvert pour $N_1$ si, et seulement si, elle l'est pour $N_2$ ;
 		\item la partie $A$ est fermée pour $N_1$ si, et seulement si, elle l'est pour $N_2$.
 	\end{itemize}
-\end{thm}
+\end{prop}
 
 \begin{rmq}
 	Les résultats précédents nous assurent que, pour étudier la convergence d'une suite ou encore le caractère borné, ouvert ou fermé (et donc, par extension, tout résultat reposant sur ces notions), si l'on dispose de plusieurs normes équivalentes, alors on peut choisir celle qui est la plus adaptée au problème.
@@ -1560,7 +1674,7 @@ Donnons trois résultats, dont les deux premiers sont des conséquences immédia
 
 Le théorème fondamental suivant sera démontré ultérieurement.
 
-\begin{thm}{}%thm
+\begin{thm}%thm
 	Dans un espace de dimension finie, toutes les normes sont équivalentes.
 \end{thm}
 
