@@ -195,9 +195,21 @@
 \newpage
 \maketitle
 
+"J'annonce le barème : si vous oubliez l'hypothèse de domination dans ce genre de théorèmes, c'est $0$ à la copie. Remarquez que cela peut être une bonne stratégie pour annuler tous vos $-1$."
+
 Dans ce chapitre, nous étudions des intégrales dépendant d'un paramètre qui peut être entier (suites de fonctions) ou réel. Dans les deux cas, nous nous intéresserons aux problèmes de convergence et dans le second cas à la continuité et à la dérivabilité. pour la continuité, le paramètre pourra même plus généralement être pris dans un espace vectoriel de dimension finie. Dans tout le chapitre, les intervalles de $\R$ considérés sont d'intérieur non vide et les fonctions sont à valeurs dans $\K=\R$ ou $\K=\C$.
 
 \section{Suites d'intégrales et séries d'intégrales}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Nous avons vu que si une suite de fonctions continues par morceaux $(f_n)$ converge uniformément sur un segment vers une fonction $f$ continue par morceaux, alors $\displaystyle\int_J f=\underset{n\to+\infty}{\lim}\int_J f_n$.
+		\item Le résultat est faux sur un intervalle $J$ quelconque comme le montre l'exemple de la fonction $\displaystyle\frac{1}{n}\textbf{1}_{[0,n]}$.
+		\item En revanche, la convergence uniforme sur un intervalle \textit{borné} suffit comme le prouvent les majorations suivantes :
+		$$\left\lvert\int_I f-\int_I f_n\right\rvert\leqslant\int_I\lvert f-f_n\rvert\leqslant l\mathcal{N}_\infty(f-f_n)$$ où $l$ est la longueur de l'intervalle borné $I$ (domination de la "norme" de la convergence en moyenne par la norme de convergence uniforme).
+		\item Nous allons voir des théorèmes bien plus puissants permettant de montrer une convergence d'intégrales ne nécessitant pas de convergence uniforme, mais demandant une hypothèse supplémentaire la plupart du temps facile à établir.
+	\end{itemize}
+\end{rmq}
 
 \subsection{Le théorème de convergence dominée}
 
@@ -207,21 +219,21 @@ Dans ce chapitre, nous étudions des intégrales dépendant d'un paramètre qui 
 		\item la suite de fonctions $(f_n)_{n\in\N}$ converge simplement sur $I$ vers une fonction $f$ continue par morceaux sur $I$ ;
 		\item \textbf{hypothèse de domination} : il existe $\varphi:I\to\R$ intégrable sur $I$ telle que $$\forall n\in\N,\ \forall t\in I,\ \lvert f_n(t)\rvert\leqslant \varphi(t)$$
 	\end{enumerate}
-	Alors toutes les fonctions $f_n$, ainsi que $f$, sont intégrables sur $I$ et l'on a : $$\int_I f_n\xrightarrow[n\to+\infty]{}\int_I f$$
+	Alors toutes les fonctions $f_n$, ainsi que $f$, sont intégrables sur $I$ et l'on a : $$\int_I f_n\xrightarrow[n\to+\infty]{}\int_I f.$$
 \end{thm}
 Nous n'en ferons pas la démonstration qui est hors programme et pour cause : une "bonne" démonstration est faisable avec l'intégrale de Lebesgue, mais la démonstration avec les intégrales de Riemann est beaucoup plus délicate et consiste essentiellement en des astuces pour contourner les problèmes de l'intégrale de Riemann par rapport à celle de Lebesgue.
 
 \begin{ex}
 	Pour tout $n\in\N$, on pose : $$\begin{array}{lrcl}
 		f_n:&]1,+\infty[&\longrightarrow&\R\\
-		&t&\longmapsto&\displaystyle\frac{1+t^n}{1+t^{n+2}}
+		&t&\longmapsto&\displaystyle\frac{1+t^n}{1+t^{n+2}}.
 	\end{array}$$
 	\begin{itemize}
 		\item Pour tout $n\in\N$, la fonction $f_n$ est continue par morceaux.
 		\item Pour tout $t>1$ : $$f_n(t)=\displaystyle\frac{1+t^n}{1+t^{n+2}}\underset{n\to +\infty}{\sim}\frac{t^n}{t^{n+2}}=\frac{1}{t^2}$$ donc la suite de fonctions $(f_n)_{n\in\N}$ converge vers la fonction $t\mapsto\displaystyle\frac{1}{t^2}$, continue donc continue ar morceaux sur $]1,+\infty[$.
-		\item \textbf{Hypothèse de domination} : pour tout $n\in\N$, on a $$\forall t>1,\ \lvert f_n(t)\rvert=\displaystyle\frac{1+t^n}{1+t^{n+2}}\leqslant\frac{t^n+t^n}{t^{n+2}}=\frac{2}{t^2}$$ La fonction $t\mapsto\displaystyle\frac{2}{t^2}$ étant intégrable sur $]1,+\infty[$, cela fournit l'hypothèse de domination.
+		\item \textbf{Hypothèse de domination} : pour tout $n\in\N$, on a $$\forall t>1,\ \lvert f_n(t)\rvert=\displaystyle\frac{1+t^n}{1+t^{n+2}}\leqslant\frac{t^n+t^n}{t^{n+2}}=\frac{2}{t^2}.$$ La fonction $t\mapsto\displaystyle\frac{2}{t^2}$ étant intégrable sur $]1,+\infty[$, cela fournit l'hypothèse de domination.
 	\end{itemize}
-	D'après le théorème de convergence dominée, on en déduit que les $f_n$ sont intégrables et que : $$\int_{1}^{+\infty}f_n\xrightarrow[n\to+\infty]{}\int_{1}^{+\infty}\frac{\d t}{t^2}=1$$
+	D'après le théorème de convergence dominée, on en déduit que les $f_n$ sont intégrables et que : $$\int_{1}^{+\infty}f_n\xrightarrow[n\to+\infty]{}\int_{1}^{+\infty}\frac{\d t}{t^2}=1.$$
 \end{ex}
 
 \begin{exo}
@@ -236,7 +248,7 @@ Nous n'en ferons pas la démonstration qui est hors programme et pour cause : un
 	Pour tout $n\in\N\st$, soit : $$\begin{array}{lrcl}
 		f_n:&[0,1[&\longrightarrow&\R\\
 		&t&\longmapsto&n^2t^{n-1}
-	\end{array}$$ Pour tout $n\in\N\st$, la fonction $f_n$ est continue et intégrable sur $[0,1[$, car elle admet une limite finie en $1$. Pour tout $t\in[0,1[$ fixé, on a $f_n(t)\xrightarrow[n\to+\infty]{}0$ donc la suite de fonctions $(f_n)_{n\in\N\st}$ converge simplement vers la fonction nulle sur $[0,1[$. Toutes les hypothèses du théorème de convergence dominée sont vérifiées, hormis l'hypothèse de domination. Or, on a de plus : $$\int_{0}^{1}f_n(t)\ \d t=[nt^n]_{0}^{1}=n$$ On a donc : $$\underset{n\to+\infty}{\lim}\int_{0}^{1}f_n(t)\ \d t\ne \int_{0}^{1}\underset{n\to+\infty}{\lim}f_n(t)\ \d t$$
+	\end{array}$$ Pour tout $n\in\N\st$, la fonction $f_n$ est continue et intégrable sur $[0,1[$, car elle admet une limite finie en $1$. Pour tout $t\in[0,1[$ fixé, on a $f_n(t)\xrightarrow[n\to+\infty]{}0$ donc la suite de fonctions $(f_n)_{n\in\N\st}$ converge simplement vers la fonction nulle sur $[0,1[$. Toutes les hypothèses du théorème de convergence dominée sont vérifiées, hormis l'hypothèse de domination. Or, on a de plus : $$\int_{0}^{1}f_n(t)\ \d t=[nt^n]_{0}^{1}=n.$$ On a donc : $$\underset{n\to+\infty}{\lim}\int_{0}^{1}f_n(t)\ \d t\ne \int_{0}^{1}\underset{n\to+\infty}{\lim}f_n(t)\ \d t.$$
 \end{ex}
 
 \begin{met}
@@ -244,11 +256,11 @@ Nous n'en ferons pas la démonstration qui est hors programme et pour cause : un
 \end{met}
 
 \begin{ex}
-	Limite de $\displaystyle I_n=\int_{0}^{\sqrt{n}}\left(1-\frac{t^2}{n}\right)^n\ \d t$
+	Limite de $\displaystyle I_n=\int_{0}^{\sqrt{n}}\left(1-\frac{t^2}{n}\right)^n\ \d t$.
 \end{ex}
 
 \begin{exo}
-	Déterminer un équivalent simple de la suite de terme général $I_n=\displaystyle\int_{0}^{1}\frac{\d u}{(1+u^2)^n}$ On exprimera le résultat obtenu à l'aide d'une intégrale que l'on ne cherchera pas à calculer. On pourra effectuer le changement de variables $t=\sqrt{n}u$.
+	Déterminer un équivalent simple de la suite de terme général $I_n=\displaystyle\int_{0}^{1}\frac{\d u}{(1+u^2)^n}$. On exprimera le résultat obtenu à l'aide d'une intégrale que l'on ne cherchera pas à calculer. On pourra effectuer le changement de variables $t=\sqrt{n}u$.
 \end{exo}
 
 \subsection{Intégration terme à terme}
@@ -256,28 +268,75 @@ Nous n'en ferons pas la démonstration qui est hors programme et pour cause : un
 Nous admettrons les deux théorèmes suivants.
 
 \begin{thm}[Théorème d'intégration terme à terme - cas positif]
-	Soit $(u_n)_{n\in\N}$ une suite de fonctions intégrables sur un intervalle $I$, à valeurs dans $\R_+$, telle que la série $\sum u_n$ converge simplement et telle que sa somme soit continue par morceaux sur $I$. Alors, dans $[0,+\infty]$, on a l'égalité : $$\int_I\sum_{n=0}^{+\infty}u_n=\sum_{n=0}^{+\infty}\int_I u_n$$ En particulier, l'intégrabilité de la somme équivaut à : $$\sum_{n=0}^{+\infty}\int_I u_n<+\infty$$
+	Soit $(u_n)_{n\in\N}$ une suite de fonctions intégrables sur un intervalle $I$, à valeurs dans $\R_+$, telle que la série $\sum u_n$ converge simplement et telle que sa somme soit continue par morceaux sur $I$. Alors, dans $[0,+\infty]$, on a l'égalité : $$\int_I\sum_{n=0}^{+\infty}u_n=\sum_{n=0}^{+\infty}\int_I u_n$$ En particulier, l'intégrabilité de la somme équivaut à : $$\sum_{n=0}^{+\infty}\int_I u_n<+\infty.$$
 \end{thm}
 
 \begin{ex}
-	Montrons que $\displaystyle\int_{0}^{1}\frac{\ln(t)}{t-1}\d t=\sum_{n=0}^{+\infty}\frac{1}{(n+1)^2}$
+	Montrons que $\displaystyle\int_{0}^{1}\frac{\ln(t)}{t-1}\d t=\sum_{n=0}^{+\infty}\frac{1}{(n+1)^2}$.
 \end{ex}
 
 \begin{exo}
-	Montrer que $\displaystyle\int_{0}^{+\infty}\frac{x^2}{e^x-1}\d x=2\sum_{n=1}^{+\infty}\frac{1}{n^3}$
+	Montrer que $\displaystyle\int_{0}^{+\infty}\frac{x^2}{e^x-1}\d x=2\sum_{n=1}^{+\infty}\frac{1}{n^3}$.
 \end{exo}
 
 \begin{thm}[Théorème d'intégration terme à terme - cas général]
-	Soit $(u_n)_{n\in\N}$ une suite de fonctions intégrables sur un intervalle $I$, telle que la série $\sum u_n$ converge simplement et telle que sa somme soit continue par morceaux sur $I$.\\ Si $\displaystyle\sum_{n=0}^{+\infty}\int_I\lvert u_n\rvert<+\infty$, alors la fonctions $\displaystyle\sum_{n=0}^{+\infty}u_n$ est intégrable sur $I$ et on a l'égalité : $$\int_I\sum_{n=0}^{+\infty}u_n=\sum_{n=0}^{+\infty}\int_I u_n$$
+	Soit $(u_n)_{n\in\N}$ une suite de fonctions intégrables sur un intervalle $I$, telle que la série $\sum u_n$ converge simplement et telle que sa somme soit continue par morceaux sur $I$.\\ Si $\displaystyle\sum_{n=0}^{+\infty}\int_I\lvert u_n\rvert<+\infty$, alors la fonction $\displaystyle\sum_{n=0}^{+\infty}u_n$ est intégrable sur $I$ et on a l'égalité : $$\int_I\sum_{n=0}^{+\infty}u_n=\sum_{n=0}^{+\infty}\int_I u_n.$$
 \end{thm}
 
 \begin{ex}
-	Montrons que $\displaystyle\int_{0}^{1}\frac{\ln(t)}{1+t}\d t=\sum_{n=1}^{+\infty}\frac{(-1)^n}{n^2}$
+	Montrons que $\displaystyle\int_{0}^{1}\frac{\ln(t)}{1+t}\d t=\sum_{n=1}^{+\infty}\frac{(-1)^n}{n^2}$.
 \end{ex}
 
 \begin{exo}
-	Montrer que $\displaystyle\int_{0}^{+\infty}\frac{t}{\cosh(t)}\d t=2\sum_{n=0}^{+\infty}\frac{(-1)^n}{(2n+1)^2}$
+	Montrer que $\displaystyle\int_{0}^{+\infty}\frac{t}{\cosh(t)}\d t=2\sum_{n=0}^{+\infty}\frac{(-1)^n}{(2n+1)^2}$.
 \end{exo}
+
+\begin{rmq}
+	D'après le théorème d'intégration terme à terme (cas positif), pour démontrer la convergence de la série $\displaystyle\sum\int_I\lvert u_n\rvert$, il suffit de montrer l'intégrabilité de la fonction $\displaystyle\sum_{n=0}^{+\infty}\lvert u_n\rvert$ sur $I$.
+\end{rmq}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Montrons que $\displaystyle\int_{0}^{+\infty}\left(\sum_{n=1}^{+\infty}\frac{(-1)^ne^{-nt}}{\sqrt{n}}\right)\d t=\sum_{n=1}^{+\infty}\frac{(-1)^n}{n^{3/2}}$.
+		\item Montrons qu'il existe une suite $(a_n)$ telle que :
+		$$\forall x\in]-1,1[,\ \int_{0}^{+\infty}e^{-t}t^x=\sum_{n=0}^{+\infty}a_n x^n.$$
+	\end{enumerate}
+\end{ex}
+
+\begin{attention}
+	L'hypothèse de la convergence de la série $\displaystyle\sum\int_I\lvert u_n\rvert$ est essentielle et la seule convergence, même absolue, de la série $\displaystyle\sum\int_I u_n$ ne suffit pas, comme le montre l'exemple suivant.
+\end{attention}
+
+\begin{ex}
+	Pour tout $n\in\N$, soit $u_n:]-1,1[\to\R$ définie par $u_n(t)=t^{2n+1}$.
+	\begin{enumerate}
+		\item Pour tout $n\in\N$, la fonction $u_n$ est intégrable, impaire, et l'on a $\displaystyle\int_{-1}^{1}u_n=0$.\\
+		En particulier, la série $\displaystyle\sum\int_{-1}^{1}u_n$ converge (absolument).
+		\item La série $\displaystyle\sum u_n$ converge simplement sur $]-1,1[$ puisque, pour tout $t\in]-1,1[$, la série $\displaystyle\sum u_n(t)$ est une série géométrique de raison $t^2\in[0,1[$. \\
+		Sa somme $t\mapsto\displaystyle\frac{t}{1-t^2}$ est continue sur $]-1,1[$, mais elle n'est pas intégrable, car on a :
+		$$\frac{t}{1-t^2}\underset{t\to 1}{\sim}\frac{1}{2(1-t)}.$$ 
+	\end{enumerate}
+\end{ex}
+
+\paragraph{Convergence monotone} Exercice Moulin.IP.17
+
+\subsubsection*{Autres méthodes pour intégrer terme à terme}
+
+Soit $\displaystyle\sum u_n$ une série de fonctions intégrables sur $I$, qui converge simplement, dont on notera $S_n$, $R_n$ et $S$ respectivement la $n$-ième somme partielle, le reste d'ordre $n$ et la somme. Si $S$ est intégrable sur $I$, on a :
+$$\int_I S=\int_I S_n+\int_I R_n=\sum_{k=0}^{n}\int_I u_k+\int_I R_n,$$ de sorte que la série numérique $\displaystyle\sum\int_I u_n$ est convergente, de somme $\int_I S$ si, et seulement si, la suite $\displaystyle\left(\int_I R_n\right)$ converge vers $0$.
+
+Les deux théorèmes d'intégration terme à terme, lorsqu'ils s'appliquent, permettant d'échanger directement les symboles $\displaystyle\int_I$ et $\displaystyle\sum$, autrement dit d'intégrer terme à terme la série de fonctions $\displaystyle\sum u_n$.
+
+Lorsque leurs hypothèses ne sont pas vérifiées, il faudra le plus souvent démontrer que la suite de terme général $\displaystyle\int_I R_n$ converge vers $0$ pour justifier une intégration terme à terme.
+
+\begin{met}
+	Lorsque le théorème d'intégration terme à terme ne s'applique pas, pour justifier une interversion série/intégrale, on pourra parfois, en notant $S_n$ et $R_n$ la somme partielle et le reste d'ordre $n$ de la série de fonctions $\sum u_n$ de somme $S$, vérifier que : $$\int_IR_n\xrightarrow[n\to+\infty]{}0 \text{  ou  }\int_IS_n\xrightarrow[n\to+\infty]{}\int_I S$$ Pour établir de telles limites, on utilisera en général le théorème de convergence dominée.
+\end{met}
+
+\begin{ex}
+	$$\displaystyle\int_{1}^{+\infty}\frac{\d t}{1+t^3}=\sum_{n=0}^{+\infty}\frac{(-1)^n}{3n+2}.$$ On observe que le théorème d'intégration terme à terme ne s'applique pas ici car :
+	$$\forall n\in\N,\ \int_{1}^{+\infty}\lvert u_n(t)\rvert\d t=\frac{1}{3n+2}\quad\text{et}\quad\sum_{n=0}^{+\infty}\frac{1}{3n+2}=+\infty.$$
+\end{ex}
 
 \section{Continuité et dérivabilité}
 
@@ -291,13 +350,22 @@ Nous admettrons les deux théorèmes suivants.
 		\item \textbf{hypothèse de domination} : pour tout $a\in A$, il existe un voisinage $V$ de $a$ et une fonction $\varphi:I\to\R$ intégrable sur $I$ telle que : $$\forall (x,t)\in (V\cap A)\times I,\ \lvert f(x,t)\rvert\leqslant\varphi(t)$$
 	\end{itemize} Alors, la fonction $g:x\mapsto\displaystyle\int_I f(x,t)\ \d t$ est bien définie et continue sur $A$.
 \end{thm}
+\begin{proof}
+	On utilise la caractérisation séquentielle de la continuité et le théorème de convergence dominée.
+\end{proof}
 
 \begin{met}
-	\begin{enumerate}
+	\begin{itemize}
 		\item Bien entendu, une domination sur tout $A$ est suffisante et dans la pratique, on commencera par chercher à établir une telle domination.
 		\item Lorsque $A$ est un intervalle de $\R$, on pourra chercher une domination sur tout segment de $A$ ou sur toute famille d'intervalles adaptée à la situation, c'est-à-dire permettant d'obtenir une domination sur tout segment de $A$.
-	\end{enumerate}
+	\end{itemize}
 \end{met}
+
+"Vous n'échapperez pas à la domination."
+
+\begin{rmq}
+	Soit $I$ un segment, $J$ un intervalle de $\R$ et $K$ un segment de $J$. Alors $I\times K$ est compact. Si $f$ est continue sur $J\times I$, alors $f$ est continue sur $K\times I$ compact, donc on dispose d'une domination de $f$ sur $K$ par $\underset{K\times I}{\max}\lvert f\rvert\in\R$, qui est intégrable sur le segment $I$.
+\end{rmq}
 
 \begin{exo}
 	Montrer que la fonction $g:x\mapsto\displaystyle\int_{0}^{+\infty}\frac{e^{-xt}}{1+t^2}\d t$ est définie et continue sur $\R_+$.
@@ -306,26 +374,206 @@ Nous admettrons les deux théorèmes suivants.
 \begin{ex}
 	\begin{enumerate}
 		\item Montrons que la fonction $g:x\mapsto\displaystyle\int_{0}^{+\infty}\cos(t^2)e^{-xt}$ est bien définie et continue sur $\R_+\st$.
-		\item \textbf{Continuité de la fonction $\Gamma$} : soit $H=\{z\in\C\ : \text{Re}(z)>0\}$. Pour tout $z\in H$, on pose $$\Gamma(z)=\int_{0}^{+\infty}e^{-t}t^{z-1}\ \d t$$ Montrons que $\Gamma$ est bien définie et continue.
+		\item \textbf{Continuité de la fonction $\Gamma$}.\\
+		Soit $H=\{z\in\C\ : \text{Re}(z)>0\}$. Pour tout $z\in H$, on pose $$\Gamma(z)=\int_{0}^{+\infty}e^{-t}t^{z-1}\ \d t.$$ Montrons que $\Gamma$ est bien définie et continue.
 	\end{enumerate}
 \end{ex}
 
 \begin{exo}
-	Soit $H=\{z\in\C\ : \text{Re}(z)>0\}$ et $f:[0,+\infty[\to\C$ une fonction continue par morceaux telle que pour tout $p\in H$, la fonction $t\mapsto e^{-pt}f(t)$ soit intégrable sur $[0,+\infty[$. On définit la \textbf{transformée de Laplace} $Lf:H\to\C$ de $f$ par : $$\forall p\in H,\ Lf(p)=\int_{0}^{+\infty}e^{-pt}f(t)\ \d t$$ Montrer que $Lf$ est continue sur $H$.
+	Soit $H=\{z\in\C\ : \text{Re}(z)>0\}$ et $f:[0,+\infty[\to\C$ une fonction continue par morceaux telle que pour tout $p\in H$, la fonction $t\mapsto e^{-pt}f(t)$ soit intégrable sur $[0,+\infty[$. \\
+	On définit la \textbf{transformée de Laplace} $Lf:H\to\C$ de $f$ par : $$\forall p\in H,\ Lf(p)=\int_{0}^{+\infty}e^{-pt}f(t)\ \d t.$$ Montrer que $Lf$ est continue sur $H$.
 \end{exo}
 
 \begin{ex}
-	Définition et continuité de $(x,y)\mapsto\displaystyle\int_{0}^{+\infty}e^{-xt}\sqrt{y+t^2}\ \d t$
+	Définition et continuité de $(x,y)\mapsto\displaystyle\int_{0}^{+\infty}e^{-xt}\sqrt{y+t^2}\ \d t.$
 \end{ex}
 
 \subsection{Limites d'intégrales}
 
-La conclusion du théorème de continuité peut s'écrire : $$\underset{x\to a}{\lim}\int_I f(x,t)\ \d t=\int_I f(a,t)\ dt$$ Le théorème suivant étend ce résultat au cas où $A$ est un intervalle de $\R$ et $a$ est l'une de ses extrémités.
+La conclusion du théorème de continuité peut s'écrire : $$\underset{x\to a}{\lim}\int_I f(x,t) \d t=\int_I f(a,t)\d t.$$ Le théorème suivant étend ce résultat au cas où $A$ est un intervalle de $\R$ et $a$ est l'une de ses extrémités.
+
+\begin{prop}
+	Soit $I$ et $A$ deux intervalles de $\R$, $f:A\times I\to\K$ et $a$ une extrémité de $A$. On fait les hypothèses suivantes :
+	\begin{itemize}
+		\item pour tout $x\in A$, la fonction $t\mapsto f(x,t)$ est continue par morceaux sur $I$,
+		\item il existe une fonction $g$ continue par morceaux sur $I$ telle que pour tout $t\in I$, on ait $\underset{x\to a}{\lim}f(x,t)=g(t)$ ;
+		\item \textbf{hypothèse de domination} : il existe $\varphi:I\to\R$ intégrable sur $I$ telle que :
+		$$\forall (x,t)\in A\times I,\ \lvert f(x,t)\rvert\leqslant\varphi(t).$$
+	\end{itemize}
+	Alors, pour tout $x\in A$, la fonction $t\mapsto f(x,t)$ est intégrable sur $I$, la fonction $g$ est intégrable sur $I$ et l'on a :
+	$$\underset{x\to a}{\lim}\int_I f(x,t)\d t=\int_I g(t)\d t.$$
+\end{prop}
+\begin{proof}
+	On utilise la caractérisation séquentielle de la limite et le théorème de convergence dominée.
+\end{proof}
+
+\begin{exo}
+	Pour tout $x>0$, on pose $g(x)=\displaystyle\int_{0}^{+\infty}\frac{e^{-t}}{t+x}\d t$.
+	\begin{enumerate}
+		\item Justifier la définition de $g$.
+		\item Montrer que $\displaystyle g(x)\underset{x\to +\infty}{\sim}\frac{1}{x}$.
+	\end{enumerate}
+\end{exo}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Ce résultat sert surtout lorsque $a=\pm\infty$ car, pour $a\in\R$, quitte à prolonger par continuité les fonctions, on pourra le plus souvent appliquer le théorème de continuité des intégrales à paramètres.
+		\item Par caractère local de la limite, il suffit d'établir une domination au voisinage de $a$. \\ Ainsi, dans le cas où $a=+\infty$, une domination sur un intervalle $[x_0,+\infty[\subset I$ suffit.
+	\end{itemize}
+\end{rmq}
+
+\begin{ex}
+	On reprend les notations de l'exercice $6$ sur la transformée de Laplace.\\
+	On note $l_0=\underset{t\to 0^+}{\lim}f(t)$ et on suppose l'existence de $l_\infty=\underset{t\to +\infty}{\lim}f(t)$. Établissons les deux résultats suivants :
+	\begin{itemize}
+		\item Théorème de la valeur initiale : $\underset{p\to+\infty}{\lim}pLf(p)=l_0$.
+		\item Théorème de la valeur finale : $\underset{p\to0^+}{\lim}pLf(p)=l_\infty$.
+	\end{itemize}
+\end{ex}
 
 \subsection{Dérivation d'une intégrale à paramètre}
 
+\begin{rappel}
+	Soit $I$ et $J$ deux intervalles de $\R$, $f(x,t)\mapsto f(x,t)$ une fonction définie sur $J\times I$ à valeurs dans $\K$ et $(x_0,t_0)\in J\times I$.\\
+	Lorsqu'elle existe, la dérivée en $x_0$ de la fonction $x\mapsto f(x,t_0)$ est appelée dérivée partielle par rapport à $x$ en $(x_0,t_0)$ de $f$ et est notée $\displaystyle\frac{\partial f}{\partial x}(x_0,t_0)$.
+\end{rappel}
 
+\begin{ex}
+	Soit $f:\R\times\R_+\st\to\R$ définie par $f(x,t)=\displaystyle\frac{x^2}{x^2+t^2}$.\\
+	Pour tout $t>0$, la fonction $x\mapsto f(x,t)$ est dérivable comme quotient de fonctions dérivables, le dénominateur ne s'annulant pas. Par suite, $\displaystyle\frac{\partial f}{\partial t}$ existe sur $\R\times\R_+\st$ et l'on a :
+	$$\forall (x,t)\in\R\times\R_+\st,\ \frac{\partial f}{\partial t}(x,t)=\frac{2x}{x^2+t^2}+x^2\frac{-2x}{(x^2+t^2)^2}=\frac{2xt^2}{(x^2+t^2)^2}.$$
+\end{ex}
 
+\begin{thm}[Théorème de dérivation d'une intégrale à paramètre]
+	Soit $I$ et $J$ deux intervalles de $\R$ et $f:(x,t)\mapsto f(x,t)$ une fonction définie sur $J\times I$ à valeurs dans $\K$. On fait les hypothèses suivantes :
+	\begin{itemize}
+		\item pour tout $x\in J$, la fonction $t\mapsto f(x,t)$ est intégrable sur $I$ ;
+		\item pour tout $t\in I$, la fonction $x\mapsto f(x,t)$ est de classe $\mathcal{C}^1$ ;
+		\item pour tout $x\in J$, la fonction $t\mapsto\displaystyle\frac{\partial f}{\partial x}(x,t)$ est continue par morceaux sur $I$ ;
+		\item \textbf{hypothèse de domination} : pour tout segment $K$ de $J$, il existe une fonction $\varphi:I\to\R$ intégrable sur $I$ telle que :
+		$$\forall (x,t)\in K\times I,\ \left\lvert\frac{\partial f}{\partial x}(x,t)\right\rvert\leqslant\varphi(t).$$
+	\end{itemize}
+	Alors, la fonction $g:x\mapsto\displaystyle\int_I f(x,t)\d t$ est bien définie, de classe $\mathcal{C}^1$ sur $J$, et l'on a :
+	$$\forall x\in J,\ g(x)=\int_I\frac{\partial f}{\partial x}(x,t)\d t.$$
+\end{thm}
+\begin{proof}
+	Pour $x_0\in J$ fixé, on forme le taux d'accroissement de $g$ en $x_0$ et l'on applique le théorème de continuité.
+\end{proof}
 
+\begin{met}
+	Bien entendu, une domination sur tout $J$ est suffisante. Dans la pratique, on commencera par essayer d'établir une domination globale et, seulement si nécessaire, on se limitera aux segments de $J$, voire à une famille d'intervalles adaptée à la situation, c'est-à-dire permettant d'obtenir une domination sur tout segment de $J$.
+\end{met}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Montrons que $g:x\mapsto\displaystyle\int_{0}^{+\infty}\frac{e^{ixt}}{1+t^3}\d t$ est définie et de classe $\mathcal{C}^1$ sur $\R$. \\
+		Appliquons le théorème de dérivation. Soit $f:\R\to\R_+\to\C$ définie par $f(x,t)=\displaystyle\frac{e^{ixt}}{1+t^3}$.
+		\begin{itemize}
+			\item Soit $x\in\R$.\\
+			La fonction $t\mapsto f(x,t)$ est continue par morceaux sur $[0,+\infty[$ et comme on a :
+			$$\lvert f(x,t)\rvert=\frac{1}{1+t^3}\underset{t\to+\infty}{\sim}\frac{1}{t^3},$$
+			elle est intégrable sur $[0,+\infty[$.
+			\item Pour tout $t\in[0,+\infty[$, la fonction $x\mapsto f(x,t)$ est de classe $\mathcal{C}^1$ sur $\R$ et l'on a :
+			$$\forall (x,t)\in\R\times[0,+\infty[,\ \frac{\partial f}{\partial x}(x,t)=\frac{ite^{ixt}}{1+t^3}.$$
+			\item Pour tout $x\in\R$, la fonction $t\mapsto\displaystyle\frac{\partial f}{\partial x}(x,t)$ est continue par morceaux sur $[0,+\infty[$.
+			\item \textbf{Hypothèse de domination}. On a :
+			$$\forall (x,t)\in\R\times[0,+\infty[,\ \left\lvert\frac{\partial f}{\partial x}(x,t)\right\rvert=\frac{t}{1+t^3}.$$
+			La fonction $\varphi:t\mapsto\displaystyle\frac{t}{1+t^3}$ est continue sur $[0,+\infty[$ et, comme $\varphi(t)\underset{t\to+\infty}{\sim}\frac{1}{t^2}$, elle est intégrable sur $[0,+\infty[$.
+		\end{itemize}
+		On déduit du théorème de dérivation que $g$ est de classe $\mathcal{C}$1 sur $\R$ et que :
+		$$\forall x\in\R,\ g'(x)=\int_{0}^{+\infty}\frac{ite^{ixt}}{1+t^3}\d t.$$
+		\item Le but de cet exemple est de calculer l'\textbf{intégrale de Gauss} $\displaystyle\int_{0}^{+\infty}e^{-t^2}\d t$ en utilisant la fonction $g:x\mapsto\displaystyle\int_{0}^{+\infty}\frac{e^{-x^2(1+t^2)}}{1+t^2}\d t$.
+		%$g$ continue sur $\R_+$ et sa dérivée est égal à celle de $-2G\int_{0}^{x}e^{-t^2}\d t$ sur $\R_+$ donc $g$ et cette fonction diffèrent d'une constante. Déterminer cette constante en $0$, et faire tendre $x$ vers $+\infty$.
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	On pose définit sur $\R_+$ : $g(x)=\displaystyle\int_{0}^{1}\frac{e^{-x^2(1+t^2)}}{1+t^2}\d t$ et $f(x)=\displaystyle\int_{0}^{x}e^{-t^2}\d t$. Donner une relation entre $f'$ et $g'$. En déduire la valeur de l'intégrale de Gauss.
+\end{exo}
+
+\begin{exo}
+	Pour tout $x>0$, on pose $g(x)=\displaystyle\int_{0}^{+\infty}\frac{e^{-t}-e^{-xt}}{t}\d t$.
+	\begin{enumerate}
+		\item Montrer que $g$ est bien définie.
+		\item Montrer que $g$ est de classe $\mathcal{C}^1$. Calculer $g'$, puis $g$.
+	\end{enumerate}
+\end{exo}
+
+\begin{rmq}
+	Avec les hypothèses du théorème de dérivation d'une intégrale à paramètre, la fonction $f$ est également dominée sur tout segment par une fonction intégrable d'après l'inégalité des accroissements finis et l'inégalité triangulaire. Ce fait sera utilisé (et démontré) dans la démonstration du corollaire suivant.
+\end{rmq}
+
+\begin{cor}
+	Soit $I$ et $J$ deux intervalles de $\R$, $k\in\N\st$ et $f:(x,t)\mapsto f(x,t)$ une fonction définie sur $J\times I$ à valeurs dans $\K$. On fait les hypothèses suivantes :
+	\begin{itemize}
+		\item pour tout $t\in I$, la fonction $x\mapsto f(x,t)$ est de classe $\mathcal{C}^k$ ;
+		\item pour tous $x\in J$ et $p\in\llbracket0,k-1\rrbracket$, la fonction $t\mapsto \displaystyle\frac{\partial^p f}{\partial x^k}(x,t)$ est intégrable sur $I$ ;
+		\item pour tout $x\in J$, la fonction $t\mapsto\displaystyle\frac{\partial^k f}{\partial x^k}(x,t)$ est continue par morceaux sur $I$ ;
+		\item \textbf{hypothèse de domination} : pour tout segment $K$ de $J$, il existe une fonction $\varphi:I\to\R$ intégrable sur $I$ telle que :
+		$$\forall (x,t)\in K\times I,\ \left\lvert\frac{\partial^k f}{\partial x^k}(x,t)\right\rvert\leqslant\varphi(t).$$
+	\end{itemize}
+	Alors, la fonction $g:x\mapsto\displaystyle\int_I f(x,t)\d t$ est bien définie, de classe $\mathcal{C}^k$ sur $J$, et l'on a pour tout $p\in\llbracket0,k\rrbracket$ :
+	$$\forall x\in J,\ g^{(p)}(x)=\int_I\frac{\partial^p f}{\partial x^p}(x,t)\d t.$$
+\end{cor}
+\begin{proof}
+	Établissons ce résultat par récurrence sur $k$.
+	
+	\textbf{Initialisation}. Lorsque $k=1$, il s'agit précisément du théorème de dérivation.
+	
+	\textbf{Hérédité}. Soit $k\geqslant 2$. Supposons le résultat établi au rang $k-1$ et donnons-nous $f:J\times I\to\K$ vérifiant les hypothèses du théorème.
+	\begin{itemize}
+		\item \textbf{Hypothèse de domination sur} $\displaystyle\frac{\partial^{k-1}f}{\partial x^{k-1}}$. \\
+		Soit $[a,b]$ un segment de $J$, avec $a<b$, et $\varphi:I\to\R$ intégrable telle que :
+		$$\forall (x,t)\in [a,b]\times I,\ \left\lvert\frac{\partial^{k-1} f}{\partial x^{k-1}}(x,t)\right\rvert\leqslant\varphi(t).$$
+		La classe $\mathcal{C}^1$ sur $[a,b]$, pour tout $t\in I$, de la fonction $x\mapsto\displaystyle\frac{\partial^{k-1}f}{\partial x^{k-1}}(x,t)$ permet de lui appliquer, pour tout $x\in[a,b]$, l'inégalité des accroissements finis sur le segment $[a,x]$. On obtient :
+		$$\forall (x,t)\in[a,b]\times I,\ \left\lvert\frac{\partial^{k-1}f}{\partial x^{k-1}}(x,t)-\frac{\partial^{k-1}f}{\partial x^{k-1}}(a,t)\right\rvert\leqslant (x,a)\varphi(t)\leqslant(b-a)\varphi(t).$$
+		En utilisant l'inégalité triangulaire, on en déduit :
+		$$\forall (x,t)\in[a,b]\times I,\ \left\lvert\frac{\partial^{k-1}f}{\partial x^{k-1}}(x,t)\right\rvert\leqslant\underbrace{\left\lvert\frac{\partial^{k-1}f}{\partial x^{k-1}}(a,t)\right\rvert+(b-a)\varphi(t)}_{=\psi(t)}.$$
+		La fonction $\psi$ étant intégrable, on dispose donc d'une domination sur tout segment de la fonction $(x,t)\mapsto\displaystyle\frac{\partial^{k-1}f}{\partial x^{k-1}}(x,t)$.
+		\item Toutes les autres hypothèses sont réunies pour appliquer le résultat au rang $k-1$ afin d'en déduire que $g$ est de classe $\mathcal{C}^{k-1}$ et que pour tout $p\in\llbracket0,k-1\rrbracket$ :
+		$$\forall (x,t)\in J\times I,\ g^{(p)}(x)=\int_I\frac{\partial^p f}{\partial x^p}(x,t)\d t.$$
+		\item En appliquant le théorème de dérivation à la fonction $x\mapsto\displaystyle\int_I\frac{\partial^{k-1}f}{\partial x^{k-1}}(x,t)\d t$, on conclut.
+	\end{itemize}
+\end{proof}
+
+\begin{ex}[Théorème de division]
+	Soit $k\in\N\st$ et $f\in\mathcal{C}^{k+1}(\R,\K)$. Pour tout $x\in\R\st$, on pose $$g(x)=\frac{f(x)-f(0)}{x}$$ ainsi que $f(0)=g'(0)$. Cela définit une fonction de classe $\mathcal{C}^k$ sur $\R$.
+\end{ex}
+
+"Il a le bénéfice du doute donc c'est faux. C'est bien ça le bénéfice du doute non ?"
+
+\begin{met}
+	Pour montrer que $g$ est de classe $\mathcal{C}^\infty$, il suffit de vérifier que : 
+	\begin{itemize}
+		\item pour tout $t\in I$, la fonction $x\mapsto f(x,t)$ est de classe $\mathcal{C}^\infty$ ;
+		\item pour tout $k\in\N$, pour tout $x\in J$, la fonction $\displaystyle t\mapsto\frac{\partial^k f}{\partial x^k}(x,t)$ est continue par morceaux sur $I$ ;
+		\item chacune des dérivées partielles $\displaystyle \frac{\partial^k f}{\partial x^k}$ est dominée sur tout segment.
+	\end{itemize}
+\end{met}
+
+\paragraph{Transformée de Laplace} Soit $f$ une fonction continue par morceaux sur $\R_+$ et $x_0\in\R$ tel que $t\mapsto f(t)e^{-x_0t}$ soit bornée.\\
+La fonction $Lf:x\mapsto\displaystyle\int_{0}^{+\infty}f(t)e^{-xt}\d t$ est de classe $\mathcal{C}^\infty$ sur $]x_0,+\infty[$, avec :
+$$\forall k\in\N,\ \forall x>x_0,\ (Lf)^k(x)=\int_{0}^{+\infty}(-t)^kf(t)e^{-xt}\d t.$$
+
+\begin{exo}
+	Soit $\Gamma(x)=\displaystyle\int_{0}^{+\infty}t^{x-1}e^{-t}\d t$.
+	\begin{enumerate}
+		\item Déterminer le domaine de définition de $\Gamma$.
+		\item Démontrer que $\Gamma$ est de classe $\mathcal{C}^\infty$.
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[(Propriétés de $\Gamma$)]
+	\begin{enumerate}
+		\item Montrer que pour tout $x>0$, on a $\Gamma(x+1)=x\Gamma(x)$. En déduire $\Gamma(n+1)$ pour $n\in\N$.
+		\item Étudier les variations de $\Gamma$ ainsi que sa concavité. Préciser ses limites en $0$ et en $+\infty$. Donner un équivalent en $0$ et comparer $\Gamma$ avec les fonctions puissances au voisinage de $+\infty$.
+		\item Calculer $\Gamma(n+1/2)$ pour $n\in\N$.
+		\item Montrer que $\ln\circ\Gamma$ est convexe.
+	\end{enumerate}
+\end{exo}
+
+\begin{rmq}
+	Réciproquement, les points $1$ et $4$ de l'exercice précédent ainsi que l'hypothèse $f(1)=1$ caractérisent la fonction $\Gamma$. C'est le \textbf{théorème de Bohr-Mollerup}.
+\end{rmq}
 
 \end{document}

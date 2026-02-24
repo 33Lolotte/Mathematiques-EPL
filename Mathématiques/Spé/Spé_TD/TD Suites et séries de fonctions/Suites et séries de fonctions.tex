@@ -267,7 +267,7 @@
 \section{Théorèmes de Dini}
 
 \begin{ex}[Moulin.SSF.23]{$\Delta\star$ Premier théorème de Dini}
-	On considère une suite décroissante de fonctions $(f_n)$ sur un compact $K$ qui converge simplement vers $0$. Alors la convergence est uniforme.
+	On considère une suite décroissante de fonctions $(f_n)$ sur un compact $K$ à valeurs dans $\R$ qui converge simplement vers $0$. Montrer que la convergence est uniforme.
 \end{ex}
 \begin{proof}
 	Déjà, remarquons que toutes les $f_n$ sont par conséquent positives. Il est possible de démontrer le résultat à la main en prenant les \textit{maxima} sur le segment, mais il y a plus élégant. Soit $\varepsilon>0$. On considère $$K_n:=\left\{x\in K \ : \ f_n(x)\geqslant\varepsilon\right\}$$ puis on raisonne par l'absurde. On suppose que tous ces compacts (fermés dans un compact) sont non vides. Alors, puisque $(K_n)$ forme une suite décroissante de compacts, d'après le théorème des compacts emboîtés, on peut prendre $x$ dans l'intersection de tous ces compacts. Mais alors il ne peut y avoir convergence simple en $x$. Cela est absurde. Ainsi, il existe un $K_{n_0}$ vide, et par décroissance, tous les suivants le sont. On a donc bien convergence uniforme.
@@ -277,8 +277,7 @@
 \end{rmq}
 
 \begin{ex}[Moulin.SSF.24]{$\star$ Deuxième théorème de Dini}
-	On considère une suite de fonctions $(f_n)$ définies sur $[a,b]$ à valeurs réelles qui sont toutes croissantes et qui converge simplement vers $f$ continue. Montrer que
-	la convergence est uniforme.
+	On considère une suite de fonctions $(f_n)$ définies sur $[a,b]$ à valeurs réelles qui sont toutes croissantes et qui converge simplement vers $f$ continue. Montrer que la convergence est uniforme.
 \end{ex}
 \begin{proof}
 	Un passage à la limite montre que $f$ est croissante. On fixe $\varepsilon>0$ Et par croissance et uniforme continuité de $f$, on peut fixer $c_0<\ldots<c_n$ une subdivision de $[0,1]$ telle que $$\forall i,\ f(c_{i+1})-f(c_i)\leqslant\frac{\varepsilon}{2}$$ Ensuite, si $x\in[0,1]$, on prend $i$ tel que $c_i\leqslant x\leqslant c_{i+1}$. Par croissance de $f$ et de $f_n$ on a alors : $$\begin{cases}

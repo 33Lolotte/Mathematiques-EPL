@@ -1,0 +1,331 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{0pt}
+
+\setlist[itemize]{label=$\bullet$}
+\setlist{before=\leavevmode, leftmargin=*}
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Vect}{\text{Vect}}
+\newcommand{\rg}{\text{rg}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
+\newcommand{\D}{\text{D}}
+
+\theoremstyle{definition}
+\newtheorem{exo}{Exercice}
+\newtheorem*{rmq}{Remarque}
+
+\title{Révisions MP*1 2025}
+\date{}
+
+\begin{document}
+	
+\maketitle
+
+\section*{Algèbre quadratique}
+
+\begin{exo}[Exemple de polynômes orthogonaux ;: les polynômes de Legendre]
+	On munit $\mathcal{C}^0([-1,1],\R)$ (et donc aussi $\R[X]$) du produit scalaire :
+	$$(f\mid g)=\int_{-1}^{1}f(t)g(t)\d t.$$
+	\begin{enumerate}
+		\item Montrer qu'il existe une base orthonormée $(P_n)_{n\in\N}$ de $\R[X]$ telle que $\forall n\in\N,\ \deg(P_n)=n$.\\
+		Etudier la parité de $P_n$.\\
+		On note $a_n$ le coefficient dominant de $P_n$.
+		\item Calculer $P_0$, $P_1$, $P_2$ et $P_3$.
+		\item Montrer que $P_n$ admet $n$ racines distinctes dans $[-1,1]$ (donc toutes simples).\\
+		On pourra considérer le polynôme $\displaystyle\prod_{a\in S}(X-a)$ où $S$ est l'ensemble des racines de $P_n$ d'ordre impair dans l'intervalle $[-1,1]$.
+		\item Montrer que l'opérateur $P\mapsto((X^2-1)P')'$ de $\R[X]$ est un endomorphisme autoadjoint, et qu'il laisse stable $\R_n[X]$.
+		\item En déduire que $P_n$ vérifie l'équation différentielle :
+		$$(t^2-1)P_n''(t)+2tP_n'(t)-n(n+1)P_n(t)=0.$$
+		\item Montrer que le polynôme $P_n-\displaystyle\frac{a_n}{a_{n-1}}XP_{n-1}$ est de degré strictement inférieur à $n$, et qu'il est orthogonal à toute polynôme de degré inférieur ou égal à $n-3$.\\
+		En déduire :
+		$$P_n-\frac{a_n}{a_{n-1}}XP_{n-1}+\frac{a_na_{n-1}}{a_{n-1}^2}P_{n-2}=0.$$
+		\item Pour $f\in\mathcal{C}^0([-1,1],\R)$, montrer l'égalité de Bessel :
+		$$\lVert f\rVert^2=\sum_{n=0}^{+\infty}(P_n\mid f)^2.$$
+		\item On pose $Q_n(x)=\displaystyle\frac{1}{2^nn!}\left(\frac{\d}{\d x}\right)^n((x^2-1)^n)$.
+		\begin{enumerate}[label=(\alph*)]
+			\item Montrer que le polynôme $Q_n$ est proportionnel à $P_n$.
+			\item Déterminer son coefficient dominant et $Q_n(1)$.
+			\item Exprimer sa norme en fonction des intégrales de Wallis.
+			\item Montrer :
+			$$nQ_n-(2n-1)XQ_{n-1}+(n-1)Q_{n-2}=0.$$
+		\end{enumerate}
+	\end{enumerate}
+\end{exo}
+\begin{proof}
+	\begin{rmq}
+		Cet exercice se recycle en changeant le produit scalaire :
+		\begin{itemize}
+			\item pour $(f\mid g)=\displaystyle\int_{-\infty}^{+\infty}f(t)g(t)e^{-t^2}\d t$, on obtient les polynômes de Hermite ;
+			\item pour $(f\mid g)=\displaystyle\int_{0}^{+\infty}f(t)g(t)e^{-t}\d t$, on obtient les polynômes de Laguerre ;
+			\item pour $(f\mid g)=\displaystyle\int_{-1}^{1}\frac{f(t)g(t)}{\sqrt{1-t^2}}\d t$, on obtient les polynômes de Tchebychev.
+		\end{itemize}
+		L'essentiel des techniques présentées ici (et des différentes définitions - Gram-Schmidt, équation différentielle, récurrence) sont similaires pour l'étude de ces autres types de polynômes orthogonaux.
+	\end{rmq}
+	\begin{enumerate}
+		\item Gram-Schmidt sur la base canonique. On montre une pseudo-unicité : si $(Q_n)$ vérifie la même propriété que $(P_n)$, alors $Q_n=\pm P_n$. \\
+		En effet, $Q_n$ et $P_n$ appartiennent alors à $\R_n[X]\cap\left(\R_{n-1}[X]^\bot\right)$ qui est une droite (le deuxième est un hyperplan de $\R_n[X]$) donc les polynômes sont égaux au signe près car de norme $1$.\\
+		On pose alors $Q_n=P_n(-X)$ qui possède la même propriété que $P_n$ car $[-1,1]$ est invariant par $t\mapsto -t$, ce qui donne la parité ou l'imparité.
+		\item Avec Gram-Schmidt :
+		$$P_0=\frac{1}{\sqrt{2}}\quad P_1=\sqrt{\frac{3}{2}}X\quad P_2=\frac{3\sqrt{5}}{2\sqrt{2}}\left(X^2-\frac{1}{3}\right).$$
+		On pose $Q_0=1$, $Q_1=X$ et $Q_2=\displaystyle X^2-\frac{1}{3}$. Par parité, $Q_3=X^3-\lambda_1Q_1$, et comme $Q_3$ et $Q_1$ sont orthogonaux, $\lambda_1\lVert Q_1\rVert^2=(X^3\mid Q_1)=\displaystyle\frac{2}{5}$. Donc $\displaystyle Q_3=X^3-\frac{3}{5}X$.
+		\begin{rmq}
+			On a plusieurs façons de normaliser :
+			\begin{itemize}
+				\item on peut normer pour le produit scalaire ;
+				\item on peut prendre le polynôme unitaire ;
+				\item on peut imposer $P(1)=1$.
+			\end{itemize}
+		\end{rmq}
+		\item $(P_n\mid Q)>0$ donc $\deg(Q)\geqslant n$. La définition de $Q$ permet de conclure.
+		\item Après IPP, on trouve :
+		$$(P\mid u(Q))=\int_{-1}^{1}P'(t)Q'(t)(1-t^2)\d t$$ qui est symétrique en $P$ et $Q$. On conclut par symétrie du produit scalaire.\\
+		La stabilité de $\R_n[X]$ est rapide par degré.
+		\item $(u(P_n)\mid Q)=(P_n\mid u(Q))=0$ si $\deg(Q)<n$. Donc $u(P_n)\in\R_n[X]\mid(\R_{n-1}[X])^\bot$ si bien que $u(P_n)=\lambda P_n$. La matrice de l'induit par $u$ sur $\R_n[X]$ dans la base canonique est :
+		$$\begin{pmatrix}
+			0&&(\star)\\
+			&\ddots&\\
+			(0)&&n(n+1)
+		\end{pmatrix}.$$
+		Mais la base canonique et $(P_n)$ engendrent le même drapeau, la matrice de l'induit dans la base $(P_0,\ldots,P_n)$ possède la même diagonale, mais est désormais diagonale car $(P_0,\ldots,P_n)$ est orthonormée pour le produit scalaire et $u$ est autoadjoint. Donc $\lambda=n(n+1)$ et la définition de $u$ fournit l'équation différentielle.
+		\item Pour le degré, c'est immédiat en regardant les coefficients dominants des deux termes. Ensuite, remarquer que $P\mapsto XP$ est autoadjoint. Alors :
+		$$(P_n-\lambda XP_{n-1}\mid Q)=(P_n\mid Q)-\lambda (P_{n-1}\mid XQ).$$
+		Le premier terme est nul si $\deg(Q)\leqslant n-1$ et le deuxième est nul si $\deg(XQ)\leqslant n-2$, ie si $\deg(Q)\leqslant n-3$. Mais $\R_{n-1}[X]\cap(\R_{n-3}[X])^\bot=\Vect(P_{n-1},P_{n-2})$. D'une part :
+		$$\left(P_n-\frac{a_n}{a_{n-1}}XP_{n-1}\bigg| P_{n-1}\right)=0.$$
+		D'autre part :
+		\begin{align*}
+			\left(P_n-\frac{a_n}{a_{n-1}}XP_{n-1}\bigg| P_{n-1}\right)&=-\frac{a_n}{a_{n-1}}(XP_{n-1}\mid P_{n-2})\\
+			&=-\frac{a_n}{a_{n-1}}(P_{n-1}\mid XP_{n-2})\\
+			&=-\frac{a_n a_{n-2}}{a_{n-1}^2}\lVert P_{n-1}\rVert^2=-\frac{a_n a_{n-2}}{a_{n-1}^2}
+		\end{align*} car $XP_{n-2}$ vaut $\displaystyle\frac{a_{n-2}}{a_{n-1}}P_{n-1}+P$ où $\deg(P)<n-1$.
+		\item Pour tout $N\in\N$, on a par projection orthogonale sur 
+		$\R_{n}[X]$ : 
+		$$\sum_{n=0}^{N}(P_n\mid f)^2\leqslant\lVert f\rVert^2$$  puis on a une inégalité en prenant la limite (série à termes positifs). Pour l'inégalité inverse, la distance de $f$ à $\R_N[X]$ est décroissante, mais cela est compliqué de l'exploiter avec le théorème de Weierstrass. Mieux, pour $\varepsilon>0$, il existe $P\in\R[X]$ tel que $\lVert f-P\rVert_2^2\leqslant\varepsilon$ car la norme infinie domine la norme $2$ (issue du produit scalaire) en utilisant le théorème de Weierstrass. Et $P$ appartient à un certain $\R_N[X]$, donc $d(f,\pi_{\R_N[X]}(f))^2\leqslant d(f,P)^2\leqslant\varepsilon$ et on termine par décroissance.
+		\begin{rmq}
+			L'égalité de Bessel est une CNS de densité.
+		\end{rmq}
+		\item \begin{enumerate}[label=(\alph*)]
+			\item Montrer une orthogonalité par IPP successives. La dérivée $p$-ème est nulle en $\pm1$ si $p<n$.
+			\item Après multiples dérivations, on obtient $\displaystyle\frac{1}{2^n}\binom{2n}{n}$. Pour $Q_n(1)$, utiliser la formule de Leibniz en dérivant $n$ fois $x-1$ dans $x^2-1=(x-1)(x+1)$.
+			\item Par IPP, on arrive à $\displaystyle\int_{-1}^{1}(x^2-1)^n\d x$, qui sont des intégrales de Wallis après changement de variable.
+			\item Utiliser la question $6$ et les coefficients et valeurs obtenus pour $Q_n$.
+		\end{enumerate}
+	\end{enumerate}
+\begin{rmq}
+	Les racines de $P_n$ et de $P_{n-1}$ sont entrelacées. En effet, en notant $b_k$ celles de $P_{n-1}$ la relation de récurrence donne
+	$$P_n(\mu_k)=-\frac{a_na_{n-2}}{a_{n-1}^2}P_{n-2}(\mu_k).$$
+	Le quotient des $a_i$ est strictement positif, on procède alors par récurrence.
+\end{rmq}
+\end{proof}
+
+\begin{exo}[Égalités de Courant-Fischer]
+	On considère $u\in S(E)$ avec $E$ euclidien de dimension $n$. On note $\lambda_1\leqslant\ldots\leqslant\lambda_n$ ses valeurs propres. On note $\mathcal{F}_k$ l'ensemble des sous-espaces vectoriels de $E$ de dimension $k$ et $S$ la sphère unité de $E$. Soit $k\in\llbracket1,n\rrbracket$. Montrer :  $$\lambda_k=\inf_{F\in\mathcal{F}_k}\sup_{x\in S\cap F}(x|u(x))\quad\text{et}\quad\lambda_{n+1-k}=\sup_{F\in\mathcal{F}_k}\inf_{x\in S\cap F}(x|u(x)).$$
+\end{exo}
+\begin{proof}
+	Se conférer au TD Euclidiens. Essentiellement, il faut généraliser le raisonnement qui donne $\lambda_1$ et $\lambda_n$ comme le minimum et le maximum de $(x\mid u(x))$ sur la sphère en considérant, pour une base orthonormée $(e_1,\ldots,e_n)$ de diagonalisation de $u$, les espaces :
+	$$G_k=\Vect(e_1,\ldots,e_k)\quad\text{et}\quad H_k=\Vect(e_k,\ldots,e_n).$$
+\end{proof}
+
+\begin{exo}[Entrelacement des valeurs propres et critère de Jacobi-Sylvester]
+	Soit $A\in\mathcal{S}_n(\R)$ avec $n\geqslant 2$. On note $B$ la matrice extraite de $A$ en lui supprimant sa dernière ligne et sa dernière colonne. On note $\lambda_1\leqslant\ldots\leqslant\lambda_n$ les valeurs propres de $A$ et $\mu_1\leqslant\ldots\leqslant\mu_{n-1}$ celles de $B$. Montrer : $$\lambda_1\leqslant\mu_1\leqslant\lambda_2\leqslant\ldots\leqslant\mu_{n-1}\leqslant\lambda_n.$$
+	On pourra utiliser les égalités de Courant-Fischer.\\
+	Application : Montrer qu'une matrice $A=(a_{i,j})_{(i,j)\in\llbracket1,n\rrbracket^2}\in\mathcal{S}_n(\R)$ est définie positive si, et seulement si :
+	$$\forall p\in\llbracket1,n\rrbracket,\ \det((a_{i,j})_{(i,j)\in\llbracket1,p\rrbracket^2})>0.$$
+\end{exo}
+\begin{proof}
+	On remarque que $X^TBX=X^TAX$ avec $Y=\begin{pmatrix}
+		X\\0
+	\end{pmatrix}$.
+	\begin{itemize}
+		\item Montrons que $\lambda_i\leqslant\mu_i$. On note $F$ un sous-espace vectoriel de $\R^{n-1}$ de dimension $i$. Alors :
+		$$\lambda_i=\underset{G\in \mathcal{F}_i}{\inf}\underset{Y\in G\cap S}{\sup}(Y\mid AY)\leqslant\underset{Y\in \sim F\cap S}{\sup}(Y\mid AY)\leqslant\underset{X\in S\cap F}{\sup}(X\mid BX)$$ avec $\sim F$ un espace isomorphe à $F$, puis on passe à la borne inférieur sur $F$. Par les égalités de Courant-Fischer, on obtient $\lambda_i\leqslant\mu_i$. Sinon, on pouvait directement prendre le $F$ sur lequel est atteint la borne inférieure.
+		\item Montrons que $\mu_i\leqslant\lambda_{i+1}$. Inutile de tout refaire, on applique le point précédente à $-A$ et $-B$. 
+	\end{itemize}
+	Pour le sens direct, la matrice principale extraite $i\times i$ correspond à la restriction de la forme quadratique associée à $A$ à $\R^i$ donc la matrice est aussi symétrique définie positive. Pour le sens réciproque, on procède par récurrence. Par hypothèse de récurrence et entrelacement, $\lambda_2>0$. Mais l'hypothèse appliquée au déterminant de $A$ permet de conclure que $\lambda_1>0$, ce qui conclut par caractérisation par le spectre.
+\end{proof}
+
+\begin{exo}
+	Montrer que la fonction exponentielle définit un homéomorphisme de $\mathcal{S}_n(\R)$ sur $\mathcal{S}_n^{++}(\R)$.
+\end{exo}
+\begin{proof}
+	Pour la bonne définition, utiliser que $\mathcal{S}_n$ est fermé. Utiliser ensuite le spectre.\\
+	Pour la surjectivité, considérer le spectre d'une potentielle matrice image et prendre comme antécédent la même matrice réduite mais avec les logarithmes des valeurs propres.\\
+	Pour l'injectivité, diagonaliser simultanément en base orthonormée ou bien le faire sur les sous-espaces propres comme dans la démonstration de l'unicité d'une racine carrée (chiant). Attention à ne pas écrire l'exponentielle d'un vecteur alors (c'est du vécu...) !\\
+	Pour la continuité, c'est une conséquence de la convergence normale sur toute boule fermée de l'exponentielle matricielle.\\
+	Pour la continuité de la bijection réciproque, le faire par caractérisation séquentielle en montrant une unicité de la valeur d'adhérence de la suite en question. Montrer d'abord que les spectres sont bornés (dans un sens cela découle de l'hypothèse, dans l'autre passer à l'inverse). Ensuite, utiliser de la compacité pour obtenir une valeur d'adhérence et montrer qu'une seule est possible en repassant à l'exponentielle et en utilisant l'injectivité.
+\end{proof}
+
+\section*{Réduction et topologie}
+
+\begin{exo}
+	Soit $n\in\N\st$. On note $T_n(\K)$, $D_n(\K)$ et $D_n'(\K)$ les parties de $\mathcal{M}_n(\K)$ constituées respectivement des matrices trigonalisables, des matrices diagonalisables et des matrices diagonalisables avec $n$ valeurs propres distinctes.
+	\begin{enumerate}
+		\item $\circ$ Intérieur et adhérence de $\mathcal{T}_n(\C)$ dans $\mathcal{M}_n(\C)$.
+		\item Adhérence de $D_n(\K)$ dans $T_n(\K)$ ? Et pour $D_n'(\K)$ ?
+		\item $\star$ Montrer que l'ensemble des polynômes unitaires de degré $n$ de $\R_n[X]$ scindés sur $\R$ est un fermé de $\R_n[X]$. En déduire l'adhérence dans $\mathcal{M}_n(\R)$ de $D_n(\R)$ et de $T_n(\R)$.
+		\item $\star$ Montrer que l'intérieur de $D_n(\R)$ est $D_n'(\R)$.
+		\item $\star$ Montrer que l'intérieur de $D_n(\C)$ est inclus dans $D_n'(\C)$.
+		\item Montrer que l'intérieur de $T_n(\R)$ est $D_n'(\R)$.
+		\item $\Delta$ Soit $P$ et $Q$ dans $\C[X]$ de degrés respectifs $p$ et $q$. On considère l'application :
+		$$\begin{array}{lrcl}
+			\Phi:&\C_{p-1}[X]\times\C_{q-1}[X]&\longrightarrow&\C_{p+q-1}[X]\\
+			&(M,N)&\longmapsto&MQ+NP
+		\end{array}$$ et l'on pose $\text{Res}(P,Q)$ le déterminant de sa matrice dans les bases canoniques. Montrer que $P$ et $Q$ sont premiers entre eux si, et seulement si, $\text{Res}(P,Q)\ne 0$. \\
+		En déduire l'intérieur de $D_n(\C)$.
+	\end{enumerate}
+\end{exo}
+\begin{proof}
+	\begin{enumerate}
+		\item $T_n(\C))=\mathcal{M}_n(\C)$ (théorème de d'Alembert-Gauss).
+		\item On trigonalise, puis on prend à la place des $\lambda_i$ les $\lambda_i+\displaystyle\frac{i}{k}$ qui sont distincts pour $k$ assez grand. Donc $T_n(\K)\subset\overline{D_n(\K)}$ et $T_n(\K)\subset\overline{D_n'(\K)}$.
+		\item On définit $U_n(\R)$ l'ensemble des polynômes unitaires de degré $n$ de $\R_n[X]$. C'est un fermé car image réciproque de ${1}$ par l'application "coefficient de degré $n$". On note $S_n(\R)$ l'ensemble des polynômes unitaires de degré $n$ scindés sur $\R$. On rappelle le lemme suivant : si $P\in U_n(\R)$ :
+		$$P\in S_n(\R)\iff\forall z\in\C,\ \lvert P(z)\rvert\geqslant\lvert\text{Im}(z)\rvert^n.$$ On définit alors :
+		$$\begin{array}{lrcl}
+			\varphi_z:&U_n(\R)&\longrightarrow&\R\\
+			&P&\longmapsto&\lVert P(z)\rvert-\lvert\text{Im}(z)\rvert^n.
+		\end{array}$$
+		Ainsi, $S_n(\R)$ est l'intersection des images réciproques de $\R_+$ (fermé) par tous les $\varphi_z$ (continues) donc est fermé. Or, $T_n(\R)=\chi\inv(S_n(\R))$, donc $\overline{D_n(\R)}=\overline{D_n'(\R)}=T_n(\R)$.
+		\item Montrons que $D_n'(\R)$ est ouvert et que si $M\in D_n$ mais $M\notin D_n'$, alors $M\notin \mathring{D_n}$.
+		\begin{itemize}
+			\item Montrons le lemme suivant : l'ensemble $S_n'(\R)$ des polynômes réels scindés à racines de degré $n$ est un ouvert de $\R[X]$.\\
+			En effet, en notant $x_i$ les racines d'un tel polynôme, on peut trouver des $y_i$ alternant entre les racines de $P$ tels que $(-1)^iP(y_i)>0$ pour tout $i$. Ainsi, $P$ appartient à l'ouvert de $\R_n[X]$ : $$\{Q\in\R_n[X]\ :\ \forall i,\ (-1)^i Q(y_i)>0\}\subset S_n'(\R).$$
+			Le résultat recherché s'obtient alors en prenant l'image réciproque de $S_n'(\R)$ par l'application polynôme caractéristique.
+			\item Matriciellement, si on perturbe une matrice diagonalisée avec une valeur propre double $\lambda$ en :
+			$$\begin{pmatrix}
+				\lambda&\varepsilon&&(*)\\
+				0&\lambda&&\\
+				&&\lambda_3&\\
+				(0)&&&\ddots
+			\end{pmatrix}$$ alors l'induit correspondant au bloc $2\times 2$ supérieur gauche n'est pas diagonalisable, donc la matrice totale n'est pas diagonalisable.
+		\end{itemize}
+	\end{enumerate}
+\end{proof}
+
+\begin{exo}[$\star\star$]
+	Soit $(P_n)_{n\in\N}$ une suite de polynômes unitaires de degré $N$ convergeant dans $\R_N[X]$ vers un polynôme $P$ unitaire de degré $N$. Montrer qu'il existe des suites complexes convergentes $a^{(1)},\ldots,a^{(N)}$ telle que $$\forall n\in\N,\ P_n=\prod_{k=1}^{N}(X-a_n^{(k)}) \ \ \ \text{et} \ \ \ P=\prod_{k=1}^{n}(X-\lim a^{(k)}).$$ Indication : construire d'abord une suite $a^{(1)}$ convenable, convergeant vers une racine fixée de $P$.
+\end{exo}
+
+\section*{Calcul différentiel}
+
+\begin{exo}[$\star$ Lemme de Morse]
+	Soit $A\in\mathcal{S}_n^{++}(\R)$. On pose $F=A\inv\mathcal{S}_n(\R)$.
+	\begin{enumerate}
+		\item Montrer que l'on peut définir une application :
+		$$\begin{array}{lrcl}
+			\varphi!&F&\longrightarrow&\mathcal{S}_n(\R)\\
+			&M&\longmapsto&M^TAM.
+		\end{array}$$
+		\item Montrer que $\varphi$e st différentiable en $I_n$ et que sa différentielle est un isomorphisme de $F$ sur $\mathcal{S}_n(\R)$.
+		\item $\star\star$ Montrer (ou admettre) qu'il existe un réel $r>0$ tel que $B_o(A,r)\subset\mathcal{GL}_n(\R)$ et une fonction $\psi$ de classe $\mathcal{C}^1$ de $U=B_o(A,r)\cap\mathcal{GL}_n(\R)$ dans $F\cap\mathcal{GL}_n(\R)$ vérifiant :
+		$$\psi(A)=I_n\quad\text{et}\quad\forall N\in U,\ N=\psi(N)^TA\psi(N).$$
+		\item Application : Soit $f\in\mathcal{C}^3(\R^n,\R)$ telle que $f(0)=0$, $\nabla f(0)=0$ et $H_f(0)\in\mathcal{S}_n^{++}(\R)$. Montrer qu'il existe un voisinage $V$ de $0$ dans $\R^n$ et $g\in\mathcal{C}^1(V,\R^n)$ telle que :
+		$$\forall x\in V,\ f(x)=\lVert g(x)\rVert^2.$$
+		Indication : utiliser la formule de Taylor avec reste intégral.
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}
+	Soit $n\in\N$, $p\in\N\st$ et $(\alpha_1,\ldots,\alpha_p)\in(\R_+\st)^p$. Pour $(x_1,\ldots,x_p)\in\R^p$, on pose :
+	$$f(x_1,\ldots,x_p)=\sum_{i=1}^{p}x_i^{n+1}\quad\text{et}\quad g(x_1,\ldots,x_p)=\sum_{i=1}^{p}\alpha_ix_i.$$
+	\begin{enumerate}
+		\item Déterminer le minimum de $f$ sur $D=\{x\in \R_+^p\ :\ g(x)=1\}$.
+		\item $\star$ Retrouver ce résultat par argument de convexité.
+		\item Application : Soit $X_0,\ldots,X_n$ des variables aléatoires indépendantes sur un espace probabilisable $(\Omega,\mathcal{A})$ à valeurs dans un ensemble à $p$ éléments.\\
+		Trouver un minorant de $\P(X_0=\cdots=X_n)$ ne dépendant que de $n$ et de $p$, et le meilleur possible.
+	\end{enumerate}
+\end{exo}
+
+\section*{Autres grands classiques}
+
+\begin{exo}[Approximation rationnelle]
+	Soit $\alpha$ un réel.
+	\begin{enumerate}
+		\item Montrer que si $\alpha\in\Q$, alors il existe un nombre fini de couples $(p,q)\in\Z\times\N\st$ tels que $$0<\left\lvert\alpha-\frac{p}{q}\right\rvert\leqslant\frac{1}{q^2}.$$
+		\item On suppose $\alpha\notin\Q$. En utilisant le principe des tiroirs sur les parties fractionnaires de $0,\alpha,\ldots,n\alpha$, montrer qu'il existe $(p,q)\in\Z\times\N\st$ tel que $0<\displaystyle\left\lvert\alpha-\frac{p}{q}\right\rvert\leqslant\frac{1}{qn}$ et en déduire la réciproque de la question précédente.
+		\item $\star$ On suppose que $\alpha$ est racine d'un polynôme de degré $n\in\N\st$ à coefficients entiers (on dit que $\alpha$ est \textbf{algébrique}). Montrer qu'il existe un réel $\delta>0$ tel que :
+		$$\forall (p,q)\in\Z\times\N\st,\ \left\lvert\alpha-\frac{p}{q}\right\rvert\geqslant\frac{\delta}{q^n}.$$
+		\item On pose note $L$ la constante de Liouville :
+		$$L=\sum_{n=0}^{+\infty}\frac{1}{10^{n!}}.$$
+		Montrer que $L$ n'est pas algébrique (on dit que $L$ est \textbf{transcendant}).
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[Polynômes cyclotomiques et version faible du théorème de Dirichlet]
+	Soit $n\in\N\st$. On appelle racine primitive $n$-ème de l'unité tout générateur du groupe multiplicatif $\U_n$. On notera $P_n$ l'ensemble des racines primitives $n$-ème de l'unité. Le $n$-ème polynôme cyclotomique est le polynôme : $$\Phi_n=\prod_{x\in P_n}(X-x)$$
+	\begin{enumerate}
+		\item Quel est le degré de $\Phi_n$ ? Montrer que $$X^n-1=\prod_{d\mid n}\Phi_d$$
+		\item Montrer que $\Phi_n$ est à coefficients entiers.
+		\item $\star$ Montrer que si $p$ est un nombre premier ne divisant pas $n$, alors $\Phi_n$ est à racines simples sur $\F_p$.
+		\item $\star$ Soit $a\in\Z$ et $p$ un nombre premier qui divise $\Phi_n(a)$ mais aucun des $\Phi_d(a)$ pour $d$ diviseur strict de $n$. Montrer que $p\ \equiv\ 1\ [n]$.
+		\item Soit $k>n$ et $p$ un diviseur de $\Phi_n(k!)$. Montrer que $p$ est strictement supérieur à $k$ et qu'il est premier avec $n$.
+		\item $\star\star$ Montrer que $p\ \equiv\ 1\ [n]$ et en déduire que l'ensemble des nombres premiers congrus à $1$ modulo $n$ est infini.
+	\end{enumerate}
+\end{exo}
+\begin{proof}
+	Exercice aberrant mais très joli !
+	\begin{enumerate}
+		\item $\Phi_n$ est de degré le nombre de générateurs de $\U_n$, soit $\varphi(n)$. Pour la deuxième partie, montrer : $$\left\{\frac{k}{n}, \ k\in\llbracket 1,n\rrbracket\right\}=\bigsqcup_{d\mid n}\left\{\frac{l}{d},\ l\in\llbracket1,d\rrbracket,\ l\wedge d=1\right\}$$ puis scinder $X^n-1$ et regrouper par paquets. \\ Remarque : en passant aux degrés, on retrouve la formule : $$n=\sum_{d\mid n}\varphi(d)$$
+		\item Procéder par récurrence forte en utilisant la formule de la première question et en démontrant que le quotient dans la division euclidienne d'un polynôme à coefficients entiers par un polynôme unitaire est un polynôme à coefficients entiers.
+		\item On montre que $X^n-1$ est à racines simples dans $\F_p$. En effet, comme $p$ et $n$ sont premiers entre eux, on dispose d'une relation de Bézout : $$ap+bn=1$$ Alors dans $\F_p[X]$: $$bX\times nX^{n-1}-(X^n-1)=bnX^n-(X^n-1)=(1-ap)X^n-(X^n-1)=1$$ si bien que $X^n-1$ et son polynôme dérivé sont premiers entre eux dans $\F_p[X]$ et donc $X^n-1$ est à racines simples dans $\F_p[X]$. Comme $\phi_n$ divise $X^n-1$, $\Phi_n$ est aussi à racines simples dans $\F_p$.
+		\item $a^n=1$ dans $\F_p$ si bien que l'ordre de $a$ dans $\F_p\st$ divise $n$. Notons $o$ l'ordre de $a$ dans $\F_p\st$. Alors d'après la question $1$, on a dans $\F_p$ : $$0=a^o-1=\prod_{d\mid o}\Phi_d(a)$$ Or, le seul facteur potentiellement nul dans le membre de droite correspond à $d=n$, donc $n\mid o$ et $o=n$. D'après le théorème de Lagrange, on en déduit que $n$ divise $p-1$ et donc le résultat.
+		\item D'après la question $1$, $(k!)^n-1$ est divisible par $p$ donc $p$ est premier avec $(k!)^n$, puis $p$ est premier avec $k!$ car $p$ est premier, et ainsi $p>k$. Donc $p>k>n$ et comme $p$ est premier, $p\wedge n=1$.
+		\item De $5$ et du lemme démontré en $3$, on en déduit que les $\Phi_d(a)$ pour $d$ un diviseur de $n$ différent de $n$ ne sont pas divisibles par $p$. Par $4$, $p$ est congru à $1$ modulo $n$. \\ Pour conclure, on prend $p_1$ le nombre premier obtenu en prenant $k=n+1$, puis $p_2$ celui obtenu en prenant $k=p_1+1$, etc. On obtient ainsi une suite strictement croissante de nombres premiers congrus à $1$ modulo $n$, donc une infinité !
+	\end{enumerate}
+\end{proof}
+
+\begin{exo}[Matrices de permutation]
+	Soit $n\in\N\st$. Pour $\sigma\in\mathcal{S}_n$, on note $P_\sigma=(\delta_{i,\sigma(j)})_{1\leqslant i,j\leqslant n}\in\mathcal{M}_n(\C)$.
+	\begin{enumerate}
+		\item Montrer que $\sigma\mapsto P_\sigma$ est un morphisme injectif de $\mathcal{S}_n$ dans $\mathcal{GL}_n(\C)$.
+		\item Que représente $\Tr(P_\sigma)$ pour la permutation $\sigma$ ?
+		\item Exprimer le polynôme caractéristique de $P_\sigma$ en fonction de la décomposition de $\sigma$ en produit de cycles à support disjoint.
+		\item $\star$ Soit $\sigma$ et $\tau$ dans $\mathcal{S}_n$. Montrer que $\sigma$ et $\tau$ sont conjuguées dans $\mathcal{S}_n$ si, et seulement si, les matrices $P_\sigma$ et $P_\tau$ sont semblables.
+	\end{enumerate}
+\end{exo}
+
+
+\end{document}
