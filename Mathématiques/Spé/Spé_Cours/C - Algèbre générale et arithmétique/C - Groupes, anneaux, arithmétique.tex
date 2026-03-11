@@ -227,9 +227,7 @@ Revoir dans le cours de première année :
 \end{rmq}
 
 \begin{notation}
-	On note parfois $A\st$ le groupe des unités de l'anneau $A$, mais, dans le cas de $\Z$, on préfère réserver cette notation pour l'ensemble des éléments non nuls.\\
-	Dans le cas des anneaux $\Q$, $\R$ et $\C$, il n'y a pas d'ambiguïté, puisque pour un corps $\K$, l'ensemble des éléments inversibles est $\K\setminus\{0\}$.\\
-	En cas d'ambiguïté, on utilise parfois les notations $\mathcal{U}(A)$ ou $A^\times$ pour désigner le groupe des unités d'un anneau $A$.
+	On note parfois $A\st$ le groupe des unités de l'anneau $A$, mais, dans le cas de $\Z$, on préfère réserver cette notation pour l'ensemble des éléments non nuls. Dans le cas des anneaux $\Q$, $\R$ et $\C$, il n'y a pas d'ambiguïté, puisque pour un corps $\K$, l'ensemble des éléments inversibles est $\K\setminus\{0\}$. En cas d'ambiguïté, on utilise parfois les notations $\mathcal{U}(A)$ ou $A^\times$ pour désigner le groupe des unités d'un anneau $A$.
 \end{notation}
 
 
@@ -241,7 +239,7 @@ Revoir dans le cours de première année :
 	(a_1,\ldots,a_n)\times(b_1,\ldots,b_n)&=(a_1\times b_1,\ldots,a_n\times b_n).
 \end{align*}
 
-Les deux éléments neutres sont naturellement $(0_{A_1},\ldots,0_{A_n})$ et $(1_{A_1},\ldots,A_{A_n})$.
+Les deux éléments neutres sont naturellement $(0_{A_1},\ldots,0_{A_n})$ et $(1_{A_1},\ldots,1_{A_n})$.
 
 \begin{exo}
 	\begin{enumerate}
@@ -280,11 +278,11 @@ On se place dans toute la suite dans le cadre d'anneaux commutatifs.
 \end{ex}
 
 \begin{exo}
-	L'ensemble des suites réelles convergeant vers $0$ est un idéal de quel(s) anneau(x) ?
+	De quel(s) anneau(x) l'ensemble des suites réelles convergeant vers $0$ est-il un idéal  ?
 \end{exo}
 
 \begin{exo}
-	L'ensemble des éléments non inversibles d'un anneau commutatif est-il un idéal ? Et l'ensemble des éléments nilpotent ?
+	L'ensemble des éléments non inversibles d'un anneau commutatif est-il un idéal ? Et l'ensemble des éléments nilpotents ?
 \end{exo}
 
 \begin{exo}
@@ -312,7 +310,7 @@ Soit $A$ un anneau commutatif.
 \end{dfn}
 
 \begin{prop}[Idéal engendré par un élément]%prop
-	Soit $x\in A$. L'idéal engendré par $x$ est $xA=\{xa\mid a\in A\}$/
+	Soit $x\in A$. L'idéal engendré par $x$ est $xA=\{xa\mid a\in A\}$.
 \end{prop}
 
 \begin{exo}
@@ -332,7 +330,7 @@ Soit $A$ un anneau commutatif.
 \end{prop}
 
 \begin{rmq}
-	La proposition précédente se généralise aisément au cas d'une somme finie d'idéaux et d'une famille fini d'idéaux.
+	La proposition précédente se généralise aisément au cas d'une somme finie d'idéaux et d'une famille finie d'idéaux.
 \end{rmq}
 
 \subsection{L'anneau $\Z/n\Z$}
@@ -340,20 +338,20 @@ Soit $A$ un anneau commutatif.
 Soit $A$ un anneau commutatif et $I$ un idéal de $A$.
 
 \begin{rmq}
-	Pour que ce suit s'accorde avec le programme, il suffit de remplacer partout $A$ par $\Z$ et $I$ par $n\Z$, avec $n\in\N$.
+	Pour que ce qui suit s'accorde avec le programme, il suffit de remplacer partout $A$ par $\Z$ et $I$ par $n\Z$, avec $n\in\N$.
 \end{rmq}
 
 \subsubsection*{Congruence modulo un idéal}
 
 \begin{prop}%prop
 	La relation de \textbf{congruence modulo $I$} définie par :
-	$$x\equiv y\quad\mod I\iff y-x\in I$$ est une relation d'équivalence sur $A$ qui est compatible avec les opérations de $A$, c'est-à-dire qui vérifie :
+	$$x\equiv y\ \mod I\iff y-x\in I$$ est une relation d'équivalence sur $A$ qui est compatible avec les opérations de $A$, c'est-à-dire qui vérifie :
 	$$\forall (x,yx',y')\in A^4,\ \begin{cases}
-		x\equiv y\quad\mod I\\
-		x'\equiv y'\quad\mod I
+		x\equiv y\ \mod I\\
+		x'\equiv y'\ \mod I
 	\end{cases}\implies\begin{cases}
-	x+y\equiv x'+y'\quad\mod I\\
-	xy\equiv x'y'\quad\mod I.
+	x+y\equiv x'+y'\ \mod I\\
+	xy\equiv x'y'\ \mod I.
 	\end{cases}$$
 \end{prop}
 
@@ -377,7 +375,7 @@ Soit $A$ un anneau commutatif et $I$ un idéal de $A$.
 \end{prop}
 
 \begin{rmq}
-	Tout idéal de $A$ est donc le noyau du morphisme d'anneaux projection canonique de $A$ sur $A/I$.
+	Tout idéal $I$ de $A$ est donc le noyau du morphisme d'anneaux projection canonique de $A$ sur $A/I$.
 \end{rmq}
 
 \begin{exo}
@@ -397,7 +395,7 @@ Soit $A$ un anneau commutatif et $I$ un idéal de $A$.
 	\end{enumerate}
 \end{thm}
 
-\subsubsection*{$\Z/n\Z$}
+\subsubsection*{Description de $\Z/n\Z$}
 
 \begin{exo}
 	Qu'est-ce que $\Z/0\Z$ ? $\Z/1\Z$ ? $\Z/2\Z$ ?
@@ -459,7 +457,7 @@ La relation de divisibilité est une relation réflexive et transitive, mais n'e
 
 \begin{ex}
 	\begin{enumerate}
-		\item Les diviseurs de $A$ sont les éléments inversibles.
+		\item Les diviseurs de $1$ sont les éléments inversibles.
 		\item Tout élément de $A$ divise $0$, mais $0$ ne divise que lui-même.
 		\item Grâce à l'intégrité, on a pour tout $a\ne0$ :
 		$$ax\mid ay\iff (\exists z\in A\ : \ ay=axz)\iff(\exists z\in A\ :\ y=xz)\iff x\mid y.$$
@@ -527,9 +525,9 @@ La proposition suivante permet de ramener la notion de divisibilité à une rela
 \end{dfn}
 
 \begin{prop}%prop
-	Un élément $a\in A$ non nul est irréductible si, et seulement si :
+	Un élément $a\in A$ non nul est irréductible si, et seulement si, les deux conditions suivantes sont vérifiées simultanément :
 	\begin{itemize}
-		\item $a$ n'est pas un unité ;
+		\item $a$ n'est pas une unité ;
 		\item si $a=bc$ avec $(b,c)\in A^2$, alors $b$ ou $c$ est une unité.
 	\end{itemize}
 \end{prop}
@@ -645,7 +643,7 @@ Soit $n\in\N\st$ et $a_1,\ldots,a_n$ des éléments de $A$. Nous avons vu que l'
 \end{ex}
 
 \begin{rmq}
-	Le premier exemple nous donne une idée de bijection croissante dont la réciproque n'est pas croissante : l'identité de $(\N\st,\mid)$ dans $(\N\st,\leqslant)$.
+	Le premier exemple nous donne un exemple de bijection croissante dont la réciproque n'est pas croissante : l'identité de $(\N\st,\mid)$ dans $(\N\st,\leqslant)$.
 \end{rmq}
 
 \begin{prop}%prop
@@ -653,7 +651,7 @@ Soit $n\in\N\st$ et $a_1,\ldots,a_n$ des éléments de $A$. Nous avons vu que l'
 \end{prop}
 
 \begin{rmq}
-	La définition et les propositions précédentes se généralise,t naturellement à $k$ éléments $(a_1,\ldots,a_k)\in A^k$.
+	La définition et les propositions précédentes se généralisent naturellement à $k$ éléments $(a_1,\ldots,a_k)\in A^k$.
 \end{rmq}
 
 \subsection{Relation de Bézout}
@@ -753,15 +751,15 @@ Pour l'unicité d'une telle décomposition, il faut faire attention aux irréduc
 	Soit $a$ et $b$ deux éléments non nuls non nuls de $A$ décomposés sous la deuxième forme :
 	$$a=up_1^{\alpha_1}\cdots p_k^{\alpha_k}\quad\text{et}\quad b=vp_1^{\beta_1}\cdots p_k^{\beta_k}.$$
 	\begin{itemize}
-		\item $b\mid a$ si, et seulement si, $\forall i\in\llbracket1,k\rbag,\ \beta_i\mid\alpha_i$ ;
+		\item $b\mid a$ si, et seulement si, $\forall i\in\llbracket1,k\rrbracket,\ \beta_i\mid\alpha_i$ ;
 		\item un PGCD de $a$ et $b$ est $p_1^{\min(\alpha_1,\beta_1)}\cdots p_k^{\min(\alpha_k,\beta_k)}$ ;
-		\item un PGCD de $a$ et $b$ est $p_1^{\max(\alpha_1,\beta_1)}\cdots p_k^{\max(\alpha_k,\beta_k)}$.
+		\item un PPCM de $a$ et $b$ est $p_1^{\max(\alpha_1,\beta_1)}\cdots p_k^{\max(\alpha_k,\beta_k)}$.
 	\end{itemize}
 	On retrouve ainsi le fait que $ab$ et $dm$ sont associés si $d$ et $m$ sont respectivement un PGCD et un PPCM de $a$ et $b$.
 \end{ex}
 
 \begin{exo}
-	A association près, combien un élément non nul de $A$ possède de diviseurs ?
+	A association près, combien un élément non nul de $A$ possède-t-il de diviseurs ?
 \end{exo}
 
 \begin{exo}
@@ -815,8 +813,8 @@ Soit $n$ un entier naturel non nul.
 
 \begin{prop}[Éléments inversibles de $\Z/n\Z$]%prop
 	\begin{enumerate}
-		\item La classe de $k\in\Z$ est inversibles dans $\Z/n\Z$ si, et seulement si, $k$ est premier avec $n$.
-		\item Pour $n\in\N\st$, on a les équivalences :
+		\item La classe de $k\in\Z$ est inversible dans $\Z/n\Z$ si, et seulement si, $k$ est premier avec $n$.
+		\item Pour $n\in\N\st$, les trois conditions suivantes sont équivalentes :
 		\begin{enumerate}[label=(\roman*)]
 			\item $\Z/n\Z$ est un corps ;
 			\item $\Z/n\Z$ est intègre ;
@@ -868,7 +866,7 @@ Soit $n$ et $m$ deux entiers naturels non nuls. On note $[k]_n$ et $[k]_m$ les c
 	\end{cases}$$ et les solutions de ce système sont exactement les entiers congrus à $k$ modulo $nm$.
 \end{prop}
 
-Le théorème chinois permet de ramener l'étude d'une équation sur $\Z/n\Z$ lorsque $n$ n'est pas premier, à celle d'équations sur des anneaux plus simples.
+Le théorème chinois permet de ramener l'étude d'une équation sur $\Z/n\Z$ lorsque $n$ n'est pas premier à celle d'équations sur des anneaux plus simples.
 
 \begin{met}
 	A partir d'une relation de Bézout $mu+nv=1$, on trouve deux entiers $k_1=mu$ et $k_2=nv$ vérifiant respectivement les systèmes de congruences : 
@@ -915,7 +913,7 @@ Plus généralement :
 	Soit $p$ un nombre premier. Pour tout $k\in\N\st$, on a $\varphi(p^k)=p^{k}-p^{k-1}$.
 \end{prop}
 \begin{proof}
-	Les éléments qui sont non premiers avec $p^k$ sont les multiples de $p$, c'est-à-dire les entiers $p,2p,\ldots,p^{k-1}p$ pour ceux qui sont dans $\llbracket1,p^k$. Il y en a donc $p^{k-1}$.
+	Les éléments qui sont non premiers avec $p^k$ sont les multiples de $p$, c'est-à-dire les entiers $p,2p,\ldots,p^{k-1}p$ pour ceux qui sont dans $\llbracket1,p^k\rrbracket$. Il y en a donc $p^{k-1}$.
 \end{proof}
 
 \begin{prop}%prop
@@ -986,7 +984,7 @@ Revoir dans le cours de première année :
 \begin{ex}
 	\begin{enumerate}
 		\item $\Z/6\Z$ et $\mathcal{S}_3$ ne sont pas isomorphes car l'un est commutatif et pas l'autre.
-		\item Lorsque $m$ et $n$ ne sont pas premiers entre eux, $\Z/(mn)\Z$ et $(\Z/mZ)\times(\Z/n\Z)$ ne sont pas isomorphes. En effet, dans $\Z/(mn)\Z$, $\overline{1}$ est d'ordre $mn$, mais dans l'autre, tout élément est d'ordre $m\vee n<mn$.
+		\item Lorsque $m$ et $n$ ne sont pas premiers entre eux, $\Z/(mn)\Z$ et $(\Z/mZ)\times(\Z/n\Z)$ ne sont pas isomorphes. En effet, dans $\Z/(mn)\Z$, $\overline{1}$ est d'ordre $mn$, mais dans l'autre, tout élément est d'ordre divisant $m\vee n<mn$.
 	\end{enumerate}
 \end{ex}
 
@@ -1081,7 +1079,7 @@ Soit $G$ un groupe.
 
 \begin{ex}
 	\begin{enumerate}
-		\item $\Z$ est engendré par $\{1\}$. Subséquemment, $\Z/n\Z$ est $\{\overline{1}\}$.
+		\item $\Z$ est engendré par $\{1\}$. Subséquemment, $\Z/n\Z$ est engendré par $\{\overline{1}\}$.
 		\item Le groupe $\mathcal{S}_n$ des permutations de $\llbracket1,n\rrbracket$ est engendré par l'ensemble des transpositions.
 		\item Si $A_1$ est génératrice de $G_1$ et $A_2$ est génératrice de $G_2$, alors $(A_1\times\{e_2\})\cup(\{e_1\}\times A_2)$ est génératrice de $G_1\times G_2$. Ce n'est pas toujours la partie génératrice la plus simple : par exemple $(\Z/2\Z)\times(\Z/3\Z)$ est engendré $\{[1]_2,[1]_3\}$.
 		\item Les réflexions constituent une partie génératrice de $\mathcal{O}_n(\R)$.
@@ -1139,7 +1137,7 @@ Soit $G$ un groupe multiplicatif de neutre $e$.
 	\begin{enumerate}
 		\item $\Z$ est monogène, engendré par $1$ (ou $-1$).
 		\item Pour $n\in\N\st$, les groupes $\Z/n\Z$ et $\mathcal{U}_n$ sont cycliques, engendrés respectivement par $\overline{1}$ et $e^{i2\pi/n}$.
-		\item SI $G$ est un groupe monogène, il est clair que tout groupe isomorphe à $G$ est également monogène. En particulier, si $p$ et $q$ sont deux entiers naturels premiers entre eux, le théorème chinois montre que $\Z/(pq)\Z$ et $(\Z/p\Z)\times(\Z/q\Z)$ sont isomorphes en tant qu'anneaux et donc, \textit{a fortiori}, en tant que groupes. On en déduit que $(\Z/p\Z)\times(\Z/q\Z)$ est cyclique.
+		\item Si $G$ est un groupe monogène, il est clair que tout groupe isomorphe à $G$ est également monogène. En particulier, si $p$ et $q$ sont deux entiers naturels premiers entre eux, le théorème chinois montre que $\Z/(pq)\Z$ et $(\Z/p\Z)\times(\Z/q\Z)$ sont isomorphes en tant qu'anneaux et donc, \textit{a fortiori}, en tant que groupes. On en déduit que $(\Z/p\Z)\times(\Z/q\Z)$ est cyclique.
 	\end{enumerate}
 \end{ex}
 
@@ -1154,7 +1152,7 @@ $$\begin{array}{lrcl}
 	\varphi_a:&\Z&\longmapsto&G\\
 	&n&\longmapsto&a^n
 \end{array}$$ est donc surjective. Les règles de calcul sur les itérés montrent que $\varphi_a$ est un morphisme de groupes de $\Z$ dans $G$. Son noyau :
-$$\ker(\varphi_a)=\{k\in\Z\ :\ a^k=e\}$$ est un sous-groupe de $\Z$, donc de la forme $n\Z$, pour $n\in\N$. ON obtient alors la description suivante de $G$.
+$$\ker(\varphi_a)=\{k\in\Z\ :\ a^k=e\}$$ est un sous-groupe de $\Z$, donc de la forme $n\Z$, pour $n\in\N$. On obtient alors la description suivante de $G$.
 
 \begin{prop}%prop
 	Avec les notations précédentes :

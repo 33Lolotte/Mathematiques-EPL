@@ -192,7 +192,7 @@
 
 \begin{document}
 \tableofcontents
-%"Le  programme est plutôt succinct, il manque des choses"
+"Le  programme est plutôt succinct, il manque des choses"
 
 \newpage
 \maketitle
@@ -230,7 +230,7 @@ Dans tout le chapitre, la lettre $\K$ désigne le corps $\R$ ou le corps $\C$. T
 
 \begin{ex}
 	\begin{enumerate}
-		\item L'application $x\mapsto\lvert x\rvert$ est une norme sur $\K$ (où $\lvert\cdot\rvert$ désigne la valeur absolue sir $\K=\R$ et le module sir $\K=\C$).
+		\item L'application $x\mapsto\lvert x\rvert$ est une norme sur $\K$ (où $\lvert\cdot\rvert$ désigne la valeur absolue si $\K=\R$ et le module si $\K=\C$).
 		\item Les applications : $$\begin{array}{rcl}
 			\K&\longrightarrow&\R_+\\
 			(x,y)&\longmapsto&\max(\lvert x\rvert,\lvert y\rvert)
@@ -247,7 +247,7 @@ Dans tout le chapitre, la lettre $\K$ désigne le corps $\R$ ou le corps $\C$. T
 \end{prop}
 
 \begin{ex}
-	De la proposition précédente, on déduit que les espaces préhilbertiens réels sont naturellement munis d'une structure d'espace vectoriel normé :
+	De la proposition précédente, on déduit que les espaces préhilbertiens réels sont naturellement munis d'une structure d'espace vectoriel normé. Par exemple :
 	\begin{enumerate}
 		\item l'espace $\R^n$ muni du produit scalaire canonique $$\left((x_1,\ldots,x_n)\mid(y_1,\ldots,y_n)\right)=\sum_{k=1}^{n}x_ky_k$$ dont la norme associée est donnée par $\lVert(x_1,\ldots,x_n)\rVert=\sqrt{x_1^2+\cdots+x_n^2}$ ;
 		\item l'espace $\mathcal{C}^0([a,b],\R)$ (avec $a<b$) muni du produit scalaire $(f\mid g)=\displaystyle\int_{a}^{b}fg$ dont la norme associée est donnée par $\lVert f\rVert=\displaystyle\sqrt{\int_{a}^{b}f^2}$.
@@ -264,7 +264,7 @@ Dans tout le chapitre, la lettre $\K$ désigne le corps $\R$ ou le corps $\C$. T
 	On dit qu'un vecteur $x$ d'un espace vectoriel normé $E$ est \textbf{unitaire} lorsque $\lVert x\rVert=1$.
 \end{dfn}
 
-\begin{exo}
+\begin{exo}[$\circ$]
 	On suppose que $\K=\R$. Soit $x$ un vecteur non nul d'un espace vectoriel normé $E$. Montrer qu'il existe un unique vecteur unitaire colinéaire à $x$ et de même sens que lui.
 \end{exo}
 
@@ -272,7 +272,7 @@ Dans tout le chapitre, la lettre $\K$ désigne le corps $\R$ ou le corps $\C$. T
 	Étant donné un vecteur $x$ non nul de $E$, le vecteur $\displaystyle\frac{x}{\lVert x\rVert}$ est appelé \textbf{vecteur unitaire associé à $x$}.
 \end{terminologie}
 
-\begin{exo}
+\begin{exo}[$\circ$]
 	Donner une condition nécessaire et suffisante sur $E$ pour qu'il existe dans $E$ des vecteurs unitaires.
 \end{exo}
 
@@ -282,7 +282,7 @@ Dans tout le chapitre, la lettre $\K$ désigne le corps $\R$ ou le corps $\C$. T
 Nous avons défini l'inégalité triangulaire (propriété vérifiée par toute norme par définition) de la manière suivante : $$\forall (x,y)\in E^2,\ \lVert x+y\rVert\leqslant\lVert x\rVert+\lVert y\rVert$$ De manière plus complète, nous regroupons sous le nom d'\textit{inégalités triangulaires} les inégalités du résultat suivant :
 
 \begin{prop}[Inégalités triangulaires]%prop
-	Soit $x$ et $y$ deux vecteurs d'un espace vectoriel normée $E$. Alors on a : $$\lvert \lVert x\rVert-\lVert y\rVert\rvert\leqslant\lVert x\pm y\rVert\leqslant\lVert x\rVert+\lVert y\rVert$$
+	Soit $x$ et $y$ deux vecteurs d'un espace vectoriel normé $E$. Alors on a : $$\lvert \lVert x\rVert-\lVert y\rVert\rvert\leqslant\lVert x\pm y\rVert\leqslant\lVert x\rVert+\lVert y\rVert$$
 \end{prop}
 
 \begin{terminologie}
@@ -345,7 +345,7 @@ De manière moins formelle, l'inégalité $d(M,P)\leqslant d(M,N)+d(N,P)$ signif
 \end{itemize}
 
 \begin{attention} 
-	Bien comprendre la raison d'un choix de l'article indéfini \textit{un} dans la phrase "\textit{un} plus court chemin entre deux points" : la ligne droite est un plus court chemin entre deux points, mais ce n'est pas nécessairement le seul (du moins si la norme n'est pas euclidienne ; produit un exemple).
+	Bien comprendre la raison du choix de l'article indéfini \textit{un} dans la phrase "\textit{un} plus court chemin entre deux points" : la ligne droite est un plus court chemin entre deux points, mais ce n'est pas nécessairement le seul (du moins si la norme n'est pas euclidienne ; produire un exemple).
 \end{attention}
 
 \subsection{Espaces métriques (HP)}
@@ -354,7 +354,7 @@ De manière moins formelle, l'inégalité $d(M,P)\leqslant d(M,N)+d(N,P)$ signif
 	Soit $A$ un ensemble. Une application $d:A^2\to\R_+$ est une \textbf{distance} sur $A$ si elle vérifie les trois axiomes :
 	\begin{enumerate}[label=(\arabic*)]
 		\item \textbf{séparation} : $\forall (x,y)\in A^2,\ d(x,y)=0\iff x=y$ ;
-		\item \textbf{symétrie} : $\forall(,y)\in A^2,\ d(x,y)=d(y,x)$ ;
+		\item \textbf{symétrie} : $\forall(x,y)\in A^2,\ d(x,y)=d(y,x)$ ;
 		\item \textbf{inégalité triangulaire} : $\forall (x,y,z)\in A^3,\ d(x,z)\leqslant d(x,y)+d(y,z)$.
 	\end{enumerate}
 	Un ensemble $A$ muni d'une distance est appelé un \textbf{espace métrique}.
@@ -374,7 +374,7 @@ De manière moins formelle, l'inégalité $d(M,P)\leqslant d(M,N)+d(N,P)$ signif
 Plus généralement :
 
 \begin{ex}%ex fond
-	Si $(E,N)$ est un espace vectoriel normé, et si $A$ est une partie de $E$, l'application $(x,y)\mapsto\lVert x-y\rVert$ définit une distance sur $A$. \\
+	Si $(E,N)$ est un espace vectoriel normé, et si $A$ est une partie de $E$, l'application $(x,y)\mapsto N(x-y)$ définit une distance sur $A$. \\
 	En particulier, $E$ muni de la distance associée à $N$ est un espace métrique.
 \end{ex}
 
@@ -396,7 +396,7 @@ Mais il existe des espaces métriques plus exotiques dont la distance n'est pas 
 \end{ex}
 
 \begin{rmq}%rmq importante
-	Toutes les définitions et propriétés qui vont suivre seront formulées dans le cas d'un espace métrique non vide $(E,d)$. Pour rester dans le programme, il suffit de considérer un espace vectoriel normé $E$ et sa distance $d$ associée.
+	Toutes les définitions et propriétés qui vont suivre seront formulées dans le cas d'un espace métrique non vide $(E,d)$. Pour rester dans le cadre du programme, il suffit de considérer un espace vectoriel normé $E$ et sa distance $d$ associée.
 \end{rmq}
 
 \subsection{Boule fermée, boule ouverte}
@@ -415,7 +415,7 @@ Mais il existe des espaces métriques plus exotiques dont la distance n'est pas 
 \end{notation}
 
 \begin{rmq}
-	Il est clair, d'après la définition, que les boules dépendant de la distance considérée sur $E$ : une partie de $E$ peut être une boule pour une distance et ne pas l'être pour une autre distance.
+	Il est clair, d'après la définition, que les boules dépendent de la distance considérée sur $E$ : une partie de $E$ peut être une boule pour une distance et ne pas l'être pour une autre distance.
 \end{rmq}
 
 \begin{ex}
@@ -481,9 +481,9 @@ Exercice Moulin.EVN.13
 
 \subsection{Exemples d'espaces vectoriels normés}
 
-Le résultat suivant sera utile pour prouver l'homogénéité d'une normé définie par une borne supérieure.
+Le résultat suivant sera utile pour prouver l'homogénéité d'une norme définie par une borne supérieure.
 
-%"Dans sa grande sagesse, le programme nous donne ce lemme. Pour une fois que je peux mettre sagesse et prgramme dans la même phrase...
+"Dans sa grande sagesse, le programme nous donne ce lemme. Pour une fois que je peux mettre sagesse et programme dans la même phrase..."
 
 \begin{lem}%lem
 	Étant donnée $A$ une partie non vide de $\R$ et $k\in\R_+$, on a : $$\sup(kA)=k\sup(A).$$
@@ -498,9 +498,9 @@ Le résultat suivant sera utile pour prouver l'homogénéité d'une normé défi
 Soit $x$ un vecteur de $\K^n$ dont on note $(x_1,\ldots,x_n)$ les composantes. \\
 L'espace $\K^n$ peut être peut être muni d'une structure d'espace vectoriel normé à l'aide de différentes normes, dont les trois normes classiques suivantes :
 \begin{itemize}
-	\item la \textbf{norme infinie}, définie par : $$\lVert x\rVert_\infty=\max(\lvert x_1\rvert,\ldots,\lvert x_n\rvert)$$
-	\item la \textbf{norme un}, définie par : $$\lVert x\rVert_1=\lvert x_1\rvert+\cdots+\lvert x_n\rvert$$
-	\item la \textbf{norme deux}, ou \textbf{norme euclidienne canonique}, définie par : $$\lVert x\rVert_2=\sqrt{\lvert x_1\rvert^2+\cdots+\lvert x_n\rvert^2}$$
+	\item la \textbf{norme infinie}, définie par : $$\lVert x\rVert_\infty=\max(\lvert x_1\rvert,\ldots,\lvert x_n\rvert)\ ;$$
+	\item la \textbf{norme un}, définie par : $$\lVert x\rVert_1=\lvert x_1\rvert+\cdots+\lvert x_n\rvert\ ;$$
+	\item la \textbf{norme deux}, ou \textbf{norme euclidienne canonique}, définie par : $$\lVert x\rVert_2=\sqrt{\lvert x_1\rvert^2+\cdots+\lvert x_n\rvert^2}.$$
 \end{itemize}
 
 \begin{prop}
@@ -523,7 +523,7 @@ L'espace $\K^n$ peut être peut être muni d'une structure d'espace vectoriel no
 	Si $\K=\R$, alors on peut aussi écrire $\lVert x\rVert_2=\sqrt{x_1^2+\cdots+x_n^2}$.
 \end{rmq}
 
-\paragraph{Approfondissement : norme $p$} Pour $p\geqslant 1$, il arrive parfois de munir $\K^n$ de la norme suivante, appelée \textbf{norme $p$}, définie ainsi : $$\lVert x\rVert_p=(\lvert x_1\rvert^p+\cdots+\lvert x_n\rvert^p)^{1/p}$$ Pour plus de détails, voir l'exercice Moulin.EVN.6.
+\paragraph{Approfondissement : norme $p$} Pour $p\geqslant 1$, il arrive parfois de munir $\K^n$ de la norme suivante, appelée \textbf{norme $p$}, définie ainsi : $$\lVert x\rVert_p=(\lvert x_1\rvert^p+\cdots+\lvert x_n\rvert^p)^{1/p}.$$ Pour plus de détails, voir l'exercice Moulin.EVN.6.
 
 \subsubsection*{Généralisation à tout espace vectoriel muni d'une base}
 Plus généralement, si $E$ est un $\K$-espace vectoriel normé non nul muni d'une base $\mathcal{B}=(u_i)_{i\in I}$, alors on dispose sur $E$ des trois normes classiques suivantes, appelées respectivement, \textbf{norme infinie}, \textbf{norme un} et \textbf{norme deux} : $$\lVert x\rVert=\underset{i\in I}{\max}\lvert x_i\rvert\ ; \ \lVert x\rVert_1=\sum_{i\in I}\lvert x_i\rvert\ \text{et}\ \lVert x\rVert_2=\sqrt{\sum_{i\in I}\lvert x_i\rvert^2}$$ où, étant donné un élément $x$ de $E$, la famille $(x_i)_{i\in I}$ désigne les composantes de $x$ dans la base $\mathcal{B}$.
@@ -544,7 +544,7 @@ L'ensemble $\mathcal{B}(X,\K)$ des fonctions bornées d'un ensemble $X$ non vide
 La norme infinie munit donc $\mathcal{B}(X,\K)$ d'une structure d'espace vectoriel normé.
 
 \begin{ex}
-	Cela s'applique en particulier à l'espace vectoriel $\mathcal{B}(\N,\K)$ des suites bornées à valeurs dans $\K$. Pour $(u_n)_{n\in\N}\in\K^\N$, on a : $$\mathcal{N}_\infty(u)=\underset{\N}{\sup}\lvert u_n\rvert$$
+	Cela s'applique en particulier à l'espace vectoriel $\mathcal{B}(\N,\K)$ des suites bornées à valeurs dans $\K$. Pour $(u_n)_{n\in\N}\in\K^\N$, on a : $$\mathcal{N}_\infty(u)=\underset{\N}{\sup}\lvert u_n\rvert.$$
 \end{ex}
 
 \subsubsection*{Espace des fonctions continues sur un segment}
@@ -560,7 +560,7 @@ Cet espace peut être muni d'une structure d'espace vectoriel normé, en particu
 	Montrer que ces applications sont des normes sur $\mathcal{C}([a,b],\K)$. Sont-elles des normes sur $\mathcal{CM}([a,b],\K)$ ?
 \end{exo}
 
-\paragraph{Approfondissement : norme $p$} Pour $p\geqslant 1$, on munit parfois l'espace $\mathcal{C}([a,b],\K)$ de la norme suivante, appelée \textbf{norme $p$}, définie ainsi : $$\mathcal{N}_p(f)=\left(\int_{a}^{b}\lvert f\rvert^p\right)^{1/p}$$
+\paragraph{Approfondissement : norme $p$} Pour $p\geqslant 1$, on munit parfois l'espace $\mathcal{C}([a,b],\K)$ de la norme suivante, appelée \textbf{norme $p$}, définie ainsi : $$\mathcal{N}_p(f)=\left(\int_{a}^{b}\lvert f\rvert^p\right)^{1/p}.$$
 Pour plus de détails, voir l'exercice Moulin.EVN.07.
 
 \subsection{Obtention de nouveaux espaces vectoriels normés}
@@ -613,7 +613,7 @@ Soit $E$ et $F$ deux $\K$-espaces vectoriels. Si l'on dispose d'une norme $\lVer
 			&f&\longmapsto&\displaystyle\int_{a}^{b}\omega(x)\lvert f(x)\rvert dx
 		\end{array}$$ est une norme sur $E$. En effet, c'est la norme que l'on obtient avec la norme $1$ et l'application linéaire injective : $$\begin{array}{rcl}
 		E&\longrightarrow&E\\
-		f&\longmapsto&(x\mapsto\omega(x)f(x))
+		f&\longmapsto&(x\mapsto\omega(x)f(x)).
 		\end{array}$$
 	\end{enumerate}
 \end{ex}
@@ -648,7 +648,7 @@ Soit $E$ et $F$ deux $\K$-espaces vectoriels. Si l'on dispose d'une norme $\lVer
 \end{exo}
 
 \begin{rmq}
-	Plus généralement, si $(E_1,d_1),\ldots,(E_p,d_p)$ sont des espaces métriques, on peut définie la \textbf{distance produit} sur $E_1\times\cdots\times E_p$ en posant : $$d((x_1,\ldots,x_p),(y_1,\ldots,y_p))=\max(d_1(x_1,y_1),\ldots,d_p(x_p,y_p))$$
+	Plus généralement, si $(E_1,d_1),\ldots,(E_p,d_p)$ sont des espaces métriques, on peut définir la \textbf{distance produit} sur $E_1\times\cdots\times E_p$ en posant : $$d((x_1,\ldots,x_p),(y_1,\ldots,y_p))=\max(d_1(x_1,y_1),\ldots,d_p(x_p,y_p)).$$
 \end{rmq}
 
 \begin{exo}
@@ -662,19 +662,19 @@ Soit $E$ et $F$ deux $\K$-espaces vectoriels. Si l'on dispose d'une norme $\lVer
 \subsection{Distance à une partie}
 
 \begin{dfn}
-	Étant donnée une partie $A$ non vide de $E$ ainsi qu'un élément $x$ de $E$, on appelle la \textbf{distance de $x$ à $A$}, et on note $d(x,A)$, la quantité : $$d(x,A)=\inf\left\{d(x,a)\ \mid \ a\in A\right\}$$
+	Étant donnée une partie $A$ non vide de $E$ ainsi qu'un élément $x$ de $E$, on appelle la \textbf{distance de $x$ à $A$}, et on note $d(x,A)$, la quantité : $$d(x,A)=\inf\left\{d(x,a)\ \mid \ a\in A\right\}.$$
 \end{dfn}
 
 \begin{rmq}
 	Avec les notations de la définition précédente :
 	\begin{enumerate}
-		\item Le caractère non vide de $A$ implique que $\{d(x,a)\ \mid\ a\in A\}$ est une partie non vide de $\R$ minorée par $0$, ce qui assure l'existence de sa borne inférieure et le fait que celle-ci soit positive ;
-		\item Dans le cas d'un espace vectoriel normé, par définition de la distance $d$ associée à la norme, on a aussi : $$d(x,A)=\inf\{\lVert x-a\rVert\ \mid\ a\in A\}$$ 
+		\item Le caractère non vide de $A$ implique que $\{d(x,a)\ \mid\ a\in A\}$ est une partie non vide de $\R$ minorée par $0$, ce qui assure l'existence de sa borne inférieure et le fait que celle-ci soit positive.
+		\item Dans le cas d'un espace vectoriel normé, par définition de la distance $d$ associée à la norme, on a aussi : $$d(x,A)=\inf\{\lVert x-a\rVert\ \mid\ a\in A\}.$$ 
 	\end{enumerate}
 \end{rmq}
 
 \begin{prop}%prop
-	Soit $A$ une partie non vide de $E$ ainsi que $x$ et $y$ deux éléments de $E$. On a : $$\lvert d(x,A)-d(y,A)\rvert\leqslant d(x,y)$$
+	Soit $A$ une partie non vide de $E$ ainsi que $x$ et $y$ deux éléments de $E$. On a : $$\lvert d(x,A)-d(y,A)\rvert\leqslant d(x,y).$$
 \end{prop}
 \begin{proof}
 	Commencer par démontrer l'inégalité $d(x,A)-d(y,A)\leqslant d(x,y)$ puis utiliser la symétrie en $x$ et $y$.
@@ -690,7 +690,7 @@ Soit $E$ et $F$ deux $\K$-espaces vectoriels. Si l'on dispose d'une norme $\lVer
 \begin{attention}
 \begin{itemize}
 	\item Si $x$ appartient à $A$, alors il est clair que $d(x,A)=0$. En revanche, la réciproque est fausse. Par exemple, dans $\R$ muni de la valeur absolue, on a $d(0,\R_+\st)=0$ et pourtant $0\notin\R_+\st$.
-	\item Comme le prouve le cas de la distance de $à$ à $\R_+\st$, il n'existe pas toujours d'élément $a\in A$ tel que $d(x,A)=d(x,a)$. Lorsqu'un tel élément existe, on dit que la distance de $x$ à $A$ est atteinte.
+	\item Comme le prouve le cas de la distance de $0$ à $\R_+\st$, il n'existe pas toujours d'élément $a\in A$ tel que $d(x,A)=d(x,a)$. Lorsqu'un tel élément existe, on dit que la distance de $x$ à $A$ est atteinte.
 \end{itemize}
 \end{attention}
 
@@ -703,11 +703,11 @@ Soit $E$ et $F$ deux $\K$-espaces vectoriels. Si l'on dispose d'une norme $\lVer
 \end{rmq}
 
 \begin{exo}
-	Dans $\R^2$, soit $x$ le point $(-1,1)$ et $A$ la droite d'équation $y=2x$. pour chacune des normes un, deux et infinie, déterminer la distance de $x$ à $A$, et donner les points où cette distance est atteinte.
+	Dans $\R^2$, soit $x$ le point $(-1,1)$ et $A$ la droite d'équation $y=2x$. Pour chacune des normes un, deux et infinie, déterminer la distance de $x$ à $A$, et donner les points où cette distance est atteinte.
 \end{exo}
 
 \begin{exo}
-	Étant données deux parties $A$ et $B$ de $E$ non vides, on pose : $$d(A,B)=\inf\{d(a,b)\ \mid\ (a,b)\in A\times B\}$$ Quels sont les axiomes d'une distance qui sont vérifiés par une telle application ?
+	Étant données deux parties $A$ et $B$ de $E$ non vides, on pose : $$d(A,B)=\inf\{d(a,b)\ \mid\ (a,b)\in A\times B\}.$$ Quels sont les axiomes d'une distance qui sont vérifiés par une telle application ?
 \end{exo}
 
 \subsection{Partie bornée, application bornée}
@@ -715,7 +715,7 @@ Soit $E$ et $F$ deux $\K$-espaces vectoriels. Si l'on dispose d'une norme $\lVer
 \subsubsection*{Partie bornée}
 
 \begin{dfn}
-	Le \textbf{diamètre} d'une partie $A$ de $E$ est défini dans $\overline{\R}_+$ par : $$\text{diam}(A)=\sup\{d(x,y)\ \mid\ (x,y)\in A^2\}$$ si $A$ est non vide, et vaut $0$ sinon.\\
+	Le \textbf{diamètre} d'une partie $A$ de $E$ est défini dans $\overline{\R}_+$ par : $$\text{diam}(A)=\sup\{d(x,y)\ \mid\ (x,y)\in A^2\}$$ si $A$ est non vide, et $0$ sinon.\\
 	On dit qu'une partie $A$ est \textbf{bornée} si son diamètre est fini.
 \end{dfn}
 
@@ -767,7 +767,7 @@ Soit $E$ et $F$ deux $\K$-espaces vectoriels. Si l'on dispose d'une norme $\lVer
 \begin{rmq}
 	\begin{itemize}
 		\item Une suite d'éléments $(u_n)_{n\in\N}$ d'éléments de $E$ n'étant rien d'autre qu'une application de $\N$ dans $E$, la définition précédente s'applique.
-		\item Si $E$ est un espace vectoriel normé, il est facile de vérifier que l'ensemble des applications bornées de $X$ dans $E$ est un sous-espace vectoriel du $\K$-espace vectoriel $\mathcal{F}(X,E)$. des fonctions de $X$ dans $E$.
+		\item Si $E$ est un espace vectoriel normé, il est facile de vérifier que l'ensemble des applications bornées de $X$ dans $E$ est un sous-espace vectoriel du $\K$-espace vectoriel $\mathcal{F}(X,E)$ des fonctions de $X$ dans $E$.
 		\item Il est clair, d'après la définition, que la notion de partie bornée (et donc de fonction ou suite bornée) dépend de la distance ou de la norme utilisée. Nous verrons :
 		\begin{itemize}[label=$\star$]
 			\item qu'il est possible qu'une partie soit bornée pour une norme mais ne le soit pas pour une autre ;
@@ -788,11 +788,10 @@ L'élément $a_n$, quant à lui, est appelé \textbf{terme général} de la suit
 	Soit $(a_n)_{n\in\N}$ une suite d'éléments de $E$. On dit que la suite $(a_n)_{n\in\N}$ converge vers $l\in E$ si la suite réelle $(d(a_n,l))_{n\in\N}$ converge vers $0$.
 \end{dfn}
 
-La suite $(a_n)_{n\in\N}$ converge donc vers $l\in E$ si, et seulement si : $$\forall\varepsilon>0,\ \exists n_0\in\N\ : \forall n\in\N,\ n\geqslant n_0\implies d(a_n,l)\leqslant\varepsilon$$
+La suite $(a_n)_{n\in\N}$ converge donc vers $l\in E$ si, et seulement si : $$\forall\varepsilon>0,\ \exists n_0\in\N\ : \forall n\in\N,\ n\geqslant n_0\implies d(a_n,l)\leqslant\varepsilon,$$
 ou encore :
-$$\forall\varepsilon>0,\ \exists n_0\in\N\ : \forall n\in\N,\ n\geqslant n_0\implies a_n\in B_f(l,\varepsilon)$$
-Dans le cadre d'un espace vectoriel normé, cela s'écrit aussi : $$\forall\varepsilon>0,\ \exists n_0\in\N\ : \forall n\in\N,\ n\geqslant n_0\implies \lVert a_n-l\rVert\leqslant\varepsilon$$
-
+$$\forall\varepsilon>0,\ \exists n_0\in\N\ : \forall n\in\N,\ n\geqslant n_0\implies a_n\in B_f(l,\varepsilon).$$
+Dans le cadre d'un espace vectoriel normé, cela s'écrit aussi : $$\forall\varepsilon>0,\ \exists n_0\in\N\ : \forall n\in\N,\ n\geqslant n_0\implies \lVert a_n-l\rVert\leqslant\varepsilon.$$
 
 \begin{notation}
 	Pour signifier qu'une suite $(a_n)_{n\in\N}$ tend vers $l$, on écrit $a_n\xrightarrow[n\to+\infty]{}l$ ou plus simplement $a_n\to l$.
@@ -806,7 +805,7 @@ Dans le cadre d'un espace vectoriel normé, cela s'écrit aussi : $$\forall\vare
 \end{proof}
 
 \begin{dfn}
-	Une suite $(a_n)_{n\in\N}$ est dite \textbf{convergente} s'il existe un élément $l\in E$ tel que $a_n\to l$. Cet élément $l$ est alors appelé \textbf{limite} de la suite $(a_n)_{n\in\N}$, et on le note $\lim a_n$. \\
+	Une suite $(a_n)_{n\in\N}$ est dite \textbf{convergente} s'il existe un élément $l\in E$ tel que $a_n\to l$. Cet unique élément $l$ est alors appelé \textbf{limite} de la suite $(a_n)_{n\in\N}$, et on le note $\lim a_n$. \\
 	Une suite qui n'est pas convergente est dite \textbf{divergente}.
 \end{dfn}
 
@@ -836,7 +835,7 @@ Exercice Moulin.EVN.37
 On retiendra de cet exercice que la convergence et la limite d'une suite dépendent essentiellement de la norme choisie.
 
 \begin{rmq}
-	Nous verrons cependant que deux normes équivalentes définissent les mêmes suites convergentes. En particulier, en dimension fini, la convergence et la limite éventuelle d'une suite ne dépendant pas de la norme choisie.
+	Nous verrons cependant que deux normes équivalentes définissent les mêmes suites convergentes. En particulier, en dimension finie, la convergence et la limite éventuelle d'une suite ne dépendant pas de la norme choisie.
 \end{rmq}
 
 \subsubsection*{Opérations sur les suites convergentes dans un espace vectoriel normé}
@@ -921,7 +920,7 @@ Exercice Moulin.EVN.38
 \end{rmq}
 
 \begin{prop}[Caractérisation des valeurs d'adhérence]%prop
-	Soit $(a_n)_{n\in\N}$ une suite à valeurs dans $E$ et $x$ un élément de $E$. Alors $x$ est valeur d'adhérence de la suite $(a_n)_{n\in\N}$ si, et seulement si : $$\forall\varepsilon>0,\ \forall n\in\N,\ \exists p\geqslant n\ : \ d(a_n,x)\leqslant\varepsilon$$
+	Soit $(a_n)_{n\in\N}$ une suite à valeurs dans $E$ et $x$ un élément de $E$. Alors $x$ est valeur d'adhérence de la suite $(a_n)_{n\in\N}$ si, et seulement si : $$\forall\varepsilon>0,\ \forall n\in\N,\ \exists p\geqslant n\ : \ d(a_n,x)\leqslant\varepsilon.$$
 \end{prop}
 
 \paragraph{Traduction en termes de boules} Soit $u=(u_n)$ une suite de $E$ et $l$ un élément de $E$.
@@ -936,16 +935,16 @@ Ici, $E$ désigne un espace vectoriel normé.
 
 \subsection{Suites et séries}
 
-A toute suite $(u_n)_{n\in\N}\in\E^\N$, on associe la suite $(S_n)_{n\in\N}$ définie par : $$\forall n\in\N,\ S_n=\sum_{k=0}^{n}u_k$$ L'application $u\mapsto S$ est un isomorphisme d'espace vectoriel de $\E^\N$. Sa réciproque est l'application $S\mapsto u$, où $u$ est définie par : $$u_0=S_0\ \ \text{et}\ \ \forall n\in\N\st,\  u_n=S_n-S_{n-1}$$ Pour chaque élément de $\E^\N$, on peut donc considérer au choix la suite $(u_n)_{n\in\N}$ ou la suite $(S_n)_{n\in\N}$ associée.
+A toute suite $(u_n)_{n\in\N}\in\E^\N$, on associe la suite $(S_n)_{n\in\N}$ définie par : $$\forall n\in\N,\ S_n=\sum_{k=0}^{n}u_k$$ L'application $u\mapsto S$ est un isomorphisme d'espace vectoriel de $E^\N$. Sa réciproque est l'application $S\mapsto u$, où $u$ est définie par : $$u_0=S_0\ \ \text{et}\ \ \forall n\in\N\st,\  u_n=S_n-S_{n-1}$$ Pour chaque élément de $E^\N$, on peut donc considérer au choix la suite $(u_n)_{n\in\N}$ ou la suite $(S_n)_{n\in\N}$ associée.
 
 \begin{dfn}
-	Si $u\in\E^\N$, et $S_n=\displaystyle\sum_{p=0}^{n}u_p$, on appelle série de terme général CENSURE. \\
+	Si $u\in E^\N$, et $S_n=\displaystyle\sum_{p=0}^{n}u_p$, on appelle série de terme général CENSURE. \\
 	On la note $\displaystyle\sum u_n$. \\
 	Le \textbf{terme général} est donc le vecteur $u_n$ ; les \textbf{sommes partielles} sont les $S_n$.
 \end{dfn}
 
 \begin{dfn}
-	On dit que la série $\displaystyle\sum u_n$ \textbf{converge} si la suite $(S_n)$ admet une limite dans $\E$, appelée \textbf{somme de la série} et notée $\displaystyle\sum_{n=0}^{+\infty}u_n$. Dans le cas contraire, on dit que la série \textbf{diverge}. On parle de la nature d'une série pour parler de sa convergence ou sa divergence.
+	On dit que la série $\displaystyle\sum u_n$ \textbf{converge} si la suite $(S_n)$ admet une limite dans $E$, appelée \textbf{somme de la série} et notée $\displaystyle\sum_{n=0}^{+\infty}u_n$. Dans le cas contraire, on dit que la série \textbf{diverge}. On parle de la nature d'une série pour parler de sa convergence ou sa divergence.
 \end{dfn}
 
 \begin{notation} 
@@ -954,8 +953,8 @@ A toute suite $(u_n)_{n\in\N}\in\E^\N$, on associe la suite $(S_n)_{n\in\N}$ dé
 
 \begin{rmq}
 	\begin{itemize}
-		\item Lorsque la suite $u$ est définie seulement à partir d'un certain rang $n_0$, la série de terme général $u_n$ est notée $\displaystyle\sum_{n\geqslant n_0}u_n$ ; il s'agit de la suite des sommes partielles définie par : $$\forall n\geqslant n_0,\ S_n=\sum_{p=n_0}^{n}u_p$$
-		\item Le caractère asymptotique de la notion de limite permet de voir que pour $n_0\in\N$, une série $\displaystyle\sum u_n$ converge si, et seulement si, la série $\displaystyle\sum_{n\geqslant n_0}u_n$.
+		\item Lorsque la suite $u$ est définie seulement à partir d'un certain rang $n_0$, la série de terme général $u_n$ est notée $\displaystyle\sum_{n\geqslant n_0}u_n$ ; il s'agit de la suite des sommes partielles définie par : $$\forall n\geqslant n_0,\ S_n=\sum_{p=n_0}^{n}u_p.$$
+		\item Le caractère asymptotique de la notion de limite permet de voir que pour $n_0\in\N$, une série $\displaystyle\sum u_n$ converge si, et seulement si, la série $\displaystyle\sum_{n\geqslant n_0}u_n$ converge.
 	\end{itemize}
 \end{rmq}
 
@@ -968,7 +967,7 @@ A toute suite $(u_n)_{n\in\N}\in\E^\N$, on associe la suite $(S_n)_{n\in\N}$ dé
 \end{prop}
 
 \begin{dfn}
-	Une série dont le terme général ne tend pas vers $à$ est dite \textbf{grossièrement divergente}.
+	Une série dont le terme général ne tend pas vers $0$ est dite \textbf{grossièrement divergente}.
 \end{dfn}
 
 \begin{attention} 
@@ -976,7 +975,7 @@ Comme pour les séries numériques, la convergence vers $0$ du terme général e
 \end{attention}
 
 \begin{prop}%prop
-	L'ensemble des suites $(u_n)_{n\in\N}\in\E^\N$ telles que la série $\displaystyle\sum u_n$ converge est un sous-espace vectoriel de $\E^\N$ sur lequel l'application somme est linéaire.
+	L'ensemble des suites $(u_n)_{n\in\N}\in E^\N$ telles que la série $\displaystyle\sum u_n$ converge est un sous-espace vectoriel de $E^\N$ sur lequel l'application somme est linéaire.
 \end{prop}
 
 \begin{dfn}
@@ -1034,7 +1033,7 @@ L'équivalence entre les deux assertions de la définition ci-dessus est éviden
 \end{prop}
 
 \begin{proof}
-	Pour $x$ appartenant à une boule ouvert de centre $a$ et de rayon $R$, considérer la boule ouverte de centre $x$ et de rayon $R-d(x,a)$. Faire un dessin peu aider...
+	Pour $x$ appartenant à la boule ouverte de centre $a$ et de rayon $R$, considérer la boule ouverte de centre $x$ et de rayon $R-d(x,a)$. Faire un dessin peu aider...
 \end{proof}
 
 \begin{rmq}
@@ -1042,7 +1041,7 @@ L'équivalence entre les deux assertions de la définition ci-dessus est éviden
 \end{rmq}
 
 \begin{attention}
-	Le caractère ouvert ou non d'un ensemble n'est pas une notion intrinsèque à cet ensemble, mais dépend de l'espace dans lequel on le considère. Si $F$ est un sous-espace métrique de $E$, alors une partie ouverte ouvert dans $F$ n'est en général pas une partie ouvert dans $E$, comme le montre l'exercice suivant.
+	Le caractère ouvert ou non d'un ensemble n'est pas une notion intrinsèque à cet ensemble, mais dépend de l'espace dans lequel on le considère. Si $F$ est un sous-espace métrique de $E$, alors une partie ouverte dans $F$ n'est en général pas une partie ouverte dans $E$, comme le montre l'exercice suivant.
 \end{attention}
 
 \begin{exo}
@@ -1069,7 +1068,7 @@ L'équivalence entre les deux assertions de la définition ci-dessus est éviden
 \end{rmq}
 
 \begin{exo}
-	Montrer que toute partie ouvert peut s'écrire comme une réunion de boules ouvertes.
+	Montrer que toute partie ouverte peut s'écrire comme une réunion de boules ouvertes.
 \end{exo}
 
 \begin{attention}
@@ -1077,7 +1076,7 @@ L'équivalence entre les deux assertions de la définition ci-dessus est éviden
 \end{attention}
 
 \begin{exo}
-	Pour tout $n\in\N\st$, on note $U_n=\displaystyle\left]-\frac{1}{n},\frac{1}{n}\right[$. Bien que chacun des $U_n$ soit un ouvert, leur intersection $\{0\}$ ne l'est pas.
+	Pour tout $n\in\N\st$, on note $U_n=\displaystyle\left]-\frac{1}{n},\frac{1}{n}\right[$. Montrer que, bien que chacun des $U_n$ soit un ouvert, leur intersection $\{0\}$ ne l'est pas.
 \end{exo}
 
 \begin{prop}%prop
@@ -1162,7 +1161,7 @@ $$\forall x\in E,\ d(x,a)<r\implies x\in A,$$ autrement it, se placer suffisamme
 En revanche, il peut y avoir dans les voisinages de $a$ des points "très loin" de $a$.
 
 \begin{rmq}
-	On peut, sans en changer le sens, remplacer "boule ouvert" par "boule fermée" dans la définition qui précède.
+	On peut, sans en changer le sens, remplacer "boule ouverte" par "boule fermée" dans la définition qui précède.
 \end{rmq}
 
 \begin{ex}
@@ -1208,8 +1207,8 @@ On suppose que $E$ est ici un espace vectoriel normé.
 
 \begin{dfn}
 	\begin{enumerate}
-		\item On dit que $V\subset E$ est un \textbf{voisinage de l'infini} s'il existe $A$ tel que : $$\lVert x\rVert\geqslant A\implies x\in V$$
-		On note $\mathcal{V}_\infty$.
+		\item On dit que $V\subset E$ est un \textbf{voisinage de l'infini} s'il existe $A$ tel que : $$\lVert x\rVert\geqslant A\implies x\in V.$$
+		On note $\mathcal{V}_\infty$ l'ensemble des voisinages de l'infini.
 		\item On dit que $V\subset\R$ est un \textbf{voisinage de $+\infty$} s'il existe $A$ tel que $[A,+\infty[\subset V$. \\
 		On note $\mathcal{V}_{+\infty}$ l'ensemble des voisinages de $+\infty$.
 		\item On dit que $V\subset\R$ est un \textbf{voisinage de $-\infty$} s'il existe $A$ tel que $]-\infty,A]\subset V$. \\
@@ -1229,7 +1228,7 @@ On suppose que $E$ est ici un espace vectoriel normé.
 \end{dfn}
 
 \begin{prop}[Écriture topologique des limites]%prop
-	Une suite $(u_n)_{n\in\N}$ tend vers $l$ si, et seulement si, l'on a : $$\forall V\in\mathcal{V}_l,\ \exists n_0\in\N\ : \ n\geqslant n_0\implies u_n\in V,$$ ceci étant valable pour $l\in E$ ou $l=\infty$ lorsque $l$ est un espace vectoriel normé, et pour $l\in\R$ ou $l=\pm\infty$ lorsque $E=\R$.
+	Une suite $(u_n)_{n\in\N}$ tend vers $l$ si, et seulement si, l'on a : $$\forall V\in\mathcal{V}_l,\ \exists n_0\in\N\ : \ n\geqslant n_0\implies u_n\in V,$$ ceci étant valable pour $l\in E$ ou $l=\infty$ lorsque $E$ est un espace vectoriel normé, et pour $l\in\R$ ou $l=\pm\infty$ lorsque $E=\R$.
 \end{prop}
 
 \begin{rmq}
@@ -1258,7 +1257,7 @@ On rappelle, d'après la définition des voisinages, que dire que $x$ est intér
 \begin{itemize}
 	\item Si $A$ et $B$ sont deux parties vérifiant $A\subset B$, alors on a $\mathring{A}\subset\mathring{B}$.
 	\item L'intérieur d'une réunion contient la réunion des intérieurs.
-	\item L'intérieur d'une intersection finie est contenue dans l'intersection des intérieurs, avec égalité pour une intersection finie.
+	\item L'intérieur d'une intersection finie est contenu dans l'intersection des intérieurs, avec égalité pour une intersection finie.
 \end{itemize}
 
 \begin{exo}
@@ -1274,12 +1273,12 @@ On rappelle, d'après la définition des voisinages, que dire que $x$ est intér
 \begin{ex}
 	\begin{enumerate}
 		\item Les points adhérents à $A\ne\emptyset$ sont les points à distance nulle de $A$.
-		\item Borne supérieur d'une partie de $\R$.
+		\item Borne supérieure d'une partie de $\R$.
 	\end{enumerate}
 \end{ex}
 
 \begin{prop}%prop
-	Un point $a$ est adhérent à $A$ si, et seulement si tout voisinage de $a$ rencontre $A$, ce qui s'écrit : $$\forall V\in\mathcal{V}_a,\ V\cap A\ne\emptyset$$
+	Un point $a$ est adhérent à $A$ si, et seulement si tout voisinage de $a$ rencontre $A$, ce qui s'écrit : $$\forall V\in\mathcal{V}_a,\ V\cap A\ne\emptyset.$$
 \end{prop}
 
 \begin{dfn}
@@ -1301,8 +1300,8 @@ Exercice Moulin.EVN.33
 \end{prop}
 
 \begin{rmq}
-	Dire qu'un point $x$ n'appartient pas à l'adhérence de $A$ signifie qu'on peut trouver $r>0$ tel que $B_o(x,r)\cap A=\emptyset$ (ou encore $B_o(x,r)\subset E\setminus A$), ce qui signifie que $x$ appartient à l'intérieur de $E\setminus A$. On a donc la relation : $$E\setminus\left(\text{Adh}(A)\right)\text{Int}(E\setminus A),$$
-	ce qui mène également aux deux relations suivantes : $$\text{Adh}(A)=E\setminus\text{Int}(E\setminus A)\ \ \text{et}\ \ \text{Int}(A)=E\setminus\text{Adh}(E\setminus A)$$
+	Dire qu'un point $x$ n'appartient pas à l'adhérence de $A$ signifie qu'on peut trouver $r>0$ tel que $B_o(x,r)\cap A=\emptyset$ (ou encore $B_o(x,r)\subset E\setminus A$), ce qui signifie que $x$ appartient à l'intérieur de $E\setminus A$. On a donc la relation : $$E\setminus\left(\text{Adh}(A)\right)=\text{Int}(E\setminus A),$$
+	ce qui mène également aux deux relations suivantes : $$\text{Adh}(A)=E\setminus\text{Int}(E\setminus A)\ \ \text{et}\ \ \text{Int}(A)=E\setminus\text{Adh}(E\setminus A).$$
 \end{rmq}
 
 \subsubsection*{Caractérisation séquentielle des points adhérents}
@@ -1356,7 +1355,7 @@ Ainsi :
 
 \begin{prop}%prop
 	Avec les définitions précédentes, $a$ est adhérent à $A$ si, et seulement si, tout voisinage de $a$ rencontre $A$, ce qui s'écrit : 
-	$$\forall V\in\mathcal{V}_a,\ V\cap A\ne\emptyset$$
+	$$\forall V\in\mathcal{V}_a,\ V\cap A\ne\emptyset.$$
 \end{prop}
 
 \subsection{Densité}
@@ -1395,7 +1394,7 @@ $$B_o(x,r)\cap A\ne\emptyset\ \ \text{et}\ \ B_o(x,r)\cap(E\setminus A)\ne\empty
 
 \begin{ex}
 	\begin{enumerate}
-		\item Soit $E$ un espace vectoriel normé non trivial. Si $B$ désigne la boule fermée de centre $a\in E$ et de rayon $r>0$, alors l'intérieur de $B$ est la boule ouvert de mêmes centre et rayon, et la frontière de $B$ est alors la sphère de mêmes centre et rayon.
+		\item Soit $E$ un espace vectoriel normé non trivial. Si $B$ désigne la boule fermée de centre $a\in E$ et de rayon $r>0$, alors l'intérieur de $B$ est la boule ouverte de mêmes centre et rayon, et la frontière de $B$ est alors la sphère de mêmes centre et rayon.
 		\item Soit $a$ et $b$ deux réels tels que $a<b$. Quelle est la frontière d'un intervalle dont les bornes sont $a$ et $b$ ?
 	\end{enumerate}
 \end{ex}
@@ -1405,7 +1404,7 @@ $$B_o(x,r)\cap A\ne\emptyset\ \ \text{et}\ \ B_o(x,r)\cap(E\setminus A)\ne\empty
 \end{exo}
 
 \begin{exo}
-	Soit $A$ une partie de $E$. Montrer : $\text{Fr}(A)=\overline{A}\setminus\overline{(E\setminus A)}$.
+	Soit $A$ une partie de $E$. Montrer : $\text{Fr}(A)=\overline{A}\cap\overline{(E\setminus A)}$.
 \end{exo}
 
 \begin{rmq}
@@ -1505,14 +1504,14 @@ On donne ici une présentation d'espaces plus généraux, dits topologiques, dan
 \end{rmq}
 
 \begin{dfn}
-	Soit $(E,\mathcal{O})$ un espace topologique. On note $\mathcal{V}_a$ l'ensemble des voisinages de $a\in E$. On dit que la suite $(u_n)_{n\in\N}\in E^\N$ converge vers $a$ si : $$\forall V\in\mathcal{V}_a,\ \exists n_0\in\N\ : n\geqslant n_0\implies u_n\in V$$
+	Soit $(E,\mathcal{O})$ un espace topologique. On note $\mathcal{V}_a$ l'ensemble des voisinages de $a\in E$. On dit que la suite $(u_n)_{n\in\N}\in E^\N$ converge vers $a$ si : $$\forall V\in\mathcal{V}_a,\ \exists n_0\in\N\ : n\geqslant n_0\implies u_n\in V.$$
 \end{dfn}
 
 \begin{rmq}
 	On voit donc que la notion de convergence est proprement topologique et dépend fortement de la topologie considérée.
 \end{rmq}
 
-\begin{thm}{Métrique $\implies$ topologique}
+\begin{thm}[Métrique $\implies$ topologique]
 	Soit $(E,d)$ un espace métrique. On note $\mathcal{O}$ l'ensemble des parties $U$ de $E$ telles que : $$\forall x\in U,\ \exists r>0,\ B_o(x,r)\subset U.$$ Alors $\mathcal{O}$ est une topologie, dite topologie associée à la distance $d$. Tout espace métrique est donc naturellement muni d'une structure d'espace topologique.
 \end{thm}
 
@@ -1525,7 +1524,7 @@ On donne ici une présentation d'espaces plus généraux, dits topologiques, dan
 \end{terminologie}
 
 \begin{ex}
-	La topologie grossière est non métrisable si $E$ possède plus de éléments. En effet, il est aisé qu'alors, toute suite d'éléments de $E$ converge vers tout élément de $E$. Si $E$ possède au moins deux éléments, il n'y a donc pas unicité de la limite, si bien que la topologie ne provient pas d'une distance.
+	La topologie grossière est non métrisable si $E$ possède plus de éléments. En effet, il est aisé  de montrer qu'alors, toute suite d'éléments de $E$ converge vers tout élément de $E$. Si $E$ possède au moins deux éléments, il n'y a donc pas unicité de la limite, si bien que la topologie ne provient pas d'une distance.
 \end{ex}
 
 \begin{dfn}
@@ -1538,7 +1537,7 @@ On donne ici une présentation d'espaces plus généraux, dits topologiques, dan
 
 \section{Comparaison de normes}
 
-Il est fréquent de rencontrer plusieurs normes sur un même espace vectoriel. une question apparaît alors : si une propriété (comme la convergence d'une suite ou le caractère borné, ouvert ou fermé d'une partie) est vraie pour une norme, l'est-elle également pour les autres ?\\
+Il est fréquent de rencontrer plusieurs normes sur un même espace vectoriel. Une question apparaît alors : si une propriété (comme la convergence d'une suite ou le caractère borné, ouvert ou fermé d'une partie) est vraie pour une norme, l'est-elle également pour les autres ?\\
 La réponse est négative dans le cas général, comme l'illustre l'exemple suivant.
 
 \begin{ex}
@@ -1606,7 +1605,7 @@ Le résultat suivant assure que pour étudier le caractère dominé de la norme 
 	Dans la pratique, pour montrer que $N_1$ n'est pas dominée par $N_2$, on cherche souvent une suite qui, au choix : 
 	\begin{itemize}
 		\item tend vers $0$ pour $N_2$ mais pas pour $N_1$ ;
-		\item est bornée pour $N_2$ mais qui ne l'est pas pour $N_1$.
+		\item est bornée pour $N_2$ mais ne l'est pas pour $N_1$.
 	\end{itemize}
 \end{met}
 
@@ -1628,7 +1627,7 @@ Le résultat suivant assure que pour étudier le caractère dominé de la norme 
 	Montrer que pour $x\in\K^n$, on a : $$\lVert x\rVert_\infty\leqslant\lVert x\rVert_2\leqslant\lVert x\rVert_1\leqslant n\lVert x\rVert_\infty.$$ En déduire que ces trois normes sur $\K^n$ sont équivalentes.
 \end{exo}
 
-Beaucoup de propriétés sont conservées lorsqu'on passe à une autre qui lui est équivalente. \\
+Beaucoup de propriétés sont conservées lorsqu'on passe d'une norme à une autre qui lui est équivalente. \\
 Donnons trois résultats, dont les deux premiers sont des conséquences immédiates de la remarque sur le fait que l'équivalence des normes correspond à une domination mutuelle et de résultats sur les normes qui en dominent d'autres.
 
 \begin{prop}[Conservation du caractère borné d'une partie]%prop
@@ -1646,7 +1645,7 @@ Donnons trois résultats, dont les deux premiers sont des conséquences immédia
 \begin{prop}[Conservation des ouverts et des fermés]%prop
 	Soit $N_1$ et $N_2$ deux normes équivalentes sur $E$, et $A$ une partie de $E$. Alors :
 	\begin{itemize}
-		\item la partie $A$ est ouvert pour $N_1$ si, et seulement si, elle l'est pour $N_2$ ;
+		\item la partie $A$ est ouverte pour $N_1$ si, et seulement si, elle l'est pour $N_2$ ;
 		\item la partie $A$ est fermée pour $N_1$ si, et seulement si, elle l'est pour $N_2$.
 	\end{itemize}
 \end{prop}
@@ -1661,9 +1660,9 @@ Donnons trois résultats, dont les deux premiers sont des conséquences immédia
 
 \subsubsection*{Comparaison de normes}
 
-\begin{met}
-	\textbf{Comparer} des normes $N_1$ et $N_2$ signifie déterminer si $N_1$ (respectivement $N_2$) est dominée par $N_2$ (respectivement $N_1$).
-\end{met}
+\begin{terminologie}
+	Comparer des normes $N_1$ et $N_2$ signifie déterminer si $N_1$ (respectivement $N_2$) est dominée par $N_2$ (respectivement $N_1$).
+\end{terminologie}
 
 \begin{exo}
 	Soit $a$, $b$ et  $c$ trois réels vérifiant $a<b<c$. On considère les deux normes suivantes sur l'espace $\R[X]$ : $$N_1(P)=\int_{a}^{b}\lvert P\rvert\ \ \text{et}\ \ N_2(P)=\int_{a}^{c}\lvert P\rvert$$
