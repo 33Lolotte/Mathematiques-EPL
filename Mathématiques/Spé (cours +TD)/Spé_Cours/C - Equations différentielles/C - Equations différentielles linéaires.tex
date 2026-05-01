@@ -1,0 +1,1410 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+\usepackage{indentfirst}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L,R]{}
+\fancyfoot[R]{\thepage \ /\ \pageref{LastPage}}
+
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrule}{}}
+
+\setlength{\parindent}{0pt}
+
+\setlist[itemize]{label=$\bullet$}
+\setlist{before=\leavevmode, leftmargin=*}
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Vect}{\text{Vect}}
+\newcommand{\rg}{\text{rg}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
+
+
+\theoremstyle{plain}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+
+\newtheorem*{ex}{Exemple}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{notation}{Notation}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{terminologie}{Terminologie}
+\newtheorem*{attention}{Attention}
+\newtheorem*{conséquence}{Conséquence}
+
+\theoremstyle{remark}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{dfn}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newcommand{\code}[1]{%
+	\mbox{\ttfamily%
+		\detokenize{#1}%
+	}%
+}
+
+\addto\captionsfrench{\renewcommand*{\contentsname}{Équations différentielles linéaires}}
+
+\title{Équations différentielles linéaires}
+\date{}
+
+\begin{document}
+\tableofcontents
+
+\newpage
+\maketitle
+
+Dans ce chapitre, $\K$ désigne $\R$ ou $\C$, $I$ un intervalle de $\R$ d'intérieur non vide, et $E$ est un $\K$-espace vectoriel de dimension finie muni d'une norme $\lVert\cdot\rVert$.
+
+En première année ont été abordées :
+\begin{itemize}
+	\item les équations différentielles linéaires d'ordre $1$ de la forme :
+	$$y'+a(t)y=b(t)\quad\text{avec}\quad a:I\to\K\ \text{et}\ b:I\to\K\ \text{continues}\ ;$$
+	\item les équations différentielles linéaires d'ordre $2$ à coefficients constants de la forme :
+	$$y''+ay'+by=c(t)\quad\text{avec}\quad (a,b)\in\K^2\ \text{et}\ c:I\to\K\ \text{continue}.$$
+\end{itemize}
+
+Les objectifs (modestes ?) du cours de seconde année sont, toujours en restant dans le cas linéaire :
+\begin{itemize}
+	\item pour les équations d'ordre $1$, étendre l'étude au cas de fonctions à valeurs vectorielles dans un espace de dimension finie ;
+	\item pour les équations d'ordre $2$, étendre l'étude au cas des coefficients non constants.
+\end{itemize}
+
+\section{Généralités sur les équations différentielles}
+
+Une équation différentielle est une équation dont l'inconnue est une fonction, et qui fait intervenir la fonction inconnue et ses dérivées \textit{au même point}. L'ordre de l'équation sera le plus grand ordre de dérivation qui y apparaît.
+
+\begin{rmq}
+	L'équation $y'(t)=y(t+1)$ n'est donc \textit{pas une équation différentielle} au sens que l'on vient de définir.
+\end{rmq}
+
+Beaucoup de processus physiques sont modélisés par des fonctions vérifiant une équation différentielle.
+
+\begin{ex}
+	La liste qui suit n'est pas exhaustive.
+	\begin{enumerate}
+		\item Le pendule : l'angle $\theta$ avec la verticale vérifie une équation de la forme :
+		$$\theta''=-k\sin(\theta).$$
+		\item La charge $q$ d'un condensateur d'un circuit RLC :
+		$$Lq''+rq'+\frac{1}{C}q=E.$$
+		\item Le déplacement $x$ sur un axe d'une masse reliée à l'origine de l'axe par un ressort :
+		$$x''=-\frac{k}{m}x.$$
+	\end{enumerate}
+\end{ex}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Il y a une différence importante entre le premier exemple ci-dessus et les deux autres : dans ces deux derniers cas, l'équation est linéaire, ce qui fait que l'ensemble des solutions est un espace vectoriel (exemple 3) ou un espace affine (exemple 2).\\
+		Le programme se limite à l'étude d'équations différentielles linéaires.
+		\item Certains processus sont des modélisés par des fonctions vérifiant des équations plus complexes faisant intervenir des dérivées partielles de la fonctions. Par exemple, une fonction d'onde dans $\R^3$ vérifie une équation de la forme :
+		$$\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}+\frac{\partial^2 f}{\partial z^2}-\frac{1}{c^2}\frac{\partial^2 f}{\partial t^2}=0.$$
+		Les équations faisant intervenir des dérivées partielles sont appelées "équations aux dérivées partielles". On en étudiera des exemples dans le chapitre portant sur le calcul différentiel. Leur étude systématique est hors-programme. L'idée est d'essayer de se ramener à des équations différentielles, par exemple à l'aide d'un changement de variables.
+	\end{itemize}
+\end{rmq}
+
+De façon générale, une \textbf{équation différentielle scalaire d'ordre $n$} est une équation de la forme :
+$$F(t,y,y',\ldots,y^{(n)})=0$$ où $F$ est une application définie sur une partie $D$ de $\R\times\K^{n+1}$ et à valeurs dans $\K$. Une solution est un couple $(I,f)$ où $I$ est un intervalle de $\R$ et $f$ une application de $I$ dans $\K$, $n$ fois dérivable et telle que :
+$$\forall t\in I,\ F(t,f(t),f'(t),\ldots,f^{(n)}(t))=0.$$
+Remarquons que l'intervalle de définition d'une telle solution n'apparaît pas directement dans l'ensemble $D$ et dépend en général des conditions initiales que l'on va imposer à la solution.
+
+\begin{ex}
+	\begin{enumerate}
+		\item Dans l'exemple du pendule, la fonction $F$ est :
+		$$\begin{array}{rcl}
+			\R^4&\longrightarrow&\R\\
+			(t,\theta_0,\theta_1,\theta_2)&\longmapsto&\theta_2+k\sin(\theta_0).
+		\end{array}$$
+		On peut montrer que les solutions peuvent être définies sur $\R$.
+		\item L'équation $y'=(x+y)^2$ correspond à 
+		$$\begin{array}{lrcl}
+			F:&\R^3&\longrightarrow&\R\\
+			&(x,y,z)&\longmapsto& z-(x+y)^2.
+		\end{array}$$
+		L'exercice suivant prouve qu'aucune solution n'est définie sur $\R$.
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	Trouver les solutions de cette dernière équation. On cherchera les solutions $(I,f)$ maximales, c'est-à-dire ne pouvant pas se prolonger à un intervalle contenant strictement $I$.
+\end{exo}
+
+\section{Équations différentielles linéaires d'ordre $1$}
+
+"Ca, c'est de la physique. Ne parlons pas des choses qui fâchent."
+
+
+"Profitons de la physique, il faut bien que ça serve à quelque chose."
+
+\subsection{Équation linéaire scalaire d'ordre $1$ (rappels)}
+
+Soit $(a,b,c)\in\mathcal{C}^0(I,\K)^3$ avec $\forall t\in I,\ a(t)\ne 0$.
+
+On considère les équations différentielles :
+	$$(\text{E})\ :\ a(t)y'+b(t)y=c(t)$$
+	$$(\text{E}_0)\ :\ a(t)y'+b(t)y=0.$$
+
+\begin{rmq}
+	Avec ces hypothèses, l'équation différentielle $a(t)y'+b(t)y=c(t)$ peut se mettre sous la forme $y'=\alpha(t)t+\beta(t)$ avec $(\alpha,\beta)\in\mathcal{C}^0(I,\K)^2$, mais ce n'est pas indispensable en pratique.
+\end{rmq}
+
+Rappelons les résultats vus en première année.
+
+\begin{prop}%prop
+	\begin{enumerate}
+		\item L'ensemble des solutions de l'équation $(\text{E}_0)$ sur $I$ est une droite vectorielle sur $\K$.\\
+		Plus précisément, il existe une fonction $y_0$ qui ne s'annule par sur $I$ et telle que les solutions de $(\text{E}_0)$ sur $I$ soient les $\lambda y_0$, avec $\lambda\in\K$.
+		\item Il existe une solution $y_1$ de $(\text{E})$ sur $I$.\\
+		Les solutions de $(\text{E})$ sur $I$ sont alors les $y_1+\lambda y_0$ pour $\lambda\in\K$.
+		\item Tout problème de Cauchy associé à $(\text{E})$ admet une unique solution définie sur $I$.
+	\end{enumerate}
+\end{prop}
+
+\begin{attention}
+	Lorsque $a$ s'annule sur $I$, l'équation n'est plus une équation normalisée. L'ensemble des solutions est (presque) toujours un sous-espace affine, mais on ne sait rien de sa dimension, ni s'il existe des solutions (sauf évidemment dans le cas où l'équation est homogène).
+\end{attention}
+
+\begin{ex}
+	$ty'-\alpha y=0$.
+\end{ex}
+
+\begin{exo}
+	Déterminer la dimension de l'espace vectoriel des solutions sur $I$ de l'équation différentielle $(1-\cos(t))y'-(\sin(t))y=0$ et, si possible, une base, dans chacun des cas suivants :
+	\begin{enumerate}
+		\item $I=]0,2\pi[$ ;
+		\item $I=]-2\pi,2\pi[$ ;
+		\item $I=]-2n\pi,2n\pi[$ ;
+		\item $I=\R$.
+	\end{enumerate}
+\end{exo}
+
+\begin{met}
+	Pour déterminer une solution particulière de l'équation avec second membre :
+	\begin{itemize}
+		\item on commence par chercher une solution particulière "évidente" (éventuellement en se guidant sur le problème, physique, géométrique ou autre, d'où est issu cette équation différentielle) ;
+		\item si l'on n'en trouve pas, on peut utiliser la méthode de variation de la constante car une solution non nulle de l'équation homogène associée ne s'annule pas.
+	\end{itemize}
+\end{met}
+
+\begin{ex}
+	\begin{enumerate}
+		\item $xy'-y=x^2$. %y=x^2 part
+		\item $(x-1)y'-y=(x-2)e^x$. %y=e^x part, solution sur \R, recoller en 1 avec la dérivabilité, lambda=mu
+	\end{enumerate}
+\end{ex}
+
+\begin{met}
+	Pour résoudre une équation différentielle de la forme $a(t)y'+b(t)y=c(t)$ sur un intervalle sur lequel $a$ s'annule :
+	\begin{itemize}
+		\item On commence par résoudre l'équation sur tout intervalle sur lequel $a$ ne s'annule pas (on sait que l'ensemble des solutions est une droite affine).
+		\item On procède ensuite par analyse/synthèse puisque l'on n'a aucune théorème ni d'existence ni d'unicité.
+	\end{itemize}
+\end{met}
+
+\begin{exo}
+	Résoudre sur $\R$ l'équation différentielle $(x-1)y'-y=(x-2)e^x$.
+\end{exo}
+
+\subsection{Système différentiels linéaires d'ordre $1$}
+
+\begin{dfn}
+	Soit $n\in\N\st$, $I$ un intervalle de $\R$ ainsi que $A:I\mapsto\mathcal{M}_n(\K)$ et $B:I\to\K^n$ deux applications continues. L'équation :
+	$$(\text{E})\ :\ Y'=A(t)Y+B(t)$$ est appelée \textbf{système différentiel linéaire d'ordre $1$}. \\
+	Les solutions d'un tel système sont les fonctions $Y$ de $I$ dans $\K^n$ dérivables et vérifiant :
+	$$\forall t\in I,\ Y'(t)=A(t)Y(t)+B(t).$$
+	Le \textbf{système différentiel homogène} (ou \textbf{sans second membre}) \textbf{associé} est :
+	$$(\text{E}_0)\ :\ Y'=A(t)Y.$$
+\end{dfn}
+
+\begin{dfn}
+	Une \textbf{condition initiale} pour un tel système différentiel est un couple $(t_0,Y_0)\in I\times\K^n$.\\
+	Un \textbf{problème de Cauchy} est un système différentiel $Y'=A(t)Y+B(t)$ muni d'une condition initiale $(t_0,Y_0)$.\\
+	Une solution d'un tel problème de Cauchy est une fonction $Y$ de $I$ dans $\K^n$ dérivable et vérifiant :
+	$$\forall t\in I,\ Y'(t)=A(t)Y(t)+B(t)\quad\text{et}\quad Y(t_0)=Y_0.$$
+\end{dfn}
+
+Nous démontrerons le théorème suivant :
+
+\begin{thm}%thm
+	\begin{itemize}
+		\item Tout problème de Cauchy associé à $(\text{E})$ admet une unique solution.
+		\item L'ensemble $\mathcal{S}_0$ des solutions du système homogène $(\text{E}_0)$ est un sous-espace vectoriel de $\mathcal{D}(I,\K^n)$ de dimension $n$ et pour tout $t_0\in I$, l'application :
+		$$\begin{array}{rcl}
+			\mathcal{S}_0&\longrightarrow&\K^n\\
+			Y&\longmapsto& Y(t_0)
+		\end{array}$$ est un isomorphisme d'espaces vectoriels.
+		\item L'ensemble $\mathcal{S}$ des solutions du système $(\text{E})$ est un sous-espace affine de $\mathcal{D}(I,\K^n)$ dirigé par $\mathcal{S}_0$ (et donc de dimension $n$).
+	\end{itemize}
+\end{thm}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Le fait que $\mathcal{S}_0$ (respectivement $\mathcal{S}$) soit un sous-espace vectoriel (respectivement un sous-espace affine) de $\mathcal{D}(I,\K^n)$ provient du caractère linéaire de l'équation $(\text{E})$.
+		\item Le résultat important du théorème concerne la dimension.
+		\item La continuité de $A$ et $B$ montre que toute solution du système $Y'=A(t)Y+B(t)$ (donc \textit{a priori} supposée seulement dérivable) est en fait de classe $\mathcal{C}^1$.\\
+		De même, si $A$ et $B$ sont de classe $\mathcal{C}^k$, alors toute solution est de classe $\mathcal{C}^{k+1}$.
+		\item On peut trouver numériquement des valeurs approchées de la solution d'un tel problème de Cauchy à l'aide de la \textbf{méthode d'Euler} ou de méthodes plus évoluées, mais partant du même principe.\\
+		En Python, c'est la fonction solveivp (pour \textit{initial value problem}) du module scipy.integrate qui permet d'effectuer la résolution numérique du problème de Cauchy :
+		$$Y'=\Phi(t,Y)\quad\text{et}\quad Y(t_0)=Y_0,$$ où l'on a posé
+		$$\begin{array}{lrcl}
+			\Phi:&I\times\K^n&\longrightarrow&\K^n\\
+			&(t,X)&\longmapsto& A(t)X+b(t).
+		\end{array}$$
+		\code{def Phi(t,Y) :}\\
+			\code{...}\\
+			\code{solveivp(Phi,(t0,tmax),Y0,T)}\\
+		où $T$ est un tableau des valeurs de $t$ entre \code{t0} et \code{tmax}, en lesquelles on veut calculer une valeur approchée de la solution $Y$.
+		\item Cette méthode de résolution numérique d'équations différentielles n'est pas limitée à des équations linéaires. Elle peut s'appliquer à n'importe quelle équation différentielle de la forme $Y'=\Phi(t,Y)$ (le caractère linéaire désigne ici la linéarité de $\Phi$ par rapport à son deuxième argument).
+	\end{itemize}
+\end{rmq}
+
+
+\subsection{Définitions et notations}
+
+Les systèmes linéaires étudiés précédemment ne sont qu'un cas particulier (et la traduction matricielle) de la notion suivante.
+
+\begin{notation}
+	Dans tout ce chapitre, afin d'alléger les écritures, si $u$ est un endomorphisme de $E$ et $e$ un vecteur de $E$, alors la valeur de $u$ en $e$, traditionnellement notée $u(e)$, sera souvent notée $u\cdot e$.
+\end{notation}
+
+\begin{dfn}
+	\begin{itemize}
+		\item On appelle \textbf{équation différentielle linéaire du premier ordre} toute équation de la forme :
+		$$(E)\ :\ x'=a(t)\cdot x+b(t),$$ où $a:I\to\mathcal{L}(E)$ et $b:I\to E$ sont deux applications continues.
+		\item L'application $b$ est appelée \textbf{second membre} de $(\text{E})$.
+		\item On appelle \textbf{équation homogène} (ou \textbf{sans second membre}) \textbf{associée} à $(\text{E})$ l'équation :
+		$$(\text{E}_0)\ :\ x'=a(t)\cdot x.$$
+	\end{itemize}
+\end{dfn}
+
+\begin{dfn}
+	Soit $a:I\to\mathcal{L}(E)$ et $b:I\to E$ deux applications continues. On appelle \textbf{solution} de l'équation différentielle $x'=a(t)\cdot x+b(t)$ toute application dérivable $\varphi:I\to E$ vérifiant :
+	$$\forall t\in I,\ \varphi'(t)=a(t)\cdot\varphi(t)+b(t).$$
+\end{dfn}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Naturellement, au moyen d'une base $\mathcal{B}$ de l'espace vectoriel $E$, toute équation différentielle $y'=a(t)\cdot y+b(t)$ se ramène au système différentiel $Y'=A(t)Y+B(t)$, où, pour tout $t\in I$, les matrices $A(t)$ (carrée) et $B(t)$ (colonne) sont respectivement les matrices dans $\mathcal{B}$ de l'endomorphisme $a(t)$ et du vecteur $b(t)$.
+		\item Soit $\varphi$ une solution de $(\text{E})$. Les applications $a$ et $b$ sont supposées continues, $\varphi$ est continue car dérivable et l'application :
+		$$\begin{array}{rcl}
+			\mathcal{L}(E)\times E&\longrightarrow&E\\
+			(u,y)&\longmapsto&u(y)
+		\end{array}$$ est bilinéaire, donc également continue puisque $\mathcal{L}(E)$ et $E$ sont de dimension finie. Donc $\varphi'=a\cdot\varphi+b$ est continue. Ainsi, les solutions de $(\text{E})$ sont de classe $\mathcal{C}^1$.
+	\end{itemize}
+\end{rmq}
+
+[Quelqu'un bégaye sur l'exo suivant] "On va la faire à la Jean Nougayrède : vous avez le droit au cours !"
+
+\begin{exo}
+	Soit $k\in\N$. Montrer que si les applications $a:I\to E$ et $b:I\to E$ sont de classe $\mathcal{C}^k$, alors toute solution de l'équation différentielle $(\text{E})$ : $x'=a(t)\cdot x+b(t)$ est de classe $\mathcal{C}^{k+1}$.\\
+	Que peut-on dire si $a$ et $b$ sont de classe $\mathcal{C}^\infty$ ?
+\end{exo}
+
+Dans la suite de cette partie, $a:I\to\mathcal{L}(E)$ et $b:I\to E$ sont deux applications continues et $(\text{E})$ est l'équation différentielle $x'=a(t)\cdot x+b(t)$.
+
+\subsubsection*{Problème de Cauchy}
+
+\begin{dfn}
+	\begin{itemize}
+		\item On dit qu'une solution $\varphi$ de l'équation différentielle $(\text{E})$ vérifie la \textbf{condition initiale} $(t_0,x_0)\in I\times E$ si l'on a :
+		$$\varphi(t_0)=x_0.$$
+		\item On appelle \textbf{problème de Cauchy} l'équation $(\text{E})$ munie d'une condition initiale $(t_0,x_0)\in I\times E$ :
+		$$x'=a(t)\cdot x+b(t)\quad\text{et}\quad x(t_0)=x_0.$$
+		\item Résoudre ce \textbf{problème de Cauchy}, c'est trouver toutes les solutions $\varphi$ de $(\text{E})$ vérifiant la condition initiale $\varphi(t_0)=x_0$.
+	\end{itemize}
+\end{dfn}
+
+\subsection{Structure de l'ensemble des solutions}
+
+L'application  :
+$$\begin{array}{lrcl}
+	L:&\mathcal{C}^1(I,E)&\longrightarrow&\mathcal{C}^0(I,E)\\
+	&x&\longmapsto&x'-a\cdot x
+\end{array}$$ est bien définie, c'est une application linéaire, et l'on constate que les équations $(\text{E})$ et $(\text{E}_0)$ se formulent naturellement à l'aide de $L$ :
+$$(\text{E})\ :\ L(x)=b\quad\text{et}\quad (\text{E}_0)\ :\ L(x)=0.$$
+
+Le théorème de Cauchy linéaire montrera que $L$ est surjective. Les propriétés générales des équations linéaires donnent alors les deux résultats suivants.
+
+\begin{prop}%prop
+	\begin{itemize}
+		\item L'ensemble $\mathcal{S}_0$ des solutions de l'équation homogène est un sous-espace vectoriel de $\mathcal{C}^1(I,E)$ ; c'est le noyau de l'application linéaire $L$ introduite ci-dessus.
+		\item Si $\varphi_p$ est une solution particulière de $(\text{E})$, l'ensemble $\mathcal{S}$ des solutions de l'équation $(\text{E})$ s'écrit :
+		$$\mathcal{S}=\varphi_p+\mathcal{S}_0.$$
+		C'est donc un sous-espace affine de $\mathcal{C}^1(I,E)$ de direction $\mathcal{S}_0$.
+	\end{itemize}
+\end{prop}
+
+\begin{met}
+	Pour résoudre une équation différentielle linéaire, on ajoute une solution particulière à la solution générale de l'équation homogène associée.
+\end{met}
+
+\begin{prop}[Principe de superposition]%prop
+	Soit $(\alpha_1,\alpha_2)\in\K^2$ et $(b_1,b_2)\in\mathcal{C}^0(I,E)^2$ tels que $b=\alpha_1b_1+\alpha_2b_2$. \\
+	Si $\varphi_1$ et $\varphi_2$ sont respectivement solution des équations :
+	$$x'=a(t)\cdot x+b_1\quad\text{et}\quad x'=a(t)\cdot x+b_2,$$ alors la fonction $\varphi=\alpha_1\varphi_1+\alpha_2\varphi_2$ est solution de $(\text{E})$ : $x'=a(t)\cdot x+b(t)$.
+\end{prop}
+
+\subsection{Théorème de Cauchy linéaire}
+
+On rappelle que $a$ et $b$ désignent des applications continues sur $I$ à valeurs respectivement dans $\mathcal{L}(E)$ et $E$. On considère l'équation différentielle linéaire du premier ordre $(\text{E})$ :
+$$x'=a(t)\cdot x+b(t).$$
+
+\begin{thm}[Théorème de Cauchy linéaire]%thm
+	\begin{itemize}
+		\item Tout problème de Cauchy associé à $(\text{E})$ admet une unique solution.
+		\item L'ensemble $\mathcal{S}_0$ des solutions de l'équation homogène $(\text{E}_0)$ est un sous-espace vectoriel de $\mathcal{C}^1(I,E)$ et pour tout $t_0\in I$, l'application :
+		$$\begin{array}{rcl}
+			\mathcal{S}_0&\longrightarrow& E\\
+			y&\longmapsto& y(t_0)
+		\end{array}$$ est un isomorphisme d'espaces vectoriels. En particulier, $\mathcal{S}_0$ a même dimension que $E$.
+		\item L'ensemble $\mathcal{S}$ des solutions de $(\text{E})$ est un sous-espace affine de $\mathcal{C}^1(I,E)$ dirigé par $\mathcal{S}_0$ (et donc de même dimension que $E$).
+	\end{itemize}
+\end{thm}
+\begin{proof}
+	C'est l'objet de la section suivante.
+\end{proof}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Le théorème de Cauchy linéaire a été démontré dans le cours de première année pour les équations différentielles scalaires ($E=\K$) du premier ordre en exhibant la forme explicite des solutions.\\
+		Une telle forme explicite ne s'étend pas au cas général ($\dim(E)\geqslant 2$).
+		\item La partie "existence" du théorème de Cauchy linéaire assure que l'ensemble des solutions de $(\text{E})$ est non vide (car $I\times E$ est non vide).
+		\item On utilise souvent l'unicité pour établir des propriétés des solutions de $(\text{E})$ sans résoudre l'équation.
+	\end{itemize}
+\end{rmq}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Deux "\textbf{courbes intégrales}" distinctes de $(\text{E})$ ne se croisent pas. Autrement dit, si $\varphi_1$ et $\varphi_2$ sont deux solutions distinctes de $(\text{E})$, on a :
+		$$\forall t\in I,\ \varphi_1(t)\ne\varphi_2(t).$$
+		\item En particulier, une solution non nulle de l'équation homogène $(\text{E}_0)$ ne s'annule en aucun point.
+		\item Soit $T\in\R_+\st$. Supposons $I=\R$ et $a$ et $b$ $T$-périodiques. Si $\varphi$ est une solution de $(\text{E})$, alors $\varphi_T:t\mapsto\varphi(t+T)$ est encore une solution de $(\text{E})$. En effet, on a :
+		$$\forall t\in\R,\ \varphi_T'(t)=\varphi'(t+T)=a(t+T)\cdot\varphi(t+T)+b(t+T)=a(t)\cdot\varphi_T(t)+b(t).$$
+		On en déduit :
+		$$\varphi\ \text{est $T$-périodique}\iff\varphi_T=\varphi\iff\varphi_T(0)=\varphi(0)\iff\varphi(T)=\varphi(0).$$
+	\end{enumerate}
+\end{ex}
+
+\subsubsection*{Formulation en termes de systèmes différentiels linéaires}
+
+Soit $A:I\to\mathcal{M}_n(\K)$ et $B:I\to\K^n$ des applications continues. Pour tout $(t_0,X_0)\in I\times\K^n$, le problème de Cauchy :
+$$\text{(Sys)}\ :\ X'=A(t)X+B(t)\quad\text{et}\quad X(t_0)=X_0$$ possède une unique solution.
+
+\begin{exo}
+	Soit $A\in\mathcal{C}(I,\mathcal{M}_n(\R))$, $B\in\mathcal{C}(I,\R^n)$ et $t_0\in I$.\\
+	On considère le système différentiel réel :
+	$$(\text{Sys})\ :\ X'=A(t)X+B(t).$$
+	Montrer qu'une solution $\varphi:I\to\C^n$ de (Sys) est réelle (c'est-à-dire à valeurs dans $\R^n$) si, et seulement si, $\varphi(t_0)\in\R^n$.
+\end{exo}
+
+\subsubsection*{Espace des solutions de l'équation homogène}
+
+Rappelons (théorème de Cauchy linéaire) que l'espace vectoriel $\mathcal{S}_0$ des solutions de l'équation homogène $(\text{E}_0)$ : $x'=a(t)\cdot x+b(t)$ est de dimension $\dim(E)$ et que l'application :
+$$\begin{array}{lrcl}
+	\delta_{t_0}:&\mathcal{S}_0&\longrightarrow&E\\
+	&\varphi&\longmapsto&\varphi(t_0)
+\end{array}$$ est un isomorphisme d'espaces vectoriels.
+
+\begin{prop}%prop
+	Si $\varphi_1,\ldots,\varphi_n$ sont des solutions de l'équation homogène $(\text{E}_0)$, alors les trois assertions suivantes sont équivalentes :
+	\begin{enumerate}[label=(\roman*)]
+		\item la famille $(\varphi_1,\ldots,\varphi_n)$ est une base de $\mathcal{S}_0$ ;
+		\item il existe $t_0\in I$ tel que la famille $(\varphi_1(t_0),\ldots,\varphi_n(t_0))$ soit une base de $E$ ;
+		\item pour tout $t\in I$, la famille $(\varphi_1(t),\ldots,\varphi_n(t))$ est une base de $E$.
+	\end{enumerate}
+\end{prop}
+
+\begin{ex}
+	Considérons l'équation homogène $(\text{E}_0)$ : $x'=a(t)\cdot x$ et $t_0\in I$. Soit $\mathcal{B}=(e_1,\ldots,e_n)$ une base de $E$. Pour tout $k\in\llbracket1,n\rrbracket$, il existe une unique solution $\varphi_k$ de $(\text{E}_0)$ telle que $\varphi_k(t_0)=e_k$. Alors $(\varphi_1,\ldots,\varphi_n)$ est une base de $\mathcal{S}_0$. Soit $(\lambda_1,\ldots,\lambda_n)\in\K^n$. On a, pour tout $\varphi\in\mathcal{S}_0$ :
+	$$\varphi=\sum_{k=1}^{n}\lambda_k\varphi_k\iff\varphi(t_0)=\sum_{k=1}^{n}\lambda_ke_k.$$
+\end{ex}
+
+\begin{met}
+	Si l'on dispose de $n$ fonctions $\varphi_1,\ldots,\varphi_n$ de $I$ dans $E$ de dimension $n$, alors, pour prouver que la famille $(\varphi_1,\ldots,\varphi_n)$ est une base de $\mathcal{S}_0$, il suffit de démontrer au choix :
+	\begin{itemize}
+		\item que $\varphi_1,\ldots,\varphi_n$ appartiennent à $\mathcal{S}_0$ et forment une famille libre ;
+		\item que $\mathcal{S}_0\subset\Vect(\varphi_1,\ldots,\varphi_n)$. On a alors $\mathcal{S}_0=\Vect(\varphi_1,\ldots,\varphi_n)$ pour des raisons de dimension, et la famille $(\varphi_1,\ldots,\varphi_n)$ est génératrice, donc une base de $\mathcal{S}_0$. Il n'est pas nécessaire de démontrer préalablement que les fonctions $\varphi_k$ appartiennent à $\mathcal{S}_0$.
+	\end{itemize}
+\end{met}
+
+\begin{exo}
+	Résoudre le système différentiel :
+	$$\begin{cases}
+		x'=x+2y\\
+		y'=2x+y
+	\end{cases}.$$ On pourra additionner et soustraire les deux équations.
+\end{exo}
+
+\subsubsection*{Pour aller plus loin (HP)}
+
+\begin{dfn}
+	Soit $(y_1,\ldots,y_n)$ une famille de $n$ solutions de $(\text{E}_0)$ et $\mathcal{B}$ une base de $E$. On appelle \textbf{matrice wronskienne} de la famille $(y_1,\ldots,y_n)$ dans las base $\mathcal{B}$, la fonction de $I$ dans $\mathcal{M}_n(\K)$ qui associe à tout $t\in I$ la matrice $W(t)$ de la famille $(y_1(t),\ldots,y_n(t))$ dans la base $\mathcal{B}$.\\
+	On appelle \textbf{wronskien} de la famille $(y_1,\ldots,y_n)$ dans la base $\mathcal{B}$ la fonction de $I$ dans $\K$ définie par :
+	$$\forall t\in I,\ w(t)=\det_{\mathcal{B}}(y_1(t),\ldots,y_n(t))=\det(W(t)).$$
+\end{dfn}
+
+\begin{dfn}
+	On appelle \textbf{système fondamental} de $(\text{E}_0)$ toute base de l'espace vectoriel des solutions de $(\text{E}_0)$.
+\end{dfn}
+
+La non nullité du wronskien caractérise les systèmes fondamentaux.
+
+\begin{prop}[Propriétés du wronskien]%prop
+	Soit $y_1,\ldots,y_n$ des solutions de $(\text{E}_0)$. Il est équivalent de dire :
+	\begin{enumerate}[label=(\roman*)]
+		\item $(y_1,\ldots,y_n)$ est un système fondamental ;
+		\item $\exists t\in I :\ w(t)\ne 0$ ;
+		\item $\forall t\in I,\ w(t)\ne 0$. 
+	\end{enumerate}
+\end{prop}
+
+\begin{exo}
+	Trouver une équation différentielle vérifiée par $w$. Retrouver alors le résultat précédent. On pourra utiliser le résultat de l'exercice Moulin.ED.29.
+\end{exo}
+
+\subsection{Démonstration du théorème de Cauchy linéaire}
+
+On s'intéresse ici à l'équation différentielle $y'=a(t)\cdot y+b(t)$, où $I$ est un intervalle de $\R$ contenant $t_0$, $a\in\mathcal{C}^0(I,\mathcal{L}(E))$ et $b\in\mathcal{C}^0(I,E)$. En posant :
+$$\begin{array}{lrcl}
+	\Phi:&I\times E&\longrightarrow& E\\
+	&(t,x)&\longmapsto&a(t)\cdot x+b(t),
+\end{array}$$ le problème de Cauchy associé à cette équation différentielle avec la condition initiale $(t_0,x_0)\in I\times E$ s'écrit :
+$$\text{(PC)}\ :\ y'=\Phi(t,y)\quad\text{avec}\quad y(t_0)=y_0.$$
+
+\subsubsection*{Forme intégrale d'une équation normalisée du premier ordre}
+
+\begin{itemize}
+	\item Si $(I,f)$ est une solution de ce problème de Cauchy, alors la fonction $t\mapsto\Phi(t,f(t))$ est continue sur $I$ comme composée de fonctions continues. Donc $f$ est de classe $\mathcal{C}^1$ et l'on peut écrire :
+	$$\forall t\in I,\ f(t)-f(t_0)=\int_{t_0}^{t}f'(u)\d u=\int_{t_0}^{t}\Phi(u,f(u))\d u.$$
+	La fonction $f$ vérifie donc l'\textbf{équation intégrale} :
+	$$\text{(EI)}\ :\ y(t)=y(t_0)+\int_{t_0}^{t}\Phi(u,y(u))\d u.$$
+	\item Réciproquement, si $f$ \textit{continue} vérifie la relation (EI) sur un intervalle $I$, alors $f$ est \textit{dérivable} sur $I$ et l'on a $f'(t)=\Phi(t,f(t))$. De plus, $f(t_0)=y_0$, ce qui prouve que $(I,f)$ est solution du problème de Cauchy (PC).
+\end{itemize}
+
+L'équation intégrale (EI) est donc équivalente au problème de Cauchy (PC). Plus précisément, trouver $y$ dérivable vérifiant (PC) équivaut à trouver $y$ continue vérifiant (EI).
+
+\begin{rmq}
+	Résoudre un problème de Cauchy revient donc à trouver les points fixes de l'opérateur intégral :
+	$$F:y\mapsto\left(t\mapsto y_0+\int_{t_0}^{t}\Phi(u,y(u))\d u\right).$$
+\end{rmq}
+
+\subsubsection*{Pour aller plus loin (HP)}
+
+Le caractère linéaire de l'équation différentielle n'est pas indispensable pour cette réduction d'un problème de Cauchy à une équation intégrale. L'outil naturel pour monter l'existence et l'unicité de la solution d'un tel problème est le théorème du point fixe dans un espace métrique complet bien choisi. L'existence s'obtient en montrant la convergence d'une suite définie par récurrence par $y_{n+1}=F(y_n)$.
+
+\subsubsection*{Démonstration (HP)}
+
+Pour démontrer l'existence et l'unicité des solutions de ce problème de Cauchy, nous aurons besoin des deux lemmes techniques suivants.
+
+\begin{lem}%lem
+	Soit $a\in\mathcal{C}^0(I,\mathcal{L}(E))$ et $(z_n)$ une suite de fonctions continues de $I$ dans $E$ telles que :
+	$$\forall t\in I,\ z_{n+1}(t)=\int_{t_0}^{t}a(u)\cdot z_n(u)\d u.$$
+	Alors la série $\displaystyle\sum z_n$ converge normalement sur tout segment de $I$.
+\end{lem}
+
+\begin{lem}%lem
+	Soit $a\in\mathcal{C}^0(I,\mathcal{L}(E))$ et $h\in\mathcal{C}^0(I,E)$. S'il existe un réel $t_0\in I$ tel que :
+	$$\forall t\in I,\ h(t)=\int_{t_0}^{t}a(u)\cdot h(u)\d u$$ alors $h$ est nulle sur $I$.
+\end{lem}
+
+\begin{thm}[Existence et unicité des solutions]%thm
+	Soit $(t_0,y_0)\in I\times E$. Alors le problème de Cauchy :
+	$$y'=a(t)\cdot y+b(t)\quad\text{avec}\quad y'(t_0)=y_0$$ admet une unique solution sur $I$.
+\end{thm}
+\begin{proof}
+	\begin{itemize}
+		\item Mise sous forme d'une équation intégrale équivalente :
+		$$y(t)=y_0+\int_{t_0}^{t}(a(u)\cdot y(u)+b(u))\d u.$$
+		\item L'unicité vient du lemme précédent.
+		\item Pour l'existence, on définit la suite $(y_n)$ par récurrence :
+		$$y_{n+1}(t)=y_0+\int_{t_0}^{t}(a(u)\cdot y_n(u)+b(u))\d u$$ et l'on démontre qu'elle converge uniformément sur tout segment de $I$ grâce au premier lemme technique.
+	\end{itemize}
+\end{proof}
+
+\begin{exo}[$\circ$]
+	Montrer que toute solution de l'équation linéaire sur un sous-intervalle $J$ non vide non trivial de $I$ se prolonge de façon unique en une solution sur $I$.
+\end{exo}
+
+\begin{exo}[$\star$]
+	Soit $u:I\to\mathcal{L}(E)$ une solution de l'équation différentielle homogène $u'=a(t)\circ u$. Montrer que s'il existe $t_0\in I$ tel que $u(t_0)$ soit inversible, alors $u(t)$ est inversible pour tout $t\in I$.\\
+	Pour s'entraîner à utiliser le théorème de Cauchy linéaire, et même si cela est redondant au vu de la dimension finie de $E$, on montrera les deux résultats suivants :
+	\begin{itemize}
+		\item si $u(t_0)$ est injective, alors $u(t)$ est injective pour tout $t\in I$ ;
+		\item si $u(t_0)$ est surjective, alors $u(t)$ est surjective pour tout $t\in I$.
+	\end{itemize}
+\end{exo}
+
+\begin{rmq}
+	L'exercice précédent fonctionne en dimension infinie avec un espace vectoriel normé complet.
+\end{rmq}
+
+\section{Équations différentielles à coefficients constants}
+
+\begin{rappel}
+	Revoir la définition et les propriétés de l'exponentielle sur $\mathcal{L}(E)$ ou $\mathcal{M}_n(\K)$.
+\end{rappel}
+
+\subsection{Position du problème}
+
+\begin{dfn}
+	On dit que l'équation différentielle linéaire $y'=a(t)\cdot y+b(t)$ est \textbf{à coefficients constants} si la fonction $t\mapsto a(t)$ est constante sur $I$.
+\end{dfn}
+
+Soit $a\in\mathcal{L}(E)$ et $b\in\mathcal{C}^0(I,E)$. On considère les équations différentielles sur $E$ :
+\begin{align*}
+	(\text{E})\ :\ &y'=a\cdot y+b(t),\\
+	(\text{E}_0)\ :\ &y'=a\cdot y
+\end{align*}
+
+\paragraph{Traduction matricielle} Lorsque $E=\K^n$, les équations ci-dessus s'écrivent matriciellement :
+
+\begin{align*}
+	(\text{E})\ :\ &X'=AX+B(t),\\
+	(\text{E}_0)\ :\ &X'=AX
+\end{align*} où  $A\in\mathcal{M}_n(\K)$ et $B\in\mathcal{C}^0(I,\K^n)$.
+
+\subsection{Équation homogène}
+
+On s'intéresse naturellement aux solutions sur $\R$.
+
+\begin{prop}%prop
+	Les solutions sur $\R$ de l'équation différentielle $y'=a\cdot y$ sont les fonctions :
+	$$t\mapsto\exp(ta)\cdot y_0\quad\text{avec}\quad y_0\in E.$$
+	En particulier, la solution du problème de Cauchy :
+	$$y'=a\cdot y\quad\text{et}\quad y(t_0)=y_0$$
+	sur tout intervalle $I$ contenant $t_0$ est la restriction à $I$ de la solution sur $\R$ définie par :
+	$$y(t)=\exp((t-t_0)a)\cdot y_0.$$
+\end{prop}
+
+\begin{ex}
+	On retrouve, par ces résultats, les propriétés classiques de l'exponentielle.
+	\begin{itemize}
+		\item $\forall (s,t)\in\R^2,\ \exp(ta)\circ\exp(sa)=\exp((t+s)a)$.
+		\item Si $a\circ b=b\circ a$, alors $\forall t\in\R,\ \exp(ta)\circ\exp(tb)=\exp(t(a+b))$.
+	\end{itemize}
+\end{ex}
+
+\begin{exo}
+	Soit $A\in\mathcal{M}_n(\R)$.\\
+	Montrer que si toutes les valeurs propres de $A$ (dans $\C$) ont une partie réelle strictement négative, alors toute solution du système différentiel $Y'=AY$ tend vers $0$ en $+\infty$.\\
+	À quelle condition toutes les solutions sont-elles bornées sur $\R_+$ ?
+\end{exo}
+
+\subsubsection*{Pour aller plus loin (HP)}
+
+Si $a\in\mathcal{L}(E)$, on peut considérer l'équation :
+$$(\mathcal{E}_0)\ :\ u'=a\circ u$$ dont l'inconnue $u$ est une fonction à valeurs dans $\mathcal{L}(E)$. \\
+La fonction $u_0:t\mapsto\exp(ta)$ est solution sur $\R$ du problème de Cauchy :
+$$u'=a\circ u\quad\text{et}\quad u(0)=\Id_E.$$
+\begin{itemize}
+	\item Pour tout $t\in\R$, $u_0(t)$ est inversible.
+	\item On peut montrer (sans utiliser le théorème de Cauchy linéaire) que les solutions sur un intervalle $I$ de l'équation différentielle $(\text{E}_0)$ sont les fonctions $u_0\cdot y_0$, avec $y_0\in E$ : il suffit pour cela de montrer que toute fonction dérivable $y:I\to E$ est de la forme $u_0(t)\cdot z(t)$ avec $z$ dérivable, et qu'elle est solution si, et seulement si, $z$ est constante (méthode de la variation de la constante).
+\end{itemize} 
+
+\subsection{Résolution pratique de l'équation homogène}
+
+Une première méthode pour résoudre le système différentiel $X'=AX$ consiste à calculer $\exp(tA)$, ce qui revient à réduire la matrice $A$.
+
+\begin{exo}
+	Quel est le spectre de $\exp(A)$, pour $A\in\mathcal{M}_n(\K)$ ?
+\end{exo}
+
+Mais la réduction de $A$ permet souvent d'arriver au résultat sans calculer explicitement $\exp(tA)$.
+
+Nous traitons trois situations, de difficulté croissante :
+\begin{itemize}
+	\item $A$ est diagonalisable ;
+	\item $A$ est à coefficients réels, diagonalisable dans $\C$ mais pas dans $\R$ ;
+	\item $A$ non diagonalisable dans $\C$.
+\end{itemize}
+
+On sait déjà que l'ensemble $\mathcal{S}$ des solutions sur $\R$ de $(\text{E}_0)$ est un $\K$-espace vectoriel de dimension $n$. Résoudre l'équation $(\text{E}_0)$ revient donc à déterminer une base de $\mathcal{S}$.
+
+\subsubsection*{Cas où $A$ est diagonalisable}
+
+\begin{exo}
+	\begin{enumerate}
+		\item Soit $V$ un vecteur propre de $A$ et $\lambda$ la valeur propre associée. Montrer que la fonction $$\begin{array}{lrcl}
+			\varphi:&\R&\longrightarrow&\K^n\\
+			&t&\longmapsto&e^{\lambda t}V
+		\end{array}$$ est l'unique solution du problème de Cauchy :
+		$$X'=AX\quad\text{et}\quad X(0)=V.$$
+		\item Supposons la matrice $A$ diagonalisable. Soit $(V_1,\ldots,V_n)$ une base de vecteurs propres de $A$ et $(\lambda_1,\ldots,\lambda_n)$ la liste des valeurs propres associées.\\
+		Montrer qu'alors, en notant, pour tout $k\in\llbracket1,n\rrbracket$ :
+		$$\begin{array}{lrcl}
+			\varphi_k:&\R&\longrightarrow&\K^n\\
+			&t&\longmapsto&e^{\lambda_k t}V_k,
+		\end{array}$$ la famille $(\varphi_1,\ldots,\varphi_n)$ est une base de $\mathcal{S}$.
+	\end{enumerate}
+\end{exo}
+
+Le cas où $A$ est diagonalisable se révèle particulièrement simple : l'ensemble $\mathcal{S}$ des solutions de $(\text{E}_0)$ s'obtient directement à partir des éléments propres de $A$.
+
+\begin{met}
+	Si la matrice $A$ est diagonalisable, alors en notant $(V_1,\ldots,V_n)$ une base de vecteurs propres et $(\lambda_1,\ldots,\lambda_n)$ la liste des valeurs propres associées, on obtient une base $(\varphi_1,\ldots,\varphi_n)$ de l'espace $\mathcal{S}_0$ des solutions de $(\text{E}_0)$ en prenant, pour tout $k\in\llbracket1,n\rrbracket$ : $$\begin{array}{lrcl}
+		\varphi_k:&\R&\longrightarrow&\K \\
+		&t&\longmapsto&e^{\lambda_k t}V_k.
+	\end{array}$$
+\end{met}
+
+\begin{exo}
+	Résoudre le système différentiel $X'=AX$, avec $A=\begin{pmatrix}
+		2&1&1\\
+		1&2&1\\
+		1&1&2
+	\end{pmatrix}$.
+\end{exo}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Dans le cas où $A$ est à coefficients réels, on peut s'intéresser aux solutions complexes ou réelles. Lorsqu'il y a ambiguïté, on note $\mathcal{S}_\C$ et $\mathcal{S}_\R$ pour éviter toute confusion.
+		\item Si $A$ est diagonalisable dans $\R$ et si $(V_1,\ldots,V_n)$ est une base de vecteurs propres \textit{réels}, alors les applications $\varphi_k:t\mapsto e^{\lambda_k t}V_k$ du point méthode précédent sont à valeurs réelles. On a alors :
+		$$\mathcal{S}_\C=\Vect_\C(\varphi_1,\ldots,\varphi_n)\quad\text{et}\quad\mathcal{S}_\R=\Vect_\R(\varphi_1,\ldots,\varphi_n),$$ où la seule différence entre $\mathcal{S}_\C$ et $\mathcal{S}_\R$ réside alors dans les coefficients des combinaisons linéaire (qui sont ou bien complexes ou bien réels).
+	\end{itemize}
+\end{rmq}
+
+\subsubsection*{Cas où $A$ est diagonalisable dans $\C$ mais pas dans $\R$}
+
+Si $A\in\mathcal{M}_n(\R)$ est diagonalisable dans $\C$ mais pas dans $\R$, le paragraphe précédent nous fournit les solutions complexes, mais pas les solutions réelles.
+
+\begin{exo}
+	Considérons une application $\varphi:\R\to\C^n$.\\
+	Montrer que, dans le $\C$-espace vectoriel des fonctions de $\R$ dans $\C^n$, on a :
+	$$\Vect(\varphi,\overline{\varphi})=\Vect(\text{Re}(\varphi),\text{Im}(\varphi)).$$
+\end{exo}
+
+\begin{met}
+	Si $A\in\mathcal{M}_n(\R)$ est diagonalisable dans $\C$ mais pas dans $\R$, on peut déterminer l'ensemble $\mathcal{S}_\R$ des solutions de $(\text{E}_0)$ à partir de la diagonalisation de $A$ :
+	\begin{enumerate}
+		\item On forme une base de vecteurs propres complexes de $A$ telle que :
+		\begin{itemize}
+			\item les vecteurs propres associées à des valeurs propres réelles appartiennent à $\R^n$ ;
+			\item vis-à-vis des des valeurs propres non réelles, on forme des couples de vecteurs propres conjugués (\textit{ie} de la forme $(V,\overline{V})$).
+		\end{itemize}
+		\item Dans la base $(\varphi_1,\ldots,\varphi_n)$ de $\mathcal{S}_\C$ évoquée dans le point méthode qui précède, on voit alors apparaître :
+		\begin{itemize}
+			\item pour les valeurs propres réelles, des applications de la forme $t\mapsto e^{\lambda t}V$, qui sont à valeurs dans $\R^n$ ;
+			\item pour les valeurs propres non réelles, des couples de la forme $(t\mapsto e^{\lambda t}V,\ t\mapsto e^{\overline{\lambda} t}\overline{V})$, c'est-à-dire des couples de la forme $(\varphi,\overline{\varphi})$.
+		\end{itemize}
+		\item On change les couples de la forme $(\varphi,\overline{\varphi})$ en $(\text{Re}(\varphi),\text{Im}(\varphi))$, qui est encore une base de $\mathcal{S}_\C$. Or, cette base n'est formée que d'applications à valeurs dans $\R^n$, donc c'est une base de $\mathcal{S}_\R$.
+	\end{enumerate}
+\end{met}
+
+\begin{exo}
+	Résoudre dans $\C$ puis dans $\R$ le système différentiel $X'=AX$ avec :
+	$$A=\begin{pmatrix}
+		1&-1&2\\
+		2&-1&3\\
+		0&0&1
+	\end{pmatrix}.$$
+\end{exo}
+
+\subsubsection*{Cas où la matrice $A$ est non diagonalisable sur $\C$}
+
+\begin{met}
+	Si $A$ est non diagonalisable sur $\C$ :
+	\begin{enumerate}
+		\item On trigonalise, c'est-à-dire qu'on écrit $A=PTP\inv$ avec $T$ triangulaire supérieure.
+		\item En posant $Y=P\inv X$ et en traduisant sur $Y$ le système différentiel, $X'=AX$, on obtient le système différentiel $Y'=TY$ : ce système différentiel est triangulaire et on peut donc le résoudre ligne par ligne, du bas vers le haut.
+		\item On trouve les solutions recherchées à l'aide de la relation $X=PY$.
+	\end{enumerate}
+\end{met}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Il n'est donc pas nécessaire de calculer $P\inv$.
+		\item Lorsqu'on trigonalise $A$, on cherchera à obtenir la matrice triangulaire la plus simple possible afin d'obtenir le système différentiel $Y'=TY$ le plus simple possible.
+	\end{itemize}
+\end{rmq}
+
+\begin{exo}
+	Résoudre le système différentiel $X'=AX$ avec :
+	$$A=\begin{pmatrix}
+		3&0&-1\\
+		-1&2&1\\
+		1&0&1
+	\end{pmatrix}.$$
+\end{exo}
+
+\begin{met}
+	Si jamais on dispose facilement de la décomposition de Dunford de la matrice, on pourra l'utiliser pour calculer directement $\exp(tA)$ et s'éviter des tonnes de calcul.\\
+	En particulier, cela peut énormément servir si la matrice n'est pas diagonalisable et ne possède qu'une seule valeur propre : en effet, la matrice diagonalisable dans la décomposition de Dunford n'est alors autre qu'une matrice scalaire associée à l'unique valeur propre, et la matrice nilpotente s'en déduit en soustrayant cette matrice scalaire à la matrice de départ.
+\end{met}
+
+\begin{rmq}
+	La décomposition de Dunford peut aussi servir lors d'exercices théoriques sur les systèmes différentiels puisque ceux-ci se ramènent souvent à de la réduction.
+\end{rmq}
+
+\subsection{Équation totale}
+
+On considère l'équation :
+$$(\text{E})\ :\ y'=a\cdot y+b(t)$$
+où $b$ est une fonction continue de $I$ dans $E$.
+
+\begin{met}
+	Pour trouver une solution particulière de $y'=a(t)\cdot t+b(t)$ :
+	\begin{itemize}
+		\item on commencera par chercher une solution évidente ;
+		\item dans le cas où il n'y en a pas d'évidente, on pourra utiliser la méthode de variation de la constante en cherchant $y$ sous la forme $t\mapsto\exp(ta)\cdot\Lambda(t)$, avec $\Lambda:I\mapsto E$ dérivable ;
+		\item pour une équation différentielle $Y'=AY+B(t)$ avec $A\in\mathcal{M}_n(\K)$ et $B\in\mathcal{C}^1(I,\K^n)$, si l'on réduit $A$ sous la forme $A=PDP\inv$ avec $D$ diagonale ou triangulaire, en posant $Z=P\inv Y$, on est ramené à résoudre $Z'=DZ+P\inv B(t)$, et on récupère ensuite $Y=PZ$
+	\end{itemize}
+\end{met}
+
+\begin{rmq}
+	\begin{itemize}
+		\item On remarque que le calcul de la matrice $P\inv$ n'est pas toujours indispensable : tout au plus a-t-on besoin de $P\inv B(t)$, c'est-à-dire de résoudre le système $PY=B$.
+		\item La recherche d'une solution particulière peut se faire, au choix, à l'aide du système initial ou du système réduit.
+	\end{itemize}
+\end{rmq}
+
+\begin{exo}
+	Résoudre :
+	$$\begin{cases}
+		x'=2x+y+t\\
+		y'=x+2y+t^2
+	\end{cases}\quad\text{et}\quad\begin{cases}
+	x'=3x-2y+e^{-t}\\
+	y'=2x-y+te^{-t}
+	\end{cases}.$$
+\end{exo}
+
+"Quelqu'un au tableau. [Un 5/2 se lève] Non pas un 5/2, j'ai rien contre eux, mais pas eux. [Jacques se lève : "Moi, ça vous va ?"] Il ne fallait pas poser la question : non, mais on va faire avec !"
+
+\section{Équations différentielles linéaires scalaires d'ordre $n$}
+
+On suppose ici que $n$ est un entier naturel non nul.
+
+\subsection{Définition}
+
+\begin{dfn}
+	\begin{itemize}
+		\item On appelle \textbf{équation différentielle linéaire scalaire d'ordre $n$} une équation de la forme :
+		$$(\text{E})\ :\ x^{(n)}+\sum_{k=0}^{n-1}a_k(t)x^{(k)}=b(t),$$ où $(a_k)_{k\in\llbracket0,n-1\rrbracket}$ est une famille de $n$ applications continues de $I$ dans $\K$, et $b$ est une application continue de $I$ dans $\K$.
+		\item L'application $b\in\mathcal{C}^0(I,\K)$ s'appelle le \textbf{second membre} de $(\text{E})$.
+		\item On dit que l'équation $(\text{E})$ est à \textbf{coefficients constants} si toutes les fonctions $a_k$ sont constantes, et qu'elle est \textbf{homogène}, ou \textbf{sans second membre}, si $b=0$.
+		\item On appelle \textbf{équation homogène} associée à $(\text{E})$ l'équation :
+		$$(\text{E}_0)\ :\ x^{(n)}+\sum_{k=0}^{n-1}a_k(t)x^{(k)}=0.$$
+	\end{itemize}
+\end{dfn}
+
+\begin{dfn}
+	On appelle \textbf{solution} de l'équation différentielle linéaire $(\text{E})$ toute application $n$ fois dérivable $\varphi:I\to\K$ vérifiant :
+	$$\forall t\in I,\ \varphi^{(n)}(t)+\sum_{k=0}^{n-1}a_k(t)\varphi^{(k)}(t)=b(t).$$
+\end{dfn}
+
+\begin{rmq}
+	\begin{itemize}
+		\item L'équation $(\text{E})$ dans la première définition est écrite sous une forme dite \textbf{normalisée}, ce qui signifie que le coefficient devant $x^{(n)}$ vaut $1$. Si une équation différentielle linéaire scalaire d'ordre $n$ apparaît sous une forme \textbf{non normalisée}, c'est-à-dire :
+		$$\alpha_n(t)x^{(n)}+\alpha_{n-1}(t)x^{(n-1)}(t)+\cdots+\alpha_0(t)x=b(t),$$
+		alors :
+		\begin{itemize}[label=$\star$]
+			\item si la fonction $\alpha_n$ ne s'annule pas sur $I$, on divise par $\alpha_n$ pour se ramener à une forme normalisée ;
+			\item sinon, le problème est plus délicat : quelques exemples de telles équations seront étudiés dans la section 5.5.
+		\end{itemize}
+		\item Puisque les applications $a_0,\ldots,a_{n-1}$ et $b$ sont \textit{a minima} supposées continues, toute solution de $(\text{E})$ est de classe $\mathcal{C}^n$.
+	\end{itemize}
+\end{rmq}
+
+\subsection{Traduction sous la forme d'un système différentiel d'ordre $1$}
+
+Considérons l'application :
+$$\begin{array}{lrcl}
+	\Gamma:&\mathcal{C}^n(I,\K)&\longrightarrow&\mathcal{C}^1(I,\K^n)\\
+	&\varphi&\longmapsto&\displaystyle\begin{pmatrix}
+		\varphi\\
+		\vdots\\
+		\varphi^{(n-1)}
+	\end{pmatrix}.
+\end{array}$$
+Il s'agit évidemment d'une application linéaire injective.\\
+Reprenons les notations de la partie précédente et considérons les applications $A:I\to\mathcal{M}_n(\K)$ et $B:I\to\K^n$ définie par :
+$$A(t)=\begin{pmatrix}
+	0&1&&&(0)\\
+	\vdots&\ddots&\ddots&&\\
+	\vdots&&\ddots&\ddots&\\
+	0&\cdots&\cdots&0&1\\
+	-a_0(t)&-a_1(t)&\cdots&\cdots&-a_{n-1}(t)
+\end{pmatrix}\quad\text{et}\quad B(t)=\begin{pmatrix}
+0\\
+\vdots\\
+0\\
+b(t)
+\end{pmatrix}.$$
+Les applications continues $A$ (transposée d'une matrice compagnon !) et $b$ ainsi définies permettent de traduire l'équation différentielle scalaire $(\text{E})$ sous la forme d'un système différentiel d'ordre $1$.
+
+
+\begin{prop}%prop
+	\begin{itemize}
+		\item Si une fonction $\varphi\in\mathcal{C}^n(I,\K)$ est solution de l'équation différentielle $(\text{E})$, alors l'application $\Phi=\Gamma(\varphi)\in\mathcal{C}^1(I,\K^n)$ est solution du système différentiel d'ordre $1$ :
+		$$(EM)\ :\ X'=A(t)X+B(t).$$
+		\item Si $\Phi\in\mathcal{C}^1(I,\K^n)$ est solution du système différentiel $(EM)$, alors sa première fonction coordonnée $\varphi$ est solution de $(\text{E})$.
+	\end{itemize}
+\end{prop}
+\begin{proof}
+	Calculer le produit matriciel.
+\end{proof}
+
+La proposition précédente signifie que l'application linéaire $\Gamma$ induit une bijection de $\mathcal{S}_E$ sur $\mathcal{S}_{EM}$. En particulier, puisque $B=0$ lorsque $b=0$, elle induit un isomorphisme d'espaces vectoriels de $\mathcal{S}_{E_0}$ sur $\mathcal{S}_{EM_0}$.
+
+Cela ramène ainsi l'étude des équations différentielles scalaires d'ordre $n$ à celle des systèmes différentiels du premier ordre. Les résultats qui suivent sont donc des conséquences de ceux établis dans la partie $2$.
+
+\begin{prop}[Structure de l'ensemble des solutions]%prop
+	\begin{enumerate}
+		\item L'ensemble $\mathcal{S}_0$ des solutions de l'équation homogène $(\text{E}_0)$ est un sous-espace vectoriel de dimension $n$ de $\mathcal{C}^n(I,\K)$.
+		\item Si $\varphi_P$ est une solution de $(\text{E})$, alors l'ensemble $\mathcal{S}$ des solutions sur $I$ de l'équation $(\text{E})$ est le sous-espace affine de dimension $n$ de $\mathcal{C}^n(I,\K)$ passant par $\varphi_P$ et de direction $\mathcal{S}_0$ :
+		$$\mathcal{S}=\varphi_P+\mathcal{S}_0.$$
+	\end{enumerate}
+\end{prop}
+
+\begin{dfn}[Problème de Cauchy]
+	\begin{itemize}
+		\item On dit qu'une solution $\varphi$ de l'équation différentielle $(\text{E})$ vérifie la \textbf{condition initiale} $(t_0,x_0,\ldots,x_{n-1})\in I\times\K^n$ si l'on a :
+		$$(\varphi(t_0),\ldots,\varphi^{(n-1)}(t_0))=(x_0,\ldots,x_{n-1}).$$
+		\item On obtient un \textbf{problème de Cauchy} lorsque l'on munit l'équation $(\text{E})$ d'une condition initiale $(t_0,x_0,\ldots,x_{n-1})\in I\times\K^n$ :
+		$$x^{(n)}+\sum_{k=0}^{n-1}a_k(t)x^{(k)}=b(t)\quad\text{et}\quad (\varphi(t_0),\ldots,\varphi^{(n-1)}(t_0))=(x_0,\ldots,x_{n-1}).$$
+	\end{itemize}
+\end{dfn}
+
+D'après le théorème ci-dessous, un tel problème de Cauchy admet une unique solution. Le résoudre, c'est trouver la solution $\varphi$ de $(\text{E})$ vérifiant la condition initiale
+
+\begin{thm}[Théorème de Cauchy linéaire]%thm
+	Pour tout $(t_0,x_0,\ldots,x_{n-1})\in I\times\K^n$, il existe une et une seule solution de (\text{E}) vérifiant :
+	$$\forall k\in\llbracket0,n-1\rrbracket,\ \varphi^{(k)}(t_0)=x_k.$$
+\end{thm}
+
+\begin{ex}
+	Sans calculs, le théorème de Cauchy linéaire assure l'existence et l'unicité de la solution sur $\R$ du problème de Cauchy suivant :
+	$$x''+\sin(t)x'+\cos(t)x=t\quad\text{et}\quad (x(0),x'(0))=(1,0).$$
+\end{ex}
+
+\begin{cor}%cor
+	Soit $t_0\in I$. L'application :
+	$$\begin{array}{rcl}
+		\mathcal{S}_0&\longrightarrow&\K^n\\
+		\varphi&\longmapsto&(\varphi(t_0),\ldots,\varphi^{(n-1)}(t_0))
+	\end{array}$$ est un isomorphisme d'espaces vectoriels.
+\end{cor}
+
+\begin{exo}
+	On s'intéresse à l'équation différentielle scalaire homogène à coefficients constants $(\text{E})$ : $$x^{(n)}+\sum_{k=0}^{n-1}a_kx^{(k)}=0$$
+	\begin{enumerate}
+		\item Montrer que, pour $\lambda\in\C$, la fonction $f_\lambda :t\mapsto e^{\lambda t}$ si, et seulement si, $\lambda$ est racine du polynôme : $$P=X^n+\sum_{k=0}^{n-1}a_kX^k.$$
+		\item En déduire que si le polynôme $P$ est scindé à racines simples $\lambda_1,\ldots,\lambda_n$, alors l'ensemble $\text{E}_0$ des solutions de $(\text{E})$ est $$\text{E}_0=\text{Vect}(f_{\lambda_1},\ldots,f_{\lambda_n})$$
+		\item $\star$ Décrire $\text{E}_0$ dans le cas général.
+	\end{enumerate}
+\end{exo}
+
+\section{Équations différentielles linéaires scalaires d'ordre $2$}
+
+Nous étudions dans ce qui suit une équation linéaire scalaire du second ordre de la forme $(\text{E})$ :
+$$x''+a_1(t)x+a_0(t)x=b(t)$$
+où $a_0$, $a_1$ et $b$ sont des fonctions continues de $I$ dans $\K$. Cette équation est un cas particulier des équations linéaires scalaires d'ordre $n$ étudiées dans la partie précédente. Donc :
+\begin{itemize}
+	\item l'espace vectoriel $\mathcal{S}_0$ des solutions de l'équation homogène $(\text{E}_0)$ associée à $(\text{E})$ est de dimension $2$ ;
+	\item si $\varphi_P$ est une solution de $(\text{E})$, alors l'ensemble $\mathcal{S}$ des solutions de $(\text{E})$ est le sous-espace affine :
+	$$\mathcal{S}=\varphi_P+\mathcal{S}_0\ ;$$
+	\item le théorème de Cauchy linéaire assure l'existence et l'unicité d'une solution $\varphi$ de $(\text{E})$ vérifiant une condition initiale de la forme :
+	$$(\varphi(t_0),\varphi'(t_0))=(x_0,x_1)\quad\text{avec}\quad(x_0,x_1)\in\K^2.$$
+\end{itemize}
+
+\begin{rmq}
+	Comme pour les équations d'ordre $1$, on déduit de l'unicité des propriétés qualitatives des solutions.
+\end{rmq}
+
+\begin{ex}
+	L'équation différentielle $(\text{E})$ peut se ramener à une équation de la forme $y''+p(t)y=q(t)$.
+	%Chercher x sous la forme $y\times f$, en injectant dans l'équation, il suffit de prendre f'+a_1/2 f=0
+	%translation de la moyenne pondérée des racines comptées avec multiplicité
+\end{ex}
+
+\begin{ex}
+	Les zéros (c'est-à-dire les points d'annulation) d'une solution $\varphi$ non nulle de l'équation linéaire scalaire homogène du second ordre $(\text{E})$ :
+	$$x''+a_1(t)x'+a_0(t)x=0$$ sont isolés. Autrement dit, si $\varphi(t_0)=0$, alors il existe $r>0$ tel que la fonction $\varphi$ ne s'annule pas sur $[t_0-r,t_0+r]\setminus\{t_0\}$.
+	%Par l'absurde, on construit une suite de zéros qui tend vers $t_0$, et alors $\varphi'(t_0)=0$ donc $\varphi$ est nulle.
+\end{ex}
+
+\subsection{Wronskien}
+
+\begin{dfn}
+	Soit $\varphi_1$ et $\varphi_2$ deux solutions de l'équation homogène $(\text{E}_0)$. \\
+	On appelle \textbf{wronskien} de la famille $(\varphi_1,\varphi_2)$ l'application :
+	$$\begin{array}{lrcl}
+		W_{\varphi_1,\varphi_2}:&I&\longrightarrow&\K\\
+		&t&\longmapsto&\displaystyle\det\begin{pmatrix}
+			\varphi_1(t)&\varphi_2(t)\\
+			\varphi_1'(t)&\varphi_2'(t)
+		\end{pmatrix}.
+	\end{array}$$
+\end{dfn}
+
+\begin{rmq}
+	On a $$W_{\varphi_1,\varphi_2}=\varphi_1\varphi_2'-\varphi_1'\varphi_2.$$
+	Comme $\varphi_1$ et $\varphi_2$ sont solutions de $(\text{E}_0)$, elles sont deux fois dérivables, donc $W_{\varphi_1,\varphi_2}$ est dérivable. De plus, sa dérivée se simplifie ainsi :
+	$$W_{\varphi_1,\varphi_2}'=\varphi_1\varphi_2''-\varphi_1''\varphi_2.$$
+\end{rmq}
+
+\begin{prop}%prop
+	Le wronskien d'un couple $(\varphi_1,\varphi_2)\in(\mathcal{S}_0)^2$ est solution sur $I$ de l'équation différentielle homogène d'ordre $1$ :
+	$$x'+a(t)x=0.$$
+\end{prop}
+
+\begin{ex}
+	Si l'équation différentielle est de la forme :
+	$$x''+q(t)x=0\quad\text{avec}\quad q:I\to\K\ \text{une fonction continue,}$$
+	alors le wronskien $W_{\varphi_1,\varphi_2}$ d'un couple $(\varphi_1,\varphi_2)\in(\mathcal{S}_0)^2$ vérifie $W_{\varphi_1,\varphi_2}'=0$ et donc, $I$ étant un intervalle, il est constant sur $I$.
+\end{ex}
+
+Le wronskien est un outil qui permet de caractériser les bases de solutions.
+
+\begin{prop}%prop
+	Soit $\varphi_1$ et $\varphi_2$ des solutions de $(\text{E}_0)$. Notons $W$ le wronskien du couple $(\varphi_1,\varphi_2)$.\\
+	Les trois assertions suivantes sont équivalentes :
+	\begin{enumerate}[label=(\roman*)]
+		\item $(\varphi_1,\varphi_2)$ est une base de $\mathcal{S}_0$ ;
+		\item $\exists t\in I\ :\ W(t)\ne 0$ ;
+		\item $\forall t\in I,\ W(t)\ne0$.
+	\end{enumerate}
+\end{prop}
+
+\begin{exo}\textbf{REVOIR ENONCE} (qui est $\varphi_2$ ?)
+	Justifier que les fonctions $\varphi_1:t\mapsto\cos(t)$ et $\varphi_2:t\mapsto\cos(t)$ ne sont pas solution sur $\R$ d'une même équation différentielle linéaire homogène de la forme :
+	$$x''+a(t)x'+b(t)x=0\quad \text{avec}\ a\ \text{et}\ b\ \text{continues sur}\ \R.$$
+	Trouver une équation différentielle linéaire homogène d'ordre $2$ dont elles sont toutes deux solution sur $[0,\pi/2]$.
+\end{exo}
+
+\subsection{Recherche d'une solution particulière : méthode de variation des constantes}
+
+Supposons connue une base $(\varphi_1,\varphi_2)$ de l'espace $\mathcal{S}_0$ des solutions de l'équation homogène $(\text{E}_0)$. La \textbf{méthode de variation des constantes} consiste alors à chercher une solution particulière de $(\text{E})$ sous la forme :
+$$\varphi=\lambda_1\varphi_1+\lambda_2\varphi_2\quad\text{avec}\ \lambda_1\ \text{et}\ \lambda_2\ \text{dérivables}.$$
+On a alors :
+$$\varphi'=\lambda_1\varphi_1'+\lambda_2\varphi_2'+\lambda_1'\varphi_1+\lambda_2'\varphi_2.$$
+Si l'on impose la condition supplémentaire $\lambda_1'\varphi_1+\lambda_2'\varphi_2=0=0$, $\varphi$ est alors deux fois dérivable et :
+$$\varphi''=\lambda_1\varphi_1''+\lambda_2\varphi_2''+\lambda_1'\varphi_1'+\lambda_2'\varphi_2',$$ ce qui donne :
+\begin{align*}
+	\varphi''+a_1\varphi'+a_0\varphi&=\lambda_1\underbrace{(\varphi_1''+a_1\varphi_1'+a_0\varphi_1)}_{=0}+\lambda_2\underbrace{(\varphi_2''+a_1\varphi_2'+a_0\varphi_2)}_{=0}+\lambda_1'\varphi_1'+\lambda_2'\varphi_2'\\
+	&=\lambda_1'\varphi_1'+\lambda_2'\varphi_2'.
+\end{align*}
+Ainsi, pour que $\varphi$ soit solution de $(\text{E})$, il suffit d'avoir :
+$$\begin{cases}
+	\lambda_1'\varphi_1+\lambda_2'\varphi_2&=0\\
+	\lambda_1'\varphi_1'+\lambda_2'\varphi_2'&=b.
+\end{cases}$$
+Puisque la famille $(\varphi_1,\varphi_2)$ est une base de $\mathcal{S}_0$, son wronskien ne s'annule pas. Donc, pour tout $t\in I$, le système :
+$$\begin{cases}
+	\lambda_1'(t)\varphi_1(t)+\lambda_2'(t)\varphi_2(t)&=0\\
+	\lambda_1'(t)\varphi_1'(t)+\lambda_2'(t)\varphi_2'(t)&=b(t).
+\end{cases}$$
+permet de déterminer $\lambda_1'(t)$ et $\lambda_2'(t)$. Les fonctions $\lambda_1'$ et $\lambda_2'$ sont alors continues comme quotients de fonctions continues. En primitivant, on obtient une solution $\varphi$ de $(\text{E})$.
+
+\begin{met}[(Méthode de variation des constantes)]
+	Si on connaît une base $(\varphi_1,\varphi_2)$ de l'espace des solutions de $(\text{E}_0)$, alors on peut chercher une solution particulière de $(\text{E})$ : $x''+a_1(t)x'+a_0(t)x=b(t)$ sous la forme : $$\varphi =\lambda_1\varphi_1+\lambda_2\varphi_2\ \ \text{avec}\ \ \lambda_1\ \ \text{et}\ \ \lambda_2\ \ \text{dérivables sur} \ \ I.$$ Une telle fonction $\varphi$ est solution de $(\text{E})$ si : $$\begin{cases}
+		\lambda_1'\varphi_1+\lambda_2\varphi_2=0 \\
+		\lambda_1'\varphi_1'+\lambda_2'\varphi_2'=b
+	\end{cases}$$ On peut alors déterminer $\lambda_1'$ et $\lambda_2'$, puis $\lambda_1$ et $\lambda_2$ par calcul de primitives.
+\end{met}
+
+\begin{ex}
+	Solutions de l'équation différentielle $(\text{E})$ :
+	$$x''+x=\tan(t),$$
+	sur un intervalle $I$ de la forme $\displaystyle\left]-\frac{\pi}{2}+k\pi,k\pi+\frac{\pi}{2}\right[$ où $k\in\Z$.
+\end{ex}
+
+Exercice Moulin.ED.12
+
+\subsection{Quelques techniques classiques d'obtention de solutions d'une équation scalaire d'ordre $2$}
+
+Ces techniques peuvent également s'appliquer aux équations non normalisées.
+
+\subsubsection*{Recherche de solutions "simples"}
+
+Selon l'allure de l'équation, il peut être pertinent de rechercher une solution sous une forme explicite : fonctions polynomiales, exponentielles, trigonométriques...
+
+\begin{ex}
+	Cherchons les solutions polynomiales de l'équation $(\text{E})$ :
+	$$(t^2+2t-1)x''+(t^2-3)x'-(2t+2)x=0.$$
+\end{ex}
+
+\subsubsection*{Recherche de solutions développables en série entière}
+
+\begin{ex}
+	Considérons sur $\R$ l'équation homogène $(\text{E}_0)$ :
+	$$tx''+2x'+tx=0.$$
+	Recherchons les solutions de $(\text{E}_0)$ développables en série entière.
+\end{ex}
+
+\begin{exo}
+	\begin{enumerate}
+		\item Déterminer les solutions réelles sur $\R$ de l'équation différentielle :
+		$$(\text{E}_0)\ :\ (1+t^2)x''+4tx'+2x=0.$$
+		On recherchera les solutions développables en série entière.
+		\item Résoudre ensuite :
+		$$(\text{E})\ :\ (1+t^2)x''+4tx'+2x=\frac{1}{1+t^2}.$$
+	\end{enumerate}
+\end{exo}
+
+\subsubsection*{Changement de variables}
+
+Dans ce cas, l'équation différentielle $(\text{E})$ se traduit de manière plus simple sur une fonction de la forme $u\mapsto x(\theta(u))$ (idéalement, une équation à coefficients constants). La résolution de cette équation plus simple peut permettre d'en déduire les solutions de cette équation initiale.
+
+Cette technique n'est pas réservée aux équations homogènes, comme le montre l'exemple suivant.
+
+\begin{ex}
+	Considérons, sur $]0,+\infty[$, l'équation différentielle linéaire d'ordre $2$ :
+	$$(\text{E})\ :\ t^2x''+3tx'+4x=t\ln(t).$$
+	Résolvons $(\text{E})$ grâce au changement de variable $t=e^u$.
+\end{ex}
+
+\begin{exo}
+	Résoudre sur $\R$ l'équation différentielle :
+	$$(\text{E})\ :\ (1+t^2)^2x''+2(1+t)(1+t^2)x'+x=0.$$
+	On pourra exploiter le changement de variable $t=\tan(u)$.
+\end{exo}
+
+\subsection{Résolution de l'équation homogène $(\text{E}_0)$ quand on connaît une solution non nulle}
+
+Supposons connue une solution $\varphi_1$ non nulle de $(\text{E}_0)$. Comme $\dim(\mathcal{S}_0)=2$, il reste à déterminer une solution non proportionnelle à $\varphi_1$.
+
+\subsubsection*{Méthode du wronskien}
+
+\begin{itemize}
+	\item Pour $\varphi\in\mathcal{S}_0$, l'équation différentielle linéaire scalaire du premier ordre vérifiée par le wronskien $W$ de $(\varphi_1,\varphi)$ permet d'en obtenir une expression, à une constante proportionnelle près.
+	\item Sur un intervalle où $\varphi_1$ ne s'annule pas, on peut considérer la fonction $\displaystyle\frac{\varphi}{\varphi_1}$ dont la dérivée est donnée par :
+	$$\left(\frac{\varphi}{\varphi_1}\right)'=\frac{\varphi'\varphi_1-\varphi\varphi_1'}{\varphi_1^2}=\frac{W}{\varphi_1^2}.$$
+	En primitivant, on obtient alors une expression de $\displaystyle\frac{\varphi}{\varphi_1}$ puis de $\varphi$.
+\end{itemize}
+
+\begin{ex}
+	Résolution sur $]0,+\infty[$ de l'équation différentielle :
+	$$(\text{E}_0)\ :\ x''+\frac{x'}{t}-\frac{x}{t^2}=0.$$
+\end{ex}
+
+\begin{rmq}
+	L'exemple précédent est favorable car la solution $\varphi_1$ dont on est parti ne s'annule pas sur l'intervalle de résolution. Il peut arriver que cette fonction $\varphi_1$ s'annule, auquel cas il faut se restreindre à un sous-intervalle $J\subset I$ sur lequel elle ne s'annule pas. La relation :
+	$$\forall t\in J,\ \varphi(t)=\lambda\varphi_1(t)+\mu\varphi_2(t)$$
+	obtenue ne permet pas de conclure directement : en revanche, si $\varphi_2$ est définie sur $I$ tout entier et que l'on pense qu'elle est solution, alors il est facile de le montrer.
+\end{rmq}
+
+\begin{exo}
+	On souhaite résoudre sur $]0,+\infty[$ l'équation homogène :
+	$$(\text{E}_0)\ :\ x''+\frac{2}{t}x'+x=0.$$
+	\begin{enumerate}
+		\item Vérifier que la fonction $\varphi_1:t\mapsto\displaystyle\frac{\sin(t)}{t}$ est solution. %sinus cardinal : physique ?
+		\item En utilisant le wronskien, terminer la résolution de $(\text{E}_0)$.
+	\end{enumerate}	
+\end{exo}
+
+\subsubsection*{Méthode alternative à la méthode précédente}
+
+Connaissant une solution non nulle $\varphi_1$ de l'équation homogène $(\text{E}_0)$, on dispose d'une méthode alternative à la méthode précédente. Elle consiste à rechercher d'autres solutions de $(\text{E}_0)$ sous la forme :
+$$\varphi=\lambda\varphi_1\quad\text{avec}\ \lambda\ \text{une fonction deux fois dérivable.}$$
+On a alors :
+$$\varphi'=\lambda'\varphi_1+\lambda\varphi_1'\quad\text{et}\quad\varphi''=\lambda''\varphi_1+2\lambda'\varphi_1'+\lambda\varphi_1'',$$ donc :
+$$\varphi''+a_1\varphi'+a_0\varphi=\lambda''\varphi_1+\lambda'(2\varphi_1'+a_1\varphi_1)+\lambda\underbrace{(\varphi_1''+a_1\varphi_1'+a_0\varphi_1)}_{=0}.$$
+Donc $\lambda$ doit vérifier l'équation :
+$$\lambda''\varphi_1+\lambda'(2\varphi_1'+a_1\varphi_1)=0.$$
+La fonction $\lambda'$ est solution d'une équation différentielle linéaire d'ordre $1$. Sur un intervalle où $\varphi_1$ ne s'annule pas, on peut alors déterminer $\lambda$ et obtenir une expression de $\varphi$.
+
+\begin{ex}
+	Reprenons l'exemple précédent :
+	$$(\text{E}_0)\ :\ x''+\frac{x'}{t}-\frac{x}{t^2}=0.$$
+\end{ex}
+
+\subsection{Exemples de résolution d'équations non normalisées}
+
+Étant donné une équation différentielle linéaire scalaire de la forme :
+$$(\text{E})\ :\ a_n(t)x^{(n)}+\cdots+a_0(t)x=b(t),$$ si la fonction $a_n$ ne s'annule pas sur l'intervalle $I$ de résolution, alors en divisant par $a_n(t)$, on se ramène à une équation normalisée. L'objectif de cette partie est de traiter quelques exemples d'équations ne pouvant être mises sous forme normalisée.
+
+Le plan d'étude d'équations non normalisées sera en général le suivant :
+
+\begin{met}
+	Pour résoudre une équation différentielle linéaire de la forme $$a_n(t)x^{(n)}+\ldots+a_0(t)x=b(t)$$ lorsque la fonction $a_n$ possède des points d'annulation :
+	\begin{itemize}
+		\item on commence par résoudre l'équation sur tout intervalle sur lequel $a_n$ ne s'annule pas ;
+		\item on cherche ensuite, par analyse/synthèse, les solutions sur l'intervalle entier en exploitant les conditions de dérivabilité et de continuité pour obtenir les constantes.
+	\end{itemize}
+\end{met}
+
+\begin{ex}
+	Résolution sur $\R$, l'équation homogène :
+	$$(\text{E}_0)\ :\ 4tx''+2x'-x=0.$$
+\end{ex}
+
+\begin{rmq}
+	Pour des équations différentielles non linéaires subsistent :
+	\begin{itemize}
+		\item le principe de superposition ;
+		l'ensemble $\mathcal{S}_0$ des solutions de l'équation homogène est un espace vectoriel ;
+		\item la structure de l'ensemble des solutions : s'il n'est pas vide, $\mathcal{S}=\varphi_P+\mathcal{S}_0$, où $\varphi_P$ est une solution particulière.
+	\end{itemize}
+	En revanche, certaines propriétés ne sont plus vérifiées :
+	\begin{itemize}
+		\item la dimension de $\mathcal{S}_0$ n'est pas nécessairement égale à l'ordre de l'équation ;
+		\item l'existence et l'unicité de la solution à un problème de Cauchy n'est plus assurée : il peut ne pas y avoir de solution, en avoir deux ou une infinité.
+	\end{itemize}
+\end{rmq}
+
+\section{Étude qualitative des solutions d'une équation différentielle}
+
+\subsection{Méthode de Sturm-Liouville (HP)}
+
+\begin{ex}
+	Soit $p_1$ et $p_2$ des fonctions continues de $\R$ dans $\R$ telles que $p_1\leqslant p_2$. On considère les équations différentielles : $$\begin{cases}
+		y''+p_1y=0 \ \ (\text{E}_1) \\
+		y''+p_2y=0 \ \ (\text{E}_2)
+	\end{cases}$$
+	\begin{enumerate}
+		\item Soit $y_1$ une solution réelle non nulle de $(\text{E}_1)$ et $y_2$ une solution réelle de $(\text{E}_2)$. Si $t_1$ et $t_2$ sont deux zéros distincts de $y_1$, alors il existe $t\in[t_1,t_2]$ tel que $y_2(t)=0$.
+		\item On suppose $p_1=p_2$ et $(y_1,y_2)$ libre. Si $t_1$ et $t_2$ sont deux zéros consécutifs de $y_1$, alors il existe un unique $t\in]t_1,t_2[$ tel que $y_2(t)=0$. \\
+		La notion de "zéros consécutifs" est justifiée par le deuxième exemple de la section 5.
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	Montrer que les zéros d'une solution $y$ sur $\R_+$ non nulle de $y''+e^ty=0$ forment une suite strictement croissante $(t_n)$. Déterminer un équivalent de la suite $(t_n)$.
+\end{exo}
+
+\subsection{Lemme de Grönwall (HP)}
+
+\begin{thm}[Lemme de Grönwall]%thm
+	Soit $I$ un intervalle de $\R$, $t_0\in I$, ainsi que que $a:I\to\R_+$ et $b:I\to\R_+$ deux fonctions continues. On note $A$ la primitive de $a$ s'annulant en $t_0$. Si $y$ de classe $\mathcal{C}^1$ vérifie : $$\forall t\geqslant t_0,\ \lVert y'(t)\rVert\leqslant b(t)+a(t)\lVert y(t)\rVert$$ alors $y$ vérifie : $$\forall t\geqslant t_0,\ \lVert y(t)\rVert\leqslant\lVert y(t_0)\rVert e^{A(t)}+e^{A(t)}\int_{t_0}^{t}b(s)e^{-A(s)}\ \d s$$
+\end{thm}
+
+\begin{rmq}
+	Le résultat est facile à retrouver : on majore $\lVert y\rVert$ par la solution du problème de Cauchy : $$\begin{cases}
+		z'=b(t)+a(t)z \\
+		z(t_0)=\lVert y(t_0)\rVert.
+	\end{cases}$$
+\end{rmq}
+
+\begin{met}
+	Voici un plan d'attaque pour étudier un comportement asymptotique de solutions :
+	\begin{enumerate}
+		\item on effectue une variation de la constante vectorielle $Y(x)=M(x)\Lambda(x)$ avec $M(x)$ la solution obtenue à l'infini ;
+		\item le lemme de Grönwall peut permettre de montrer que $\Lambda$ est bornée ;
+		\item donc $\Lambda'$ est intégrable en $+\infty$ ;
+		\item donc $\Lambda$ admet une limite finie en $+\infty$.
+	\end{enumerate}
+\end{met}
+
+\begin{ex}
+	Étude du comportement asymptotique des solutions de l'équation : $$y''+\frac{1}{x^2}y'+y=0.$$
+\end{ex}
+
+\begin{exo}
+	Retrouver le résultat du deuxième lemme technique utilisé pour la démonstration du théorème de Cauchy linéaire. %on obtient $\Lvert h\rVert\leqs 0$
+\end{exo}
+
+\subsection{Un exemple d'étude qualitative}
+On considère l'équation d'Airy (Ai) :
+$$y''=ty.$$
+On se propose de réaliser une étude qualitative des solutions sur $\R_+$.\\
+On se donne les deux solutions $\varphi$ et $\psi$ vérifiant les conditions initiales respectives :
+$$\varphi(0)=1\ \text{et}\ \varphi'(0)=0\quad\text{ainsi que}\quad \psi(0)=0\ \text{et}\ \psi'(0)=1.$$
+
+\begin{exo}
+	Montrer que $(\varphi,\psi)$ est une base de l'espace vectoriel des solutions de (Ai).
+\end{exo}
+
+\begin{exo}
+	Soit $f$ une solution non nulle de (Ai) et $t_0\in\R_+$ tel que $f(t_0)\geqslant0$ et $f'(t_0)\geqslant0$. Montrer que $f$ est strictement croissante sur $[t_0,+\infty[$ et que $f$ et $f'$ tendent vers $+\infty$ en $+\infty$.
+\end{exo}
+
+Pour $\lambda\in\R$, on pose $f_\lambda$ la solution de (Ai) telle que $f_\lambda(0)=1$ et $f_\lambda'(0)=\lambda$.
+
+\begin{exo}
+	Quelles sont les variations sur $\R_+$ de $\varphi$, $\psi$ et $f_\lambda$ pour $\lambda\in\R_+$ ?
+\end{exo}
+
+\begin{exo}
+	Montrer qu'il ne peut exister qu'un seul $\lambda\in\R$ tel que $f_\lambda$ admette une limite finie en $+\infty$.
+\end{exo}
+
+\begin{exo}
+	On suppose que $f_\lambda$ s'annule sur $\R_+$. Montrer alors qu'elle a un unique zéro et qu'elle est strictement décroissante sur $\R_+$, de limite $-\infty$ en $+\infty$.
+\end{exo}
+
+\begin{exo}
+	En utilisant la fonction $\psi$, montrer qu'il existe $\lambda\in\R$ tel que $f_\lambda$ s'annule sur $\R_+$, puis que l'ensemble des $\lambda$ qui vérifient cette propriété est un intervalle non minoré de $\R_-$.
+\end{exo}
+
+On note $\tau$ la borne supérieure de cet intervalle.
+
+\begin{exo}
+	Montrer que pour $\lambda\in]\tau,0[$, la fonction $f_\lambda$ est à valeurs strictement positives. Montrer alors que :
+	\begin{itemize}
+		\item soit elle est strictement décroissante sur $\R_+$ ;
+		\item soit elle tend vers $+\infty$ en $+\infty$.
+	\end{itemize}
+	Démontrer alors que seul le deuxième cas est possible.\\
+	Quelles sont les variations de $f_\lambda$ ?
+\end{exo}
+
+\begin{exo}
+	Montrer enfin que $f_\tau$ tend vers $0$ en $+\infty$. \\
+	Résumer le comportement de $f_\lambda$ en fonction de $\lambda$.
+\end{exo}
+
+\begin{rmq}
+	Il est complètement inutile de le savoir, mais on a : $\tau=\displaystyle -\frac{3^{5/6}\Gamma(2/3)^2}{2\pi}$.
+\end{rmq}
+
+\end{document}

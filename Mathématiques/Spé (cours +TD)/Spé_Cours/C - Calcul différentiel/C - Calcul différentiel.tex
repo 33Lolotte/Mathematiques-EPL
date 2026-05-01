@@ -1,0 +1,1941 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+\usepackage{indentfirst}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L,R]{}
+\fancyfoot[R]{\thepage \ /\ \pageref{LastPage}}
+
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrule}{}}
+
+\setlength{\parindent}{0pt}
+
+\setlist[itemize]{label=$\bullet$}
+\setlist{before=\leavevmode, leftmargin=*}
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Vect}{\text{Vect}}
+\newcommand{\rg}{\text{rg}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
+\newcommand{\D}{\text{D}}
+
+
+\theoremstyle{plain}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+
+\newtheorem*{ex}{Exemple}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{notation}{Notation}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{terminologie}{Terminologie}
+\newtheorem*{attention}{Attention}
+\newtheorem*{conséquence}{Conséquence}
+
+\theoremstyle{remark}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{dfn}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\addto\captionsfrench{\renewcommand*{\contentsname}{Calcul différentiel}}
+
+\title{Calcul différentiel}
+\date{}
+
+\begin{document}
+\tableofcontents
+
+\newpage
+\maketitle
+
+Dans ce chapitre, tous les espaces vectoriels sont réels, de dimension finie non nulle et munis d'une norme, notée en général $\lVert\cdot\rVert$. Sauf mention explicite du contraire, les fonctions considérées sont définies sur un ouvert non vide d'un tel espace vectoriel, à valeurs dans un espace vectoriel. Fixons donc deux espaces vectoriels de dimension finie non nulle $E$ et $F$, ainsi qu'un ouvert $\Omega$ non vide de $E$.
+
+\subsection*{Remarques préliminaires}
+
+\begin{itemize}
+	\item Lorsque l'on fixe une base $\mathcal{B}=(e_1,\ldots,e_p)$ de $E$, on sait que l'application $\Phi$ définie sur $\R^p$ par $\Phi(x_1,\ldots,x_p)=\displaystyle\sum_{i=1}^{p}x_ie_i$ est un isomorphisme de $\R^p$ sur $E$.\\
+	Si $A$ est une partie non vide de $E$, à toute application $f:A\to F$ on peut associer une application $f_{\mathcal{B}}$ définie sur $\Phi\inv(A)$ par : 
+	$$f_{\mathcal{B}}(x_1,\ldots,x_p)=f\left(\sum_{i=1}^{p}x_ie_i\right).$$
+	Il est clair que $f\mapsto f_{\mathcal{B}}$ définit une bijection de $\mathcal{F}(A,F)$ sur $\mathcal{F}(\Phi\inv(A),F)$, ce qui permet, pour l'étude d'une fonction définie sur une partie de $E$, de se ramener à l'étude d'une fonction définie sur une partie de $\R^p$ ; on parle alors de \textbf{fonction de plusieurs variables}.
+	\item A $x_1,\ldots,x_{j-1},x_{j+1},\ldots,x_p$ fixés, $x_j\mapsto f(x_1,\ldots,x_j,\ldots,x_p)$ s'appelle la \textbf{$j$-ème application partielle}. Puisque $\Omega$ est un ouvert de $E$, elle est définie sur un ouvert de $\R$ (pourquoi ?).
+	\begin{exo}
+		Rappeler le lien entre la continuité de $f$ et celle de ses applications partielles.
+	\end{exo}
+	\item Lorsque $F$ est de dimension finie $n$ muni d'une base $\mathcal{B}'=(e_1',\ldots,e_n')$, on considère les \textbf{applications composantes} de $f$ définies de $\Omega$ dans $\R$ par :
+	$$\forall i\in\llbracket1,n\rrbracket,\ \forall x\in\Omega, f(x)=\sum_{i=1}^{n}f_i(x)e_i'.$$
+	Pour tout $i\in\llbracket1,n\rrbracket$, en notant $p_i$ la forme linéaire $\displaystyle\sum_{k=1}^{n}y_ke_k'\mapsto y_i$ et $q_i$ l'application linéaire $t\mapsto te_i'$, on a les relations :
+	$$\forall i\in\llbracket1,n\rrbracket,\ f_i=p_i\circ f\quad\text{et}\quad f=\sum_{i=1}^{n}q_i\circ f_i.$$
+	\begin{exo}
+		Rappeler le lien entre la continuité de $f$ et celle de ses applications composantes.
+	\end{exo}
+\end{itemize}
+
+\section{Différentiabilité d'une fonction en un point}
+
+\subsection{Dérivée selon un vecteur}
+
+Rappelons que $\Omega$ désigne un \textit{ouvert} non vide de $E$.
+
+\begin{dfn}
+	Soit $f:\Omega\to F$ une application, $a\in\Omega$ et $v\in E$. La \textbf{dérivée de $f$ en $a$ selon $v$}, notée $\D_vf(a)$, est, si elle existe, la dérivée en $0$ de la fonction $t\mapsto f(a+tv)$.
+\end{dfn}
+
+\begin{rmq}
+	\begin{itemize}
+		\item L'ensemble $\Omega$ étant ouvert, pour tout $a\in\Omega$, la fonction $\varphi:t\mapsto f(a+tv)$ est définie sur un voisinage de $0$. Plus précisément, la fonction $\varphi$ est définie :
+		\begin{itemize}[label=$\star$]
+			\item en tout point de $\left]-\frac{r}{\lVert v\rVert},\frac{r}{\lVert v\rVert}\right[$ si $v\ne 0$, où $r>0$ est tel que $B_O(a,r)\subset\Omega$ ;
+			\item sur $\R$ si $v=0$ et elle est alors constante, ce qui donne $\D_vf(a)=0$.
+		\end{itemize}
+		\item Si $E=\R$ et $\Omega$ est un intervalle ouvert, et si $v\ne0$, alors $\D_vf(a)$ est définie en $a\in\Omega$ si, et seulement si, la fonction $f$ est dérivable en $a$, et dans ce cas, on a $\D_vf(a)=f'(a)$.
+	\end{itemize}
+\end{rmq}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Si $f$ est définie sur $\R^2$ par $f(x,y)=xy^2$ et $(a,b)\in\R^2$, alors $\D_{(a,b)}f(1,1)=a+2b$.
+		\item $f$ définie sur $\mathcal{M}_n(\R)$ par $f(M)=M^2$.
+		\item Dans $\mathcal{M}_n(\R)$, pour tout $H\in\mathcal{M}_n(\R)$, on a $\D_H\exp(0)=H$.
+	\end{enumerate}
+\end{ex}
+
+\begin{attention}
+	L'existence de dérivées en $a$ selon tout vecteur n'est pas une bonne condition de régularité en $a$ de la fonction. Par exemple, une fonction peut avoir des dérivées en $a$ selon tout vecteur sans pour autant être continue en $a$.
+\end{attention}
+
+\begin{exo}
+	Soit $f$ définie sur $\R^2$ par $f(0,0)=0$ et : 
+	$$\forall (x,y)\in\R^2\setminus\{(0,0)\},\ f(x,y)=\frac{x^2y}{x^4+y^2}.$$
+	\begin{enumerate}
+		\item Pour tout $(u,v)\in\R^2$, montrer l'existence de $\D_{(u,v)}f(0,0)$ et la calculer.
+		\item Calculer $f(t,t^2)$ pour $t\in\R\st$. La fonction $f$ est-elle continue ?
+	\end{enumerate}
+\end{exo}
+
+\subsection{Dérivées partielles}
+
+\begin{dfn}
+	Soit $\mathcal{B}=(e_1,\ldots,e_p)$ une base de $E$ et $f$ une fonction de $\Omega$ dans $F$.\\
+	Pour $a\in\Omega$ et $j\in\llbracket1,p\rrbracket$, la \textbf{$j$-ème dérivée partielle de $f$ en $a$ dans la base $\mathcal{B}$}, notée :
+	$$\frac{\partial f}{\partial x_j}(a)\quad\quad\text{ou}\quad\quad \partial_jf(a)$$ est, lorsqu'elle existe, la dérivée de $f$ en $a$ selon le vecteur $e_j$.
+\end{dfn}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Lorsqu'il n'y a pas d'ambiguïté sur la base, on parle plus simplement de "$j$-ème dérivée partielle de $f$ en $a$".
+		\item \textbf{Cas des fonctions de plusieurs variables.} La $j$-ème dérivée partielle dans la base canonique est définie si, et seulement si, la $j$-ème application partielle est dérivable en $a_j$, et alors $\partial_jf(a)$ est la dérivée en $a_j$ de cette application.\\
+		Sauf mention expresse du contraire, lorsque l'on parle des dérivées partielles pour une fonction définie sur un ouvert de $\R^p$, il est sous-entendu que c'est par rapport à la base canonique.
+		\item Si $\mathcal{B}=(e_1,\ldots,e_p)$ est une base de $E$ et $a=\displaystyle\sum_{i=1}^{p}a_ie_i\in\Omega$, alors $\partial_jf(a)$ est définie si, et seulement si, $\partial_jf_{\mathcal{B}}(a_1,\ldots,a_p)$ l'est, et elles sont alors égales.
+		\item Si $f:\Omega\to F$ est définie par une expression où les variables sont notées $u_1,\ldots,u_p$, on notera, si elles existent, $\displaystyle\frac{\partial f}{\partial u_1},\ldots,\frac{\partial f}{\partial u_p}$ ses dérivées partielles.
+		\item En particulier, lorsque $E=\R^2$ ou $E=\R^3$, on a l'habitude de noter $(x,y)$ ou $(x,y,z)$ les variables. Les dérivées partielles seront donc traditionnellement notées $\displaystyle\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}$, et éventuellement $\displaystyle\frac{\partial f}{\partial z}$.
+	\end{itemize}
+\end{rmq}
+
+\subsection{Différentielle en un point}
+Soit $\varphi:\Omega'\to F$, où $\Omega'$ est un ouvert de $E$ contenant $0$.
+
+\begin{notation}
+	\begin{itemize}
+		\item Pour $k\in\N$, on écrit $\varphi(h)=\o(\lVert h\rVert^k)$ (sous-entendu au voisinage de $0$) lorsqu'il existe une fonction $\varepsilon:\Omega'\to F$, tendant vers $0$ en $0$, telle que : 
+		$$\forall h\in\Omega',\ \varphi(h)=\lVert h\rVert^k\varepsilon(h).$$
+		\item De même, on écrit $\varphi(h)=\O(\lVert h\rVert^k)$ lorsqu'il existe une fonction $\alpha:\Omega'\to F$, bornée au voisinage de $0$, telle que : 
+		$$\forall h\in\Omega',\ \varphi(h)=\lVert h\rVert^k\alpha(h).$$
+		\item Dans la pratique, on utilisera surtout ces notations avec $k=1$ et l'on simplifiera alors les écritures $\o(\lVert h\rVert)$ et $\O(\lVert h\rVert)$ en $\o(h)$ et $\O(h)$.
+	\end{itemize}
+\end{notation}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Si $\varphi(h)=\O(\lVert h\rVert^2)$, alors $\varphi(h)=\o(h)$.
+		\item Pour $k=0$, on retrouve la signification usuelle : $\varphi(h)=\o(1)$ si, et seulement si, la fonction $\varphi$ tend vers $0$ en $0$ ; et $\varphi(h)=\O(1)$ si, et seulement si, $\varphi$ est bornée au voisinage de $0$.
+		\item De la même façon que pour les fonctions d'une variable réelle, on se permettra d'écrire des relations du type $f(h)=g(h)+\o(h)$ ou $f(h)=g(h)+\o(\lVert h\rVert^2)$, pour signifier respectivement $f(h)-g(h)=\o(h)$ et $f(h)-g(h)=\o(\lVert h\rVert^2)$.
+	\end{itemize}
+\end{rmq}
+
+\subsubsection*{Développement limité à l'ordre $1$}
+
+\begin{dfn}
+	Soit $f:\Omega\to F$ et $a\in\Omega$. on dit que $f$ est \textbf{différentiable en $a$}, ou que $f$ admet un \textbf{développement limité} à l'ordre $1$ en $a$, s'il existe $u\in\mathcal{L}(E,F)$ telle que l'on ait, au voisinage de $0$ :
+	$$f(a+h)=f(a)+u(h)+\o(h).$$ 
+\end{dfn}
+
+\paragraph{Reformulation} Cela revient à dire qu'il existe une fonction $\varepsilon$ tendant vers $0$ en $0$ telle que l'on ait, au voisinage de $0$ :
+$$f(a+h)=f(a)+u(h)+\lVert h\rVert\varepsilon(h).$$
+
+\begin{prop}[Différentiabilité et continuité]%prop
+	Une application $f:\Omega\to F$ différentiable en $a\in\Omega$ est continue en $a\in\Omega$.
+\end{prop}
+
+\subsubsection*{Différentielle}
+
+\begin{lem}%lem
+	Une application linéaire $u\in\mathcal{L}(E,F)$ telle qu'au voisinage de $0$ on ait $u(h)=\o(h)$ est nulle.
+\end{lem}
+
+\begin{thm}[Différentielle en un point]%thm
+	Soit $f:\Omega\to F$ différentiable en $a\in\Omega$. Il existe alors une unique application $u\in\mathcal{L}(E,F)$ telle qu'on ait $f(a+h)=f(a)+u(h)+\o(h)$ au voisinage de $0$. Elle est appelée la \textbf{différentielle de $f$ en $a$}, et notée $\d f(a)$.
+\end{thm}
+
+\begin{terminologie}
+	La différentielle de $f$ en $a$ est également appelée \textbf{application linéaire tangente à $f$ en $a$}.
+\end{terminologie}
+
+\begin{notation}
+	\begin{itemize}
+		\item La valeur en $h\in E$ de la différentielle de $f$ en $a$ se note $\d f(a)\cdot h$ pour alléger l'écriture de l'expression parenthésée $\d f(a)(h)$.
+		\item Le développement limité de $f$ en $a$ à l'ordre $1$ s'écrit donc, si elle existe :
+		$$f(a+h)=f(a)+\d f(a)\cdot h+o(h).$$
+	\end{itemize}
+\end{notation}
+
+\begin{met}
+	Pour montrer que $f$ est différentiable en $a$, on peut chercher une application linéaire $u$ telle que $$f(a+h)-f(a)-u(h)=o(h)$$
+\end{met}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Si $E$ est un espace euclidien, alors $f:x\mapsto\lVert x\rVert^2$ est différentiable en tout point de $E$.
+		\item Montrons que la fonction $f$ définie sur $\R^2$ par $f(0,0)=0$ et : $$\forall (x,y)\in\R^2\setminus\{(0,0)\},\ f(x,y)=\frac{x^4+y^4}{x^2+y^2}$$ est différentiable en $(0,0)$.
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	On considère $\C$ muni de sa structure de $\R$-espace vectoriel. Montrer que : $$\begin{array}{lrcl}
+		f:&\C\st&\longrightarrow&\C\\
+		&z&\longmapsto&1/z
+	\end{array}$$ est différentiable en tout point et donner sa différentielle.
+\end{exo}
+
+\begin{prop}[Cas particulier des fonctions d'une seule variable]%prop
+	Supposons que $\Omega$ soit un intervalle ouvert de $E=\R$.\\
+	Une application $f:\Omega\to F$ est différentiable en $a\in\Omega$ si, et seulement si, elle est dérivable en $a$, et alors $\d f(a)$ est l'application linéaire $h\mapsto hf'(a)$.\\
+	En particulier, $f'(a)=\d f(a)\cdot 1$.
+\end{prop}
+\begin{proof}
+	Remarquer que les applications linéaires de $\R$ dans $F$ sont les applications de la forme $t\mapsto tu$, avec $u\in F$.
+\end{proof}
+
+\subsubsection*{Quelques exemples fondamentaux}
+
+\begin{ex}
+	Soit $f:\Omega\to F$ une fonction constante et $a\in\Omega$.\\
+	Pour tout $h\in E$ tel que $a+h\in\Omega$, on a $f(a+h)=f(a)$, et donc au voisinage de $0$ :
+	$$f(a+h)=f(a)=f(a)+o(h).$$
+	Il s'ensuit, l'application nulle étant linéaire, que $f$ est différentiable en $a$ et que $\d f(a)=0$.
+\end{ex}
+
+\begin{attention}
+	La réciproque est fausse : une application peut être différentiable en tout point avec une différentielle nulle, sans pour autant être constante, comme le montre l'exemple de la fonction indicatrice de $\R_+\st\times\R$ sur l'ouvert $\R\st\times\R$.
+\end{attention}
+
+\begin{prop}[Différentielle d'une application linéaire]%prop
+	Soit $u\in\mathcal{L}(E,F)$. En tout $a\in\Omega$, l'application $$\begin{array}{lrcl}
+		f:&\Omega&\longrightarrow&F\\
+		&x&\longmapsto&u(x)
+	\end{array}$$ est différentiable, et $\d f(a)=u$.
+\end{prop}
+
+\begin{ex}
+	Si $E$ est euclidien et $v\in E$, l'application $u$ définie sur $E$ par $u(x)=(v\mid x)$ est linéaire donc différentiable en tout $a\in E$, et pour tout $h\in E$, on a $\d u(a)\cdot h=(v\mid h)$.
+\end{ex}
+
+\subsection{Différentiabilité et dérivabilité}
+
+\subsubsection*{Dérivée selon un vecteur}
+
+\begin{prop}%prop
+	Soit $f:\Omega\to F$ une fonction différentiable en $a\in\Omega$. Alors la dérivée de $f$ en $a$ selon tout vecteur $v$ existe et :
+	$$\D_vf(a)=\d f(a)\cdot v.$$
+\end{prop}
+\begin{proof}
+	Remplacer $h$ par $tv$ dans la relation $f(a+h)=f(a)+\d f(a)\cdot h+o(h)$.
+\end{proof}
+
+\begin{rmq}
+	Si $f$ est différentiable en $a$, sa différentielle est $v\mapsto \D_vf(a)$ qui est donc une application linéaire.
+\end{rmq}
+
+\begin{met}
+	Une application $f:\Omega\to F$ n'est \textbf{pas différentiable} en $a$ :
+	\begin{itemize}
+		\item si elle n'admet pas de dérivée selon tout vecteur en $a$ ;
+		\item si elle en admet, mais que l'application $u:h\mapsto D_hf(a)$ n'est pas linéaire ou ne vérifie pas $f(a+h)-f(a)-u(h)=o(h)$.
+	\end{itemize}
+\end{met}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Une norme n'est jamais différentiable en $0$. %dérivée selon $v\ne0$ n'existe pas
+		\item La fonction $f$ définie sur $\R^2$ par $f(0,0)=0$ et :
+		$$\forall (x,y)\in\R^2\setminus\{(0,0)\},\ f(x,y)=\frac{x^3+y^3}{x^2+y^2}$$ n'est pas différentiable en $(0,0)$.
+		%$\D_{(h,k}f(0,0))=(h^3+k^3)/(h^2+k^2)$ n'est pas linéaire : obersver en $(0,1)$ $(1,0)$ et $(1,1)$.
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	Montrer qu'une application différentiable en $0$ et homogène de degré $1$, c'est-à-dire vérifiant : 
+	$$\forall x\in E,\ \forall\lambda\in\R,\ f(\lambda x)=\lambda f(x)$$ est linéaire.
+\end{exo}
+%$f(0+th)=tf(h)$ donc $D_hf(0)=f(h)=\d f(0)\cdot h$ donc $f$ est égale à sa différentielle en $0$ donc est linéaire.
+
+\subsubsection*{Dérivées partielles}
+
+\begin{cor}%cor
+	Soit $\mathcal{B}=(e_1,\ldots,e_p)$ une base de $E$ et $f:\Omega\to F$.\\
+	Si $f$ est différentiable en $a\in\Omega$, alors, pour tout $j\in\llbracket1,p\rrbracket$, la dérivée partielle $\partial_jf(a)$ est définie et $\partial_jf(a)=\d f(a)\cdot e_j$.
+\end{cor}
+
+On déduit de ce qui précède une expression de la différentielle à l'aide des dérivées partielles.
+
+\begin{cor}%cor
+	Soit $\mathcal{B}=(e_1,\ldots,e_p)$ une base de $E$ et $f:\Omega\to F$.\\ Si $f$ est différentiable en $a\in\Omega$,  alors, pour tout $h=\displaystyle\sum_{j=1}^{p}h_je_j\in E$, on a :
+	$$\d f(a)\cdot h=\sum_{j=1}^{p}h_j\frac{\partial f}{\partial x_j}(a).$$
+\end{cor}
+\begin{proof}
+	Par linéarité de $\d f(a)$, pour tout $h=\displaystyle\sum_{j=1}^{p}h_je_j\in E$, on a :
+	$$\d f(a)\cdot h=\d f(a)\cdot\left(\sum_{j=1}^{p}h_je_j\right)=\sum_{j=1}^{p}h_j\d f(a)\cdot e_j$$ et on conclut avec le corollaire précédent.
+\end{proof}
+
+\begin{met}
+	Pour étudier si une fonction $f:\Omega\to F$ est différentiable en $a$, on peut vérifier l'existence de toutes ses dérivées partielles en $a$, puis voir si l'application linéaire : $$u:h\mapsto\sum_{j=1}^{p}h_j\partial_jf(a)$$ vérifie $f(a+h)-f(a)-u(h)=o(h)$.
+\end{met}
+
+\begin{ex}
+	Étude de la fonction $f$ définie sur $\R^2$ par $f(0,0)=0$ et :
+	$$\forall (x,y)\in\R^2\setminus\{(0,0)\},\ f(x,y)=\frac{x^3}{x^2+y^4}.$$
+\end{ex}
+
+\subsection{Matrice jacobienne}
+
+Soit $\mathcal{B}=(e_1,\ldots,e_p)$ une base de $E$ et $\mathcal{B}'=(e_1',\ldots,e_n')$ une base de $F$. Soit $f:\Omega\to F$ une fonction différentiable en $a\in\Omega$ ; notons $f_1,\ldots,f_n$ les fonctions coordonnées de $f$ dans la base $\mathcal{B}'$. On sait qu'une fonction de la variable réelle à valeurs dans un espace vectoriel de dimension finie est dérivable si, et seulement si, toutes ses fonctions coordonnées sont dérivables.\\
+Ainsi, pour tout $j\in\llbracket1,p\rrbracket$, puisque $\partial_jf(a)$ est définie, pour tout $i\in\llbracket1,n\rrbracket$, les dérivées partielles $\partial_jf_i(a)$ sont définies et $\partial_jf(a)=\displaystyle\sum_{i=1}^{n}\partial_jf_i(a)e_i'=\sum_{i=1}^{n}\frac{\partial f_i}{\partial x_j}(a)e_i'$.
+
+\begin{prop}%prop
+	Avec les hypothèses précédentes, la matrice de $\d f(a)$ dans les bases $\mathcal{B}$ et $\mathcal{B}'$ est : 
+	$$\left(\frac{\partial f_i}{\partial x_j}(a)\right)_{\substack{1\leqslant i\leqslant n\\ 1\leqslant j\leqslant p}}\in\mathcal{M}_{n,p}(\R).$$
+\end{prop}
+\begin{proof}
+	Il suffit de remarquer que pour tout $j\in\llbracket1,p\rrbracket$ : 
+	$$\d f(a)\cdot e_j=\frac{\partial f}{\partial x_j}(a)=\sum_{i=1}^{n}\frac{\partial f_i}{\partial x_j}(a)e_i'.$$
+\end{proof}
+
+\begin{terminologie}
+	Lorsque $E=\R^p$ et $F=\R^n$, la matrice de $\d f(a)$ dans les bases canoniques est appelée \textbf{matrice jacobienne de $f$ en $a$}.
+\end{terminologie}
+
+\begin{notation}
+	On note $J_f(a)$ la matrice jacobienne de $f$ en $a$ (si elle existe).
+\end{notation}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Soit $f:\R^2\to\R^3$ définie par : 
+		$$\forall (u,v)\in\R^2,\ f(u,v)=\begin{pmatrix}
+			f_1(u,v)=e^u\cos(v)\\
+			f_2(u,v)=e^u\sin(v)\\
+			f_3(u,v)=v
+		\end{pmatrix}.$$ Nous verrons plus loin comment démontrer que cette application est différentiable en tout point $(u,v)\in\R^2$. Sa matrice jacobienne est alors :
+		$$J_f(u,v)=\begin{pmatrix}
+			\displaystyle\frac{\partial f_1}{\partial u}(u,v)&\displaystyle\frac{\partial f_1}{\partial v}(u,v)\\[3mm]
+			\displaystyle\frac{\partial f_2}{\partial u}(u,v)&\displaystyle\frac{\partial f_2}{\partial v}(u,v)\\[3mm]
+			\displaystyle\frac{\partial f_3}{\partial u}(u,v)&\displaystyle\frac{\partial f_3}{\partial v}(u,v)
+		\end{pmatrix}=\begin{pmatrix}
+		e^u\cos(v)&-e^u\sin(v)\\
+		e^u\sin(v)&e^u\cos(v)\\
+		0&1
+		\end{pmatrix}.$$
+		\item La matrice jacobienne d'une application linéaire $u:\R^p\to\R^n$ est, en tout point de $\R^p$, la matrice de $u$ dans les bases canoniques.
+	\end{enumerate}
+\end{ex}
+
+\subsection{Gradient}
+
+Dans cette section, $E$ est un espace euclidien et $F=\R$. \\
+Rappelons que pour toute forme linéaire $\varphi$ sur $E$, il existe un unique $v\in E$ tel que : 
+$$\forall h\in E,\ \varphi(h)=(v\mid h).$$
+Donc, si $f:\Omega\to\R$ est différentiable en $a\in\Omega$, alors il existe un unique $v\in E$ tel que :
+$$\forall h\in E,\ \d f(a)\cdot h=(v\mid h).$$
+Cela conduit à la définition suivante.
+
+\begin{dfn}
+	Soit $f:\Omega\to\R$ une fonction différentiable en $a\in\Omega$. Le \textbf{gradient de $f$ en $a$}, noté $\nabla f(a)$, est l'unique vecteur de $E$ vérifiant : 
+	$$\forall h\in E,\ \d f(a)\cdot h=(\nabla f(a)\mid h).$$
+\end{dfn}
+
+\begin{notation}
+	On trouve aussi la notation $\text{grad}(f)(a)$ (voire avec une flèche sur le mot "grad" dans certaines matières louches !) pour désigner ce gradient.
+\end{notation}
+
+\begin{prop}[Composantes du gradient en base orthonormée]%prop
+	On suppose $E$ muni d'une base orthonormée $\mathcal{B}=(e_1,\ldots,e_p)$. Si $f:\Omega\to\R$ est une fonction différentiable en $a\in\Omega$, alors :
+	$$\nabla f(a)=\sum_{j=1}^{p}\frac{\partial f}{\partial x_j}(a)e_j.$$
+\end{prop}
+
+\begin{cor}%cor
+	On munit $E=\R^p$ du produit scalaire canonique. Si $f:\Omega\to\R$ est une fonction différentiable en $a\in\Omega$, alors :
+	$$\nabla f(a)=\begin{pmatrix}
+		\partial_1f(a)\\
+		\vdots\\
+		\partial_pf(a)
+	\end{pmatrix}=J_f(a)^T.$$
+\end{cor}
+
+\subsubsection*{Première interprétation géométrique du gradient}
+
+Da manière informelle, le gradient donne la direction de "variation maximale" de $f$. Plus précisément, on dispose du résultat suivant.
+
+\begin{prop}%prop
+	Soit $f:\Omega\to\R$ une fonction différentiable en $a\in\Omega$. La restriction à la sphère unité de la fonction $h\mapsto \D_hf(a)$ admet un maximum qui est atteint, si $\nabla f(a)\ne0$, en l'unique vecteur unitaire positivement colinéaire à $\nabla f(a)$.
+\end{prop}
+\begin{proof}
+	Utiliser l'expression $\d f(a)\cdot h=(\nabla f(a)\mid h)$ et l'inégalité de Cauchy-Schwarz.
+\end{proof}
+
+\paragraph{Interprétation topographique}
+Supposons que le relief d'une montagne soit représenté par le graphe d'une fonction de deux variables différentiable en tout point : l'altitude d'un point de coordonnées horizontales $(x,y)$ est $z=f(x,y)$. En tout point, le gradient de $f$ indique la direction dans laquelle la pente sera la plus grande : c'est la direction de ce que l'on appelle la "ligne de plus grande pente".
+
+[Fait une analogie avec le ski avant de sauter sur place en faisant une rotation de 90° pour mettre ses "skis" en travers de la pente.]
+
+\section{Fonctions différentiables}
+
+\subsection{Application différentielle}
+
+\begin{dfn}
+	Soit $f:\Omega\to F$.
+	\begin{itemize}
+		\item La fonction $f$ est \textbf{différentiable} si elle est différentiable en tout point $a\in\Omega$. La \textbf{différentielle de $f$} est alors l'application :
+		$$\begin{array}{lrcl}
+			\d f:&\Omega&\longrightarrow&\mathcal{L}(E,F)\\
+			&x&\longmapsto&\d f(x).
+		\end{array}$$
+		\item La fonction $f$ est \textbf{de classe $\mathcal{C}^1$} si elle est différentiable et si l'application $\d f$ est continue.
+	\end{itemize}
+\end{dfn}
+
+\begin{notation}
+	L'ensemble des fonctions de classe $\mathcal{C}^1$ de $\Omega$ dans $F$ est noté $\mathcal{C}^1(\Omega, F)$. 
+\end{notation}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Comme toute application différentiable en un point $a$ est continue en $a$, on a l'inclusion $\mathcal{C}^1(\Omega,F)\subset\mathcal{C}^0(\Omega,F)$.
+		\item Dans le cas où $E=\R$ et $\Omega$ est un intervalle ouvert, on retrouve la notion de classe $\mathcal{C}^1$ pour les fonctions de la variable réelle.
+	\end{itemize}
+\end{rmq}
+
+\begin{ex}
+	\begin{itemize}
+		\item Une application constante admet une différentielle nulle en tout point. Elle est donc différentiable, et même de classe $\mathcal{C}^1$, puisque l'application nulle de $\Omega$ dans $\mathcal{L}(E,F)$ est continue en tout point.
+		\item De même, toute application linéaire $u\in\mathcal{L}(E,F)$ est différentiable et même de classe $\mathcal{C}^1$ car $\d u:x\mapsto u$ est constante donc continue.
+	\end{itemize}
+\end{ex}
+
+\subsubsection*{Notation différentielle (HP)}
+
+Cette notation est hors programme, mais elle est omniprésente en physique, en sciences de l'ingénieur, etc.\\
+On suppose $E$ muni d'une base $\mathcal{B}=(e_1,\ldots,e_p)$. Pour tout $j\in\llbracket1,p\rrbracket$, l'application $\displaystyle\sum_{j=1}^{p}x_je_j\mapsto x_j$ est linéaire, donc différentiable et égale à sa différentielle en tout point, ce qui mène à la noter $\d x_j$ (différentielle de l'application $x\mapsto x_j$).\\
+Si $f:\Omega\to\R$ est une fonction différentiable, alors, pour tout $a\in\Omega$, la relation :
+$$\forall h\in E,\ \d f(a)\cdot h=\sum_{j=1}^{p}\frac{\partial f}{\partial x_j}(a)h_j,$$ peut se réécrire :
+$$\d f(a)=\sum_{j=1}^{p}\frac{\partial f}{\partial x_j}(a)\d x_j\quad\text{ou encore, en oubliant }a\quad \d f=\sum_{j=1}^{p}\frac{\partial f}{\partial x_j}\d x_j.$$
+
+\begin{ex}
+	Si $f(x,y)=x^2y-y^3$, on a $\d f(x,y)=2xy\d x+(x^2-3y^2)\d y$.
+\end{ex}
+
+
+\subsection{Opérations sur les fonctions différentiables}
+
+\subsubsection*{Combinaisons linéaires}
+
+\begin{prop}[Linéarité]%prop
+	Soit $f$ et $g$ deux fonctions de $\Omega$ dans $F$ ainsi que $\lambda$ et $\mu$ deux réels.
+	\begin{itemize}
+		\item Si $f$ et $g$ sont différentiables en $a\in\Omega$, alors l'application $\lambda f+\mu g$ est différentiable en $a$ et :
+		$$\d(\lambda f+\mu g)(a)=\lambda\d f(a)+\mu\d g(a).$$
+		\item Si $f$ et $g$ sont différentiables (respectivement de classe $\mathcal{C}^1$), alors l'application $\lambda f+\mu g$ est différentiable (respectivement de classe $\mathcal{C}^1$) et :
+		$$\d(\lambda f+\mu g)=\lambda\ d+\mu\d g.$$
+	\end{itemize}
+\end{prop}
+
+\begin{cor}%cor
+	L'ensemble $\mathcal{C}^1(\Omega,F)$ est un sous-espace vectoriel de $\mathcal{F}(\Omega,F)$.
+\end{cor}
+
+\subsubsection*{Différentielles et applications multilinéaires}
+
+Soit $F_1,\ldots,F_q,G$ des $\R$-espaces vectoriels de dimension finie.\\
+Soit $f_1:\Omega\to F_1,\ldots,f_q:\Omega\to F_q$ des fonctions, et $M:F_1\times\cdots\times F_q\to G$ une application multilinéaire. On note :
+$$\begin{array}{lrcl}
+	M(f_1,\ldots,f_q):&\Omega&\longrightarrow&G\\
+	&x&\longmapsto&M(f_1(x),\ldots,f_q(x)).
+\end{array}$$
+
+\begin{prop}%prop
+	Si $f_1,\ldots,f_q$ sont différentiables en $a\in\Omega$, alors l'application $g=M(f_1,\ldots,f_q)$ est différentiable en $a$ et pour tout $h\in E$, on a :
+	$$\d g(a)\cdot h=\sum_{k=1}^{q}M(f_1(a),\ldots,f_{k-1}(a),\d f_k(a)\cdot h),f_{k+1}(a),\ldots,f_q(a).$$
+\end{prop}
+\begin{proof}
+	Pour tout $k\in\llbracket1,q\rrbracket$, $f_k(a+h)=f_k(a)+\d f_k(a)\cdot h+\alpha_k(h)$ avec $\alpha_k(h)=o(h)$. Soit $h\in E$ tel que $a+h\in\Omega$. \\
+	Par $q$-linéarité de $M$, la quantité $M(f_1(a+h),\ldots,f_q(a+h))$ s'écrit comme somme de $3^q$ termes de la forme $M(u_1,\ldots,u_q)$ où, pour tout $k\in\llbracket1,q\rrbracket$, $u_k=f_k(a)$, $u_k=\d f_k(a)\cdot h$ ou $u_k=\alpha_k(h)$, et chaque $u_k$ est soit constant, soit dominé par $h$ lorsque $h$ tend vers $0$. \\
+	L'application $M$ étant multilinéaire en dimension finie, il existe une constante $C$ telle que :
+	$$\forall (x_1,\ldots,x_q)\in F_1\times\cdots\times F_q,\ \lVert M(x_1,\ldots,x_q)\rVert\leqslant C\lVert x_1\rVert\times\cdots\times\lVert x_q\rVert.$$
+	En appliquant cette inégalité à l'un des $q$-uplets $(u_1,\ldots,u_q)$, on voit donc que si, parmi les $u_k$, il y en a au moins deux qui ne sont pas constants, ou au moins un qui est négligeable devant $h$, alors $M(u_1,\ldots,u_q)=o(h)$. Il reste donc :
+	\begin{align*}
+		M(f_1(a+h),\ldots,f_q(a+h))&=M(f_1(a),\ldots,f_q(a))\\&+\sum_{k=1}^{q}M(f_1(a),\ldots,f_{k-1}(a),\d f_k(a)\cdot h),f_{k+1}(a),\ldots,f_q(a)+o(h)
+	\end{align*}
+	ce qui prouve que $M(f_1,\ldots,f_n)$ est différentiable en $a$, de différentielle 
+	$$h\mapsto \sum_{k=1}^{q}M(f_1(a),\ldots,f_{k-1}(a)\d f_k(a)\cdot h),f_{k+1}(a)$$ puisque cette application est linéaire en $h$ par linéarité des $\d f_k(a)$ et multilinéarité de $M$.
+\end{proof}
+
+\begin{lem}%lem
+	Une application $u:\Omega\to\mathcal{L}(E,F)$ est continue si, et seulement si, pour tout $h\in E$, l'application de $\Omega$ dans $F$ qui à $a$ associe $u(a)\cdot h$ est continue.
+\end{lem}
+\begin{proof}
+	\begin{itemize}
+		\item Supposons $u$ continue. Soit $h\in E$. L'application :
+		$$\begin{array}{rcl}
+			\mathcal{L}(E,F)&\longrightarrow&F\\
+			v&\longmapsto&v\cdot h
+		\end{array}$$ est linéaire, donc continue puisque $\mathcal{L}(E,F)$ est de dimension finie, ce qui donne la continuité de $a\mapsto u(a)\cdot h$ par composition.
+		\item Fixons une base $\mathcal{B}=(e_1,\ldots,e_p)$ de $E$ et une base $\mathcal{C}$ de $F$. Au moyen de l'isomorphisme $\text{Mat}_{\mathcal{B},\mathcal{C}}$ entre $\mathcal{L}(E,F)$ et $\mathcal{M}_{n,p}(\R)$, il suffit de montrer que l'application $a\mapsto\text{Mat}_{\mathcal{B},\mathcal{C}}(u(a))$ est continue, c'est-à-dire que toutes ses fonctions composantes sont continues. Or, le coefficient d'indice $(i,j)$ de la matrice de $u(a)$ est $\varphi_i(u(a)\cdot e_j)$, où $\varphi_i$ est la $i$-ème forme linéaire coordonnée dans la base $\mathcal{C}$ dont la continuité, ainsi que celle de $a\mapsto u(a)\cdot e_j$ par hypothèse, donne le résultat.
+	\end{itemize}
+\end{proof}
+
+\begin{cor}%cor
+	Si $f_1,\ldots,f_q$ sont différentiables (respectivement de classe $\mathcal{C}^1$), alors $M(f_1,\ldots,f_q)$ est différentiable (respectivement de classe $\mathcal{C}^1$).
+\end{cor}
+\begin{proof}
+	Supposons $f_1,\ldots,d_q$ de classe $\mathcal{C}^1$. Soit $h\in E$. Les $f_i$ sont alors continues, ainsi que les applications $a\mapsto \d f_k(a)\cdot h$ d'après le lemme précédent. Par multilinéarité, cela donne la continuité de l'application $a\mapsto \d M(f_1,\ldots,f_q)(a)\cdot h$.\\
+	Grâce au lemme précédent, on en déduit la continuité de $\d M(f_1,\ldots,f_q)$.
+\end{proof}
+
+\begin{ex}
+	Si $f_1,\ldots,f_q$ sont des applications de classe $\mathcal{C}^1$ de $\Omega$ dans $\R$, le produit $f_1\times\cdots\times f_q$ est de classe $\mathcal{C}^1$ sur $\Omega$ et, pour tout $a\in\Omega$ :
+	$$\d(f_1\times\cdots\times f_q)(a)=\sum_{k=1}^{q}f_1(a)\times\cdots\times f_{k-1}(a)\times f_{k+1}(a)\times\cdots\times f_q(a)\d f_k(a).$$
+	Si $E$ est euclidien, cela peut se réécrire :
+	$$\nabla(f_1\times\cdots\times f_q)(a)=\sum_{k=1}^{q}f_1(a)\times\cdots\times f_{k-1}(a)\times f_{k+1}(a)\times\cdots\times f_q(a)\nabla f_k(a).$$
+\end{ex}
+
+Lorsque $q=2$, on obtient :
+
+\begin{cor}%cor
+	Soit $B: F_1\times F_2\to G$ bilinéaire, ainsi que $f_1:\Omega\to F_1$ et $f_2:\Omega\to F_2$.
+	\begin{itemize}
+		\item Si $f_1$ et $f_2$ sont différentiables en $a\in\Omega$, alors $B(f_1,f_2)$ est différentiable en $a$ et :
+		$$\d(B(f_1,f_2))(a)\cdot h=B(\d f_1(a)\cdot h, f_2(a))+B(f_1(a),\d f_2(a)\cdot h).$$
+		\item Si $f_1$ et $f_2$ sont différentiables (respectivement de classe $\mathcal{C}^1$), alors $B(f_1,f_2)$ est différentiable (respectivement de classe $\mathcal{C}^1$).
+	\end{itemize}
+\end{cor}
+
+\begin{ex}
+	\begin{enumerate}
+		\item \textbf{Produit de deux fonctions réelles.} Si $f$ et $g$ sont deux applications de $\Omega$ dans $\R$ différentiables en $a$, alors $fg$ est différentiable en $a$ et :
+		$$\d (fg)(a)=g(a)\d f(a)+f(a)\d g(a).$$
+		\item Supposons que $F$ soit un espace euclidien. Si $f:\Omega\to F$ et $g:\Omega\to F$ sont deux applications différentiables en $a\in\Omega$, alors $\varphi=(f\mid g)$ est différentiable en $a$ et :
+		$$\forall h\in E,\ \d\varphi(a)\cdot h=(\d f(a)\cdot h\mid g(a))+(f(a)\mid\d g(a)\cdot h).$$
+		En particulier :
+		$$\forall\in E,\ d(\lVert f\rVert^2)(a)\cdot h=2(f(a)\mid\d f(a)\cdot h).$$
+	\end{enumerate}
+\end{ex}
+
+\begin{rmq}
+	\begin{itemize}
+		\item L'ensemble $\mathcal{C}^1(\Omega,\R)$ est muni d'une structure d'algèbre pour les lois usuelles.
+		\item Si $F$ est une algèbre, alors $\mathcal{C}^1(\Omega,F)$ est une sous-algèbre de $\mathcal{C}(\Omega,F)$.
+	\end{itemize}
+\end{rmq}
+
+\begin{prop}%prop
+	Les applications polynomiales sur $E$ sont de classe $\mathcal{C}^1$.
+\end{prop}
+\begin{proof}
+	Toute application polynomiale s'écrit comme une combinaison linéaire de produits de formes coordonnées dans une base, qui sont de classe $\mathcal{C}^1$ puisque linéaires.
+\end{proof}
+
+\begin{ex}
+	\begin{enumerate}
+		\item L'application $f$ définie sur $\R^3$ par $f(x,y,z)=x^3+y^3+z^3+xyz$ est de classe $\mathcal{C}^1$, car polynomiale. Un calcul direct donne pour tout $(x,y,z)\in\R^3$ :
+		$$\frac{\partial f}{\partial x}(x,y,z)=3x^2+yz\quad\quad\frac{\partial f}{\partial y}(x,y,z)=3y^2+xz\quad\quad\frac{\partial f}{\partial z}(x,y,z)=3z^2+xy.$$
+		L'expression de la différentielle d'une fonction différentiable à l'aide de ses dérivées partielles donne, pour $(x,y,z)\in\R^3$ :
+		$$\forall(h,k,l)\in\R^3,\ \d f(x,y,z)\cdot(h,k,l)=(3x^2+yz)h+(3y^2+xz)k+(3z^2+xy)l.$$
+		\item L'application déterminant, définie sur $\mathcal{M}_n(\R)$, est de classe $\mathcal{C}^1$ car polynomiale.
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	En calculant ses dérivées partielles, montrer que la différentielle du déterminant en $A\in\mathcal{M}_n(\R)$ est $H\mapsto\Tr(H\text{Com}(A)^T)$.
+\end{exo}
+
+\subsubsection*{Composition}
+
+\begin{prop}[Différentielle d'une composée]%prop
+	Soit $\Omega'$ un ouvert de $F$, ainsi que $f:\Omega\to F$ et $g:\Omega'\to G$ telles que $f(\Omega)\subset\Omega'$.
+	\begin{itemize}
+		\item Si $f$ est différentiable en $a\in\Omega$ et si $g$ est différentiable en $b=f(a)$, alors $g\circ f$ est différentiable en $a$ et :
+		$$\d (g\circ f)(a)=\d g(b)\circ\d f(a).$$
+		\item Si $f$ est différentiable (respectivement de classe $\mathcal{C}^1$) et $g$ est différentiable (respectivement de classe $\mathcal{C}^1$), alors $g\circ f$ est différentiable (respectivement de classe $\mathcal{C}^1$).
+	\end{itemize}
+\end{prop}
+
+\begin{exo}
+	Dans le deuxième cas, on écrit parfois $\d (g\circ f)=(\d g\circ f)\cdot\d f$. Que représente alors le $\cdot$ avant $\d f$ ?
+\end{exo}
+
+\begin{terminologie}
+	Ce résultat, ainsi surtout que sa conséquence pratique sur les dérivées partielles d'une composée, donnée par une proposition suivante, s'appelle aussi la \textbf{règle de la chaîne}.
+\end{terminologie}
+
+\begin{prop}[Matrice jacobienne d'une composée]
+	Avec les mêmes notations que dans la proposition précédente, si $E=\R^p$, $F=\R^n$ et $G=\R^q$, on a :
+	$$J_{g\circ f}(a)=J_g(b)\times J_f(a).$$
+\end{prop}
+
+\begin{ex}
+	\begin{enumerate}
+		\item On suppose que $F$ est un espace euclidien. \\
+		\begin{itemize}
+			\item La fonction $\psi:x\mapsto\lVert x\rVert=\sqrt{(x\mid x)}$ est de classe $\mathcal{C}^1$ sur $F\setminus\{0\}$ et :
+			$$\d\psi(x):h\mapsto\frac{(x\mid h)}{\lVert x\rVert}.$$
+			\item Si $f:\Omega\to F$ est une fonction différentiable en $a\in\Omega$ telle que $f(a)\ne0$, alors $\lVert f\rVert=\psi\circ f$ est différentiable en $a$ et :
+			$$\d (\lVert f\rVert)(a)\cdot h=\frac{(f(a)\mid\d f(a)\cdot h)}{\lVert f(a)\rVert}.$$
+		\end{itemize}
+		\item \textbf{Composition par une application linéaire.}\\
+		Soit $L\in\mathcal{L}(F,G)$ et $f:\Omega\to F$. L'application linéaire $L$ est de classe $\mathcal{C}^1$ et $\forall b\in F,\ dL(b)=L$. Donc, par composition :
+		\begin{itemize}
+			\item si $f$ est différentiable en $a\in\Omega$, alors $L\circ f$ est différentiable en $a$ et $\d (L\circ f)(a)=L\circ\d f(a)$,
+			\item si $f$ est différentiable (respectivement de classe $\mathcal{C}^1$), alors $L\circ f$ est différentiable (respectivement de classe $\mathcal{C}^1$).
+		\end{itemize}
+		\begin{notation}
+			La fonction $L\circ f$ se note également $L(f)$ ou $Lf$.
+		\end{notation}
+		\item \textbf{Utilisation des fonctions composantes.}\\
+		Soit $\mathcal{B}'=(e_1',\ldots,e_n')$ une base de $F$ et $f:\Omega\to F$. \\
+		La fonction $f$ est différentiable en $a\in\Omega$ si, et seulement si, toutes ses applications composantes $f_1,\ldots,f_n$ dans $\mathcal{B}'$ sont différentiables en $a$ et l'on a alors :
+		$$\forall i\in\llbracket1,n\rrbracket,\ \d f(a)_i=\d f_i(a).$$
+		On en déduit que la fonction $f$ est différentiable (respectivement de classe $\mathcal{C}^1$) si, et seulement si, toutes les applications composantes sont différentiables (respectivement de classe $\mathcal{C}^1$).
+		\item \textbf{Inverse.}\\
+		Soit $f:\Omega\to\R$ une fonction ne s'annulant pas et différentiable en $a\in\Omega$. Alors $1/f$ est différentiable en $a$ et :
+		$$\d\left(\frac{1}{f}\right)(a)=-\frac{\d f(a)}{f(a)^2}.$$
+		En effet, la fonction $\varphi:t\mapsto 1/t$ est de classe $\mathcal{C}^1$ sur l'ouvert $\R\st$ et $\d\varphi(t)\cdot k=-k/t^2$ pour tout $(t,k)\in\R\st\times\R$. Par composition, $1/f$ est donc différentiable en $a$ et :
+		$$\d\left(\frac{1}{f}\right)(a)\cdot h=-\frac{\d f(a)\cdot h}{f(a)^2}.$$
+	\end{enumerate}
+\end{ex}
+
+Les fonctions polynomiales étant de classe $\mathcal{C}^1$, on déduit de l'exemple précédent le résultat suivant.
+
+\begin{prop}%prop
+	Toute fonction rationnelle définie sur $\Omega$, c'est-à-dire un quotient de deux fonctions polynomiales, est de classe $\mathcal{C}^1$.
+\end{prop}
+
+\begin{ex}
+	Rappelons que $\mathcal{GL}_n(\R)$ est un ouvert de $\mathcal{M}_n(\R)$ car c'est l'image réciproque de l'ouvert $\R\st$ par l'application déterminant, continue car polynomiale.\\
+	La formule $M\inv=\displaystyle\frac{1}{\det(M)}\text{Com}(M)^T$ montre que les $n^2$ applications composantes (dans la base canonique) de l'application $M\mapsto M\inv$ sont rationnelles, donc de classe $\mathcal{C}^1$. \\
+	Il s'ensuit que l'application $M\mapsto M\inv$ est de classe $\mathcal{C}^1$.
+\end{ex}
+
+\begin{exo}
+	Donner la différentielle de $M\mapsto M\inv$.
+\end{exo}
+
+\begin{exo}[$\star$]
+	Soit $F$ une algèbre de dimension finie et $f$ une application d'un ouvert $U$ de $E$ dans $F$. On suppose que $f(x)$ est inversible dans $F$ pour tout $x$ de $U$ et que $f$ est différentiable en un point $a\in U$.\\
+	Montrer que la fonction :
+	$$\begin{array}{lrcl}
+		g:&U&\longrightarrow&F\\
+		&x&\longmapsto&f(x)\inv
+	\end{array}$$ est différentiable en $a$ et que l'on a :
+	$$\forall h\in E,\ \d g(a)\cdot h=-f(a)\inv(\d f(a)\cdot h)f(a)\inv.$$
+	On pourra montrer que l'ensemble $\Omega$ des inversibles de $F$ est un ouvert et que l'application $a\mapsto a\inv$ est continue sur $\Omega$ en commençant par le cas où $F=\mathcal{M}_n(\R)$.
+	\begin{rmq}
+		Attention à la non commutativité de la multiplication dans $F$.
+	\end{rmq}
+\end{exo}
+
+\subsection{Application au calcul des dérivées partielles}
+
+Soit $\Omega'$ un ouvert de $F$, ainsi que $f:\Omega\to F$ et $g:\Omega'\to G$ telles que $f(\Omega)\subset\Omega'$. On note :
+\begin{itemize}
+	\item $(x_1,\ldots,x_p)$ les coordonnées dans la base $\mathcal{B}$ et donc $\displaystyle\frac{\partial f}{\partial x_j}$ les dérivées partielles de $f$ dans la bas $\mathcal{B}$, lorsqu'elles existent ;
+	\item $(y_1,\ldots,y_n)$ les coordonnées dans la base $\mathcal{B}'$ et donc $\displaystyle\frac{\partial g}{\partial y_i}$ les dérivées partielles de $g$ dans la bas $\mathcal{B}'$, lorsqu'elles existent.
+\end{itemize}
+
+\begin{prop}[Règle de la chaîne]%prop
+	On suppose $f$ différentiable en $a\in\Omega$ et $g$ différentiable en $b=f(a)$. En notant $f_1,\ldots,f_n$ les fonctions composantes de $f$ dans la base $\mathcal{B}'$, on a, pour tout $j\in\llbracket1,p\rrbracket$ :
+	$$\frac{\partial (g\circ f)}{\partial x_j}(a)=\sum_{i=1}^{n}\frac{\partial f_i}{\partial x_j}(a)\frac{\partial g}{\partial y_i}(b).$$
+\end{prop}
+\begin{proof}
+	Utiliser la traduction matricielle de l'égalité $\d (g\circ f)(a)=\d g(b)\circ\d f(a)$.
+\end{proof}
+
+\begin{rmq}
+	Dans le cas où $g$ est à valeurs réelles, les $\displaystyle\frac{\partial f_i}{\partial x_j}(a)$ et les $\displaystyle\frac{\partial g}{\partial y_i}(b)$ sont des réels. on peut alors réécrire la formule précédente dans un ordre "plus naturel" :
+	$$\frac{\partial (g\circ f)}{\partial x_j}(a)=\sum_{i=1}^{n}\frac{\partial g}{\partial y_i}(b)\frac{\partial f_i}{\partial x_j}(a).$$
+\end{rmq}
+
+\begin{ex}
+	Soit $f:\R^2\to\R$ une fonction différentiable. Calculons les dérivées partielles de la fonction $g:(x,y)\mapsto f(x+y,xy)$ en fonction de celles de $f$.\\
+	Les applications polynomiales $u:(x,y)\mapsto x+y$ et $v:(x,y)\mapsto xy$ sont de classe $\mathcal{C}^1$ sur l'ouvert $\R^2$, donc différentiables. D'après la règle de la chaîne, pour tout $(x,y)\in\R^2$ :
+	\begin{align*}
+		\frac{\partial g}{\partial x}(x,y)&=\frac{\partial f}{\partial u}(x+y,xy)\frac{\partial u}{\partial x}(x,y)+\frac{\partial f}{\partial v}(x+y,xy)\frac{\partial v}{\partial x}(x,y)\\[2mm]
+		&=\frac{\partial f}{\partial u}(x+y,xy)+y\frac{\partial f}{\partial v}(x+y,xy)\\[2mm]
+		\frac{\partial g}{\partial y}(x,y)&=\frac{\partial f}{\partial u}(x+y,xy)\frac{\partial u}{\partial y}(x,y)+\frac{\partial f}{\partial v}(x+y,xy)\frac{\partial v}{\partial y}(x,y)\\[2mm]
+		&=\frac{\partial f}{\partial u}(x+y,xy)+x\frac{\partial f}{\partial v}(x+y,xy).
+	\end{align*}
+\end{ex}
+
+\subsection{Dérivation le long d'un arc}
+
+\begin{prop}%prop
+	Soit $I$ un intervalle de $\R$ d'intérieur non vide, ainsi que $\gamma:I\to\Omega$ et $f:\Omega\to F$.\\
+	Si $\gamma$ est dérivable en $t_0\in I$ et si $f$ est différentiable en $a=\gamma(t_0)$, alors $f\circ\gamma$ est dérivable en $t_0$ avec :
+	$$(f\circ \gamma)'(t_0)=\d f(a)\cdot\gamma'(t_0).$$
+\end{prop}
+
+\begin{proof}
+	Lorsque $I$ est un intervalle ouvert, c'est une conséquence du théorème de différentiabilité d'une composée. Pour le cas général, on peut prolonger $\gamma$ en une fonction de classe $\mathcal{C}^1$ sur un intervalle ouvert contenant $I$ (en prolongeant par une droite de bonne direction).
+\end{proof}
+
+\begin{ex}[Cas particulier fondamental]
+	Soit $f:\Omega\to F$ une fonction différentiable et $h\in E$. La fonction $t\mapsto f(a+th)$ est dérivable et l'on a :
+	$$\frac{\d}{\d t}f(a+th)=\d f(a+th)\cdot h.$$
+	En effet, en posant $\gamma:t\mapsto a+th$, la fonction $f\circ\gamma$ est définie sur l'ouvert $\gamma\inv(\Omega)$ de $\R$ et il suffit d'appliquer la proposition précédente sur tout intervalle contenu dans cet intervalle ouvert.
+\end{ex}
+
+\begin{cor}%cor
+	On suppose $E=\R^p$. Soit $I$ un intervalle de $\R$ d'intérieur non vide.\\
+	Si $\gamma:t\mapsto(x_1(t),\ldots,x_p(t))$ est une fonction dérivable sur $I$ et à valeurs dans $\Omega$, et $f:\Omega\to F$ est une fonction différentiable sur $\Omega$, alors $f\circ\gamma$ est dérivable sur $I$ et :
+	$$\frac{\d}{\d t}\left(f(x_1(t),\ldots,x_p(t))\right)=\sum_{j=1}^{p}x_j'(t)\frac{\partial f}{\partial x_j}(x_1(t),\ldots,x_p(t)).$$
+\end{cor}
+\begin{proof}
+	C'est une reformulation de la proposition précédente en utilisant l'expression de la différentielle en fonction des dérivées partielles.
+\end{proof}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Si $f:\R^2\to\R$ est une application différentiable, on a :
+		$$\frac{\d}{\d t}\left(f(t+t^3,1-t^2)\right)=(1+3t^2)\frac{\partial f}{\partial x}(t+t^3,1-t^2)-2t\frac{\partial f}{\partial y}(t+t^3,1-t^2).$$
+		\item Considérons une quantité physique qui dépend du temps et de l'espace. Cela peut être modélisé en introduisant une fonction :
+		$$\begin{array}{lrcl}
+			f:&\R^3\times\R&\longrightarrow&F\\
+			&(x,y,z,t)&\longmapsto&f(x,y,z,t).
+		\end{array}$$ La position dans l'espace d'un point matériel au cours du temps est donnée par une fonction $\gamma:t\mapsto(x(t),y(t),z(t))$. Posons $h:t\mapsto f(x(t),y(t),z(t),t)$. Si $f$ est différentiable et $\gamma$ dérivable, alors la fonction $f$ est dérivable et :
+		$$h'(t)=x'(t)\frac{\partial f}{\partial x}(\gamma(t),t)+y'(t)\frac{\partial f}{\partial y}(\gamma(t),t)+z'(t)\frac{\partial f}{\partial z}(\gamma(t),t)+\frac{\partial t}{\partial t}(\gamma(t),t).$$
+		De manière plus simple, en omettant le point en lequel les dérivées partielles de $f$ sont évaluées :
+		$$\frac{\d}{\d t}\left(f(x(t),y(t),z(t),t)\right)=x'(t)\frac{\partial f}{\partial x}+y'(t)\frac{\partial f}{\partial y}+z'(t)\frac{\partial f}{\partial z}+\frac{\partial f}{\partial t}.$$
+		\begin{attention}
+			Ne pas confondre $\displaystyle\frac{\d}{\d t}\left(f(x(t),y(t),z(t),t)\right)$ et $\displaystyle\frac{\partial f}{\partial t}(x(t),y(t),z(t),t)$.
+		\end{attention}
+	\end{enumerate}
+\end{ex}
+
+\subsubsection*{Retour sur la règle de la chaîne}
+
+Considérons des applications différentiables $f:\Omega\subset\R^p\to\R^n$ et $g:\Omega'\subset\R^n\to\R$ telles que $f(\Omega)\subset\Omega'$. Notons $y_i:\Omega\to\R$, avec $i\in\llbracket1,n\rrbracket$ les fonctions composantes de $f$. \\
+La règle de la chaîne nous dit que l'application $h=g\circ f$ définie par :
+$$\forall (x_1,\ldots,x_p)\in\Omega,\ h(x_1,\ldots,x_p)=g(y_1(x_1,\ldots,x_p),\ldots,y_n(x_1,\ldots,x_p)),$$ est différentiable sur $\Omega$ et admet pour dérivées partielles :
+$$\frac{\partial h}{\partial x_j}(x_1,\ldots,x_p)=\sum_{i=1}^{n}\frac{\partial g}{\partial y_i}(y_1(x_1,\ldots,x_p),\ldots,y_n(x_1,\ldots,x_p))\frac{\partial y_i}{\partial x_j}(x_1,\ldots,x_p).$$
+On remarque que cela revient exactement à dériver la définition précédente de $h$ à l'aide du corollaire précédent. On retient facilement cette relation, qui traduit la règle de la chaîne, sous la forme concise ci-dessous, dans laquelle les points où sont évaluées les dérivées partielles sont sous-entendus :
+$$\frac{\partial h}{\partial x_j}=\sum_{i=1}^{n}\frac{\partial g}{\partial y_i}\frac{\partial y_i}{\partial x_j}.$$
+Cette notation est certes abusive, mais elle est très efficace. Il faut simplement ne pas perdre de vue, pour chaque dérivée partielle, le point où elle est évaluée.
+
+\begin{ex}
+	Soit $f:\R^2\to\R$ une fonction et $g$ l'application définie par $g(r,\theta)=f(r\cos(\theta),r\sin(\theta))$ sur $\R^2$. Par opérations sur les fonctions différentiables, les applications $x:(r,\theta)\mapsto r\cos(\theta)$ et $y:(r,\theta)\mapsto r\sin(\theta)$ sont différentiables. Par conséquent, si $f$ est différentiable, la fonction $g$ est différentiable et pour tout $(r,\theta)\in\R^2$, on a :
+	\begin{align*}
+		\frac{\partial g}{\partial r}&=\frac{\partial x}{\partial r}\frac{\partial f}{\partial x}+\frac{\partial y}{\partial r}\frac{\partial f}{\partial y}=\cos(\theta)\frac{\partial f}{\partial x}+\sin(\theta)\frac{\partial f}{\partial y}\\[2mm]
+		\frac{\partial g}{\partial \theta}&=\frac{\partial x}{\partial \theta}\frac{\partial f}{\partial x}+\frac{\partial y}{\partial \theta}\frac{\partial f}{\partial y}=-r\sin(\theta)\frac{\partial f}{\partial x}+r\cos(\theta)\frac{\partial f}{\partial y}.
+	\end{align*}
+\end{ex}
+
+\subsection{Difféomorphismes (HP)}
+
+\subsubsection*{Définition}
+
+\begin{dfn}
+	Soit $f$ une bijection de l'ouvert $U\subset E$ sur l'ouvert $V\subset F$. On dit que $f$ est un \textbf{difféomorphisme de $U$ sur $V$} si $f$ et $f\inv$ sont différentiables.
+\end{dfn}
+
+\begin{prop}%prop
+	Pour un difféomorphisme $f$ de $U$ sur $V$, on a :
+	$$\forall x\in U,\ \d f\inv(f(x))\circ\d f(x)=\text{Id}_E$$
+	$$\forall y\in V,\ \d f(f\inv(y))\circ\d f\inv(y)=\text{Id}_F$$
+\end{prop}
+
+\begin{rmq}
+	Les différentielles sont donc inverses l'une de l'autre et $\dim(E)=\dim(F)$.
+\end{rmq}
+
+\begin{rmq}
+	Plus généralement, l'assertion "s'il existe un homéomorphisme entre $U$ un ouvert de $E$ et $V$ un ouvert de $F$ (où $E$ et $F$ sont de dimension finie), alors $\dim(E)=\dim(F)$" est également vraie, mais la démonstration est beaucoup plus délicate.
+\end{rmq}
+
+\begin{cor}%cor
+	Les matrices jacobiennes de $f$ et $f\inv$ sont, en tout point, inverses l'une de l'autre.
+\end{cor}
+
+\subsubsection*{Changement de variable}
+
+Un difféomorphisme permet d'effectuer des changements de variables. Les dérivées partielles par rapport à chaque système de variables s'expriment à l'aide des dérivées partielles par rapport à l'autre système à l'aide de la règle de la chaîne. La matrice jacobienne peut s'avérer très utile pour effectuer ces calculs.
+
+\paragraph{Coordonnées polaires}
+L'application :
+$$\begin{array}{lrcl}
+	\Phi:&\R^2&\longrightarrow&\R^2\\
+	&(r,\theta)&\longmapsto&(r\cos(\theta),r\sin(\theta))
+\end{array}$$ est de classe $\mathcal{C}^1$ et surjective. On a :
+$$\left(\frac{\partial(x,y)}{\partial(r,\theta)}\right)=J_\Phi(r,\theta)=\begin{pmatrix}
+	\cos(\theta)&-r\sin(\theta)\\
+	\sin(\theta)&r\cos(\theta)
+\end{pmatrix}.$$
+La restriction de $\Phi$ à $U=\R_+\st\times]-\pi,\pi[$ est injective donc réalise une bijection de $U$ sur son image $V=\R^2\setminus\{(x,0)\mid x\leqslant 0\}$. Sa fonction réciproque est $(x,y)\mapsto(r,\theta)$ avec :
+$$r=\sqrt{x^2+y^2}\quad\text{et}\quad\theta=2\arctan\left(\frac{y}{x+\sqrt{x^2+y^2}}\right).$$
+Elle est donc également différentiable. les deux matrices jacobiennes sont ainsi inversibles et inverses l'une de l'autre, ce qui donne :
+$$\left(\frac{\partial(r,\theta)}{\partial (x,y)}\right)=\left(\frac{\partial(x,y)}{\partial (r,\theta)}\right)\inv=\frac{1}{r}\begin{pmatrix}
+	r\cos(\theta)&r\sin(\theta)\\
+	-\sin(\theta)&\cos(\theta)
+\end{pmatrix}=\begin{pmatrix}
+\frac{x}{\sqrt{x^2+y^2}}&\frac{y}{\sqrt{x^2+y^2}}\\
+\frac{-y}{x^2+y^2}&\frac{x}{x^2+y^2}
+\end{pmatrix}.$$
+On a ainsi, par exemple :
+$$\frac{\partial r}{\partial y}=\frac{y}{\sqrt{x^2+y^2}}\quad\text{et}\quad\frac{\partial\theta}{\partial y}=\frac{x}{x^2+y^2}.$$
+
+\begin{exo}
+	Retrouver ces dérivées par un calcul direct.
+\end{exo}
+
+\subsubsection*{Théorèmes d'inversion}
+
+Les théorèmes qui suivent (et que nous admettons) caractérisent les difféomorphismes sans qu'il soit nécessaire de calculer l'inverse ni sa différentielle. Ils nécessitent l'hypothèse $\mathcal{C}^1$.
+
+\begin{thm}[Théorème d'inversion locale (HP)]%thm
+	Soit $f\in\mathcal{C}^1(\Omega,F)$ et $a\in\Omega$. Si la matrice jacobienne de $f$ en $a$ est inversible, alors $f$ induit un $\mathcal{C}^1$-difféomorphisme d'un voisinage de $a$ sur un voisinage de $f(a)$.
+\end{thm}
+\begin{proof}
+	Exercice Moulin.CD.18
+\end{proof}
+
+\begin{thm}[Théorème d'inversion globale (HP)]
+	Soit $f\in\mathcal{C}^1(\Omega,F)$. Si :
+	\begin{itemize}
+		\item $f$ est injective ;
+		\item la matrice jacobienne de $f$ est inversible en tout point de $\Omega$,
+	\end{itemize}
+	alors $\Omega'=f(\Omega)$ est un ouvert de $F$ et $f$ est un $\mathcal{C}^1$-difféomorphisme de $\Omega$ sur $\Omega'$.
+\end{thm}
+\begin{proof}
+	Conséquence rapide du théorème d'inversion locale en tout point.
+\end{proof}
+
+\begin{ex}
+	Différentiabilité des racines d'un polynôme unitaire du troisième degré en fonction des coefficients (fonctions symétriques des racines).
+\end{ex}
+
+\subsection{Fonctions de classe $\mathcal{C}^1$}
+
+\begin{thm}[Théorème fondamental]%thm
+	Soit $f:\Omega\to F$ une fonction. Les assertions suivantes sont équivalentes.
+	\begin{enumerate}[label=(\roman*)]
+		\item La fonction $f$ est de classe $\mathcal{C}^1$ sur $\Omega$.
+		\item Toutes les dérivées partielles de $f$ sont définies et continues sur $\Omega$.
+	\end{enumerate}
+\end{thm}
+\begin{proof}
+	Preuve longue...\\
+	$(i)\implies(ii)$.
+	Supposons $f$ de classe $\mathcal{C}^1$. Soit $j\in\llbracket1,p\rrbracket$ et $x\in\Omega$. Puisque $f$ est différentiable en $x$, $\partial_jf(x)$ est définie et $\partial_jf(x)=\d f(x)\cdot e_j$. L'application :
+	$$\begin{array}{lrcl}
+		\Psi_j:&\mathcal{L}(E,F)&\longrightarrow&F\\
+		&u&\longmapsto&u\cdot e_j
+	\end{array}$$ est linéaire, donc continue car l'espace de départ $\mathcal{L}(E,F)$ est de dimension finie, ce qui implique que $\partial_jf=\Psi_j\circ\d f$ est continue.
+	\\
+	$(ii)\implies(i)$. Supposons que toutes les dérivées partielles soient définies et continues. On munit $E$ de la norme $\lVert\cdot\rVert_\infty$ associée à la base $\mathcal{B}$. Soit $a\in\Omega$.
+	\begin{itemize}
+		\item Supposons d'abord que toutes les dérivées partielles soient nulles en $a$. Soit $\varepsilon>0$. Par continuité, il existe un $\eta>0$ tel que $B_F(a,\eta)\subset\Omega$ et que, pour tous $x\in B_F(a,\eta)$ et $j\in\llbracket1,p\rrbracket$, on ait $\lVert\partial_jf(x)\rVert\leqslant\varepsilon/p$. Soit $h=\displaystyle\sum_{j=1}^{p}h_je_j\in B_F(0,\eta)$. Pour tout $k\in\llbracket0,p\rrbracket$ :
+		$$s_k=a+h_1e_1+\cdots+h_ke_k.$$ Pour tout $k\in\llbracket1,p\rrbracket$ et $t\in[0,1]$, on a :
+		$$s_{k-1}+th_ke_k=a+\sum_{i=1}^{k-1}h_ie_i+th_ke_k\in B_F(a,\eta).$$
+		On peut donc définir, pour tout $k\in\llbracket1,p\rrbracket$, une fonction $g_k$ de classe $\mathcal{C}^1$ sur $[0,1]$ par :
+		$$g_k(t)=f(s_{k-1}+th_ke_k).$$
+		Comme $g_k'(t)=h_k\partial_kf(s_{k-1}+th_ke_k)$ est bornée par $\displaystyle\frac{\varepsilon}{p}\lvert h_k\rvert\leqslant\frac{\varepsilon}{p}\lVert h\rVert$ pour tout $t\in[0,1]$, on a par l'inégalité des accroissements finis :
+		$$\lVert f(s_k)-f(s_{k-1})\rVert=\lVert g_k(1)-g_k(0)\rVert\leqslant\lVert h\rVert\frac{\varepsilon}{p}.$$
+		Il s'ensuit que :
+		\begin{align*}
+			\lVert f(a+h)-f(a)\rVert&=\left\lVert\sum_{k=1}^{p}(f(s_k)-f(s_{k-1}))\right\rVert\\
+			&\leqslant\sum_{k=1}^{p}\lVert f(s_k)-f(s_{k-1})\rVert\\
+			&\leqslant\sum_{k=1}^{p}\lVert h\rVert\frac{\varepsilon}{p}\\
+			&=\lVert h\rVert\varepsilon
+		\end{align*}
+		Par suite, $f(a+h)=f(a)+\o(h)$ au voisinage de $0$ et donc $f$ est différentiable et $\d f(a)=0$.
+		\item Dans le cas général, posons $u:h\mapsto\displaystyle\sum_{j=1}^{p}h_j\partial_jf(a)$. Dans ces conditions, toutes les dérivées partielles de $g=f-u$ sont définies et continues. Elles sont de plus toutes nulles en $a$. En vertu de ce qui précède, $g$ est également différentiable en $a$. Puisque $u$ est linéaire, elle est différentiable en $a$, et donc $f=g+u$ l'est également.
+	\end{itemize}
+	En prenant une base $\mathcal{B}'$ de $F$, et en notant $f_1,\ldots,f_n$ les fonctions composantes de $f$, la matrice de $\d f(a)$ dans les bases $\mathcal{B}$ et $\mathcal{B}'$ est $J_f(a)=\displaystyle\left(\frac{\partial f_i}{\partial x_j}(a)\right)_{\substack{1\leqslant i\leqslant n\\ 1\leqslant j\leqslant p}}$. La continuité des dérivées partielles de $f$, donc des dérivées partielles des $f_i$, donne la continuité de l'application $J_f$ ainsi définie sur $\Omega$. Par l'isomorphisme $\text{Mat}_{\mathcal{B},\mathcal{B}'}$ entre $\mathcal{L}(E,F)$ et $\mathcal{M}_{n,p}(\R)$, on en déduit que $\d f=(\text{Mat}_{\mathcal{B},\mathcal{B}'})\inv\circ J_f$ est continue, puisque $\left(\text{Mat}_{\mathcal{B},\mathcal{B}'}\right)\inv$ est linéaire en dimension finie donc continue. \\
+	On en conclut que $f$ est de classe $\mathcal{C}^1$.
+\end{proof}
+
+\begin{rmq}
+	Pour la partie $(ii)\implies (i)$ concernant la différentiabilité, il suffit d'avoir la continuité de toutes les dérivées partielles, saf peut-être une.
+\end{rmq}
+
+\begin{met}
+	Pour démontrer qu'une fonction $f:\Omega\to F$ est de classe $\mathcal{C}^1$ :
+	\begin{itemize}
+		\item on cherche d'abord à utiliser les théorèmes généraux de manipulation des fonctions de classe $\mathcal{C}^1$ ;
+		\item si ceux-ci ne s'appliquent pas, on peut chercher à montrer que dans une base donnée, toutes les dérivées partielles de $f$ sont définies et continues sur $\Omega$.
+	\end{itemize}
+\end{met}
+
+\begin{ex}
+	\begin{enumerate}
+		\item La fonction $f:(x,y)\mapsto e^x\ln(x^2+2y^2+1)$ est de classe $\mathcal{C}^1$ sur $\R^2$. En effet :
+		\begin{itemize}
+			\item la fonction $(x,y)\mapsto x^2+2y^2+1$ est polynomiale, donc de classe $\mathcal{C}^1$ sur $\R^2$, et à valeurs dans $\R_+\st$, et la fonction $\ln$ est de classe $\mathcal{C}^1$ sur $\R_+\st$.\\
+			Donc, par composition, $(x,y)\mapsto \ln(x^2+2y^2+1)$ est de classe $\mathcal{C}^1$ sur $\R^2$.
+			\item De même, $(x,y)\mapsto e^x$ est de classe $\mathcal{C}^1$ sur $\R^2$ par caractère $\mathcal{C}^1$ de la fonction polynomiale $(x,y)\mapsto x$ et de l'exponentielle.
+		\end{itemize}
+		Par produit, $f$ est de classe $\mathcal{C}^1$ sur $\R^2$.
+		\item La fonction $f$ définie sur $\R^2\setminus\{(0,0)\}$ par $\displaystyle f(x,y)=\frac{x^4+y^4}{x^2+y^2}$ prolongée par continuité en $0$ est de classe $\mathcal{C}^1$.
+		\item Soit $f$ de classe $\mathcal{C}^1$ sur $\R^2$. La fonction $F:(x,y)\mapsto\displaystyle\int_{0}^{y}f(x,t)\d t$ est de classe $\mathcal{C}^1$ sur $\R^2$.\\
+		Application : dérivabilité et dérivée de $x\mapsto\displaystyle\int_{\alpha(x)}^{\beta(x)}f(x,t)\d t$.
+	\end{enumerate}
+\end{ex}
+
+\subsubsection*{Fonctions de classe $\mathcal{C}^1$ et intégration}
+
+\begin{prop}%prop
+	Soit $f:\Omega\to F$ une fonction de classe $\mathcal{C}^1$. pour toute application $\gamma:[0,1]\to E$ à valeurs dans $\Omega$ de classe $\mathcal{C}^1$ telle que $\gamma(0)=a$ et $\gamma(b)=1$, on a :
+	$$f(b)-f(a)=\int_{0}^{1}\d f(\gamma(t))\cdot\gamma'(t)\d t.$$
+\end{prop}
+\begin{proof}
+	En tant que composée de fonctions de classe $\mathcal{C}^1$, $\varphi:t\mapsto f(\gamma(t))$ est de classe $\mathcal{C}^1$ et vérifie $\varphi'(t)=\d f(\gamma(t))\cdot\gamma'(t)$. Ainsi :
+	$$f(b)-f(a)=\varphi(1)-\varphi(0)=\int_{0}^{1}\varphi'(t)\d t=\int_{0}^{1}\d f(\gamma(t))\cdot\gamma'(t)\d t.$$
+\end{proof}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Soit $a\in\Omega$ et $h\in E$ tel que le segment $[a,a+h]$ soit contenu dans $\Omega$. Soit $f:\Omega\to F$ une fonction de classe $\mathcal{C}^1$. En posant $\gamma :t\mapsto a+th$, de classe $\mathcal{C}^1$ sur $[0,1]$, on a :
+		$$f(a+h)-f(a)=\int_{0}^{1}\d f(a+th)\cdot h\ \d t.$$
+		\item Supposons $f$ différentiable sur un ouvert $\Omega$ convexe avec une différentielle nulle. Montrons que $f$ est constante. \\
+		Soit $(a,b)\in\Omega^2$. Par convexité, le segment $[a,b]$ est contenu dans $\Omega$ et en appliquant l'exemple précédent à $h=b-a$ (la fonction $f$ est bien de classe $\mathcal{C}^1$ car sa différentielle est nulle donc continue), on obtient :
+		$$f(b)-f(a)=\int_{0}^{1}\d f(a+th)\cdot h\ \d t$$ et donc $f(b)=f(a)$ puisque $\d f(a+th)=0$ pour tout $t\in[0,1]$ par hypothèse.
+	\end{enumerate}
+\end{ex}
+
+\begin{rmq}
+	L'hypothèse de convexité peut être remplacée par celle de connexité par arcs (voire de connexité !). C'est l'objet du résultat suivant.
+\end{rmq}
+
+\begin{prop}[Caractérisation des fonctions constantes sur un connexe]%prop
+	Supposons que $\Omega$ soit un ouvert connexe par arcs de $E$ et soit $f:\Omega\to F$. \\
+	La fonction $f$ est constante si, et seulement si, $f$ est différentiable et $\d f=0$.
+\end{prop}
+\begin{rmq}
+	Le résultat est vrai plus généralement sur un ouvert \textit{connexe}. En effet, la preuve réalisée ici utilise un argument de connexité, et on utilise simplement le fait que tout connexe par arcs est connexe.
+\end{rmq}
+
+\begin{exo}
+	Sous les mêmes hypothèses, existe-t-il $c\in[a,b]$ tel que :
+	$$f(\varphi(b))-f(\varphi(a))=(b-a)\d f(\varphi(c))\cdot\varphi'(c)\ ?$$
+\end{exo}
+
+\begin{rmq}
+	Si $\vertiii{\d f}$ est bornée par $M$ sur $\varphi([a,b])$, alors : $$\lVert f(\varphi(b))-f(\varphi(a))\rVert\leqslant ML$$ où $L=\displaystyle\int_{[a,b]}\lVert\varphi'\rVert$ est la longueur de l'arc paramétré $([a,b],\varphi)$ tracé sur $\Omega$.
+\end{rmq}
+
+\begin{exo}[$\star$]
+	Soit $\Omega$ un ouvert connexe par arcs de $E$.
+	\begin{enumerate}
+		\item Montrer que deux points quelconques de $\Omega$ peuvent être reliés par un chemin $\mathcal{C}^1$. on pourra utiliser le théorème de Weierstrass.
+		\item En déduire une autre démonstration de la caractérisation des fonctions constantes sur un ouvert connexe par arcs.
+	\end{enumerate}
+\end{exo}
+
+\begin{ex}
+	Soit $(c_n)_{n\in\Z}$ une suite bornée. La fonction $f$ définie sur $\R_+\st\times\R$ par :
+	$$f(x,y)=\sum_{n\in\Z}c_ne^{-\lvert n\rvert x+iny}$$ est de classe $\mathcal{C}^1$.
+\end{ex}
+
+Exercice Moulin.CD.06
+
+
+Exercice Moulin.CD.08
+
+\section{Vecteurs tangents à une partie}
+
+\subsection{Vecteurs tangents}
+
+\subsubsection*{Tangente à un arc}
+
+Un \textbf{arc} à valeurs dans $E$ est simplement une application d'un intervalle $I\subset\R$ dans $E$. On peut naturellement parler d'arc continu, dérivable, etc.
+
+Lorsque $\gamma$ est un arc dérivable en $t\in I$ et $\gamma'(t)\ne0$, la droite affine $\gamma(t)+\R\gamma'(t)$ est la \textbf{tangente au point de paramètre $t$}.
+
+\begin{ex}
+	Soit $\varphi:I\to\R$ dérivable. On considère l'arc $\gamma$ défini par $\gamma(x)=(x,\varphi(x))$. Son image est donc la courbe d'équation $y=\varphi(x)$. La fonction $\gamma$ est dérivable sur $I$ et, pour tout $x\in I$, on a $\gamma'(x)=(1,\varphi'(x))\ne0$. Donc l'arc admet une tangente en tout point, et cette tangente au point de paramètre (et donc aussi d'abscisse) $x$ est dirigée par $\gamma'(x)$, donc a pour pente $\varphi'(x)$. Cette définition de la tangente coïncide avec celle déjà connue pour des courbes d'équations cartésiennes de la forme $y=\varphi(x)$.
+\end{ex}
+
+\subsubsection*{Vecteurs tangents}
+
+\begin{dfn}
+	Sot $X$ une partie de $E$ et $x\in X$. Un vecteur $v$ de $E$ est un \textbf{vecteur tangent à $X$ en $x$} s'il existe un réel $\varepsilon>0$ et une fonction $\gamma:]-\varepsilon,\varepsilon[\to E$ à valeurs dans $X$, dérivable en $0$, telle que $\gamma(0)=x$ et $\gamma'(0)=v$.
+\end{dfn}
+
+\begin{notation}
+	L'ensemble des vecteurs tangents à $X$ en $x$ se note $T_xX$.
+\end{notation}
+
+En d'autres termes, les vecteurs tangents à $X$ en $x$ sont les dérivées en $0$ des arcs tracés sur $X$, définis au voisinage de $0$, passant par $x$ en $0$ et dérivables en $0$.
+
+\begin{ex}
+	\begin{enumerate}
+		\item Le vecteur $0$ est tangent à $X$ en tout point de $X$, comme on le voit en considérant un chemin constant.
+		\item Si $x\in\mathring{X}$, alors $T_xX=E$.\\
+		En effet, pour $v\in E$, la fonction $\gamma:t\mapsto x+tv$ est à valeurs dans $X$ au voisinage de $0$ et est dérivable en $0$ avec $\gamma'(0)=v$. %si $B_o(x,r)\subset X$, prendre $\varepsilon=r/(\lVert v\rVErt+1)$
+		\item Il vient de l'exemple précédent que si $\Omega$ est un ouvert, alors pour tout $x\in\Omega$, $T_x\Omega=E$.
+		\item Quels sont les vecteurs tangents à $X=[-1,1]^2\subset\R^2$ en $(0,0)$ ? en $(1,0)$ ? en $(1,1)$ ?
+	\end{enumerate}	
+\end{ex}
+
+\begin{exo}
+	Soit $X$ une partie d'un $\R$-espace vectoriel $E$ de dimension finie.
+	\begin{enumerate}
+		\item Soit $x\in X$ et $r>0$. Montrer que $T_aX=T_x(X\cap B_O(a,r))$.
+		\item Quels sont les vecteurs tangents à $X$ en un point \textbf{isolé}, c'est-à-dire un point $a\in X$ pour lequel il existe $r>0$ tel que $X\cap B_O(a,r)=\{a\}$ ?
+	\end{enumerate}
+\end{exo}
+
+\begin{rmq}
+	L'ensemble $T_xX$ est un \textbf{cône} de $E$, c'est-à-dire une partie stable par toutes les homothéties de $E$. En effet, soit $v\in T_xX$ et $\lambda\in\R^2$. Si $\gamma:]-\varepsilon,\varepsilon[\to X$ a pour dérivée $v$ en $0$, alors la dérivée en $0$ de l'application $t\mapsto\gamma(\lambda t)$, qui est définie sur un voisinage de $0$ et à valeurs dans $X$, et $\lambda v$, si bien que $\lambda v\in T_xX$. En d'autres termes, $\R v$ est inclus dans $T_x X$.
+\end{rmq}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Soit $I$ un intervalle ouvert et $\gamma :I\to E$ un arc de classe $\mathcal{C}^1$. En posant $X=\gamma(I)$, on a $\R\gamma'(t_0)\subset T_{\gamma(t_0)}X$. %$\tilde{\gamma}(t)=\gamma(t_0+t)$
+		\begin{rmq}
+			Il se peut que l'inclusion soit stricte, par exemple lorsque $\gamma'(t_0)=0$ ou lorsque le point correspond à plusieurs paramètres. %point de croisement d'une boucle $\mathcal{C}^1$
+		\end{rmq}
+		\item Soit $X=\left\{(x,y)\in\R^2\ :\ xy=0\right\}$, réunion des deux axes $(Ox)$ et $(Oy)$. Montrons que $T_{(0,0)}X=X$.
+		\begin{rmq}
+			Comme on le voit dans cet exemple, l'ensemble $T_xX$ n'est pas en général un sous-espace vectoriel de $E$.
+		\end{rmq}
+	\end{enumerate}
+\end{ex}
+
+\begin{terminologie}
+	Lorsque $T_xX$ est un sous-espace vectoriel de $E$, on dit que c'est l'\textbf{espace tangent à $X$ en $x$}.
+\end{terminologie}
+
+\subsection{Exemples d'espaces tangents}
+
+\begin{ex}[Vecteurs tangents à un sous-espace affine]
+	Soit $a\in E$ et $F$ un sous-espace vectoriel de $E$. On pose $\mathcal{F}=a+f$. Soit $x\in\mathcal{F}$. Montrons que $T_x\mathcal{F}=\mathcal{F}$.
+\end{ex}
+
+\begin{ex}[Vecteurs tangents à une sphère]
+	Soit $E$ un espace euclidien et $S$ la sphère de $E$ centrée en $0$ et de rayon $r$. Soit $a\in S$. Montrons que $T_aS$ est l'hyperplan orthogonal au vecteur $a$. On procède par double inclusion.
+	\begin{itemize}
+		\item Soit $v\in T_aS$. Il existe donc $\gamma:]-\varepsilon,\varepsilon[\to S$ dérivable en $0$ tel que $\gamma(0)=a$ et $\gamma'(0)=v$, et l'on a :
+		$$\forall t\in]-\varepsilon,\varepsilon[,\ (\gamma(t)\mid\gamma'(t))=r^2.$$
+		En dérivant cette relation en $0$, cela donne :
+		$$2(\gamma(0)\mid\gamma'(0))=0\quad\quad\text{et}\quad\quad (a\mid v)=0.$$
+		On en déduit que $T_aS\subset(\R a)^\bot$.
+		\item Soit $v$ un vecteur non nul orthogonal à $a$. Montrons à $S$ en $a$. Au vu du fait qe l'ensemble des vecteurs tangents forme un cône, on peut le supposer unitaire. Considérons l'application :
+		$$\begin{array}{lrcl}
+			\gamma:&\R&\longrightarrow&E\\
+			&t&\longmapsto&\cos(t)a+r\sin(t)v
+		\end{array}.$$
+		Elle vérifie $\gamma(0)=a$ et elle est dérivable, avec $\gamma'(0)=rv$. De plus, le théorème de Pythagore assure qu'elle est à valeurs dans $S$, puisque $a$ et $rv$ sont orthogonaux et de même norme $r$. Il s'ensuit que $rv\in T_aS$, donc $v\in T_aS$, car $r\ne0$. On en déduit $(\R a)^\bot\subset T_aS$.
+	\end{itemize}
+\end{ex}
+
+\begin{ex}[Espace tangent au graphe d'une fonction définie sur un ouvert de $\R^2$]
+	Soit $\Omega$ un ouvert de $\R^2$ et $f:\Omega\to\R$ une fonction numérique. Notons $G$ son graphe :
+	$$G=\{(x,y,f(x,y)\mid (x,y)\in\Omega)\}.$$
+	Considérons $m=(x_0,y_0)\in\Omega$ et supposons $f$ différentiable en $m$. On pose $z_0=f(x_0,y_0)$ et $M=(x_0,y_0,z_0)$. Alors $T_MG$ est le plan dirigé par les deux vecteurs non colinéaires :
+	$$\begin{pmatrix}
+		1\\
+		0\\[2mm]
+		\frac{\partial f}{\partial x}(m)
+	\end{pmatrix}\quad\text{et}\quad\begin{pmatrix}
+	0\\
+	1\\[2mm]
+	\frac{\partial f}{\partial y}(m)
+	\end{pmatrix}.$$
+	Il est appelé \textbf{plan tangent} à $G$ en $M$ et il a pour équation :
+	$$h\frac{\partial f}{\partial x}(m)+k\frac{\partial f}{\partial y}(m)-l=0.$$
+\end{ex}
+
+\begin{rmq}
+	En fait, on appelle plutôt \textbf{plan tangent}, le plan \textit{affine} passant par $M$ d'équation :
+	$$z-z_0=(x-x_0)\frac{\partial f}{\partial x}(m)+(y-y_0)\frac{\partial f}{\partial y}(m).$$
+\end{rmq}
+
+\begin{ex}
+	Plus généralement, soit $\Omega$ un ouvert de $\R^p$ et $f:\Omega\to\R$ une fonction numérique. Notons $G$ son graphe :
+	$$G=\{(x_1,\ldots,x_p,f(x_1,\ldots,x_p))\mid (x_1,\ldots,x_p)\in\R^p\}.$$
+	Considérons $m=(a_1,\ldots,a_p)\in\Omega$ et supposons $f$ différentiable en $m$.\\
+	On pose $b=f(a_1,\ldots,a_p)$ et $M=(a_1,\ldots,a_p,b)\in\R^{p+1}$. L'espace tangent à $M$ en $G$ est l'hyperplan d'équation :
+	$$k=\sum_{j=1}^{p}\frac{\partial f}{\partial x_j}(m)h_j.$$
+\end{ex}
+
+\begin{rmq}
+	De façon générale, une équation de l'ensemble dont on cherche l'espace tangent en un point $a$ donne $T_aX\subset\ldots$, tandis qu'un paramétrage de $X$ permet de fabriquer des vecteurs tangents à $X$ en $a$ et d'obtenir $\ldots\subset T_aX$.
+\end{rmq}
+
+\subsection{Cas des ensembles définis par une équation}
+
+On considère ici une fonction $g:\Omega\to\R$ de classe $\mathcal{C}^1$ et $X=\{x\in\Omega\ :\ g(x)=0\}$. Soit $a\in X$. Considérons un arc $\gamma:]-\varepsilon,\varepsilon[\to E$ tracé sur $X$, dérivable en $0$, et tel que $\gamma(0)=a$. On a donc $g\circ\gamma=0$, ce qui, par dérivation en $0$ donne :
+$$0=(g\circ\gamma)'(0)=\d g(\gamma(0))\cdot\gamma'(0)=\d g(a)\cdot\gamma'(0).$$
+On en déduit l'inclusion $T_aX\subset\ker(\d g(a))$.
+\begin{itemize}
+	\item Cela n'a d'intérêt, évidemment, que si $\d g(a)\ne0$.
+	\item Dans ce cas, il y a même égalité, ce qui est l'objet du deuxième théorème qui suit.
+\end{itemize}
+
+\begin{thm}[Théorème des fonctions implicites (HP)]%thm
+	Soit $F\in\mathcal{C}^1(\Omega,\R)$ où $\Omega$ est un ouvert de $\R^{p+1}$ et $M_0(a_1,\ldots,a_p,b)$ un point de $\Omega$ tel que $F(M_0)=0$ et $\displaystyle\frac{\partial F}{\partial y}(M_0)\ne0$. \\
+	Alors, au voisinage de $M_0$, on a l'équivalence :
+	$$F(x_1,\ldots,x_p,y)=0\iff y=f(x_1,\ldots,x_p)$$ où $f$ est une fonction de classe $\mathcal{C}^1$ d'un voisinage de $m_0=(a_1,\ldots,a_p)$ dans $\R$.
+\end{thm}
+\begin{proof}
+	L'application $\varphi:(x_1,\ldots,x_p,y)\mapsto(x_1,\ldots,x_p,F(x_1,\ldots,x_p))$ est un difféomorphisme d'un voisinage de $M_0=(m_0,b)$ sur un voisinage de $(m_0,0)$. En effet, $\varphi$ est de classe $\mathcal{C}^1$ et sa jacobienne :
+	$$J_\varphi=\begin{pmatrix}
+		&&&0\\
+		&I_p&&\vdots\\
+		&&&0\\
+		\frac{\partial F}{\partial x_1}&\cdots&\frac{\partial F}{\partial x_p}&\frac{\partial F}{\partial y}
+	\end{pmatrix}$$ est inversible en $M_0$. On conclut avec le théorème d'inversion locale. Il faut alors considérer $y$ défini par $y=(\varphi\inv)_{p+1}(x_1,\ldots,x_p,0)$.
+\end{proof}
+
+\begin{exo}
+	Montrer que l'on a alors :
+	$$\frac{\partial f}{\partial x_j}(m_0)=-\frac{\displaystyle\frac{\partial F}{\partial x_j}(M_0)}{\displaystyle\frac{\partial F}{\partial y}(M_0)}.$$
+\end{exo}
+
+\begin{rmq}
+	On a $\displaystyle\frac{\partial P}{\partial T}\frac{\partial T}{\partial V}\frac{\partial V}{\partial P}=-1$. En effet, d'après la l'équation d'état du gaz parfait, on a $PV=nRT$ et on peut donc écrire $\Phi(P,V,T)=0$. Le théorème des fonctions implicites assure que cela donne $P=P(V,T)$ puis l'exercice précédent explique les $-1$.
+\end{rmq}
+
+[Commence à faire cours de physique]
+
+\begin{rmq}
+	On a donc :
+	$$\frac{\partial P}{\partial T}=\frac{1}{\frac{\partial T}{\partial P}}.$$ En revanche, on a 
+	$$\frac{\partial r}{\partial x}\ne\frac{1}{\frac{\partial x}{\partial r}}$$ dans le cas des coordonnées polaires, car la matrice jacobienne n'est pas triangulaire, alors que c'est le cas pour $P$, $V$ et $T$.
+\end{rmq}
+
+\begin{thm}%thm
+	Soit $g:\Omega\to\R$ une fonction numérique de classe $\mathcal{C}^1$ et $X=\{x\in\Omega\ :\ g(x)=0\}$. \\
+	Si $a\in X$ et $\d g(a)\ne0$,a lors $T_aX=\ker(\d g(a))$.
+\end{thm}
+
+\begin{rmq}
+	L'hypothèse de la différentielle non nulle dans le théorème précédent est un leurre : en réalité, la bonne hypothèse est la surjectivité de $\d g(a)$, ce qui est équivalent ici car $\d g(a)$ est dans ce cas une forme linéaire.
+\end{rmq}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Reprenons l'exemple de la sphère de centre $0$ et $r>0$ dans un espace vectoriel euclidien $E$. Elle est définie par l'équation $g(x)=0$ où $g:x\mapsto (x\mid x)-r^2$ est de classe $\mathcal{C}^1$ sur $E$ et :
+		$$\forall x\in E,\ \d g(x):h\mapsto 2(x\mid h).$$
+		En tout point $a$ de $S$, on a donc $\d g(a)\ne0$ et $T_aX$ est l'hyperplan orthogonal à $a$.
+		\item On note $\mathcal{SL}_n(\R)=\{M\in\mathcal{M}_n(\R)\ :\ \det(M)=1\}$.\\
+		Montrons que l'ensemble des vecteurs tangents à $\mathcal{SL}_n(\R)$ en $I_n$ est l'ensemble des matrices de trace nulle. %$\d(\det)(I_n)=\Tr\ne0$
+	\end{enumerate}
+\end{ex}
+
+\subsubsection*{Seconde interprétation géométrique du gradient}
+
+Dans le cas où $E$ est euclidien, la conclusion du théorème précédent peut se formuler ainsi : si $\nabla g(a)\ne0$, on a $T_aX=(\nabla g(a))^\bot$.
+
+\begin{ex}
+	Illustrons ceci pour la partie de $\R^2$ définie par l'équation $x^2+4y^2=4$.
+\end{ex}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Il est clair que les résultats précédents s'appliquent à $X=g\inv(\{c\})$ pour tout réel $c$ : en tout point $a$ de $X$ où $\nabla g(a)\ne0$, on a $T_aX=(\nabla g(a))^\bot$. Les ensembles d'équations $g(x)=c$ sont appelés \textbf{ligne de niveau} de la fonction $g$.
+		\item Reprenons l'interprétation topographique du gradient : pour représenter le relief d'une montagne sur une carte plane, on peut tracer les lignes de niveau, correspondant aux lieux où $f$ est constante, $f$ étant la fonction qui à tout point de coordonnées $(x,y)$ associe son altitude $z=f(x,y)$.\\
+		En tout point, le gradient de $f$ est donc orthogonal à la ligne de niveau passant par ce point.
+	\end{itemize}
+\end{rmq}
+
+\begin{ex}[Application à l'équation du plan tangent]
+	On munit $\R^3$ de sa structure euclidienne canonique. Soit $g:\Omega\to\R$ une fonction de $\mathcal{C}^1$. On considère $X=\{(x,y,z)\in\Omega\ :\ g(x,y,z)=0\}$ ainsi que $m_0=(x_0,y_0,z_0)\in X$ un point tel que $\nabla g(m_0)\ne 0$.\\
+	Puisque $\nabla g(m_0)\ne0$, l'ensemble des vecteurs tangents à $X$ en $m_0$ est le sous-espace vectoriel $(\nabla g(m_0))^\bot$ qui est de dimension $2$. Le \textbf{plan tangent} à $X$ en $m_0$ est le plan affine $\mathcal{T}$ passant par $m_0$ et dirigé par le plan vectoriel $(\nabla g(m_0))^\bot$. Ce plan est caractérisé par :
+	$$\forall m\in\R^3,\ m\in\mathcal{T}\iff(\nabla g(m_0)\mid m-m_0)=0,$$
+	c'est-à-dire par l'équation :
+	$$\mathcal{T}:\quad (x-x_0)\frac{\partial g}{\partial x}(m_0)+(y-y_0)\frac{\partial g}{\partial y}(m_0)+(z-z_0)\frac{\partial g}{\partial z}(m_0)=0.$$
+\end{ex}
+
+\begin{ex}
+	Soit $(a,b,c)\in(\R_+\st)^3$. Déterminons le plan tangent à l'ellipsoïde $S$ de $\R^3$ défini par l'équation :
+	$$\left(\frac{x}{a}\right)^2+\left(\frac{y}{b}\right)^2+\left(\frac{z}{c}\right)^2=1.$$
+\end{ex}
+
+\begin{ex}
+	Pour une quadrique d'équation :
+	$$ax^2+a'y^2+a''z^2+2b''xy+2b'xz+2byz+2cx+2c'y+2c''z+d=0,$$ en un point où le gradient est non nul, une équation du plan tangent est :
+	$$axx_0+a'yy_0+a''zz_0+b''(xy_0+x_0y)+b'(xz_0+x_0z)+b(yz_0+y_0z)+c(x+x_0)+c'(y+y_0)+c''(z+z_0)+d=0.$$
+\end{ex}
+
+\section{Fonctions de classe $\mathcal{C}^k$}
+
+Dans cette section, $E=\R^p$ et $\mathcal{B}=(e_1,\ldots,e_p)$ est la base canonique.
+
+\subsection{Fonctions de classe $\mathcal{C}^k$}
+
+\subsubsection*{Différentielle deuxième (HP)}
+
+Si $f\in\mathcal{C}^1(\Omega,F)$, alors $\d f\in\mathcal{C}^0(\Omega,\mathcal{L}(E,F))$.
+
+\begin{dfn}
+	On appelle \textbf{différentielle seconde}, si elle existe, la différentielle de $\d f$, que l'on notera dans ce cas $\d^2f$ plutôt que $\d(\d f)$. Dans ce cas, $\d^2 f(a)\in\mathcal{L}(E,\mathcal{L}(E,F))$ c'est-à-dire que $(\d^2 f(a)\cdot h)\cdot k\in F$. La différentielle seconde est donc, en cas d'existence, une application de $\Omega$ dans $\mathcal{L}(E,\mathcal{L}(E,F))$, et ce dernier espace est isomorphe à $\mathcal{BL}(E,F)$.
+\end{dfn}
+
+La "bonne" définition de la classe $\mathcal{C}^2$ est que la différentielle seconde existe et soit une application continue de $\Omega$ dans $\mathcal{L}(E,\mathcal{L}(E,F))$. Cela permettrait alors de généraliser aux classes supérieures en introduisant la notion de différentielle $k$-ème. Mais le programme, pour éviter de potentielles confusions avec une application à valeurs dans un espace d'applications linéaires à valeurs dans des applications linéaires, a préféré passer par une définition par les dérivées partielles, qui rappelle le théorème fondamental sur les fonctions de classe $\mathcal{C}^1$.
+
+\begin{rmq}
+	D'après le théorème de Schwarz (\textit{cf} la suite du chapitre), si $f\in\mathcal{C}^2$, $\d^2f(a)\in\mathcal{BLS}(E,F)$.
+\end{rmq}
+
+\subsubsection*{Dérivées partielles successives}
+
+Les dérivées partielles d'une fonction $f:\Omega\to F$, lorsqu'elles existent en tout point de $\Omega$, sont des applications de $\Omega$ dans $F$. On peut donc s'intéresser à leurs dérivées partielles éventuelles.
+
+\begin{dfn}
+	Soit $(j_1,\ldots,j_k)\in\llbracket1,p\rrbracket^k$.\\
+	Lorsqu'elle existe, la fonction $\partial_{j_k}\left(\partial_{j_{k-1}}(\cdots(\partial_{j_1}f)\cdots)\right)$ est appelée \textbf{dérivée partielle de $f$ selon les indices $(j_1,\ldots,j_k)$} et est notée :
+	$$\frac{\partial^k f}{\partial x_{j_k}\dots\partial x_{j_1}},\quad \partial_{j_k}\cdots\partial_{j_1}f\quad\text{ou}\quad\partial_{j_1,\ldots,j_k}f.$$
+	On appelle \textbf{dérivée partielle d'ordre $k$} une dérivée partielle par rapport à une liste d'indices de longueur $k$.
+\end{dfn}
+
+\subsubsection*{Fonctions de classe $\mathcal{C}^k$}
+
+\begin{dfn}
+	Une application $f:\Omega\to F$ est \textbf{de classe $\mathcal{C}^k$} si toutes ses dérivées partielles d'ordre $k$ existent et sont continues sur $\Omega$.
+\end{dfn}
+
+\begin{notation}
+	$\mathcal{C}^k(\Omega,F)$ désigne l'ensemble des applications de classe $\mathcal{C}^k(\Omega,F)$.
+\end{notation}
+
+\begin{rmq}
+	\begin{itemize}
+		\item On convient que les fonctions de classe $\mathcal{C}^0$ sont les fonctions continues.
+		\item Munissons $F$ d'une base $\mathcal{B}'$. Soit $(j_1,\ldots,j_k)\in\llbracket1,p\rrbracket^k$. D'après les propriétés de la dérivation partielle, $\partial_{j_k}\cdots\partial_{j_1}f$ est définie si, et seulement si, $\partial_{j_k}\cdots\partial_{j_1}f_i$ est définie pour toute fonction coordonnée $f_i$.\\
+		De même, par le lien entre la continuité d'une fonction à valeurs dans $F$ et la continuité de ses fonctions coordonnées, une fonction $f$ est de classe $\mathcal{C}^k$ si, et seulement si, toutes ses fonctions coordonnées le sont.\\
+		Cela permet de se ramener à des fonctions réelles.
+	\end{itemize}
+\end{rmq}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Les fonctions constantes sont de classe $\mathcal{C}^k$, pour tout $k\in\N$. En effet, toutes ses dérivées partielles sont nulles.
+		\item Si $y\in\mathcal{L}(\R^p,F)$, alors $u$ est de classe $\mathcal{C}^k$, pour tout $k\in\N$.
+	\end{enumerate}
+\end{ex}
+
+Il vient de la définition et du théorème fondamental le résultat suivant.
+
+\begin{prop}%prop
+	Si $f\in\mathcal{C}^k(\Omega,F)$, alors $f$ est de classe $\mathcal{C}^i$, pour tout $i\in\llbracket0,k\rrbracket$.
+\end{prop}
+
+\begin{cor}%cor
+	Soit $k\geqslant 1$. Une application $f:\Omega\to F$ est de classe $\mathcal{C}^k$ si, et seulement si, toutes les dérivées partielles de $f$ à l'ordre $1$ existent et sont de classe $\mathcal{C}^{k-1}$.
+\end{cor}
+
+\begin{dfn}
+	Une application $f$ est \textbf{de classe $\mathcal{C}^\infty$} si elle est de classe $\mathcal{C}^k$, pour tout $k\in\N$.
+\end{dfn}
+
+\begin{notation}
+	On note $\mathcal{C}^\infty(\Omega,F)$ l'ensemble des applications de classe $\mathcal{C}^\infty$ de $\Omega$ dans $F$.
+\end{notation}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Comme pour les dérivées premières, l'existence de dérivées partielles, même à tout ordre, n'est pas un bon critère de régularité.
+		\item Contrairement à ce qui se passe pour les fonctions d'une variable, on a :
+		$$\mathcal{C}\infty(\Omega,F)=\bigcap{n\in\N}\mathcal{C}^n(\Omega,F)\quad\text{mais pas}\quad \mathcal{C}\infty(\Omega,F)=\bigcap{n\in\N}\mathcal{D}^n(\Omega,F)$$ où $\mathcal{D}^n(\Omega,F)$ est l'ensemble des fonctions admettant des dérivées partielles à l'ordre $n$.
+	\end{itemize}
+\end{rmq}
+
+Exercice Moulin.CD.23
+
+\subsubsection*{Opérations sur les fonctions de classe $\mathcal{C}^k$}
+
+Soit $k\in\N\st\cup\{+\infty\}$. Les théorèmes opératoires sur les fonctions de classe $\mathcal{C}^1$ se généralisent sans difficulté aux fonctions de classe $\mathcal{C}^k$ grâce au corollaire précédent.
+
+\begin{prop}%prop
+	Soit $f$ et $g$ deux applications de $\Omega$ dans $F$ de classe $\mathcal{C}^k$. \\
+	Pour tout $(\lambda,\mu)\in\R^2$, l'application $\lambda f+\mu g$ est alors de classe $\mathcal{C}^k$.
+\end{prop}
+
+\begin{rmq}
+	Il s'ensuit que $\mathcal{C}^k(\Omega,F)$ est un sous-espace vectoriel de $\mathcal{C}(\Omega,F)$.
+\end{rmq}
+
+\begin{prop}%prop
+	Soit $M:F_1\times\cdots\times F_q\to G$ une application $q$-linéaire, où $F_1,\ldots,F_q,G$ sont des $\R$-espaces vectoriels de dimension finie, et $f_1:\Omega\to F_1,\ldots,f_q:\Omega\to F_q$ sont des fonctions de classe $\mathcal{C}^k$. Alors, $M(f_1,\ldots,f_q)$ est de classe $\mathcal{C}^k$.
+\end{prop}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Si $f_1,\ldots,f_q:\Omega\to\R$ sont des applications de classe $\mathcal{C}^k$, alors leur produit $f_1\times\cdots\times f_q$ est de classe $\mathcal{C}^k$.
+		\item Supposons que $F$ soit un espace euclidien. Si $f:\Omega\to F$ et $g:\Omega\to F$ sont deux applications de classe $\mathcal{C}^k$, alors $\varphi=(f\mid g)$ est de classe $\mathcal{C}^k$. En particulier, $\lVert f\rVert^2$ est de classe $\mathcal{C}^k$.
+	\end{enumerate}
+\end{ex}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Ainsi, $\mathcal{C}^k(\Omega,\R)$ est une sous-algèbre de $\mathcal{C}(\Omega,\R)$.
+		\item Plus généralement, si $F$ est une algèbre, alors $\mathcal{C}^k(\Omega,F)$ est une algèbre.
+		\item En particulier, en considérant $\C$ comme une $\R$-algèbre, $\mathcal{C}^k(\Omega,\C)$ est une $\R$-algèbre.
+	\end{itemize}
+\end{rmq}
+
+\begin{prop}%prop
+	Les applications polynomiales sur $\R^p$ sont de classe $\mathcal{C}^\infty$.
+\end{prop}
+\begin{proof}
+	C'est une conséquence du fait que les dérivées partielles d'une application polynomiale sont elles-mêmes polynomiales, et que toute application polynomiale est continue.
+\end{proof}
+
+\begin{ex}
+	Les applications $M\mapsto\det(M)$ et $M\mapsto M^k$ ($k\in\N$) définies sur $\mathcal{M}_n(\R)$ (que l'on identifie à $\R^{n^2}$ au moyen de sa base canonique) sont de classe $\mathcal{C}^\infty$.
+\end{ex}
+
+\begin{prop}%prop
+	Soit $\Omega'$ un ouvert de $\R^n$, $f:\Omega\to\R^n$ et $g:\Omega'\to G$ deux applications de classe $\mathcal{C}^k$ telles que $f(\Omega)\subset\Omega'$. Alors l'application $g\circ f$ est de classe $\mathcal{C}^k$.
+\end{prop}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Si $f:\Omega\to\R$ est de classe $\mathcal{C}^k$ et ne s'annule pas, la fonction $1/f$ est de classe $\mathcal{C}^k$. Il suffit, pour le voir, décrire $1/f=g\circ f$, où $g:\R\st\to\R$ est définie par $g(t)=1/t$.
+		\item Toute fonction rationnelle sur $\R^p$ est de classe $\mathcal{C}^\infty$ sur tout ouvert où elle est définie.
+		\item L'application définie sur $\mathcal{GL}_n(\R)$ par $f(M)=M\inv$ est de classe $\mathcal{C}^\infty$.
+	\end{enumerate}
+\end{ex}
+
+\subsection{Théorème de Schwarz}
+
+\begin{lem}%lem
+	Soit $f:\Omega\to F$ une fonction de classe $\mathcal{C}^2$. On a alors : 
+	$$\forall (u,v)\in E^2,\ \D_u\D_vf=\D_v\D_uf.$$
+\end{lem}
+\begin{proof}
+	On montre :
+	$$f(a+u+v)-f(a+u)-f(a+v)+f(a)=\int_{0}^{1}\left(\int_{0}^{1}\D_v\D_uf(a+su+tv)\d t\right)\d s.$$
+\end{proof}
+
+"Vous pouvez applaudir. [Applaudissements] Je ne sais pas comment j'ai fait, je n'y arrive jamais d'habitude, ça me torture trop les méninges."
+
+\begin{thm}[Théorème de Schwarz]%thm
+	Soit $f:\Omega\to F$ une fonction de classe $\mathcal{C}^2$. On a alors :
+	$$\forall (i,j)\in\llbracket1,p\rrbracket^2,\ \frac{\partial^2f}{\partial x_i\partial x_j}=\frac{\partial^2f}{\partial x_j\partial x_i}.$$
+\end{thm}
+
+\begin{notation}
+	Le résultat précédent se généralise sans problème à des fonctions de classe $\mathcal{C}^k$ : on peut calculer les dérivées partielles d'ordre $k$ sans se préoccuper de l'ordre dans lequel on effectue les dérivations.\\
+	Cela permet de les écrire sous la forme $\displaystyle\frac{\partial^k f}{\partial x_A^{\alpha_1}\cdots\partial x_p^{\alpha_p}}$, où $\alpha_1+\cdots+\alpha_p=k$. 
+\end{notation}
+
+\begin{exo}
+	On suppose $E$ de dimension $p$.
+	\begin{enumerate}
+		\item Combien y a-t-il de dérivées partielles d'ordre $k$ ? %p^k
+		\item Combien suffit-il d'en considérer lorsque la fonction est de classe $\mathcal{C}^k$ ? %k parmi p+k-1
+	\end{enumerate}
+\end{exo}
+
+\begin{ex}
+	Soit $\begin{array}{lrcl}
+		\Phi:&\R^2&\longrightarrow&\R\\
+		(u,v)&\longmapsto&(u+v,uv)
+	\end{array}$. L'application $\Phi$, dont les fonctions coordonnées sont polynomiales sur l'ouvert $\R^2$, est de classe $\mathcal{C}^\infty$. Pour tout $f\in\mathcal{C}^2(\R^2,\R)$, l'application définie sur $\R^2$ par $g(u,v)=f(u+v,uv)$ est de classe $\mathcal{C}^1$ et pour tout $(u,v)\in\R^2$, on a :
+	$$\frac{\partial g}{\partial u}(u,v)=\frac{\partial f}{\partial x}(u+v,uv)+v\frac{\partial f}{\partial y}(u+v,uv)$$
+	$$\frac{\partial g}{\partial v}(u,v)=\frac{\partial f}{\partial x}(u+v,uv)+u\frac{\partial f}{\partial y}(u+v,uv)$$
+	Si l'on suppose $f$ de classe $\mathcal{C}^2$, on a :
+	$$\frac{\partial^2 g}{\partial u\partial v}(u,v)=\frac{\partial^2 f}{\partial x^2}+(u+v)\frac{\partial^2}{\partial x\partial y}+uv\frac{\partial^2f}{\partial y^2}+\frac{\partial f}{\partial y}.$$
+\end{ex}
+
+\begin{attention}
+	Sans l'hypothèse $\mathcal{C}^2$, les dérivées partielles "croisées" peuvent exister mais ne pas être égales.
+\end{attention}
+
+\begin{exo}
+	Soit $f$ l'application définie sur $\R^2$ par $f(0,0)=0$ et :
+	$$\forall (x,y)\in\R^2\setminus\{(0,0)\},\ f(x,y)=xy\frac{x^2-y^2}{x^2+y^2}.$$
+	\begin{enumerate}
+		\item Démontrer que $f$ est de classe $\mathcal{C}^1$.
+		\item Montrer l'existence et calculer $\displaystyle\frac{\partial^2f}{\partial x\partial y}(0,0)$ et $\displaystyle\frac{\partial^2f}{\partial y\partial x}(0,0)$.
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[Formule de Leibniz]
+	On considère l'opérateur de dérivation $D:\mathcal{C}^\infty(\R,\R)\to\mathcal{C}^\infty(\R,\R)$ et les deux opérateurs de dérivation partielle $\partial_x,\partial_y:\mathcal{C}^\infty(\R^2,\R)$. Soit 
+	$$\begin{array}{lrcl}
+		\Delta:&\mathcal{C}^\infty(\R^2,\R)&\longrightarrow&\mathcal{C}^\infty(\R,\R)\\
+		&F&\longmapsto&(t\mapsto F(t,t)).
+	\end{array}$$
+	\begin{enumerate}
+		\item Montrer que $D^n\circ\Delta=\Delta\circ(\partial_x+\partial_y)^n$ pour tout $n\in\N$.
+		\item En déduire la formule de Leibniz pour les fonctions $\mathcal{C}^\infty$ de $\R$ dans $\R$.
+	\end{enumerate}
+\end{exo}
+
+\subsubsection*{Champs vecteurs dérivant d'un potentiel (HP)}
+
+Soit $E$ un espace vectoriel euclidien.
+
+Un \textbf{champ de vecteurs} sur un ouvert $\Omega$ de $E$ est une application de $\Omega$ dans $E$. Le gradient d'une fonction différentiable sur $\Omega$ à valeurs réelles est un exemple de champ de vecteurs.
+
+On dit qu'un champ de vecteurs $\overrightarrow{V}$ sur $\Omega$ \textbf{dérive d'un potentiel} s'il existe une fonction $f$ différentiable de $\Omega$ dans $\R$ telle que $\overrightarrow{V}=\nabla f$. La fonction $f$ est alors appelée \textbf{potentiel} de $\overrightarrow{V}$.
+
+Dans le cas où $\overrightarrow{V}$ de classe $\mathcal{C}^1$ dérive d'un potentiel, on a, en notant $(V_1,\ldots,V_p)$ les composantes de $\overrightarrow{V}$ dans une base orthonormée de $E$ :
+$$\forall (i,j)\in\llbracket1,p\rrbracket^2,\ \frac{\partial V_i}{\partial x_j}=\frac{\partial V_j}{\partial x_i}.$$
+
+\begin{rmq}
+	Cette dernière condition revient à dire que $\d V(a)$ est un endomorphisme symétrique pour tout $a\in\Omega$.
+\end{rmq}
+
+\begin{exo}
+	Le champ de vecteurs $(x,y)\mapsto (xy^2,-xy)$ dérive-t-il d'un potentiel ?
+\end{exo}
+
+\begin{rmq}
+	La réciproque de la remarque précédente est vraie lorsque $\Omega$ est un ouvert étoilé (ou plus généralement un ouvert simplement connexe) : un champ de vecteurs sur un ouvert étoilé de classe $\mathcal{C}^1$ dont la différentielle est symétrique en tout point dérive d'un potentiel. C'est le \textbf{théorème de Poincaré} : voir l'exercice Moulin.CD.31 pour la démonstration.
+\end{rmq}
+
+\begin{exo}
+	Déterminer un potentiel pour le champ de vecteurs $(x,y)\mapsto (2xy+x^2+y)$.
+\end{exo}
+
+"N'importe quelle canne à pêche permet d'attraper un tel poisson." [À propos de l'exercice qui précède...]
+
+\subsubsection*{Montrer qu'une fonction est de classe $\mathcal{C}^k$}
+
+\begin{met}
+	Pour montrer qu'une fonction est de classe $\mathcal{C}^k$, on essaie tout d'abord d'utiliser les théorème généraux ou de s'y ramener.
+\end{met}
+
+Exercice Moulin.CD.24
+
+Exercice Moulin.CD.25
+
+\begin{met}
+	Dans les cas plus compliqués, pour montrer que $f$ est de classe $\mathcal{C}^\infty$, on trouve une classe $\mathcal{S}$ de fonctions telle que :
+	\begin{itemize}
+		\item $f\in \mathcal{S}$ ;
+		\item tout élément de $\mathcal{S}$ est élément continu ;
+		\item $\mathcal{S}$ est stable par dérivation partielle.
+	\end{itemize}
+\end{met}
+
+\begin{ex}
+	Soit $(c_n)_{n\in\Z}$ une suite bornée. La fonction $f$ définie sur $\R_+\st\times\R$ par :
+	$$f(x,y)=\sum_{n\in\Z}c_ne^{-\lvert n\rvert x+iny}$$ est de classe $\mathcal{C}^\infty$.
+\end{ex}
+
+\subsection{Hessienne - Formule de Taylor-Young à l'ordre $2$}
+
+Dans cette section, $E=\R^p$ et il est muni de sa structure euclidienne canonique. Les fonctions considérées sont à valeurs réelles.
+
+\subsubsection*{Hessienne}
+
+\begin{dfn}
+	Soit $f:\Omega\to\R$ une fonction de classe $\mathcal{C}^2$ et $a\in\Omega$.\\
+	La \textbf{matrice hessienne} de $f$ en $a$, notée $H_f(a)$, est :
+	$$H_f(a)=\left(\frac{\partial^2f}{\partial x_j\partial x_i}(a)\right)\in\mathcal{M}_p(\R).$$
+\end{dfn}
+
+\begin{rmq}
+	\begin{itemize}
+		\item D'après le théorème de Schwarz, la matrice hessienne de $f$ en $a$ est symétrique.
+		\item On a $H_f(a)=J_{\nabla f}(a)$.
+	\end{itemize}
+\end{rmq}
+
+\begin{ex}
+	\begin{itemize}
+		\item Soit $A\in\mathcal{M}_p(\R)$ et $f$ l'application définie sur $\R^p$ par $f(x)=x^TAx$. Cette application est polynomiale sur $\R^p$, donc de classe $\mathcal{C}^2$. On a $H_f(x)=A+A^T$.
+		\item Soit $f:\Omega\to\R$ une fonction de classe $\mathcal{C}^2$ et $h\in\R^p$ tel que $[a,a+h]\subset\Omega$. \\
+		On pose alors les fonctions $\gamma:t\mapsto a+th$ et $g=f\circ\gamma$ définies sur $[0,1]$. Puisque $\gamma'=h$, la dérivation le long d'un arc donne pour tout $t\in[0,1]$ :
+		\begin{align*}
+			g'(t)&=\sum_{j=1}^{p}h_j\frac{\partial f}{\partial x_j}(a+th)=(\nabla f(a+th)\mid h)\\[2mm]
+			g''(t)&=\sum_{1\leqslant i,j\leqslant p}h_jh_i\frac{\partial^2 f}{\partial x_i\partial x_j}(a+th)=h^T H_f(a+th)h.
+		\end{align*}
+	\end{itemize}
+\end{ex}
+
+\subsubsection*{Développement limité à l'ordre $2$}
+
+\begin{thm}[Formule de Taylor-Young à l'ordre $2$]%thm
+	Soit $f:\Omega\to\R$ une fonction de classe $\mathcal{C}^2$ et $a\in\Omega$. On a alors au voisinage de $0$ :
+	$$f(a+h)=f(a)+\d f(a)\cdot h+\frac{1}{2}h^T H_f(a)h+\o(\lVert h\rVert^2).$$
+\end{thm}
+
+\begin{rmq}
+	On peut aussi écrire le développement limité à l'ordre $2$ sous la forme :
+	$$f(a+h)=f(a)+(\nabla f(a)\mid h)+\frac{1}{2}(H_f(a)h\mid h)+\o(\lVert h\rVert^2).$$
+\end{rmq}
+
+\subsection{Exemples d'équations aux dérivées partielles}
+
+Commençons par deux exemples importants.
+
+\begin{ex}
+	\begin{enumerate}
+		\item Montrons que les fonctions de classe $\mathcal{C}^1$ sur $\R^p$ et à valeurs dans $F$ vérifiant $\partial_pf=0$ sont les fonctions pour lesquelles il existe $g\in\mathcal{C}^1(\R^{p-1},F)$ telle que :
+		$$\forall (x_1,\ldots,x_p)\in\R^p,\ f(x_1,\ldots,x_p)=g(x_1,\ldots,x_{p-1}).$$
+		\item Les fonctions $f$ définies sur $\R^2$ de classe $\mathcal{C}^2$ vérifiant :
+		$$\frac{\partial^2f}{\partial x\partial y}=0$$ sont les fonctions pour lesquelles il existe deux fonctions $\Phi$ et $\Psi$ de classe $\mathcal{C}^2$ définies sur $\R$ telles que :
+		$$\forall(x,y)\in\R^2,\ f(x,y)=\Phi(x)+\Psi(y).$$
+	\end{enumerate}
+\end{ex}
+
+Dans des exemples un peu plus compliqués, pour déterminer les fonctions $f:\Omega\to F$ qui sont solution d'une équation aux dérivées partielles, on est souvent amené à faire un changement de variable, c'est-à-dire introduire $\Phi:\Omega'\to\Omega$ de classe $\mathcal{C}^k$ et poser $g=f\circ\Phi$. La fonction $G$ est également solution d'une équation aux dérivées partielles, qui dans certains cas est plus simple que l'équation initiale et peut être résolue.
+
+\begin{ex}
+	\begin{enumerate}
+		\item Par un changement de variable linéaire, nous allons résoudre sur $\R^2$ l'équation aux dérivées partielles :
+		$$a\frac{\partial f}{\partial x}+b\frac{\partial f}{\partial y}=0\quad\text{où}\quad(a,b)\ne(0,0).$$
+		\item Résolvons, sur $\Omega=\R_+\st\times\R$ l'équation :
+		$$\forall (x,y)\in\Omega,\ x\frac{\partial f}{\partial x}(x,y)-y\frac{\partial f}{\partial y}(x,y)=0$$ à l'aide du changement de variables $(x,y)=(u,v/u)$.
+		\item Soit $c\in\R_+\st$. Déterminons les $f\in\mathcal{C}^2(\R^2,\R)$ vérifiant :
+		$$\frac{\partial^2f}{\partial x^2}=\frac{1}{c^2}\frac{\partial^f}{\partial t^2}.$$ Il s'agit d'un cas particulier (unidimensionnel) d'équations de propagation, dites aussi \textbf{équations des ondes}.
+		\begin{itemize}
+			\item Soit $f\in\mathcal{C}^2(\R^2,\R)$. On pose un changement de variable linéaire :
+			$$\begin{array}{lrcl}
+				\varphi:&\R^2&\longrightarrow&\R\\
+				&(u,v)&\longmapsto&(\alpha u+\beta v,\gamma u+\delta v)
+			\end{array}\quad\text{et}\quad g(u,v)=f(\alpha u+\beta v,\gamma u+\delta v),$$ avec $(\alpha,\beta\gamma,\delta)\in\R^4$ et $\alpha\delta-\beta\gamma\ne0$. Cette dernière condition s'impose du fait que l'on souhaite que $\varphi$ soit bijective.
+			\item Puisque $\varphi$ est de classe $\mathcal{C}^1$, par la règle de la chaîne, $g$ est de classe $\mathcal{C}^1$ et :
+			$$\frac{\partial g}{\partial u}=\alpha\frac{\partial f}{\partial x}+\beta\frac{\partial f}{\partial t}\quad\text{et}\quad\frac{\partial g}{\partial v}=\gamma\frac{\partial f}{\partial x}+\delta\frac{\partial f}{\partial t}.$$
+			En itérant, cette formule étant valable pour toute fonction $f$ de classe $\mathcal{C}^1$ et $g=f\circ\varphi$, il vient :
+			\begin{align*}
+				\frac{\partial^2g}{\partial u\partial v}&=\alpha\frac{\partial}{\partial x}\left(\beta\frac{\partial f}{\partial x}+\delta\frac{\partial f}{\partial t}\right)+\gamma\frac{\partial t}{\partial t}\left(\beta\frac{\partial f}{\partial x}+\delta\frac{\partial f}{\partial t}\right)\\[2mm]
+				&=\alpha\beta\frac{\partial^2f}{\partial x^2}+(\alpha\delta+\beta\gamma)\frac{\partial ^2}{\partial f\partial t}+\gamma\delta\frac{\partial^2f}{\partial t^2}
+			\end{align*} où la dernière relation a été obtenue par le théorème de Schwarz. En prenant $\alpha=\beta=c$ et $\delta=-\gamma=-1$, on a $\alpha\delta-\beta\gamma=2c\ne0$ et ainsi :
+			$$\frac{\partial^2g}{\partial x\partial t}=c^2\frac{\partial^2f}{\partial x^2}-\frac{\partial f^2}{\partial t^2}.$$
+			\item Par changement de variable :
+			$$(x,t)=(cu+cv,-u+v)\quad\text{c'est-à-dire}\quad(u,v)=\frac{1}{2c}(x-ct,x+ct),$$ l'équation de D'Alembert unidimensionnelle est équivalente à l'équation :
+			$$\frac{\partial^2g}{\partial u\partial v}=0.$$
+			D'après un exemple précédent, on sait que les solutions de cette deuxième équation sont les fonctions $g$ somme d'une fonction de $u$ et d'une fonction de $v$. \\
+			Par conséquent, $f$ est solution de l'équation de D'Alembert unidimensionnelle si, et seulement s'il existe $(\Phi,\Psi)\in\mathcal{C}^2(\R^2,\R)^2$ tel que :
+			$$\forall (x,t)\in\R^2,\ f(x,t)=\Phi(x-ct)+\Psi(x+ct).$$
+		\end{itemize}
+	\end{enumerate}
+\end{ex}
+
+\section{Optimisation}
+
+Dans cette section, les fonctions sont définies sur une partie $A$ de $E$ (non nécessairement ouverte) et à valeurs dans $\R$. Par extension, lorsque $a\in\mathring{A}$, on dit que $f:A\to\R$ est différentiable en $a$ si sa restriction à l'intérieur de $A$ est différentiable en $a$. Dans ces conditions, $\d f(a)$ désigne naturellement la différentielle en $a$ de cette restriction.
+
+\subsection{\textit{Extrema}}
+
+Rappelons que si $A$ est une partie non vide de $E$ et $f:A\to\R$ une fonction, alors :
+\begin{itemize}
+	\item $f$ admet un \textit{maximum} (global) en $a$ si $f(x)\leqslant f(a)$ pour tout $x\in A$ ;
+	\item $f$ admet un \textit{minimum} (global) en $a$ si $f(x)\geqslant f(a)$ pour tout $x\in A$ ;
+	\item $f$ admet un \textit{extremum} (global) en $a$ si elle y admet un \textit{maximum} ou un \textit{minimum}.
+\end{itemize}
+
+\begin{dfn}
+	Soit $A$ une partie non vide de $E$ et $x\in A$. Une application $f:A\to\R$ admet :
+	\begin{itemize}
+		\item un \textbf{\textit{maximum} local} en $a$ s'il existe un voisinage $W$ de $a$ tel que :
+		$$\forall x\in W\cap A,\ f(x)\leqslant f(a),$$
+		\item un \textbf{\textit{minimum} local} en $a$ s'il existe un voisinage $W$ de $a$ tel que :
+		$$\forall x\in W\cap A,\ f(x)\geqslant f(a),$$
+		\item un \textbf{\textit{extremum} local} en $a$ si elle admet un \textit{maximum} ou un \textit{minimum} local en $a$.
+	\end{itemize}
+	En cas d'inégalité stricte pour $x\in W\cap A\setminus\{a\}$, on parle alors de \textbf{\textit{maximum} local strict}, de \textbf{\textit{minimum} local strict} et d'\textbf{\textit{extremum} local strict}.
+\end{dfn}
+
+\begin{rmq}
+	Si $f$ admet un \textit{extremum} (global) en $a$, alors elle admet un \textit{extremum} local. Ainsi, couramment, lorsqu'on cherche les \textit{extrema} globaux, on commence par chercher les \textit{extrema} locaux.
+\end{rmq}
+
+\subsubsection*{Recherche d'\textit{extrema}}
+
+\begin{met}
+	Pour démontrer qu'une fonction $f:A\to\R$ admet un \textit{extremum} en $a$, on peut étudier le signe de $g:h\mapsto f(a+h)-f(a)$.
+	\begin{itemize}
+		\item Si $g$ est de signe fixe au voisinage de $0$, alors $f$ admet un \textit{extremum} local en $a$.
+		\item Si $g$ est de signe fixe sur tout son domaine de définition, alors $f$ admet un \textit{extremum} global en $a$.
+	\end{itemize}
+\end{met}
+
+\begin{ex}
+	La fonction définie sur $\R^2$ par $f:(x,y)\mapsto x^4+y^2-x^5-x^4y^5$ admet un \textit{minimum} local en $(0,0)$. En effet, pour tout $(x,y)\in\R^2$ :
+	$$f(x,y)=x^4(1-x-y^5)+y^2.$$
+	L'ensemble $W=\{(x,y)\in\R^2\ :\ 1-x-y^5>0\}$ est un ouvert (c'est l'image réciproque de $\R_+\st$ par l'application continue $(x,y)\mapsto1-x-y^5$), contenant $(0,0)$. \\
+	Sur ce voisinage $W$ de $(0,0)$, on a $f(x,y)\geqslant0$. Par conséquent, $f$ admet un minimum local en $(0,0)$. De plus, $f(x,y)>0$ pour $(x,y)\in W\setminus\{(0,0)\}$, ce qui implique que $f$ admet un \textit{minimum} local strict en $(0,0)$.\\
+	Mais il ne s'agit pas d'un \textit{minimum} global, car $f(x,0)=x^4-x^5<0=f(0,0)$ lorsque $x>1$.
+\end{ex}
+
+\begin{met}
+	En reprenant les notations du point méthode précédent, si l'on montre que, sur tout voisinage de $0$, la fonction $g$ prend des valeurs strictement positives et des valeurs strictement négatives, alors $f$ n'admet pas d'\textit{extremum} local en $a$.\\
+	En pratique, cela pourra se faire en étudiant le signe de $t\mapsto g(th)$ pour des vecteurs $h$ bien choisis.
+\end{met}
+
+\begin{ex}
+	Considérons la fonction $f:(x,y)\mapsto 1+x^2+2xy-x^3+xy^3$ définie sur $\R^2$. Cette fonction n'admet pas d'\textit{extremum} local en $(0,0)$.
+\end{ex}
+
+\begin{attention}
+	Il se peut qu'une fonction admette en un point un minimum local dans toutes les directions, c'est-à-dire, avec les notations précédentes, que la fonction $t\mapsto g(th)$ admette un minimum local pour tout vecteur $h$, sans pour autant que la fonction admette un minimum local en ce point.
+\end{attention}
+
+\begin{exo}
+	Soit $\begin{array}{lrcl}
+		f:&\R^2&\longrightarrow&\R\\
+		&(x,y)&\longmapsto&y^2(y^2-x^4)
+	\end{array}$.
+	\begin{enumerate}
+		\item Visualiser sur un dessin les trois domaines de $\R^2$ où la fonction $f$ est nulle, où elle prend des valeurs strictement positives, et où elle prend des valeurs strictement négatives.
+		\item Justifier alors rigoureusement ce que la question précédente permet d'intuiter :
+		\begin{itemize}
+			\item pour tout $u\in\R^2$, la fonction $\varphi:t\mapsto f(tu)$ admet un \textit{minimum} local en $0$ ;
+			\item pourtant, la fonction $f$ ne présente pas de \textit{minimum} local en $0$.
+		\end{itemize}
+	\end{enumerate}
+\end{exo}
+
+\subsection{Conditions nécessaires d'\textit{extrema}}
+
+\subsubsection*{Condition nécessaire d'ordre $1$}
+
+\begin{prop}%prop
+	Soit $A\subset E$ non vide et $f:A\to\R$. Si $f$ admet un \textit{extremum} local en $a\in\mathring{A}$ et si $f$ est différentiable en $a$, alors $\d f(a)=0$.
+\end{prop}
+\begin{proof}
+	Remarquer que si $f$ admet un extremum local en $a$, alors pour tout $h\in E$, la fonction réelle de la variable réelle $t\mapsto f(a+th)$ est définie au voisinage de $0$ et admet un \textit{extremum} local en $0$.
+\end{proof}
+
+\begin{dfn}
+	Soit $f:A\to\R$ une fonction et $a\in A$. Le point $a$ est un \textbf{point critique} de $f$ si $a$ est dans l'intérieur de $A$ et si la fonction $f$ est différentiable en $a$ avec $\d f(a)=0$.
+\end{dfn}
+
+\begin{rmq}
+	Si $E$ est un espace euclidien, alors $a\in A$ est un point critique si $a\in\mathring{A}$ et $\nabla f(a)=0$. 
+\end{rmq}
+
+\begin{attention}
+	Une fonction n'admet pas nécessairement d'\textit{extremum} en un point critique, comme il a déjà été remarqué dans le cas $p=1$ ou comme c'est le cas dans l'exemple précédent.
+\end{attention}
+
+\begin{met}
+	Les \textit{extrema} locaux de $f:\to\R$ sont à chercher parmi :
+	\begin{itemize}
+		\item les points critiques de $f$ ;
+		\item les points de $\mathring{A}$ où $f$ n'est pas différentiable ;
+		\item les points de $A\setminus\mathring{A}$.
+	\end{itemize}
+\end{met}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Déterminons les \textit{extrema} sur $\R^2$ de $f:(x,y)\mapsto 3x+x^2+xy+y^2$.
+		\item Étudions les \textit{extrema} de $f:(x,y)\mapsto x^2+2xy-3y^2$ sur le disque unité fermé :
+		$$D=\{(x,y)\in\R^2\ :\ x^2+y^2\leqslant 1\}.$$
+	\end{enumerate}
+\end{ex}
+
+\subsubsection*{Condition nécessaire d'ordre $2$}
+
+On suppose dans cette section que $E=\R^p$ et que $f$ est de classe $\mathcal{C}^2$ sur un ouvert $\Omega$ de $E$ (on peut prendre $\Omega=\mathring{A}$ si $f$ est définie sur une partie de $A$ non ouvert et d'intérieur non vide).\\
+Soit $a\in\Omega$. La matrice $H_f(a)$ étant symétrique réelle, elle est diagonalisable.
+
+\begin{rappel}
+	La matrice $H_f(a)$ est positive (respectivement définie positive) si l'une des deux propriétés équivalentes suivantes est vérifiée :
+	\begin{enumerate}[label=(\roman*)]
+		\item les valeurs propres de $H_f(a)$ sont positives (respectivement strictement positives) ;
+		\item $\forall x\in E,\ x^TH_f(a)x\geqslant$ (respectivement $\forall x\in E\setminus\{0\},\ x^TH_f(a)x>0$).
+	\end{enumerate}
+\end{rappel}
+
+\begin{terminologie}
+	Dans la suite, on dira que $H_f(a)$ est négative (respectivement définie négative) si $-H_f(a)$ est positive (respectivement définie positive).
+\end{terminologie}
+
+\begin{prop}%prop
+	Soit $f:\Omega\to\R$ de classe $\mathcal{C}^2$. Si $f$ admet un e\textit{extremum} local en $a\in\Omega$, alors $a$ est un point critique et la matrice hessienne $H_f(a)$ est :
+	\begin{itemize}
+		\item positive dans le cas d'un \textit{minimum} ;
+		\item négative dans le cas d'un \textit{maximum}.
+	\end{itemize}
+\end{prop}
+\begin{proof}
+	Utiliser les dérivées dans toutes les directions.
+\end{proof}
+
+\begin{ex}
+	Considérons la fonction $f$ définie sur $\R^2$ par $f:(x,y)\mapsto x^3+x^2+y^3-xy$. \\
+	La fonction $f$ est de classe $\mathcal{C}^2$ car polynomiale sur l'ouvert $\R^2$ et pour tout $(x,y)\in\R^2$, on a :
+	$$\nabla f(x,y)=(3x^2+2x-y, 3y^2-x).$$
+	On en déduit que $(0,0)$ est un point critique de $f$. Un calcul simple donne :
+	$$H_f(0,0)=\begin{pmatrix}
+		2&-1\\
+		-1&0
+	\end{pmatrix}.$$
+	Comme $\det H_f(0,0)=-1<0$, les deux valeurs propres de $H_f(0,0)$ sont non nulles et de signes opposés, donc la fonction $f$ n'admet pas d'\textit{extremum} en $(0,0)$.
+\end{ex}
+
+\subsection{Utilisation de la compacité}
+
+Lorsqu'on cherche les \textit{extrema} d'une fonction continue sur un compact non vide, les raisonnements sont souvent facilités par le fait que l'on sait \textit{a priori} qu'il y a un maximum et un minimum. Le deuxième exemple sur les conditions nécessaires d'ordre $1$ en donne déjà un exemple.
+
+\begin{ex}
+	Déterminons les \textit{extrema} de :
+	$$\begin{array}{lrcl}
+		f:&\Delta&\longrightarrow&\R\\
+		&(x,y)&\longmapsto&xy(1-x-y),
+	\end{array}$$ où $\Delta=\{(x,y)\in\R^2\ :\ x\geqslant0,\ y\geqslant0\ \text{et}\ x+y\leqslant 1\}$.
+\end{ex}
+
+Comme le montre l'exemple suivant, un argument de compacité peut parfois être utile pour établir l'existence d'\textit{extrema}, même lorsque la fonction n'est pas définie sur un compact.
+
+\begin{ex}
+	Étude de la fonction $f:(x,y)\mapsto x^4-4xy+y^4$ définie sur $\R^2$.
+\end{ex}
+
+\subsection{Condition suffisante d'\textit{extremum}}
+
+On suppose dans cette section que $E=\R^p$ et que $f$ est de classe $\mathcal{C}^2$ sur un ouvert $\Omega$ de $E$ (on peut prendre $\Omega=\mathring{A}$ si $f$ est définie sur une partie $A$ non ouvert et d'intérieur non vide).
+
+\begin{prop}%prop
+	Soit $f:\Omega\to\R$ une fonction de classe $\mathcal{C}^2$. Si $a\in\Omega$ est un point critique de $f$ et si $H_f(a)$ est définie positive, alors $f$ admet un \textit{minimum} local strict en $a$.
+\end{prop}
+\begin{proof}
+	Utiliser le fait que $(h,k)\mapsto h^T H_f(a)k$ définit un produit scalaire sur $\R^n$ et la formule de Taylor-Young à l'ordre $2$.
+\end{proof}
+
+\begin{rmq}
+	De même, si $a$ est un point critique tel que $H_f(a)$ soit définie négative, alors $f$ admet un \textit{maximum} local en $a$.
+\end{rmq}
+
+Dans le cas $n=2$, on dispose d'un critère simple pour déterminer si une matrice symétrique réelle est définie positive puisque son déterminant est le produit des valeurs propres et sa trace leur somme.
+
+\begin{met}
+	Soit $f:\Omega\to\R$ une fonction de classe $\mathcal{C}^2$, où $\Omega$ est un ouvert de $\R^2$ et $a$ un point critique de $f$, ainsi que $H_f(a)$ sa matrice hessienne en $a$.
+	\begin{itemize}
+		\item Si $\det(H_f(a))>0$ et $\Tr(H_f(a))>0$, alors $f$ admet un minimum local strict en $a$.
+		\item Si $\det(H_f(a))>0$ et $\Tr(H_f(a))><0$, alors $f$ admet un maximum local strict en $a$.
+		\item Si $\det(H_f(a))<0$, alors $f$ n'admet pas d'\textit{extremum} local strict en $a$.
+	\end{itemize}
+\end{met}
+
+\begin{attention}
+	Dans le cas où $\det(H_f(a))=0$, on ne peut rien conclure sans une étude approfondie.
+\end{attention}
+
+\begin{ex}
+	Étude en $(0,0)$ de la fonction $f:(x,y)\mapsto xy^2+x^2+xy+y^2$ définie sur $\R^2$.
+\end{ex}
+%termes de degré $1$ donnent l'extremum
+%partie quadratique définie positive
+
+\subsection{Optimisation sous contrainte}
+
+Lorsque l'on cherche les \textit{extrema} d'une fonction sur une partie $X$, l'étude des points critiques et éventuellement de la hessienne ne peut se faire qu'en un point intérieur à $X$. Lorsque $X$ est d'intérieur vide, aucun des résultats précédents ne peut donc s'appliquer. C'est le cas, par exemple, si l'on veut trouver les \textit{extrema} d'une fonction $f$ sur la sphère unité de $\R^2$. On dit alors que l'on cherche à optimiser $f$ sous la contrainte $x^2+y^2+z^2=1$.
+
+On considère ici un ouvert $\Omega$ de $E$, $f$ une fonction de classe $\mathcal{C}^1$ de $\Omega$ dans $\R$ et $X$ une partie de $\Omega$.
+
+\begin{prop}%prop
+	Si la restriction de $f$ à $X$ admet un \textit{extremum} local en $a\in X$, alors $T_aX\subset\ker(\d f(a))$.
+\end{prop}
+\begin{proof}
+	Dériver $f\circ\gamma$, lorsque $\gamma$ est un arc tracé sur $X$.
+\end{proof}
+
+\begin{rmq}
+	Lorsque $a$ est intérieur à $X$, on sait que $T_aX=E$, donc on retrouve que si $f$ admet un \textit{extremum} en $a$, alors $\d f(a)=0$.
+\end{rmq}
+
+\begin{thm}[Optimisation sous contrainte]%thm
+	Soit $f,g:\Omega\to\R$ deux fonctions de classe $\mathcal{C}^1$. On pose $X=\{x\in\Omega\ :\ g(x)=0\}$.\\
+	Si $f_{\mid X}$ admet un \textit{extremum} local en un point $a\in X$ et si $\d g(a)\ne 0$, alors $\d f(a)$ est colinéaire à $\d g(a)$, c'est-à-dire qu'il existe $\lambda\in\R$ tel que $\d f(a)=\lambda\d g(a)$.
+\end{thm}
+\begin{proof}
+	On applique la proposition précédente et remarquant que $\ker(\d g(a))=T_aX$, ce qui donne $\ker(\d g(a))\subset\ker(\d f(a))$, avec $\d f(a)$ et $\d g(a)$ deux formes linéaires.
+\end{proof}
+
+\begin{rmq}
+	Si de plus $E$ est euclidien, la conclusion du résultat précédente peut se reformuler en la colinéarité de $\nabla f(a)$ et $\nabla g(a)$, c'est-à-dire, puisque $\nabla g(a)\ne 0$, en l'existence d'un réel $\lambda$ tel que $\nabla f(a)=\lambda\nabla g(a)$.
+\end{rmq}
+
+\begin{ex}
+	\begin{enumerate}
+		\item Reprenons un exemple précédent. Pour trouver les \textit{extrema} de $f:(x,y)\mapsto x^2+2xy-3y^2$ sur le disque unité, on a eu besoin de trouver les \textit{extrema} sur le bord, c'est-à-dire le cercle d'équation $x^2+y^2=1$.
+		\item Soit $n\geqslant 2$, ainsi que $s>0$ et $A=\displaystyle\left\{x\in\R_+^n\ :\sum_{i=1}^{n}x_i=s\right\}$. Déterminons les \textit{extrema} de la restriction à $A$ de $$\begin{array}{lrcl}
+			f:&\R^n&\longrightarrow&\R\\
+			&(x_1,\ldots,x_n)&\longmapsto&\displaystyle\prod_{i=1}^{n}x_i
+		\end{array}.$$
+	\end{enumerate}
+\end{ex}
+
+Exercice Moulin.CD.52
+
+\end{document}

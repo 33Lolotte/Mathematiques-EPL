@@ -1,0 +1,1183 @@
+\documentclass[french]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+\usepackage{indentfirst}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L,R]{}
+\fancyfoot[R]{\thepage \ /\ \pageref{LastPage}}
+
+\fancypagestyle{plain}{\fancyhead{}\renewcommand{\headrule}{}}
+
+\setlength{\parindent}{0pt}
+
+\setlist[itemize]{label=$\bullet$}
+\setlist{before=\leavevmode, leftmargin=*}
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Vect}{\text{Vect}}
+\newcommand{\rg}{\text{rg}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
+
+
+\theoremstyle{plain}
+\newtheorem*{ind}{Indication}
+
+\theoremstyle{definition}
+
+\newtheorem*{ex}{Exemple}
+\newtheorem*{rmq}{Remarque}
+\newtheorem*{notation}{Notation}
+\newtheorem*{rappel}{Rappel}
+\newtheorem*{terminologie}{Terminologie}
+\newtheorem*{attention}{Attention}
+\newtheorem*{conséquence}{Conséquence}
+
+\theoremstyle{remark}
+\newtheorem*{app}{Application}
+
+\newtcolorbox[auto counter]{dfn}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Définition \thetcbcounter \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[auto counter]{exo}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Exercice \thetcbcounter\ifblank{#1}{}{ #1}},
+	before skip=0.5em,
+	after skip=0.5em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newtcolorbox{met}[1][]{
+	enhanced,
+	arc=1mm,
+	colback=white,
+	colframe=black,
+	coltitle=black,
+	fonttitle=\bfseries,
+	boxrule=0.8pt,
+	shadow={1.2pt}{-1.2pt}{0pt}{black!50},
+	attach title to upper={\ },
+	title={Point méthode \ifblank{#1}{}{#1}},
+	before skip=1em,
+	after skip=1em,
+	left=2mm, right=2mm, top=1mm, bottom=1mm
+}
+
+\newcounter{thmcount}
+
+\newtcolorbox[use counter=thmcount]{thm}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	left skip=0mm,
+	boxrule=1.3pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Théorème \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{prop}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Proposition \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{cor}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.8pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Corollaire \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\newtcolorbox[use counter=thmcount]{lem}[1][]{
+	enhanced,
+	colback=white,
+	colframe=black,
+	sharp corners,
+	boxrule=0.5pt,
+	fonttitle=\bfseries,
+	colbacktitle=white,
+	coltitle=black,
+	attach boxed title to top left={yshift=-1mm,xshift=-0.5mm},
+	boxed title style={size=minimal, right=2pt, sharp corners, colframe=white},
+	title={Lemme \thethmcount \ifstrempty{#1}{}{ (#1)}},
+	before skip=0.5em,
+	after skip=0.5em
+}
+
+\addto\captionsfrench{\renewcommand*{\contentsname}{Suites et séries de fonctions}}
+
+\title{Suites et séries de fonctions}
+\date{}
+
+\begin{document}
+\tableofcontents
+
+\newpage
+\maketitle
+
+\section{Suites de fonctions}
+
+\subsection{Convergences simple et uniforme}
+
+Soit $E$ et $F$ deux espaces vectoriels normés et $A$ une partie de $E$. On considère une suite $(f_n)$ d'applications de $A$ dans $F$ et l'on cherche à préciser la notion de convergence de $(f_n)$ vers une fonction $f:A\to F$.
+
+\subsubsection*{Convergence simple}
+
+\begin{dfn}
+	Soit $(f_n)$ une suite de fonctions de $A$ dans $F$.\\
+	On dit que $(f_n)$ \textbf{converge simplement sur $A$} si pour tout $x\in A$, la suite $(f_n(x))$ converge.\\
+	Alors, si l'on note $f$ la fonction définie sur $A$ par :
+	$$\forall x\in A,\ f(x)=\underset{n\to+\infty}{\lim}f_n(x),$$ on dit que $(f_n)$ \textbf{converge simplement sur $A$ vers $f$}.
+\end{dfn}
+
+Il y a évidemment unicité de la limite simple.
+
+\begin{rmq}
+	La suite $(f_n)$ peut être définie sur $A$ et converger simplement sur une partie $B\subset A$. On parlera alors de convergence simple sur $B$.\\
+	Par exemple, la suite des sommes partielles de la série géométrique $\displaystyle\sum x^k$ est définie pour $x\in\C$, mais elle ne converge simplement que pour $\lvert x\rvert<1$.
+\end{rmq}
+
+\begin{exo}
+	Etudier la convergence simple de $(f_n)$, où pour tout $n\in\N$ :
+	$$\begin{array}{lrcl}
+		f_n:&[0,1]&\longrightarrow&\R\\
+		&x&\longmapsto&x^n.
+	\end{array}$$
+\end{exo}%0 partout sauf en 1
+
+\begin{exo}
+	Soit, pour $n\in\N\st$, la fonction $f_n$ définie sur $\R_+$ par :
+	$$\forall x\in\R_+,\ f_n(x)=\begin{cases}
+		\displaystyle n^2x&\text{si }x\in\displaystyle\left[0,\frac{1}{n}\right[\\[3mm]
+		\displaystyle\frac{1}{x}&\displaystyle\text{si }x\in\left[\frac{1}{n},+\infty\right[.
+	\end{cases}$$
+	Etudier la convergence simple de $(f_n)$.
+\end{exo}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Certaines propriétés algébriques "passent à la limite simple". Par exemple, si $(f_n)$ et $(g_n)$ convergent simplement vers $f$ et $g$, alors $(f_n+g_n)$ et $(f_n g_n)$ convergent simplement vers $f+g$ et $f\times g$.
+		\item Beaucoup de propriétés analytiques "ne passent pas à la limite simple". par exemple, comme le montre l'exercice précédent, la limite simple d'une suite :
+		\begin{itemize}[label=$\star$]
+			\item de fonctions continues n'est pas nécessairement continue ;
+			\item de fonctions bornées n'est pas nécessairement bornée.
+		\end{itemize}
+		\item La convergence simple d'une suite de fonctions $(f_n)$ n'a donc pas beaucoup d'intérêt en elle-même, mais elle est facile à établir : on fixe $x$ dans $A$ et l'on se ramène à l'étude de la suite $(f_n(x))$ d'éléments de $f$. De plus, elle est la première étape dans l'étude de la convergence uniforme (voir ci-dessous).
+	\end{itemize}
+\end{rmq}
+
+\begin{exo}
+	Montrer que la suite de polynômes définie par :
+	$$P_0=0\quad\text{et}\quad\forall n\in\N,\ \forall x\in[0,1],\ P_{n+1}(x)=P_n(x)+\frac{x-P_n(x)^2}{2}$$ converge simplement sur $[0,1]$ vers $x\mapsto\sqrt{x}$.
+\end{exo}
+
+\subsubsection*{Convergence uniforme}
+
+La convergence simple de $(f_n)$ vers $f$ peut s'écrire :
+$$\forall x\in A,\ \forall\varepsilon>0,\ \exists n_0\in\N\ :\ \forall n\geqslant n_0,\ \lVert f_n(x)-f(x)\rVert\leqslant\varepsilon.$$
+
+\begin{dfn}
+	On dit que $(f_n)$ converge uniformément vers $f$ sur $A$ si :
+	$$\forall\varepsilon>0,\ \exists n_0\in\N\ :\ \forall n\geqslant n_0,\ \forall x\in A,\ \lVert f_n(x)-f(x)\rVert\leqslant\varepsilon.$$
+\end{dfn}
+
+De façon évidente, on a le résultat suivant.
+
+\begin{prop}%prop
+	Si $(f_n)$ converge uniformément vers $f$, alors $(f_n)$ converge simplement vers $f$.
+\end{prop}
+
+\begin{attention}
+	Comme on le verra dans les exemples à suivre, la réciproque est très fausse.
+\end{attention}
+
+\subsubsection*{Pour établir une convergence uniforme}
+
+\begin{met}
+	Pour montrer la convergence uniforme de $(f_n)$ vers $f$ : $$\lVert f_n(x)-f(x)\rVert\leqslant\underbrace{\text{quelque chose de petit}}_{\text{indépendant de }x}$$ En particulier, le quelque chose de petit pourra être une suite qui tend vers $0$.
+\end{met}
+
+En particulier, s'il existe une suite réelle $(\alpha_n)$ tendant vers $0$ et vérifiant, pour un certain $n_0$ :
+$$\forall n\geqslant n_0,\ \forall x\in A,\ \lVert f_n(x)-f(x)\rVert\leqslant\alpha_n,$$ alors on montre aisément, en revenant à la définition, que la suite $(f_n)$ converge uniformément vers $f$ sur $A$.
+
+\begin{met}
+	Pour établir la convergence uniforme de la suite $(f_n)$, on peut :
+	\begin{itemize}
+		\item commencer par déterminer une fonction $f$ vers laquelle $(f_n)$ converge simplement ;
+		\item chercher ensuite à établir une majoration $\lVert f_n(x)-f(x)\rVert\leqslant \alpha_n$, valable à partir d'un certain rang, où $(\alpha_n)$ est une suite tendant vers $0$ ;
+		\item à défaut, par retour à la définition, obtenir, pour tout $\varepsilon>0$, à partir d'un certain rang, la majoration $\lVert f_n(x)-f(x)\rVert\leqslant\varepsilon$ pour tout $x$.
+	\end{itemize}
+\end{met}
+
+\begin{ex}
+	\begin{itemize}
+		\item La suite $(f_n)$ où :
+		$$\begin{array}{lrcl}
+			f_n:&\displaystyle\left[-\frac{1}{2},\frac{1}{2}\right]&\longrightarrow&\R\\
+			&x&\longmapsto&x^n
+		\end{array}$$ converge uniformément vers $0$.
+		\item La suite $(f_n)$ définie sur $\R$ par $f_n(x)=\displaystyle\frac{x}{n+1}$ converge simplement sur $\R$ vers la fonction nulle, mais pas uniformément sur $\R$. %mais sur tout borné oui 
+	\end{itemize}
+\end{ex}
+
+\begin{exo}
+	Montrer que la convergence de la suite de polynômes définie dans l'exercice $3$ converge uniformément sur $[0,1]$.
+\end{exo}
+
+\begin{exo}
+	Montrer que la suite $(f_n)$ où $$\begin{array}{lrcl}
+		f_n:&\R_+&\longrightarrow&\R\\
+		&x&\longmapsto&\displaystyle\sqrt{x+\frac{n}{n+1}}
+	\end{array}$$ converge uniformément sur $\R_+$.
+\end{exo}
+
+\begin{rmq}
+	\begin{itemize}
+		\item Comme pour la convergence simple, la convergence uniforme peut être envisagée sur une partie $B$ de $A$, par exemple sur des parties fermées ou des parties compactes de $A$, ce qui est moins contraignant que la convergence uniforme sur $A$ tout entier et permet néanmoins de bénéficier de certains des résultats qui suivent.
+		\item Lorsque la convergence uniforme a lieu sur $A$ tout entier, on précisera "convergence uniforme sur $A$" pour éviter toute confusion.
+	\end{itemize}
+\end{rmq}
+
+\begin{exo}
+	Dans le dernier exemple ci-dessus, sur quelles parties a-t-on convergence uniforme ?
+\end{exo}
+
+\paragraph{Interprétation graphique} Si $A$ est un intervalle de $\R$ et $F=\R$, la convergence uniforme de la suite $(f_n)$ vers $f$ signifie que pour tout $\varepsilon>0$, il existe un rang $N$ à partir duquel le graphe de $f_n$ est contenu dans la partie du plan $xOy$ définie par :
+$$x\in A\quad\text{et}\quad y\in[f(x)-\varepsilon,f(x)+\varepsilon].$$
+%dessin
+
+\subsubsection*{Cas des fonctions bornées}
+
+Si $(f_n)$ converge uniformément sur $A$ vers $f$ et si chaque fonction $f_n$ est bornée sur $A$ par un certain réel, comme il existe $p\in\N$ tel que $\forall x\in A,\ \lVert f_p(x)-f(x)\rVert\leqslant 1
+$, on en déduit :
+$$\forall x\in A,\ \lVert f(x)\rVert\leqslant M_p+1.$$
+L'espace vectoriel $\mathcal{B}(A,F)$ est donc stable par limite uniforme et l'on a le résultat suivant.
+
+\begin{prop}%prop
+	Une suite $(f_n)$ de fonctions bornées de $A$ dans $F$ converge uniformément sur $A$ si, et seulement si, elle converge dans l'espace vectoriel normé $(\mathcal{B}(A,F),\mathcal{N}_\infty)$.
+\end{prop}
+
+C'est pour cela que la norme $\mathcal{N}_\infty$ est parfois nommé \textbf{norme de la convergence uniforme}. Rappelons qu'elle est définie par :
+$$\mathcal{N}_\infty(f)=\underset{x\in A}{\sup}\lVert f(x)\rVert.$$
+
+\begin{attention}
+	La convergence uniforme ne se limite pas au cas des fonctions bornées.
+\end{attention}
+
+\begin{exo}
+	Soit $(f_n)$ une suite de fonctions de $A$ dans $F$ et $f\in\mathcal{F}(A,F)$. Montrer que les propriétés suivantes sont équivalentes :
+	\begin{enumerate}[label=(\roman*)]
+		\item $(f_n)$ converge uniformément vers $f$ sur $A$ ;
+		\item les fonctions $f_n-f$ sont bornées sont bornées à partir d'un certain rang et $$\underset{n\to+\infty}{\lim}\mathcal{N}_\infty(f_n-f)=0\ ;$$
+		\item il existe une suite $(\alpha_n)\in\R_+^\N$ tendant vers $0$ telle que l'on ait, à partir d'un certain rang :
+		$$\forall x\in A,\ \lVert f_n(x)-f(x)\rVert\leqslant\alpha_n.$$
+	\end{enumerate}
+\end{exo}
+
+\begin{met}
+	\begin{itemize}
+		\item Pour montrer qu'une suite $(f_n)$ converge uniformément vers $f$, il suffit d'exhiber une telle suite $(\alpha_n)$.
+		\item Lorsque $A$ est un intervalle de $\R$ et $F=\R$, l'étude des variations de $f_n-f$ peut permettre de calculer $\alpha_n=\mathcal{N}_\infty(f_n-f)$. Suivant que $(\alpha_n)$ tend vers $0$ ou non, on peut conclure quant à la convergence uniforme de $(f_n)$ vers $f$.
+		\item Pour montrer que la suite $(f_n)$ ne converge pas uniformément vers $f$, il suffit d'exhiber une suite $(x_n)\in A^\N$ telle que $(f_n(x_n)-f(x_n))$ ne tende pas vers $0$.
+	\end{itemize}
+\end{met}
+
+\begin{ex}
+	Convergence simple et uniforme des suites de fonctions définies sur $\R_+$ da la façon suivante :
+	\begin{enumerate}
+		\item $f_n(x)=\displaystyle\left(x+\frac{1}{n}\right)^2$ ;
+		\item $g_n(x)=\displaystyle\left(x+\frac{e^{-x}}{n}\right)^2$.
+	\end{enumerate}
+\end{ex}
+
+\paragraph{"Bosse glissante"} Soit $\alpha>0$ et $f_n:x\mapsto n^{\alpha}x^n(1-x)$. La suite $(f_n)$ converge simplement vers $0$ sur $[0,1]$ mais $\displaystyle\int_{0}^{1}f_n(t)\d t$ ne converge pas vers $0$ si $\alpha$... %est supérieur à $2$
+
+\begin{exo}
+	On pose, pour tout entier $n\geqslant 1$, la fonction :
+	$$\begin{array}{lrcl}
+		f_n:&\R&\longrightarrow&\R\\
+		&x&\longmapsto&\sin\displaystyle\left(x+\frac{1}{n}\right).
+	\end{array}$$
+	Etudier la convergence uniforme de $(f_n)$.
+\end{exo}
+
+\begin{exo}
+	Soit, pour $n\in\N\st$, la fonction $f_n$ définie par :
+	$$\begin{array}{lrcl}
+		f_n:&\R&\longrightarrow&\R\\
+		&x&\longmapsto&\displaystyle\frac{nx}{1+n^2x^2}.
+	\end{array}$$
+	Etudier la convergence simple et uniforme de $(f_n)$.
+\end{exo}
+
+\begin{met}
+	Lorsqu'on a établi une limite simple à l'aide d'une formule de Taylor-Young (souvent via un équivalent), il est judicieux de montrer la convergence uniforme à l'aide de l'inégalité de Taylor-Lagrange correspondante.
+\end{met}
+
+\begin{ex}
+	La suite $(f_n)_{n\in\N\st}$ définie par $f_n(x)=\displaystyle\left(1+\frac{x}{\sqrt{n}}\right)^{\sqrt{n}}$ converge uniformément sur $[0,1]$ vers $x\mapsto e^x$.
+\end{ex}
+
+\subsubsection*{Opérations algébriques (HP ?)}
+
+\begin{exo}
+	Soit $(f_n)$ et $(g_n)$ deux suites de fonctions définies sur $A$ à valeurs dans $F$ convergeant uniformément respectivement vers $f$ et $g$. \\
+	Soit $(\lambda,\mu)\in\K^2$. Montrer que la suite $(\lambda f_n+\mu g_n)$ converge uniformément vers $\lambda f+\mu g$.
+\end{exo}
+
+\begin{exo}
+	Soit $(f_n)$ et $(g_n)$ deux suites de fonctions définies sur $A$ à valeurs respectivement dans $\K$ et $F$ convergeant uniformément respectivement vers $f$ et $g$.
+	\begin{enumerate}
+		\item Que peut-on dire du produit $(f_n g_n)$ ?
+		\item Et si l'on suppose chacune des fonctions $f_n$ et $g_n$ bornées ?
+	\end{enumerate}
+\end{exo}
+
+Exercice Moulin.SSF.13
+
+Exercice Moulin.SSF.14
+
+\subsubsection*{Convergence uniforme locale}
+
+Comme on le verra par la suite, la convergence uniforme permet de montrer des propriétés locales : limites, continuité, dérivabilité...
+
+Il est alors clairement inutile d'avoir une convergence uniforme sur tout l'ensemble de définition. D'où les définitions suivantes.
+
+\begin{dfn}
+	Soit $(f_n)$ une suite de fonctions de $A$ dans $F$ et $a$ (fini ou infini) adhérent à $A$.\\
+	On dit que $(f_n)$ \textbf{converge uniformément au voisinage de $a$} vers $f\in\mathcal{F}(A,F)$ s'il existe un voisinage $V$ de $a$ dans $E$ tel que $(f_n)$ converge uniformément vers $f$ sur $V\cap A$.
+\end{dfn}
+
+\begin{dfn}
+	Une suite de fonctions $(f_n)$ de $A$ dans $F$ \textbf{converge uniformément au voisinage de tout point de $A$} si, pour tout $a\in A$, elle converge uniformément au voisinage de $a$.
+\end{dfn}
+
+\begin{exo}
+	Donner un exemple de suite convergeant uniformément au voisinage de tout point mais pas uniformément. %x/(n+1) avant exo 4
+\end{exo}
+
+\begin{exo}
+	Quel théorème hors programme permet de montrer que si $A$ est compact, la convergence uniforme au voisinage de tout point de $A$ est équivalente à la convergence uniforme sur $A$ ? %Borel Lebesgue
+\end{exo}
+
+\begin{rmq}
+	On peut formuler autrement la convergence uniforme au voisinage de tout point de $A$ : pour tout $a\in A$, il existe un voisinage $V$ relatif à $A$ tel qu'il y ait convergence uniforme sur $V$.
+\end{rmq}
+
+\subsubsection*{Cas où $A$ est un intervalle de $\R$}
+
+\begin{lem}%lem
+	Si $A$ est un intervalle de $\R$, alors tout point de $A$ admet un voisinage relatif qui est un segment.
+\end{lem}
+
+\begin{met}
+	Pour établir la convergence uniforme de la suite $(f_n)$ au voisinage de tout point d'un intervalle de $\R$, il suffit de montrer que la suite $(f_n)$ converge uniformément sur tout segment de cet intervalle.
+\end{met}
+
+Plus généralement, selon la forme de l'intervalle $A$, on peut se contenter de montrer qu'il y a convergence uniforme sur une famille d'intervalles "adaptée à la situation" (\textit{sic}).
+
+"ça veut dire quoi ? ça veut rien dire !"
+
+\begin{ex}
+	\begin{enumerate}
+		\item Si $A=\R$, il suffit de prouver qu'il y a convergence uniforme sur tout segment de la forme $[-a,a]$ avec $a>0$.
+		\item Si $A=]0,+\infty[$, il suffit de prouver qu'il y a convergence uniforme sur tout intervalle de la forme $[a,+\infty[$ ou de la forme $]0,a]$, avec $a>0$.
+		\item Si $A=]0,1[$, il suffit de prouver qu'il a convergence uniforme sur tout segment de la forme $[a,1-a]$ avec $0<a<\displaystyle\frac{1}{2}$.
+	\end{enumerate}
+\end{ex}
+
+\begin{rmq}
+	Comme $A$ est un intervalle, si $a$ est un point de $A$, il suffit de vérifier la convergence uniforme sur tout segment de $A$ contenant $a$.
+\end{rmq}
+
+\subsection{Convergence uniforme et limites}
+
+\subsubsection*{Convergence uniforme et continuité}
+
+On sait que la limite simple $f$ d'une suite $(f_n)$ de fonctions continues n'est pas en général une fonction continue. En revanche, cela devient vrai si la convergence est uniforme.
+
+\begin{prop}%prop
+	Soit $(f_n)$ convergeant uniformément sur $A$ vers $f$.
+	\begin{enumerate}
+		\item Si, pour tout $n$, la fonction $f_n$ est continue au point $a\in A$, alors $f$ est continue en $a$.
+		\item Si, pour tout $n$, la fonction $f_n$ est continue sur $A$, alors $f$ est continue sur $A$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	On part de l'inégalité triangulaire :
+	$$\lVert f(x)-f(a)\rVert\leqslant\lVert f(x)-f_n(x)\rVert+\lVert f_n(x)-f_n(a)\rVert+\lVert f_n(a)-f(a)\rVert.$$
+\end{proof}
+
+\begin{cor}%cor
+	\begin{enumerate}
+		\item Si la suite $(f_n)$ converge uniformément vers $f$ au voisinage de $a\in A$ et si, pour tout $n$, la fonction $f_n$ est continue en $a$, alors $f$ est continue en $a$.
+		\item Si la suite $(f_n)$ converge uniformément vers $f$ au voisinage de tout point de $A$ et si toutes les fonctions $f_n$ sont continues sur $A$, alors $f$ est continue sur $A$.
+		\item Supposons que $A$ soit un intervalle de $\R$. Si la suite $(f_n)$ converge uniformément vers $f$ sur tout segment de $A$ et si toutes les fonctions $f_n$ sont continues sur $A$, alors $f$ est continue sur $A$.
+	\end{enumerate}
+\end{cor}
+
+\begin{rmq}
+	\begin{itemize}
+		\item C'est le grand intérêt de la convergence uniforme, qui permet de produire des fonctions continues à partir d'autres fonctions continues.
+		\item Si $(f_n)$ converge simplement sur $A$ vers $f$ et si toutes les $f_n$ sont lipschitziennes de même rapport $k$, alors $f$ est aussi $k$-lipschitzienne (noter que la convergence simple suffit).
+		\item Attention : si les $f_n$ sont lipschitziennes mais dans des rapports $k_n$ différents, on ne peut rien conclure sur $f$, même en cas de convergence uniforme. \\
+		Par exemple, sur $[0,+\infty[$ avec $f_n(x)=\min (nx,\sqrt{x})$.\\
+		Voir aussi le théorème de Weierstrass (quel rapport ?).
+	\end{itemize}
+\end{rmq}
+
+Exercice Moulin.SSF.27
+
+\begin{exo}
+	Montrer que si $A$ est compact, alors $\mathcal{C}(A,F)$ est un fermé de $(\mathcal{B}(A,F),\mathcal{N}_\infty)$.
+\end{exo}
+
+\subsubsection*{Extension aux problèmes de limites}
+
+Soit $a$ (fini ou non) adhérent à $A$.
+
+\begin{lem}%lem
+	Soit $f_n$ une suite de fonctions qui converge uniformément sur $A$ vers $f$ telle que :
+	$$\forall n\in\N,\ \underset{x\to a}{\lim}f_n(x)=l_n\in F.$$
+	Si l'une des deux limites $\underset{n\to\infty}{\lim}l_n$ ou $\underset{x\to a}{\lim}f(x)$ existe dans $F$, l'autre existe et elle lui est égale, ce qui peut alors s'écrire :
+	$$\underset{n\to+\infty}{\lim}\underset{x\to a}{\lim}f_n(x)=\underset{x\to a}{\lim}\underset{n\to+\infty}{\lim}f_n(x).$$
+\end{lem}
+
+\begin{rmq}
+	Sous les mêmes hypothèses, en notant $l$ la limite commune, on a de plus :
+	$$\underset{(n,x)\to(+\infty,a)}{\lim}f_n(x)=l.$$
+	En particulier, si $(x_n)$ est une suite de $A$ qui tend vers $a$, on a $\underset{n\to+\infty}{\lim}f_n(x_n)=$.
+\end{rmq}
+
+\begin{thm}[Théorème de la double limite]%thm
+	On suppose que $F$ est un espace vectoriel normé de dimension finie. \\
+	Soit $(f_n)$ une suite de fonctions qui converge uniformément sur $A$ vers $f$ et telle que $\forall n\in\N,\ \underset{x\to a}{\lim}f_n(x)=l_n\in F$. \\
+	Alors la suite $(l_n)$ converge, $f$ admet une limite en $a$, et ces deux limites sont égales, soit :
+	$$\underset{n\to+\infty}{\lim}\ \underset{x\to a}{\lim}f_n(x)=\underset{x\to a}{\lim}\ \underset{n\to+\infty}{\lim}f_n(x).$$
+\end{thm}
+\begin{proof}
+	\begin{itemize}
+		\item On montre que $(l_n-l_{n_0})$ est bornée, donc $(l_n)$ admet une sous-suite convergeant vers un certain élément $l$.
+		\item Le lemme précédent appliqué à une telle sous-suite montre que $f(x)\xrightarrow[x\to a]{}l$.
+		\item A nouveau, le lemme prouve que $l_n\xrightarrow[n\to+\infty]{}l$.
+	\end{itemize}
+\end{proof}
+
+\begin{ex}
+	Lemme de Riemann-Lebesgue.
+\end{ex}
+
+Exercice Moulin.SSF.22
+
+\begin{attention}
+	\begin{itemize}
+		\item Pour ce résultat, une convergence uniforme au voisinage de $a$ suffit évidemment (appliquer le théorème aux restrictions), mais en aucun cas la convergence uniforme au voisinage de tout point de $A$ si $a\notin A$.
+		\item Il s'agit bien de limites \textit{finies} dans ce théorème.
+	\end{itemize}
+\end{attention}
+
+\begin{exo}
+	Soit $(u_{n,p})_{(n,p)\in\N^2}$ une suite double à valeurs dans un espace vectoriel $F$ de dimension finie. On suppose :
+	$$\forall n\in\N,\ \underset{p\to+\infty}{\lim}u_{n,p}=\alpha_n\quad\text{et}\quad\forall p\in\N,\ \underset{n\to+\infty}{\lim}u_{n,p}=\beta_p,$$ l'une de ces limites étant uniforme par rapport à l'autre variable. \\
+	Montrer que les suites $(\alpha_n)$ et $(\beta_p)$ convergent et que l'on a :
+	$$\underset{n\to+\infty}{\lim}\alpha_n=\underset{p\to+\infty}{\lim}\beta_p.$$
+	Vérifier de plus que cette limite est aussi la limite de la suite $(u_{n,n})$ et même plus généralement de toute suite de la forme $(u_{n_k,p_k})_k$ avec $\underset{k\to+\infty}{\lim}p_k=+\infty$ et $\underset{k\to+\infty}{\lim}n_k=+\infty$.
+\end{exo}
+
+\begin{ex}
+	$u_{n,p}=p/(n+p)$.
+\end{ex}
+
+\section{Cas des séries}
+
+\subsection{Convergences simple et uniforme}
+
+On étend sans difficulté les notions de convergence simple, de convergence uniforme et de convergence uniforme au voisinage d'un/de tout point aux séries de fonctions.
+
+\begin{dfn}
+	On dit que la série de fonctions $\displaystyle\sum u_n$ \textbf{converge simplement} sur $A$ si la suite de ses sommes partielles converge simplement sur $A$ vers une fonction $f$.
+\end{dfn}
+
+\begin{dfn}
+	On dit que la série de fonctions $\displaystyle\sum u_n$ \textbf{converge uniformément} sur $A$ si la suite de ses sommes partielles converge uniformément sur $A$.
+\end{dfn}
+
+Que la convergence soit simple ou uniforme, on note $\displaystyle\sum_{n=0}^{+\infty}u_n$ la limite des sommes partielles.
+
+La proposition suivante est une simple reformulation de al définition de al convergence uniforme.
+
+\begin{prop}%prop
+	Soit $(u_n)$ une suite de fonctions définies sur $A$ à valeurs dans $F$. La série $\displaystyle\sum u_n$ converge uniformément si, et seulement si :
+	\begin{itemize}
+		\item elle converge simplement ;
+		\item la suite des reste converge uniformément vers $0$.
+	\end{itemize}
+\end{prop}
+
+\begin{ex}
+	\begin{enumerate}
+		\item La série $\displaystyle\sum\frac{(-1)^n}{n}x^n$ converge uniformément sur $[0,1]$.
+		\item La série $\displaystyle\sum\frac{1}{x+n^2}$ converge uniformément sur $\R_+\st$.
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	Démontrer que la série $\displaystyle\sum\frac{(-1)^n}{x+n}$ converge uniformément au voisinage de tout point de son ensemble de définition.
+\end{exo}
+
+\subsection{Limites et continuité}
+
+Reformulons, en termes de séries, les résultats concernant les suites de fonctions.
+
+\begin{thm}%thm
+	Soit $(u_n)\in\mathcal{F}(A,F)^\N$ une suite de fonctions et $a$ un point de $A$. Si :
+	\begin{enumerate}
+		\item la série $\displaystyle\sum u_n$ converge uniformément au voisinage de $a$ ;
+		\item pour tout $n\in\N$, la fonction $u_n$ est continue en $a$ ;
+	\end{enumerate}
+	alors $\displaystyle\sum_{n=0}^{+\infty}$ est continue en $a$.
+\end{thm}
+
+\begin{cor}%cor
+	Soit $(u_n)\in\mathcal{F}(A,F)^\N$ une suite de fonctions continues. Si la série $\displaystyle\sum u_n$ converge uniformément au voisinage de tout point de $A$, alors la fonction $\displaystyle\sum_{n=0}^{+\infty}j_n$ est continue sur $A$.
+\end{cor}
+
+Exercice Moulin.SSF.38
+
+\begin{prop}%prop
+	Soit $\displaystyle\sum u_n$ une série de fonctions de $A$ dans un espace vectoriel $F$ de dimension finie qui converge uniformément sur $A$ (ou au voisinage de $a$) et telle que $\forall n\in\N,\ \underset{x\to a}{\lim}u_n(x)=\alpha_n$, où $a$ est adhérent à $A$. Alors la série $\displaystyle\sum\alpha_n$ converge et l'on a :
+	$$\underset{x\to a}{\lim}\sum_{n=0}^{+\infty}u_n(x)=\sum_{n=0}^{+\infty}\alpha_n.$$
+\end{prop}
+
+\subsection{Convergence normale des séries}
+
+Cette notion de convergence est spécifique aux séries de fonctions bornées à valeurs dans un espace vectoriel $F$ de dimension finie.
+
+\subsubsection*{Convergence normale sur $A$}
+
+On considère une suite $(u_n)$ d'éléments de $\mathcal{B}(A,F)$ (donc de fonctions \textbf{bornées}).
+
+\begin{dfn}
+	On dit que $\displaystyle\sum u_n$ \textbf{converge normalement} sur $A$ si la série $\displaystyle\sum\mathcal{N}_\infty(u_n)$ converge.
+\end{dfn}
+
+\begin{met}
+	Pour montrer que $\sum u_n$ converge normalement, il suffit d'exhiber une série $\sum a_n$ convergente telle que $\forall n\in\N,\ \forall x\in A,\ \lVert u_n(x)\rVert\leqslant a_n$. Au niveau de la rédaction, cela donne : $$\lVert u_n(x)\rVert \leqslant \underbrace{a_n}_{\text{indépendant de }x}\text{ sommable}$$
+\end{met}
+
+\begin{terminologie}
+	On définit naturellement les notions de convergence normale sur une partie de $A$, au voisinage d'un point de $A$ ou sur tout segment de $A$ si $A$ est un intervalle de $\R$.
+\end{terminologie}
+
+\begin{prop}%prop
+	Si la série $\displaystyle\sum u_n$ converge normalement sur $A$, alors, pour tout $x\in A$, la série $\displaystyle\sum u_n(x)$ converge absolument et $\displaystyle\sum u_n$ converge uniformément sur $A$.
+\end{prop}
+
+\begin{ex}
+	\begin{enumerate}
+		\item La fonction $f$ définie sur $\R_+\st$ par :
+		$$f(x)=\sum_{n=0}^{+\infty}u_n(x)\quad\text{avec}\quad\forall n\in\N,\ \forall x\in\R_+\st,\ u_n(x)=\frac{1}{x+n^2}$$ est continue puisqu'elle converge uniformément sur $\R_+\st$.\\
+		Il n'y a pas ici de convergence normale sur $\R_+\st$ puisque $u0$ n'est pas bornée. Mais en écrivant :
+		$$f(x)=\frac{1}{x}+\sum_{n=1}^{+\infty}u_n(x)$$ on retrouve la continuité de $f$ car la série $\displaystyle\sum_{n\geqslant 1}u_n$ converge normalement sur $\R_+\st$ puisque :
+		$$\forall n\in\N\st,\ \forall x\in\R_+\st,\ \lvert u_n(x)\rvert\leqslant\frac{1}{n^2}.$$
+		\item La suite définie sur $\C$ par :
+		$$\forall n\in\N\st,\ \forall z\in\C,\ f_n(z)=\left(1+\frac{z}{n}\right)^n$$ converge simplement vers $z\mapsto e^z$, et la convergence est uniforme sur tout partie bornée de $\C$.
+	\end{enumerate}
+\end{ex}
+
+Exercice Moulin.SSF.34
+
+\begin{attention}
+	La série $\displaystyle\sum u_n$ peut converger uniformément sur $A$ et converger absolument en tout point sans pour autant converger normalement sur $A$.
+\end{attention}
+
+
+\begin{ex}
+	$u_n(n)=\frac{1}{n+1}$ et $\forall x\ne n,\ u_n(x)=0$.
+\end{ex}
+
+\begin{cor}%cor
+	Soit $\displaystyle\sum u_n$ une série de fonctions convergeant normalement sur $A$ (ou au voisinage de tout point de $A$, ou sur tout segment de $A$ lorsque $A$ est un intervalle de $\R$).\\
+	Si toutes les fonctions $u_n$ sont continues sur $A$, alors la somme est continue sur $A$.
+\end{cor}
+
+\begin{met}
+	\begin{itemize}
+		\item Pour montrer la convergence uniforme d'une série (par exemple pour montrer que sa somme est continue), on regarde d'abord s'il n'y a pas convergence normale, ce qui est plus simple puisqu'il suffit de considérer son terme général.
+		\item Pour montrer que la suite $(f_n)$ converge uniformément sur $A$ (et montrer ainsi, par exemple, qu'elle admet une limite continue), il est souvent pratique de montrer que la série $\sum (f_{n+1}-f_n)$ converge normalement sur $A$.
+	\end{itemize}
+\end{met}
+
+\begin{ex}
+	Soit $\varphi$ et $\psi$ deux fonctions continues sur $[0,1]$. On définit une suite $(f_n)$ d'applications continues sur $[0,1]$ par $f_0=0$ et :
+	$$\forall n\in\N,\ f_{n+1}(x)=\varphi(x)+\int_{0}^{x}\psi(t)f_n(t)\d t.$$
+	La série $\displaystyle\sum(f_{n+1}-f_n)$ converge normalement sur $[0,1]$, donc la suite $(f_n)$ converge uniformément sur $[0,1]$ vers une fonction continue.
+\end{ex}
+
+\begin{exo}
+	Etudier la continuité des fonctions définies sur $[0,1]$ par :
+	$$f(x)=\sum_{n=0}^{+\infty}\frac{x^n(1-x)^n}{\sqrt{n+1}}\quad\text{et}\quad g(x)=\sum_{n=1}^{+\infty}\frac{(-1)^n}{n}x^n.$$
+\end{exo}
+
+\begin{ex}
+	Soit $\theta\in\R$. La série $\displaystyle\sum_{n\geqslant 1}\frac{\sin(n\theta)}{n}$ converge et sa somme est continue en tout point de $]0,2\pi[$. On pourra comparer son terme général à :
+	$$v_n=\frac{\cos(\left(n+1/2\right)\theta)}{n+1}-\frac{\cos(\left(n-1/2\right)\theta)}{n}.$$
+\end{ex}
+
+\paragraph{Séries dans une algèbre de dimension finie} Soit $E$ une algèbre de dimension finie d'élément neutre noté $e$ et munie d'une norme sous-multiplicative.
+\begin{enumerate}
+	\item La série géométrique $\displaystyle\sum u_n$ converge normalement sur tout boule fermé contenue dans la boule $B_O(0,1)$ de $E$. Sa somme est donc continue sur $B_O(0,1)$. On en déduit la continuité de $u\mapsto u\inv$ sur $B_O(e,1)$.
+	\begin{attention}
+		Il n'y a pas, \textit{a priori}, convergence normale sur $B_O(0,1)$.
+	\end{attention}
+	\item La série exponentielle $\displaystyle\sum\frac{u^n}{n!}$ converge normalement sur tout boule fermée $B_F(0,R)$. Sa somme est donc continue sur $E$.
+	\begin{attention}
+		Mais pas de convergence normale sur tout $E$ !
+	\end{attention}
+\end{enumerate}
+
+\begin{exo}
+	montrer que la fonction exponentielle est lipschitzienne de rapport $e^R$ sur $B_F(0,R)$ (attention !).
+\end{exo}
+
+Exercice Moulin.SSF.20
+
+\begin{met}
+	Pour montrer des convergences uniformes et des convergences normales, sauf rares exceptions, on se place sur des parties fermées de l'ensemble de définition.
+\end{met}
+
+\section{Intégration, dérivation, primitivation d'une limite}
+
+Dans cette section, $I$ est un intervalle d'intérieur non vide et $(u_n)_{n\in\N}$ est une suite de fonctions définies sur $I$ à valeurs dans $F$.
+
+\subsection{Limites et intégrales}
+
+Soit $J$ un segment d'intérieur non vide. On considère des applications $f_n$ continues de $J$ dans $F$.
+
+Rappelons que l'on peut définir une norme sur $\mathcal{C}(J,F)$ en posant $\mathcal{N}_1(f)=\displaystyle\int_J\lVert f\rVert$. On l'appelle \textbf{norme de convergence en moyenne}.
+
+\begin{exo}
+	Montrer que si une suite $(f_n)$ d'éléments de $\mathcal{C}(J,F)$ converge en moyenne vers $f\in\mathcal{C}(J,F)$, alors $\displaystyle\int_J f=\underset{n\to+\infty}{\lim}\int_J f_n$.
+\end{exo}
+
+Le résultat de cet exercice subsiste évidemment si la convergence de $(f_n)$ est vraie au sens d'une norme qui domine $\mathcal{N}_1$.
+
+Comme, en particulier, on a l'inégalité $\mathcal{N}_1\leqslant l\mathcal{N}_\infty$, où $l$ est la longueur du segment $J$,, on en déduit que la convergence uniforme sur $J$ entraîne la convergence en moyenne sur $J$. On a donc :
+
+\begin{thm}%thm
+	Étant donnée une suite $(f_n)$ de fonctions continues sur le segment $J$ convergeant uniformément sur $J$ vers une fonction $f$ (alors continue), la suite $(f_n)$ converge en moyenne vers $f$ et l'on a donc :
+	$$\underset{n\to+\infty}{\lim}\int_Jf_n=\int_Jf.$$
+\end{thm}
+
+\begin{ex}
+	Soit $(f_n)_{n\in\N}\in\mathcal{C}([0,1],\R)^\N$ une suite de fonctions qui converge uniformément vers $f$. Alors :
+	$$\int_{0}^{1}f_n^2\xrightarrow[n\to+\infty]{}\int_{0}^{1}f^2.$$
+\end{ex}
+
+\begin{exo}
+	Étant donnée une suite $(f_n)$ de fonctions continues par morceaux sur le segment $J$ convergeant uniformément sur $J$ vers une fonction $f$ \textbf{continue par morceaux}, montrer que l'on a :
+	$$\underset{n\to+\infty}{\lim}\int_Jf_n=\int_Jf.$$
+\end{exo}
+
+\begin{attention}
+	Une limite uniforme d'une suite de fonctions continues par morceaux peut très bien ne pas être continue par morceaux. Trouver un exemple.
+\end{attention}
+
+\begin{rmq}
+	En fait, comme on le verra dans le chapitre sur les intégrales à paramètres, la convergence uniforme est une condition trop forte pour assurer la convergence des intégrales.
+\end{rmq}
+
+Exercice Moulin.SSF.28
+
+En termes de séries, le théorème précédent s'écrit :
+
+\begin{thm}%thm
+	Si une série de fonctions continues $\displaystyle\sum u_n$ converge uniformément sur le segment $J$, alors sa somme est continue, la série des intégrales sur $J$ converge, et l'on peut intégrer terme à terme :
+	$$\int_J\sum_{n=0}^{+\infty}u_n=\sum_{n=0}^{+\infty}\int_J u_n.$$
+\end{thm}
+
+\begin{rmq}
+	Le résultat est \textit{a fortiori} vrai si la convergence est normale.
+\end{rmq}
+
+\begin{ex}
+	La série $\displaystyle\sum\frac{\cos(nx)}{n^2+1}$ converge normalement sur $[0,2\pi]$. Sa somme est donc continue sur $[0,2\pi]$ et :
+	$$\int_{0}^{2\pi}\sum_{n=0}^{+\infty}\frac{\cos(nx)}{n^2+1}\d x=\sum_{n=0}^{+\infty}\int_{0}^{2\pi}\frac{\cos(nx)}{n^2+1}=2\pi.$$
+\end{ex}
+
+\begin{exo}
+	A l'aide d'un développement en série géométrique, calculer $I(r,z)=\displaystyle\int_{0}^{2\pi}\frac{\d t}{2-re^{it}}$, pour tout $(z,r)\in\C\st\times\R_+\st$ tel que $r\ne \lvert z\rvert$.
+\end{exo}
+
+\subsection{Primitivation}
+
+\begin{prop}%prop
+	Supposons que la suite de fonctions continues $(f_n)_{n\in\N}$ converge uniformément sur tout segment de $I$ vers $f$. Soit $a\in I$. On note $F$ et $F_n$, pour tout $n\in\N$, les primitives respectivement de $f$ et de $f_n$ qui s'annulent en $a$ :
+	$$F(x)=\int_{a}^{x}f(t)\ dt\quad\text{et}\quad F_n(x)={a}^{x}f_n(t)\d t.$$
+	Alors la suite $(F_n)_{n\in\N}$ converge uniformément vers $F$ sur tout segment de $I$.
+\end{prop}
+\begin{proof}
+	Pour tout segment $J\subset I$, que l'on peut supposer contenir $a$, et pour $x\in J$, majorer $\lVert F_n(x)-F(x)\rVert$ en fonction de la norme infinie de la restriction de $f_n-f$ à $J$.
+\end{proof}
+
+\subsection{Dérivation d'une limite}
+
+\begin{prop}
+	Supposons que les fonctions $f_n$ soient de classe $\mathcal{C}^1$.\\
+	Si la suite $(f_n)_{n\in\N}$ converge simplement vers $f$ et si la suite $(f_n')_{n\in\N}$ converge uniformément sur tout segment de $I$ vers une fonction $g$, alors :
+	\begin{itemize}
+		\item la fonction $f$ est de classe $\mathcal{C}^1$ et $f'=g$ ;
+		\item le suite $(f_n)_{n\in\N}$ converge uniformément sur tout segment de $I$.
+	\end{itemize}
+\end{prop}
+\begin{proof}
+	Appliquer la proposition précédente à la suite $(f_n')_{n\in\N}$.
+\end{proof}
+
+\begin{rmq}
+	\begin{itemize}
+		\item La convergence simple de $(f_n)$ peut être remplacée par la convergence en un point.
+		\item L'hypothèse $\mathcal{C}^1$ peut être remplacée par dérivable. la démonstration, beaucoup plus technique, se fait alors à l'aide de l'inégalité des accroissements finis.
+	\end{itemize}
+\end{rmq}
+
+\begin{attention}
+	L'hypothèse de convergence uniforme porte sur la suite $(f_n')_{n\in\N}$, et non sur la suite $(f_n)_{n\in\N}$.
+\end{attention}
+
+\begin{ex}
+	La suite $(f_n)_{n\in\N\st}$ de fonctions définies sur $\R_+$ par $f_n(x)=\displaystyle\sqrt{x+\frac{1}{n}}$ converge uniformément vers la fonction $f:x\mapsto\sqrt{x}$.\\
+	Donc la limite uniforme d'une suite de fonctions de classe $\mathcal{C}^1$ peut ne pas être dérivable.
+\end{ex}
+
+Par une récurrence immédiate, on obtient :
+
+\begin{cor}%cor
+	Soit $(f_n)$ une suite de fonctions de classe $\mathcal{C}^k$ sur $I$, avec $k\in\N\st$. On suppose que :
+	\begin{itemize}
+		\item pour tout $i\in\llbracket0,k-1\rrbracket$, la suite $(f_n^{(i)})$ converge simplement sur $I$ vers une fonction $\varphi_i$ ;
+		\item $(f_n^{(k)})$ converge uniformément sur tout segment de $I$ vers une fonction $\varphi_k$.
+	\end{itemize}
+	Alors $f=\varphi_0$ est de classe $\mathcal{C}^k$ sur $I$ et l'on a :
+	$$\forall i\in\llbracket0,k\rrbracket,\ f^{(i)}=\varphi_i.$$
+\end{cor}
+
+\begin{met}
+	Pour montrer que la limite d'une suite de fonctions de classe $\mathcal{C}^\infty$ est de classe $\mathcal{C}^\infty$, il suffit de montrer la convergence uniforme sur tout segment de toutes les suites dérivées.
+\end{met}
+
+\subsubsection*{Cas des séries}
+
+En termes de séries, les résultats précédents s'écrivent :
+
+\begin{thm}%thm
+	Soit $\displaystyle\sum u_n$ une série de fonctions de classe $\mathcal{C}^1$ convergeant simplement sur $I$. Si la série $\displaystyle\sum u_n'$ converge uniformément sur tout segment de $I$, alors la série $\displaystyle\sum u_n$ converge uniformément sur tout segment de $I$, sa somme est de classe $\mathcal{C}^1$ et l'on a :
+	$$D\left(\sum_{n=0}^{+\infty}u_n\right)=\sum_{n=0}^{+\infty}Du_n.$$
+\end{thm}
+
+\begin{ex}
+	\begin{enumerate}
+		\item La série $\displaystyle\sum e^{-nx}$ converge normalement sur $\R_+\st$, et la série dérivée $\displaystyle-\sum ne^{-nx}$ converge normalement sur $[\varepsilon,+\infty[$ pour tout $\varepsilon>0$, donc sur tout segment de $\R_+\st$. On en déduit donc :
+		$$\sum_{n=0}^{+\infty}ne^{-nx}=-\frac{\d}{\d x}\left(\sum_{n=0}^{+\infty}e^{-nx}\right)=\frac{e^{-x}}{(1-e^{-x})^2}.$$
+		\item La série :
+		$$S(x)=\sum_{n=1}^{+\infty}\frac{\cos(nx)}{n^2}$$ converge normalement sur $\R$, et la série dérivée :
+		$$-\sum_{n=1}^{+\infty}\frac{\sin(nx)}{n}$$
+		converge uniformément sur tout segment de $]0,2\pi[$ (pourquoi ?). \\
+		On en déduit que $S$ est de classe $\mathcal{C}^1$ sur $]0,2\pi[$ avec :
+		$$\forall x\in]0,2\pi[,\ S'(x)=-\sum_{n=1}^{+\infty}\frac{\sin(nx)}{n}.$$
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	La fonction $S$-elle deux fois dérivable sur $]0,2\pi[$ ?
+\end{exo}
+
+\begin{rmq}
+	On peut montrer que $\forall x\in]0,2\pi[,\ \displaystyle\sum_{n=1}^{+\infty}\frac{\sin(nx)}{n}=\frac{\pi-x}{2}$.
+\end{rmq}
+
+\begin{cor}%cor
+	Soit $k\in\N\st$ et $\displaystyle\sum u_n$ une série de fonctions de classe $\mathcal{C}^k$ sur $I$ telles que :
+	\begin{itemize}
+		\item pour tout $i\in\llbracket0,k-1\rrbracket$, la série $\displaystyle\sum u_n^{(i)}$ converge simplement sur $I$ ;
+		\item la série $\displaystyle\sum u_n^{(k)}$ converge uniformément sur tout segment de $I$.
+	\end{itemize}
+	Alors, la somme de la série $\displaystyle\sum u_n$ est de classe $\mathcal{C}^k$ sur $I$ et l'on a :
+	$$\forall i\in\llbracket0,k\rrbracket,\ D^i\left(\sum_{n=0}^{+\infty}u_n\right)=\sum_{n=0}^{+\infty}D^iu_n.$$
+\end{cor}
+
+\begin{ex}
+	\begin{enumerate}
+		\item la fonction $\zeta$ de Riemann définie sur $I=]1,+\infty[$ par :
+		$$\zeta(x)=\sum_{n=1}^{+\infty}\frac{1}{n^x}$$ est de classe $\mathcal{C}^\infty$ sur $I$, et l'on a :
+		$$\forall k\in\N,\ \forall x\in I, \zeta^{(k)}(x)=\sum_{n=1}^{+\infty}\frac{(-\ln(n))^k}{n^x}.$$
+		\item Soit $\mathcal{A}$ une algèbre de dimension finie, et $a\in\mathcal{A}$. La fonction $$e_a:t\mapsto\exp(ta)=\sum_{n=0}^{+\infty}u_n(t)\quad\text{avec}\quad u_n(t)=\frac{t^n}{n!}a^n$$ est de classe $\mathcal{C}^\infty$ sur $\R$ et l'on a en particulier :
+		$$\forall t\in\R,\ \frac{\d}{\d t}(e_a(t))=ae_a(t)=e_a(t)a.$$ 
+	\end{enumerate}
+\end{ex}
+
+\begin{exo}
+	Régularité de $f:x\mapsto\displaystyle\sum_{n=0}^{+\infty}\frac{e^{-nx}}{n^2+1}$. Trouver une équation différentielle vérifiée par $f$ sur $\R_+\st$.
+\end{exo}
+
+\begin{exo}
+	Régularité de $f:x\mapsto\displaystyle\sum_{n=0}^{+\infty}\frac{(-1)^n}{x+n}$ sur $]0,+\infty[$.
+\end{exo}
+
+\subsection{Application à l'étude de fonctions}
+
+\begin{exo}
+	Montrer que la fonction $f$ définie par :
+	$$f(x)=\sum_{n=1}^{+\infty}\frac{1}{1+n^2x}$$ est de classe $\mathcal{C}^\infty$ sur $\R_+\st$.
+\end{exo}
+
+\begin{met}
+	Pour déterminer un équivalent de la somme d'une série en une borne de son intervalle de définition, on peut deviner l'équivalent puis le démontrer à l'aide du théorème d'interversion de limites.
+\end{met}
+
+\begin{exo}
+	Donner un équivalent de $f$ en $+\infty$.
+\end{exo}
+
+\begin{met}
+	Pour déterminer un équivalent de la somme d'une série en une borne de son intervalle, on peut aussi utiliser une comparaison série/intégrale.
+\end{met}
+
+\begin{exo}
+	Donner un équivalent de $f$ en $0$.
+\end{exo}
+
+\section{Approximations}
+
+Souvent, an analyse, on cherche à remplacer $f$ par des fonctions "plus simples" et "proches de $f$". C'est le sujet de l'\textbf{approximation}.
+
+\subsection{Approximation uniforme}
+
+On s'intéresse ici ) des approximations uniformes, c'est-à-dire "proches" au sens de la norme $\mathcal{N}_\infty$. Les fonctions seront définies sur un segment $J=[a,b]$ et à valeurs dans $F$.
+
+\begin{prop}%prop
+	Soit $f\in\mathcal{B}(J,F)$ et $\mathcal{X}$ un sous-espace vectoriel de $\mathcal{B}(J,F)$. Il est équivalent de dire :
+	\begin{enumerate}[label=(\roman*)]
+		\item pour tout $\varepsilon>0$, il existe $\varphi\in\mathcal{X}$ tel que $\mathcal{N}_\infty(f-\varphi)\leqslant\varepsilon$ ;
+		\item il existe une suite $(\varphi_n)$ d'éléments de $\mathcal{X}$ convergeant uniformément vers $f$ sur $J$ ;
+		\item $f$ appartient à l'adhérence de $\mathcal{X}$ dans $(\mathcal{B}(J,F),\mathcal{N}_\infty)$.
+	\end{enumerate}
+	On dit alors que l'on peut \textbf{approcher uniformément} $f$ par des éléments de $\mathcal{X}$.
+\end{prop}
+
+\subsection{Approximation par des fonctions en escalier}
+
+Ces résultats ont déjà été énoncés et démontrés en première année.
+
+\begin{prop}%prop
+	Toute fonction continue sur le segment $J$ peut être approchée uniformément par des fonctions en escalier.
+\end{prop}
+\begin{proof}
+	Théorème de Heine et méthode des rectangles.
+\end{proof}
+
+\begin{lem}%lem
+	Toute fonction continue par morceaux sur $J$ est somme d'une fonction en escalier et d'une fonction continue.
+\end{lem}
+\begin{proof}
+	Récurrence sur le nombre de points de discontinuité.
+\end{proof}
+
+\begin{thm}%thm
+	Toute fonction continue par morceaux sur le segment $J$ peut être approchée uniformément par des fonctions en escalier.
+\end{thm}
+
+\subsection{Approximation par des fonctions continues affines par morceaux (HP)}
+
+\begin{prop}%prop
+	Toute fonction $f\in\mathcal{C}([a,b],\K)$ est limite uniforme sur $[a,b]$ d'une suite $(\varphi_n)$ de fonctions continues et affines par morceaux sur $[a,b]$.\\
+	On peut de plus imposer aux $\varphi_n$ les conditions :
+	$$\varphi_n(a)=f(a)\quad\text{et}\quad\varphi_n(b)=f(b).$$
+\end{prop}
+
+\begin{exo}
+	Le résultat s'étend-il au cas des fonctions continues par morceaux ? %non sinon limite continue
+\end{exo}
+
+\begin{exo}
+	Montrer que toute fonction continue de $[a,b]$ dans $\K$ est affine par morceaux est combinaison linéaire de fonctions de la forme $x\mapsto \lvert x-\alpha\rvert$, avec $\alpha\in[a,b]$.
+\end{exo}
+
+\subsection{Théorème de Weierstrass}
+
+\begin{exo}
+	En utilisant l'exercice précédent et l'exercice $4$, montrer que toute fonction continue affine par morceaux sur $[a,b]$ est limite uniforme d'une suite de fonctions polynomiales.
+\end{exo}
+
+\begin{thm}[Théorème de Weierstrass]%thm
+	Toute fonction $f\in\mathcal{C}^0([a,b],\K)$ est limite uniforme sur $[a,b]$ d'une suite de fonctions polynomiales à valeurs dans $\K$.
+\end{thm}
+
+\begin{ex}
+	Soit $f:[0,1]\to\R$ une fonction continue telle que $\displaystyle\int_{0}^{1}x^nf(x)\d x=0$ pour tout $n\in\N$. Alors $f=0$.
+	%classique, ou alors avec un produit scalaire
+\end{ex}
+
+\section{Compléments (HP)}
+
+\subsection{Théorème de Dini}
+
+\begin{thm}%thm
+	Soit $K$ un compact et $(f_n)$ une suite décroissante de fonctions continues de $K$ dans $\R$ convergeant simplement vers $f$. Alors la convergence est uniforme.
+\end{thm}
+
+\begin{exo}
+	Des des contre-exemples lorsque $K$ est un intervalle borné non fermé puis fermé non borné.
+\end{exo}
+
+\begin{cor}[Premier théorème de Dini]%cor
+	Soit $K$ un compact et $(f_n)$ une suite monotone de fonctions continues de $K$ dans $\R$ convergeant simplement vers une fonction $f$. Alors la convergence est uniforme si, et seulement si $f$ est continue.
+\end{cor}
+
+\begin{ex}
+	Reprenons les exercices $3$ et $4$ et montrons que la convergence de la suite de polynômes $(P_n)$ vers $x\mapsto\sqrt{x}$ sur $[0,1]$ est uniforme en utilisant le premier théorème de Dini.
+\end{ex}
+
+\begin{rmq}
+	La démonstration réalisée dans l'exemple précédent est la "bonne" démonstration de ce résultat.
+\end{rmq}
+
+\subsection{Polynômes de Bernstein}
+
+Soit $f\in\mathcal{C}^0([0,1],\R)$ fixée. On explicite une suite de polynômes qui converge uniformément sur $[0,1]$. On note $e_k:t\mapsto t^k$, pour $k\in\llbracket0,2\rrbracket$.
+
+\begin{dfn}
+	Pour $x\in[0,1]$, $n\in\N\st$ et $g\in\mathcal{C}^0([0,1],\R)$, on pose :
+	$$B_n(g)(x)=\sum_{p=0}^{n}\binom{n}{p}x^p(1-x)^{n-p}g\left(\frac{p}{n}\right).$$
+	$B_n(g)$ est le $n$-ème \textbf{polynôme de Bernstein associé à $g$}. 
+\end{dfn}
+
+\begin{exo}
+	Soit $\varepsilon>0$.
+	\begin{enumerate}
+		\item Montrer qu'il existe $M$ tel que :
+		$$\forall x\in[0,1],\ \forall t\in[0,1],\ \lvert f(x)-f(t)\rvert\leqslant\max(\varepsilon,M\lvert x-t\rvert).$$
+		\item Montrer qu'il existe $M$ tel que :
+		$$\forall x\in[0,1],\forall t\in[0,1],\ \lvert f(x)-f(t)\rvert\leqslant\varepsilon+M(x-t)^2.$$
+	\end{enumerate}
+\end{exo}
+
+On fixe désormais $x\in[0,1]$ et l'on considère une variable aléatoire $X_n$ suivant une loi binomiale de paramètres $n$ et $x$, ainsi que $Y_n=X_n/n$. Alors, pour toute fonction continue $g$ sur $[0,1]$ à valeur dans $\R$, on a :
+$$B_n(g)(x)=\E(f(Y_n)).$$
+
+\begin{thm}%thm
+	La suite $(B_n(f))$ converge uniformément vers $f$ sur $[0,1]$.
+\end{thm}
+
+\begin{exo}
+	En déduire une preuve du théorème de Weierstrass (sur un segment quelconque et pour $\K=\R$ ou $\K=\C$).
+\end{exo}
+
+\subsection{Théorème de Stone-Weierstrass}
+
+Nous présentons ici une version plus générale du théorème de Weierstrass, appelée théorème de Stone-Weierstrass. Il donne une condition suffisante pour qu'une sous-algèbre de $\mathcal{C}^0(K,\K)$ soit dense dans $\mathcal{C}^0(K,\K)$ pour $K$ un compact et $\K=\R$ ou $\K=\C$. Sa démonstration se fait en plusieurs étapes, dont certaines rappellent la première démonstration que nous avons donnée du théorème de Weierstrass.
+
+Avant de passer à l'énoncé et à la preuve du théorème, nous aurons besoin de quelques définitions et de quelques lemmes.
+
+\subsubsection*{Définitions et lemmes préliminaires}
+
+\begin{dfn}
+	Une sous-algèbre $A$ de $\mathcal{C}^0(K,\K)$ \textbf{sépare les points} si pour tout $(x,y)\in K^2$ tel que $x\ne y$, il existe $f\in A$ tel que $f(x)\ne f(y)$.
+\end{dfn}
+
+\begin{ex}
+	\begin{itemize}
+		\item L'algèbre des fonctions polynomiales sépare les points.
+		\item L'algèbre des fonctions paires ne sépare pas les points.
+	\end{itemize}
+\end{ex}
+
+Dans la suite, $K$ désignera un espace topologique compact.
+
+\begin{lem}%lem
+	Soit $A$ une sous-algèbre de $\mathcal{C}^0(K,\K)$. Alors $\overline{A}$, l'adhérence de $A$ dans $\mathcal{C}^0(K,\K)$ pour la norme infinie, est une sous-algèbre de $\mathcal{C}^0(K,\K)$.
+\end{lem}
+
+\begin{lem}%lem
+	Soit $A$ une sous-algèbre de $\mathcal{C}^0(K,\R)$. Alors l'algèbre $\overline{A}$ est stable par passage au module.
+\end{lem}
+\begin{proof}
+	Soit $f\in\overline{A}$. On suppose $f$ non nulle, sinon il n'y a rien à démontrer. La fonction $\tilde{f}:K\to\R$ qui à $x$ associe $f(x)/\mathcal{N}_\infty(f)$ est à valeurs dans $[-1,1]$ et est dans $\overline{A}$.
+	
+	Or, on sait qu'il existe une suite de polynômes $(P_n)$ telle que la valeur absolue soit limite uniforme des $P_n$ sur $[-1,1]$ (\textit{cf}. un exercice du chapitre, ou bien la section sur le théorème de Dini). 
+	
+	Par conséquent, la suite de fonctions $\tilde{f}_n=P_n(\tilde f)$ est à valeurs dans $\overline{A}$ puisqu'une algèbre est stable par produit et combinaison linaire. Et $(\tilde{f}_n)$ converge uniformément vers $\lvert \tilde{f}\rvert$ car :
+	$$\underset{K}{\sup}\lvert P_n(\tilde{f})-\lvert\tilde{f}\rvert\rvert\leqslant\underset{x\in[-1,1]}{\sup}\lvert P_n(x)-\lvert x\rvert\rvert.$$
+	Comme $\overline{A}$ est fermée, on a $\lvert\tilde{f}\rvert\in\overline{A}$ et donc $\lvert f\rvert=(\underset{K}{\sup}\lvert f\rvert)\times\lvert\tilde{f}\rvert$ appartient à $\overline{A}$.
+\end{proof}
+
+\begin{cor}%cor
+	Soit $A$ une sous-algèbre de $\mathcal{C}^0(K,\R)$. Alors l'algèbre $\overline{A}$ est stable par passage au minimum et au maximum.
+\end{cor}
+
+\begin{lem}%lem
+	Soit $A$ une sous-algèbre de $\mathcal{C}^0(K,\R)$ qui sépare les points. Soit $(x,y)\in K^2$ tel que $x\ne y$ et ainsi que $\alpha$ et $\beta$ deux réels. Alors, il existe $f\in\overline{A}$ telle que :
+	$$f(x)=\alpha\quad\text{et}\quad f(y)=\beta.$$ 
+\end{lem}
+\begin{proof}
+	Par séparation de $A$, il existe $g\in A$ telle que $g(x)\ne g(y)$. On peut ensuite considérer la fonction :
+	$$\begin{array}{rcl}
+		K&\longrightarrow&\R\\
+		z&\longmapsto&\displaystyle(\alpha-\beta)\frac{g(z)-g(y)}{g(x)-g(y)}+\beta
+	\end{array}$$ qui est bien dans $A$ et vérifie la condition demandée.
+\end{proof}
+
+\subsubsection*{Théorème de Stone-Weierstrass - cas réel}
+
+\begin{thm}[Théorème de Stone-Weierstrass - cas réel]%thm
+	Soit $A$ une sous-algèbre de $\mathcal{C}^0(K,\R)$ qui sépare les points. Alors $A$ est dense dans $\mathcal{C}^0(K,\R)$ pour la norme infinie.
+\end{thm}
+\begin{proof}
+	Soit $\varepsilon>0$ et $f\in\mathcal{C}(K,\R)$.
+	
+	Soit $(x,y)\in K^2$ tel que $x\ne y$. Un lemme précédent permet de noter $a_{x,y}\in\overline{A}$ une fonction telle que $$a_{x,y}(x)=f(x)\quad\text{et}\quad a_{x,y}(y)=f(y).$$
+	
+	On définit alors :
+	$$U_y=\{x'\in K\ :\ a_{x,y}(x')>f(x')-\varepsilon\}.$$ C'est un ouvert qui contient $y$. La famille $(U_y)_{y\in K}$ est un recouvrement ouvert de $K$ compact, donc il existe $y_1,\ldots,y_N$ dans $K$ tels que :
+	$$K\subset\bigcup_{i=1}^nU_{y_i}.$$
+	
+	Un autre lemme précédent permet alors de définir : 
+	$$\overline{a}_x=\max_{1\leqslant i\leqslant n}a_{x,y_i}\in\overline{A},$$ qui vérifie :
+	$$\begin{cases}
+		\overline{a}_x(x)=f(x)\\
+		\forall x'\in K,\ \overline{a}_x(x')>f(x')-\varepsilon
+	\end{cases}.$$
+	
+	On définit alors :
+	$$V_x=\{x'\in X\ :\ \overline{a}_x(x')<f(x')+\varepsilon\}.$$ C'est un ouvert qui contient $x$. La famille $(V_x)_{x\in K}$ est donc un recouvrement ouvert de $K$ qui est compact, donc il existe $x_1,\ldots,x_n$ dans $K$ tel que :
+	$$K\subset \bigcup_{i=1}^nV_{x_i}.$$
+	
+	Un lemme précédent permet de poser :
+	$$a=\min_{1\leqslant i\leqslant n}\overline{a}_{x_i}\in\overline{A},$$ qui vérifie :
+	$$\forall x\in K,\ \begin{cases}
+		a(x)<f(x)+\varepsilon\\
+		a(x)>f(x)-\varepsilon
+	\end{cases}.$$
+\end{proof}
+
+\subsubsection*{Théorème de Stone-Weierstrass - cas complexe}
+
+\begin{thm}[Théorème de Stone-Weierstrass - cas complexe]%thm
+	Soit $A$ une sous-algèbre de $\mathcal{C}^0(K,\C)$ qui sépare les points et qui est stable par conjugaison. Alors $A$ est dense dans $\mathcal{C}^0(K,\C)$ pour la norme infinie.
+\end{thm}
+\begin{proof}
+	Il suffit de vérifier  que l'on peut approcher la partie réelle et la partie imaginaire de $f\in\mathcal{C}^0(K,\C)$ par des éléments de $A$.
+	
+	On définit donc $A_\R=A\cap\mathcal{C}^0(K,\R)$ qui est une sous-algèbre réelle de $\mathcal{C}^0(K,\R)$. Vérifions que $A_\R$ sépare les points. Soit $(x,y)\in K^2$ tel que $x\ne y$, et $f\in A$ telle que $f(x)\ne f(y)$. La fonction :
+	$$\begin{array}{rcl}
+		K&\longrightarrow&\R\\
+		z&\longmapsto&\displaystyle\text{Re}\left(\frac{f(z)-f(y)}{f(x)-f(y)}\right)
+	\end{array}$$ est bien dans $A_\R$ car elle est de la forme $h+\overline{h}$ avec $h\in A$, et elle vaut $0$ en $y$ et $1$ en $x$. 
+	
+	Le théorème de Stone-Weierstrass (cas réel) s'applique donc, et on peut approcher uniformément la partie réelle de $f$ par des éléments de $A$. 
+	
+	Pour la partie imaginaire, travailler sur $-if\in\mathcal{C}^0(K,\C)$.
+\end{proof}
+
+\subsubsection*{Applications}
+
+On retrouve notamment le théorème de Weierstrass.
+
+\begin{thm}[Théorème de Weierstrass trigonométrique]%thm
+	
+\end{thm}
+
+\end{document}

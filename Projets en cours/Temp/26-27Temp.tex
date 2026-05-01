@@ -1,0 +1,1468 @@
+\documentclass[french]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{dsfont}
+\usepackage{multirow}
+\usepackage{etoc}
+\usepackage{titlesec}
+\usepackage{esint}
+\usepackage{cancel}
+\usepackage{mathdots}
+\usepackage{indentfirst}
+\usepackage{tikz}
+
+\setlength{\parindent}{0pt}
+
+\setlist[itemize]{label=$\bullet$}
+\setlist{before=\leavevmode}
+
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\renewcommand{\L}{\mathbb{L}}
+\newcommand{\U}{\mathbb{U}}
+\newcommand{\st}{^*}
+\newcommand{\tq}{\middle|}
+\newcommand{\inv}{^{-1}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\V}{\mathbb{V}}
+\renewcommand{\ker}{\text{Ker}}
+\newcommand{\im}{\text{Im}}
+\newcommand{\card}{\text{Card}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\Vect}{\text{Vect}}
+\newcommand{\rg}{\text{rg}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\renewcommand{\o}{\text{o}}
+\renewcommand{\O}{\text{O}}
+\renewcommand{\d}{\text{d}}
+\newcommand{\Id}{\text{Id}}
+\newcommand{\D}{\text{D}}
+
+\theoremstyle{definition}
+\newtheorem{pro}{Problème}[chapter]
+
+\theoremstyle{remark}
+\newtheorem*{sol}{Solution}
+\newtheorem*{rmq}{Remarque}
+
+\newcommand{\tikzstar}[1]{
+	\begin{tikzpicture}[scale=0.1, baseline=-0.3ex]
+		\draw[fill=#1, line join=round] (90:1) -- (126:0.4) -- (162:1) -- (198:0.4) -- (234:1) -- (270:0.4) -- (306:1) -- (342:0.4) -- (18:1)  -- (54:0.4) -- cycle;
+	\end{tikzpicture}
+}
+
+\newcommand{\stars}[1]{
+	\ifnum#1=0 $\tikzstar{white}\tikzstar{white}\tikzstar{white}$	\fi
+	\ifnum#1=1 $\tikzstar{black}\tikzstar{white}\tikzstar{white}$	\fi
+	\ifnum#1=2 $\tikzstar{black}\tikzstar{black}\tikzstar{white}$	\fi
+	\ifnum#1=3 $\tikzstar{black}\tikzstar{black}\tikzstar{black}$	\fi
+}
+
+
+
+% Commande qui affiche les étoiles avec un ajustement de hauteur
+\newcommand{\etoilesStables}[1]{%
+	% \raisebox{1pt} remonte les étoiles de 1 point. 
+	% Vous pouvez utiliser des valeurs négatives pour descendre (ex: -1pt)
+	% ou des mesures plus précises (ex: 0.2ex).
+	\llap{\raisebox{2pt}{\stars{#1}}\hspace{5pt}}% 
+}
+
+\newtcolorbox[auto counter, number within=chapter]{exo}[2][]{%
+	enhanced,
+	blanker,
+	before skip=10pt, after skip=10pt,
+	attach title to upper={\ },
+	fonttitle=\bfseries,
+	coltitle=black,
+	% On insère les étoiles directement au début du titre avec \llap
+	title={\ifstrempty{#1}{}{\etoilesStables{#1}}Exercice \thetcbcounter \ifstrempty{#2}{}{ (#2)}},
+}
+
+
+\title{Exercices intéressants}
+
+\begin{document}
+
+
+\chapter{Polynômes et fractions rationnelles}
+
+\begin{exo}[0]{}
+	Montrer qu'il existe une suite $(a_n)\in(\R\st)^\N$ telle que pour tout $n\in\N\st$, $P_n=\displaystyle\sum_{k=0}^{n}a_kX^k$ soit scindé à racines simples sur $\R$.
+\end{exo}
+\begin{sol}
+	Construire la suite par récurrence en prenant les coefficients suffisamment petits pour scinder encore sans trop modifier les racines.
+\end{sol}
+
+\begin{exo}[1]{}
+	Soit $P\in\R[X]$ unitaire de degré $n\geqslant1$. Montrer que $P$ est scindé sur $\R$ si, et seulement si, $$\forall z\in\C,\ \lvert P(z)\rvert\geqslant\lvert\im(z)\rvert^n.$$
+\end{exo}
+\begin{sol}
+	On procède par double implication :
+	\begin{itemize}
+		\item Sens direct : si $P$ est scindé sur $\R$, on écrit $$P=\prod_{k=1}^{n}(X-\lambda_k)$$ Alors pour tout $z\in\C$ : $$\lvert P(z)\rvert=\prod_{k=1}^{n}\lvert z-\lambda_k\rvert \geqslant \prod_{k=1}^{n}\lvert\im(z-\lambda_k)\rvert=\prod_{k=1}^{n}\lvert\im(z)\rvert=\lvert\im(z)\rvert ^n$$
+		\item Sens réciproque : notons $\lambda_k$ les racines \textit{a priori} complexes de $P$ après l'avoir scindé sur $\C$. On a alors : $$\lvert\im(\lambda_k)\rvert^n\leqslant\lvert P(\lambda_k)\rvert=0$$ Puisque $n\geqslant1$, on en déduit que $\im(\lambda_k)=0$ et donc que $\lambda_k\in\R$, si bien que $P$ est scindé sur $\R$.
+	\end{itemize}
+\end{sol}
+
+\begin{exo}[1]{}
+	On note $\mathcal{P}$ l'ensemble des nombres premiers. Trouver tous les polynômes $A \in \Z[X]$ tels que $\forall n \in \N, \ A(n) \in \mathcal{P}$.
+\end{exo}
+\begin{sol}
+	Dans une phase d'analyse, considérer les $P(nP(0))$ : pour tout $n\in\N\st$, $nP(0)$ divise $P(nP(0))-P(0)$ donc $P(0)$ divise $P(nP(0))$ donc $P(nP(0))=P(0)$ car ce sont des nombres premiers. Comme il y a une infinité de $nP(0)$ (car $P(0)$ est non nul car premier), on en déduit que $P=P(0)$. \\
+	Réciproquement, les polynômes constants conviennent bien.
+\end{sol}
+
+
+\begin{exo}[2]{}
+	Déterminer tous les polynômes $P\in\R[X]$ tels que :
+	$$\forall x\in\R,\ P(x-\lfloor x\rfloor)=P(x)-\lfloor P(x)\rfloor.$$
+\end{exo}
+\begin{sol}
+	\begin{itemize}
+		\item Analyse : on montrer que $x\mapsto P(x+1)-P(x)$ est à valeurs dans $\Z$ donc est constante. Si cette valeur constante vaut $0$, on montrer que $P$ est une constante en observant par exemple des racines de $P$. Sinon, si cette valeur constante $a$ non nul, on pose $Q=P-aX$ pour se ramener au cas précédent. Ainsi, $P=aX+b$ avec $a\in\Z$ et $b\in\R$. En évaluant en $0$, on trouve de plus $b=b-\lfloor b\rfloor$ donc $b\in[0,1[$.
+		\item Synthèse : si $a=0$, c'est bon. En supposant $a\ne 0$, jouer avec $\displaystyle \frac{a}{\lvert a\rvert}$ qui vaut $\pm 1$ pour montrer que $a$ est une unité de $\Z$. Observer que cela ne fonctionne pas si $a=-1$ car on devrait avoir pour tout $x\in\R$ : 
+		$$ \lfloor x\rfloor=-\lfloor x+b\rfloor$$ et considérer $b<x<1$. Dans le cas où $a=1$, utiliser l'inégalité :
+		$$0\leqslant b\leqslant 1-b-\lfloor 1-b\rfloor+b=P(1-b-\lfloor1-b\rfloor).$$
+		Or, $P(1-b-\lfloor1-b\rfloor)=P(1-b)-\lfloor P(1-b)\rfloor=1-b+b-\lfloor 1-b+b\rfloor=0$ donc $b=0$.
+	\end{itemize}
+\end{sol}
+
+
+\begin{exo}[2]{}
+	Soit $P=\displaystyle\sum_{k=0}^{n}a_kX^k\in\C[X]$ dont toutes les racines ont une partie imaginaire strictement positive. Montrer que $Q=\displaystyle\sum_{k=0}^{n}\text{Re}(a_k)X^k$ est scindé sur $\R$. On pourra comparer $\lvert P(z)\rvert$ et $\lvert P(\overline{z})\rvert$ pour $z$ non réel.
+\end{exo}
+\begin{proof}
+	Tout d'abord, on suit l'indication : après avoir scindé $P$ sur $\C$, on se ramène à l'étude de $\lvert z-\lambda\rvert$ et $\lvert \overline{z}-\lambda\rvert$ où $\text{Im}(\lambda)>0$. Sans perte de généralité, on suppose $\text{Im}(z)>0$. Par un calcul utilisant les parties réelles et imaginaires, on montre aisément $$\lvert z-\lambda\rvert<\lvert \overline{z}-\lambda\rvert$$ Avoir une intuition géométrique de l'inégalité précédente peut aider. On en déduit que si $z$ est de partie imaginaire strictement positive, alors : $$\lvert P(z)\rvert <\lvert P(\overline{z})\rvert$$ De façon générale, pour $z$ complexe non réel, on a $\lvert P(z)\rvert \ne \lvert P(\overline{z})\rvert$. \\
+	Ensuite, on note $\overline{P}$ le polynôme dont les coefficients sont les conjugués des coefficients de $P$. Alors, d'après les formules d'Euler, on a : $$Q=\frac{P+\overline{P}}{2}$$ Mais $Q$ est scindé sur $\C$. Soit $z$ une racine complexe de $Q$. Alors, $P(z)=-\overline{P}(z)$. Donc $$\lvert P(z)\rvert=\lvert -\overline{P}(z)\rvert=\lvert\overline{P}(z)\rvert=\lvert\overline{\overline{P}(z)}\rvert=\lvert P(\overline{z})\rvert$$ D'après l'étude précédente, par contraposée, $z$ est nécessairement réel. Donc $Q$ est scindé sur $\R$.
+\end{proof}
+
+\begin{exo}[2]{}
+	Soit $P=\displaystyle\sum_{j=0}^{n-1}a_jX^j\in\Z[X]$. On suppose que $a_0=1$ et $P(\U_n)\subset\R_+$ où $\U_n$ désigne le groupe des racines $n$-èmes de l'unité. Montrer que les $a_j$ sont dans $\{-1,0,1\}$.
+\end{exo}
+\begin{sol}
+	On écrit, avec les notations habituelles : $$P=\sum_{j=0}^{n-1}P(\omega_j)L_j.$$ Or, $L_j=\displaystyle\prod_{\substack{0\leqslant k\leqslant n-1\\ k\ne j}}\frac{X-\omega_k}{\omega_j-\omega_k}$. On va chercher à simplifier l'expression de $L_j$ : pour cela, on utilise le polynôme $X^n-1$ : $$X^n-1=\prod_{k=0}^{n-1}(X-\omega_k)$$ et en dérivant : $$nX^{n-1}=\sum_{k=0}^{n-1}\prod_{l\ne k}(X-\omega_l)$$ Le numérateur de $L_j$ vaut alors : $$\frac{X^n-1}{X-\omega_j}$$ et son dénominateur $n/\omega_j$. En utilisant une factorisation de $a^n-b^n$, on trouve alors : $$L_j=\frac{1}{n}\sum_{k=0}^{n}(\omega_j\inv X)^k$$ En sommant, on en déduit alors : $$a_j=\frac{1}{n}\sum_{k=0}^{n-1}P(\omega_k)\omega_k^{-j}$$ Par inégalité triangulaire, comme les $P(\omega_k)$ sont des réels positifs, on obtient : $$\lvert a_j\rvert\leqslant\frac{1}{n}\sum_{k=0}^{n-1}P(\omega_k)$$ Mais en prenant l'égalité précédente pour $j=0$, on trouve $$\sum_{k=0}^{n-1}P(\omega_k)=na_0=n$$ Ainsi : $$\forall j\in\llbracket0,n-1\rrbracket,\ \lvert a_j\rvert\leqslant 1$$ Comme les $a_j$ sont entiers, on en déduit bien : $$\forall j\in\llbracket0,n-1\rrbracket,\ a_j\in\left\{-1,0,1\right\}.$$
+\end{sol}
+
+\begin{exo}[2]{Inégalité de Bernstein}
+	Soit $n\geqslant 1$ un entier. On note $z_1,\ldots,z_n$ les racines de $X^n+1$.
+	\begin{enumerate}
+		\item Montrer que pour tout $P\in\C_n[X]$ $$XP'=\frac{n}{2}P+\frac{2}{n}\sum_{k=1}^{n}\frac{z_kP(z_kX)}{(z_k-1)^2}$$
+		\item Pour $Q\in\C[X]$, on pose $\lVert Q\rVert=\displaystyle\sup_{z\in\U}\lvert Q(z)\rvert$. Montrer que pour tout $P\in\C_n[X]$, $$\lVert P'\rVert\leqslant n\lVert P\rVert$$
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Remarquer une linéarité en $P$ pour se ramener à la base canonique de $\C_n[X]$. On utilisera, après démonstration, la décomposition en éléments simples de $X^k/(X^n+1)$ pour $k\in\llbracket 0,n\rrbracket$.
+		\item Évaluer l'égalité précédente en $z\in\U$ puis utiliser l'inégalité triangulaire. Terminer en calculant avec des arcs moitié après avoir posé $z=e^{i\theta}$.
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[3]{}
+	Soit $P\in\R[X]$ tel que $\forall x\in\R_+,\ P(x)>0$. Montrer qu'il existe $N\in\N$ tel que $(1+X)^NP$ soit à coefficients positifs.
+\end{exo}
+\begin{sol}
+	Toutes les racines réelles de $P$ sont donc strictement positives et le coefficient dominant de $P$ est strictement positif. En décomposant $P$ en facteurs irréductibles sur $\R$, on peut donc écrire : $$P=\lambda\prod_{k=1}^{r}(X+\alpha_k)\prod_{l=1}^{s}(X^2+\beta_lX+\gamma_l)$$ avec $\lambda>0$, les $\alpha_k$ strictement positifs et $\beta_l^2-4\gamma_l<0$. \\ Pour qu'un polynôme réel soit à coefficients positifs, il suffit qu'il soit le produit de polynômes à coefficients positifs. Les facteurs irréductibles de degré $1$ le sont déjà, donc il suffit de voir l'effet de $(1+X)^N$ sur un trinôme du second degré irréductible. Après utilisation d'un binôme de Newton, on trouve que le coefficient de $X^k$ dans $(1+X)^n(X^2+\beta X+\gamma)$ est : $$x_{k,N}=\gamma\binom{N}{k}+\beta\binom{N}{k-1}+\binom{N}{k-2}$$ On traite d'abord le cas où $k\in\llbracket 2,N\rrbracket$. On a alors : $$x_{k,N}=\underbrace{\frac{N!}{(N-k+2)!k!}}_{\geqslant 0}\times\underbrace{(\gamma(N-k+2)(N-k+1)+\beta k(N-k+2)+k(k-1))}_{=:P_N(k)}$$ $P_N(k)$ est un polynôme du second degré, on va essayer de faire en sorte qu'il soit à valeurs positives. Sous forme développée, $P_n$ s'écrit : $$P_N=(\gamma-\beta+1)X^2+(\beta(N+2)-1-\gamma(2N+3))X+\gamma(N+2)(N+1)$$ Le discriminant de de $P_n$ vaut alors après simplification : $$\Delta_N=(\beta^2-4\gamma)N^2+O(N)$$ Comme $\beta^2-4\gamma<0$ par hypothèse, $\Delta_N$ tend vers $-\infty$ quand $N$ tend vers $+\infty$, donc est strictement négatif à partir d'un certain rang $N_0$. Or, le coefficient dominant de $P_N$ est exactement le trinôme $X^2+\beta X+\gamma$ évalué en $-1$, et sa valeur est strictement positive par hypothèse. Donc pour tous les $N\geqslant N_0$, $P_N$ est à valeurs strictement positives et les $P_N(k)$ sont donc positifs. \\ Enfin, traitons les quelques cas particuliers restants : \begin{itemize}
+		\item $k=0$ : le terme constant vaut $\gamma>0$ ;
+		\item $k=1$ : le terme de degré $1$ vaut $N\gamma+\beta>0$ pour $N$ supérieur à un certain $N_1$ ;
+		\item $k=N+1$ : le terme de degré $N+1$ vaut $N+\beta>0$ pour un $N$ supérieur à un certain $N_2$ ;
+		\item $k=N+2$ : le terme de degré $N+2$ vaut $1>0$.
+	\end{itemize}
+	Ainsi, pour $N= \max(N_0,N_1,N_2)$, $(1+X)^N(X^2+\beta X+\gamma)$ est à coefficients positifs. \\ On conclut en prenant $N=N_1+\cdots+N_s$ où $N_l$ est un entier qui convient pour le trinôme irréductible $X^2+\beta_l X+\gamma_l$.
+\end{sol}
+
+\begin{exo}[3]{}
+	Pour une fraction rationnelle non nulle $F\in\C(X)$, on note $n(F)$ le nombre de ses racines (distinctes), et $p(F)$ le nombre de ses pôles.
+	\begin{enumerate}
+		\item Soit $F\in\C(X)$ non constante. Montrer que $n(F)+n(F-1)+p(F)>a$, où $a$ désigne le degré du numérateur de $F$ dans son écriture sous forme irréductible. On pourra commencer par le cas où $F$ est un polynôme.
+		\item Soit $P$ et $Q$ deux polynômes non constants dans $\C[X]$ tels que $P\inv(\{0\})=Q\inv(\{0\})$ et $P\inv(\{1\})=Q\inv(\{1\})$. Montrer que $P=Q$.
+		\item Théorème de Mason : soit $A$, $B$ et $C$ trois polynômes non nuls premiers entre eux dans leur ensemble, non tous constants et tels que $A+B+C=0$. On note $n$ le maximum des degrés de $A$, $B$ et $C$. Montrer que $ABC$ possède au moins $n+1$ racines distinctes.
+		\item Soit $m\geqslant 3$ entier et $(A,B,C)\in\C[X]^3$ un triplet de polynômes premiers entre eux dans leur ensemble tel que $A^m+B^m=C^m$. Montrer que $A$, $B$ et $C$ sont tous constants.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item On rappelle que $P_1=P\wedge P'$ est de degré $\deg(P)-n(P)$. De même, $P_2=(P-1)\wedge P'$ est de degré $\deg(P-1)-n(P-1)=\deg(P)-n(P-1)$. Or, $P_1\wedge P_2=1$ et ces deux polynômes divisent $P'$, donc leur produit divise $P'$. Ainsi : $$\deg(P_1)+\deg(P_2)\leqslant\deg(P')=\deg(P)-1$$ On en déduit : $$n(P)+n(P-1)\geqslant \deg(P)+1$$\\
+		On écrit $F=P/Q$ sous forme irréductible. Travailler sur $F'$ : les racines de $P$, $Q$ et $P-Q$ sont racines du dénominateur de $F'$. Puis utiliser le même genre d'argument que précédemment.
+		\item $P-Q=(P-1)-(Q-1)$ possède au moins $n(P)+n(P-1)$ racines distinctes, soit strictement plus de racines que $\deg(P)$ d'après l'exercice précédent. Or, $\deg(P-Q)\leqslant \deg(P)$ donc $P-Q=0$ et $P=Q$. \\
+		Remarque : l'énoncé fonctionne pour $a$ et $b$ deux complexes distincts.
+		\item $A$, $B$ et $C$ sont deux à deux premiers entre eux. En réécrivant la relation sous la forme : $$1+\frac{B}{A}=\frac{-C}{A}$$ et en utilisant la question $2$ de l'exercice précédent avec $F=1+B/A$, on trouve : $n(C)+n(B)+n(A)>\deg(C)$. Par symétrie de $A$, $B$ et $C$, cela est encore vrai avec $\deg(A)$ et $\deg(B)$, si bien que cela est vrai pour le maximum des degrés. Observer pour conclure que le nombre de racines distinctes de $ABC$ est $n(A)+n(B)+n(C)$ car $A$, $B$ et $C$ sont deux à deux premiers entre eux.\\
+		Alternativement, on peut remarquer que $AB'-BA'=BC'-CB'=CA'-AC'=P$ est un polynôme constant. Or, $A$, $B$ et $C$ sont deux à deux premiers entre eux (en prenant un facteur commun irréductible de deux polynômes, il divise le troisième donc est constant par hypothèse). Comme au moins $A'$, $B'$ ou $C'$ est non nul, $P$ est non nul sinon $A$ diviserait $A'$ par exemple (en supposant $A$ non constant), ce qui est absurde. En notant $Q_1$ le PGCD de $Q$ et $Q'$ pour $Q=A$ puis $B$ puis $C$, $A_1$, $B_1$ et $C_1$ sont premiers entre eux et divisent $P$ donc la somme de leurs degrés est inférieure au degré de $P$. On utilise ensuite le fait que le degré de $A_1$ est supérieur au degré de $A$ moins le nombre de racines distinctes de $A$. De plus, $\deg(P)\leqslant\deg(A)+\deg(B)-1$. En substituant, en trouve que $\deg(C)$ est inférieur ou égal à la somme du nombre de racines distinctes de $A$, $B$ et $C$ moins $1$, et la somme de ces nombres de racines distinctes est exactement égale au nombre de racines distinctes de $ABC$ car $A$, $B$ et $C$ sont deux à deux premiers entre eux.
+		\item De tels polynômes sont alors deux à deux premiers entre eux : en effet, si $P$ irréductible divise $A$ et $B$, alors il divise $C^m$ donc il divise $C$, donc il est constant. De même, on obtient le fait que ces polynômes sont deux à deux premiers entre eux. Par l'absurde, on suppose que $A$, $B$ ou $C$ n'est pas constant et on note $n$ le degré maximal (supérieur à $1$) de l'un de ces $3$ polynômes. Alors, d'après la question $2$, $-(ABC)^m$ possède au moins $nm+1$ racines distinctes. Donc $ABC$ possède $nm+1$ racines distinctes. Donc $A$, $B$ ou $C$ est nul. Donc $A$, $B$ et $C$ ne sont plus premiers entre eux dans leur ensemble. C'est absurde, donc $A$, $B$ et $C$ sont tous constants.
+	\end{enumerate}
+\end{sol}
+
+
+\begin{exo}[3]{Inégalité de Samuelson}
+	Soit $n\in\N$ avec $n\geqslant 2$ et $P=\displaystyle X^n+\sum_{k=1}^{n}a_kX^{n-k}\in\R[X]$. On suppose que toutes les racines de $P$ sont réelles. Montrer qu'elles appartiennent à l'intervalle $$\left[-\frac{a_1}{n}-\frac{n-1}{n}\sqrt{a_1^2-\frac{2n}{n-1}a_2},-\frac{a_1}{n}+\frac{n-1}{n}\sqrt{a_1^2-\frac{2n}{n-1}a_2}\right]$$
+\end{exo}
+\begin{sol}
+	Notons $x_1,\ldots,x_n$ ses racines comptées avec multiplicité. On pose : $$s_1=\sum_{i=1}^{n}x_i\ \ \text{et}\ \ s_2=\sum_{i\ne j}x_ix_j$$ D'après les formules de Viète : $$s_1=-a_1\ \ \text{et}\ \ s_2=a_2$$ On en déduit : $$\sum_{i=1}^{n}x_i^2=\left(\sum_{i=1}^{n}x_i\right)^2-2\sum_{i\ne j}x_ix_j=a_1^2-2a_2$$ On fixe une racine $x_1$ (sans perte de généralité quitte à permuter les $x_i$) que l'on isole puis on applique l'inégalité de Cauchy-Schwarz (car toutes les racines sont réelles !) : $$(-a_1-x_1)^2=\left(\sum_{i=2}^{n}x_i\right)\leqslant(n-1)\sum_{i=2}^{n}x_i^2=(n-1)(a_1^2-2a_2-x_1^2)$$
+	Donc : $$a_1^2+2a_1x_1+x_1^2-(n-1)(a_1^2-2a_2-x_1^2)=nx_1^2+2a_1x_1+((2-n)a_1^2+2(n-1)a_2)\leqslant 0$$ On s'intéresse aux racines du polynôme : $$Q=nX^2+2a_1X+((2-n)a_1^2+2(n-1)a_2)$$ Le discriminant vaut :
+	\begin{align*}
+		\Delta&=(2a_1)^2-4n((2-n)a_1^2+2(n-1)a_2)\\
+		&=4a_1^2-4n((2-n)a_1^2+2(n-1)a_2)\\
+		&=(4n^2-8n+4)a_1^2-8n(n-1)a_2\\
+		&=[2(n-1)]^2\left(a_1^2-\frac{2n}{n-1}a_2\right)
+	\end{align*}
+	Les racines de $Q$ sont donc : $$-\frac{a_1}{n}\mp\frac{n-1}{n}\sqrt{a_1^2-\frac{2n}{n-1}a_2}$$ Or, $Q(x_1)\leqslant 0$ et $Q$ est un polynôme du second degré de coefficient dominant positif, donc $x_1$ est situé entre les racines de $Q$. Cela étant valable pour toutes les racines de $P$, on a bien le résultat souhaité.
+\end{sol}
+
+\chapter{Révisions sur les espaces vectoriels}
+
+\begin{exo}[0]{}
+	Déterminer les sous-espaces vectoriels de $\K[X]$ stables par $D$, l'endomorphisme de dérivation.
+\end{exo}
+
+\begin{exo}[2]{}
+	Soit $n\in\N\st$. On se donne $X_0,\ldots,X_n$ des parties non vides de $\llbracket1,n\rrbracket$. Montrer qu'il existe $I$ et $J$ deux parties disjointes non vides de $\llbracket0,n\rrbracket$ telles que : $$\bigcup_{i\in I} X_i=\bigcup_{i\in J} X_j.$$
+\end{exo}
+
+\begin{exo}[2]{Familles positivement génératrices}
+	Soit $E$ un $\R$-espace vectoriel et $(e_i)_{i\in I}$ une famille de vecteurs de $E$. On dit que $(e_i)_{i\in I}$ est positivement génératrice lorsque tout vecteur de $E$ est combinaison linéaire à coefficients strictement positifs des $e_i$. Dans tout l'exercice, on suppose $E$ de dimension finie $n\in\N\st$ et on se donne $(e_1,\ldots,e_p)\in E^p$ une famille positivement génératrice.
+	\begin{enumerate}
+		\item Montrer : $p\geqslant n+1$.
+		\item Donner un exemple où on peut avoir $p=n+1$.
+		\item On suppose de plus $p\geqslant 2n+1$. Montrer que $(e_1,\ldots,e_p)$ possède une sous-famille stricte qui est toujours positivement génératrice.
+		\item Donner un exemple où $p=2n$ et où aucune sous-famille stricte n'est positivement génératrice.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Si une famille est positivement génératrice, alors elle est génératrice donc on a déjà $p\geqslant n$. Par l'absurde, si $p=n$, alors $(e_1,\ldots,e_p)$ est une base de $E$. Mais alors, le vecteur $-(e_1+\cdots+e_p)$ ne peut s'écrire comme combinaison linéaire à coefficients strictement positifs des $e_i$, ce qui est absurde. Donc $p\geqslant n+1$.
+		\item Notons $(f_1,\ldots,f_n)$ une base de $E$. Prendre :
+		$$(e_1,\ldots,e_n,e_{n+1})=(f_1,\ldots,f_n,-(f_1+\cdots+f_n))$$ convient.
+		\item En utilisant le même genre d'idées que dans la question précédente, exprimer un vecteur comme combinaison linéaire à coefficients strictement positifs des autres. Pour cela, extraire une base de ces $2n+1$ vecteurs, puis remarquer que les $n+1$ derniers forment une famille liée.
+		\item En gardant les notations de la question $2$, la famille suivante devrait fonctionner :
+		$$(e_1,\ldots,e_n,e_{n+1},\ldots,e_{2n})=(f_1,\ldots,f_n,-f_1,\ldots,-f_n).$$
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[3]{Théorème de Maschke}
+	Soit $E$ un espace vectoriel de dimension finie, $G$ un sous-groupe fini de $\mathcal{GL}(E)$ et $F$ un sous-espace vectoriel de $E$ stable par tous les éléments de $G$. Montrer que $F$ admet un supplémentaire stable par tous les éléments de $G$. On pourra considérer la moyenne des conjugués d'un projecteur sur $F$ par les éléments de $G$.
+\end{exo}
+\begin{sol}
+	Notons $F'$ un supplémentaire de $F$ dans $E$ et $p$ le projecteur sur $F$ parallèlement à $F'$. On pose :
+	$$q=\frac{1}{\card(G)}\sum_{g\in G}g\inv\circ p\circ g.$$
+	Montrons que $q$ est un projecteur d'image $F$.\\
+	Déjà, $q\circ p=p$ donc $F=\text{Im}(p)\subset\text{Im}(q)$. \\
+	Ensuite, si $h\in G$, par changement d'indice, on a $h\circ q=q\circ h$. Ainsi :
+	\begin{align*}
+		q^2&=\frac{1}{\card(G)}\sum_{h\in G}q\circ h\inv \circ p\circ h\\
+		&=\frac{1}{\card(G)}\sum_{h\in G}h\inv\circ q\circ p\circ  h\\
+		&=\frac{1}{\card(G)}\sum_{h\in G}h\inv\circ p\circ  h\\
+		&=q.
+	\end{align*}
+	$q$ a même rang (car même trace en dimension finie) que $p$, et son image contient $F$, donc $q$ est un projecteur d'image $F$. Notons $F''=\ker(q)$. Par changement d'indice, $F''$ est stable par tous les éléments de $G$, et c'est un supplémentaire de $F$ dans $E$, donc il convient.
+\end{sol}
+
+\chapter{Révisions sur les matrices}
+
+\begin{exo}[0]{Matrice antédiagonale}
+	Soient $a_1,\ldots,a_n$ des complexes non nuls. Donner l'inverse de la matrice antédiagonale : $$A=\begin{pmatrix}
+		(0)&&a_n \\
+		&\iddots&\\
+		a_1&&(0)
+	\end{pmatrix}.$$
+\end{exo}
+\begin{sol}
+	Son inverse est la matrice antédiagonale $$B=\begin{pmatrix}
+		(0)&&a_1\inv \\
+		&\iddots&\\
+		a_n\inv&&(0)
+	\end{pmatrix}$$ On peut le vérifier par un calcul direct ou le voir en interprétant la matrice antédiagonale comme la matrice d'une inversion des vecteurs de la base, pondérée par les coefficients $a_i$.
+\end{sol}
+
+\begin{exo}[0]{}
+	Soit $a_1,\ldots,a_n,b_1,\ldots,b_n$ des nombres complexes. Calculer le déterminant : $$\begin{vmatrix}
+		a_1+b_1&b_1&\cdots&b_1\\
+		b_2&a_2+b_2&\cdots&b_2\\
+		\vdots&&\ddots&\\
+		b_n&\cdots&b_n&a_n+b_n
+	\end{vmatrix}.$$
+\end{exo}
+\begin{sol}
+	Multilinéarité.
+\end{sol}
+
+\begin{exo}[0]{Un déterminant tridiagonal}
+	Soit $(a,b,c)\in\K^3$. Pour $n\in\N$, on pose : $$D_n=\displaystyle\begin{vmatrix}
+		a&b&&(0)\\
+		c&\ddots&\ddots&\\
+		&\ddots&\ddots&b\\
+		(0)&&c&a
+	\end{vmatrix}.$$ Déterminer une relation de récurrence vérifiée par $(D_n)$.
+\end{exo}
+\begin{sol}
+	Développer deux fois.
+\end{sol}
+
+\begin{exo}[1]{}
+	Soit $M\in\mathcal{M}_n(\Z)$ inversible telle que $M\inv$ appartienne à $\mathcal{M}_n(\Z)$. Montrer que $M$ a au moins $n$ coefficients impairs et au plus $n^2-n+1$ coefficients impairs. Montrer que ces bornes sont atteintes.
+\end{exo}
+\begin{sol}
+	On "rappelle" que la condition sur $M$ est équivalente à $\det(M)=\pm1$.\\
+	Si $M$ contient strictement moins de $n$, alors une colonne de $M$ a tous ses coefficients pairs donc par multilinéarité, $\det(M)$ est pair, si bien que $\det(M)\ne\pm=1$.\\
+	Si $M$ contient strictement plus de $n^2-n+1$ coefficients impairs, alors deux colonnes de $M$, disons $C_i$ et $C_j$, ont des coefficients tous impairs. Mais le déterminant de $M$ est inchangé par $C_i\leftarrow C_i-C_j$. Et dans cette nouvelle matrice, la $i$-ème colonne a tous ses coefficients pairs, donc comme précédemment, le déterminant est pair.\\
+	Pour la borne avec $n$ coefficients impairs, considérer $I_n$.\\
+	Pour la borne avec $n^2-n+1$ coefficients impairs, considérer :
+	$$M_n=\begin{pmatrix}
+		1&&&&(1)\\
+		0&1&&&\\
+		1&0&1&&\\
+		&\ddots&\ddots&\ddots&\\
+		(1)&&1&0&1
+	\end{pmatrix}.$$
+	En faisant $L_1\leftarrow L_1-L_2$ et en développant par rapport à la première ligne, $M_n$ a le même déterminant que $M_{n-1}$ et par récurrence, celui-ci vaut $1$.
+\end{sol}
+
+\begin{exo}[1]{}
+	Caractériser les $A\in\mathcal{M}_n(\K)$ telles que :
+	$$\forall B\in\mathcal{M}_n(\K),\ \exists\lambda\in\K,\ AB=\lambda BA.$$
+\end{exo}
+\begin{sol}
+	Avec $B=E_{i,j}$, on montre que $A$ est diagonale. Ensuite, si $A$ est non nulle avec $a_{i,i}\ne 0$, on montre avec $B=E_{i,i}+E_{i,j}$ que $a_{i,i}=a_{j,j}$ et donc que $A$ est scalaire. Réciproquement, les matrices scalaires conviennent bien.
+\end{sol}
+
+\begin{exo}[1]{}
+	Soit $G$ un sous-groupe fini de $\mathcal{GL}_n(\C)$. Montrer l'équivalence :
+	$$\sum_{M\in G}M=0\iff\sum_{M\in G}\Tr(M)=0.$$
+\end{exo}
+\begin{proof}
+	Montrer que $$P=\frac{1}{\card(G)}\sum_{M\in G}M$$ est une matrice projecteur en exploitant la bijection de l'action à droite (ou à gauche) de $G$ sur lui-même. Conclure en se souvenant ue la trace d'un projecteur est égale à son rang.
+\end{proof}
+
+\begin{exo}[1]{}
+	Montrer que toute matrice $M\in\mathcal{M}_n(\C)$ de trace nulle est combinaison linéaire de matrices nilpotentes.
+\end{exo}
+
+
+\begin{exo}[2]{}
+	Soit $A\in\mathcal{M}_n(\K)$ non scalaire. Montrer que pour tout $(a_1,\ldots,a_n)\in\K^n$ tel que $\Tr(A)=a_1+\cdots+a_n$, il existe une matrice semblable à $A$ dont les coefficients diagonaux sont $a_1,\ldots,a_n$.
+\end{exo}
+\begin{sol}
+	Récurrence sur $n\in\N\st$. L'initialisation est immédiate car $\forall x\in\emptyset$. On suppose la propriété vraie pour tout matrice de taille $n-1$. On considère alors $A'=A-a_1I_n$ qui n'est pas scalaire car $A$ n'est pas scalaire. On peut donc fixer $x$ non nul tel que la famille $(x,A'x)$ soit libre. On complète cette famille en une base $(x,A'x,e_3,\ldots,e_n)$ dans laquelle l'application linéaire canoniquement associée à $A$ a pour matrice : $$\begin{pmatrix}
+		a_1&*&\ldots&*\\
+		1&&&\\
+		0&&A''&\\
+		\vdots&&&
+	\end{pmatrix}$$ où nécessairement $\Tr(A'')=a_2+\cdots+a_n$. Si $A''$ n'est pas scalaire, on conclut par hypothèse de récurrence. Si $A''$ est scalaire, on change $e_3$ en $e_3+x$ et cela ajoute alors un $1$ sur la première ligne et la deuxième colonne de $A''$, et on conclut alors par hypothèse de récurrence.
+\end{sol}
+
+\begin{exo}[2]{}
+	Soit $n\geqslant1$. Pour tout $\sigma\in\mathfrak{S}_n$, on note $\text{inv}(\sigma)$ le nombre de points de $\llbracket1,n\rrbracket$ invariants par $\sigma$. Calculer : $$\sum_{\sigma\in\mathfrak{S}_n}\frac{\varepsilon(\sigma)}{\text{inv}(\sigma)+1}$$
+\end{exo}
+\begin{sol}
+	Penser à une intégrale ! En effet, si $\sigma\in\mathcal{S}_n$, alors :
+	$$\frac{\varepsilon(\sigma)}{\text{inv}(\sigma)+1}=\int_{0}^{1}x^{\text{inv}(\sigma)}\d x.$$ Notons $S_n$ la somme cherchée. Par linéarité de l'intégrale :
+	$$S_n=\int_{0}^{1}\sum_{\sigma\in\mathcal{S}_n}\varepsilon(\sigma)x^{\text{inv}(\sigma)}\d x.$$
+	La somme fait fortement penser à un déterminant. Mais lequel ? Il s'agit de :
+	$$\begin{vmatrix}
+		x&&(1)\\
+		&\ddots&\\
+		(1)&&x
+	\end{vmatrix}$$ car le nombre de $x$ choisis correspond, à $\sigma$ fixé, au nombre de points fixes de $\sigma$. Calculons ce déterminant. On somme d'abord toutes les colonnes sur la première puis on utilise la linéarité par rapport à la première colonne.
+	\begin{align*}
+		\begin{vmatrix}
+			x&&(1)\\
+			&\ddots&\\
+			(1)&&x
+		\end{vmatrix}&=\begin{vmatrix}
+		x+(n-1)&&&(1)\\
+		x+(n-1)&x&&\\
+		\vdots&&\ddots&\\
+		x+(n-1)&1&&x
+		\end{vmatrix}\\
+		&=(x+n-1)\begin{vmatrix}
+			1&&&(1)\\
+			1&x&&\\
+			\vdots&&\ddots&\\
+			1&(1)&&x
+		\end{vmatrix}\\
+		&=(x+n-1)\begin{vmatrix}
+			1&&&(0)\\
+			1&x-1&&\\
+			\vdots&&\ddots&\\
+			1&(0)&&x-1
+		\end{vmatrix}\\
+		&=(x+n-1)(x-1)^{n-1}\\
+		&=(x-1)^n+n(x-1)^{n-1}.
+	\end{align*}
+	On obtient finalement :
+	$$S_n=\int_{0}^{1}(x-1)^n+n(x-1)^{n-1}\d x=\left[\frac{(x-1)^{n+1}}{n+1}+(x-1)^n\right]_0^1=\frac{(-1)^{n+1}n}{n+1}.$$
+\end{sol}
+
+\begin{exo}[3]{}
+	Soit $n\in\N\st$. Déterminer le $k\in\N$ maximal tel qu'il existe des parties $E_1,\ldots,E_k$ de $\llbracket 1,n\rrbracket$ telles que :
+	\begin{itemize}
+		\item $\card(E_i)$ soit impair pour tout $i$ ;
+		\item $\card(E_i\cap E_j)$ soit pair pour tout $i\ne j$.
+	\end{itemize}
+\end{exo}
+\begin{sol}
+	On note $M\in\mathcal{M}_{k,n}(\Z)$ la matrice de terme général $[M]_{i,j}=\textbf{1}_{E_i}(j)$. Montrons que $M$ est de rang $k$. On s'intéresse à $MM^T$. En effet :
+	$$[MM^T]_{i,j}=\sum_{p=1}^{n}\textbf{1}_{E_i}(p)\textbf{1}_{E_j}(p)=\sum_{p=1}^{n}\textbf{1}_{E_i\cap E_j}(p)=\card(E_i\cap E_j).$$
+	En calculant modulo $2$, $\det(MM^T)$ est impair donc non nul, si bien que $MM^T$ est inversible et est par conséquent de rang $k$. \\
+	Ensuite, $\rg(MM^T)=\rg(M^T)=\rg(M)$. Passer par les noyaux pour la première égalité. Comme $M$ est de taille $k\times n$, son rang est majoré par ses dimensions, donc $k\leqslant n$. \\
+	Une telle famille pour $k=n$ est donnée par $E_i=\{i\}$.
+\end{sol}
+
+
+\chapter{Suites et séries numériques}
+
+\begin{exo}[0]{}
+	Soit $u_0$ un réel strictement positif. On définit par récurrence : $$\forall n\in\N,\ u_{n+1}=u_n^{u_n}$$
+	\begin{enumerate}
+		\item Etudier la convergence de la suite $(u_n)$.
+		\item Désormais et jusqu'à la fin de l'exercice, on suppose $u_0\in\N\setminus\{0,1\}$. Montrer : $$\forall N\in\N,\ \forall n\in\llbracket0,N\rrbracket,\ u_n\mid u_N$$
+		\item Montrer que pour tous $N$ et $k$ dans $\N$, on a : $u_{N+k}\geqslant u_N^{k+1}$.
+		\item Montrer la convergence de la série de terme général $1/u_n$. On note $S$ sa somme.
+		\item Montrer : $$u_N\sum_{n=N+1}^{+\infty}\frac{1}{u_n}\xrightarrow[N\to+\infty]{}0$$
+		\item Montrer que $S\notin\Q$.
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[0]{}
+	Pour $x\in\R$, étudier la convergence de la suite de terme général $P_n(x)=\displaystyle\prod_{k=1}^{n}\cos\left(\frac{x}{2^k}\right)$.
+\end{exo}
+
+\begin{exo}[1]{}
+	Déterminer $\displaystyle\underset{n\to+\infty}{\lim}\sum_{k=n}^{+\infty}\frac{e^{n/k}}{k^2}$.
+\end{exo}
+\begin{sol}
+	Fixer $n$ et faire une comparaison série intégrale avec $f:x\mapsto e^{n/x}/x^2$ qui est décroissante. On trouve (après dessin - et une primitive est $F(x)=-e^{n/x}/n$) :
+	$$\frac{e}{n}=\int_{n}^{+\infty}f(x)\text{d} x\leqslant\sum_{k=n}^{+\infty}\frac{e^{n/k}}{k^2}\leqslant\int_{n-1}^{+\infty}f(x)\text{d} x=\frac{e^{n/(n-1)}}{n}$$ donc la limite cherchée existe et vaut $e$.
+\end{sol}
+
+\begin{exo}[2]{Inégalité de Carleman}
+	Soit $\displaystyle\sum_{n\geqslant 1}a_n$ une série à termes positifs convergente, de somme notée $A$. On pose pour tout $n\in\N\st$ : $u_n=\sqrt[n]{a_1\cdots a_n}$.
+	\begin{enumerate}
+		\item Démontrer l'inégalité arithmético-géométrique.
+		\item Montrer que $\displaystyle\sum_{n\geqslant 1}u_n$ converge et qu'en notant $U$ sa somme, on a $U\leqslant e A$.
+		\item Montrer que si une constante $k$ vérifie l'inégalité $U\leqslant k A$ pour toute série à termes positifs convergente $\displaystyle\sum_{n\geqslant 1}a_n$, alors $e\leqslant k$.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Inégalité de Jensen avec l'exponentielle et les $\ln$ des nombres.
+		\item 
+		\item 
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[2]{}
+	Convergence et somme de : $$\sum_{n\geqslant 2}\frac{(-1)^n}{n}\left\lfloor\frac{\ln(n)}{\ln(2)}\right\rfloor$$
+\end{exo}
+
+
+\begin{exo}[2]{}
+	On définit la suite $(u_n)_{n\in\N}$ par $u_0=1$ et $$\forall n\in\N,\ u_{n+1}=e^{-u_n}-1.$$ Déterminer un équivalent de la suite $(u_n)_{n\in\N}$.
+\end{exo}
+
+\begin{exo}[2]{}
+	Soit $(x_n)_{n\in\N}\in\R^\N$ telle que :
+	$$\forall (y_n)_{n\in}\N\in\R^\N,\ \sum y_n^2\quad\text{converge}\implies\sum x_ny_n\quad\text{converge}.$$
+	Montrer que $\displaystyle\sum x_n^2$ converge.
+\end{exo}
+\begin{sol}
+	Par l'absurde, on suppose que tel n'est pas le cas, et on note $S_n$ la $n$-ème somme partielle de la série $\displaystyle\sum x_n^2$. Considérer alors $$y_n=\frac{x_n}{S_n^a}$$ pour $a\in]1/2,1[$. Par comparaison série intégrale, en interprétant $x_k^2$ comme $S_k-S_{k-1}$, on montre que $\sum y_n^2$ converge, mais que $\sum x_n y_n$ diverge, ce qui est absurde.
+\end{sol}
+
+\begin{exo}[2]{}
+	Soit $(a_n)_{n\in\N\st}$ et $(b_n)_{n\in\N\st}$ deux suites réelles de carré sommable. On pose $A=\displaystyle\sum_{n=1}^{+\infty}a_n^2$ et $B=\displaystyle\sum_{n=1}^{+\infty}b_n^2$.
+	\begin{enumerate}
+		\item Montrer que pour tout $m\geqslant1$, on a $\displaystyle\sum_{n=1}^{+\infty}\frac{\sqrt{m}}{(n+m)\sqrt{n}}\leqslant\pi$.
+		\item Montrer que $\displaystyle\sum_{(m,n)\in(\N\st)^2}\frac{a_mb_n}{m+n}\leqslant\pi\sqrt{AB}$.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Comparaison série intégrale, changement de variable $t=u^2$ puis primitiver avec une $\arctan$.
+		\item Écrire $$\frac{a_m b_n}{m+n}=\left(\frac{a_mm^{1/4}}{n^{1/4}\sqrt{m+n}}\right)\times\left(\frac{b_n n^{1/4}}{m^{1/4}\sqrt{m+n}}\right)$$ puis utiliser l'inégalité de Cauchy-Schwarz, et conclure en utilisant deux fois le résultat de la première question (en échangeant $m$ et $n$ dans une des deux utilisations).
+	\end{enumerate}
+\end{sol}
+
+\chapter{Réduction des endomorphismes}
+
+
+\begin{exo}[1]{}
+	Soit $A\in\mathcal{M}_n(\Z/p\Z)$ où $n\in\N\st$ et $p$ est un nombre premier. Montrer que $A$ est diagonalisable si, et seulement si, $A^p=A$.
+\end{exo}
+
+\begin{exo}[2]{}
+	En considérant des sous-groupes dont tous les éléments sont des matrices de symétries, montrer que si $\mathcal{GL}_n(\C)$ et $\mathcal{GL}_m(\C)$ sont isomorphes, alors $n=m$.
+\end{exo}
+\begin{sol}
+	Une matrice de symétrie est diagonalisable sur et ses valeurs propres sont dans $\{-1,1\}$. Un tel sous-groupe est commutatif et donc toutes les matrices sont simultanément diagonalisables, si bien que le cardinal d'un tel sous-groupe est majoré par $2^n$ (si on est dans $\mathcal{GL}_n(\C)$), et cette borne est atteinte avec les matrices diagonales à coefficients diagonaux dans $\{-1,1\}$. Si on avait un isomorphisme, un tel sous-groupe s'enverrait sur un sous-groupe similaire mais si $n\ne m$, on a $2^n\ne 2^m$.
+\end{sol}
+
+\begin{exo}[2]{}
+	On admet le théorème de réduction de Jordan. Montrer que toute matrice inversible à coefficients complexes admet une racine carrée. Démontrer le théorème de réduction de Jordan.
+\end{exo}
+\begin{sol}
+	Commencer par le cas d'une racine carrée de $I+N$ avec $N$ nilpotente. Utiliser le DL de $\sqrt{1+x}$ pour obtenir le bon candidat. Le cas général s'en déduit facilement par homothétie. Pour Jordan, comme d'habitude...
+\end{sol}
+
+\begin{exo}[3]{}
+	Pour $\sigma\in\mathcal{S}_n$, on note $P_\sigma\in\mathcal{M}_n(\C)$ la matrice de permutation associée à $\sigma$, de terme général $\delta_{i,\sigma(j)}$. Soit $(\sigma,\tau)\in\mathcal{S}_n^2$. Montrer que $\sigma$ et $\tau$ sont conjuguées dans le groupe $\mathcal{S}_n$ si, et seulement si, les matrices $P_\sigma$ et $P_\tau$ sont semblables.
+\end{exo}
+
+\begin{exo}[3]{Théorème d'Hoffman-Singleton}
+	Soit $A\in\mathcal{S}_n(\R)$ à coefficients dans $\{0,1\}$ telle que $\Tr(A)=0$. On note $J_n$ la matrice de $\mathcal{M}_n(\R)$ ne comportant que des $1$, et on suppose qu'il existe $d\in\N\st$ tel que $A^2+A-(d-1)I_n=J_n$. On admet que $A$ est diagonalisable dans $\mathcal{M}_n(\R)$ (théorème spectral).
+	\begin{enumerate}
+		\item Pour $i\in\llbracket1,n\rrbracket$, que représente $[A]_{i,i}$ par rapport à la matrice $A$ ? Quelle est sa valeur ?
+		\item En utilisant un vecteur propre, montrer que $n=d^2+1$.
+		\item On note $x_1$ et $x_2$ les racines de $X^2+X-(d-1)$. Montrer que $\text{Sp}(A)\subset\{d,x_1,x_2\}$.
+		\item Montrer que $d\in\{1,2,3,7,57\}$.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Cela représente le nombre de $1$ en ligne $i$ de $A$ (utiliser l'expression du coefficient, puis la symétrie de $A$ et le fait que les coefficients soient dans $\{0,1\}$). En évaluant l'hypothèse au coefficient $(i,i)$ (qui vaut $0$ pour $A$), on trouve une valeur $d$.
+		\item Ainsi, $A$ possède exactement $d$ $1$ sur chaque ligne, donc le vecteur $U=\begin{pmatrix}
+			1\\
+			\vdots\\
+			1
+		\end{pmatrix}$ est un vecteur propre de $A$ associé à la valeur propre $d$. En multipliant l'hypothèse par ce vecteur, on trouve $n=d^2+1$.
+		\item Si $V$ est un vecteur propre de $A$ associé à la valeur propre $\lambda$, alors $(\lambda^2+\lambda-(d-1))V=J_nV$ donc $V$ est un vecteur propre de $J_n$. L'étude des éléments propres de $J_n$ amène à la discussion suivante (on a $\dim(\ker(J_n))=n-1$ et $U$ est un vecteur propre associé à la valeur propre $n$) :
+		\begin{itemize}
+			\item si $\lambda^2+\lambda-(d-1)=n$, alors $V$ est proportionnel à $U$, et donc nécessairement, $\lambda=d$ ;
+			\item sinon, $\lambda^2+\lambda-(d-1)=0$ donc $\lambda\in\{x_1,x_2\}$.
+		\end{itemize}
+		Notons ici (cela sera utile ensuite) que le raisonnement effectué dans le premier cas montre que la dimension de l'espace propre associé à la valeur propre $d$ pour $A$ vaut $1$.
+		\item Notons $m_1$ et $m_2$ les multiplicités (algébrique ou géométrique, c'est pareil ici puisque $A$ est diagonalisable) de $x_1$ et $x_2$. On a d'une part, grâce à la remarque précédente et à la première question :
+		$$1+m_1+m_2=n=d^2+1$$ donc $m_1+m_2=d^2$. D'autre part, la condition sur la trace fournit :
+		$$d+m_1x_1+m_2x_2=0.$$
+		Or, on a :
+		$$x_1=\frac{-1+\sqrt{4d-3}}{2}\quad\text{et}\quad x_2=\frac{-1-\sqrt{4d-3}}{2}.$$
+		La deuxième relation peut alors se réécrire :
+		$$-\frac{m_1+m_2}{2}+\frac{\sqrt{4d-3}}{2}(m_1-m_2)=-d$$ et donc, comme on connaît $m_1+m_2$ :
+		$$\sqrt{4d-3}(m_1-m_2)=d(d-2).$$
+		Deux options se présentent alors :
+		\begin{itemize}
+			\item si $m_1=m_2$, alors $d=2$ ;
+			\item sinon, $\sqrt{4d-3}\in\Q$ donc il est classique que $\sqrt{4d-3}=k\in\N$, si bien que $d=\displaystyle\frac{k^2+3}{4}$. Mais $k\mid d(d-2)$, donc :
+			$$k\mid\frac{k^2+3}{4}\times\frac{k^2-5}{4}$$ si bien que $k$ divise $15$. Donc $k\in\{1,3,5,15\}$, et le calcul donne alors $d\in\{1,3,7,57\}$.
+		\end{itemize}
+		Somme toute, on a bien : $d\in\{1,2,3,7,57\}$.
+	\end{enumerate}
+\end{sol}
+
+\chapter{Espaces euclidiens}
+
+\begin{exo}[1]{}
+	Soit $n\in\N\st$ et $M\in\mathcal{M}_n(\R)$. On suppose qu'il existe un entier $k\geqslant 2$ tel que $M^k=M^T$.
+	\begin{enumerate}
+		\item Montrer que $M^TM$ est la matrice d'une projection orthogonale.
+		\item Montrer que $M$ est $\C$-diagonalisable.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item $M^TM$ est symétrique (réelle) positive, donc elle est diagonalisable et ses valeurs propres sont toutes positives. Notons-la $P$. L'hypothèse permet de montrer que $M$ et $M^T$ commutent, puis que $P^k=P$. La positivité des valeurs propres implique que toutes les valeurs propres valent $0$ ou $1$, donc que $P^2=P$ soit une matrice de projection.
+		\item $M$ et $M^TM$ ont le même noyau. Sur $\ker(M)^\bot=\Im(M^T)$, l'endomorphisme induit $u$ vérifier $u\st u=\Id$. L'induit est donc une isométrie. On utilise le théorème de réduction des isométries sur ce sous-espace. Ensuite, on diagonalise dans $\C$ les blocs de rotation avec des exponentielles complexes.
+		\begin{rmq}
+			De toute façon, $M$ est une matrice normale (elle commute avec sa transconjuguée - ici sa transposée) donc est diagonalisable sur $\C$.
+		\end{rmq}
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[1]{}
+	Soit $E$ un espace euclidien. Montrer que le groupe $\mathcal{O}(E)$ des isométries vectorielles est engendré par l'ensemble des réflexions.
+\end{exo}
+\begin{sol}
+	On peut le faire en utilisant le théorème de réduction des isométries vectorielles en montrant que les blocs de rotation s'obtiennent comme le produit de deux réflexions. \\
+	Sinon, on peut raisonner par récurrence descendante sur la dimension de l'espace propre associé à la valeur propre $1$.\\
+	On peut aussi le faire par récurrence sur la dimension de $E$ en projetant sur : un vecteur invariant s'il existe, ou bien sur un hyperplan médiateur s'il n'y a pas de vecteur invariant.
+\end{sol}
+
+\begin{exo}[2]{}
+	On projette orthogonalement un cube de l'espace de côté $a$ sur un plan. On note $x$, $y$ et $z$ les longueurs des arêtes du projeté. Montrer que $x^2+y^2+z^2=2a^2$.
+\end{exo}
+\begin{sol}
+	Faire un dessin. Remarquer que dès que l'on dessin un cube en perspective cavalière, il est déjà projeté dans un plan. Considérer ensuite deux bases orthonormées de l'espace : une base liée au cube, et une base du plan de projection complétée en une base de l'espace. Écrire la matrice de passage entre ces deux bases (qui est orthogonale). Conclure en utilisant une relation sur les lignes. 
+\end{sol}
+
+\begin{exo}[2]{Familles obtusangles}
+	Soit $E$ un espace euclidien de dimension $n$. On suppose qu'il existe $(x_1,\ldots,x_p)\in E^{p}$ telle que : $$\forall (i,j)\in\llbracket1,p\rrbracket^2,\ i\ne j\implies (x_i\mid x_j)<0$$ Montrer que $p\leqslant n+1$.
+\end{exo}
+\begin{sol}
+	Par récurrence comme des sagouins mais je n'ai jamais essayé. Sinon, on peut montrer que $(x_1,\ldots,x_{p-1})$ est libre : séparer une relation de liaison entre les scalaires positifs et les scalaires strictement négatifs, faire le produit scalaire avec le vecteur correspondant aux scalaires positifs. On trouve une norme négative, donc les vecteurs avec les scalaires positifs et strictement négatifs sont tous les deux nuls. En effectuant le produit scalaire de ces deux vecteurs avec $x_p$ et par un argument de signe, on conclut.
+\end{sol}
+
+\begin{exo}[2]{}
+	Soit $(A,B)\in\mathcal{S}_n(\R)^2$ vérifiant : $$\forall X\in\R^n,\ 0\leqslant X^TAX\leqslant X^TBX$$ Montrer : $\det(A)\leqslant\det(B)$.
+\end{exo}
+\begin{sol}
+	Déjà, l'hypothèse permet de montrer que $A$ et $B$ sont des matrices symétriques positives. Si le déterminant de $A$ est nul, le résultat est alors trivial. On suppose donc $\det(A)>0$. Voici alors trois solutions :
+	\begin{itemize}
+		\item On considère la racine carrée $C$ de $A$ (qui donc alors aussi symétrique définie positive). L'hypothèse se réécrit :
+		$$\forall X\in\R^n,\ 0\leqslant\lVert CX\rVert^2\leqslant (CX)^TC\inv BC\inv (CX).$$
+		Par inversibilité de $C$, on peut donc écrire :
+		$$\forall Y\in\R^n,\ 0\leqslant \lVert Y\rVert^2\leqslant Y^T C\inv BC\inv Y.$$
+		La matrice $C\inv BC\inv$ étant symétrique réelle, elle est orthogonalement diagonalisable. En prenant des vecteurs propres unitaires, l'inégalité précédente montre que toutes ses valeurs propres sont supérieures à $1$. Cela donne donc par produit :
+		$$\det(A)\inv\det(B)=\det(C\inv BC\inv)\geqslant1$$ d'où le résultat.
+		\item Sinon, on peut considérer le produit scalaire défini par :
+		$$(Y\mid X)=Y^TAX,$$ qui est un produit scalaire car $A$ est symétrique définie positive. Alors, l'endomorphisme de $\R^n$ $u:X\mapsto A\inv B$ est autoadjoint (la vérification est facile). Un peu comme dans le point précédent, l'inégalité permet de montrer que ses valeurs propres sont supérieures à $1$, donc son déterminant est supérieur à $1$. Or, son déterminant est évidemment $\det(A\inv B)$.
+		\item Enfin, on peut utiliser les égalités de Courant-Fischer pour montrer plus précisément, comme on peut l'intuiter pour les plus petites et plus grandes valeurs propres, qu'en classant les valeurs propres de $A$ et de $B$ par ordre croissant, la $k$-ième valeur propre de $A$ est inférieure à la $k$-ième valeur propre de $B$, et on conclut alors en faisant le produit des inégalités car la remarque préliminaire montre que ces valeurs propres sont positives.
+	\end{itemize}
+\end{sol}
+
+\begin{exo}[2]{}
+	\begin{enumerate}
+		\item Soit $M\in\mathcal{M}_n(\R)$. Montrer qu'il existe $(O,S)\in\mathcal{O}_n(\R)\times\mathcal{S}_n^+(\R)$ tel que $M=OS$.
+		\item Soit $D=\text{Diag}(a,b)\in\mathcal{M}_2(\R)$ telle que $(a,b)\in[0,1]^2$. Montrer que $2D$ peut s'écrire comme la somme de $4$ matrices orthogonales de $\mathcal{M}_2(\R)$.
+		\item Montrer que toute matrice $M\in\mathcal{M}_n(\R)$ peut s'écrire comme la combinaison linéaire de $4$ matrices orthogonales.
+		\item En déduire le centre de $\mathcal{O}_n(\R)$.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Décomposition polaire, classique, passer par une racine carrée (presque une question de cours, HP certes).
+		\item On note $\theta$ tel que $\cos(\theta)=\displaystyle\frac{a+b}{2}$ et $\varphi$ tel que $\cos(\varphi)=\displaystyle\frac{a-b}{2}$. On vérifie alors que :
+		$$2D=R_\theta+R_{-\theta}+S_{\varphi}+S_{-\varphi}.$$
+		\item Utiliser le théorème spectral et la première question pour se ramener au cas d'une matrice diagonale à coefficients positifs. Diviser par le coefficient de plus grande valeur absolue pour se ramener à une diagonale avec des coefficients dans $[0,1]$. Utiliser la première question pour conclure dans le cas où $n$ est pair. Adapter le raisonnement si $n$ est impair.
+		\item Toute matrice de $\mathcal{O}_n(\R)$ commutant avec tout $\mathcal{O}_n(\R)$ commute donc avec tout $\mathcal{M}_n(\R)$. Les matrices recherchées sont donc les matrices à la fois scalaires et orthogonales, c'est-à-dire $I_n$ et $-I_n$.
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[3]{Autour du théorème de Schur-Horn}
+	Compléter
+\end{exo}
+
+\begin{exo}[3]{Autour des égalités de Courant-Fischer}
+	On considère $u\in S(E)$ avec $E$ euclidien de dimension $n$. On note $\lambda_1\leqslant\ldots\leqslant\lambda_n$ ses valeurs propres. On note $\mathcal{F}_k$ l'ensemble des sous-espaces vectoriels de $E$ de dimension $k$ et $S$ la sphère unité de $E$.
+	\begin{enumerate}
+		\item Montrer que : $$\lambda_k=\inf_{F\in\mathcal{F}_k}\sup_{x\in S\cap F}(x|u(x))$$ puis montrer que $$\lambda_{n+1-k}=\sup_{F\in\mathcal{F}_k}\inf_{x\in S\cap F}(x|u(x))$$
+		\item Soit $A\in\mathcal{S}_n(\R)$ avec $n\geqslant 2$. On note $B$ la matrice extraite de $A$ en lui supprimant sa dernière ligne et sa dernière colonne. On note $\lambda_1\leqslant\ldots\leqslant\lambda_n$ les valeurs propres de $A$ et $\mu_1\leqslant\ldots\leqslant\mu_{n-1}$ celles de $B$. Montrer : $$\lambda_1\leqslant\mu_1\leqslant\lambda_2\leqslant\ldots\leqslant\mu_{n-1}\leqslant\lambda_n$$
+		\item Pour $A\in\mathcal{S}_n(\R)$, on note $\lambda_1(A)\geqslant\ldots\geqslant\lambda_n(A)$ les valeurs propres de $A$, comptées avec multiplicité. Montrer : $$\forall (A,B)\in\mathcal{S}_n(\R)^2,\ \lambda_{i+j-1}(A+B)\leqslant\lambda_i(A)+\lambda_j(B)$$
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[3]{Autour des racines carrées}
+	On présente ici la racine carré d'un endomorphisme symétrique positif et quelques applications.
+	\begin{enumerate}
+		\item Soit $E$ un espace euclidien ainsi que $u\in\mathcal{S}^+(E)$. Montrer qu'il existe un unique endomorphisme $v\in\mathcal{S}^+(E)$ tel que $u=v^2$. Montrer que $v$ est un polynôme en $u$.
+		\item Soit $n\in\N\st$ et $M\in\mathcal{GL}_n(\R)$. Montrer qu'il existe un unique couple $(O,S)\in\mathcal{O}_n(\R)\times\mathcal{S}_n^{++}(\R)$ tel que $M=OS$. Montrer que l'on conserve l'existence si l'on suppose seulement $M\in\mathcal{M}_n(\R)$. Montrer que l'application qui à $(O,S)\in\mathcal{O}_n(\R)\times\mathcal{S}_n^{++}(\R)$ associe $OS$ est un homéomorphisme de $\mathcal{O}_n(\R)\times\mathcal{S}_n^{++}(\R)$ sur $\mathcal{GL}_n(\R)$.
+		\item Montrer que pour toute matrice diagonalisable à coefficients réels $D$, il existe $S\in\mathcal{S}_n^{++}(\R)$ et $T\in\mathcal{S}_n(\R)$ telles que $D=ST$.
+		\item Soit $A\in\mathcal{S}_n^{++}(\R)$ et $B\in\mathcal{S}_n(\R)$. Montrer qu'il existe $P\in\mathcal{GL}_n(\R)$ telle que $P^TAP=I_n$ et $P^TBP$ soit diagonale.
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[3]{}
+	Soit $S\in\mathcal{S}_n^{++}(\R)$ et $A\in\mathcal{A}_n(\R)$. Montrer que $SA$ est diagonalisable sur $\C$ et à spectre inclus dans $i\R$.
+\end{exo}
+\begin{sol}
+	Notons $R$ la racine carrée de $S$ (définie positive). Alors $SA=R(RAR)R\inv$ donc $SA$ est semblable à $RAR$. Or, cette dernière est antisymétrique, puis on démontre les résultats classiques sur les matrices antisymétriques.
+\end{sol}
+
+
+\chapter{Topologie}
+
+\begin{exo}[1]{Lemme d'Auerbach}
+	Soit $(E,\lVert\cdot\rVert)$ un espace vectoriel normé de dimension finie. Montrer qu'il existe une base de $E$ unitaire dont la base duale est unitaire (pour la norme subordonnée).
+\end{exo}
+
+\begin{exo}[1]{}
+	Montrer qu'il n'existe pas de norme sur $\mathcal{C}^{\infty}([0,1],\R)$ pour laquelle la dérivation soit continue.
+\end{exo}
+
+\begin{exo}[1]{}
+	Soit $A$ une partie non triviale d'un espace vectoriel normé $E$. Montrer que la frontière de $A$ est non vide.
+\end{exo}
+
+\begin{exo}[2]{Connexités par arcs}
+	\begin{enumerate}
+		\item Montrer que l'ensemble $\mathcal{GL}_n(\C)$ est connexe par arcs.
+		\item Montrer que $\mathcal{GL}_n(\R)$ n'est pas connexe par arcs et déterminer ses composantes connexes par arcs.
+		\item Déterminer les composantes connexes par arcs de l'ensemble des matrices de projecteurs pour $\K=\C$ puis pour $\K=\R$.
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[2]{Point fixe de Kakutani}
+	Soit $K$ un compact convexe non vide et $u$ une application affine continue qui stabilise $K$. Montrer que $u$ admet un point fixe.
+\end{exo}
+
+\begin{exo}[2]{}
+	Déterminer les sous-groupes fermés de $(\C\st,\times)$.
+\end{exo}
+
+\begin{exo}[2]{}
+	Montrer que pour tout polynôme $P\in\R[X]$, il existe une norme sur $\R[X]$ qui fait converger la suite $(X^k)_{k\in\N}$ vers $P$.
+\end{exo}
+
+\begin{exo}[2]{}
+	Montrer qu'une matrice $A\in\mathcal{M}_n(\K)$ est nilpotente si, et seulement si, la matrice nulle est adhérente à la classe de similitude de $A$.
+\end{exo}
+
+\begin{exo}[2]{}
+	Soit $G$ un sous-groupe additif de $\R^n$. On suppose que $G$ est fermé et que pour tout $y\in G$ et pour tout $\varepsilon>0$, il existe $x\in G$ tel que $0<\lVert x-y\rVert<\varepsilon$. Montrer que $G$ contient une demi-droite.
+\end{exo}
+\begin{sol}
+	Considérer une suite $(x_n)$ d'éléments non nuls qui converge vers $0$. Extraire un élément unitaire $u$ de la suite $(u_n)$ des renomarlisés des $x_n$. Montrer que $\lambda u\in G$ en utilisant le fait que les $nx_p$ sont dans $G$, et en prenant $\displaystyle\left\lfloor\frac{\lambda}{\lVert x_p\rVert}\right\rfloor$.
+\end{sol}
+
+\begin{exo}[2]{}
+	Soit $(E,d)$ un espace métrique et $K$ une partie compacte de $E$. On considère $f$ une fonction de $K$ dans $K$ telle que : $$\forall (x,y)\in K^2,\ d(f(x),f(y))\geqslant d(x,y)$$
+	Montrer que $f(K)$ est dense dans $K$ et en déduire que $f$ est un homéomorphisme.
+\end{exo}
+
+\begin{exo}[3]{}
+	Soit $C$ une partie convexe compacte non vide et $f:C\to C$ 1-lipschitzienne. Montrer que $f$ admet au moins un point fixe. On pourra commencer par le cas où $f$ est $k$-lipschitzienne avec $k<1$.
+\end{exo}
+
+\begin{exo}[3]{Autour de la propriété de Borel-Lebesgue}
+	On se donne $K$ un compact.
+	\begin{enumerate}
+		\item  Précompacité : montrer que pour tout $\varepsilon>0$, il existe une partie finie $C$ de $K$ telle que $$K\subset\bigcup_{x\in C}B(x,\varepsilon)$$
+		\item Propriété de Borel-Lebesgue :
+		\begin{enumerate}[label=\alph*.]
+			\item Soit $(O_i)_{i\in I}$ une famille d'ouverts de $K$ recouvrant $K$. Montrer qu'il existe $\varepsilon>0$ tel que $$\forall x\in K,\ \exists i\in I\ : \ B_o(x,\varepsilon)\subset O_i$$
+			\item Montrer que pour toute famille $(O_i)_{i\in I}$ d'ouverts de $A$ recouvrant $K$, il existe une partie finie $J$ de $I$ telle que $(O_j)_{j\in J}$ recouvre $K$. On pourra utiliser la précompacité de $K$.
+			\item Montrer que la propriété de la deuxième question est suffisante pour que $K$ soit compacte. On pourra utiliser le fait que l'ensemble des valeurs d'adhérence d'une suite $(u_n)$ est $\displaystyle\bigcap_{n\in\N}\overline{\{u_k\mid k\geqslant n\}}$
+		\end{enumerate}
+		\item Applications :
+		\begin{enumerate}[label=\alph*.]
+			\item Montrer que les idéaux maximaux de $\mathcal{C}^0([0,1],\R)$ sont de la forme : $$I_x=\left\{f\in\mathcal{C}^0([0,1],\R)\ \mid\ f(x)=0\right\}$$
+			\item Soit $E$ un espace métrique compact et $f:E\to\R$ une fonction localement bornée, c'est-à-dire que pour tout $x\in E$, il existe un voisinage $V_x$ de $x$ tel que pour tout $y\in V_y$, on ait $\lvert f(y)\rvert\leqslant M_x$. Montrer que $f$ est bornée.
+			\item On admet le théorème de Kakutani : pour tout convexe compact non vide $K$ d'un espace vectoriel normé $E$ et toute application affine continue $u$ qui stabilise $K$, $u$ possède un point fixe. Montrer qu'une famille $(u_i)_{i\in I}$ d'applications affines qui commutent deux à deux et stabilisent toutes un compact convexe non vide $K$ possèdent un point fixe commun.
+		\end{enumerate}
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[3]{Autour du théorème de Baire}
+	Soit $A$ une partie localement compacte d'un espace vectoriel normé (\textit{ie} dans laquelle tout point possède un voisinage compact).
+	\begin{enumerate}
+		\item Soit $(O_n)$ une suite d'ouverts de $A$, tous denses dans $A$. Montrer que $$\Omega=\bigcap_{n\in\N} O_n$$ est dense dans $A$. Est-il nécessairement ouvert ?
+		\item En déduire que si une suite $(F_n)$ de fermés de $A$ a une réunion d'intérieur non vide, alors l'un des $F_n$ est d'intérieur non vide.
+		\item Application : lemme de Croft (compléter)
+	\end{enumerate}
+\end{exo}
+
+\chapter{Fonctions vectorielles d'une variable réelle}
+
+
+
+\chapter{Suites et séries de fonctions}
+
+\begin{exo}[2]{Développement eulérien de la cotangente}
+	On note $S(x)=\displaystyle\frac{1}{x}+\sum_{n=1}^{+\infty}\frac{1}{x+n}+\frac{1}{x-n}$ et $f(x)=\pi\cot(\pi x)$.
+	\begin{enumerate}
+		\item Domaine de définition de $S$ ? Montrer que $f$ et $S$ sont impaires et $1$-périodiques. Régularité de $S$ ?
+		\item Montrer : $\displaystyle\forall x\in\R\setminus\Z,\ S\left(\frac{x}{2}\right)+S\left(\frac{x+1}{2}\right)=2S(x)$.
+		\item Montrer que $g=f-S$ vérifie la même propriété fonctionnelle que $S$, et que $g$ se prolonge en une fonction continue sur $\R$.
+		\item Montrer que $g$ atteint un maximum sur $\R$ en $x_0\in]0,1[$, et montrer que $g(x_0/2)=g(x_0)$. En déduire le développement eulérien de la cotangente :
+		$$\forall x\in\R\setminus\Z,\ \pi\cot(\pi x)=\frac{1}{x}+\sum_{n=1}^{+\infty}\frac{2x}{x^2-n^2}.$$
+	\end{enumerate}
+\end{exo}
+
+
+\begin{exo}[2]{}
+	Soit $a\in\displaystyle\left]0,\frac{1}{2}\right[$.
+	\begin{enumerate}
+		\item Montrer que la suite de fonctions $\displaystyle\left(x\mapsto(1+(2x-1)^n)/2\right)_{n\in\N}$ converge uniformément vers $x\mapsto\displaystyle\frac12$ sur $[a,1-a]$.
+		\item En déduire que toute fonction continue de $[a,1-a]$ dans $\R$ est limite uniforme d'une suite de fonction polynomiales à coefficients entiers.
+		\item Toute fonction continue de $[0,1]$ dans $\R$ est-elle limite uniforme d'une suite de fonctions polynomiales à coefficients entiers ?
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item La limite simple est rapide avec une suite géométrique. Pour la convergence uniforme, majorer la raison en module par $0<1-2a<1$ pour l'uniformité.
+		\item Vérifier que la suite de fonctions précédente est polynomiale à coefficients entiers (avec un binôme de Newton cela se fait bien). \\ Ainsi, $1/2$ est limite uniforme d'une suite de fonctions polynomiales à coefficients entiers. \\ Par produit $p$ fois, on en déduit que tous les $1/2^p$ sont limite uniforme d'une suite de fonctions polynomiales à coefficients entiers. \\  Avec les dyadiques et par somme, on en déduit que toute fonction constante est limite uniforme de fonctions polynomiales à coefficients entiers. \\ On en déduit, par produit, avec des puissances de $x$, que toute fonction polynomiale sur $[-a,1-a]$ est limite uniforme de fonctions à coefficients entiers. \\ Puis on conclut avec Weierstrass et le fait que la limite uniforme possède une sorte d'associativité.
+		\item Au vu de la question, je dirais non. Il doit y avoir un problème lorsque l'on s'approche de $0$ et $1$ au vu de la construction qui précède. \\  Après réflexion, prendre une fonction qui vaut $1/2$ en $0$. Comme $\Z$ est fermé dans $\R$, il va y avoir un problème avec la convergence uniforme qui entrainerait le fait qu'une suite d'entiers pourrait converger vers $1/2$.
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[2]{Théorème de Weierstrass trigonométrique}
+	Soit $f$ une fonction continue de $\R$ dans $\C$ $2\pi$-périodique.
+	\begin{enumerate}
+		\item En utilisant le théorème de Weierstrass, montrer que pour toute fonction $f\in\mathcal{C}^0(\R,\C)$ paire et $2\pi$-périodique, il existe une suite de polynômes $(P_n)_{n\in\N}$ telle que la suite de fonctions $(t\mapsto P_n(\cos(t)))_{n\in\N}$ converge uniformément vers $f$.
+		\item En déduire qu'il existe une suite de polynômes trigonométriques qui converge uniformément sur $\R$ vers $f\times\sin^2$.
+		\item En déduire qu'il existe une suite de polynômes trigonométriques qui converge uniformément vers $f$ sur $\R$.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item On considère $g=f\circ\arccos$ définie sur $[-1,1]$ et on lui applique le théorème de Weierstrass pour obtenir $(P_n)$. Pour montrer que la convergence est alors uniforme sur $\R$, utiliser la parité et la $2\pi$-périodicité de $f$ et de $\cos$.
+		\item Utiliser le fait que $f$ s'écrit sous la forme $p+i$ avec $p$ paire et $i$ impaire (où $p$ et $i$ sont alors nécessairement $2\pi$-périodiques car elle s'expriment naturellement à partir de $f$). On remarque alors que : $$f\times\sin^2=p\times\sin^2+\sin\times(i\times\sin)$$ où $p\times\sin^2$ et $i\times\sin$ sont paires et $2\pi$ périodiques. On les approche alors par des polynômes trigonométriques $(P_n\circ\cos)$ et $(Q_n\circ\cos)$ grâce à l'exercice précédent, puis on montre ensuite que $(P_n\circ\cos+\sin\times Q_n\circ\cos)$ est une suite de polynômes trigonométriques qui approche uniformément $f\times\sin^2$.
+		\item En considérant les transformations $x\mapsto x+\displaystyle\frac{\pi}{2}$ et $x\mapsto x-\displaystyle\frac{\pi}{2}$ (en appliquer une à $f$), on se ramène à la question précédente pour montrer que $f\times\cos^2$ peut être approchée uniformément par une suite de polynômes trigonométriques. On conclut alors avec $\cos^2+\sin^2=1$.
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[3]{Théorèmes de Dini}
+	\begin{enumerate}
+		\item On considère une suite décroissante de fonctions $(f_n)$ sur un compact $K$ à valeurs dans $\R$ qui converge simplement vers $0$. Montrer que la convergence est uniforme.
+		\item On considère une suite de fonctions $(f_n)$ définies sur $[a,b]$ à valeurs réelles qui sont toutes croissantes et qui converge simplement vers $f$ continue. Montrer que la convergence est uniforme.
+		\item Montrer que si une suite de fonctions convexes sur un intervalle ouvert $I$ converge simplement sur $I$, alors la convergence est uniforme sur tout segment de $I$.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Déjà, remarquons que toutes les $f_n$ sont par conséquent positives. Il est possible de démontrer le résultat à la main en prenant les \textit{maxima} sur le segment, mais il y a plus élégant. Soit $\varepsilon>0$. On considère $$K_n:=\left\{x\in K \ : \ f_n(x)\geqslant\varepsilon\right\}$$ puis on raisonne par l'absurde. On suppose que tous ces compacts (fermés dans un compact) sont non vides. Alors, puisque $(K_n)$ forme une suite décroissante de compacts, d'après le théorème des compacts emboîtés, on peut prendre $x$ dans l'intersection de tous ces compacts. Mais alors il ne peut y avoir convergence simple en $x$. Cela est absurde. Ainsi, il existe un $K_{n_0}$ vide, et par décroissance, tous les suivants le sont. On a donc bien convergence uniforme.
+		\item Un passage à la limite montre que $f$ est croissante. On fixe $\varepsilon>0$ Et par croissance et uniforme continuité de $f$, on peut fixer $c_0<\ldots<c_n$ une subdivision de $[0,1]$ telle que $$\forall i,\ f(c_{i+1})-f(c_i)\leqslant\frac{\varepsilon}{2}$$ Ensuite, si $x\in[0,1]$, on prend $i$ tel que $c_i\leqslant x\leqslant c_{i+1}$. Par croissance de $f$ et de $f_n$ on a alors : $$\begin{cases}
+			f_n(x)-f(x)\leqslant f_n(c_{i+1})-f(c_i)\leqslant\frac{\varepsilon}{2}+f_n(c_{i+1})-f(c_{i+1})\\
+			f_n(x)-f(x)\geqslant f_n(c_i)-f(c_{i+1})\geqslant f_n(c_i)-f(c_i)-\frac{\varepsilon}{2}
+		\end{cases}$$ Or, il y a un nombre fini de $c_i$ donc on peut prend $n_0$ tel que $$\forall i,\ \forall n\geqslant n_0,\ \lvert f_n(c_i)-f(c_i)\rvert\leqslant\frac{\varepsilon}{2}$$ On a donc : $$\forall x,\forall n\geqslant n_0,\ \lvert f_n(x)-f(x)\rvert\leqslant\varepsilon$$ ce qui est bien la convergence uniforme souhaitée.
+		\item On note $(f_n)$ la suite de fonctions et $f$ la limite simple. On prend $[b,c]\in I$ puis $(a,d)\in I^2$ tel que $a<b<c<d$. Soit $x\ne y\in[b,c]$. La convexité fournit : $$\frac{f_n(b)-f_n(a)}{b-a}\leqslant\frac{f_n(y)-f_n(x)}{y-x}\leqslant\frac{f_n(d)-f_n(c)}{d-c}$$ Or, les deux suite extrémales admettent des limites indépendantes de $x$ et $y$. Donc on en déduit que $$\forall n,\ \forall x\ne y,\ \left\lvert \frac{f_n(y)-f_n(x)}{y-x}\right\rvert\leqslant M$$ où $M$ ne dépend pas ni de $x$, ni de $y$, ni de $n$. Ensuite, il s'agit d'un exercice classique où toutes les fonctions sont lipschitziennes de même rapport.
+	\end{enumerate}
+\end{sol}
+
+
+\chapter{Séries entières}
+
+\begin{exo}[1]{}
+	Soit $f$ la somme d'une série entière $\displaystyle\sum a_n z^n$ de rayon de convergence infini. On suppose $\forall z\in\C, f(z)\in\R\iff z\in\R$.
+	\begin{enumerate}
+		\item Montrer que les $a_n$ sont réels.
+		\item Soit $n\in\N\st$ et $r>0$. Montrer : $\displaystyle\pi r^na_n=\int_{0}^{2\pi}\text{Im}(f(re^{i\theta}))\sin(m\theta)\d\theta$.
+		\item En déduire que pour tout $n\in\N\st$ et $r>0$, $\lvert r^na_n\rvert\leqslant nr\lvert a_1$, puis que $f$ est affine.
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[1]{Formule de Cauchy-Hadamard et trace des puissances}
+	Si $u$ est une suite majorée, la suite $(z_n)_{n\in\N}$ définie par : $$y_n=\sup\{u_p\ \mid\ p\geqslant n\}$$ est décroissante. Sa limite (éventuellement $-\infty$) est appelée \textbf{limite supérieure} de $u$ et est notée $\overline{\lim}u$.	Si $u$ est non majorée, on pose $\overline{\lim}u=+\infty$.
+	\begin{enumerate}
+		\item Soit $\displaystyle\sum a_n z^n$ une série entière de rayon de convergence $R$. Montrer l'égalité, dans $\overline{\R}_+$ :
+		$$\frac{1}{R}=\overline{\lim}(\sqrt[n]{\lvert a_n\rvert}).$$
+		\item Soit $A\in\mathcal{M}_n(\C)$. Montrer l'égalité :
+		$\rho(A)=\overline{\lim}(\sqrt[n]{\lvert\Tr(A^n)\rvert})$ où $\rho(A)$ désigne le rayon spectral de la matrice $A$.
+		\item Que représente $\overline{\lim}u$ pour une suite $u$ ? La suite $\left(\sqrt[n]{\lvert\Tr(A^n)\rvert}\right)$ est-elle convergente ?
+	\end{enumerate}
+\end{exo}
+\begin{proof}
+	\begin{enumerate}
+		\item On travaille sur une suite $(u_n)$à termes positifs et on note $p$ sa limite supérieure. Dans le cas où $p<1$, prendre $q$ tel que $p<q<1$ et utiliser le fait que $u_n^{1/n}\leqslant q$ à partir d'un certain rang $N$. On majore donc la suite par une suite géométrique de raison $q$, donc la série $\displaystyle\sum u_n$ converge absolument. Dans le cas où $p>1$, il existe une infinité de termes tels que $u_n\geqslant 1$, donc $\displaystyle\sum u_n$ diverge grossièrement. \\
+		Appliquer ensuite ce lemme avec $u_n=\lvert a_n z^n$ pour déterminer le rayon de convergence.
+		\item Considérer la série entière $\displaystyle\sum\Tr(A^n)z^n$ et utiliser la question précédente pour établir une expression de son rayon de convergence. Ensuite, utiliser l'expression de $\Tr(A^n)$ comme somme des puissances des valeurs propres comptées avec multiplicité pour établir une expression de la somme de la série entière comme somme de fraction rationnelles. Travailler ensuite sur le rayon de convergence de ces fractions rationnelles simples pour établir le rayon de convergence de la série entière en fonction de $\rho(A)$.
+		\item En fait, il n'y a pas nécessairement convergence : prendre une matrice $2\times 2$ ayant pour valeurs propres $-1$ et $1$. $\overline{\lim}u$ est la plus grand valeur d'adhérence d'une suite, donc le rayon spectral est la plus grande valeur d'adhérence de la suite considérée ici, mais celle-ci converge si, et seulement si, c'est aussi la plus petite valeur d'adhérence (car la suite est bornée).
+	\end{enumerate}
+\end{proof}
+
+\begin{exo}[2]{Points entiers dans ou sur un cercle}
+	Pour $n\in\N$, on pose $a_n=1$ si $n$ est un carré parfait, et $a_n=0$ sinon. Pour $n\in\N$, on note $b_n$ le nombre de couples d'entiers naturels $(p,q)$ tels que $p^2+q^2=n$ et $c_n$ le nombre de couples d'entiers naturels $(p,q)$ tels que $p^2+q^2\leqslant n$. On note $A$, $B$ et $C$ les sommes des séries entières respectives $\displaystyle\sum a_nx^n$, $\displaystyle\sum b_nx^n$ et $\displaystyle\sum c_n x^n$.
+	\begin{enumerate}
+		\item Montrer que les rayons de convergence de ces trois séries entières valent $1$.
+		\item Donner un équivalent de $A(x)$ quand $x$ tend vers $1^-$.
+		\item Donner une relation entre $A$ et $B$. En déduire un équivalent de $B(x)$ quand $x$ tend vers $1^-$.
+		\item Trouver un équivalent de $C(x)$ quand $x$ tend vers $1^-$.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Majorer très grossièrement $a_n$, $b_n$ et $c_n$ pour montrer que le rayon de convergence est supérieur à $1$. Et à chaque fois, la série diverge en $1$.
+		\item Une comparaison série intégrale nous ramène à l'intégrale de Gauss. On trouve :
+		$$A(x)\sim\frac{\sqrt{\pi}}{2\sqrt{-\ln(x)}}\sim\frac{\sqrt{\pi}}{2\sqrt{1-x}}.$$
+		\item On a $B(x)=A(x)^2$ avec un produit de Cauchy. De la question précédente, on déduit :
+		$$B(x)\sim\frac{\pi}{4(1-x)}.$$
+		\item Il faut remarquer que $c_n=\displaystyle\sum_{k=0}^{n}b_k$. On a alors, par produit de Cauchy :
+		$$C(x)=\frac{B(x)}{1-x},$$ et la question précédente fournit alors :
+		$$C(x)\sim\frac{\pi}{4(1-x)^2}.$$
+	\end{enumerate}
+\end{sol}
+
+
+\begin{exo}[3]{Calcul de $\zeta(2k)$}
+	On admet le développement eulérien de la cotangente :
+	$$\forall x\in\R\setminus\Z,\ \pi\cot(\pi x)=\frac{1}{x}+\sum_{n=1}^{+\infty}\frac{2x}{x^2-n^2}.$$
+	\begin{enumerate}
+		\item Soit $y\in\R\setminus (\pi\Z)$. On pose $z=2iy$. Montrer : $\displaystyle y\cot(y)=\frac{z}{2}+\frac{z}{e^z-1}$.
+		\item Montrer qu'il existe $r>0$ et une suite $(B_n)_{n\in\N}$ telle que :
+		$$\forall z\in\C,\ \lvert z\rvert <r\implies\frac{z}{e^z-1}=\sum_{n=0}^{+\infty}\frac{B_n}{n!}z^n.$$
+		Donner une relation de récurrence vérifiée par $(B_n)$, puis calculer $B_0$, $B_1$, $B_2$, $B_3$ et $B_4$.
+		\item Montrer que si $\lvert y\rvert$ est suffisamment petit, on a :
+		$$\sum_{n=1}^{+\infty}\frac{y^2}{(\pi n)^2-y^2}=\sum_{k=1}^{+\infty}\frac{\zeta(2k)}{\pi^{2k}}y^{2k}.$$
+		\item Soit $k\in\N\st$. Exprimer $\zeta(2k)$ en fonction de la $B_{2k}$ et de $k$. En déduire que $\displaystyle\frac{\zeta(2k)}{\pi^{2k}}\in\Q$, puis calculer $\zeta(2)$ et $\zeta(4)$.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Angle moitié.
+		\item Inverse d'une série entière $f$ telle que $f(0)\ne 0$. Multiplier par $e^{z}-1$ et faire le produit de Cauchy, l'égalité du DSE avec $z\mapsto z$ donne la relation de récurrence :
+		$$\forall n\in\N\st,\ \sum_{k=0}^{n}\binom{n+1}{k}B_k=0.$$ On trouve ensuite $B_0=1$, $B_1=-1/2$, $B_2=1/6$, $B_3=0$ et $B_4=-1/30$.
+		\item Pour $\lvert y\rvert <\pi$, écrire 
+		$$\frac{y^2}{(\pi n)^2-y^2}=\frac{y^2}{(\pi n)^2}\frac{1}{1-\left(\frac{y}{n\pi}\right)^2}=\frac{y^2}{(n\pi)^2}\sum_{k=0}^{+\infty}\left(\frac{y}{n\pi}\right)^{2k}=\sum_{n=1}^{+\infty}\left(\frac{y}{n\pi}\right)^{2k},$$ puis intervertir les deux sommes après vérification. Reconnaître ensuite $\zeta(2k)$. Pour justifier l'interversion, raisonner sur $\lvert y\rvert$ à la place de $y$ pour la famille double, puis en sommant, on aboutit à la même expression que pour la somme de départ mais avec $\lvert y\rvert$ à la place de $y$, qui est bien la somme d'une série convergente.
+		\item Combiner le développement eulérien de la cotangente, ainsi que les trois premières questions, pour exprimer $\displaystyle\sum_{k=1}^{+\infty}\frac{\zeta(2k)}{\pi^{2k}}y^{2k}$ en fonction des $B_n$. L'unicité du développement en série entière permet alors d'obtenir :
+		$$\zeta(2k)=\frac{(-1)^{k+1}}{2}\frac{(2\pi)^{2k}}{(2k)!}B_{2k}.$$
+		Le caractère rationnels des $B_n$ (immédiat au vu de la relation de récurrence) permet d'obtenir le caractère rationnel de $\zeta(2k)/(\pi^{2k})$. Les premiers termes de $(B_n)$ calculés en $2$ permettent d'obtenir :
+		$$\zeta(2)=\frac{\pi^2}{6}\quad\text{et}\quad\zeta(4)=\frac{\pi^4}{90}.$$
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[3]{Irrationnels et rayon de convergence}
+	Soit $\alpha\in\R\setminus\Q$. On note $R_\alpha$ le rayon de convergence de la série entière $\displaystyle\sum \frac{1}{\sin(\pi n\alpha)}x^n$.
+	\begin{enumerate}
+		\item Montrer que $R_\alpha\leqslant 1$.
+		\item Montrer que $R_{\sqrt{2}}=1$.
+		\item On suppose que $\alpha$ est racine d'un polynôme de degré $n\in\N\st$ à coefficients entiers (on dit que $\alpha$ est \textbf{algébrique}). Montrer qu'il existe un réel $\delta>0$ tel que :
+		$$\forall (p,q)\in\Z\times\N\st,\ \left\lvert\alpha-\frac{p}{q}\right\rvert\geqslant\frac{\delta}{q^n}.$$
+		\item On suppose de plus que $\alpha$ est algébrique. Montrer que $R_\alpha=1$.
+		\item On note $L$ la constante de Liouville :
+		$$L=\sum_{n=0}^{+\infty}\frac{1}{10^{n!}}.$$
+		Montrer que $L$ n'est pas algébrique (on dit que $L$ est \textbf{transcendant}).
+		\item Existe-t-il $\alpha$ tel que $R_\alpha=0$ ?
+	\end{enumerate}
+\end{exo}
+
+
+\chapter{Intégrales généralisées}
+
+\begin{exo}[1]{}
+	Pour $n\in\N$ et $x\in\R$, on pose : $H_n(x)=\displaystyle\frac{1}{n!}\int_{-x}^{x}(x^2-t^2)^n\cos(t)\ dt$
+	\begin{enumerate}
+		\item Montrer que pour tout $n\in\N$, il existe des polynômes $C_n$ et $S_n$ à coefficients entiers de degrés inférieurs ou égaux à $n$ tels que pour tout $x\in\R$, on ait : $H_n(x)=C_n(x)\cos(x)+S_n(x)\sin(x)$.
+		\item Soit $\theta\in\Q\st$. Montrer que $\tan(\theta)$ est irrationnel.
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[2]{}
+	Calculer $\displaystyle\int_{0}^{\pi/2}\ln(\sin(x))dx$.
+\end{exo}
+
+\begin{exo}[3]{}
+	Calculer $\displaystyle\int_{0}^{+\infty}\frac{\arctan(x)^2}{x^2}\text{d}x$.
+\end{exo}
+\begin{sol}
+	L'existence est simple. Pour le calcul, on peut faire une IPP en primitivant $x^{-2}$, puisque on effectue le changement de variable $x=\tan(u)$. Cela permet de se ramener à l'intégrale entre $0$ et $\pi/2$ de $\ln(\sin(u))$, que l'on calcule en faisant un changement de variable puis en sommant avec $\ln(\cos)$ puis en refaisant un changement de variable. On trouve pour celle-ci $-\pi\ln(2)/2$, et finalement $\pi\ln(2)$ pour l'intégrale de départ.
+\end{sol}
+
+\chapter{Intégrales à paramètres}
+
+\begin{exo}[0]{}
+	Soit $f:\R\to\C$ continue et bornée. Démontrer l'existence de $$I(\varepsilon)=\int_{-\infty}^{+\infty}\frac{\varepsilon}{x^2+\varepsilon^2}f(x)\d x$$ et étudier son comportement quand $\varepsilon\xrightarrow{}0$.
+\end{exo}
+
+\begin{exo}[2]{}
+	Soit $a$ et $b$ deux réels strictement supérieurs à $1$. Calculer : $$\int_{0}^{\pi}\ln\left(\frac{b-\cos(x)}{a-\cos(x)}\right)dx$$
+\end{exo}
+\begin{sol}
+	Interpréter ceci comme $I(b)-I(a)$. On dérive $x\mapsto I(x)$, on calcule sa dérivée avec les règles de Bioche, puis on intègre. Inutile de déterminer la constante puisque ce que l'on cherche est la différence entre deux valeurs de $I$.
+\end{sol}
+
+\begin{exo}[2]{Formule sommatoire de Poisson}
+	On note $\mathcal{S}$ l'ensemble des fonctions de $\R$ dans $\C$ de classe $\mathcal{C}^\infty$ telles que pour tous entiers naturels $n$ et $m$, on ait $x^mf^{(n)}(x)\xrightarrow[x\to\pm\infty]{}0$. Soit $f\in\mathcal{S}$. On pose : $$\forall x\in \R,\ \varphi(x)=\sum_{k\in\Z}f(x+k)$$
+	\begin{enumerate}
+		\item Bonne définition de $\varphi$ ? Régularité de $\varphi$ ? Une autre remarque ?
+		\item Pour $n\in\Z$, calculer : $$\int_{0}^{1}\varphi(t)e^{-2i\pi nt}dt$$
+		\item On admet qu'une fonction $\psi$ de classe $\mathcal{C}^\infty$ et $1$-périodique s'écrit sous la forme : $$\psi(x)=\sum_{n\in\Z}c_ne^{2i\pi nx}$$ On pose : $$\forall n\in\Z,\ \hat{f}(n)=\int_{\R}f(t)e^{-2i\pi nt}dt$$ Montrer la formule sommatoire de Poisson : $$\sum_{n\in\Z}f(n)=\sum_{n\in\Z}\hat{f}(n)$$
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[2]{Méthode de Laplace}
+	Soit $f$ une fonction continue et à valeurs strictement positives sur $[0,a]$ avec $a>0$. on suppose qu'il existe $(\alpha,p)\in(\R_+\st)^2$ tel que $f(t)=1-\alpha t^p+o(t^p)$ au voisinage de $0$ et $\forall t\in]0,a],\ f(t)<1$. On se propose de trouver un équivalent de $$I(x)=\int_{0}^{a}f(t)^x\ \d t$$ lorsque $x$ tend vers $+\infty$.
+	\begin{enumerate}
+		\item Montrer qu'il existe $\beta>0$ tel que $$\forall t\in[0,a],\ f(t)\leqslant\exp(-\beta t^p).$$
+		\item Déterminer la limite, quand $x$ tend vers $+\infty$, de $$g(x)=\int_{0}^{ax^{1/p}}f\left(ux^{-1/p}\right)^x\ \d t$$
+		\item Conclure.
+		\item Application : convergence, limite et équivalent lorsque $n$ tend vers l'infini de la suite $(I_n)$ définie par $$I_n=\int_{0}^{+\infty}\frac{\d t}{(1+t^3)^n}$$
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[3]{Intégrales de Fresnel}
+	Pour $(x,y)\in\R_+\st\times\R$, on pose $$G(x,y)=\int_{0}^{+\infty}\frac{e^{-xt}e^{iyt}}{\sqrt{t}}\ \d t.$$
+	\begin{enumerate}
+		\item Montrer que $G$ est continue sur $\R_+\st\times\R$.
+		\item Calculer $G(1,0)$.
+		\item Exprimer $G(x,y)$ à l'aide de $G(1,z)$ pour un $z$ bien choisi.
+		\item Montrer que $H:z\mapsto G(1,z)$ est dérivable sur $\R$ et que $$\forall z\in\R,\ H'(z)=\frac{i}{2(1-iz)}H(z).$$
+		\item En déduire la valeur de $H(z)$ pour tout $z\in\R$ puis celle de $G(x,y)$ pour tout $(x,y)\in\R_+\st\times\R$.
+		\item Montrer que $G(0,y)$ a un sens pour tout $y>0$.
+		\item Montrer que $\displaystyle\lim_{x\to 0^+}G(x,1)=G(0,1)$. En déduire la convergence et la valeur de $$I=\int_{0}^{+\infty}\cos(t^2)\ \d t \ \ \text{et} \ \ J=\int_{0}^{+\infty}\sin(t^2)\ \d t.$$
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[3]{Convolution}
+	Si $f$ et $g$ sont des fonctions continues par morceaux de $\R$ dans $\R$, on appelle produit de convolution de $f$ et $g$, $f\star g$, la fonction, si elle existe, définie par $$f\star g:x\mapsto\displaystyle\int_\R f(x-t)g(t)\ \d t.$$
+	\begin{enumerate}
+		\item Montrer que si $f$ et $g$ sont à support compact, alors $f\star g$ est aussi à support compact.
+		\item Démontrer que le produit de convolution est commutatif. On admet qu'il est associatif.
+		\item Montrer que si $f$ est bornée et $g$ est intégrable, alors $f\star g$ existe et est bornée par $\lVert f\rVert_\infty\lVert g\rVert_1$.
+		\item Pour $a>0$, on note $\varphi_a$ la fonction $t\mapsto\exp(-a^2t^2)$. Montrer que $$\varphi_a\star\varphi_b=\sqrt{\frac{\pi}{a^2+b^2}}\varphi_{\frac{ab}{\sqrt{a^2+b^2}}}.$$
+		\item Soit $f$ continue bornée sur $\R$. Soit $(\varphi_n)$ une suite de fonctions continues positives intégrables telle que $\displaystyle\int_\R\varphi_n(t)\ dt\xrightarrow[n\to+\infty]{}1$ et, pour tout $\delta>0$, $\displaystyle\int_{\lvert t\rvert\geqslant \delta}\varphi_n(t)\ dt\xrightarrow[n\to+\infty]{}0$. Montrer que la suite de fonctions $(f\star\varphi_n)$ converge simplement vers $f$, et uniformément sur tout segment.
+		\item Pour $n\in\N$, on pose $\displaystyle g_n(x)=\frac{1}{c_n}(1-x^2)^n$ si $x\in[-1,1]$ avec $c_n=\displaystyle\int_{-1}^{1}(1-t^2)^n\ dt$. Soit $f:[-1,1]\to\R$ nulle en dehors de $\displaystyle\left[-\frac{1}{2},\frac{1}{2}\right]$. Montrer que la restriction de $f\star g_n$ à $\displaystyle\left[-\frac{1}{4},\frac{1}{4}\right]$ est polynomiale.Montrer que la suite de fonctions $(f\star g_n)$ converge uniformément vers $f$ sur $\displaystyle\left[-\frac{1}{4},\frac{1}{4}\right]$ et en déduire une preuve du théorème de Weierstrass.
+	\end{enumerate}
+\end{exo}
+
+
+\begin{exo}[3]{Indice}
+	Soit $f$ une fonction de $\R$ dans $\C\st$, $2\pi$-périodique et de classe $\mathcal{C}^1$.
+	\begin{enumerate}
+		\item Montrer : $$\frac{1}{2i\pi}\int_{0}^{2\pi}\frac{f'(t)}{f(t)}dt\in\Z.$$
+		\item En déduire le théorème de D'Alembert-Gauss.
+		\item Calculer la valeur de cette intégrale pour $P\in\C[X]$.
+	\end{enumerate}
+\end{exo}
+
+
+\chapter{Probabilités}
+
+\begin{exo}[0]{DL probabiliste}
+	Soit $X$ une variable aléatoire discrète définie à valeurs dans $\N$. On suppose que $X$ admet une variance. Montrer :
+	$$\E\left(\frac{1}{X+1}\right)\leqslant1-\frac{2}{3}\E(X)+\frac{1}{6}\E(X^2).$$
+\end{exo}
+\begin{sol}
+	Déjà, $1/(1+X)$ est $L^1$ car bornée. \\
+	Il suffit de montrer : $\forall x\in\N,\ \displaystyle\frac{1}{x+1}\leqslant1-\frac{2}{3}x+\frac{1}{6}x^2$. On pose :
+	$$\forall x>-1,\ f(x)=-\frac{1}{x+1}+1-\frac{2}{3}x+\frac{1}{6}x^2.$$
+	Une mise au même dénominateur fournit :
+	$$\forall x>-1,\ f(x)=\frac{1}{6(x+1)}\left(-6+6(x+1)-4x(x+1)+x^2(x+1)\right)=\frac{x(x-1)(x-2)}{6(x+1)}.$$
+	Puisque $f(x)$ tend vers $+\infty$ quand $x$ tend vers $+\infty$ et que $2$ est la "dernière" annulation de $f$, par continuité, $f$ est positive sur $[2,+\infty[$, et l'inégalité $f$ est nulle en $0$ et en $1$. \\
+	La croissance de l'espérance permet de conclure ($X$ est $L^2$ donc $L^1$).
+\end{sol}
+
+\begin{exo}[1]{}
+	Soit $\Omega$ un ensemble fini de cardinal supérieur ou égal à $2$. Déterminer les fonctions $f:\R\to\R$ telles que pour toute probabilité $\P$ sur $\mathcal{P}(\Omega)$ et toute variable aléatoire réelle $X:\Omega\to\R$, on ait :
+	$$\E(f(X))=f(\E(X)).$$
+\end{exo}
+\begin{sol}
+	Définir une probabilité et une variable aléatoire de façon à montrer que $f$ vérifie une égalité de convexité. Conclure en montrant que les seules fonctions à la fois convexes et concaves sont les fonctions affines.
+\end{sol}
+
+\begin{exo}[2]{}
+	On considère le déplacement d'une fourmi sur les sommets d'un carré $ABCD$, avec le segment $[AB]$ horizontal. A l'étape $0$, la fourmi est en $A$. A chaque étape, la fourmi change nécessairement de sommet. Un déplacement horizontal à une probabilité $p$, un déplacement vertical une probabilité $q$ et un déplacement diagonal une probabilité $r$ (avec $p+q+r=1$ donc). Donner, pour chaque sommet, la probabilité que la fourmi s'y trouve à l'étape $n$. Limite quand $n$ tend vers $+\infty$ ?
+\end{exo}
+\begin{sol}
+	On note $a_n$, $b_n$, $c_n$ et $d_n$ ces probabilités. On a donc $(a_0,b_0,c_0,d_0)=(1,0,0,0)$ et :
+	$$\forall n\in\N, \begin{pmatrix}
+		a_{n+1}\\
+		b_{n+1}\\
+		c_{n+1}\\
+		d_{n+1}
+	\end{pmatrix}=\underbrace{\begin{pmatrix}
+		0&p&r&q\\
+		p&0&q&r\\
+		r&q&0&p\\
+		q&r&p&0
+	\end{pmatrix}}_{:=M}\begin{pmatrix}
+		a_n\\
+		b_n\\
+		c_n\\
+		d_n
+	\end{pmatrix}.$$
+	Remarquer que $M$ est symétrique réelle !!! On peut aussi voir que $M$ est la combinaison linéaire de trois matrices de symétrie qui commutent deux à deux... (Et $M$ est bistochastique). On cherche donc à calculer les puissances de $M$. Plusieurs pistes :
+	\begin{itemize}
+		\item multinôme de Newton comme les matrices de symétrie commutent deux à deux (pas beau du tout) ;
+		\item diagonaliser (pas beau non plus, mais plus faisable).
+	\end{itemize}
+	Je pars sur la deuxième piste. On voit assez aisément que $1$ est valeur propre avec, par exemple, le vecteur propre $(1\ 1\ 1\ 1)^T$.
+\end{sol}
+
+\chapter{Équations différentielles}
+
+\begin{exo}[0]{}
+	Résoudre le système différentiel :
+	$$\begin{cases}
+		x'=y\\
+		y'=z\\
+		z'=x
+	\end{cases}$$
+\end{exo}
+\begin{sol}
+	Mettre le système sous la forme $X'=JX$. On peut calculer l'exponentielle de la matrice en remarquant que $J^3=I_3$.
+\end{sol}
+
+\begin{exo}[1]{}
+	\begin{enumerate}
+		\item Soit $f\in\mathcal{C}^1(\R_+,\R)$ telle que $f'+f\xrightarrow[+\infty]{}0$. Montrer : $$\begin{cases}
+			f\xrightarrow[+\infty]{}0 \\
+			f'\xrightarrow[+\infty]{}0
+		\end{cases}.$$
+		\item Généraliser à $f'+\alpha f$ avec $\alpha\in\C$ tel que $\text{Re}(\alpha)>0$.
+		\item Généraliser à $P(f)$ avec $P\in\C[X]$ unitaire de degré $n\in\N\st$ dont toutes les racines ont une partie réelle strictement négative.
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[2]{Sous-groupes à un paramètre de $\mathcal{GL}_n(\C)$}
+	Soit $\varphi:\R\to\mathcal{GL}_n(\C)$ une morphisme de groupes continu.
+	\begin{enumerate}
+		\item Montrer que $\varphi$ est dérivable. On pourra introduire une primitive de $\varphi$.
+		\item En déduire $\forall t\in\R,\ \varphi(t)=\exp(t\varphi'(0))$.
+		\item Décrire tous les morphismes de groupes continus de $\R$ dans $\mathcal{GL}_n(\C)$ puis de $\U$ dans $\mathcal{GL}_n(\C)$.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	La troisième question est plus difficile.
+	\begin{enumerate}
+		\item Comme d'habitude : intégrer par rapport à une variable en considérant $\Phi$ la primitive qui s'annule en $0$. Remarquer que $\Phi(u)=uI_n+o(u)$ donc puisque $\mathcal{GL}_n(\C)$ est ouvert, il existe $u_0$ non nul tel que $\Phi(u_0)$ soit inversible puis on conclut comme d'habitude.
+		\item Dériver l'équation fonctionnelle par rapport à une des variables puis prendre la prendre égale à $0$ puis invoquer une unicité à un problème de Cauchy.
+		\item Pour la première partie de la question, c'est simplement la synthèse de l'analyse effectuée dans les trois question précédentes. Ensuite, on considère $f:\U\to\mathcal{GL}_n(\C)$ un morphisme de groupes continu. Alors $\varphi:t\mapsto f(e^{it})$ est un morphisme de groupes continu par composition. On raisonne ensuite par analyse-synthèse :
+		\begin{itemize}
+			\item Analyse : on peut fixer $A\in\mathcal{M}_n(\C)$ telle que $$\forall t\in\R,\ f(e^{it})=\varphi(t)=\exp(tA)$$ Or, $\exp(2\pi A)=f(1)=I_n$ donc $A$ est diagonalisable et $\text{Sp}(A)\subset i\Z$ (c'est un lemme qu'on démontre en utilisant la décomposition de Dunford, se référer au chapitre de réduction).
+			\item Synthèse : réciproquement, on considère $$\begin{array}{lrcl}
+				f:&\U&\longrightarrow&\mathcal{GL}_n(\C)\\
+				&u&\longmapsto&\exp(tA)
+			\end{array}$$ où $u=e^{it}$ et $A$ est diagonalisable à spectre inclus dans $i\Z$. On vérifie que cette fonction est bien continue en diagonalisant $A$ et en utilisant le fait que son spectre est inclus dans $i\Z$ et on vérifie immédiatement que c'est un morphisme de groupes continu.
+		\end{itemize}
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[3]{}
+	Soit $f\in\mathcal{C}^\infty(\R,\R)$ telle que l'espace vectoriel $\text{Vect}(x\mapsto f(x+a))_{a\in\R}$ soit de dimension finie. Montrer que $f$ est solution d'une équation différentielle linéaire à coefficients constants.
+\end{exo}
+
+\chapter{Calcul différentiel}
+
+\begin{exo}[0]{Laplacien en coordonnées polaires}
+	Soit $f:\R^2\to\R$ de classe $\mathcal{C}^2$. On définit son laplacien par $$\Delta f=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}.$$ On définit ensuite la fonction $g$ sur $\R_+\times\R$ par : $$g(r,\theta)=f(r\cos(\theta),r\sin(\theta)).$$ Montrer la formule : $$\Delta f(r\cos(\theta),r\sin(\theta))=\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial g}{\partial r}\right)+\frac{1}{r^2}\frac{\partial^2 g}{\partial\theta^2}.$$
+\end{exo}
+\begin{sol}
+	Calculer les dérivées partielles premières et secondes de $g$ par rapport à $r$ et $\theta$ en utilisant la règle de la chaîne. Ensuite, sommer les dérivées secondes puis ajuster.
+\end{sol}
+
+\begin{exo}[0]{Théorème spectral}
+	Soit $E$ un espace euclidien de dimension non nulle, $S$ sa sphère unité et $u$ un endomorphisme autoadjoint de $E$. On définit $f_u$ de $E$ dans $\R$ par : $$f_u:x\mapsto (u(x)\mid x)$$
+	\begin{enumerate}
+		\item Montrer que $f$ est de classe $\mathcal{C}^1$ et déterminer son gradient.
+		\item Sans utiliser les résultats du chapitre sur les endomorphismes d'un espace vectoriel euclidien concernant les endomorphismes autoadjoints, montrer que $f_{\mid S}$ admet un \textit{maximum} et que s'il est atteint en $a\in S$, alors $\nabla f(a)$ et $a$ sont colinéaires.
+		\item Retrouver ainsi le fait que $u$ admet une valeur propre réelle.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	Calculer le gradient de $f$. Montrer que la restriction de $f_u$ à $S$ admet un maximum et utiliser le théorème d'optimisation sous contrainte en ce point. Conclure. 
+\end{sol}
+
+\begin{exo}[1]{Laplacien en coordonnées sphériques}
+	Soit $f:\R^2\to\R$ de classe $\mathcal{C}^2$. On définit son laplacien par $$\Delta f=\frac{\partial^2 f}{\partial x^2}+\frac{\partial^2 f}{\partial y^2}+\frac{\partial^2 f}{\partial z^2}.$$ On définit ensuite la fonction $g$ sur $\R_+\times\R\times\R$ par : $$g(r,\theta,\varphi)=f(r\sin(\theta)\cos(\varphi),r\sin(\theta)\sin(\varphi),r\cos(\theta)).$$ Montrer la formule : $$\Delta f=\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial g}{\partial r}\right)+\frac{1}{r^2\sin(\theta)}\frac{\partial}{\partial\theta}\left(\sin(\theta)\frac{\partial g}{\partial\theta}\right)+\frac{1}{r^2\sin^2(\theta)}\frac{\partial^2 f}{\partial\varphi^2}.$$
+\end{exo}
+\begin{sol}
+	Il s'agit de la version énervée du laplacien en coordonnées polaires. Un conseil : le faire calmement. Calculer les dérivées partielles premières et secondes de $g$ par rapport à $r$ et $\theta$ en utilisant la règle de la chaîne. Ensuite, sommer les dérivées secondes puis ajuster.
+\end{sol}
+
+\begin{exo}[1]{Principe du maximum et fonction harmonique}
+	Soit $U$ un ouvert non vide borné de $\R^2$ et $f$ une fonction définie sur l'adhérence $U$, continue sur l'adhérence de $U$ et de classe $\mathcal{C}^2$ sur $U$ à valeurs dans $\R$.
+	\begin{enumerate}
+		\item Montrer que si $\Delta f$ ne prend que des valeurs strictement positives sur $U$, alors $f$ n'a pas de maximum local sur $U$.
+		\item On suppose que $f$ est \textbf{harmonique} sur $U$, c'est-à-dire que $\Delta f=0$. Montrer que $f$ admet un maximum et un minimum sur l'adhérence de $U$, et que ceux-ci sont atteints sur la frontière de $U$ (il peuvent être atteints ailleurs néanmoins).
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Utiliser la matrice hessienne qui ne peut pas être négative.
+		\item Pour l'existence, c'est une affaire de compacité. Remarquer qu'il suffit de prouver le résultat pour le maximum, quitte à changer $f$ et $-f$. Considérer $$g_n:x\mapsto f(x)+\frac{1}{n+1}\lVert x\rVert^2$$ Lui appliquer la question précédente pour obtenir un maximum sur la frontière. La frontière est compacte, donc on extrait de cette suite de \textit{maxima} une limite. En passant à la limite, un maximum est atteint en ce point.
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[1]{Espace tangent à $\mathcal{U}_n(\C)$}
+	Déterminer l'ensemble des vecteurs tangents à $\mathcal{U}_n(\C)$ en $I_n$ et en préciser la dimension.
+\end{exo}
+\begin{sol}
+	La réponse est l'ensemble des matrices anti-hermitiennes, \textit{ie} égales à l'opposé de leur transconjuguée. Adapter la preuve donnée pour $\mathcal{O}_n(\R)$.
+\end{sol}
+
+\begin{exo}[2]{Matrices cycliques}
+	On considère : $$\begin{array}{lrcl}
+		\varphi:&\mathcal{M}_n(\R)&\longrightarrow&\R^n \\
+		&M&\longmapsto&(\Tr(M),\ldots,\Tr(M^n)).
+	\end{array}$$
+	\begin{enumerate}
+		\item Montrer que $\varphi$ est de classe $\mathcal{C}^1$ et calculer sa différentielle en tout point.
+		\item Montrer que pour tout $M\in\mathcal{M}_n(\R)$, on a $\text{rg}(d\varphi(M))=\deg(\pi_M)$.
+		\item En déduire que l'ensemble : $\left\{M\in\mathcal{M}_n(\R)\ : \ \chi_{_M}=\pi_M\right\}$ est un ouvert de $\mathcal{M}_n(\R)$.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	Le nom de l'exercice vient du fait que le dernier ensemble est aussi l'ensemble des matrices $M$ telles qu'il existe un vecteur $X$ tel que $(X,\ldots,M^{n-1}X)$ soit une base de $\R^n$, qu'on appelle ensemble des matrices cycliques.
+	\begin{enumerate}
+		\item Pour montrer la classe $\mathcal{C}^1$, utiliser les théorèmes généraux.
+		\item Utiliser le gradient.
+		\item Caractériser la liberté d'une famille par l'inversibilité d'un matrice.
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[2]{Aire maximale d'un triangle inscrit dans une ellipse}
+	On rappelle que l'équation d'une ellipse du plan euclidien usuel centrée en $O$ de demi-grand axe $a$ et de demi-petit axe $b$ a pour équation cartésienne :
+	$$\frac{x^2}{a^2}+\frac{y^2}{b^2}=1.$$
+	\begin{enumerate}
+		\item Comment passer d'une ellipse à un cercle ?
+		\item Quels sont les triangles d'aire maximale dont les trois sommets appartiennent à une même ellipse ?
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item $u:(x,y)\mapsto (x/a,y/b)$ qui est linéaire. On confondra ensuite les points et les vecteurs.
+		\item Soit $ABC$ un triangle inscrit dans une ellipse. Alors, en notant $A'$, $B'$ et $C'$ les images des points $A$, $B$ et $C$ par $u$, le triangle $A'B'C'$ est inscrit dans un cercle. Or :
+			$$\mathcal{A}(ABC)=\frac{1}{2}\lvert\det(\overrightarrow{AB},\overrightarrow{AC})\rvert=\mathcal{A}(ABC)=\frac{1}{2}\lvert\det(u\inv(\overrightarrow{A'B'}),u\inv(\overrightarrow{A'C'}))\rvert$$
+			et donc $$\mathcal{A}(ABC)=\lvert \det(u)\rvert\frac{1}{2}\lvert\det(\overrightarrow{A'B'},\overrightarrow{A'C'})\rvert=\lvert\det(u\inv)\rvert\mathcal{A}(A'B'C')=ab\mathcal{A}(A'B'C').$$
+		On se ramène donc à étudier les triangles d'aires maximales inscrits dans un cercle (avec le théorème des \textit{extrema} liés par exemple), qui sont les triangles équilatéraux, pour lesquels (s'ils sont inscrits dans un cercle de rayon $1$) l'aire vaut $3\sqrt{3}/4$. L'aire maximale cherchée ici est donc :
+		$$\mathcal{A}_{\text{max}}=ab\frac{3\sqrt{3}}{4}.$$
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[3]{Lemme de Morse}
+	\begin{enumerate}
+		\item Soit $A\in\mathcal{S}_n^{++}(\R)$. On pose $F=A\inv\mathcal{S}_n(\R)$ et : $$\begin{array}{lrcl}
+			\varphi:&\mathcal{GL}_n(\R)\cap F&\longrightarrow&\mathcal{GL}_n(\R)\cap\mathcal{S}_n(\R)\\
+			&M&\longmapsto&M^TAM
+		\end{array}$$ Montrer que $\varphi$ est différentiable en $I_n$ et que $d\varphi(I_n)$ est un isomorphisme de $F$ sur $\mathcal{S}_n(\R)$.
+		\item $\star\star$ Montrer qu'il existe $r>0$ tel que $B(A,r)\subset\mathcal{GL}_n(\R)$ et une fonction $\psi$ de classe $\mathcal{C}^1$ sur $$\mathcal{U}=B(A,r)\cap\mathcal{S}_n(\R)$$ telle que $$\psi(A)=I_n\ \ \text{et}\ \ \forall N\in \mathcal{U},\ \begin{cases}
+			\psi(N)\in\mathcal{GL}_n(\R)\cap F\\
+			N=\psi(N)^TA\psi(N)
+		\end{cases}$$
+		\item Soit $f\in\mathcal{C}^2(\R^n,\R)$ telle que $f(0)=0$, $\nabla f(0)=0$ et $H_f(0)\in\mathcal{S}_n^{++}(\R)$. \\
+		Montrer qu'il existe $V\subset\R^n$ un voisinage de $0$ et $g\in\mathcal{C}^1(V,\R^n)$ vérifiant : $$\forall x\in V,\ f(x)=\lVert g(x)\rVert^2$$ Indication : on pourra utiliser une formule de Taylor.
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[3]{Minimisation d'une fonctionnelle ; équation d'Euler-Lagrange}
+	Soit $a$ et $b$ deux éléments de $\R^3$. On note $E$ l'ensemble des éléments $u\in\mathcal{C}^1(\R,\R^3)$ tels que $u(0)=a$ et $u(1)=b$. On se donne $K\in\mathcal{C}^\infty(\R^3,\R_+\st)$ et on pose :
+	$$\forall u\in E,\ F(u)=\int_{0}^{1}\lVert u'(t)\rVert^2 K(u(t))\d t.$$
+	\begin{enumerate}
+		\item Quelle est la structure de $E$ ? On note $E_0$ l'ensemble "intéressant" associé.
+		\item Lemme de Du Bois-Reymond : soit $f\in\mathcal{C}^0(\R,\R^n)$. On suppose que pour toute fonction $h\in\mathcal{C}^1(\R,\R^n)$ telle que $h(0)=h(1)=0$, on a :
+		$$\int_{0}^{1}\left\langle f(t)\mid h'(t)\right\rangle\d t=0.$$ Montrer que $f$ est constante sur $[0,1]$.
+		\item Jusqu'à la fin de l'exercice, on se donne $u\in E$ telle que $F(u)$ soit minimale, et on cherche à déterminer une équation différentielle vérifiée par $u$ sur $[0,1]$. Montrer que pour tout $h\in E_0$, on a :
+		$$\int_{0}^{1}\left\langle 2K(u(t))u'(t)\mid h'(t)\right\rangle\d t=-\int_{0}^{1}\left\langle \lVert u'(t)\rVert^2\nabla K(u(t)) \mid h(t) \right\rangle\d t.$$
+		\item Montrer que $u$ est en fait de classe $\mathcal{C}^2$ puis conclure.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Espace affine de direction $E_0$, où $E_0$ est le sous-espace vectoriel constitués des fonctions de classe $\mathcal{C}^1$ s'annulant en $0$ et en $1$.
+		\item Par contraposée, supposer $f$ non constante sur $[0,1]$, en prenant $0<r<s<1$ tels que $f(r)\ne f(s)$. Poser $x=f(r)-f(s)$, si bien que $\left\langle f(r)-f(s)\mid x\right\rangle>0$, ce qui permet, par continuité de la fonction $t\mapsto \left\langle f(r+t)-f(s+t)\mid x\right\rangle>0$, il existe alors $\varepsilon >0$ et $\eta>0$ tels que :
+		$$\forall t\in[-\varepsilon,\varepsilon], (r+t\in[0,1]\quad\text{et}\quad s+t\in[0,1])\implies \left\langle f(r+t)-f(s+t)\mid x\right\rangle\geqslant\eta.$$ Sans perte de généralité, on peut prendre $\varepsilon< \lvert r-s\rvert$. Construire alors une fonction $h$ (à base d'exponentielle de $1/(t^2-\varepsilon^2)$ et de $x$) dans $h$ qui fait apparaître le produit scalaire précédent et donne une intégrale non nulle.
+		\item Considérer $f$ définie sur $\R$ par $f(x)=F(u+xh)$. Par minimalité, $f$ atteint un minimum en $0$. Or, $f$ est dérivable, et le fait que sa dérivée en $0$ vaille $0$ donne l'égalité souhaitée.
+		\item Introduire une primitive de $t\mapsto\lVert u'(t)\rVert^2\nabla K(u(t))$ et faire une IPP sur le membre de droite pour se ramener à l'utilisation du lemme de Du Bois-Reymond pour montrer que $2K(u(t))u'(t)-\lVert u'(t)\rVert^2\nabla K(u(t))$ est constante. Cela donne, en divisant par $2K(u(t))$, la classe $C^2$, puis en reprenant la version "non divisée", une dérivation donne l'équation différentielle.
+	\end{enumerate}
+\end{sol}
+
+
+\begin{exo}[3]{}
+	Soit $A\in\mathcal{M}_n(\R)$. On considère l'application :
+	$$\begin{array}{lrcl}
+		\varphi_A:&\mathcal{GL}_n(\R)&\longrightarrow&\mathcal{M}_n(\R)\\
+		&M&\longmapsto&MAM\inv.
+	\end{array}$$
+	\begin{enumerate}
+		\item Montrer que $\varphi_A$ est différentiable et que le rang de $\d \varphi_A(M)$ ne dépend pas de $M\in\mathcal{GL}_n(\R)$.
+		\item Calculer ce rang en fonction des éléments propres de $A$ lorsque $A$ est diagonalisable.	
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Se "souvenir" que la fonction inverse est différentiable et que sa différentielle au point $M$ est $H\mapsto -M\inv HM\inv$. Cela donne par opérations la différentiabilité de $\varphi_A$ et, après calcul, on trouve :
+		$$\d\varphi_A(M)\cdot H=M(M\inv HA-AM\inv H)M\inv=M([M\inv H, A])M\inv$$ où $[X,Y]=XY-YX$. On peut donc voir $\d\varphi_A(M)$ comme la composée de trois applications linéaires : $X\mapsto MXM\inv$, $X\mapsto [X,A]$ et $X\mapsto M\inv X$. La première et la dernière sont des isomorphismes, donc n'affectent pas le rang. Ainsi, le rang de la différentielle $\d\varphi_A(M)$ est en fait le rang de l'application $X\mapsto [X,A]$, qui ne dépend pas de $M$.
+		\item On cherche donc le rang de $X\mapsto [X,A]$, ce qui revient, par le théorème du rang, à chercher la dimension du noyau de $X\mapsto[X,A]$, soit la dimension du commutant de $A$. Or, c'est un exercice classique de réduction que de montrer que pour une matrice diagonalisable, on a :
+		$$\dim(\mathcal{C}(A))=\sum_{\lambda\in\text{Sp}(A)}m(\lambda)^2.$$En effet, on montrer qu'un endomorphisme commute avec l'endomorphisme canoniquement associé à $A$ si, et seulement si, ses induits sur les sous-espaces propres commutent avec les induits de $A$.\\
+		Finalement :
+		$$\rg(\d\varphi_A(M))=n^2-\sum_{\lambda\in\text{Sp}(A)}m(\lambda)^2.$$
+	\end{enumerate}
+\end{sol}
+
+\chapter{Algèbre générale}
+
+\begin{exo}[1]{}
+	Soit $p$ un nombre premier. Montrer qu'il existe $n\in\N$ tel que $2^n\equiv n\ [p]$.
+\end{exo}
+\begin{sol}
+	Prendre $n=2$ si $p=2$. On suppose $p\geqslant 3$. Alors $2^{p-1}\equiv 1\ [p]$ d'après le petit théorème de Fermat. Donc si on écrit la division euclidienne d'un potentiel $n$ solution par $p-1$ sous la forme $n=q(p-1)+r$, on a $2^n\equiv 2^r\ [p]$, et donc $2^r\equiv -q+r\ [p]$. Il suffit de choisir $q$ et $r$ vérifiant ceci pour conclure. En imposant $r=0$, on peut par exemple prendre $q=p-1$, et vérifier que cela convient.
+\end{sol}
+
+\begin{exo}[1]{}
+	Soit $A$ un anneau commutatif fini. On note $N$ l'ensemble de ses éléments nilpotents. Montrer que $\card(N)$ divise $\card(A)$ et $\card(A^\times)$.
+\end{exo}
+\begin{sol}
+	$(N,+)$ est un sous-groupe de $(A,+)$, puis utiliser le théorème de Lagrange. \\
+	Pour la deuxième, l'ensemble des $1-n$ pour $n\in N$ (en bijection avec $N$) est un sous-groupe multiplicatif de $(A^\times,\times)$, puis on utilise à nouveau le théorème de Lagrange.
+\end{sol}
+
+\begin{exo}[1]{Critère d'Eisenstein}
+	Soit $p$ un nombre premier et $P\in\Z[X]$ qu'on écrit sous la forme $$P=\sum_{k=0}^{n}a_kX^k$$ Supposons que l'on ait :
+	\begin{itemize}
+		\item $\forall k\in\llbracket0,n-1\rrbracket,\ p\mid a_k$ ;
+		\item $p^2\nmid a_0$.
+		\item $p\nmid a_n$
+	\end{itemize}
+	Montrer que $P$ est irréductible dans $\Z[X]$.
+\end{exo}
+\begin{sol}
+	Passer dans $\Z/p\Z[X]$ et utiliser une décomposition en irréductibles.
+\end{sol}
+
+\begin{exo}[2]{}
+	Montrer que tout sous-anneau $A$ de $\Q$ est principal.
+\end{exo}
+\begin{sol}
+	Soit $I$ un idéal d'un tel anneau $A$ ($A$ contient $\Z$ comme sous-anneau). On vérifie aisément que $I\cap\Z$ est un idéal de l'anneau $\Z$, si bien qu'il existe un unique $n\in\N$ tel que $I\cap \Z=n\Z$. On montrer alors que $I=nA$.
+	\begin{itemize}
+		\item $n$ est dans $I$ donc $nA\subset I$ puisque $I$ est un idéal.
+		\item Réciproquement, soit $x\in I$. On écrit $x=\displaystyle\frac{p}{q}$ avec $(p,q)\in\Z\times\N\st$ et $p\wedge q=1$. Alors, $p=qx\in I\cap\Z$ donc il existe $y\in\Z$ tel que $p=ny$. On en déduit $x=n\displaystyle\frac{y}{q}$, et il suffirait de montrer que $\displaystyle\frac{y}{q}$ appartient à $A$. Or, le théorème de Bézout fournit $(u,v)\in\Z^2$ tel que :
+		$$up+vq=1.$$
+		En multipliant cette relation par $\displaystyle\frac{y}{q}$, on obtient :
+		$$\frac{y}{q}=u\frac{p}{q}y+vy=uyx+vy.$$ Or, $vy$ est un entier donc appartient à $A$, et $uy$ est un entier et $x\in A$, donc $uyx\in A$, si bien que, par somme, $\displaystyle\frac{y}{q}\in A$ et donc $x\in nA$.
+	\end{itemize}
+	Donc $I=nA$. Donc $A$ est principal.
+\end{sol}
+
+\begin{exo}[2]{}
+	Soit $P=\displaystyle\sum_{k=0}^{n}a_kX^k\in\Z[X]$. On note $c(P)=\text{PGCD}(a_0,\ldots,a_n)$ le contenu de $P$.
+	\begin{enumerate}
+		\item Soit $(P,Q)\in\Z[X]^2$. Montrer que $c(PQ)=c(P)c(Q)$. Indication : on pourra se ramener au cas où $c(P)=c(Q)=1$.
+		\item Montrer que l'on peut prolonger la fonction $c$ à $\Q[X]$ en conservant la propriété de la première question.
+		\item Application 1 : retrouver le fait que les racines rationnelles d'un polynôme unitaire à coefficients entiers sont entières.
+		\item Application 2 : soit $P\in\Z[X]$ non constant. Montrer que $P$ est irréductible dans $\Z[X]$ si, et seulement s'il est irréductible dans $\Q[X]$ et $c(P)=1$.
+		\item Application 3 : montrer que le polynôme minimal d'une matrice de $\mathcal{M}_n(\Z)$, considérée comme une matrice de $\mathcal{M}_n(\Q)$, est à coefficients entiers.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item On procède en deux étapes.
+		\begin{itemize}
+			\item Supposons $c(A)=c(B)=1$. Par l'absurde, supposons $c(AB)\ne 1$. Prenons alors $p$ un nombre premier qui divise $c(AB)$. Alors, en passant au quotient dans $\Z/p\Z[X]$, on a $\overline{0}=\overline{AB}=\overline{A}\times\overline{B}$. Puisque $\Z/p\Z$ est un corps, $\Z/p\Z[X]$ est intègre donc $\overline{A}=\overline{0}$ ou $\overline{B}=\overline{0}$, et donc $p$ divise $c(A)$ ou $c(B)$, ce qui est absurde. Donc $c(AB)=1$.
+			\item Dans le cas général, on écrit $A=c(A)A'$ et $B=c(B)B'$ avec $c(A')=c(B')=1$ (en effet, $c(nP)=\lvert n\rvert c(P)$). Alors, par le cas précédent : $$c(AB)=c\big(c(A)c(B)A'B'\big)=c(A)c(B)c(A'B')=c(A)c(B)$$
+		\end{itemize}
+		\item Poser le seul prolongement naturel (avec le PPCM ou en faisant les produits) et vérifier que cela est bien défini et conserve la propriété précédente.
+		\begin{rmq}
+			Il est important de noter que si $P\in\Q[X]$, alors $P/c(P)$ est un polynôme à coefficients entiers de contenu $1$. C'est l'argument essentiel à utiliser pour les trois applications suivantes.
+		\end{rmq}
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[2]{}
+	Soit $A$ un anneau tel que : $\forall (x,y)\in A^2,\ (xy=yx\ \text{ou}\ xy=-yx)$. Montrer que $A$ est commutatif.
+\end{exo}
+\begin{sol}
+	Attention, le symbole $+$ ou $-$ dépend du couple $(x,y)$ !!! Soit $x\in A$. On pose :
+	$$A_+(x)=\{y\in A\ :\ xy=yx\}\quad\text{et}\quad A_-(x)=\{y\in A\ :\ xy=-yx\}.$$
+	On montre aisément que ces deux ensembles sont des sous-groupes additifs de $(A,+)$.\\
+	Mais $A=A_+(x)\cup A_-(x)$ par hypothèse. Or, l'union de deux sous-groupes est un sous-groupe si, et seulement si, un des sous-groupes est inclus dans l'autre. Ici, on a donc $A_+(x)=A$ ou $A_-(x)=A$.\\
+	Dans le premier cas, on a gagné.\\
+	Dans le deuxième cas, on en déduit notamment que $1_A\in A_-(x)$ donc $x=-x$. Puis si $y\in A=A_-(x)$, alors $xy=-yx=y(-x)=yx$ donc on a aussi gagné !
+\end{sol}
+
+\begin{exo}[2]{Module d'une somme de Gauss}
+	Soit $p$ un nombre premier impair. On pose :
+	$$S_p=\sum_{k=0}^{p-1}\exp\left(\frac{2i k^2\pi}{p}\right).$$
+	\begin{enumerate}
+		\item Montrer que :
+		$$\begin{array}{rcl}
+			(\Z/p\Z)^2&\longrightarrow&(\Z/p\Z)^2\\
+			(x,y)&\longmapsto&(x+y,x-y)
+		\end{array}$$ est bijective.
+		\item Montrer que $\lvert S_p\rvert=\sqrt{p}$.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item C'est un morphisme de groupes additifs. On montre que le noyau est réduit à $\{(0,0)\}$, pour cela, on utilise le fait que $2$ est inversibles car $p$ est premier impair.
+		\item Calculer $\lvert S_p\rvert^2=S_p\overline{S_p}$. On trouve :
+		$$\sum_{0\leqslant k,l\leqslant p-1}\exp\left(\frac{2i(k-l)(k+l)\pi}{p}\right).$$
+		On peut remplacer $k$ et $l$ par leurs classes modulo $p$, ce qui ne change rien, puis utiliser le changement de variable obtenu à la question précédente pour se ramener à des sommes géométriques. Seule une somme géométrique est non nulle et vaut $p$. On en déduit le résultat.
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[3]{Action transitive, $p$-groupe et lemme de Cauchy}
+	Soit $G$ un groupe fini de cardinal strictement supérieur à $1$, d'élément neutre noté $e$. On suppose que pour tout couple d'éléments $(x,y)$ de $G$ tous deux différents de $e$, il existe un automorphisme $\sigma\in G$ tel que $y=\sigma(x)$.
+	\begin{enumerate}
+		\item Montrer que tous les éléments de $G$ différents de $e$ ont le même ordre, et que cet ordre est un nombre premier $p$.
+		\item Montrer que le centre de $G$ n'est pas réduit à $\{e\}$.
+		\item En déduire que $G$ est abélien.
+		\item Lemme de Cauchy : soit $H$ un groupe fini et $q$ un diviseur premier de $\card(H)$. On introduit : $$A=\left\{(h_1,\ldots,h_q)\in H^q\ : \ h_1\cdots h_q=1\right\}.$$ Montrer que $(g_1,\ldots,g_q)\mapsto(g_2,\ldots,g_q,g_1)$ définit une permutation $\sigma$ de $A$. En considérant la décomposition de $\sigma$ en produit de cycles à support disjoint, montrer que $H$ possède un élément d'ordre $q$.
+		\item Montrer que $\card(G)$ est une puissance de $p$.
+	\end{enumerate}
+\end{exo}
+
+\begin{exo}[3]{Théorème de Wedderburn}
+	Pour $n\in\N\st$, on note $\Phi_n$ le $n$-ième polynôme cyclotomique usuel. On se donne $\K$ un corps fini \textit{a priori} non commutatif (on parle de corps gauche). On note $Z$ son centre. On admet que la théorie des espaces vectoriels est inchangée si le corps de base est un corps gauche. Le but est de montrer que $\K$ est en fait commutatif.
+	\begin{enumerate}
+		\item Soit $n\in\N\st$. Montrer : $X^n-1=\displaystyle\prod_{d\mid n}\Phi_d$. En déduire que les $\Phi_n$ sont à coefficients entiers.
+		%\item Soit $p$ un nombre premier et $n\in\N\st$. Montrer : $\Phi_{p^n}=\displaystyle\sum_{k=0}^{p-1}X^{kp^{n-1}}$.
+		%\item Expliciter le terme constant de $\Phi_n$ en fonction de $n\in\N\st$.
+		\item Soit $d$ un diviseur strict de $n\in\N\st$. Montrer que $X^d-1$ divise $X^n-1$ dans $\Z[X]$, puis que $\Phi_n$ divise $(X^n-1)/(X^d-1)$ dans $\Z[X]$.
+		\item Soit $\mathbb{M}$ un corps (gauche) et $\L$ un sous-corps (gauche) de $\mathbb{M}$. Expliquer brièvement pourquoi $\mathbb{M}$ peut être muni d'une structure de $\L$-espace vectoriel et, dans le cas où $\mathbb{M}$ est fini, donner une relation entre les cardinaux de $\mathbb{M}$ et $\L$, et la dimension de $\mathbb{M}$ en tant que $\L$-espace vectoriel.
+		\item Montrer que $Z$ est un corps commutatif. On note $q$ le cardinal de $Z$ et $n$ la dimension de $\K$ en tant que $Z$-espace vectoriel. Exprimer alors le cardinal de $\K$ en fonction de $q$ et $n$.
+		\item Soit $a\in\K\st$. On note $\K_a=\{x\in\K\ :\ ax=xa\}$. Montrer que $\K_a$ est un corps gauche dont $Z$ est un sous-corps. On note $d(a)$ la dimension de $\K_a$ en tant que $Z$-espace vectoriel. En étudiant la dimension de $\K$ en tant que $\K_a$ espace vectoriel, montrer que $d(a)$ divise $n$.
+		\item En considérant les classes d'équivalence de la relation d'équivalence $x\sim y\iff\exists u\in\K\st,\ y=u\inv xu$ sur $\K\st$, montrer qu'il existe $d_1,\ldots,d_k$ des diviseurs stricts de $n$ tels que :
+		$$q^n-1=q-1+\sum_{i=1}^{k}\frac{q^n-1}{q^{d_i}-1}.$$
+		\item En déduire que $\Phi_n(q)$ divise $q-1$.
+		\item En étudiant le module de $q-u$, où $u$ est une racine primitive $n$-ième de l'unité, puis le module de $\Phi_n(q)$, montrer que $n=1$ et conclure.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Pour la première égalité, partitionner les racines $n$-ièmes de l'unité en les différents groupes de racines $d$-ièmes de l'unité, pour $d$ diviseur de $n$. Ensuite, récurrence sur $n$, en montrant que le théorème de division euclidienne s'adapte ici au polynômes à coefficients dans un anneau lorsque le coefficient dominant du diviseur est inversible (ici c'est $1$).
+		\item Écrire $n=dk$ et $X^n-1=(X^d)^k-1^k=(X^d-1)\times(\cdots)$. Ensuite, dans le produit obtenu en $1$, sortir $\Phi_n$ et les $\Phi_k$ pour $k\mid d$.
+		\item Prendre pour loi externe la restriction de la multiplication interne. Lorsque $\mathbb{M}$ est fini, $\mathbb{M}$ est de dimension finie sur $\L$, donc $\mathbb{M}$ est isomorphe à $\L^{\dim_\L(\mathbb{M})}$, si bien que :
+		$$\card(\mathbb{M})=\card(\L)^{\dim_\L(\mathbb{M})}.$$
+		\item Les vérifications sont immédiates. D'après la question précédente, $\K$ est un $Z$-espace vectoriel de dimension finie et $\card(\K)=q^n$.
+		\item $\K_a$ est un sous-corps gauche de $\K$. On vérifie aisément que $Z$ est un sous-corps de $\K_a$. Par $3$, on a $\card(\K_a)=q^d$, puis $\card(\K)=(q^{d(a)})^k$ où $k$ est la dimension de $\K$ en tant que $\K_a$-espace vectoriel, et comme $q\geqslant 2$, on a $n=d(a)k$ donc $d(a)\mid n$.
+		\item Si $x\in Z$, $\overline{x}=\{x\}$ ne possède qu'un élément. Si $x\notin Z$, il existe $y$ tel que $yx\ne xy$ donc $y\ne 0$ et $y\inv xy\ne x$ donc la classe de $x$ possède au moins deux éléments. Notons $\K_x\st=\K_x\setminus\{0\}$. $\K_x\st$ est un sous-groupe de $\K\st$ donc $q^{d(x)}-1$ divise $q^n-1$. On montre que le groupe quotient $\K\st /\K_x\st$ est équipotent à $\overline{x}$ via $u\K_x\st\mapsto u\inv x u$. Et comme $\overline{x}$ possède au moins deux éléments, $d(x)$ est un diviseur strict de $n$. \\
+		On écrit alors $\K\st$ comme la partition des classes d'équivalences et on regarde les cardinaux pour obtenir l'égalité souhaitée. Peut-être mettre cette question en dernier ou la faire chercher en dernier s'il reste du temps.
+		\item Par $1$, $\Phi_n$ divise $X^n-1$ et par $2$, $\Phi_n$ divise les $\displaystyle\frac{X^n-1}{X^{d_i}-1}$ (dans $\Z[X]$ à chaque fois), donc l'égalité de la question précédente permet de conclure.
+		\item Si $n>1$, on voit aisément sur un dessin que pour toute racine primitive $n$-ième de l'unité $u$, on a $\lvert q-u\rvert>q-1$ (en effet, on rappelle que $q\geqslant 2$), donc si $n>1$, on a $\lvert\Phi_n(q)\rvert>(q-1)^\varphi(n)\geqslant q-1$. Or, $\lvert\Phi_n(q)\rvert\leqslant q-1$ d'après la question précédente, donc $n=1$, si bien que $\K=Z$ est commutatif !
+	\end{enumerate}
+\end{sol}
+
+\begin{exo}[3]{Autour de $\mathcal{SL}_n(\Z)$}
+	Soit $G$ un groupe admettant une partie génératrice finie, et $H$ un groupe fini. On se donne $f$ un endomorphisme surjectif de $G$, et $g$ un morphisme de groupes de $G$ dans $H$.
+	\begin{enumerate}
+		\item Montrer qu'il y a un nombre fini de morphismes de $G$ dans $H$.
+		\item Soit $a\in\ker(f)$. Montrer que pour tout $n\in\N$, il existe $b_n\in G$ tel que $a=f^n(b_n)$ et en déduire que $\ker(f)\subset\ker(g)$.
+		\item On admet que $\mathcal{SL}_n(\Z)$ est un groupe admettant une partie génératrice finie. Montrer que tout endomorphisme surjectif de $\mathcal{SL}_n(\Z)$ est bijectif.
+		\item On cherche à démontrer le résultat admis. Montrer que $\mathcal{SL}_n(\Z)$ est un groupe contenant les $T_{i,j}=I_n+E_{i,j}$ pour $i\ne j$. Calculer $T_{i,j}^k$ pour $k\in\Z$ et en déduire que $\mathcal{SL}_n(\Z)$ admet une partie génératrice finie.
+	\end{enumerate}
+\end{exo}
+\begin{sol}
+	\begin{enumerate}
+		\item Un tel morphisme est caractérisé par les images des éléments de la partie génératrice. Or, la partie génératrice est finie, et pour chaque élément de cet ensemble, l'image est à choisir dans $H$ qui est fini, donc on a un nombre fini de possibilités.
+		\item Si $n\in\N$, $f^n$ est surjectif, ce qui permet d'obtenir $b_n$.\\
+		Ensuite, d'après la première question, il existe $n<m$ tel que $g\circ f^n=g\circ f^m$. Alors $g(a)=g\circ f^n(b_n)=g\circ f^m(b_n)=g\circ f^{m-n}(a)=e_G$.
+		\item Soit $\psi$ un endomorphisme de $\mathcal{SL}_(\Z)$. Soit $p$ un nombre premier. On considère $\varphi_p:\mathcal{SL}_n(\Z)\to\mathcal{SL}_n(\Z/p\Z)$ la projection canonique. C'est aisément un morphisme de groupes et si $M\in\ker(\varphi_p)$, alors $M-I_n$ a tous ses coefficients divisibles par $p$. Ainsi, $\ker(\psi)\subset\ker(\varphi_p)$, et ceci pour tout $p$ premier. Par conséquent, si $M\in\ker(\psi)$, alors pour tout $p$ premier, tous les coefficients de $M-I_n$ sont divisibles par $p$, donc $M=I_n$ et $\psi$ est injectif.
+		\item Pour la structure de groupe, utiliser la comatrice pour le passage à l'inverse. Le reste est aisé. Le fait que les $T_{i,j}$ y appartiennent est trivial. \\
+		$T_{i,j}^k=I_n+kE_{i,j}$ (un binôme de Newton peut faire l'affaire pour s'éviter la récurrence). \\
+		En utilisant l'algorithme d'Euclide colonne par colonne en multipliant à droite par des $T_{i,j}^k$, on ramène une matrice de $\mathcal{SL}_n(\Z)$ à une matrice dont la première ligne nulle, sauf le premier coefficient qui vaut le PGCD des coefficients initialement présents sur la ligne. \\
+		En développant par rapport aux lignes, on observe que le PGCD des éléments d'une ligne vaut en fait $1$. \\
+		Ensuite, on recommence avec le bloc $(n-1)\times (n-1)$ en bas à droite de la matrice provisoirement obtenue qui est dans $\mathcal{SL}_{n-1}(\Z)$. On se ramène par récurrence à une matrice triangulaire inférieure à coefficients entiers dont les termes diagonaux valent $1$.\\
+		On annule ensuite les coefficients sous-diagonaux par opération (entières) sur les colonnes, et on s'est finalement ramené à $I_n$ en multipliant par des matrices $T_{i,j}^k$, si bien que les $T_{i,j}$ engendrent $\mathcal{SL}_n(\Z)$.
+	\end{enumerate}
+\end{sol}
+
+
+%\begin{exo}[2]{}
+%	Soit $G$ un groupe de cardinal $2n$.
+%	\begin{enumerate}
+%		\item Soit $H$ un sous-groupe de $G$ de cardinal $n$. Montrer que l'application :
+%		$$\begin{array}{lrcl}
+%			\varphi:&G&\longrightarrow&\U_2\\
+%			&g&\longmapsto&\displaystyle\begin{cases}
+%				1&\text{si }g\in H\\
+%				-1&\text{si }g\notin H
+%			\end{cases}
+%		\end{array}$$ définit un morphisme de groupes de $(G,\cdot)$ dans $(\U_2,\times)$.
+%		\item Pour $d\in\N\st$, combien $(\Z/2\Z)^d$ possède-t-il de sous-groupes de cardinal $2^{d-1}$ ?
+%		\item Montrer que $G$ ne peut pas posséder exactement deux sous-groupes de cardinal $n$.
+%	\end{enumerate}
+%\end{exo}
+%\begin{sol}
+%	\begin{itemize}
+%		\item Faire une table de multiplication peut aider à clarifier le raisonnement.
+%		\item On peut voir $(\Z/2\Z)^d$ comme un $\Z/2\Z$-espace vectoriel de dimension $d$. Un tel sous-groupe en est alors un hyperplan. Il y a autant d'hyperplans que de droites, donc il y en a ici $2^d-1$.
+%		\item La question $1$ permet de montrer qu'à tout sous-groupe de $G$ de cardinal $n$ correspond un unique morphisme de groupe de $G$ dans $\Z/2\Z$. Or, l'espace de ces morphismes est un $\Z/2\Z$-espace vectoriel de dimension finie.
+%	\end{itemize}
+%\end{sol}
+
+
+\chapter{}
+
+\section{Problèmes}
+
+\section{Exercices}
+
+\end{document}
