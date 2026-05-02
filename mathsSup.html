@@ -7,6 +7,31 @@
     
 </head>
 <body>
+
+    <script>
+    var pass = prompt("Mot de passe requis :");
+    if (pass !== "Colles") {
+        alert("Accès non autorisé.");
+        window.location.href = "index.html"; // Renvoie à l'accueil
+    }
+    </script>
+
     <a href="index.html" class="bouton" style="font-size: 14px; padding: 10px;">Retour à l'accueil</a>
+
+
+    <h1>Mathématiques de Sup</h1>
+
+    <div class="flex-container">
+        <div class="flex-item">
+            <a href="maths_sup/Sup_Cours/Maths_Sup_Cours.pdf"
+            target="_blank" class="bouton">Cours</a>
+        </div>
+
+        <div class="flex-item">
+            <a href="maths_sup/Sup_TD/TD_Sup.pdf"
+            target="_blank" class="bouton">Quelques TD</a>
+        </div>
+    </div>
+
 </body>
 </html>
