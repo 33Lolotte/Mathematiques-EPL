@@ -7,6 +7,31 @@
     
 </head>
 <body>
+
+    <script>
+    var pass = prompt("Mot de passe requis :");
+    if (pass !== "Colles") {
+        alert("Accès non autorisé.");
+        window.location.href = "index.html"; // Renvoie à l'accueil
+    }
+    </script>
+
     <a href="index.html" class="bouton" style="font-size: 14px; padding: 10px;">Retour à l'accueil</a>
+
+    <h1>Colles</h1>
+
+    <div class="flex-container">
+        <div class="flex-item">
+            <a href="projets/Temp/26-27Temp.pdf"
+            target="_blank" class="bouton">PDF</a>
+        </div>
+
+        <div class="flex-item">
+            <a href="projets/Temp/26-27Temp.tex"
+            target="_blank" class="bouton">LaTeX</a>
+        </div>
+    </div>
+
+
 </body>
 </html>
